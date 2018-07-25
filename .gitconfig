@@ -1,6 +1,6 @@
 [user]
-  name = Vitaly Slobodin
-  email = vitaliy.slobodin@gmail.com
+	name = Vitaly Slobodin
+	email = vitaliy.slobodin@gmail.com
 [color]
   ui = true
 [alias]
@@ -8,6 +8,7 @@
   st = status
   co = checkout
   pf = push --force-with-lease
+  am = commit --amend
   delete-merged-branches = !sh -c 'git branch --merged master | grep -v master | xargs -n 1 git branch -d'
 [push]
   default = current
@@ -36,6 +37,7 @@
   required = true
 [core]
   pager = diff-so-fancy | less --tabs=4 -RFX
+	editor = subl -n -w
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
