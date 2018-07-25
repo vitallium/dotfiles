@@ -1,0 +1,42 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"Anaconda",
+		"ayu",
+		"BracketHighlighter",
+		"DashDoc",
+		"DocBlockr",
+		"Dockerfile Syntax Highlighting",
+		"EditorConfig",
+		"Elixir",
+		"Elm Language Support",
+		"Emmet",
+		"GitGutter",
+		"Gutter Color",
+		"JsPrettier",
+		"LSP",
+		"MarkdownEditing",
+		"nginx",
+		"Origami",
+		"Package Control",
+		"Rails Migrations List",
+		"Ruby Completions",
+		"Ruby Slim",
+		"SCSS",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-annotations",
+		"SublimeLinter-contrib-credo",
+		"SublimeLinter-contrib-dockerfilelint",
+		"SublimeLinter-contrib-yamllint",
+		"SublimeLinter-rubocop",
+		"SuperElixir",
+		"Theme - Monokai Pro",
+		"TypeScript"
+	]
+}

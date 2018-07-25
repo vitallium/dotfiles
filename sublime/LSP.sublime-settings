@@ -1,0 +1,29 @@
+// Settings in here override those in "LSP/LSP.sublime-settings",
+
+{
+	"clients": {
+		"ruby":
+		{
+			"command":
+			[
+				"rbenv",
+				"exec",
+				"solargraph",
+				"socket"
+			],
+			"tcp_port": 7658,
+			"enabled": true,
+			"languageId": "ruby",
+			"scopes":
+			[
+				"source.ruby",
+				"source.ruby.rails"
+			],
+			"syntaxes":
+			[
+				"Packages/Ruby/Ruby.sublime-syntax",
+				"Packages/Rails/Ruby on Rails.sublime-syntax"
+			]
+		}
+	}
+}

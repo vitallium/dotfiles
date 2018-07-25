@@ -1,0 +1,27 @@
+// SublimeLinter Settings - User
+{
+	"linters": {
+		"annotations": {
+          "disable": false,
+          "args": [],
+          "errors": [
+              "FIXME"
+          ],
+          "excludes": [],
+          "warnings": [
+              "NOTE",
+              "README",
+              "TODO",
+              "@todo",
+              "XXX",
+              "WIP"
+          ]
+		},
+	},
+    "paths": {
+    	"osx": [
+    		"/usr/local/bin"
+    	]
+    },
+    "lint_mode": "load_save",
+}
