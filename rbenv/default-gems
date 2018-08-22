@@ -1,0 +1,11 @@
+gem-ctags
+bundler
+bundler-audit
+fasterer
+reek
+debride
+solargraph
+brakeman
+pry
+awesome_print
+debug_helper
