@@ -1,22 +1,9 @@
 {
-	"auto_complete_commit_on_tab": true,
-	"autosave": false,
-	"bold_folder_labels": true,
-	"color_scheme": "Packages/Theme - Monokai Pro/Monokai Pro (Filter Machine).tmTheme",
-	"ensure_newline_at_eof_on_save": true,
-	"font_face": "Input",
-	"font_size": 15,
-	"gravity_sidebar_header": true,
-	"gravity_tab_height_tall": true,
-	"gravity_title_bar": true,
-	"ignored_packages":
-	[
-		"Vintage"
-	],
-	"show_minimap": false,
-	"theme": "Monokai Pro (Filter Machine).sublime-theme",
 	"animation_enabled": true,
 	"atomic_save": true,
+	"auto_complete": false,
+	"auto_complete_commit_on_tab": true,
+	"autosave": false,
 	"binary_file_patterns":
 	[
 		"*.jpg",
@@ -33,6 +20,9 @@
 		"*.jar",
 		"*.zip"
 	],
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/ayu/ayu-light.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
 		".gitkeep",
@@ -75,8 +65,21 @@
 		"deps",
 		"_build"
 	],
+	"font_face": "Input",
+	"font_size": 15,
+	"gravity_sidebar_header": true,
+	"gravity_tab_height_tall": true,
+	"gravity_title_bar": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Markdown",
+		"Vintage"
+	],
 	"index_exclude_patterns":
 	[
 		"*.log"
 	],
+	"show_minimap": false,
+	"theme": "ayu-light.sublime-theme"
 }

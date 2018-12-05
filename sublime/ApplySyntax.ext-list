@@ -1,0 +1,65 @@
+{
+	"Bash":
+	[
+		"bash",
+		"sh",
+		"zsh"
+	],
+	"HTML (Rails)":
+	[
+		"html.erb"
+	],
+	"JSON":
+	[
+		".bowerrc",
+		".csslintrc",
+		".eslintrc",
+		".jscsrc",
+		".jshintrc",
+		"geojson"
+	],
+	"NgxHTML":
+	[
+		"component.html",
+		"page.html",
+		"view.html"
+	],
+	"PHP":
+	[
+		"inc",
+		"php3",
+		"php4",
+		"php5",
+		"phtml"
+	],
+	"Python":
+	[
+		"py3",
+		"pyw"
+	],
+	"Ruby Haml":
+	[
+		"haml"
+	],
+	"Ruby Slim":
+	[
+		"emblem"
+	],
+	"Shell-Unix-Generic":
+	[
+		"bash",
+		"sh",
+		"zsh"
+	],
+	"XML":
+	[
+		"xml.dist"
+	],
+	"YAML":
+	[
+		".gemrc",
+		"YAML-tmLanguage",
+		"yml",
+		"yml.dist"
+	]
+}

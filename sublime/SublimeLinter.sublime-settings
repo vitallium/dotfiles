@@ -17,11 +17,20 @@
               "WIP"
           ]
 		},
-	},
-    "paths": {
-    	"osx": [
-    		"/usr/local/bin"
-    	]
+    "rubocop": {
+      "use_bundle_exec": true
     },
-    "lint_mode": "load_save",
+    "tslint": {
+      "excludes": [
+        "**/node_modules/**"
+      ],
+    }
+	},
+  "paths": {
+  	"osx": [
+  		"/usr/local/bin",
+      "~/.rbenv/shims"
+  	]
+  },
+  "lint_mode": "load_save",
 }

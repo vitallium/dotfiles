@@ -8,4 +8,6 @@ solargraph
 brakeman
 pry
 awesome_print
-debug_helper
+binding_of_caller
+ruby-debug-ide
+debase
