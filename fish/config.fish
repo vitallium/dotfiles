@@ -11,6 +11,3 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 
 # Source the aliases in ~/.config/fish/aliases.fish.
 test -f ~/.config/fish/aliases.fish; and . ~/.config/fish/aliases.fish
-
-# Source the gruvbox color adjustments.
-test -f ~/.config/fish/colors.fish; and source ~/.config/fish/colors.fish
