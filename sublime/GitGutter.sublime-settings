@@ -1,4 +1,15 @@
 // GitGutter Settings - User
 {
-  "theme": "Default.gitgutter-theme"
+  "git_binary": "/usr/local/bin/git",	
+  "theme": "Default.gitgutter-theme",
+  "protected_regions": [
+  	"sublimelinter-warning-gutter-marks",
+    "sublimelinter-error-gutter-marks",
+    "sublime_linter.protected_regions",
+    "bookmarks",
+    "lsp_error",
+    "lsp_warning",
+    "lsp_info",
+  	"lsp_bulb"
+  ]
 }

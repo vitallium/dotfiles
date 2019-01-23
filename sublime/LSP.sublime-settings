@@ -1,6 +1,7 @@
 // Settings in here override those in "LSP/LSP.sublime-settings",
 
 {
+	"show_code_actions_bulb": true,
 	"clients": {
 		"ruby":
 		{

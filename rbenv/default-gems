@@ -1,6 +1,7 @@
 gem-ctags
 bundler
 bundler-audit
+byebug
 fasterer
 reek
 debride
@@ -11,3 +12,8 @@ awesome_print
 binding_of_caller
 ruby-debug-ide
 debase
+pry-doc
+pry-remote
+pry-stack_explorer
+pry-linenoise
+pry-byebug

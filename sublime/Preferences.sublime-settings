@@ -1,4 +1,9 @@
 {
+	"additional_path_items":
+	[
+		"/usr/local/bin",
+		"~/.rbenv/shims"
+	],
 	"animation_enabled": true,
 	"atomic_save": true,
 	"auto_complete": false,
@@ -21,7 +26,7 @@
 		"*.zip"
 	],
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/ayu/ayu-light.tmTheme",
+	"color_scheme": "Packages/Theme - Monokai Pro/Monokai Pro (Filter Machine).tmTheme",
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
@@ -58,7 +63,6 @@
 		"CVS",
 		"tmp",
 		".bundle",
-		"log",
 		".sass-cache",
 		"coverage",
 		"node_modules",
@@ -66,7 +70,7 @@
 		"_build"
 	],
 	"font_face": "Input",
-	"font_size": 15,
+	"font_size": 14,
 	"gravity_sidebar_header": true,
 	"gravity_tab_height_tall": true,
 	"gravity_title_bar": true,
@@ -81,5 +85,6 @@
 		"*.log"
 	],
 	"show_minimap": false,
-	"theme": "ayu-light.sublime-theme"
+	"theme": "Monokai Pro (Filter Machine).sublime-theme",
+	"word_separators": "./\\()\"'-:,.;<>~@#$%^&*|+=[]{}`~"
 }
