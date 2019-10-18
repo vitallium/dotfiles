@@ -10,6 +10,7 @@
   pf = push --force-with-lease
   am = commit --amend
   delete-merged-branches = !sh -c 'git branch --merged master | grep -v master | xargs -n 1 git branch -d'
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [push]
   default = current
 [fetch]
@@ -24,6 +25,7 @@
 [core]
   pager = diff-so-fancy | less --tabs=4 -RFX
   autocrlf = false
+  preloadindex = true
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
