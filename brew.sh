@@ -1,10 +1,45 @@
 #!/bin/bash
 
-brew update
-brew upgrade
+brew install \
+  ack \
+  asciinema \
+  aspell \
+  bat \
+  brotli \
+  clang-format \
+  coreutils \
+  diff-so-fancy \
+  direnv \
+  docker-clean \
+  exa \
+  ffmpeg \
+  fish \
+  fontconfig \
+  fzf \
+  gifsicle \
+  git \
+  git-extras \
+  git-flow-avh \
+  git-lfs \
+  git-sizer \
+  hub \
+  hub \
+  jq \
+  media-info \
+  moreutils \
+  mosh \
+  ncdu \
+  ninja \
+  overmind \
+  pyenv \
+  rbenv \
+  rbenv-default-gems \
+  reattach-to-user-namespace \
+  starship \
+  tldr \
+  tmux \
+  tree  \
+  wget
 
-brew install coreutils moreutils hub overmind git git-extras git-flow-avh tldr diff-so-fancy
-brew install fish
-brew install wget
-
-brew install ncdu node yarn tree bat
+# init git-lfs
+git lfs install
