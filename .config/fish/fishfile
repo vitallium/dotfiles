@@ -3,7 +3,8 @@ fisherman/git_util
 brgmnn/fish-docker-compose
 decors/fish-colored-man
 franciscolourenco/done
-joseluisq/gitnow
+joseluisq/gitnow@2.1.1
 jorgebucaran/fish-bax
 laughedelic/brew-completions
 tuvistavie/fish-ssh-agent
+oh-my-fish/plugin-license
