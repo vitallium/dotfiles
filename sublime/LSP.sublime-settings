@@ -1,31 +1,58 @@
-// Settings in here override those in "LSP/LSP.sublime-settings",
-
 {
-	"show_code_actions_bulb": true,
-	"clients": {
-		"ruby":
-		{
-			"command":
-			[
-				"rbenv",
-				"exec",
-				"solargraph",
-				"socket"
-			],
-			"tcp_port": 7658,
-			"enabled": true,
-			"languageId": "ruby",
-			"scopes":
-			[
-				"source.ruby",
-				"source.ruby.rails"
-			],
-			"syntaxes":
-			[
-				"Packages/Ruby/Ruby.sublime-syntax",
-        		"Packages/Rails/Ruby on Rails.sublime-syntax",
-        		"Packages/Rails/HTML (Rails).sublime-syntax"
-			]
-		}
-	}
+  "clients":
+  {
+    "clangd":
+    {
+      "enabled": true,
+      "command": [
+        "/usr/local/opt/llvm/bin/clangd"
+      ]
+    },
+    "jsts":
+    {
+      "command":
+      [
+        "typescript-language-server"
+      ],
+      "enabled": true,
+      "languageId": "typescript",
+      "scopes":
+      [
+        "source.ts",
+        "source.tsx"
+      ],
+      "syntaxes":
+      [
+        "Packages/TypeScript-TmLanguage/TypeScript.tmLanguage",
+        "Packages/TypeScript-TmLanguage/TypeScriptReact.tmLanguage"
+      ]
+    },
+    "ruby":
+    {
+      "command":
+      [
+        "rbenv",
+        "exec",
+        "solargraph",
+        "socket"
+      ],
+      "enabled": true,
+      "languageId": "ruby",
+      "scopes":
+      [
+        "source.ruby",
+        "source.ruby.rails"
+      ],
+      "syntaxes":
+      [
+        "Packages/Ruby/Ruby.sublime-syntax",
+        "Packages/Rails/Ruby on Rails.sublime-syntax",
+        "Packages/Rails/HTML (Rails).sublime-syntax"
+      ],
+      "tcp_port": 7658
+    }
+  },
+  "show_code_actions_bulb": true,
+  "show_references_in_quick_panel": true,
+  "only_show_lsp_completions": false
 }

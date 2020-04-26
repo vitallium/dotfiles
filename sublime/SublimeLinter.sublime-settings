@@ -2,10 +2,10 @@
 {
   "debug": false,
   "delay": 0.25,
-  "gutter_theme": "ProjectIcons", 
+  "gutter_theme": "ProjectIcons",
   "lint_mode": "load_save",
-	"linters": {
-		"annotations": {
+  "linters": {
+    "annotations": {
       "disable": false,
       "args": [],
       "errors": [
@@ -20,9 +20,6 @@
         "XXX",
         "WIP"
       ]
-		},
-    "rubocop": {
-      "use_bundle_exec": true
     },
     "tslint": {
       "excludes": [
@@ -32,13 +29,15 @@
     },
     "json": {
       "strict": true
+    },
+    "rubocop": {
+      "use_bundle_exec": true
     }
-	},
+  },
   "paths": {
     "osx": [
-      "~/.rbenv/shims"
+      "~/.asdf/shims"
     ]
   },
-  "show_marks_in_minimap": false,
-  "statusbar.messages_template": ""
+  "show_marks_in_minimap": false
 }

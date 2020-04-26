@@ -1,4 +1,23 @@
 [
-	{ "keys": ["super+r"], "command": "reveal_in_side_bar" },
-	{ "keys": ["ctrl+h"], "command": "dash_doc"}
+  {
+    "keys": [
+      "super+r"
+    ],
+    "command": "reveal_in_side_bar"
+  },
+  {
+    "keys": [
+      "ctrl+h"
+    ],
+    "command": "dash_doc"
+  },
+  {
+    "keys": [
+      "f1"
+    ],
+    "command": "dired",
+    "args": {
+      "immediate": true
+    }
+  }
 ]

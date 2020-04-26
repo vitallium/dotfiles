@@ -1,90 +1,92 @@
 {
-	"additional_path_items":
-	[
-		"/usr/local/bin",
-		"~/.rbenv/shims"
-	],
-	"animation_enabled": true,
-	"atomic_save": true,
-	"auto_complete": false,
-	"auto_complete_commit_on_tab": true,
-	"autosave": false,
-	"binary_file_patterns":
-	[
-		"*.jpg",
-		"*.jpeg",
-		"*.png",
-		"*.gif",
-		"*.ttf",
-		"*.tga",
-		"*.dds",
-		"*.ico",
-		"*.eot",
-		"*.pdf",
-		"*.swf",
-		"*.jar",
-		"*.zip"
-	],
-	"bold_folder_labels": true,
-	"color_scheme": "Packages/Theme - Monokai Pro/Monokai Pro (Filter Machine).tmTheme",
-	"ensure_newline_at_eof_on_save": true,
-	"file_exclude_patterns":
-	[
-		".gitkeep",
-		".keep",
-		"*.pyc",
-		"*.pyo",
-		"*.exe",
-		"*.dll",
-		"*.obj",
-		"*.o",
-		"*.a",
-		"*.lib",
-		"*.so",
-		"*.dylib",
-		"*.ncb",
-		"*.sdf",
-		"*.suo",
-		"*.pdb",
-		"*.idb",
-		".DS_Store",
-		"*.class",
-		"*.psd",
-		"*.db",
-		"*.sublime-workspace",
-		".byebug_history"
-	],
-	"folder_exclude_patterns":
-	[
-		".svn",
-		".git",
-		".hg",
-		".vendor",
-		"CVS",
-		"tmp",
-		".bundle",
-		".sass-cache",
-		"coverage",
-		"node_modules",
-		"deps",
-		"_build"
-	],
-	"font_face": "Input",
-	"font_size": 14,
-	"gravity_sidebar_header": true,
-	"gravity_tab_height_tall": true,
-	"gravity_title_bar": true,
-	"highlight_modified_tabs": true,
-	"ignored_packages":
-	[
-		"Markdown",
-		"Vintage"
-	],
-	"index_exclude_patterns":
-	[
-		"*.log"
-	],
-	"show_minimap": false,
-	"theme": "Monokai Pro (Filter Machine).sublime-theme",
-	"word_separators": "./\\()\"'-:,.;<>~@#$%^&*|+=[]{}`~"
+  "additional_path_items":
+  [
+    "/usr/local/bin",
+    "~/.asdf/shims/",
+    "~/.bin",
+    "/usr/local/opt/llvm/bin"
+  ],
+  "animation_enabled": true,
+  "atomic_save": false,
+  "auto_complete": false,
+  "auto_complete_commit_on_tab": true,
+  "autosave": false,
+  "binary_file_patterns":
+  [
+    "*.jpg",
+    "*.jpeg",
+    "*.png",
+    "*.gif",
+    "*.ttf",
+    "*.tga",
+    "*.dds",
+    "*.ico",
+    "*.eot",
+    "*.pdf",
+    "*.swf",
+    "*.jar",
+    "*.zip"
+  ],
+  "bold_folder_labels": true,
+  "color_scheme": "Packages/Color Scheme - Wallaby/Monokai Pro (Filter Spectrum).sublime-color-scheme",
+  "ensure_newline_at_eof_on_save": true,
+  "file_exclude_patterns":
+  [
+    ".gitkeep",
+    ".keep",
+    "*.pyc",
+    "*.pyo",
+    "*.exe",
+    "*.dll",
+    "*.obj",
+    "*.o",
+    "*.a",
+    "*.lib",
+    "*.so",
+    "*.dylib",
+    "*.ncb",
+    "*.sdf",
+    "*.suo",
+    "*.pdb",
+    "*.idb",
+    ".DS_Store",
+    "*.class",
+    "*.psd",
+    "*.db",
+    "*.sublime-workspace",
+    ".byebug_history"
+  ],
+  "folder_exclude_patterns":
+  [
+    ".svn",
+    ".git",
+    ".hg",
+    ".vendor",
+    "CVS",
+    "tmp",
+    ".bundle",
+    ".sass-cache",
+    "coverage",
+    "node_modules",
+    "deps",
+    "_build",
+    "vendor/ruby"
+  ],
+  "font_face": "Input",
+  "font_size": 13,
+  "highlight_modified_tabs": true,
+  "ignored_packages":
+  [
+    "Vintage",
+  ],
+  "index_exclude_patterns":
+  [
+    "*.log"
+  ],
+  "line_padding_bottom": 1,
+  "line_padding_top": 1,
+  "show_minimap": false,
+  "theme": "Monokai Pro (Filter Spectrum).sublime-theme",
+  "trim_trailing_white_space_on_save": true,
+  "word_separators": "./\\()\"'-:,.;<>~@#$%^&*|+=[]{}`~",
 }
