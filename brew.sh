@@ -3,6 +3,7 @@
 brew install \
   ack \
   asciinema \
+  asdf \
   aspell \
   bat \
   brotli \
@@ -31,9 +32,6 @@ brew install \
   ncdu \
   ninja \
   overmind \
-  pyenv \
-  rbenv \
-  rbenv-default-gems \
   reattach-to-user-namespace \
   starship \
   tldr \

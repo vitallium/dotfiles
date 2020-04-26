@@ -15,12 +15,6 @@ test -e {$HOME}/.config/fish/paths.fish; and source {$HOME}/.config/fish/paths.f
 test -e {$HOME}/.config/fish/chromium.fish; and source {$HOME}/.config/fish/chromium.fish
 test -e {$HOME}/.config/fish/gitlab.fish; and source {$HOME}/.config/fish/gitlab.fish
 
-# rbenv
-status --is-interactive; and source (rbenv init -|psub)
-
-# pyenv
-status --is-interactive; and source (pyenv init -|psub)
-
 # pkg-config paths
 set -gx PKG_CONFIG_PATH "/usr/local/opt/icu4c/lib/pkgconfig"
 
