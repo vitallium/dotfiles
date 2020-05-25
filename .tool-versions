@@ -1,6 +1,6 @@
-nodejs 12.16.2
-python 3.8.2
-ruby 2.6.5
 yarn 1.22.4
+nodejs 12.16.3
 erlang 22.3.2
-elixir 1.10.3-otp-22
+python 3.8.2 2.7.18
+ruby 2.6.5
+crystal 0.34.0
