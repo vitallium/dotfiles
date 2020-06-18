@@ -71,7 +71,6 @@ Plug 'editorconfig/editorconfig-vim' | " Import tabs etc from editorconfig
 Plug 'honza/vim-snippets'            | " A set of common snippets
 Plug 'junegunn/vim-easy-align'       | " Helps alignment
 Plug 'kkoomen/vim-doge'              | " Docblock generator
-Plug 'lervag/vimtex'                 | " Support for vimtex
 Plug 'matze/vim-move'                | " Move lines
 Plug 'neoclide/coc.nvim'             | " Completion provider
 Plug 'ntpeters/vim-better-whitespace'| " Highlight all trailing whitespaces
@@ -546,53 +545,9 @@ let g:animate#duration = 150.0
 " Airline {{{
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-" }}}
-
-function! CompileMarkdown() abort
-  :only
-  let md_file = expand('%:p')
-  let pdf_file = expand('%:p:r') . '.pdf'
-  call system('pandoc -s -o ' . pdf_file . ' ' . md_file)
-  call TermPDF(pdf_file)
-endfunction
-
-augroup Markdown
-  autocmd!
-  autocmd FileType markdown autocmd BufWritePost <buffer> call CompileMarkdown()
-  autocmd FileType markdown autocmd BufDelete <buffer> call TermPDFClose()
-augroup end
-
-let g:termpdf_lastcalled = 0
-function! TermPDF(file) abort
-  " Implement some basic throttling
-  let time = str2float(reltimestr(reltime())) * 1000.0
-  if time - g:termpdf_lastcalled > 1000
-    call system('kitty @ set-background-opacity 1.0')
-    call system('kitty @ kitten termpdf.py ' . a:file)
-    let g:termpdf_lastcalled = time
-  endif
-endfunction
-
-function! TermPDFClose() abort
-  call system('kitty @ close-window --match title:termpdf')
-  call system('kitty @ set-background-opacity 0.97')
-endfunction
-
-" Vimtex {{{
-let g:vimtex_view_general_callback = 'VimtexCallback'
-let g:vimtex_view_automatic = 0
-
-function! VimtexCallback(status) abort
-  if a:status
-    call TermPDF(b:vimtex.out())
-  endif
-endfunction
-
-augroup VimtexTest
-  autocmd!
-  autocmd! User VimtexEventCompileStopped call TermPDFClose()
-  autocmd FileType tex autocmd BufDelete <buffer> call TermPDFClose()
-augroup end
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
 " }}}
 
 " }}}
