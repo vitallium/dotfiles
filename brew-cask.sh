@@ -2,52 +2,57 @@
 
 brew install caskroom/cask/brew-cask
 
-# must have
 brew cask install \
   1password \
-  alfred \
-  choosy \
-  dash \
-  google-chrome \
-  itsycal \
-  kitty \
-  notable \
-  postbox \
-  sublime-merge \
-  telegram \
-  tower \
-  visual-studio-code \
-  zoomus
-
-# optional
-brew cask install \
   acorn \
   aerial \
+  alacritty \
+  alfred \
+  amethyst \
   bartender \
-  bitbar \
   charles \
+  choosy \
   chromedriver \
   contexts \
   daisydisk \
+  dash \
+  docker \
   figma \
+  firefox \
   fork \
+  forklift \
+  google-chrome \
+  google-cloud-sdk \
   grammarly \
   hyperdock \
   iina \
   imageoptim \
+  itsycal \
+  karabiner-elements \
+  keka \
+  kitty \
+  monitorcontrol \
   monodraw \
   ngrok \
+  notable \
   numi \
   paw \
+  postbox \
   postico \
+  qmoji \
   skype \
   spotify \
+  sublime-merge \
+  telegram \
   textual \
-  transmission
+  tower \
+  transmission \
+  visual-studio-code \
+  zoomus \
 
 # fonts
 brew tap caskroom/fonts
-brew cask install font-mononoki font-cascadia font-iosevka
+brew cask install font-mononoki font-iosevka
 
 # quicklool plugins
 brew cask install \

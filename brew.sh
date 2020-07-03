@@ -2,11 +2,14 @@
 
 brew install \
   ack \
+  ansible \
+  ansible-lint \
   asciinema \
   asdf \
   aspell \
   bat \
   brotli \
+  broot \
   clang-format \
   coreutils \
   diff-so-fancy \
@@ -20,10 +23,8 @@ brew install \
   gifsicle \
   git \
   git-extras \
-  git-flow-avh \
   git-lfs \
   git-sizer \
-  hub \
   hub \
   jq \
   media-info \
