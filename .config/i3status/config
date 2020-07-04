@@ -1,0 +1,28 @@
+general {
+  colors = true
+  interval = 5
+}
+
+order += "path_exists VPN"
+order += "load"
+order += "memory"
+order += "tztime local"
+
+path_exists VPN {
+  # path exists when a VPN tunnel launched by nmcli/nm-applet is active
+  path = "/proc/sys/net/ipv4/conf/tun0"
+}
+
+load {
+  format = " %1min"
+}
+
+memory {
+  format = " %used"
+  threshold_degraded = "1G"
+  format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+  format = " %Y-%m-%d %H:%M"
+}
