@@ -1,6 +1,6 @@
 yarn 1.22.4
 nodejs 12.16.3
 erlang 22.3.2
-python 3.8.2 2.7.18
-ruby 2.6.5
-crystal 0.34.0
+python 3.8.3 2.7.18
+ruby 2.6.6
+crystal 0.35.1
