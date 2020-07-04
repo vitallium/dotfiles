@@ -18,12 +18,8 @@
   prune = true
 [rerere]
   enabled = true
-[diff]
-  tool = Kaleidoscope
 [difftool]
   prompt = false
-[merge]
-  tool = Kaleidoscope
 [mergetool]
   prompt = false
 [filter "lfs"]
@@ -49,11 +45,6 @@
   old = red bold
   new = green bold
   whitespace = red reverse
-[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-  trustexitcode = true
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [includeIf "gitdir:~/source/gitlab/"]
   path = .gitconfig-gitlab
 [rebase]
