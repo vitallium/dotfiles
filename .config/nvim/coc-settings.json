@@ -10,6 +10,21 @@
     "json",
     "typescript.tsx"
   ],
+  "solargraph.formatting": true,
+  "solargraph.completion": true,
+  "solargraph.definitions": true,
+  "solargraph.symbols": true,
+  "solargraph.hover": true,
+  "solargraph.references": true,
+  "codeLens.enable": true,
+  "solargraph.useBundler": false,
+  "svg.prettySvg": true,
+
+  "diagnostic.errorSign": "•",
+  "diagnostic.warningSign": "•",
+  "diagnostic.infoSign": "•",
+  "diagnostic.checkCurrentLine": true,
+
   "git.addGBlameToVirtualText": true,
   "git.virtualTextPrefix": "<<>>  "
 }

@@ -10,7 +10,7 @@ endif
 " Options for each plugin, helps improve readability of plugin registration
 let g:vim_plug_opts = {
   \ 'mbbill/undotree':              {'on': 'UndotreeToggle'},
-  \ 'neoclide/coc.nvim':            {'branch': 'release', 'do': { -> coc#util#install() }},
+  \ 'neoclide/coc.nvim':            {'branch': 'release'},
   \ 'vim-vdebug/vdebug':            {'on': []},
   \ 'lambdalisue/fern.vim':         {'on': 'Fern'},
   \ 'lambdalisue/fern-renderer-devicons.vim': {'on': 'Fern'},
@@ -33,7 +33,6 @@ command! -nargs=1 -bar Plug call Plug(<f-args>)
 
 " Defaults {{{
 Plug 'farmergreg/vim-lastplace'   | " Go to last position when opening files
-Plug 'knubie/vim-kitty-navigator' | " Navigate kitty like vim
 Plug 'tpope/vim-sensible'         | " Sensible defaults
 Plug 'wincent/terminus'           | " Mouse support
 " }}}
@@ -57,7 +56,7 @@ Plug 'camspiers/lens.vim'                     | " Window resizing plugin
 Plug 'junegunn/goyo.vim'                      | " Distraction free writing mode
 Plug 'junegunn/limelight.vim'                 | " Only highlight current paragraph
 Plug 'lambdalisue/fern-renderer-devicons.vim' | " Dev icons for fern
-Plug 'arcticicestudio/nord-vim'               | " Nord theme
+Plug 'bluz71/vim-nightfly-guicolors'          | " Nightfly theme
 Plug 'nathanaelkane/vim-indent-guides'        | " Provides indentation guides
 Plug 'ryanoasis/vim-devicons'                 | " Dev icons
 Plug 'vim-airline/vim-airline'                | " Statusline
@@ -103,7 +102,7 @@ Plug 'vim-vdebug/vdebug'             | " Debugging, loaded manually
 " Syntax {{{
 Plug 'sheerun/vim-polyglot'            | " Lang pack
 Plug 'tpope/vim-rails'                 | " Ruby On Rails
-Plug 'tpope/vim-endwise'               | " Wisely add "end" in ruby
+Plug 'tpope/vim-endwise'               | " Wisely add end in ruby
 " }}}
 
 " End the plugin registration
@@ -146,8 +145,10 @@ set timeoutlen=500 | " Wait less time for mapped sequences
 " }}}
 
 " Visual {{{
-let base16colorspace=256                    | " Access colors present in 256 colorspace
-colorscheme nord                            | " Sets theme to nord
+if (has("termguicolors"))
+  set termguicolors
+endif
+colorscheme nightfly                        | " Sets theme to nightfly
 let &colorcolumn="81,121"                   | " Add indicator for 80 and 120
 set foldtext=clean_fold#fold_text_minimal() | " Clean folds
 set noshowmode                              | " Don't show mode changes
@@ -293,10 +294,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " }}}
 
 " Custom Tools {{{
-if ! has('gui_running')
-  " Toggle pomodoro
-  nnoremap <silent> <Leader>p :call TogglePomodoro()<CR>
-endif
 " Cycle line number modes
 nnoremap <silent> <Leader>r :call CycleLineNumbering()<CR>
 " Toggle virtualedit
@@ -305,10 +302,8 @@ nnoremap <silent> <Leader>v :call ToggleVirtualEdit()<CR>
 nnoremap <silent> <Leader>' :call openterm#horizontal('lazygit', 0.8)<CR>
 " Open lazydocker
 nnoremap <silent> <Leader>; :call openterm#horizontal('lazydocker', 0.8)<CR>
-" Open harvest
-nnoremap <silent> <Leader>h :call openterm#horizontal('hstarti', 0.1)<CR>
 " Open scratch pad
-nnoremap <silent> <Leader>sc :call openterm#horizontal('bash', 0.2)<CR>
+nnoremap <silent> <Leader>sc :call openterm#horizontal('fish', 0.2)<CR>
 " Open calendar + todo
 nnoremap <silent> <Leader>t :call OpenCalendar()<CR>
 " Calls the custom start function that requests path map to be defined if not already run
@@ -446,6 +441,9 @@ let g:LoupeClearHighlightMap = 0
 let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-eslint',
+  \ 'coc-diagnostic',
+  \ 'coc-emmet',
+  \ 'coc-highlight',
   \ 'coc-html',
   \ 'coc-json',
   \ 'coc-snippets',
@@ -455,10 +453,13 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-python',
   \ 'coc-sh',
+  \ 'coc-solargraph',
   \ 'coc-stylelint',
+  \ 'coc-svg',
   \ 'coc-tslint',
   \ 'coc-tsserver',
   \ 'coc-vimlsp',
+  \ 'coc-webpack',
   \ 'coc-yaml',
 \ ]
 " }}}
@@ -472,6 +473,23 @@ set nowritebackup
 set shortmess+=c
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Use K to show documentation in preview window
+nnoremap <silent>K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
 " }}}
 
 " CoC Colors {{{
@@ -545,9 +563,10 @@ let g:animate#duration = 150.0
 " Airline {{{
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ }
+" }}}
+
+" GitLab {{{
+" let g:gitlab_api_keys = {'gitlab.com': ''}
 " }}}
 
 " }}}
