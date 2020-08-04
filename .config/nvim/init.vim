@@ -1,5 +1,3 @@
-scriptencoding utf-8
-
 " Install vim-plug if not already installed
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -50,22 +48,21 @@ Plug 'tpope/vim-projectionist' | " Navigation of related files
 
 " Visual {{{
 Plug 'arecarn/vim-clean-fold'                 | " Provides function for folds
-Plug 'blueyed/vim-diminactive'                | " Helps identifying active window
 Plug 'camspiers/animate.vim'                  | " Animation plugin
 Plug 'camspiers/lens.vim'                     | " Window resizing plugin
 Plug 'junegunn/goyo.vim'                      | " Distraction free writing mode
 Plug 'junegunn/limelight.vim'                 | " Only highlight current paragraph
 Plug 'lambdalisue/fern-renderer-devicons.vim' | " Dev icons for fern
-Plug 'bluz71/vim-nightfly-guicolors'          | " Nightfly theme
-Plug 'nathanaelkane/vim-indent-guides'        | " Provides indentation guides
+Plug 'dylanaraps/wal.vim'                     | " Support wal colors
+Plug 'thaerkh/vim-indentguides'               | " Provides indentation guides
 Plug 'ryanoasis/vim-devicons'                 | " Dev icons
-Plug 'vim-airline/vim-airline'                | " Statusline
+Plug 'itchyny/lightline.vim'                  | " Statusline
 Plug 'vim-scripts/folddigest.vim'             | " Visualize folds
 Plug 'wincent/loupe'                          | " Search context improvements
 " }}}
 
 " Editor {{{
-Plug 'bkad/CamelCaseMotion'          | " Motions for inside camel case
+" Plug 'bkad/CamelCaseMotion'          | " Motions for inside camel case
 Plug 'editorconfig/editorconfig-vim' | " Import tabs etc from editorconfig
 Plug 'honza/vim-snippets'            | " A set of common snippets
 Plug 'junegunn/vim-easy-align'       | " Helps alignment
@@ -145,10 +142,7 @@ set timeoutlen=500 | " Wait less time for mapped sequences
 " }}}
 
 " Visual {{{
-if (has("termguicolors"))
-  set termguicolors
-endif
-colorscheme nightfly                        | " Sets theme to nightfly
+colorscheme wal                             | " Sets theme to pywal
 let &colorcolumn="81,121"                   | " Add indicator for 80 and 120
 set foldtext=clean_fold#fold_text_minimal() | " Clean folds
 set noshowmode                              | " Don't show mode changes
@@ -521,13 +515,6 @@ let g:neoterm_autojump = 1
 let g:neoterm_direct_open_repl = 1
 " }}}
 
-" Dim Inactive {{{
-" Handle focus lost and gained events
-let g:diminactive_enable_focus = 1
-" Use color column to help with active/inactive
-let g:diminactive_use_colorcolumn = 1
-" }}}
-
 " Merge Tool {{{
 " 3-way merge
 let g:mergetool_layout = 'bmr'
@@ -537,14 +524,6 @@ let g:mergetool_prefer_revision = 'local'
 " Camelcase Motion {{{
 " Sets up within word motions to use ,
 let g:camelcasemotion_key = ','
-" }}}
-
-" Indent Guides {{{
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_color_change_percent = 1
-let g:indent_guides_exclude_filetypes = ['help', 'fzf', 'openterm', 'neoterm', 'calendar']
 " }}}
 
 " Fold Digest {{{
@@ -563,6 +542,9 @@ let g:animate#duration = 150.0
 " Airline {{{
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+" }}}
+
+" Lightline {{{
 " }}}
 
 " GitLab {{{
