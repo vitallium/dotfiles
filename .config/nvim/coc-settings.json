@@ -23,7 +23,6 @@
   "solargraph.references": true,
   "codeLens.enable": true,
   "solargraph.useBundler": false,
-  "svg.prettySvg": true,
 
   "diagnostic.errorSign": " ",
   "diagnostic.warningSign": " ",
@@ -34,22 +33,10 @@
   "list.indicator": ">",
   "list.selectedSignText": " ",
 
-  "git.addGBlameToVirtualText": true,
-  "git.virtualTextPrefix": "<<>>  ",
-
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
 
   "emmet.includeLanguages": {
     "vue-html": "html",
     "javascript": "javascriptreact"
-  },
-
-  "explorer.width": 30,
-  "explorer.icon.enableNerdfont": true,
-  "explorer.previewAction.onHover": false,
-  "explorer.icon.enableVimDevicons": false,
-  "explorer.keyMappings": {
-    "<cr>": ["expandable?", "expand", "open"],
-    "v": "open:vsplit"
   }
 }
