@@ -10,6 +10,12 @@ let g:which_key_map =  {}
 let g:which_key_sep = '→'
 " set timeoutlen=100
 
+" Change the colors if you want
+highlight default link WhichKey          Operator
+highlight default link WhichKeySeperator DiffAdded
+highlight default link WhichKeyGroup     Identifier
+highlight default link WhichKeyDesc      Function
+
 " b is for buffer
 let g:which_key_map.b = {
       \ 'name' : '+buffer' ,

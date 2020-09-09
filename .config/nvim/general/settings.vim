@@ -15,9 +15,7 @@ set nowritebackup                    | " This is recommended by coc
 " Search {{{
 set ignorecase         | " Ignores case in search
 set smartcase          | " Overrides ignore when capital exists
-if has('nvim')
-  set inccommand=split | " Displays incremental replacement
-endif
+set inccommand=split | " Displays incremental replacement
 " }}}
 
 " Editor {{{
@@ -31,12 +29,10 @@ set autoindent     | " Good auto indent
 " }}}
 
 " Visual {{{
-colorscheme wal                             | " Sets theme to pywal
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+if has("termguicolors")
+  set termguicolors
 endif
-set background=dark                         | " tell vim what the background color looks like
+colorscheme gruvbox                             | " Sets theme to wal
 set noshowmode                              | " Don't show mode changes
 set novisualbell                            | " Don't display visual bell
 set nowrap                                  | " Don't wrap lines
@@ -49,3 +45,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " You can't stop me
 cmap w!! w !sudo tee %
+
+let g:python3_host_prog = '$HOME/.asdf/shims/python3'
+let g:loaded_python3_provider = 1
+let g:python_host_prog = '$HOME/.asdf/shims/python2'
