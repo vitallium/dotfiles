@@ -15,14 +15,16 @@
     "yaml"
   ],
   "coc.preferences.hoverTarget": "float",
+  "codeLens.enable": true,
   "solargraph.formatting": true,
   "solargraph.completion": true,
   "solargraph.definitions": true,
   "solargraph.symbols": true,
   "solargraph.hover": true,
   "solargraph.references": true,
-  "codeLens.enable": true,
   "solargraph.useBundler": false,
+  "solargraph.diagnostics": true,
+  "solargraph.folding": true,
 
   "diagnostic.errorSign": " ",
   "diagnostic.warningSign": " ",
