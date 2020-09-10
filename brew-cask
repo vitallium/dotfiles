@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 brew install caskroom/cask/brew-cask
 
@@ -6,7 +6,6 @@ brew cask install \
   1password \
   acorn \
   aerial \
-  alacritty \
   alfred \
   amethyst \
   bartender \
@@ -19,8 +18,6 @@ brew cask install \
   docker \
   figma \
   firefox \
-  fork \
-  forklift \
   google-chrome \
   google-cloud-sdk \
   grammarly \
@@ -34,7 +31,6 @@ brew cask install \
   monitorcontrol \
   monodraw \
   ngrok \
-  notable \
   numi \
   paw \
   postbox \
@@ -48,11 +44,11 @@ brew cask install \
   tower \
   transmission \
   visual-studio-code \
-  zoomus \
+  zoomus
 
 # fonts
 brew tap caskroom/fonts
-brew cask install font-mononoki font-iosevka
+brew cask install font-iosevka
 
 # quicklool plugins
 brew cask install \

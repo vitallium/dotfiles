@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 brew install \
   ack \
@@ -29,7 +29,6 @@ brew install \
   jq \
   media-info \
   moreutils \
-  mosh \
   ncdu \
   ninja \
   overmind \
