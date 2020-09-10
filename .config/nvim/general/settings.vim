@@ -1,4 +1,5 @@
 " General {{{
+syntax on
 set clipboard=unnamedplus            | " System clipboard
 set dictionary=/usr/share/dict/words | " Set up a dictionary
 set encoding=UTF-8                   | " Default file encoding
@@ -8,14 +9,19 @@ set noerrorbells                     | " No sound
 set signcolumn=yes                   | " Show signcolumns
 set splitbelow splitright            | " Split defaults
 set undofile                         | " Enable undo persistence across sessions
+set noswapfile                       | " Disable swap
 set nobackup                         | " This is recommended by coc
 set nowritebackup                    | " This is recommended by coc
+set termguicolors                    | " Enable TrueColor support
+set cmdheight=2                      | " Give more space for displaying messages
+set updatetime=50
 " }}}
 
 " Search {{{
 set ignorecase         | " Ignores case in search
 set smartcase          | " Overrides ignore when capital exists
-set inccommand=split | " Displays incremental replacement
+set inccommand=split   | " Displays incremental replacement
+set nohlsearch         | " TODO
 " }}}
 
 " Editor {{{
@@ -26,19 +32,27 @@ set tabstop=2      | " Number of spaces a <Tab> is
 set timeoutlen=500 | " Wait less time for mapped sequences
 set smartindent    | " Makes indenting smart
 set autoindent     | " Good auto indent
+set nu
 " }}}
 
 " Visual {{{
-if has("termguicolors")
-  set termguicolors
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
-colorscheme gruvbox                             | " Sets theme to wal
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_invert_selection='0'
+colorscheme gruvbox                         | " Sets theme to wal
+set background=dark                         | " Set background to dark
 set noshowmode                              | " Don't show mode changes
 set novisualbell                            | " Don't display visual bell
 set nowrap                                  | " Don't wrap lines
 set number                                  | " Show line numbers
 set relativenumber                          | " Make line numbers relative
 set showmatch                               | " Show matching braces
+set guicursor=                              | " Disable GUI cursor
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
 " }}}
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

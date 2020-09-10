@@ -7,11 +7,9 @@ source $HOME/.config/nvim/keys/mappings.vim
 
 " Plugin Configurations {{{
 source $HOME/.config/nvim/keys/which-key.vim
-source $HOME/.config/nvim/plug-config/rnvimr.vim
 source $HOME/.config/nvim/plug-config/fzf.vim
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/goyo.vim
-source $HOME/.config/nvim/plug-config/ranger.vim
 source $HOME/.config/nvim/plug-config/polyglot.vim
 source $HOME/.config/nvim/plug-config/lightline.vim
 source $HOME/.config/nvim/plug-config/neoterm.vim
@@ -19,6 +17,7 @@ source $HOME/.config/nvim/plug-config/xtabline.vim
 source $HOME/.config/nvim/plug-config/floatterm.vim
 source $HOME/.config/nvim/plug-config/startify.vim
 source $HOME/.config/nvim/plug-config/vista.vim
+source $HOME/.config/nvim/plug-config/netrw.vim
 " }}}
 
 " Plugin Configuration {{{

@@ -38,22 +38,21 @@ Plug 'liuchengxu/vim-which-key'   | " WhichKey
 Plug 'jesseleite/vim-agriculture' | " Ripgrep options for FZF
 Plug 'junegunn/fzf'               | " Main FZF plugin
 Plug 'junegunn/fzf.vim'           | " Fuzzy finding plugin
+Plug 'stsewd/fzf-checkout.vim'    | " FZF + GIT = :heart:
 " }}}
 
 " Navigation {{{
 Plug 'tpope/vim-projectionist'        | " Navigation of related files
 Plug 'christoomey/vim-tmux-navigator' | " TMUX integration
-Plug 'kevinhwang91/rnvimr'            | " Ranger integration
 " }}}
 
 " Visual {{{
 Plug 'arecarn/vim-clean-fold'                 | " Provides function for folds
-Plug 'morhetz/gruvbox'                        | " Gruvbox theme
+Plug 'gruvbox-community/gruvbox'              | " Gruvbox theme
 " Plug 'dylanaraps/wal.vim'                     | " Support wal colors
 Plug 'thaerkh/vim-indentguides'               | " Provides indentation guides
 Plug 'ryanoasis/vim-devicons'                 | " Dev icons
 Plug 'itchyny/lightline.vim'                  | " Statusline
-Plug 'RRethy/vim-illuminate'                  | " Highlight other uses of the current word under the cursor
 Plug 'mg979/vim-xtabline'                     | " Tab line
 Plug 'airblade/vim-gitgutter'                 | " A Vim plugin which shows a git diff in the 'gutter' (sign column)
 Plug 'liuchengxu/vista.vim'                   | " Symbols window for LSP
@@ -97,13 +96,12 @@ Plug 'rhysd/git-messenger.vim'       | " Reveal GIT message from a cursor positi
 " }}}
 
 " Syntax {{{
+Plug 'sheerun/vim-polyglot'            | " Language pack
 Plug 'tpope/vim-rails'                 | " Ruby On Rails
 Plug 'tpope/vim-endwise'               | " Wisely add end in ruby
 Plug 'jparise/vim-graphql'             | " GraphQL support
 Plug 'posva/vim-vue'                   | " Vue JS syntax highlighting
-Plug 'tpope/vim-haml'                  | " Haml support
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'               | " Better tables in markdown
 " }}}
 
 " Writing {{{
