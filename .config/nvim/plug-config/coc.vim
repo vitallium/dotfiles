@@ -1,5 +1,3 @@
-" Conquer of Completion {{{
-
 " Plugins {{{
 let g:coc_global_extensions = [
   \ 'coc-css',
@@ -83,5 +81,4 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
-" }}}
 

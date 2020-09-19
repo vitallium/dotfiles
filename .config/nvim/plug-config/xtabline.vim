@@ -1,10 +1,14 @@
+let g:vem_tabline_show = 2
+" nmap <leader>j <Plug>vem_prev_buffer-
+" nmap <leader>k <Plug>vem_next_buffer-
+
 let g:xtabline_settings = {}
 
 let g:xtabline_settings.enable_mappings = 0
 
 let g:xtabline_settings.tabline_modes = ['buffers', 'tabs']
 
-let g:xtabline_settings.enable_persistance = 0
+" let g:xtabline_settings.enable_persistance = 0
 
 " let g:xtabline_settings.last_open_first = 1
 let g:xtabline_lazy = 1

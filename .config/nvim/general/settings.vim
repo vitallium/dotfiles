@@ -12,7 +12,6 @@ set undofile                         | " Enable undo persistence across sessions
 set noswapfile                       | " Disable swap
 set nobackup                         | " This is recommended by coc
 set nowritebackup                    | " This is recommended by coc
-set termguicolors                    | " Enable TrueColor support
 set cmdheight=2                      | " Give more space for displaying messages
 set updatetime=50
 " }}}
@@ -36,14 +35,16 @@ set nu
 " }}}
 
 " Visual {{{
-if exists('+termguicolors')
+if has('termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors                         | " Enable TrueColor support
 endif
+
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_invert_selection='0'
-colorscheme gruvbox                         | " Sets theme to wal
-set background=dark                         | " Set background to dark
+colorscheme gruvbox                         | " Sets theme to gruvbox
+" set background=dark                         | " Set background to dark
 set noshowmode                              | " Don't show mode changes
 set novisualbell                            | " Don't display visual bell
 set nowrap                                  | " Don't wrap lines
@@ -52,7 +53,7 @@ set relativenumber                          | " Make line numbers relative
 set showmatch                               | " Show matching braces
 set guicursor=                              | " Disable GUI cursor
 set colorcolumn=80
-highlight ColorColumn ctermbg=0 guibg=lightgrey
+highlight ColorColumn ctermbg=0 guibg=lightgray
 " }}}
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

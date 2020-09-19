@@ -28,85 +28,87 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 command! -nargs=1 -bar Plug call Plug(<f-args>)
 
 " Defaults {{{
-Plug 'farmergreg/vim-lastplace'   | " Go to last position when opening files
-Plug 'tpope/vim-sensible'         | " Sensible defaults
-Plug 'wincent/terminus'           | " Mouse support
-Plug 'liuchengxu/vim-which-key'   | " WhichKey
+Plug 'farmergreg/vim-lastplace'       | " Go to last position when opening files
+Plug 'tpope/vim-sensible'             | " Sensible defaults
+Plug 'wincent/terminus'               | " Mouse support
 " }}}
 
 " Search {{{
-Plug 'jesseleite/vim-agriculture' | " Ripgrep options for FZF
-Plug 'junegunn/fzf'               | " Main FZF plugin
-Plug 'junegunn/fzf.vim'           | " Fuzzy finding plugin
-Plug 'stsewd/fzf-checkout.vim'    | " FZF + GIT = :heart:
+Plug 'jesseleite/vim-agriculture'     | " Ripgrep options for FZF
+Plug 'junegunn/fzf'                   | " Main FZF plugin
+Plug 'junegunn/fzf.vim'               | " Fuzzy finding plugin
+Plug 'stsewd/fzf-checkout.vim'        | " FZF + GIT = :heart:
 " }}}
 
 " Navigation {{{
 Plug 'tpope/vim-projectionist'        | " Navigation of related files
 Plug 'christoomey/vim-tmux-navigator' | " TMUX integration
+Plug 'liuchengxu/vim-which-key'       | " Displays available keybindings in popup
 " }}}
 
 " Visual {{{
-Plug 'arecarn/vim-clean-fold'                 | " Provides function for folds
-Plug 'gruvbox-community/gruvbox'              | " Gruvbox theme
+Plug 'arecarn/vim-clean-fold'         | " Provides function for folds
+Plug 'gruvbox-community/gruvbox'      | " Gruvbox theme
 " Plug 'dylanaraps/wal.vim'                     | " Support wal colors
-Plug 'thaerkh/vim-indentguides'               | " Provides indentation guides
-Plug 'ryanoasis/vim-devicons'                 | " Dev icons
-Plug 'itchyny/lightline.vim'                  | " Statusline
-Plug 'mg979/vim-xtabline'                     | " Tab line
-Plug 'airblade/vim-gitgutter'                 | " A Vim plugin which shows a git diff in the 'gutter' (sign column)
-Plug 'liuchengxu/vista.vim'                   | " Symbols window for LSP
+Plug 'arcticicestudio/nord-vim'
+Plug 'thaerkh/vim-indentguides'       | " Provides indentation guides
+Plug 'ryanoasis/vim-devicons'         | " Dev icons
+Plug 'itchyny/lightline.vim'          | " Statusline
+Plug 'pacha/vem-tabline'              | " Tabline
+Plug 'airblade/vim-gitgutter'         | " A Vim plugin which shows a git diff in the 'gutter' (sign column)
+Plug 'liuchengxu/vista.vim'           | " Symbols window for LSP
 " }}}
 
 " Editor {{{
-Plug 'editorconfig/editorconfig-vim' | " Import tabs etc from editorconfig
-Plug 'junegunn/vim-easy-align'       | " Helps alignment
-Plug 'matze/vim-move'                | " Move lines
-Plug 'neoclide/coc.nvim'             | " Completion provider
-Plug 'ntpeters/vim-better-whitespace'| " Highlight all trailing whitespaces
-Plug 'prettier/vim-prettier'         | " Prettier support
-Plug 'tomtom/tcomment_vim'           | " Better commenting
-Plug 'tpope/vim-repeat'              | " Improves repeat handling
-Plug 'tpope/vim-surround'            | " Surround motions
+Plug 'editorconfig/editorconfig-vim'  | " Import tabs etc from editorconfig
+Plug 'junegunn/vim-easy-align'        | " Helps alignment
+Plug 'matze/vim-move'                 | " Move lines
+Plug 'neoclide/coc.nvim'              | " Completion provider
+Plug 'ntpeters/vim-better-whitespace' | " Highlight all trailing whitespaces
+" Plug 'prettier/vim-prettier'         | " Prettier support
+Plug 'tomtom/tcomment_vim'            | " Better commenting
+Plug 'tpope/vim-repeat'               | " Improves repeat handling
+Plug 'tpope/vim-surround'             | " Surround motions
+Plug 'dense-analysis/ale'             | " Linting
 " }}}
 
 " Tools {{{
-Plug 'kassio/neoterm'                | " REPL integration
-Plug 'mbbill/undotree'               | " Undo history visualizer
-Plug 'reedes/vim-pencil'             | " Auto hard breaks for text files
-Plug 'reedes/vim-wordy'              | " Identify poor language use
-Plug 'sedm0784/vim-you-autocorrect'  | " Automatic autocorrect
-Plug 'tpope/vim-obsession'           | " Save sessions automatically
-Plug 'tpope/vim-speeddating'         | " Tools for working with dates
+Plug 'kassio/neoterm'                 | " REPL integration
+Plug 'mbbill/undotree'                | " Undo history visualizer
+Plug 'reedes/vim-pencil'              | " Auto hard breaks for text files
+Plug 'reedes/vim-wordy'               | " Identify poor language use
+Plug 'sedm0784/vim-you-autocorrect'   | " Automatic autocorrect
+Plug 'tpope/vim-obsession'            | " Save sessions automatically
+Plug 'tpope/vim-speeddating'          | " Tools for working with dates
 " Plug 'tpope/vim-unimpaired'          | " Common mappings for many needs
-Plug 'janko-m/vim-test'              | " Tests runner (Jest)
-Plug 'voldikss/vim-floaterm'         | " Float terminal
-Plug 'tpope/vim-dispatch'            | " Dispatch commands from VIM
-Plug 'mhinz/vim-startify'            | " Start page
+Plug 'janko-m/vim-test'               | " Tests runner (Jest)
+Plug 'voldikss/vim-floaterm'          | " Float terminal
+Plug 'tpope/vim-dispatch'             | " Dispatch commands from VIM
+Plug 'mhinz/vim-startify'             | " Start page
 
 " GIT {{{
-Plug 'rbong/vim-flog'                | " Commit viewer
-Plug 'junegunn/gv.vim'               | " Commit browser
-Plug 'samoshkin/vim-mergetool'       | " Merge tool for git
-Plug 'shumphrey/fugitive-gitlab.vim' | " Plugin for GitLab
-Plug 'tpope/vim-fugitive'            | " Git tools
-Plug 'rhysd/git-messenger.vim'       | " Reveal GIT message from a cursor position
+Plug 'rbong/vim-flog'                 | " Commit viewer
+Plug 'junegunn/gv.vim'                | " Commit browser
+Plug 'samoshkin/vim-mergetool'        | " Merge tool for git
+Plug 'shumphrey/fugitive-gitlab.vim'  | " Plugin for GitLab
+Plug 'tpope/vim-fugitive'             | " Git tools
+Plug 'rhysd/git-messenger.vim'        | " Reveal GIT message from a cursor position
 " }}}
 
 " }}}
 
 " Syntax {{{
-Plug 'sheerun/vim-polyglot'            | " Language pack
-Plug 'tpope/vim-rails'                 | " Ruby On Rails
-Plug 'tpope/vim-endwise'               | " Wisely add end in ruby
-Plug 'jparise/vim-graphql'             | " GraphQL support
-Plug 'posva/vim-vue'                   | " Vue JS syntax highlighting
-Plug 'godlygeek/tabular'               | " Better tables in markdown
+Plug 'sheerun/vim-polyglot'           | " Language pack
+Plug 'tpope/vim-rails'                | " Ruby On Rails
+Plug 'tpope/vim-endwise'              | " Wisely add end in ruby
+Plug 'jparise/vim-graphql'            | " GraphQL support
+Plug 'posva/vim-vue'                  | " Vue JS syntax highlighting
+Plug 'godlygeek/tabular'              | " Better tables in markdown
 " }}}
 
 " Writing {{{
-Plug 'junegunn/goyo.vim'               | " Distraction-free writing
-Plug 'junegunn/limelight.vim'          | " Hyperfocus-writing
+Plug 'junegunn/goyo.vim'              | " Distraction-free writing
+Plug 'junegunn/limelight.vim'         | " Hyperfocus-writing
 " }}}
 
 " End the plugin registration

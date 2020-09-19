@@ -1,8 +1,8 @@
 " Leader Key Maps
 
 " Map leader to which_key
-nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
-vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+nnoremap <silent> <leader> :silent <c-u> :silent WhichKey ','<CR>
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual ','<CR>
 
 " Create map to add keys to
 let g:which_key_map =  {}
@@ -15,6 +15,26 @@ highlight default link WhichKey          Operator
 highlight default link WhichKeySeperator DiffAdded
 highlight default link WhichKeyGroup     Identifier
 highlight default link WhichKeyDesc      Function
+
+" Hide status line
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+
+" Single mappings
+let g:which_key_map[';'] = [ ':Commands'                          , 'commands' ]
+let g:which_key_map['='] = [ '<C-W>='                             , 'balance windows' ]
+let g:which_key_map['z'] = [ 'Goyo'                               , 'zen' ]
+
+" Group mappings {{{
+
+" a is for actions
+let g:which_key_map.a = {
+      \ 'name' : '+actions' ,
+      \ 's' : [':let @/ = ""'            , 'remove search highlight'],
+      \ 't' : [':FloatermToggle'         , 'terminal'],
+      \ }
+
 
 " b is for buffer
 let g:which_key_map.b = {
@@ -128,6 +148,15 @@ let g:which_key_map.s = {
       \ 'z' : [':FZF'                   , 'FZF'],
       \ }
 
+" S is for session
+let g:which_key_map.S = {
+      \ 'name' : '+Session' ,
+      \ 'c' : [':SClose'          , 'Close Session']  ,
+      \ 'd' : [':SDelete'         , 'Delete Session'] ,
+      \ 'l' : [':SLoad'           , 'Load Session']     ,
+      \ 's' : [':Startify'        , 'Start Page']     ,
+      \ 'S' : [':SSave'           , 'Save Session']   ,
+      \ }
 
 " t is for terminal
 let g:which_key_map.t = {
@@ -145,5 +174,26 @@ let g:which_key_map.t = {
       \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
       \ }
 
+" T is for terminal
+let g:which_key_map.T = {
+      \ 'name' : '+tabline' ,
+      \ 'b' : [':XTabListBuffers'         , 'list buffers'],
+      \ 'd' : [':XTabCloseBuffer'         , 'close buffer'],
+      \ 'D' : [':XTabDeleteTab'           , 'close tab'],
+      \ 'h' : [':XTabHideBuffer'          , 'hide buffer'],
+      \ 'i' : [':XTabInfo'                , 'info'],
+      \ 'l' : [':XTabLock'                , 'lock tab'],
+      \ 'm' : [':XTabMode'                , 'toggle mode'],
+      \ 'n' : [':tabNext'                 , 'next tab'],
+      \ 'N' : [':XTabMoveBufferNext'      , 'buffer->'],
+      \ 't' : [':tabnew'                  , 'new tab'],
+      \ 'p' : [':tabprevious'             , 'prev tab'],
+      \ 'P' : [':XTabMoveBufferPrev'      , '<-buffer'],
+      \ 'x' : [':XTabPinBuffer'           , 'pin buffer'],
+      \ }
+" }}}
+
 " Register which key map
-call which_key#register('<Space>', "g:which_key_map")
+call which_key#register(',', "g:which_key_map")
+
+" vim:fdm=marker

@@ -1,8 +1,7 @@
-" Mappings {{{
-
-let mapleader = " "
-
 " General {{{
+let mapleader = ' '
+let maplocalleader = '\'
+
 " Save file
 nnoremap <silent> <leader>w :write<CR>
 " Save and close
@@ -17,6 +16,11 @@ xmap <BS> x
 nnoremap <silent> <leader> :WhichKey ' '<CR>
 " }}}
 
+" Editor {{{
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+" }}}
+
 " Search {{{
 " Open fuzzy files with leader \
 nnoremap <silent> <leader>\ :Files<CR>
@@ -26,7 +30,6 @@ nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>f :Rg<CR>
 "
 nnoremap <leader>gc :GBranches<CR>
-
 " Open ripgrep agriculture
 nmap <leader>/ <Plug>RgRawSearch
 " Open ripgrep agriculture for visual selection
@@ -46,9 +49,9 @@ nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
 
 " Switching {{{
 " Next buffer
-nnoremap <silent> <Tab> :bnext<CR>
+" nnoremap <silent> <Tab> :bnext<CR>
 " Previous buffer
-nnoremap <silent> <S-Tab> :bprevious<CR>
+" nnoremap <silent> <S-Tab> :bprevious<CR>
 " Better window navigation
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -127,6 +130,12 @@ omap <leader><tab> <plug>(fzf-maps-o)
 " Custom Tools {{{
 " Cycle line number modes
 nnoremap <silent> <leader>r :call CycleLineNumbering()<CR>
+" These "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
 " }}}
 
-" }}}
+" vim:fdm=marker

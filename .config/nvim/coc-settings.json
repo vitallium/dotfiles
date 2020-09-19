@@ -1,4 +1,5 @@
 {
+  "diagnostic.displayByAle": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "graphql",
@@ -40,5 +41,7 @@
   "emmet.includeLanguages": {
     "vue-html": "html",
     "javascript": "javascriptreact"
-  }
+  },
+
+  "prettier.requireConfig": true
 }
