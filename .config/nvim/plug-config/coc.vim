@@ -25,7 +25,7 @@ let g:coc_global_extensions = [
 \ ]
 " }}}
 
-" CoC Related Settings {{{
+" Settings {{{
 " See coc-settings.json for more configuration
 " Some servers have issues with backup files
 set nobackup
@@ -81,4 +81,3 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
-

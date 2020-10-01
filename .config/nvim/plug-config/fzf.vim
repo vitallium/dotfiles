@@ -1,4 +1,3 @@
-" Search Configuration {{{
 " Use agriculture as a global no hidden search
 let g:agriculture#rg_options = '--no-ignore --hidden'
 
@@ -37,6 +36,5 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit'
 \ }
-" }}}
 
 " vim:fdm=marker
