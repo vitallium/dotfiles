@@ -36,20 +36,18 @@ set nu
 
 " Visual {{{
 if has('termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors                         | " Enable TrueColor support
 endif
 
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_invert_selection='0'
 colorscheme gruvbox                         | " Sets theme to gruvbox
-" set background=dark                         | " Set background to dark
+set background=dark                         | " Set background to dark
 set noshowmode                              | " Don't show mode changes
 set novisualbell                            | " Don't display visual bell
 set nowrap                                  | " Don't wrap lines
-set number                                  | " Show line numbers
-set relativenumber                          | " Make line numbers relative
+set number                                  | " Enable line numbers
+set relativenumber                          | " Enable relative line numbers
 set showmatch                               | " Show matching braces
 set guicursor=                              | " Disable GUI cursor
 set colorcolumn=80
