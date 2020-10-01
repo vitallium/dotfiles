@@ -48,12 +48,10 @@ Plug 'christoomey/vim-tmux-navigator' | " TMUX integration
 " Visual {{{
 Plug 'arecarn/vim-clean-fold'         | " Provides function for folds
 Plug 'gruvbox-community/gruvbox'      | " Gruvbox theme
-" Plug 'dylanaraps/wal.vim'                     | " Support wal colors
-Plug 'arcticicestudio/nord-vim'
 Plug 'thaerkh/vim-indentguides'       | " Provides indentation guides
 Plug 'ryanoasis/vim-devicons'         | " Dev icons
 Plug 'itchyny/lightline.vim'          | " Statusline
-Plug 'pacha/vem-tabline'              | " Tabline
+Plug 'mg979/vim-xtabline'             | " Tabline
 Plug 'airblade/vim-gitgutter'         | " A Vim plugin which shows a git diff in the 'gutter' (sign column)
 Plug 'liuchengxu/vista.vim'           | " Symbols window for LSP
 " }}}
