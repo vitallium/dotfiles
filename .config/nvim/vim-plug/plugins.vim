@@ -43,7 +43,6 @@ Plug 'stsewd/fzf-checkout.vim'        | " FZF + GIT = :heart:
 " Navigation {{{
 Plug 'tpope/vim-projectionist'        | " Navigation of related files
 Plug 'christoomey/vim-tmux-navigator' | " TMUX integration
-Plug 'liuchengxu/vim-which-key'       | " Displays available keybindings in popup
 " }}}
 
 " Visual {{{

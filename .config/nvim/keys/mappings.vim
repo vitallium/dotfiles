@@ -12,8 +12,6 @@ xmap     ga <Plug>(EasyAlign)
 nmap     ga <Plug>(EasyAlign)
 " Make BS/DEL work as expected in visual modes (i.e. delete the selected text)...
 xmap <BS> x
-" WhichKey
-nnoremap <silent> <leader> :WhichKey ' '<CR>
 " }}}
 
 " Editor {{{
