@@ -1,12 +1,9 @@
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ],
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \ },
-      \ }
+\ 'colorscheme': 'gruvbox',
+\ 'active': {
+\   'left': [ [ 'mode', 'paste' ],
+\             [ 'readonly', 'filename', 'modified' ] ],
+\ },
+\ }
 
 " vim:fdm=marker

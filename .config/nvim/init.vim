@@ -1,47 +1,25 @@
 " General {{{
-source $HOME/.config/nvim/vim-plug/plugins.vim
-source $HOME/.config/nvim/general/settings.vim
-source $HOME/.config/nvim/general/functions.vim
-source $HOME/.config/nvim/keys/mappings.vim
+runtime vim-plug/plugins.vim
+runtime general/settings.vim
+runtime general/functions.vim
+runtime keys/mappings.vim
 " }}}
 
-" Plugin Configurations {{{
-source $HOME/.config/nvim/plug-config/fzf.vim
-source $HOME/.config/nvim/plug-config/coc.vim
-source $HOME/.config/nvim/plug-config/goyo.vim
-source $HOME/.config/nvim/plug-config/polyglot.vim
-source $HOME/.config/nvim/plug-config/lightline.vim
-source $HOME/.config/nvim/plug-config/xtabline.vim
-source $HOME/.config/nvim/plug-config/neoterm.vim
-source $HOME/.config/nvim/plug-config/floatterm.vim
-source $HOME/.config/nvim/plug-config/startify.vim
-source $HOME/.config/nvim/plug-config/vista.vim
-source $HOME/.config/nvim/plug-config/netrw.vim
-source $HOME/.config/nvim/plug-config/ale.vim
-" }}}
-
-" Plugin Configuration {{{
-
-" Pencil {{{
-let g:pencil#autoformat = 0
-let g:pencil#textwidth = 80
-let g:pencil#conceallevel = 0
-" }}}
-
-" Table Mode {{{
-let g:table_mode_corner = '|'
-" }}}
-
-" Merge Tool {{{
-" 3-way merge
-let g:mergetool_layout = 'bmr'
-let g:mergetool_prefer_revision = 'local'
-" }}}
-
-" GitLab {{{
-" let g:gitlab_api_keys = {'gitlab.com': ''}
-" }}}
-
+" Plugins Configurations {{{
+runtime plug-config/ale.vim
+runtime plug-config/fern.vim
+runtime plug-config/floatterm.vim
+runtime plug-config/fzf.vim
+runtime plug-config/gitlab.vim
+runtime plug-config/goyo.vim
+runtime plug-config/lightline.vim
+runtime plug-config/lsc.vim
+runtime plug-config/neoterm.vim
+runtime plug-config/netrw.vim
+runtime plug-config/polyglot.vim
+runtime plug-config/startify.vim
+runtime plug-config/vista.vim
+" runtime plug-config/xtabline.vim
 " }}}
 
 " vim:fdm=marker

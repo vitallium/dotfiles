@@ -80,37 +80,6 @@ nnoremap <silent> <leader><S-z> :%bdelete!<CR>
 nnoremap <silent> <F1> :Clean<CR>
 " }}}
 
-" Conquer of Completion {{{
-" Get outline
-nnoremap <silent> <leader>co :<C-u>CocList outline<CR>
-" Get symbols
-nnoremap <silent> <leader>cs :<C-u>CocList -I symbols<CR>
-" Get errors
-nnoremap <silent> <leader>cl :<C-u>CocList locationlist<CR>
-" Get available commands
-nnoremap <silent> <leader>cc :<C-u>CocList commands<CR>
-" Rename
-nmap <leader>$ <Plug>(coc-rename)
-" Go to definition
-nmap gd <Plug>(coc-definition)
-" Go to type definition
-nmap <silent> gy <Plug>(coc-type-definition)
-" Go to implementation
-nmap <silent> gi <Plug>(coc-implementation)
-" Go to references
-nmap <silent> gr <Plug>(coc-references)
-" Go to type
-nmap <silent> gy <Plug>(coc-type-definition)
-" Go to implementation
-nmap <silent> gi <Plug>(coc-implementation)
-" Get hint
-nnoremap <silent> gh :call CocActionAsync('doHover')<CR>
-" Go to previous diagnostic
-nmap <leader>g[ <Plug>(coc-diagnostic-prev)
-" Go to next diagnostic
-nmap <leader>g] <Plug>(coc-diagnostic-next)
-" }}}
-
 " Neoterm {{{
 " Use gx{text-object} in normal mode
 nmap gx <Plug>(neoterm-repl-send)

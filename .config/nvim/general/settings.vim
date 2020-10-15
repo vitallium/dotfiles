@@ -13,6 +13,7 @@ set noswapfile                       | " Disable swap
 set nobackup                         | " This is recommended by coc
 set nowritebackup                    | " This is recommended by coc
 set cmdheight=2                      | " Give more space for displaying messages
+set showtabline=2                    | " Enable tabline
 set updatetime=50
 " }}}
 
@@ -31,7 +32,8 @@ set tabstop=2      | " Number of spaces a <Tab> is
 set timeoutlen=500 | " Wait less time for mapped sequences
 set smartindent    | " Makes indenting smart
 set autoindent     | " Good auto indent
-set nu
+set complete=.,w,b    " Sources for term and line completions
+set completeopt=menu,menuone,noinsert,noselect
 " }}}
 
 " Visual {{{
@@ -42,7 +44,7 @@ endif
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_invert_selection='0'
 colorscheme gruvbox                         | " Sets theme to gruvbox
-set background=dark                         | " Set background to dark
+set background=dark                         | " Set background to dark 
 set noshowmode                              | " Don't show mode changes
 set novisualbell                            | " Don't display visual bell
 set nowrap                                  | " Don't wrap lines

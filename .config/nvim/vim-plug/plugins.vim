@@ -43,6 +43,7 @@ Plug 'stsewd/fzf-checkout.vim'        | " FZF + GIT = :heart:
 " Navigation {{{
 Plug 'tpope/vim-projectionist'        | " Navigation of related files
 Plug 'christoomey/vim-tmux-navigator' | " TMUX integration
+Plug 'lambdalisue/fern.vim'           | " Tree explorer
 " }}}
 
 " Visual {{{
@@ -60,9 +61,9 @@ Plug 'liuchengxu/vista.vim'           | " Symbols window for LSP
 Plug 'editorconfig/editorconfig-vim'  | " Import tabs etc from editorconfig
 Plug 'junegunn/vim-easy-align'        | " Helps alignment
 Plug 'matze/vim-move'                 | " Move lines
-Plug 'neoclide/coc.nvim'              | " Completion provider
+Plug 'natebosch/vim-lsc'              | " LSP
+Plug 'ajh17/VimCompletesMe'           | " Completion
 Plug 'ntpeters/vim-better-whitespace' | " Highlight all trailing whitespaces
-" Plug 'prettier/vim-prettier'         | " Prettier support
 Plug 'tomtom/tcomment_vim'            | " Better commenting
 Plug 'tpope/vim-repeat'               | " Improves repeat handling
 Plug 'tpope/vim-surround'             | " Surround motions
