@@ -11,3 +11,6 @@ awesome_print
 binding_of_caller
 pry-doc
 hirb
+rubocop
+rubocop-rails
+rubocop-performance
