@@ -1,0 +1,15 @@
+! Include wal colors
+#include ".cache/wal/colors.Xresources"
+
+Xft.dpi: 156
+
+! Font settings from ArchWiki
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+Xcursor.size: 48
+
