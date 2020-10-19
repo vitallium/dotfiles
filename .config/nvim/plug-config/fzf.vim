@@ -1,6 +1,3 @@
-" Use agriculture as a global no hidden search
-let g:agriculture#rg_options = '--no-ignore --hidden'
-
 let $FZF_DEFAULT_OPTS    = '--reverse'
 let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**'"
 
