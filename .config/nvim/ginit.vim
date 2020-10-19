@@ -1,5 +1,5 @@
 set termguicolors
-colorscheme paper
+colorscheme gruvbox
 
 if exists('g:GuiLoaded')
   GuiFont Mononoki Nerd Font
