@@ -9,7 +9,6 @@
   co = checkout
   pf = push --force-with-lease
   am = commit --amend
-  delete-merged-branches = !sh -c 'git branch --merged master | grep -v master | xargs -n 1 git branch -d'
   graph = log --oneline --graph --all --decorate
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [push]
@@ -21,7 +20,7 @@
 [difftool]
   prompt = false
 [mergetool]
-  prompt = false
+	prompt = false
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
@@ -33,6 +32,7 @@
   precomposeUnicode = true
   # Enable parallel index preload for operations like git diff
   preloadindex = true
+	excludesfile = /home/vitaly/.gitignore_global
 [interactive]
   diffFilter = delta --color-only
 [delta]
@@ -43,6 +43,6 @@
   file-style = bold yellow ul
   file-decoration-style = none
 [includeIf "gitdir:~/source/gitlab/"]
-  path = .gitconfig-gitlab
+  path = .gitconfig_gitlab
 [rebase]
   instructionFormat = %s [%an]
