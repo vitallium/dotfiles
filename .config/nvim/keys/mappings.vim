@@ -51,10 +51,11 @@ nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
 " Previous buffer
 " nnoremap <silent> <S-Tab> :bprevious<CR>
 " Better window navigation
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd j<CR>
-nnoremap <leader>l :wincmd l<CR>
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 " }}}
 
 " View Management {{{
@@ -103,6 +104,51 @@ nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
+" }}}
+
+" Conquer of Completion {{{
+" Get outline
+nnoremap <silent> <leader>co :<C-u>CocList outline<CR>
+" Get symbols
+nnoremap <silent> <leader>cs :<C-u>CocList -I symbols<CR>
+" Get errors
+nnoremap <silent> <leader>cl :<C-u>CocList locationlist<CR>
+" Get available commands
+nnoremap <silent> <leader>cc :<C-u>CocList commands<CR>
+" Rename
+nmap <leader>$ <Plug>(coc-rename)
+" Go to definition
+nmap gd <Plug>(coc-definition)
+" Go to type definition
+nmap <silent> gy <Plug>(coc-type-definition)
+" Go to implementation
+nmap <silent> gi <Plug>(coc-implementation)
+" Go to references
+nmap <silent> gr <Plug>(coc-references)
+" Go to type
+nmap <silent> gy <Plug>(coc-type-definition)
+" Go to implementation
+nmap <silent> gi <Plug>(coc-implementation)
+" Get hint
+nnoremap <silent> gh :call CocActionAsync('doHover')<CR>
+" Go to previous diagnostic
+nmap <leader>g[ <Plug>(coc-diagnostic-prev)
+" Go to next diagnostic
+nmap <leader>g] <Plug>(coc-diagnostic-next)
+
+" Use tab for trigger completion
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 " }}}
 
 " vim:fdm=marker

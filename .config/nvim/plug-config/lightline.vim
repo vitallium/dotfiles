@@ -2,7 +2,10 @@ let g:lightline = {
 \ 'colorscheme': 'gruvbox',
 \ 'active': {
 \   'left': [ [ 'mode', 'paste' ],
-\             [ 'readonly', 'filename', 'modified' ] ],
+\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ],
+\ },
+\ 'component_function': {
+\   'cocstatus': 'coc#status',
 \ },
 \ }
 
