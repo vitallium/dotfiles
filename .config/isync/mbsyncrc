@@ -1,0 +1,54 @@
+# Gmail
+IMAPAccount gitlab
+Host imap.gmail.com
+User vslobodin@gitlab.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/credentials/gitlab-mbsync.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gitlab
+
+MaildirStore gmail-local
+Path ~/.mail/gitlab/
+Inbox ~/.mail/gitlab/Inbox
+SubFolders Legacy
+
+Channel gmail
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns "[Gmail]/Sent Mail" "[Gmail]/All Mail"
+Create Both
+SyncState *
+Sync All
+
+# Personal
+IMAPAccount fastmail
+Host imap.fastmail.com
+Port 993
+User vitaly_slobodin@fastmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/credentials/fastmail-mbsync.gpg"
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore fastmail-remote
+Account fastmail
+
+MaildirStore fastmail-local
+Path ~/.mail/fastmail/
+Inbox ~/.mail/fastmail/Inbox
+# The SubFolders option allows to represent all
+# IMAP subfolders as local subfolders
+SubFolders Verbatim
+
+# This section a "channel", a connection between remote and local
+Channel fastmail
+Master :fastmail-remote:
+Slave :fastmail-local:
+Patterns *
+Expunge None
+CopyArrivalDate yes
+Sync All
+Create Slave
+SyncState *
