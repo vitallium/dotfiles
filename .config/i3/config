@@ -51,10 +51,10 @@ bindsym $mod+Shift+l move right
 bindsym $mod+q split toggle
 
 # split in horizontal orientation
-bindsym $mod+minus split horizontal
+bindsym $mod+c split horizontal
 
 # split in vertical orientation
-#jbindsym $mod+asciicircum split vertical
+bindsym $mod+v split vertical
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -148,14 +148,12 @@ bindsym $mod+r mode "resize"
 assign [class="Brave"] $ws1
 # Communication
 assign [class="TelegramDesktop"] $ws5
-
 # }}}
 
 # Windows {{{
 for_window [class="Pavucontrol"] floating enable
 for_window [window_role="GtkFileChooserDialog"] resize set 1024 768
 for_window [window_role="GtkFileChooserDialog"] move position center
-
 # Firefox {{{
 for_window [class="(?i)firefox" window_role="^(?!About$)" window_type="normal"] \
   move to workspace $ws1, focus
