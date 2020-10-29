@@ -1,8 +1,9 @@
-yarn 1.22.5
-nodejs 12.16.3
-python 3.8.5 2.7.18
+yarn 1.22.10
+nodejs 12.19.0
+python 3.8.6 2.7.18
 ruby 2.6.6
 crystal 0.35.1
-erlang 23.0.3
-elixir 1.10.4-otp-23
+erlang 23.1.1
+elixir 1.11.1-otp-23
 golang 1.15.1
+postgres 11.9 12.4
