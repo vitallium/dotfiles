@@ -7,5 +7,5 @@ function hooks --description "run gclient runhooks"
 end
 
 function acch --description "activate chromium build mode"
-  set fish_user_paths "$HOME/.bin/depot_tools" $fish_user_paths
+  pathadd "$HOME/.local/bin/depot_tools"
 end
