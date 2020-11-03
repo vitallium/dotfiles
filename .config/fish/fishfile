@@ -1,11 +1,9 @@
-brgmnn/fish-docker-compose
-decors/fish-colored-man
 franciscolourenco/done
-joseluisq/gitnow@2.1.1
-laughedelic/brew-completions
 tuvistavie/fish-ssh-agent
 oh-my-fish/plugin-license
-jorgebucaran/fish-bax
 jethrokuan/fzf
 fishpkg/fish-git-util
-orefalo/g2
+decors/fish-colored-man
+laughedelic/pisces
+joehillen/to-fish
+rafaelrinaldi/pure
