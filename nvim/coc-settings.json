@@ -1,0 +1,36 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "graphql",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "markdown",
+    "python",
+    "typescript",
+    "typescript.tsx",
+    "typescriptreact",
+    "vue",
+    "yaml"
+  ],
+  "coc.preferences.hoverTarget": "echo",
+  "codeLens.enable": true,
+  "solargraph.formatting": true,
+  "solargraph.completion": true,
+  "solargraph.definitions": true,
+  "solargraph.symbols": true,
+  "solargraph.hover": true,
+  "solargraph.references": true,
+  "solargraph.useBundler": false,
+  "solargraph.folding": true,
+
+  "list.indicator": ">",
+  "list.selectedSignText": " ",
+
+  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
+
+  "prettier.requireConfig": true,
+
+  "diagnostic.displayByAle": true
+}
