@@ -6,20 +6,16 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Iosevka SS14 11
+font pango:Ubuntu 11
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # MPRIS Player Controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioStop exec playerctl stop
+# bindsym XF86AudioPlay exec playerctl play-pause
+# bindsym XF86AudioPrev exec playerctl previous
+# bindsym XF86AudioNext exec playerctl next
+# bindsym XF86AudioStop exec playerctl stop
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -148,6 +144,7 @@ bindsym $mod+r mode "resize"
 assign [class="Brave"] $ws1
 # Communication
 assign [class="TelegramDesktop"] $ws5
+assign [class="spotify"] $ws7
 # }}}
 
 # Windows {{{
@@ -206,7 +203,7 @@ client.background       $bg
 set $inner_gaps 4
 set $outer_gaps 12
 
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 gaps inner $inner_gaps
 gaps outer $outer_gaps
 smart_gaps on
@@ -235,7 +232,38 @@ bar {
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id dex -a
 # exec_always --no-startup-id autotiling
+# }}}
+
+# Volume control {{{
+
+# Path to volume control, without trailing slash
+set $volumepath /usr/bin/i3-volume
+
+# Command for the status line (used with -t, requires -u)
+#   ie: i3blocks, i3status
+set $statuscmd i3status
+
+# Signal used to update the status line (used with -u, requires -t)
+#   i3blocks uses SIGRTMIN+10 by default
+#   i3status uses SIGUSR1 by default
+set $statussig SIGUSR1
+
+# Amount to increase/decrease volume as a percentage (used with -i, -d)
+set $volumestep 5
+
+# pulseaudio-utils settings
+#
+# Symbolic name for sink (numeric index not supported) (used with -s $sinkname)
+#   Recommended: comment out this setting and omit the -s option to use default sink
+#   List sink names: pacmd list-sinks | awk -F "[<>]" '/^\s+name: <.*>/{print $2}'
+#set $sinkname alsa_output.pci-0000_00_1b.0.analog-stereo
+
+# Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
+bindsym XF86AudioRaiseVolume exec $volumepath -np -i $volumestep -t $statuscmd -u $statussig
+bindsym XF86AudioLowerVolume exec $volumepath -np -d $volumestep -t $statuscmd -u $statussig
+bindsym XF86AudioMute        exec $volumepath -mn -t $statuscmd -u $statussig
 # }}}
 
 # vim:fdm=marker:filetype=i3
