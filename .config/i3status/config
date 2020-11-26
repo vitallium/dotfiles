@@ -4,7 +4,8 @@ general {
 }
 
 order += "path_exists VPN"
-order += "load"
+order += "cpu_usage"
+order += "cpu_temperature 0"
 order += "memory"
 order += "tztime local"
 
@@ -12,8 +13,14 @@ path_exists VPN {
   path = "/proc/sys/net/ipv4/conf/tun0"
 }
 
-load {
-  format = " %1min"
+cpu_usage {
+  format = " %usage"
+}
+
+cpu_temperature 0 {
+  format ="%degrees°C"
+	max_threshold = 75
+  path = "/sys/devices/platform/nct6775.656/hwmon/hwmon4/temp2_input"
 }
 
 memory {
