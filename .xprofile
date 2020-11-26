@@ -1,18 +1,19 @@
 # Environment variables {{{
 export EDITOR="nvim"
 export VISUAL="nvim"
-# export QT_SCALE_FACTOR=1.5
+# export GDK_SCALE=2
+# export GDK_DPI_SCALE=0.5
+# export QT_SCALE_FACTOR=1
 # }}}
 
 # Tweaks {{{
 # Pretend we are Gnome Desktop
-if [ -z $XDG_CURRENT_DESKTOP ]; then
-  export XDG_CURRENT_DESKTOP="GNOME"
-fi
+# if [ -z $XDG_CURRENT_DESKTOP ]; then
+#  export XDG_CURRENT_DESKTOP="GNOME"
+# fi
 # }}}
 
 # Xorg settings {{{
-# Adjust default resolution and DPI
 xlayoutdisplay -q
 
 # Stop screen from going blank
@@ -25,14 +26,19 @@ xbanish &
 
 # Faster key repeat and delay
 xset r rate 210 40
+
+# Fix cursor theme for bspwm
+xsetroot -cursor_name left_ptr
 # }}}
 
 # Autolaunch {{{
 nm-applet --indicator &
-picom -b --experimental-backends &
+# picom -b --experimental-backends &
 blueman-applet &
 flameshot &
-pasystray &
+# pasystray &
+udiskie -At &
+# dunst &
 ~/.fehbg
 # }}}
 
