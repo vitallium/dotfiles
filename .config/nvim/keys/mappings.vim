@@ -25,17 +25,17 @@ nnoremap <silent> <leader>\ :Files<CR>
 " Open fuzzy buffers with leader b
 nnoremap <silent> <leader>b :Buffers<CR>
 " Open ripgrep
-nnoremap <silent> <leader>f :Rg<CR>
+nnoremap <silent> <leader>s :Rg<CR>
 "
 nnoremap <leader>gc :GBranches<CR>
 " Open ripgrep agriculture
-nmap <leader>/ <Plug>RgRawSearch
+nnoremap <leader>/ <Plug>RgRawSearch
 " Open ripgrep agriculture for visual selection
-vmap <leader>/ <Plug>RgRawVisualSelection
+vnoremap <leader>/ <Plug>RgRawVisualSelection
 " Remap ** to * now that we are using * for other bindings
 nnoremap ** *
 " Open ripgrep agriculture for cursor word
-nmap */ <Plug>RgRawWordUnderCursor
+nnoremap */ <Plug>RgRawWordUnderCursor
 " Open ripgrep for cursor word
 nnoremap <silent> *f :Rg <C-R><C-W><CR>
 " Open global ripgrep for cursor word
@@ -93,6 +93,7 @@ xmap gx <Plug>(neoterm-repl-send)
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
+
 " }}}
 
 " Custom Tools {{{

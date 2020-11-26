@@ -14,7 +14,7 @@
     "vue",
     "yaml"
   ],
-  "coc.preferences.hoverTarget": "float",
+  "coc.preferences.hoverTarget": "echo",
   "codeLens.enable": true,
   "solargraph.formatting": true,
   "solargraph.completion": true,
@@ -23,19 +23,14 @@
   "solargraph.hover": true,
   "solargraph.references": true,
   "solargraph.useBundler": false,
-  "solargraph.diagnostics": true,
   "solargraph.folding": true,
-
-  "diagnostic.errorSign": " ",
-  "diagnostic.warningSign": " ",
-  "diagnostic.infoSign": "",
-  "diagnostic.hintSign": " ",
-  "diagnostic.checkCurrentLine": true,
 
   "list.indicator": ">",
   "list.selectedSignText": " ",
 
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
 
-  "prettier.requireConfig": true
+  "prettier.requireConfig": true,
+
+  "diagnostic.displayByAle": true
 }

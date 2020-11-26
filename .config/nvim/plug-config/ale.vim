@@ -4,19 +4,19 @@ if &diff
 endif
 
 let g:ale_linters = {
-\  'ruby': ['rubocop'],
-\  'python': ['flake8', 'pylint'],
+\  'ruby':       ['rubocop'],
+\  'python':     ['flake8', 'pylint'],
 \  'javascript': ['eslint'],
-\  'vue': ['eslint']
+\  'vue':        ['eslint']
 \}
 
 let g:ale_fixers = {
-\  'javascript': ['eslint'],
+\  'javascript': ['prettier', 'eslint'],
 \  'typescript': ['prettier', 'tslint'],
-\  'vue': ['eslint'],
-\  'scss': ['prettier'],
-\  'html': ['prettier'],
-\  'reason': ['refmt']
+\  'vue':        ['eslint'],
+\  'scss':       ['prettier'],
+\  'html':       ['prettier'],
+\  'ruby':       ['rubocop']
 \}
 
 let g:ale_completion_enabled       = 0
@@ -36,6 +36,7 @@ let g:ale_sign_priority            = 50
 let g:ale_echo_cursor              = 0
 let g:ale_virtualtext_cursor       = 1
 let g:ale_virtualtext_prefix       = ' ■ '
+let g:ale_ruby_rubocop_executable  = 'bundle'
 
 " ALE fix and toggle mappings.
 nmap <Space>f <Plug>(ale_fix)

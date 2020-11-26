@@ -32,7 +32,7 @@ set tabstop=2      | " Number of spaces a <Tab> is
 set timeoutlen=500 | " Wait less time for mapped sequences
 set smartindent    | " Makes indenting smart
 set autoindent     | " Good auto indent
-set complete=.,w,b    " Sources for term and line completions
+set complete=.,w,b | " Sources for term and line completions
 set completeopt=menu,menuone,noinsert,noselect
 " }}}
 
@@ -61,6 +61,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " You can't stop me
 cmap w!! w !sudo tee %
 
-let g:python3_host_prog = '$HOME/.asdf/shims/python3'
+let g:python3_host_prog = '/usr/bin/python3'
 let g:loaded_python3_provider = 1
-let g:python_host_prog = '$HOME/.asdf/shims/python2'
+let g:python_host_prog = '/usr/bin/python2'

@@ -25,7 +25,10 @@ let g:fzf_branch_actions = {
       \}
 
 " Default location for FZF
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8, 'border': 'sharp', 'highlight': 'VertSplit' } }
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8, 'border': 'sharp', 'highlight': 'Comment' } }
+
+" Disable FZF preview
+let g:fzf_preview_window = []
 
 " Ctrl-l populates arglist. Use with :cfdo. Only works in :Files
 let g:fzf_action = {
@@ -35,3 +38,4 @@ let g:fzf_action = {
 \ }
 
 " vim:fdm=marker
+

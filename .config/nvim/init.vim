@@ -6,6 +6,7 @@ runtime keys/mappings.vim
 " }}}
 
 " Plugins Configurations {{{
+runtime plug-config/ale.vim
 runtime plug-config/coc.vim
 runtime plug-config/fern.vim
 runtime plug-config/floatterm.vim

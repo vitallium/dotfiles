@@ -34,6 +34,7 @@ Plug 'wincent/terminus'               | " Mouse support
 " }}}
 
 " Search {{{
+Plug 'jesseleite/vim-agriculture'     | " Better project search
 Plug 'junegunn/fzf'                   | " Main FZF plugin
 Plug 'junegunn/fzf.vim'               | " Fuzzy finding plugin
 Plug 'stsewd/fzf-checkout.vim'        | " FZF + GIT = :heart:
@@ -43,6 +44,8 @@ Plug 'stsewd/fzf-checkout.vim'        | " FZF + GIT = :heart:
 Plug 'tpope/vim-projectionist'        | " Navigation of related files
 Plug 'christoomey/vim-tmux-navigator' | " TMUX integration
 Plug 'lambdalisue/fern.vim'           | " Tree explorer
+Plug 'antoinemadec/FixCursorHold.nvim'| " Fix for fern
+Plug 'jeetsukumaran/vim-buffergator'  | " Buffer navigation
 " }}}
 
 " Visual {{{
@@ -65,6 +68,7 @@ Plug 'ntpeters/vim-better-whitespace' | " Highlight all trailing whitespaces
 Plug 'tomtom/tcomment_vim'            | " Better commenting
 Plug 'tpope/vim-repeat'               | " Improves repeat handling
 Plug 'tpope/vim-surround'             | " Surround motions
+Plug 'dense-analysis/ale'             | " Async linting
 " }}}
 
 " Tools {{{
@@ -80,6 +84,7 @@ Plug 'janko-m/vim-test'               | " Tests runner (Jest)
 Plug 'voldikss/vim-floaterm'          | " Float terminal
 Plug 'tpope/vim-dispatch'             | " Dispatch commands from VIM
 Plug 'mhinz/vim-startify'             | " Start page
+Plug 'jaxbot/selective-undo.vim'
 
 " GIT {{{
 Plug 'rbong/vim-flog'                 | " Commit viewer
@@ -99,6 +104,7 @@ Plug 'tpope/vim-endwise'              | " Wisely add end in ruby
 Plug 'jparise/vim-graphql'            | " GraphQL support
 Plug 'posva/vim-vue'                  | " Vue JS syntax highlighting
 Plug 'godlygeek/tabular'              | " Better tables in markdown
+Plug 'PsychoLlama/further.vim'        | " Navigate to JS files under the cursor
 " }}}
 
 " Writing {{{
