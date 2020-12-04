@@ -1,17 +1,17 @@
 set -x LC_ALL en_US.UTF-8
 
 # fisher {{{
-if not functions -q fisher; and test -z $__FISHER_FLAG
-  set -x __FISHER_FLAG set
-  curl -sL git.io/fisher | source
-  fisher update
-end
+#if not functions -q fisher; and test -z $__FISHER_FLAG
+#  set -x __FISHER_FLAG set
+#  curl -sL git.io/fisher | source
+#  fisher update
+#end
 # }}}
 
 # environment variables {{{
 set -x fish_greeting              ''
 set -x EDITOR                     nvim
-set -x GOPATH                     $HOME/go
+set -x GOPATH                     $HOME/.go
 set -x GOBIN                      $HOME/.go/bin
 set -x GO111MODULE                on
 # }}}
