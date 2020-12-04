@@ -24,13 +24,16 @@
       evil-ex-substitute-global t
 
       ;; make undo more fine-grained
-      evil-want-fine-undo t)
+      evil-want-fine-undo t
+
+      ;;
+      highlight-indent-guides-method 'bitmap)
 
 ;;
 ;;; UI
-(setq doom-font (font-spec :family "mononoki Nerd Font Mono" :size 24)
-      doom-variable-pitch-font (font-spec :family "Ubuntu")
-      doom-big-font (font-spec :family "mononoki Nerd Font Mono" :size 34))
+(setq doom-font (font-spec :family "hermit" :size 24)
+      doom-variable-pitch-font (font-spec :family "Noto Sans")
+      doom-big-font (font-spec :family "hermit" :size 34))
 
 ;; Enable mixed-pitch-mode for some text modes.
 ;; Also ensure it preserves the variable pitch height rather than inheriting from the default face.
@@ -41,14 +44,12 @@
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
 ;; Configure centaur-tabs
-(after! centaur-tabs
-  (setq centaur-tabs-set-modified-marker t
-        centaur-tabs-modified-marker "M"
-        centaur-tabs-cycle-scope 'tabs
-        centaur-tabs-set-close-button nil)
-  (centaur-tabs-group-by-projectile-project))
-
-
+;; (after! centaur-tabs
+;;   (setq centaur-tabs-set-modified-marker t
+;;         centaur-tabs-modified-marker "M"
+;;         centaur-tabs-cycle-scope 'tabs
+;;         centaur-tabs-set-close-button nil)
+;;   (centaur-tabs-group-by-projectile-project))
 
 ;;
 ;;; Keybinds
@@ -92,7 +93,7 @@
       magithub-preferred-remote-method 'ssh_url)  
 
 ;;; :lang org
-(setq org-directory "~/projects/org/"
+(setq org-directory "~/org/"
       org-archive-location (concat org-directory ".archive/%s::")
       org-roam-directory (concat org-directory "notes/")
       org-roam-db-location (concat org-roam-directory ".org-roam.db")
