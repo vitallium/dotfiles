@@ -37,6 +37,7 @@ let g:ale_echo_cursor              = 0
 let g:ale_virtualtext_cursor       = 1
 let g:ale_virtualtext_prefix       = ' ■ '
 let g:ale_ruby_rubocop_executable  = 'bundle'
+let g:ale_sign_column_always       = 1
 
 " ALE fix and toggle mappings.
 nmap <Space>f <Plug>(ale_fix)
