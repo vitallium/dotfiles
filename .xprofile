@@ -36,7 +36,6 @@ nm-applet --indicator &
 picom -b --experimental-backends &
 blueman-applet &
 flameshot &
-# pasystray &
 udiskie -At &
 # dunst &
 ~/.fehbg
