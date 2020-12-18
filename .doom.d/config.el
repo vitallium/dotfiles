@@ -32,7 +32,7 @@
 ;;
 ;;; UI
 (setq doom-font (font-spec :family "hermit" :size 24)
-      doom-variable-pitch-font (font-spec :family "Noto Sans")
+      doom-variable-pitch-font (font-spec :family "Hermit")
       doom-big-font (font-spec :family "hermit" :size 34))
 
 ;; Enable mixed-pitch-mode for some text modes.
