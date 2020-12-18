@@ -33,7 +33,7 @@ xsetroot -cursor_name left_ptr
 
 # Autolaunch {{{
 nm-applet --indicator &
-# picom -b --experimental-backends &
+picom -b --experimental-backends &
 blueman-applet &
 flameshot &
 # pasystray &
