@@ -52,7 +52,7 @@ setxkbmap -layout us,ru -option 'ctrl:nocaps' -option 'grp:alt_space_toggle'
 wal -R
 
 # Start i3
-exec bspwm
+exec i3
 # }}}
 
 # vim:fdm=marker
