@@ -65,3 +65,4 @@
 
 (unpin! org-roam)
 (unpin! lsp-mode)
+(unpin! magit)
