@@ -12,7 +12,7 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "0x50-15+49"
+    geometry = "600x50-50+65"
 
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing windowmanager is
@@ -25,8 +25,8 @@
     idle_threshold = 0
 
     # Font and typography settings
-    font = mononoki 13
-    alignment = center
+    font = Ubuntu 13
+    alignment = left
     word_wrap = yes
 
     # Show how many messages are currently hidden (because of geometry).
@@ -47,12 +47,12 @@
     history_length = 15
 
     # Display indicators for URLs (U) and actions (A).
-    show_indicators = no
+    show_indicators = yes
 
     # The height of a single line.  If the height is smaller than the
     # font height, it will get raised to the font height.
     # This adds empty space above and under the text.
-    line_height = 3
+    line_height = 4
 
     # Draw a line of "separatpr_height" pixel height between two
     # notifications.
@@ -60,10 +60,10 @@
     separator_height = 2
 
     # Padding between text and separator.
-    padding = 6
+    padding = 16
 
     # Horizontal padding.
-    horizontal_padding = 6
+    horizontal_padding = 16
 
     # Define a color for the separator.
     # possible values are:
@@ -86,7 +86,7 @@
     max_icon_size = 256
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/Adwaita/96x96/devices/:/usr/share/icons/Adwaita/48x48/status/:/usr/share/icons/Adwaita/96x96/apps/
+    icon_path = /usr/share/icons/Papirus/96x96/devices/:/usr/share/icons/Papirus/48x48/status/:/usr/share/icons/Papirus/96x96/apps/
 
     frame_width = 3
     frame_color = "{color4}"
