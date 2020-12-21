@@ -11,7 +11,6 @@
   am = commit --amend
   graph = log --oneline --graph --all --decorate
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  conflicted = !nvim +Conflicted
 [push]
   default = current
 [fetch]
@@ -43,7 +42,7 @@
   commit-decoration-style = bold yellow box ul
   file-style = bold yellow ul
   file-decoration-style = none
-[includeIf "gitdir:~/source/gitlab/"]
+[includeIf "gitdir:~/projects/gitlab/"]
   path = .gitconfig_gitlab
 [rebase]
   instructionFormat = %s [%an]
