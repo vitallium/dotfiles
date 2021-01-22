@@ -108,4 +108,8 @@ super + {Left,Down,Up,Right}
 # show help
 super + slash
 	sxhkd-help
+
+# next, previous, play-pause toggle
+XF86Audio{Next,Prev,Play}
+  playerctl {next,previous,play-pause}
 # }}}
