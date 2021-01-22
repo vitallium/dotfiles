@@ -1,1 +1,1 @@
-(package! magit-delta)
+;;(package! magit-delta)

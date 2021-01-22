@@ -2,24 +2,16 @@
 
 (setq user-full-name "Vitaly Slobodin"
       user-mail-address "vslobodin@gitlab.com"
-      doom-theme 'doom-flatwhite
+      doom-theme 'doom-dracula
+      doom-localleader-key ","
       treemacs-width 32
 
       ;; Line numbers are pretty slow all around. The performance boost of
       ;; disabling them outweighs the utility of always keeping them on.
       display-line-numbers-type nil
 
-      ;; IMO, modern editors have trained a bad habit into us all: a burning
-      ;; need for completion all the time -- as we type, as we breathe, as we
-      ;; pray to the ancient ones -- but how often do you *really* need that
-      ;; information? I say rarely. So opt for manual completion:
       company-idle-delay 0.3
-      
-      ;; lsp-ui-sideline is redundant with eldoc and much more invasive, so
-      ;; disable it by default.
-      ;;lsp-ui-sideline-enable nil
-      ;;lsp-enable-symbol-highlighting nil
-      
+
       ;; More common use-case
       evil-ex-substitute-global t
 
@@ -33,10 +25,11 @@
 ;;; UI
 (setq doom-font (font-spec :family "Hermit" :size 24)
       doom-variable-pitch-font (font-spec :family "Comic Mono")
-      doom-big-font (font-spec :family "Comic Mono" :size 34))
+      doom-big-font (font-spec :family "Comic Mono" :size 18))
 
 ;; Fix cutoff of the modeline
 (after! doom-modeline
+  (setq doom-modeline-mu4e t)
       (doom-modeline-def-modeline 'main
         '(bar matches buffer-info remote-host buffer-position parrot selection-info)
         '(misc-info minor-modes checker input-method buffer-encoding major-mode process vcs "  ")))
@@ -59,6 +52,19 @@
 (map! :leader
       (:prefix "c"
        :desc "LSP Parameters" "p" #'lsp-signature-activate))
+
+(map! :nv "C-S-k" #'move-line-up
+       :nv "C-S-j" #'move-line-down)
+
+;;       (:leader
+;;        "x" nil ;; Disable x prefix for scratch buffer
+;;        (:prefix "a"
+;;         :desc "GTD" :nv "g" #'org-agenda-gtd))
+
+;;       (:prefix ("x" . "text-transform")
+;;        (:prefix ("f" . "copy-as-format")
+;;         :desc "Markdown" :nv "m" #'copy-as-format-markdown
+;;         :desc "Slack" :nv "s" #'copy-as-format-markdown)))
 
 ;;
 ;;; Modules
@@ -88,20 +94,51 @@
 (setq +workspaces-on-switch-project-behavior t)
 
 ;;; :tools lsp
-(setq lsp-auto-guess-root nil                ; Causes problems esp. with golang projects misguessing the root.
-      lsp-enable-symbol-highlighting nil     ; Lots of highlighting that is distracting.
-      lsp-signature-auto-activate t          ; Show signature of current function.
-      lsp-signature-render-documentation nil ; Only show single line of function.
-      lsp-enable-snippet nil                 ; Disable auto parameter insertions.
-      flycheck-check-syntax-automatically '(save idle-change new-line mode-enabled)) ; Restore lsp-mode flycheck behavior.
+(after! lsp-mode
+  (setq lsp-headerline-breadcrumb-enable t)
+  (setq lsp-headerline-breadcrumb-segments '(symbols))
+  (setq lsp-eldoc-enable-hover nil
+        lsp-diagnostics-provider 'flycheck))
 
-(with-eval-after-load "esh-opt"
-  (autoload 'epe-theme-lambda "eshell-prompt-extras")
-  (setq eshell-highlight-prompt nil
-        eshell-prompt-function 'epe-theme-lambda))
+(after! lsp-ui
+  (setq lsp-ui-sideline-show-hover t
+        lsp-ui-sideline-delay 1))
+
+;;; :tools mu4e
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
+(setq mu4e-get-mail-command "mbsync -c ~/.config/isync/mbsyncrc -a")
 
 ;; Legacy stuff
 (with-eval-after-load 'flycheck
   (setq-default flycheck-disabled-checkers '(ruby-reek)))
 
 (add-hook! org-mode-hook 'toc-org-mode)
+
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2))
+
+(defun move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1))
+
+(map! :n [mouse-8] #'better-jumper-jump-backward
+      :n [mouse-9] #'better-jumper-jump-forward)
+
+(setq which-key-allow-multiple-replacements t)
+(after! which-key
+  (pushnew!
+   which-key-replacement-alist
+   '(("" . "\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil . "◂\\1"))
+   '(("\\`g s" . "\\`evilem--?motion-\\(.*\\)") . (nil . "◃\\1"))
+   ))
+
+(custom-theme-set-faces! 'doom-dracula
+  `(markdown-code-face :background ,(doom-darken 'bg 0.075))
+  `(font-lock-variable-name-face :foreground ,(doom-lighten 'magenta 0.6)))
+
+
+(add-hook! 'prog-mode-hook #'rainbow-delimiters-mode)

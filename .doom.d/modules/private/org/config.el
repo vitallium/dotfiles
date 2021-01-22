@@ -16,7 +16,8 @@
 
 (setq org-agenda-files '("~/org/inbox.org"
                          "~/org/gtd.org"
-                         "~/org/tickler.org"))
+                         "~/org/tickler.org"
+                         "~/org/gitlab.org"))
 
 ;; Capturing a thought is one key press away:
 ;; simply Press C-c c, and a capture popup will appear in Emacs.

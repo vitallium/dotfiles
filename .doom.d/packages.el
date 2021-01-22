@@ -54,10 +54,12 @@
 
 (package! move-text)
 (package! origami)
+(package! copy-as-format)
+(package! lsp-treemacs)
+(package! rainbow-delimiters)
 
 (package! hl-line :disable t) ;; hl-line has huge performance penalty on 4k monitor + retina mac
 
-(package! eshell-prompt-extras)
 (package! company-posframe)
 
 ; Org Goodies
@@ -65,7 +67,4 @@
 (package! org-fancy-priorities)
 (package! org-journal)
 (package! toc-org)
-
-(unpin! org-roam)
-(unpin! lsp-mode)
-(unpin! magit)
+(package! mu4e-alert)
