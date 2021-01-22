@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env fish
 
 # start requried apps and services {{{
 xlayoutdisplay -q
@@ -11,7 +11,7 @@ udiskie -At &
 xsetroot -cursor_name left_ptr &
 sxhkd &
 picom -b --experimental-backends &
-polybar main &
+~/.config/polybar/run.sh
 dunst &
 
 # Stop screen from going blank
