@@ -10,7 +10,8 @@ set -x LC_ALL en_US.UTF-8
 
 # environment variables {{{
 set -x fish_greeting              ''
-set -x EDITOR                     nvim
+set -x EDITOR                     emacsclient -t
+set -x VISUAL                     emacsclient -t
 set -x GOPATH                     $HOME/.go
 set -x GOBIN                      $HOME/.go/bin
 set -x GO111MODULE                on
