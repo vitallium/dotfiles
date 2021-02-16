@@ -10,7 +10,7 @@
       ;; disabling them outweighs the utility of always keeping them on.
       display-line-numbers-type nil
 
-      company-idle-delay 0.3
+      company-idle-delay nil
 
       ;; More common use-case
       evil-ex-substitute-global t
@@ -23,16 +23,37 @@
 
 ;;
 ;;; UI
-(setq doom-font (font-spec :family "Hermit" :size 24)
-      doom-variable-pitch-font (font-spec :family "Comic Mono")
-      doom-big-font (font-spec :family "Comic Mono" :size 18))
+(setq doom-font (font-spec :family "mononoki" :size 18)
+      doom-variable-pitch-font (font-spec :family "mononoki" :size 18)
+      doom-big-font (font-spec :family "Comic Mono" :size 20))
 
-;; Fix cutoff of the modeline
-(after! doom-modeline
-  (setq doom-modeline-mu4e t)
-      (doom-modeline-def-modeline 'main
-        '(bar matches buffer-info remote-host buffer-position parrot selection-info)
-        '(misc-info minor-modes checker input-method buffer-encoding major-mode process vcs "  ")))
+;; Global settings (defaults)
+
+;; This block and the ones below exist so that the
+;; doom theme is loaded and applied correctly to the frame
+;; as without all of this, the theme doesn't get loaded
+;; when using emacs --daemon
+;; Fix from: https://github.com/hlissner/emacs-doom-themes/issues/125#issuecomment-372509034
+;; More info: https://github.com/hlissner/emacs-doom-themes/issues/125
+(defun doom|init-theme ()
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config)
+  (load-theme doom-theme t))
+
+(defun doom|init-theme-in-frame (frame)
+  (with-selected-frame frame
+    (doom|init-theme))
+
+  ;; Unregister this hook once its run
+  (remove-hook 'after-make-frame-functions
+               'doom|init-theme-in-frame))
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              'doom|init-theme-in-frame)
+  (doom|init-theme))
 
 ;; Enable mixed-pitch-mode for some text modes.
 ;; Also ensure it preserves the variable pitch height rather than inheriting from the default face.
@@ -53,9 +74,6 @@
       (:prefix "c"
        :desc "LSP Parameters" "p" #'lsp-signature-activate))
 
-(map! :nv "C-S-k" #'move-line-up
-       :nv "C-S-j" #'move-line-down)
-
 ;;       (:leader
 ;;        "x" nil ;; Disable x prefix for scratch buffer
 ;;        (:prefix "a"
@@ -68,10 +86,6 @@
 
 ;;
 ;;; Modules
-
-(after! ivy
-  ;; I prefer search matching to be ordered; it's more precise
-  (add-to-list 'ivy-re-builders-alist '(counsel-projectile-find-file . ivy--regex-plus)))
 
 ;; Switch to the new window after splitting
 (setq evil-split-window-below t
@@ -93,37 +107,12 @@
 ;;; Always open up a new workspace when opening up a project.
 (setq +workspaces-on-switch-project-behavior t)
 
-;;; :tools lsp
-(after! lsp-mode
-  (setq lsp-headerline-breadcrumb-enable t)
-  (setq lsp-headerline-breadcrumb-segments '(symbols))
-  (setq lsp-eldoc-enable-hover nil
-        lsp-diagnostics-provider 'flycheck))
-
-(after! lsp-ui
-  (setq lsp-ui-sideline-show-hover t
-        lsp-ui-sideline-delay 1))
-
 ;;; :tools mu4e
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
 (setq mu4e-get-mail-command "mbsync -c ~/.config/isync/mbsyncrc -a")
 
 ;; Legacy stuff
-(with-eval-after-load 'flycheck
-  (setq-default flycheck-disabled-checkers '(ruby-reek)))
-
 (add-hook! org-mode-hook 'toc-org-mode)
-
-(defun move-line-up ()
-  (interactive)
-  (transpose-lines 1)
-  (forward-line -2))
-
-(defun move-line-down ()
-  (interactive)
-  (forward-line 1)
-  (transpose-lines 1)
-  (forward-line -1))
 
 (map! :n [mouse-8] #'better-jumper-jump-backward
       :n [mouse-9] #'better-jumper-jump-forward)
@@ -136,9 +125,21 @@
    '(("\\`g s" . "\\`evilem--?motion-\\(.*\\)") . (nil . "◃\\1"))
    ))
 
-(custom-theme-set-faces! 'doom-dracula
-  `(markdown-code-face :background ,(doom-darken 'bg 0.075))
-  `(font-lock-variable-name-face :foreground ,(doom-lighten 'magenta 0.6)))
-
-
 (add-hook! 'prog-mode-hook #'rainbow-delimiters-mode)
+
+(add-hook! 'after-init-hook #'mu4e-alert-enable-notifications)
+(after! doom-modeline
+  (mu4e-alert-enable-mode-line-display))
+
+;; testing
+(after! dired
+  (setq dired-listing-switches "-aBhl  --group-directories-first"
+        dired-dwim-target t
+        dired-recursive-copies (quote always)
+        dired-recursive-deletes (quote top)))
+
+(use-package! dired-narrow
+  :commands (dired-narrow-fuzzy)
+  :init
+  (map! :map dired-mode-map
+        :desc "narrow" "/" #'dired-narrow-fuzzy))

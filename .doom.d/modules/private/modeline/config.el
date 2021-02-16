@@ -8,12 +8,14 @@
 
 (add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
 
-(setq
- doom-modeline-project-detection `projectile
- doom-modeline-checker-simple-format t
- doom-modeline-workspace-name t
- doom-modeline-persp-name nil
- doom-modeline-persp-icon nil
- doom-modeline-mu4e t)
+(after! doom-modeline
+  (setq
+   doom-modeline-project-detection `projectile
+   doom-modeline-checker-simple-format t
+   doom-modeline-buffer-file-name-style 'truncate-upto-root
+   doom-modeline-workspace-name t
+   doom-modeline-persp-name nil
+   doom-modeline-persp-icon nil
+   doom-modeline-mu4e t))
 
 (provide 'config)

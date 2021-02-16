@@ -1,5 +1,7 @@
 (set-popup-rule! "\\`\\*rspec-compilation.*?\\*\\'" :width 0.25 :side 'right :quit 'current)
 
+(setq flycheck-disabled-checkers '(ruby-reek))
+
 (map! :mode ruby-mode
       (:leader
        (:prefix "p"

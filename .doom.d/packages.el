@@ -49,22 +49,13 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-; GitLab integration for the org-mode
-(package! org-gitlab :recipe (:host gitlab :repo "to1ne/org-gitlab"))
-
 (package! move-text)
 (package! origami)
 (package! copy-as-format)
-(package! lsp-treemacs)
 (package! rainbow-delimiters)
 
-(package! hl-line :disable t) ;; hl-line has huge performance penalty on 4k monitor + retina mac
-
-(package! company-posframe)
-
 ; Org Goodies
-(package! org-super-agenda)
-(package! org-fancy-priorities)
-(package! org-journal)
-(package! toc-org)
 (package! mu4e-alert)
+
+;; testing
+(package! dired-narrow)
