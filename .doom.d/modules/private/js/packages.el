@@ -1,3 +1,3 @@
 (package! indium)
 (package! jest)
-(package! prettier-js)
+(package! prettier)
