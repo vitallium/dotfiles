@@ -1,1 +1,1 @@
-;;(add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
+;; (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))

@@ -2,14 +2,16 @@
 
 (setq user-full-name "Vitaly Slobodin"
       user-mail-address "vslobodin@gitlab.com"
+      doom-themes-enable-bold t
+      doom-themes-enable-italic t
       doom-theme 'doom-dracula
       doom-localleader-key ","
-      treemacs-width 32
 
       ;; Line numbers are pretty slow all around. The performance boost of
       ;; disabling them outweighs the utility of always keeping them on.
       display-line-numbers-type nil
 
+      ;; Let me trigger the autocomplete
       company-idle-delay nil
 
       ;; More common use-case
@@ -18,16 +20,15 @@
       ;; make undo more fine-grained
       evil-want-fine-undo t
 
-      ;;
-      highlight-indent-guides-method 'bitmap)
+      projectile-project-search-path '("~/projects"))
 
 ;;
 ;;; UI
 (setq doom-font (font-spec :family "mononoki" :size 18)
-      doom-variable-pitch-font (font-spec :family "mononoki" :size 18)
-      doom-big-font (font-spec :family "Comic Mono" :size 20))
+      doom-variable-pitch-font (font-spec :family "Alegreya" :size 20))
 
-;; Global settings (defaults)
+;; Maximize the window upon startup
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 ;; This block and the ones below exist so that the
 ;; doom theme is loaded and applied correctly to the frame
@@ -54,62 +55,23 @@
     (add-hook 'after-make-frame-functions
               'doom|init-theme-in-frame)
   (doom|init-theme))
+;; The modeline is not useful to me in the popup window. It looks much nicer
+;; to hide it
+(add-hook 'emacs-everywhere-init-hooks #'hide-mode-line-mode)
 
-;; Enable mixed-pitch-mode for some text modes.
-;; Also ensure it preserves the variable pitch height rather than inheriting from the default face.
-(add-hook! (org-mode gfm-mode markdown-mode) #'mixed-pitch-mode)
-(setq mixed-pitch-set-height t)
+;; Global settings (defaults)
 
 ;; Prevents some cases of Emacs flickering
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
-;;
-;;; Keybindings
-
-(map! :leader
-      (:prefix-map ("TAB" . "workspace")
-       :desc "Switch to last workspace" "," #'+workspace/other))
-
-(map! :leader
-      (:prefix "c"
-       :desc "LSP Parameters" "p" #'lsp-signature-activate))
-
-;;       (:leader
-;;        "x" nil ;; Disable x prefix for scratch buffer
-;;        (:prefix "a"
-;;         :desc "GTD" :nv "g" #'org-agenda-gtd))
-
-;;       (:prefix ("x" . "text-transform")
-;;        (:prefix ("f" . "copy-as-format")
-;;         :desc "Markdown" :nv "m" #'copy-as-format-markdown
-;;         :desc "Slack" :nv "s" #'copy-as-format-markdown)))
+(load! "+bindings")
 
 ;;
 ;;; Modules
 
-;; Switch to the new window after splitting
-(setq evil-split-window-below t
-      evil-vsplit-window-right t)
-
-;;; ZEN
-(after! writeroom-mode
-  (setq +zen-text-scale 0
-        +zen-mixed-pitch-modes nil
-        writeroom-mode-line t
-        writeroom-width 160))
-
-;;; :tools treemacs
-;;; Make cursor follow to the buffer file.
-(after! treemacs
-  (treemacs-follow-mode 1))
-
 ;;; workspaces
 ;;; Always open up a new workspace when opening up a project.
 (setq +workspaces-on-switch-project-behavior t)
-
-;;; :tools mu4e
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
-(setq mu4e-get-mail-command "mbsync -c ~/.config/isync/mbsyncrc -a")
 
 ;; Legacy stuff
 (add-hook! org-mode-hook 'toc-org-mode)
@@ -117,19 +79,7 @@
 (map! :n [mouse-8] #'better-jumper-jump-backward
       :n [mouse-9] #'better-jumper-jump-forward)
 
-(setq which-key-allow-multiple-replacements t)
-(after! which-key
-  (pushnew!
-   which-key-replacement-alist
-   '(("" . "\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil . "◂\\1"))
-   '(("\\`g s" . "\\`evilem--?motion-\\(.*\\)") . (nil . "◃\\1"))
-   ))
-
 (add-hook! 'prog-mode-hook #'rainbow-delimiters-mode)
-
-(add-hook! 'after-init-hook #'mu4e-alert-enable-notifications)
-(after! doom-modeline
-  (mu4e-alert-enable-mode-line-display))
 
 ;; testing
 (after! dired
@@ -143,3 +93,15 @@
   :init
   (map! :map dired-mode-map
         :desc "narrow" "/" #'dired-narrow-fuzzy))
+
+(custom-theme-set-faces! 'doom-dracula
+ `(markdown-code-face :background ,(doom-darken 'bg 0.075))
+ `(font-lock-variable-name-face :foreground ,(doom-lighten 'magenta 0.6)))
+(use-package! vlf-setup
+  :defer-incrementally vlf-tune vlf-base vlf-write vlf-search vlf-occur vlf-follow vlf-ediff vlf)
+
+(after! avy
+  ;; home row priorities: 8 6 4 5 - - 1 2 3 7
+  (setq avy-keys '(?n ?e ?i ?s ?t ?r ?i ?a)))
+
+(setq which-key-idle-delay 0.5) ;; I need the help, I really do

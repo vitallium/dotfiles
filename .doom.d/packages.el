@@ -51,11 +51,13 @@
 
 (package! move-text)
 (package! origami)
-(package! copy-as-format)
 (package! rainbow-delimiters)
+(package! copy-as-format)
+(package! vlf)
 
-; Org Goodies
-(package! mu4e-alert)
+(unpin! doom-themes)
+(package! modus-operandi-theme)
 
 ;; testing
 (package! dired-narrow)
+(package! direnv)

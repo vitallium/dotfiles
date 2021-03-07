@@ -1,13 +1,15 @@
 ;;; private/company/config.el -*- lexical-binding: t; -*-
 
-(after! company
-  (setq company-tooltip-limit 5
-        company-tooltip-minimum-width 80
-        company-tooltip-minimum 5
-        company-backends
-        '(company-capf company-dabbrev company-files company-yasnippet)
-        company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)))
+(after! ivy
+  (setq +ivy-project-search-engines '(rg)
+        +ivy-buffer-preview t))
 
-(setq +ivy-project-search-engines '(rg))
+(after! company
+  (setq company-idle-delay nil
+        company-minimum-prefix-length 2)
+  (add-hook 'evil-normal-state-entry-hook #'company-abort))
+
+(setq-default history-length 1000)
+(setq-default prescient-history-length 1000)
 
 (load! "+hooks")

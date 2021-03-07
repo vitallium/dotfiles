@@ -5,6 +5,7 @@
 (package! org-gitlab :recipe (:host gitlab :repo "to1ne/org-gitlab"))
 
 (package! org-super-agenda)
-(package! org-fancy-priorities)
+(package! doct)
+(package! org-pretty-tags)
 (package! org-journal)
 (package! toc-org)
