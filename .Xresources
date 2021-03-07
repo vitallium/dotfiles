@@ -1,13 +1,11 @@
-! Include wal colors
-#include ".cache/wal/colors.Xresources"
+! Colors
+#include ".xcolors/dracula.xcolors"
 
-Xft.antialias: 1
-Xft.autohint: 0
-Xft.dpi: 156
-Xft.hinting: 1
-Xft.hintstyle: hintfull
-Xft.lcdfilter: lcddefault
-Xft.rgba: rgb
+Xft.dpi:        109
+Xft.antialias:  true
+Xft.hinting:    true
+Xft.rgba:       rgb
+Xft.hintstyle:  hintslight
 
-Xcursor.size: 48
+Xcursor.size: 42
 Xcursor.theme: capitaine-cursors-light

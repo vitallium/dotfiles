@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# .xprofile {{{
-[ -f ~/.xprofile ] && . ~/.xprofile
-# }}}
-
 # .Xresources and .Xmodmap {{{
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -37,19 +33,25 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
   done
   unset f
 fi
-# }}}
 
-# Gnome Keyring {{{
-eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
-export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
+xlayoutdisplay --dpi 109 -q
+
+# Stop screen from going blank
+xset s off
+xset -dpms
+xset s noblank
+
+# Hide Cursor when typing
+xbanish &
+
+# Faster key repeat and delay
+xset r rate 210 40
+
 # }}}
 
 # Keyboard Layout {{{
 setxkbmap -layout us,ru -option 'ctrl:nocaps' -option 'grp:alt_space_toggle'
 # }}}
-
-# Restore pywal colors
-wal -R
 
 # Start i3
 exec i3
