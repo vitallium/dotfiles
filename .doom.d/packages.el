@@ -53,6 +53,7 @@
 (package! origami)
 (package! rainbow-delimiters)
 (package! copy-as-format)
+(package! string-inflection)
 (package! vlf)
 
 (unpin! doom-themes)
@@ -61,3 +62,4 @@
 ;; testing
 (package! dired-narrow)
 (package! direnv)
+(package! graphql-mode)

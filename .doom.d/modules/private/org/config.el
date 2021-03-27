@@ -20,4 +20,9 @@
 (setq global-org-pretty-table-mode t)
 (setq mixed-pitch-variable-pitch-cursor nil)
 
+(after! org
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "NEXT(n)" "PROJ(p)" "STORY(s)" "WAIT(w)" "HOLD(h)" "|" "DONE(d)" "KILL(k)")
+          (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)"))))
+
 (load! "+hooks")

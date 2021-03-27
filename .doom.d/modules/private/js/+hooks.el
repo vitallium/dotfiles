@@ -7,6 +7,8 @@
 (add-hook! js2-mode 'maybe-use-prettier)
 (add-hook! rjsx-mode-hook 'maybe-use-prettier)
 
+(setq-hook! 'js2-mode-hook flycheck-checker 'javascript-eslint)
+
 ;; Jest
 (after! jest
   (setq jest-executable "yarn jest"))
