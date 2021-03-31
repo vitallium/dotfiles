@@ -56,10 +56,9 @@
 (package! string-inflection)
 (package! vlf)
 
-(unpin! doom-themes)
 (package! modus-operandi-theme)
+(package! vscode-dark-plus-theme)
 
 ;; testing
 (package! dired-narrow)
 (package! direnv)
-(package! graphql-mode)

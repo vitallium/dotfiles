@@ -1,5 +1,6 @@
 (after! lsp-mode
   (setq lsp-headerline-breadcrumb-enable t
+        lsp-headerline-breadcrumb-segments '(symbols)
         lsp-idle-delay 0.5))
 
 (after! lsp-ui
