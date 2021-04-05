@@ -1,0 +1,880 @@
+#+TITLE:      Vitallium's Emacs configuration
+#+AUTHOR:     Vitaly Slobodin
+#+PROPERTY:   header-args:emacs-lisp :tangle ./init.el
+#+TOC:        true
+
+* Contents                                                              :Toc:
+- [[#setup][Setup]]
+	- [[#early-init][Early init]]
+	- [[#startup-optimization][Startup optimization]]
+	- [[#lexical-binding][Lexical Binding]]
+- [[#package-manager][Package manager]]
+	- [[#bootstrap-straight-and-straight-use-package][bootstrap straight and straight-use-package]]
+- [[#emacs][Emacs]]
+	- [[#sane-defaults][Sane defaults]]
+	- [[#garbage-collector-magic-hack][Garbage collector magic hack]]
+	- [[#no-littering][No littering]]
+	- [[#translate-input-sequences-to-english][Translate input sequences to English]]
+- [[#interface][Interface]]
+	- [[#basics][Basics]]
+	- [[#better-undo][Better undo]]
+	- [[#navigation][Navigation]]
+- [[#appearance][Appearance]]
+	- [[#theme][Theme]]
+	- [[#emojis][Emojis]]
+	- [[#setting-up-some-frame-defaults][Setting up some frame defaults]]
+	- [[#ui][UI]]
+- [[#programming][Programming]]
+	- [[#common][Common]]
+	- [[#environment-management][Environment management]]
+	- [[#git][Git]]
+	- [[#snippets][Snippets]]
+- [[#languages][Languages]]
+	- [[#web][WEB]]
+	- [[#javascript][JavaScript]]
+	- [[#vuejs][Vue.js]]
+	- [[#json][JSON]]
+	- [[#ruby][Ruby]]
+	- [[#lsp][LSP]]
+	- [[#markdown][Markdown]]
+- [[#completion-framework][Completion framework]]
+	- [[#selectrum][Selectrum]]
+	- [[#prescient][Prescient]]
+	- [[#marginalia][Marginalia]]
+	- [[#consult][Consult]]
+	- [[#embark][Embark]]
+	- [[#company][Company]]
+	- [[#company-box][Company box]]
+- [[#tools][Tools]]
+	- [[#vterm][Vterm]]
+	- [[#dired][Dired]]
+- [[#key-bindings][Key bindings]]
+	- [[#which-key][which-key]]
+	- [[#general][General]]
+	- [[#mappings][Mappings]]
+- [[#configuration-for-built-in-packages][Configuration for built-in packages]]
+	- [[#split-right-and-split-below][Split right and split below]]
+	- [[#automatically-refreshes-the-buffer-for-changes-outside-of-emacs][Automatically refreshes the buffer for changes outside of Emacs]]
+	- [[#mouse-wheel-track-pad-scroll-speed][Mouse wheel (track-pad) scroll speed]]
+	- [[#ediff-tweaks][Ediff tweaks]]
+	- [[#clean-up-whitespace-on-save][Clean up whitespace on save]]
+- [[#org][Org]]
+	- [[#toc-sync][TOC sync]]
+
+* Setup
+** Early init
+
+Taken from DOOM's.
+
+#+BEGIN_SRC emacs-lisp :tangle early-init.el
+	;; NOTE: early-init.el is now generated from config.org. Please edit that file instead
+
+	;; Defer garbage collection further back in the startup process
+	(setq gc-cons-threshold most-positive-fixnum
+				gc-cons-percentage 0.6)
+
+	;; In Emacs 27+, package initialization occurs before `user-init-file' is
+	;; loaded, but after `early-init-file'. Doom handles package initialization, so
+	;; we must prevent Emacs from doing it early!
+	(setq package-enable-at-startup nil)
+	;; Do not allow loading from the package cache (same reason).
+	(setq package-quickstart nil)
+
+	;; Prevent the glimpse of un-styled Emacs by disabling these UI elements early.
+	(push '(menu-bar-lines . 0) default-frame-alist)
+	(push '(tool-bar-lines . 0) default-frame-alist)
+	(push '(vertical-scroll-bars) default-frame-alist)
+
+	;; Resizing the Emacs frame can be a terribly expensive part of changing the
+	;; font. By inhibiting this, we easily halve startup times with fonts that are
+	;; larger than the system default.
+	(setq frame-inhibit-implied-resize t)
+
+	;; Disable GUI elements
+	(menu-bar-mode -1)
+	(tool-bar-mode -1)
+	(scroll-bar-mode -1)
+	(setq inhibit-splash-screen t)
+	(setq use-file-dialog nil)
+
+	;; Prevent unwanted runtime builds in gccemacs (native-comp); packages are
+	;; compiled ahead-of-time when they are installed and site files are compiled
+	;; when gccemacs is installed.
+	(setq comp-deferred-compilation nil)
+#+END_SRC
+
+** Startup optimization
+
+Taken from DOOM's init
+
+#+BEGIN_SRC emacs-lisp
+	;; NOTE: init.el is now generated from config.org. Please edit that file instead
+
+	;; `file-name-handler-alist' is consulted on every `require', `load' and various
+	;; path/io functions. You get a minor speed up by nooping this. However, this
+	;; may cause problems on builds of Emacs where its site lisp files aren't
+	;; byte-compiled and we're forced to load the *.el.gz files (e.g. on Alpine)
+	(unless (daemonp)
+		(defvar doom--initial-file-name-handler-alist file-name-handler-alist)
+		(setq file-name-handler-alist nil)
+		;; Restore `file-name-handler-alist' later, because it is needed for handling
+		;; encrypted or compressed files, among other things.
+		(defun doom-reset-file-handler-alist-h ()
+			;; Re-add rather than `setq', because changes to `file-name-handler-alist'
+			;; since startup ought to be preserved.
+			(dolist (handler file-name-handler-alist)
+				(add-to-list 'doom--initial-file-name-handler-alist handler))
+			(setq file-name-handler-alist doom--initial-file-name-handler-alist))
+		(add-hook 'emacs-startup-hook #'doom-reset-file-handler-alist-h)
+		(add-hook 'after-init-hook '(lambda ()
+																	 ;; restore after startup
+																	 (setq gc-cons-threshold 16777216
+																				 gc-cons-percentage 0.1)))
+		)
+	;; Ensure Doom is running out of this file's directory
+	(setq upser-emacs-directory (file-truename (file-name-directory load-file-name)))
+#+END_SRC
+
+** Lexical Binding
+
+This makes it so that the file that is produced from tangling this
+file uses lexical scoping.
+
+#+BEGIN_SRC emacs-lisp
+;;; -*- lexical-binding: t -*-
+(setq-default lexical-binding t)
+#+END_SRC
+
+* Package manager
+** bootstrap straight and straight-use-package
+
+Some rules/conventions:
+- Prefer ~:init~ to ~:custom~. Prefer multiple ~setq~ expressions to one.
+- Default to ~:defer t~, use ~:demand~ to force loading
+- When packages do not require installation e.g. ~dired~, we need ~:straight (:type built-in)~
+- If you specify ~:commands~, they will be autoloaded and the package will be loaded when the commands are first executed
+		+ If you use ~:general~ and bind commands to keys it will automatically load the package on first invokation
+
+#+BEGIN_SRC emacs-lisp
+(setq straight-use-package-by-default t)
+(setq straight-vc-git-default-clone-depth 1)
+(setq straight-recipes-gnu-elpa-use-mirror t)
+(setq straight-check-for-modifications '(check-on-save find-when-checking))
+(setq use-package-always-defer t)
+(defvar bootstrap-version)
+(let* ((straight-repo-dir
+				(expand-file-name "straight/repos" user-emacs-directory))
+			 (bootstrap-file
+				(concat straight-repo-dir "/straight.el/bootstrap.el"))
+			 (bootstrap-version 5))
+	(unless (file-exists-p bootstrap-file)
+		(shell-command
+		 (concat
+			"mkdir -p " straight-repo-dir " && "
+			"git -C " straight-repo-dir " clone "
+			"https://github.com/raxod502/straight.el.git && "
+			"git -C " straight-repo-dir " checkout e1390a9")))
+	(load bootstrap-file nil 'nomessage))
+(straight-use-package 'use-package)
+;; This is a variable that has been renamed but straight still refers when
+;; doing :sraight (:no-native-compile t)
+(setq comp-deferred-compilation-black-list nil)
+#+END_SRC
+
+* Emacs
+** Sane defaults
+
+Inspired by https://github.com/natecox/dotfiles/blob/master/emacs/emacs.d/nathancox.org
+
+To debug a LISP function use ~debug-on-entry~. You step /in/ with =d= and /over/ with =e=
+
+#+BEGIN_SRC emacs-lisp
+(use-package emacs
+	:init
+	(setq inhibit-startup-screen t
+				initial-scratch-message nil
+				sentence-end-double-space nil
+				ring-bell-function 'ignore
+				frame-resize-pixelwise t)
+
+	(setq user-full-name "Vitaly Slobodin"
+				user-mail-address "vslobodin@gitlab.com")
+
+	(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
+	;; always allow 'y' instead of 'yes'.
+	(defalias 'yes-or-no-p 'y-or-n-p)
+
+	;; default to utf-8 for all the things
+	(set-charset-priority 'unicode)
+	(setq locale-coding-system 'utf-8
+				coding-system-for-read 'utf-8
+				coding-system-for-write 'utf-8)
+	(set-terminal-coding-system 'utf-8)
+	(set-keyboard-coding-system 'utf-8)
+	(set-selection-coding-system 'utf-8)
+	(prefer-coding-system 'utf-8)
+	(setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+
+	;; write over selected text on input... like all modern editors do
+	(delete-selection-mode t)
+
+	;; enable recent files mode.
+	(recentf-mode t)
+	(setq recentf-exclude `(,(expand-file-name "straight/build/" user-emacs-directory)
+													,(expand-file-name "eln-cache/" user-emacs-directory)
+													,(expand-file-name "etc/" user-emacs-directory)
+													,(expand-file-name "var/" user-emacs-directory)))
+
+	;; don't want ESC as a modifier
+	(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+	;; Don't persist a custom file, this bites me more than it helps
+	(setq custom-file (make-temp-file "")) ; use a temp file as a placeholder
+	(setq custom-safe-themes t)            ; mark all themes as safe, since we can't persist now
+	(setq enable-local-variables :all)     ; fix =defvar= warnings
+
+	;; stop emacs from littering the file system with backup files
+	(setq make-backup-files nil
+				auto-save-default nil
+				create-lockfiles nil)
+
+	;; follow symlinks
+	(setq vc-follow-symlinks t)
+
+	;; don't show any extra window chrome
+	(when (window-system)
+		(tool-bar-mode -1)
+		(toggle-scroll-bar -1))
+
+	;; enable winner mode globally for undo/redo window layout changes
+	(winner-mode t)
+
+	(show-paren-mode t)
+
+	;; less noise when compiling elisp
+	(setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
+
+	;; clean up the mode line
+	(display-time-mode -1)
+	(setq column-number-mode t)
+
+	;; use common convention for indentation by default
+	(setq-default indent-tabs-mode t)
+	(setq-default tab-width 2))
+#+END_SRC
+
+** Garbage collector magic hack
+
+Used by DOOM to manage garbage collection
+
+#+BEGIN_SRC emacs-lisp
+	(use-package gcmh
+		:delight gcmh-mode
+		:init
+		(gcmh-mode))
+#+END_SRC
+
+** No littering
+
+#+BEGIN_SRC emacs-lisp
+(use-package no-littering
+				:demand
+				:config
+	(with-eval-after-load 'recentf
+		(add-to-list 'recentf-exclude no-littering-var-directory)
+		(add-to-list 'recentf-exclude no-littering-etc-directory)))
+#+END_SRC
+
+** Translate input sequences to English
+
+#+BEGIN_SRC emacs-lisp
+(use-package reverse-im
+	:custom
+	(reverse-im-input-methods '("russian-computer"))
+	:config
+	(reverse-im-mode t))
+#+END_SRC
+
+* Interface
+** Basics
+
+~crux~ has useful functions extracted from Emacs Prelude. Set ~C-a~ to move to the first non-whitespace character on a line,
+and then to toggle between that and the beginning of the line.
+
+#+BEGIN_SRC emacs-lisp
+	(use-package crux
+		:bind (("C-a" . crux-move-beginning-of-line)
+					 ("C-k" . crux-smart-kill-line)))
+#+END_SRC
+
+~delight~ works much better than ~diminish~ and it also works with major modes.
+
+#+BEGIN_SRC emacs-lisp
+(use-package delight)
+#+END_SRC
+
+** Better undo
+
+=undo-tree= visualises undo history as a tree for easy navigation.
+
+#+BEGIN_SRC emacs-lisp
+	(use-package undo-tree
+		:demand
+		:delight
+		:init
+		(global-undo-tree-mode))
+#+END_SRC
+
+** Navigation
+
+One of the most important features of an advanced editor is quick text navigation.
+~avy~ lets us jump to any character or line quickly.
+
+#+BEGIN_SRC emacs-lisp
+(use-package avy)
+#+END_SRC
+
+~ace-window~ lets us navigate between windows in the same way as ~avy~.
+Once activated it has useful sub-modes like ~x~ to switch into window deletion mode.
+
+#+BEGIN_SRC emacs-lisp
+(use-package ace-window
+	:config
+	(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+#+END_SRC
+
+~Ibuffer~ is a general utility for managing buffers, in a similar
+manner to the way dired handles files and directories.
+
+#+BEGIN_SRC emacs-lisp
+	(use-package ibuffer
+		:bind
+		(("C-x C-b" . ibuffer)))
+#+END_SRC
+
+	~projectile~ is the standard package for adding projects support.
+
+	,#+BEGIN_SRC emacs-lisp
+		(use-package projectile
+			:demand
+			:delight
+			:config
+			(projectile-mode)
+			:config
+			(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+			(bind-key "C-c p s" 'projectile-ripgrep)
+			(setq projectile-sort-order 'modification-time))
+	;;		(setq projectile-completion-system 'selectrum))
+#+END_SRC
+
+* Appearance
+** Theme
+
+Recently I found an Emacs port of Visual Studio Code's default theme ~Dark+~.
+
+#+BEGIN_SRC emacs-lisp
+(use-package vscode-dark-plus-theme)
+#+END_SRC
+
+** Emojis
+
+Add emoji support. This is useful when working with html.
+
+#+BEGIN_SRC emacs-lisp :tangle no
+	(use-package emojify)
+#+END_SRC
+
+** Setting up some frame defaults
+
+Maximise the frame by default on start-up. Set the font to size 12.
+
+#+BEGIN_SRC emacs-lisp
+	(use-package frame
+		:straight (:type built-in)
+		:preface
+		(defun vitallium/set-default-font ()
+			(interactive)
+			(when (member "Agave" (font-family-list))
+				(set-face-attribute 'default nil :family "Agave"))
+			(set-face-attribute 'default nil
+													:height 160
+													:weight 'normal))
+		:config
+		(setq initial-frame-alist '((fullscreen . maximized)))
+		(vitallium/set-default-font))
+#+END_SRC
+** UI
+*** all the icons
+
+#+BEGIN_SRC emacs-lisp
+	(use-package all-the-icons)
+#+END_SRC
+
+*** Doom modeline
+
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package doom-modeline
+	:demand
+	:init
+	(setq doom-modeline-buffer-encoding nil)
+	(setq doom-modeline-height 15)
+	(setq doom-modeline-project-detection 'projectile)
+	:config
+	(doom-modeline-mode 1))
+#+END_SRC
+
+* Programming
+** Common
+When programming I like my editor to try to help me with keeping parentheses balanced.
+
+#+BEGIN_SRC emacs-lisp
+(use-package smartparens
+	:config
+	(add-hook 'prog-mode-hook 'smartparens-mode))
+#+END_SRC
+
+Highlight parens etc. for improved readability.
+
+#+BEGIN_SRC emacs-lisp
+(use-package rainbow-delimiters
+	:config
+	(add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+#+END_SRC
+
+** Environment management
+
+By default Emacs doesn't read from the same environment variables set in your terminal. This package fixes that.
+
+#+BEGIN_SRC emacs-lisp
+	(use-package exec-path-from-shell
+		:config
+		(exec-path-from-shell-initialize))
+#+END_SRC
+
+** Git
+
+Magit is an awesome interface to git. Summon it with `C-x g`.
+
+#+BEGIN_SRC emacs-lisp
+	(use-package magit
+		:bind ("C-x g" . magit-status))
+#+END_SRC
+
+Display line changes in gutter based on git history. Enable it everywhere.
+
+#+BEGIN_SRC emacs-lisp
+	(use-package git-gutter
+		:config
+		(global-git-gutter-mode 't))
+#+END_SRC
+
+** Snippets
+
+Unlike autocomplete which suggests words / symbols, snippets are pre-prepared templates which you fill in.
+
+Type the shortcut and press =TAB= to complete, or =M-/= to autosuggest a snippet.
+
+#+BEGIN_SRC emacs-lisp
+	(use-package yasnippet
+			:config
+			(add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
+			(yas-global-mode 1))
+#+END_SRC
+
+Install some premade snippets (in addition to personal ones stored above)
+
+#+BEGIN_SRC emacs-lisp
+	(use-package yasnippet-snippets)
+#+END_SRC
+
+* Languages
+** WEB
+
+#+BEGIN_SRC emacs-lisp
+	(use-package web-mode
+		:demand
+		:mode "\\.[px]?html?\\'"
+		:mode "\\.erb\\'"
+		:init
+		;; If the user has installed `vue-mode' then, by appending this to
+		;; `auto-mode-alist' rather than prepending it, its autoload will have
+		;; priority over this one.
+		(add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode) 'append)
+		:mode "\\.vue\\'")
+#+END_SRC
+
+** JavaScript
+
+=js-doc= makes it easy to add jsdoc comments via =Ctrl+c i=.
+
+#+BEGIN_SRC emacs-lisp
+	(use-package js-doc
+		:bind (:map js2-mode-map
+					 ("C-c i" . js-doc-insert-function-doc)
+					 ("@" . js-doc-insert-tag)))
+
+	(use-package js2-mode
+		:mode "\\.js\\'"
+		:custom
+		(js2-highlight-level 3)
+		(js2r-prefer-let-over-var t)
+		(js2r-prefered-quote-type 2)
+		:config
+		(setq js-indent-level 2))
+#+END_SRC
+
+We often want to use local packages instead of global ones.
+
+#+BEGIN_SRC emacs-lisp
+	(use-package add-node-modules-path)
+#+END_SRC
+
+** Vue.js
+
+#+BEGIN_SRC emacs-lisp
+	(use-package vue-mode
+		:after web-mode
+		:demand)
+#+END_SRC
+
+** JSON
+
+#+BEGIN_SRC emacs-lisp
+(use-package json-mode
+	:custom
+	(json-reformat:indent-width 2)
+	:mode ("\\.json\\'" . json-mode))
+#+END_SRC
+
+** Ruby
+
+
+
+** LSP
+
+#+BEGIN_SRC emacs-lisp
+	(use-package lsp-mode
+		:init
+		(setq lsp-keymap-prefix "C-c l")
+		:hook ((lsp-mode . lsp-enable-which-key-integration))
+		:custom (lsp-enable-on-type-formatting nil)
+		:commands (lsp lsp-deferred))
+
+	(use-package lsp-ui
+		:after flycheck
+		:hook ((lsp-mode . lsp-ui-mode))
+		:init
+			(setq lsp-ui-doc-show-with-cursor nil)
+			(setq lsp-ui-doc-show-with-mouse nil)
+			(setq lsp-ui-peek-always-show t)
+			(setq lsp-ui-peek-fontify 'always))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+	(use-package flycheck
+		:demand
+		:delight
+		:hook (prog-mode . flycheck-mode)
+		:init
+		(setq flycheck-idle-change-delay 0.5))
+#+END_SRC
+
+** Markdown
+
+#+BEGIN_SRC emacs-lisp
+(use-package markdown-mode
+	:commands (markdown-mode gfm-mode)
+	:mode (("README\\.md\\'" . gfm-mode)
+				 ("\\.md\\'" . markdown-mode)
+				 ("\\.markdown\\'" . markdown-mode))
+	:init (setq markdown-command "multimarkdown"))
+#+END_SRC
+
+* Completion framework
+** Selectrum
+
+Selectrum is a better solution for incremental narrowing in Emacs, replacing Helm, Ivy, and Ido.
+
+#+BEGIN_SRC emacs-lisp
+	(use-package selectrum
+		:demand
+		:config
+		(selectrum-mode t))
+#+END_SRC
+
+** Prescient
+
+#+BEGIN_SRC emacs-lisp
+	(use-package selectrum-prescient
+		:after selectrum
+		:demand
+		:config
+		(selectrum-prescient-mode t)
+		(prescient-persist-mode t))
+
+	(use-package company-prescient
+		:after company
+		:demand
+		:config
+		(company-prescient-mode t))
+#+END_SRC
+
+** Marginalia
+
+~Marginalia~ adds annotations to minibuffers.
+
+#+BEGIN_SRC emacs-lisp
+	(use-package marginalia
+		:after selectrum
+		:demand
+		:init
+		(setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+		:config (marginalia-mode)
+		:bind (("M-A" . marginalia-cycle)
+					 :map minibuffer-local-map
+					 ("M-A" . marginalia-cycle)))
+#+END_SRC
+
+** Consult
+
+#+BEGIN_SRC emacs-lisp
+(use-package consult
+	:bind
+	(("M-y" . consult-yank)
+	 ("C-x b" . consult-buffer)
+	 ("M-g g" . consult-goto-line)))
+#+END_SRC
+
+** Embark
+
+#+BEGIN_SRC emacs-lisp
+(use-package embark)
+#+END_SRC
+
+** Company
+
+#+BEGIN_SRC emacs-lisp
+	(use-package company
+		:demand
+		:delight
+		:init
+		(setq company-minimum-prefix-length 1)
+		(setq company-idle-delay 0.0)
+		(setq company-tooltip-align-annotations t)
+		;; don't autocomplete when single candidate
+		(setq company-auto-complete nil)
+		(setq company-auto-complete-chars nil)
+		(setq company-dabbrev-code-other-buffers nil)
+		(setq company-backends '((company-capf company-keywords company-files :with company-yasnippet)))
+		:config
+		(global-company-mode))
+#+END_SRC
+
+** Company box
+
+Taken from DOOM
+
+#+BEGIN_SRC emacs-lisp
+	(use-package company-box
+		:delight
+		:hook (company-mode . company-box-mode)
+		:config
+		(setq company-box-show-single-candidate t
+					company-box-backends-colors nil
+					company-box-max-candidates 50
+					company-box-icons-alist 'company-box-icons-all-the-icons
+					company-box-icons-all-the-icons
+					(let ((all-the-icons-scale-factor 0.8))
+						`((Unknown       . ,(all-the-icons-material "find_in_page"             :face 'all-the-icons-purple))
+							(Text          . ,(all-the-icons-material "text_fields"              :face 'all-the-icons-green))
+							(Method        . ,(all-the-icons-material "functions"                :face 'all-the-icons-red))
+							(Function      . ,(all-the-icons-material "functions"                :face 'all-the-icons-red))
+							(Constructor   . ,(all-the-icons-material "functions"                :face 'all-the-icons-red))
+							(Field         . ,(all-the-icons-material "functions"                :face 'all-the-icons-red))
+							(Variable      . ,(all-the-icons-material "adjust"                   :face 'all-the-icons-blue))
+							(Class         . ,(all-the-icons-material "class"                    :face 'all-the-icons-red))
+							(Interface     . ,(all-the-icons-material "settings_input_component" :face 'all-the-icons-red))
+							(Module        . ,(all-the-icons-material "view_module"              :face 'all-the-icons-red))
+							(Property      . ,(all-the-icons-material "settings"                 :face 'all-the-icons-red))
+							(Unit          . ,(all-the-icons-material "straighten"               :face 'all-the-icons-red))
+							(Value         . ,(all-the-icons-material "filter_1"                 :face 'all-the-icons-red))
+							(Enum          . ,(all-the-icons-material "plus_one"                 :face 'all-the-icons-red))
+							(Keyword       . ,(all-the-icons-material "filter_center_focus"      :face 'all-the-icons-red))
+							(Snippet       . ,(all-the-icons-material "short_text"               :face 'all-the-icons-red))
+							(Color         . ,(all-the-icons-material "color_lens"               :face 'all-the-icons-red))
+							(File          . ,(all-the-icons-material "insert_drive_file"        :face 'all-the-icons-red))
+							(Reference     . ,(all-the-icons-material "collections_bookmark"     :face 'all-the-icons-red))
+							(Folder        . ,(all-the-icons-material "folder"                   :face 'all-the-icons-red))
+							(EnumMember    . ,(all-the-icons-material "people"                   :face 'all-the-icons-red))
+							(Constant      . ,(all-the-icons-material "pause_circle_filled"      :face 'all-the-icons-red))
+							(Struct        . ,(all-the-icons-material "streetview"               :face 'all-the-icons-red))
+							(Event         . ,(all-the-icons-material "event"                    :face 'all-the-icons-red))
+							(Operator      . ,(all-the-icons-material "control_point"            :face 'all-the-icons-red))
+							(TypeParameter . ,(all-the-icons-material "class"                    :face 'all-the-icons-red))
+							(Template      . ,(all-the-icons-material "short_text"               :face 'all-the-icons-green))
+							(ElispFunction . ,(all-the-icons-material "functions"                :face 'all-the-icons-red))
+							(ElispVariable . ,(all-the-icons-material "check_circle"             :face 'all-the-icons-blue))
+							(ElispFeature  . ,(all-the-icons-material "stars"                    :face 'all-the-icons-orange))
+							(ElispFace     . ,(all-the-icons-material "format_paint"             :face 'all-the-icons-pink)))))
+
+		;; Disable tab-bar in company-box child frames
+		(add-to-list 'company-box-frame-parameters '(tab-bar-lines . 0)))
+#+END_SRC
+
+* Tools
+** Vterm
+
+Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based on libvterm, a C library.
+
+#+BEGIN_SRC emacs-lisp
+	(use-package vterm
+		:config
+		(setq vterm-shell (executable-find "fish")
+					vterm-max-scrollback 10000))
+#+END_SRC
+
+** Dired
+
+#+BEGIN_SRC emacs-lisp
+(use-package dired
+	:straight (:type built-in)
+	:hook (dired-mode . dired-hide-details-mode))
+
+(use-package dired-single
+	:after dired)
+
+(use-package all-the-icons-dired
+	:hook (dired-mode . all-the-icons-dired-mode))
+
+(use-package dired-hide-dotfiles
+	:hook (dired-mode . dired-hide-dotfiles-mode))
+#+END_SRC
+
+* Key bindings
+** which-key
+
+#+BEGIN_SRC emacs-lisp
+	(use-package which-key
+		:demand
+		:delight
+		:init
+		(setq which-key-separator " ")
+		(setq which-key-prefix-prefix "+")
+		:config
+		(which-key-mode))
+#+END_SRC
+
+** General
+
+~general~ is a tool for keybinding declaration.a
+
+#+BEGIN_SRC emacs-lisp
+	(use-package general
+		:init
+		(general-auto-unbind-keys))
+#+END_SRC
+
+** Mappings
+
+Here we define all prefix keys. The setup here is similar to the
+leader key system present in ~Spacemacs~ or ~Doom Emacs~, except made
+for use with regular Emacs keys.
+
+#+BEGIN_SRC emacs-lisp
+	(define-prefix-command 'leader)
+	(define-prefix-command 'agenda-and-time)
+	(define-prefix-command 'buffers)
+	(define-prefix-command 'search+)
+
+	(global-set-key (kbd "C-c c") 'leader)
+	(global-set-key (kbd "C-c b") 'buffers)
+	(global-set-key (kbd "C-c f") 'fill-text)
+	(global-set-key (kbd "C-c j") 'journal)
+	(global-set-key (kbd "C-c n") 'notes)
+
+	(general-define-key
+		:keymaps 'leader
+		"a" 'agenda-and-time
+		"b" 'buffers
+		"f" 'fill-text
+		"i" 'info-docs
+		"j" 'journal
+		"n" 'notes
+		"s" 'search+
+		"t" 'text-editing)
+
+	(bind-key "M-g g" 'goto-line)
+	(bind-key "M-g a" 'avy-goto-line)
+	(bind-key "M-/" 'hippie-expand)
+#+END_SRC
+
+* Configuration for built-in packages
+** Split right and split below
+The Emacs default split doesn't seem too intuitive for most users.
+#+BEGIN_SRC emacs-lisp
+	(use-package window
+		:straight (:type built-in)
+		:preface
+		(defun vitallium/split-and-follow-horizontally ()
+			"Split window below."
+			(interactive)
+			(split-window-below)
+			(other-window 1))
+		(defun vitallium/split-and-follow-vertically ()
+			"Split window right."
+			(interactive)
+			(split-window-right)
+			(other-window 1))
+		:config
+		(global-set-key (kbd "C-x 2") #'vitallium/split-and-follow-horizontally)
+		(global-set-key (kbd "C-x 3") #'vitallium/split-and-follow-vertically))
+#+END_SRC
+** Automatically refreshes the buffer for changes outside of Emacs
+Auto refreshes every 2 seconds. Don't forget to refresh the version
+control status as well.
+#+BEGIN_SRC emacs-lisp
+	(use-package autorevert
+		:straight (:type built-in)
+		:config
+		(global-auto-revert-mode +1)
+		(setq auto-revert-interval 2
+					auto-revert-check-vc-info t
+					global-auto-revert-non-file-buffers t
+					auto-revert-verbose nil))
+#+END_SRC
+** Mouse wheel (track-pad) scroll speed
+By default, the scrolling is way too fast to be precise and helpful,
+let's tune it down a little bit.
+#+BEGIN_SRC emacs-lisp
+	(use-package mwheel
+		:straight (:type built-in)
+		:config (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))
+									mouse-wheel-progressive-speed nil))
+#+END_SRC
+** Ediff tweaks
+Enter ediff with side-by-side buffers to better compare the
+differences.
+#+BEGIN_SRC emacs-lisp
+	(use-package ediff
+		:straight (:type built-in)
+		:config
+		(setq ediff-window-setup-function #'ediff-setup-windows-plain)
+		(setq ediff-split-window-function #'split-window-horizontally))
+#+END_SRC
+
+** Clean up whitespace on save
+#+BEGIN_SRC emacs-lisp
+	(use-package whitespace
+		:straight (:type built-in)
+		:hook (before-save . whitespace-cleanup))
+#+END_SRC
+
+* Org
+** TOC sync
+
+#+BEGIN_SRC emacs-lisp
+	(use-package toc-org
+		:demand
+		:config (add-hook 'org-mode-hook 'toc-org-mode))
+#+END_SRC
