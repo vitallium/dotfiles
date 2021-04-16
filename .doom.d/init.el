@@ -14,9 +14,14 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
-(doom! :completion
-       company           ; the ultimate code completion backend
-       ivy    ; a search engine for love and life
+(doom! :input
+
+       :completion
+       (company +childframe)            ; the ultimate code completion backend
+       (ivy +prescient
+            -childframe
+            -fuzzy
+            +icons)                            ;  a search engine for love and life
 
        :ui
        doom              ; what makes DOOM look the way it does
@@ -26,19 +31,19 @@
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
-       indent-guides     ; highlighted indent column
-       (modeline +light)       ; snazzy, Atom-inspired modeline, plus API
+       ;;indent-guides     ; highlighted indent column
+       modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink cursor line after big motions
        ophints           ; highlight the region an operation acts on
        (popup +defaults)   ; tame sudden yet inevitable temporary windows
        ;; tabs              ; a tab bar for Emacs
-       treemacs          ; a project drawer, like neotree but cooler
+       ;;treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        ;;vi-tilde-fringe   ; fringe tildes to mark beyond EOB
-       ;;(window-select +numbers)     ; visually switch windows
+       window-select     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
-       ;;zen               ; distraction-free coding or writing
+       zen               ; distraction-free coding or writing
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies
@@ -51,10 +56,9 @@
        snippets          ; my elves. They type so I don't have to
 
        :emacs
-       (dired +ranger
-              +icons)             ; making dired pretty [functional]
+       (dired +ranger +icons)             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
-       ibuffer        ; interactive buffer management
+       ;;ibuffer        ; interactive buffer management
        (undo +tree)              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
 
@@ -62,7 +66,7 @@
        vterm             ; the best terminal emulation in Emacs
 
        :checkers
-       syntax           ; tasing you for every semicolon you forget
+       (syntax +childframe)           ; tasing you for every semicolon you forget
        (spell +hunspell +flyspell)           ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
@@ -73,7 +77,7 @@
        (docker +lsp)
        editorconfig      ; let someone else argue about tabs vs spaces
        (eval +overlay)     ; run code, run (also, repls)
-       lookup              ; navigate your code and its documentation
+       (lookup +docsets +dictionary)              ; navigate your code and its documentation
        (lsp +peek)
        (magit +forge)             ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
@@ -117,6 +121,7 @@
        (nix +lsp)               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org +hugo
+            +noter
             +pretty
             +journal
             +roam)               ; organize your plain life in plain text

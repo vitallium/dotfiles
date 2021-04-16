@@ -1,3 +1,6 @@
+(add-hook 'web-mode-hook #'lsp-deferred)
+(add-hook 'python-mode-hook #'lsp-deferred)
+
 ;; Prettier
 (defun maybe-use-prettier()
   "Enable prettier-js-mode if an rc file is located."

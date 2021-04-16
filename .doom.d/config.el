@@ -21,7 +21,9 @@
 
       projectile-project-search-path '("~/projects")
 
-      avy-all-windows t)
+      avy-all-windows t
+
+      kill-whole-line t)
 
 (after! server
   (when (not (server-running-p))
@@ -86,4 +88,26 @@
 (use-package! vlf-setup
   :defer-incrementally vlf-tune vlf-base vlf-write vlf-search vlf-occur vlf-follow vlf-ediff vlf)
 
-(setq which-key-idle-delay 0.5) ;; I need the help, I really do
+(setq which-key-idle-delay 0.5)
+
+(use-package! reverse-im
+  :custom
+  (reverse-im-input-methods '("russian-computer"))
+  :config
+  (reverse-im-mode t))
+
+(use-package! ctrlf
+  :hook
+  (after-init . ctrlf-mode))
+
+(use-package! easy-kill
+  :bind*
+  (([remap kill-ring-save] . easy-kill)))
+
+(use-package! visual-regexp-steroids
+  :defer 3
+  :config
+  (require 'pcre2el)
+  (setq vr/engine 'pcre2el)
+  (map! "C-c s r" #'vr/replace)
+  (map! "C-c s q" #'vr/query-replace))

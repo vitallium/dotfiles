@@ -18,8 +18,8 @@
    ;;doom-modeline-persp-name nil
    ;;doom-modeline-persp-icon nil
    ;;doom-modeline-mu4e t
-   all-the-icons-scale-factor 0.8)
-  (advice-add #'doom-modeline--font-height :override (lambda () (frame-char-height))))
+   all-the-icons-scale-factor 0.8))
+  ;;(advice-add #'doom-modeline--font-height :override (lambda () (frame-char-height))))
   ;;(mu4e-alert-enable-mode-line-display))
 
 (load! "+hooks")
