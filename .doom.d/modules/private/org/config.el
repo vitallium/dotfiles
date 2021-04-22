@@ -19,8 +19,6 @@
 (setq org-agenda-files (file-expand-wildcards "~/org/gtd/*.org"))
 (setq global-org-pretty-table-mode t)
 
-(setq mixed-pitch-variable-pitch-cursor nil)
-
 (after! org
   (setq org-todo-keywords
         '((sequence "TODO(t)" "REVIEW(r)" "PROJ(p)" "STRT(s)" "WAIT(w)" "HOLD(h)" "|" "DONE(d)" "KILL(k)" "MERGED(m)")

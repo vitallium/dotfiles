@@ -50,24 +50,13 @@
 ;(unpin! t)
 
 (package! move-text)
-(package! origami)
-(package! rainbow-delimiters)
 (package! copy-as-format)
 (package! string-inflection)
 (package! vlf)
-(package! easy-kill)
-(package! reverse-im)
-
+(package! dired-narrow)
 (package! modus-operandi-theme)
-(package! vscode-dark-plus-theme)
 
 ;; testing
-(package! dired-narrow)
 (package! deadgrep)
-(package! ctrlf)
-(package! posframe)
 (package! solaire-mode :disable t)
-
-(package! pcre2el)
-(package! visual-regexp-steroids)
-(unpin! org-mode)
+(package! toml-mode)

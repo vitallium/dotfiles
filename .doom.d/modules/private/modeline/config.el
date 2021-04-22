@@ -14,12 +14,6 @@
    doom-modeline-checker-simple-format t
    doom-modeline-buffer-file-name-style 'truncate-with-project
    doom-modeline-major-mode-icon t
-   doom-modeline-workspace-name t
-   ;;doom-modeline-persp-name nil
-   ;;doom-modeline-persp-icon nil
-   ;;doom-modeline-mu4e t
-   all-the-icons-scale-factor 0.8))
-  ;;(advice-add #'doom-modeline--font-height :override (lambda () (frame-char-height))))
-  ;;(mu4e-alert-enable-mode-line-display))
+   doom-modeline-workspace-name t))
 
 (load! "+hooks")

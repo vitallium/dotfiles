@@ -10,20 +10,9 @@
       ;; disabling them outweighs the utility of always keeping them on.
       display-line-numbers-type nil
 
-      ;; Let me trigger the autocomplete
-      company-idle-delay nil
-
-      ;; More common use-case
-      evil-ex-substitute-global t
-
-      ;; make undo more fine-grained
-      evil-want-fine-undo t
-
       projectile-project-search-path '("~/projects")
 
-      avy-all-windows t
-
-      kill-whole-line t)
+      avy-all-windows t)
 
 (after! server
   (when (not (server-running-p))
@@ -36,14 +25,13 @@
 
     ;; Enable flashing mode-line on errors
     (doom-themes-visual-bell-config)
-
-    ;; Corrects (and improves) org-mode's native fontification.
-    (doom-themes-org-config))
+    (doom-themes-treemacs-config))
 
 ;;
 ;;; UI
-(setq doom-font (font-spec :family "Agave" :size 20)
-      doom-variable-pitch-font (font-spec :family "Alegreya" :size 20))
+(setq doom-font (font-spec :family "mononoki" :size 20)
+      doom-big-font (font-spec :family "mononoki" :size 36)
+      doom-variable-pitch-font (font-spec :family "Iosevka" :size 18))
 
 ;; Maximize the window upon startup
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
@@ -66,7 +54,7 @@
 ;;; Always open up a new workspace when opening up a project.
 (setq +workspaces-on-switch-project-behavior t)
 
-(add-hook! 'prog-mode-hook #'rainbow-delimiters-mode)
+;; (add-hook! 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; testing
 (after! dired
@@ -89,25 +77,3 @@
   :defer-incrementally vlf-tune vlf-base vlf-write vlf-search vlf-occur vlf-follow vlf-ediff vlf)
 
 (setq which-key-idle-delay 0.5)
-
-(use-package! reverse-im
-  :custom
-  (reverse-im-input-methods '("russian-computer"))
-  :config
-  (reverse-im-mode t))
-
-(use-package! ctrlf
-  :hook
-  (after-init . ctrlf-mode))
-
-(use-package! easy-kill
-  :bind*
-  (([remap kill-ring-save] . easy-kill)))
-
-(use-package! visual-regexp-steroids
-  :defer 3
-  :config
-  (require 'pcre2el)
-  (setq vr/engine 'pcre2el)
-  (map! "C-c s r" #'vr/replace)
-  (map! "C-c s q" #'vr/query-replace))

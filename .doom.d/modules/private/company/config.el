@@ -5,9 +5,7 @@
         +ivy-buffer-preview t))
 
 (after! company
-  (setq company-idle-delay nil
-        company-minimum-prefix-length 2)
-  (add-hook 'evil-normal-state-entry-hook #'company-abort))
+  (setq company-minimum-prefix-length 2))
 
 (setq-default history-length 1000)
 (setq-default prescient-history-length 1000)

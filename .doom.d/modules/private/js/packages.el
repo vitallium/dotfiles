@@ -1,6 +1,4 @@
 (package! jest)
-(package! prettier)
-(package! impatient-mode)
-(package! weblorg)
+;;(package! prettier)
 
 (package! graphql-mode)
