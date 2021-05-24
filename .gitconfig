@@ -32,7 +32,7 @@
   precomposeUnicode = true
   # Enable parallel index preload for operations like git diff
   preloadindex = true
-  excludesfile = /home/vitaly/.gitignore_global
+  excludesfile = ~/.gitignore_global
 [interactive]
   diffFilter = delta --color-only
 [delta]
