@@ -7,7 +7,6 @@
 - [[#setup][Setup]]
 	- [[#early-init][Early init]]
 	- [[#startup-optimization][Startup optimization]]
-	- [[#lexical-binding][Lexical Binding]]
 - [[#package-manager][Package manager]]
 	- [[#bootstrap-straight-and-straight-use-package][bootstrap straight and straight-use-package]]
 - [[#emacs][Emacs]]
@@ -19,6 +18,7 @@
 	- [[#basics][Basics]]
 	- [[#better-undo][Better undo]]
 	- [[#navigation][Navigation]]
+	- [[#search][Search]]
 - [[#appearance][Appearance]]
 	- [[#theme][Theme]]
 	- [[#emojis][Emojis]]
@@ -35,6 +35,7 @@
 	- [[#vuejs][Vue.js]]
 	- [[#json][JSON]]
 	- [[#ruby][Ruby]]
+	- [[#yaml][YAML]]
 	- [[#lsp][LSP]]
 	- [[#markdown][Markdown]]
 - [[#completion-framework][Completion framework]]
@@ -60,6 +61,7 @@
 	- [[#clean-up-whitespace-on-save][Clean up whitespace on save]]
 - [[#org][Org]]
 	- [[#toc-sync][TOC sync]]
+	- [[#roam][Roam]]
 
 * Setup
 ** Early init
@@ -107,8 +109,11 @@ Taken from DOOM's.
 
 Taken from DOOM's init
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
+	;;; -*- lexical-binding: t -*-
 	;; NOTE: init.el is now generated from config.org. Please edit that file instead
+
+	(setq-default lexical-binding t)
 
 	;; `file-name-handler-alist' is consulted on every `require', `load' and various
 	;; path/io functions. You get a minor speed up by nooping this. However, this
@@ -135,15 +140,11 @@ Taken from DOOM's init
 	(setq upser-emacs-directory (file-truename (file-name-directory load-file-name)))
 #+END_SRC
 
-** Lexical Binding
-
-This makes it so that the file that is produced from tangling this
-file uses lexical scoping.
-
-#+BEGIN_SRC emacs-lisp
-;;; -*- lexical-binding: t -*-
-(setq-default lexical-binding t)
-#+END_SRC
+#+begin_src emacs-lisp
+	;; Change the user-emacs-directory to keep unwanted things out of ~/.emacs.d
+	(setq user-emacs-directory (expand-file-name "~/.cache/emacs/")
+				url-history-file (expand-file-name "url/history" user-emacs-directory))
+#+end_src
 
 * Package manager
 ** bootstrap straight and straight-use-package
@@ -156,29 +157,30 @@ Some rules/conventions:
 		+ If you use ~:general~ and bind commands to keys it will automatically load the package on first invokation
 
 #+BEGIN_SRC emacs-lisp
-(setq straight-use-package-by-default t)
-(setq straight-vc-git-default-clone-depth 1)
-(setq straight-recipes-gnu-elpa-use-mirror t)
-(setq straight-check-for-modifications '(check-on-save find-when-checking))
-(setq use-package-always-defer t)
-(defvar bootstrap-version)
-(let* ((straight-repo-dir
-				(expand-file-name "straight/repos" user-emacs-directory))
-			 (bootstrap-file
-				(concat straight-repo-dir "/straight.el/bootstrap.el"))
-			 (bootstrap-version 5))
-	(unless (file-exists-p bootstrap-file)
-		(shell-command
-		 (concat
-			"mkdir -p " straight-repo-dir " && "
-			"git -C " straight-repo-dir " clone "
-			"https://github.com/raxod502/straight.el.git && "
-			"git -C " straight-repo-dir " checkout e1390a9")))
-	(load bootstrap-file nil 'nomessage))
-(straight-use-package 'use-package)
-;; This is a variable that has been renamed but straight still refers when
-;; doing :sraight (:no-native-compile t)
-(setq comp-deferred-compilation-black-list nil)
+	(setq straight-use-package-by-default t)
+	(setq straight-vc-git-default-clone-depth 1)
+	(setq straight-recipes-gnu-elpa-use-mirror t)
+	(setq straight-check-for-modifications '(check-on-save find-when-checking))
+	(setq use-package-always-ensure t)
+	(defvar bootstrap-version)
+	(let ((bootstrap-file
+				(expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+				(bootstrap-version 5))
+		(unless (file-exists-p bootstrap-file)
+			(with-current-buffer
+					(url-retrieve-synchronously
+					"https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+					'silent 'inhibit-cookies)
+				(goto-char (point-max))
+				(eval-print-last-sexp)))
+		(load bootstrap-file nil 'nomessage))
+
+	(straight-use-package 'use-package)
+	;; Load the helper package for commands like `straight-x-clean-unused-repos'
+	(require 'straight-x)
+	;; This is a variable that has been renamed but straight still refers when
+	;; doing :sraight (:no-native-compile t)
+	(setq comp-deferred-compilation-black-list nil)
 #+END_SRC
 
 * Emacs
@@ -187,81 +189,82 @@ Some rules/conventions:
 Inspired by https://github.com/natecox/dotfiles/blob/master/emacs/emacs.d/nathancox.org
 
 To debug a LISP function use ~debug-on-entry~. You step /in/ with =d= and /over/ with =e=
-
 #+BEGIN_SRC emacs-lisp
-(use-package emacs
-	:init
-	(setq inhibit-startup-screen t
-				initial-scratch-message nil
-				sentence-end-double-space nil
-				ring-bell-function 'ignore
-				frame-resize-pixelwise t)
+	(use-package better-defaults)
 
-	(setq user-full-name "Vitaly Slobodin"
-				user-mail-address "vslobodin@gitlab.com")
+	(use-package emacs
+		:init
+		(setq inhibit-startup-screen t
+					initial-scratch-message nil
+					sentence-end-double-space nil
+					ring-bell-function 'ignore
+					frame-resize-pixelwise t)
 
-	(setq read-process-output-max (* 1024 1024)) ;; 1mb
+		(setq user-full-name "Vitaly Slobodin"
+					user-mail-address "vslobodin@gitlab.com")
 
-	;; always allow 'y' instead of 'yes'.
-	(defalias 'yes-or-no-p 'y-or-n-p)
+		(setq read-process-output-max (* 1024 1024)) ;; 1mb
 
-	;; default to utf-8 for all the things
-	(set-charset-priority 'unicode)
-	(setq locale-coding-system 'utf-8
-				coding-system-for-read 'utf-8
-				coding-system-for-write 'utf-8)
-	(set-terminal-coding-system 'utf-8)
-	(set-keyboard-coding-system 'utf-8)
-	(set-selection-coding-system 'utf-8)
-	(prefer-coding-system 'utf-8)
-	(setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+		;; always allow 'y' instead of 'yes'.
+		(defalias 'yes-or-no-p 'y-or-n-p)
 
-	;; write over selected text on input... like all modern editors do
-	(delete-selection-mode t)
+		;; default to utf-8 for all the things
+		(set-charset-priority 'unicode)
+		(setq locale-coding-system 'utf-8
+					coding-system-for-read 'utf-8
+					coding-system-for-write 'utf-8)
+		(set-terminal-coding-system 'utf-8)
+		(set-keyboard-coding-system 'utf-8)
+		(set-selection-coding-system 'utf-8)
+		(prefer-coding-system 'utf-8)
+		(setq default-process-coding-system '(utf-8-unix . utf-8-unix))
 
-	;; enable recent files mode.
-	(recentf-mode t)
-	(setq recentf-exclude `(,(expand-file-name "straight/build/" user-emacs-directory)
-													,(expand-file-name "eln-cache/" user-emacs-directory)
-													,(expand-file-name "etc/" user-emacs-directory)
-													,(expand-file-name "var/" user-emacs-directory)))
+		;; write over selected text on input... like all modern editors do
+		(delete-selection-mode t)
 
-	;; don't want ESC as a modifier
-	(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+		;; enable recent files mode.
+		(recentf-mode t)
+		(setq recentf-exclude `(,(expand-file-name "straight/build/" user-emacs-directory)
+														,(expand-file-name "eln-cache/" user-emacs-directory)
+														,(expand-file-name "etc/" user-emacs-directory)
+														,(expand-file-name "var/" user-emacs-directory)))
 
-	;; Don't persist a custom file, this bites me more than it helps
-	(setq custom-file (make-temp-file "")) ; use a temp file as a placeholder
-	(setq custom-safe-themes t)            ; mark all themes as safe, since we can't persist now
-	(setq enable-local-variables :all)     ; fix =defvar= warnings
+		;; don't want ESC as a modifier
+		(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-	;; stop emacs from littering the file system with backup files
-	(setq make-backup-files nil
-				auto-save-default nil
-				create-lockfiles nil)
+		;; Don't persist a custom file, this bites me more than it helps
+		(setq custom-file (make-temp-file "")) ; use a temp file as a placeholder
+		(setq custom-safe-themes t)            ; mark all themes as safe, since we can't persist now
+		(setq enable-local-variables :all)     ; fix =defvar= warnings
 
-	;; follow symlinks
-	(setq vc-follow-symlinks t)
+		;; stop emacs from littering the file system with backup files
+		(setq make-backup-files nil
+					auto-save-default nil
+					create-lockfiles nil)
 
-	;; don't show any extra window chrome
-	(when (window-system)
-		(tool-bar-mode -1)
-		(toggle-scroll-bar -1))
+		;; follow symlinks
+		(setq vc-follow-symlinks t)
 
-	;; enable winner mode globally for undo/redo window layout changes
-	(winner-mode t)
+		;; don't show any extra window chrome
+		(when (window-system)
+			(tool-bar-mode -1)
+			(toggle-scroll-bar -1))
 
-	(show-paren-mode t)
+		;; enable winner mode globally for undo/redo window layout changes
+		(winner-mode t)
 
-	;; less noise when compiling elisp
-	(setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
+		(show-paren-mode t)
 
-	;; clean up the mode line
-	(display-time-mode -1)
-	(setq column-number-mode t)
+		;; less noise when compiling elisp
+		(setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
 
-	;; use common convention for indentation by default
-	(setq-default indent-tabs-mode t)
-	(setq-default tab-width 2))
+		;; clean up the mode line
+		(display-time-mode -1)
+		(setq column-number-mode t)
+
+		;; use common convention for indentation by default
+		(setq-default indent-tabs-mode t)
+		(setq-default tab-width 2))
 #+END_SRC
 
 ** Garbage collector magic hack
@@ -277,13 +280,16 @@ Used by DOOM to manage garbage collection
 
 ** No littering
 
+Keep folders clean.
 #+BEGIN_SRC emacs-lisp
 (use-package no-littering
-				:demand
-				:config
+	:config
 	(with-eval-after-load 'recentf
 		(add-to-list 'recentf-exclude no-littering-var-directory)
 		(add-to-list 'recentf-exclude no-littering-etc-directory)))
+
+(setq auto-save-file-name-transforms
+			`((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
 #+END_SRC
 
 ** Translate input sequences to English
@@ -293,7 +299,7 @@ Used by DOOM to manage garbage collection
 	:custom
 	(reverse-im-input-methods '("russian-computer"))
 	:config
-	(reverse-im-mode t))
+	(reverse-im-mode))
 #+END_SRC
 
 * Interface
@@ -309,18 +315,19 @@ and then to toggle between that and the beginning of the line.
 #+END_SRC
 
 ~delight~ works much better than ~diminish~ and it also works with major modes.
-
 #+BEGIN_SRC emacs-lisp
 (use-package delight)
 #+END_SRC
 
+#+begin_src emacs-lisp
+	(use-package all-the-icons)
+#+end_src
+
 ** Better undo
 
 =undo-tree= visualises undo history as a tree for easy navigation.
-
 #+BEGIN_SRC emacs-lisp
 	(use-package undo-tree
-		:demand
 		:delight
 		:init
 		(global-undo-tree-mode))
@@ -330,12 +337,17 @@ and then to toggle between that and the beginning of the line.
 
 One of the most important features of an advanced editor is quick text navigation.
 ~avy~ lets us jump to any character or line quickly.
-
 #+BEGIN_SRC emacs-lisp
 (use-package avy)
 #+END_SRC
 
-~ace-window~ lets us navigate between windows in the same way as ~avy~.
+#+BEGIN_SRC emacs-lisp
+	(use-package windmove
+		:config
+		(windmove-default-keybindings))
+#+END_SRC
+
+~~ace-window~~ lets us navigate between windows in the same way as ~avy~.
 Once activated it has useful sub-modes like ~x~ to switch into window deletion mode.
 
 #+BEGIN_SRC emacs-lisp
@@ -344,7 +356,7 @@ Once activated it has useful sub-modes like ~x~ to switch into window deletion m
 	(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 #+END_SRC
 
-~Ibuffer~ is a general utility for managing buffers, in a similar
+~~Ibuffer~~ is a general utility for managing buffers, in a similar
 manner to the way dired handles files and directories.
 
 #+BEGIN_SRC emacs-lisp
@@ -353,19 +365,31 @@ manner to the way dired handles files and directories.
 		(("C-x C-b" . ibuffer)))
 #+END_SRC
 
-	~projectile~ is the standard package for adding projects support.
+~~projectile~~ is the standard package for adding projects support.
 
-	,#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
+		(use-package ripgrep)
 		(use-package projectile
-			:demand
 			:delight
 			:config
 			(projectile-mode)
-			:config
 			(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 			(bind-key "C-c p s" 'projectile-ripgrep)
-			(setq projectile-sort-order 'modification-time))
-	;;		(setq projectile-completion-system 'selectrum))
+			(setq projectile-sort-order 'modification-time
+						projectile-enable-caching t
+						projectile-completion-system 'default))
+	;;					projectile-completion-system 'selectrum))
+
+		(use-package ibuffer-projectile
+			:after projectile)
+#+END_SRC
+
+** Search
+
+#+BEGIN_SRC emacs-lisp
+	(use-package ctrlf
+		:init
+		(ctrlf-mode))
 #+END_SRC
 
 * Appearance
@@ -374,14 +398,15 @@ manner to the way dired handles files and directories.
 Recently I found an Emacs port of Visual Studio Code's default theme ~Dark+~.
 
 #+BEGIN_SRC emacs-lisp
-(use-package vscode-dark-plus-theme)
+	(use-package vscode-dark-plus-theme)
+	(load-theme 'vscode-dark-plus)
 #+END_SRC
 
 ** Emojis
 
 Add emoji support. This is useful when working with html.
 
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
 	(use-package emojify)
 #+END_SRC
 
@@ -395,8 +420,8 @@ Maximise the frame by default on start-up. Set the font to size 12.
 		:preface
 		(defun vitallium/set-default-font ()
 			(interactive)
-			(when (member "Agave" (font-family-list))
-				(set-face-attribute 'default nil :family "Agave"))
+			(when (member "mononoki" (font-family-list))
+				(set-face-attribute 'default nil :family "mononoki"))
 			(set-face-attribute 'default nil
 													:height 160
 													:weight 'normal))
@@ -411,11 +436,10 @@ Maximise the frame by default on start-up. Set the font to size 12.
 	(use-package all-the-icons)
 #+END_SRC
 
-*** Doom modeline
+*** Doom modeline (disabled)
 
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package doom-modeline
-	:demand
 	:init
 	(setq doom-modeline-buffer-encoding nil)
 	(setq doom-modeline-height 15)
@@ -442,6 +466,15 @@ Highlight parens etc. for improved readability.
 	(add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 #+END_SRC
 
+EditorConfig
+
+#+BEGIN_SRC emacs-lisp
+	(use-package editorconfig
+		:delight
+		:config
+		(editorconfig-mode))
+#+END_SRC
+
 ** Environment management
 
 By default Emacs doesn't read from the same environment variables set in your terminal. This package fixes that.
@@ -455,14 +488,12 @@ By default Emacs doesn't read from the same environment variables set in your te
 ** Git
 
 Magit is an awesome interface to git. Summon it with `C-x g`.
-
 #+BEGIN_SRC emacs-lisp
 	(use-package magit
 		:bind ("C-x g" . magit-status))
 #+END_SRC
 
 Display line changes in gutter based on git history. Enable it everywhere.
-
 #+BEGIN_SRC emacs-lisp
 	(use-package git-gutter
 		:config
@@ -477,6 +508,7 @@ Type the shortcut and press =TAB= to complete, or =M-/= to autosuggest a snippet
 
 #+BEGIN_SRC emacs-lisp
 	(use-package yasnippet
+			:delight yas-minor-mode
 			:config
 			(add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
 			(yas-global-mode 1))
@@ -485,7 +517,8 @@ Type the shortcut and press =TAB= to complete, or =M-/= to autosuggest a snippet
 Install some premade snippets (in addition to personal ones stored above)
 
 #+BEGIN_SRC emacs-lisp
-	(use-package yasnippet-snippets)
+	(use-package yasnippet-snippets
+		 :delight)
 #+END_SRC
 
 * Languages
@@ -493,7 +526,6 @@ Install some premade snippets (in addition to personal ones stored above)
 
 #+BEGIN_SRC emacs-lisp
 	(use-package web-mode
-		:demand
 		:mode "\\.[px]?html?\\'"
 		:mode "\\.erb\\'"
 		:init
@@ -522,6 +554,11 @@ Install some premade snippets (in addition to personal ones stored above)
 		(js2r-prefered-quote-type 2)
 		:config
 		(setq js-indent-level 2))
+
+	(use-package js2-refactor
+		:after js2-mode
+		:delight
+		:hook (js2-mode . js2-refactor-mode))
 #+END_SRC
 
 We often want to use local packages instead of global ones.
@@ -534,8 +571,7 @@ We often want to use local packages instead of global ones.
 
 #+BEGIN_SRC emacs-lisp
 	(use-package vue-mode
-		:after web-mode
-		:demand)
+		:after web-mode)
 #+END_SRC
 
 ** JSON
@@ -549,73 +585,86 @@ We often want to use local packages instead of global ones.
 
 ** Ruby
 
+#+BEGIN_SRC emacs-lisp
+	(use-package ruby-hash-syntax)
+	(use-package inf-ruby)
+#+END_SRC
 
+** YAML
+
+#+BEGIN_SRC emacs-lisp
+(use-package yaml-mode)
+#+END_SRC
 
 ** LSP
 
 #+BEGIN_SRC emacs-lisp
 	(use-package lsp-mode
-		:init
+		:custom
 		(setq lsp-keymap-prefix "C-c l")
-		:hook ((lsp-mode . lsp-enable-which-key-integration))
-		:custom (lsp-enable-on-type-formatting nil)
-		:commands (lsp lsp-deferred))
+		(lsp-enable-on-type-formatting nil)
+		:hook (
+				 (js2-mode . lsp)
+				 (ruby-mode . lsp)
+				 (yaml-mode . lsp)
+				 (lsp-mode . lsp-enable-which-key-integration))
+		:commands (lsp lsp-deferred)
+		:bind (:map lsp-mode-map
+							([remap xref-find-definitions] . lsp-find-definition)
+							([remap xref-find-references] . lsp-find-references)))
 
 	(use-package lsp-ui
-		:after flycheck
+		:delight
+		:after lsp-mode
 		:hook ((lsp-mode . lsp-ui-mode))
-		:init
-			(setq lsp-ui-doc-show-with-cursor nil)
-			(setq lsp-ui-doc-show-with-mouse nil)
-			(setq lsp-ui-peek-always-show t)
-			(setq lsp-ui-peek-fontify 'always))
+		:config
+			(setq lsp-ui-doc-position 'top))
+
+	(use-package dap-mode
+		:delight
+		:after lsp-mode
+		:hook ((after-init . dap-mode)
+					 (dap-mode . dap-ui-mode)))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
 	(use-package flycheck
-		:demand
 		:delight
 		:hook (prog-mode . flycheck-mode)
-		:init
+		:config
 		(setq flycheck-idle-change-delay 0.5))
 #+END_SRC
 
 ** Markdown
 
 #+BEGIN_SRC emacs-lisp
-(use-package markdown-mode
-	:commands (markdown-mode gfm-mode)
-	:mode (("README\\.md\\'" . gfm-mode)
-				 ("\\.md\\'" . markdown-mode)
-				 ("\\.markdown\\'" . markdown-mode))
-	:init (setq markdown-command "multimarkdown"))
+	(use-package markdown-mode
+		:config
+		(use-package markdown-toc))
 #+END_SRC
 
 * Completion framework
+
 ** Selectrum
-
 Selectrum is a better solution for incremental narrowing in Emacs, replacing Helm, Ivy, and Ido.
-
 #+BEGIN_SRC emacs-lisp
 	(use-package selectrum
-		:demand
 		:config
-		(selectrum-mode t))
+		(setq enable-recursive-minibuffers t)
+		:init
+		(selectrum-mode))
 #+END_SRC
 
 ** Prescient
-
 #+BEGIN_SRC emacs-lisp
 	(use-package selectrum-prescient
 		:after selectrum
-		:demand
 		:config
 		(selectrum-prescient-mode t)
 		(prescient-persist-mode t))
 
 	(use-package company-prescient
 		:after company
-		:demand
 		:config
 		(company-prescient-mode t))
 #+END_SRC
@@ -623,14 +672,12 @@ Selectrum is a better solution for incremental narrowing in Emacs, replacing Hel
 ** Marginalia
 
 ~Marginalia~ adds annotations to minibuffers.
-
 #+BEGIN_SRC emacs-lisp
 	(use-package marginalia
 		:after selectrum
-		:demand
-		:init
+		:config
 		(setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
-		:config (marginalia-mode)
+		:init (marginalia-mode)
 		:bind (("M-A" . marginalia-cycle)
 					 :map minibuffer-local-map
 					 ("M-A" . marginalia-cycle)))
@@ -656,9 +703,8 @@ Selectrum is a better solution for incremental narrowing in Emacs, replacing Hel
 
 #+BEGIN_SRC emacs-lisp
 	(use-package company
-		:demand
 		:delight
-		:init
+		:config
 		(setq company-minimum-prefix-length 1)
 		(setq company-idle-delay 0.0)
 		(setq company-tooltip-align-annotations t)
@@ -667,7 +713,7 @@ Selectrum is a better solution for incremental narrowing in Emacs, replacing Hel
 		(setq company-auto-complete-chars nil)
 		(setq company-dabbrev-code-other-buffers nil)
 		(setq company-backends '((company-capf company-keywords company-files :with company-yasnippet)))
-		:config
+		:init
 		(global-company-mode))
 #+END_SRC
 
@@ -756,23 +802,22 @@ Emacs-libvterm (vterm) is fully-fledged terminal emulator inside GNU Emacs based
 
 #+BEGIN_SRC emacs-lisp
 	(use-package which-key
-		:demand
 		:delight
-		:init
+		:config
 		(setq which-key-separator " ")
 		(setq which-key-prefix-prefix "+")
-		:config
+		:init
 		(which-key-mode))
 #+END_SRC
 
 ** General
 
-~general~ is a tool for keybinding declaration.a
+~~general~~ is a tool for keybinding.
 
 #+BEGIN_SRC emacs-lisp
-	(use-package general
-		:init
-		(general-auto-unbind-keys))
+(use-package general
+	:init
+	(general-auto-unbind-keys))
 #+END_SRC
 
 ** Mappings
@@ -782,28 +827,6 @@ leader key system present in ~Spacemacs~ or ~Doom Emacs~, except made
 for use with regular Emacs keys.
 
 #+BEGIN_SRC emacs-lisp
-	(define-prefix-command 'leader)
-	(define-prefix-command 'agenda-and-time)
-	(define-prefix-command 'buffers)
-	(define-prefix-command 'search+)
-
-	(global-set-key (kbd "C-c c") 'leader)
-	(global-set-key (kbd "C-c b") 'buffers)
-	(global-set-key (kbd "C-c f") 'fill-text)
-	(global-set-key (kbd "C-c j") 'journal)
-	(global-set-key (kbd "C-c n") 'notes)
-
-	(general-define-key
-		:keymaps 'leader
-		"a" 'agenda-and-time
-		"b" 'buffers
-		"f" 'fill-text
-		"i" 'info-docs
-		"j" 'journal
-		"n" 'notes
-		"s" 'search+
-		"t" 'text-editing)
-
 	(bind-key "M-g g" 'goto-line)
 	(bind-key "M-g a" 'avy-goto-line)
 	(bind-key "M-/" 'hippie-expand)
@@ -812,7 +835,7 @@ for use with regular Emacs keys.
 * Configuration for built-in packages
 ** Split right and split below
 The Emacs default split doesn't seem too intuitive for most users.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 	(use-package window
 		:straight (:type built-in)
 		:preface
@@ -837,11 +860,12 @@ control status as well.
 	(use-package autorevert
 		:straight (:type built-in)
 		:config
-		(global-auto-revert-mode +1)
 		(setq auto-revert-interval 2
 					auto-revert-check-vc-info t
 					global-auto-revert-non-file-buffers t
-					auto-revert-verbose nil))
+					auto-revert-verbose nil)
+		:init
+		(global-auto-revert-mode +1)
 #+END_SRC
 ** Mouse wheel (track-pad) scroll speed
 By default, the scrolling is way too fast to be precise and helpful,
@@ -849,8 +873,9 @@ let's tune it down a little bit.
 #+BEGIN_SRC emacs-lisp
 	(use-package mwheel
 		:straight (:type built-in)
-		:config (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))
-									mouse-wheel-progressive-speed nil))
+		:config
+		(setq mouse-wheel-scroll-amount '(2 ((shift) . 1))
+					mouse-wheel-progressive-speed nil))
 #+END_SRC
 ** Ediff tweaks
 Enter ediff with side-by-side buffers to better compare the
@@ -871,10 +896,47 @@ differences.
 #+END_SRC
 
 * Org
-** TOC sync
 
 #+BEGIN_SRC emacs-lisp
+	(use-package org
+		:delight
+		:config
+		(setq org-directory "~/org"
+					org-agenda-files (directory-files-recursively "~/org/" "\\.org$")
+					org-hide-emphasis-markers t
+					org-indent-indentation-per-level 1
+					org-adapt-indentation nil))
+#+END_SRC
+
+Org agenda
+#+begin_src emacs-lisp
+	(use-package org-agenda
+		:straight (:type built-in)
+		:after org
+		:custom
+		(org-agenda-prefix-format '((agenda . " %i %-20:c%?-12t%-6e% s")
+						(todo   . " %i %-20:c %-6e")
+						(tags   . " %i %-20:c")
+						(search . " %i %-20:c"))))
+#+end_src
+
+** TOC sync
+#+BEGIN_SRC emacs-lisp
 	(use-package toc-org
-		:demand
-		:config (add-hook 'org-mode-hook 'toc-org-mode))
+		:commands toc-org-enable
+		:init (add-hook 'org-mode-hook 'toc-org-enable))
+#+END_SRC
+
+** Roam
+#+BEGIN_SRC emacs-lisp
+	(use-package org-roam
+		:custom
+		(org-roam-directory "~/org/")
+		:bind (:map org-roam-mode-map
+							(("C-c n l" . org-roam)
+							 ("C-c n f" . org-roam-find-file)
+							 ("C-c n g" . org-roam-graph))
+							:map org-mode-map
+							(("C-c n i" . org-roam-insert))
+							(("C-c n I" . org-roam-insert-immediate))))
 #+END_SRC
