@@ -1,1 +1,0 @@
-(package! magit-delta)

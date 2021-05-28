@@ -1,0 +1,848 @@
+#+TITLE My Doom Emacs Configuration
+#+AUTHOR Vitaly Slobodin
+#+property: header-args:emacs-lisp :tangle yes :comments link
+#+property: header-args:elisp :exports code
+#+property: header-args:shell :tangle "setup.sh"
+#+property: header-args :tangle no :results silent :eval no-export
+#+startup: fold
+
+* DOOM configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle no
+:END:
+Doom has this lovely /modular configuration base/ that takes a lot of work out of
+configuring Emacs. Each module (when enabled) can provide a list of packages to
+install (on ~doom sync~) and configuration to be applied. The modules can also
+have flags applied to tweak their behaviour.
+
+#+name: init.el
+#+begin_src emacs-lisp :tangle "init.el" :noweb no-export :comments none
+;;; init.el -*- lexical-binding: t; -*-
+
+;; This file controls what Doom modules are enabled and what order they load in.
+;; Press 'K' on a module to view its documentation, and 'gd' to browse its directory.
+
+(doom! :completion
+       <<doom-completion>>
+
+       :ui
+       <<doom-ui>>
+
+       :editor
+       <<doom-editor>>
+
+       :emacs
+       <<doom-emacs>>
+
+       :term
+       <<doom-term>>
+
+       :checkers
+       <<doom-checkers>>
+
+       :tools
+       <<doom-tools>>
+
+       :os
+       <<doom-os>>
+
+       :lang
+       <<doom-lang>>
+
+       :email
+       <<doom-email>>
+
+       :app
+       <<doom-app>>
+
+       :config
+       <<doom-config>>
+       )
+#+end_src
+** Modules
+#+name: doom-config
+#+begin_src emacs-lisp
+literate
+(default +bindings +smartparens)
+#+end_src
+
+#+name: doom-completion
+#+begin_src emacs-lisp
+(company                     ; the ultimate code completion backend
+ +childframe)                ; ... when your children are better than you
+;;helm                       ; the *other* search engine for love and life
+;;ido                        ; the other *other* search engine...
+(ivy                         ; a search engine for love and life
+ +icons                      ; ... icons are nice
+ +prescient)                 ; ... I know what I want(ed)
+#+end_src
+
+#+name: doom-ui
+#+begin_src emacs-lisp
+;;deft                       ; notational velocity for Emacs
+doom                         ; what makes DOOM look the way it does
+doom-dashboard               ; a nifty splash screen for Emacs
+doom-quit                    ; DOOM quit-message prompts when you quit Emacs
+(emoji +unicode)             ; 🙂
+;;fill-column                ; a `fill-column' indicator
+hl-todo                      ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
+;;hydra                      ; quick documentation for related commands
+;;indent-guides              ; highlighted indent columns, notoriously slow
+;;minimap                    ; show a map of the code on the side
+modeline                     ; snazzy, Atom-inspired modeline, plus API
+nav-flash                    ; blink the current line after jumping
+;;neotree                    ; a project drawer, like NERDTree for vim
+ophints                      ; highlight the region an operation acts on
+(popup                       ; tame sudden yet inevitable temporary windows
+ +all                        ; catch all popups that start with an asterix
+ +defaults)                  ; default popup rules
+;;(tabs                      ; an tab bar for Emacs
+;;  +centaur-tabs)           ; ... with prettier tabs
+(treemacs +lsp)                     ; a project drawer, like neotree but cooler
+;;unicode                    ; extended unicode support for various languages
+vc-gutter                    ; vcs diff in the fringe
+vi-tilde-fringe              ; fringe tildes to mark beyond EOB
+(window-select +numbers)     ; visually switch windows
+workspaces                   ; tab emulation, persistence & separate workspaces
+zen                          ; distraction-free coding or writing
+#+end_src
+
+#+name: doom-editor
+#+begin_src emacs-lisp
+file-templates               ; auto-snippets for empty files
+fold                         ; (nigh) universal code folding
+(format)                     ; automated prettiness
+;;god                        ; run Emacs commands without modifier keys
+;;lispy                      ; vim for lisp, for people who don't like vim
+multiple-cursors             ; editing in many places at once
+;;objed                      ; text object editing for the innocent
+;;parinfer                   ; turn lisp into python, sort of
+rotate-text                  ; cycle region at point between text candidates
+snippets                     ; my elves. They type so I don't have to
+;;word-wrap                  ; soft wrapping with language-aware indent
+#+end_src
+
+#+name: doom-emacs
+#+begin_src emacs-lisp
+(dired +icons)               ; making dired pretty [functional]
+electric                     ; smarter, keyword-based electric-indent
+(ibuffer +icons)             ; interactive buffer management
+(undo +tree)                 ; persistent, smarter undo for your inevitable mistakes
+vc                           ; version-control and Emacs, sitting in a tree
+#+end_src
+
+#+name: doom-term
+#+begin_src emacs-lisp
+;;eshell                     ; the elisp shell that works everywhere
+;;shell                      ; simple shell REPL for Emacs
+;;term                       ; basic terminal emulator for Emacs
+vterm                        ; the best terminal emulation in Emacs
+#+end_src
+
+#+name: doom-checkers
+#+begin_src emacs-lisp
+syntax                       ; tasing you for every semicolon you forget
+(spell +hunspell +flyspell)  ; tasing you for misspelling mispelling
+grammar                      ; tasing grammar mistake every you make
+#+end_src
+
+#+name: doom-tools
+#+begin_src emacs-lisp
+ansible
+(debugger +lsp)          ; FIXME stepping through code, to help you add bugs
+direnv
+(docker +lsp)
+editorconfig      ; let someone else argue about tabs vs spaces
+(eval +overlay)     ; run code, run (also, repls)
+(lookup +docsets +dictionary)              ; navigate your code and its documentation
+(lsp +peek)
+(magit +forge)             ; a git porcelain for Emacs
+make              ; run make tasks from Emacs
+;;pass              ; password manager for nerds
+;;rgb               ; creating color strings
+taskrunner        ; taskrunner for all your projects
+;;terraform         ; infrastructure as code
+;;tmux              ; an API for interacting with tmux
+;;upload            ; map local to remote projects via ssh/ftp
+#+end_src
+
+#+name: doom-os
+#+begin_src emacs-lisp
+(:if IS-MAC macos)  ; improve compatibility with macOS
+tty                          ; improve the terminal Emacs experience
+#+end_src
+
+#+name: doom-lang
+#+begin_src emacs-lisp
+(cc +lsp)           ; C/C++/Obj-C madness
+;;clojure           ; java with a lisp
+;;(common-lisp +lsp); if you've seen one lisp, you've seen them all
+;;crystal           ; ruby at the speed of c
+;;csharp            ; unity, .NET, and mono shenanigans
+data                ; config/data formats
+;;(dart +flutter)   ; paint ui and not much else
+;;elixir            ; erlang done right
+;;elm               ; care for a cup of TEA?
+emacs-lisp          ; drown in parentheses
+;;(erlang +lsp)     ; an elegant language for a more civilized age
+(go +lsp)           ; the hipster dialect
+;;(haskell +dante)  ; a language that's lazier than I am
+(json +lsp)         ; At least it ain't XML
+;;(java +meghanada) ; the poster child for carpal tunnel syndrome
+(javascript +lsp)   ; all(hope(abandon(ye(who(enter(here))))))
+;;latex             ; writing papers in Emacs has never been so fun
+;;lean
+;;factor
+;;ledger            ; an accounting system in Emacs
+;;lua               ; one-based indices? one-based indices
+(markdown +grip)    ; writing docs for people to ignore
+(nix +lsp)          ; I hereby declare "nix geht mehr!"
+;;ocaml             ; an objective camel
+(org +hugo
+     +noter
+     +pretty
+     +journal
+     +roam)         ; organize your plain life in plain text
+;;plantuml          ; diagrams for confusing people more
+(python +lsp)       ; beautiful is better than ugly
+;;qt                ; the 'cutest' gui framework ever
+;;racket            ; a DSL for DSLs
+;;rest              ; Emacs as a REST client
+;;rst               ; ReST in peace
+(ruby +lsp +rails)  ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+(rust +lsp)         ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+;;scala             ; java, but good
+;;scheme            ; a fully conniving family of lisps
+(sh +fish +lsp)     ; she sells {ba,z,fi}sh shells on the C xor
+(web +lsp)          ; the tubes
+(yaml +lsp)         ; JSON, but readable
+#+end_src
+
+#+name: doom-email
+#+begin_src emacs-lisp
+(:if (executable-find "mu") (mu4e +org +gmail))
+;;notmuch
+;;(wanderlust +gmail)
+#+end_src
+
+#+name: doom-app
+#+begin_src emacs-lisp
+;;calendar                   ; A dated approach to timetabling
+;;emms                       ; Multimedia in Emacs is music to my ears
+everywhere                   ; *leave* Emacs!? You must be joking.
+irc                          ; how neckbeards socialize
+;;(rss +org)                 ; emacs as an RSS reader
+;;twitter                    ; twitter client https://twitter.com/vnought
+
+#+end_src
+
+* Rudimentary configuration
+Make this file run (slightly) faster with lexical binding (see [[https://nullprogram.com/blog/2016/12/22/][this blog post]]
+for more info).
+#+begin_src emacs-lisp :comments no
+;;; config.el -*- lexical-binding: t; -*-
+#+end_src
+
+#+begin_src shell :exports none :comments no :tangle-mode (identity #o755)
+#!/bin/bash
+#+end_src
+* Basic configuration
+#+BEGIN_SRC emacs-lisp :comments no
+;;; config.el -*- lexical-binding: t; -*-
+#+END_SRC
+** Personal configuration
+#+begin_src  emacs-lisp
+(setq user-full-name "Vitaly Slobodin"
+      user-mail-address "vslobodin@gitlab.com"
+      auth-sources '("~/.authinfo.gpg"))
+#+end_src
+
+I prefer storing keybindings in a separate file:
+#+begin_src emacs-lisp
+(load! "+bindings")
+#+end_src
+** Customizations
+By default changes made via a customisation interface are added to =init.el=.
+I prefer the idea of using a separate file for this. We just need to change a
+setting, and load it if it exists.
+#+begin_src emacs-lisp
+(setq-default custom-file (expand-file-name ".custom.el" doom-private-dir))
+(when (file-exists-p custom-file)
+  (load custom-file))
+#+end_src
+* Visual configuration
+I really love the dark theme from Visual Studio code but it has problems in doom-emacs.
+#+begin_src emacs-lisp :tangle no
+(setq doom-theme 'doom-dark+)
+#+end_src
+So use =doom-dracula= for now.
+#+begin_src emacs-lisp
+(setq doom-theme 'doom-dracula)
+#+end_src
+But I also use =modus-operandi=.
+
+Apply doom styles for themes and other components:
+#+begin_src emacs-lisp
+(after! doom-themes
+    (setq
+        doom-themes-enable-bold t     ; if nil, bold is universally disabled
+        doom-themes-enable-italic t)  ; if nil, italics is universally disabled
+
+    ;; Enable flashing mode-line on errors
+    (doom-themes-visual-bell-config)
+    ;; or for treemacs users
+    (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+    (doom-themes-treemacs-config)
+    ;; Corrects (and improves) org-mode's native fontification.
+    (doom-themes-org-config))
+#+end_src
+Apply customizations to =doom-dracula= theme:
+#+begin_src emacs-lisp
+(custom-theme-set-faces! 'doom-dracula
+ `(markdown-code-face :background ,(doom-darken 'bg 0.075))
+ `(font-lock-variable-name-face :foreground ,(doom-lighten 'magenta 0.6)))
+#+end_src
+Line numbers are pretty slow all around. The performance boost of disabling them outweighs the utility of always keeping them on:
+#+begin_src emacs-lisp
+(setq display-line-numbers-type nil)
+#+end_src
+Maximize the window upon startup:
+#+begin_src emacs-lisp
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+#+end_src
+Prevents some cases of Emacs flickering:
+#+begin_src emacs-lisp
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
+#+end_src
+** Font
+[[https://input.djr.com/][Input]] font is just the best font I ever used.
+#+begin_src emacs-lisp :tangle no
+(setq doom-font (font-spec :family "Input" :size 20)
+      doom-big-font (font-spec :family "Input" :size 26)
+      doom-variable-pitch-font (font-spec :family "Overpass" :size 24)
+      doom-serif-font (font-spec :family "Ubuntu" :weight 'semi-bold :width 'extra-condensed))
+#+end_src
+But I switched to [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]].
+#+begin_src emacs-lisp
+(setq doom-font (font-spec :family "PragmataPro Mono" :size 22)
+      doom-big-font (font-spec :family "PragmataPro" :size 28)
+      doom-variable-pitch-font (font-spec :family "Overpass" :size 24)
+      doom-unicode-font (font-spec :family "Noto Sans")
+      doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light))
+#+end_src
+* Package management
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle packages.el :comments link
+:END:
+This file shouldn't be byte compiled.
+#+BEGIN_SRC emacs-lisp :tangle packages.el :comments no
+;; -*- no-byte-compile: t; -*-
+#+END_SRC
+** Loading instructions
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle no
+:END:
+* Navigation
+** Opening links
+I use [[https://github.com/abo-abo/ace-link][ace-link]] to quickly open links in the buffer:
+#+begin_src emacs-lisp :tangle packages.el
+(package! ace-link)
+(package! ace-window)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! ace-link
+  :commands (ace-link))
+(after! avy
+  (setq avy-keys '(?a ?s ?d ?f ?j ?k ?l ?\;)))
+(after! ace-window
+  (setq aw-keys '(?f ?d ?s ?r ?e ?w)
+        aw-scope 'frame
+        aw-ignore-current t
+        aw-background nil))
+#+end_src
+** Switch to ctrlf
+#+begin_src emacs-lisp :tangle packages.el
+(package! ctrlf)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! ctrlf
+  :hook
+  (after-init . ctrlf-mode))
+#+end_src
+** Workspaces
+Always open up a new workspace when opening up a project.
+#+begin_src emacs-lisp
+(setq +workspaces-on-switch-project-behavior t)
+#+end_src
+* Languages
+** JavaScript
+~Jest~ is the most popular testing framework:
+#+begin_src emacs-lisp :tangle packages.el
+(package! jest)
+#+end_src
+Tell ~Jest~ to use ~yarn~:
+#+begin_src emacs-lisp
+(after! jest
+  (setq jest-executable "yarn jest"))
+#+end_src
+And enable it in ~js2~ mode:
+#+begin_src emacs-lisp
+(add-hook! js2-mode #'jest-minor-mode)
+#+end_src
+Use =web-mode= for VueJS files:
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
+#+end_src
+Add support for
+*** Prettier
+Enable prettier only if the configuration file found:
+#+begin_src emacs-lisp
+(defun maybe-use-prettier()
+  "Enable prettier-js-mode if an rc file is located."
+  (if (locate-dominating-file default-directory ".prettierrc")
+      (format-all-mode)))
+
+(add-hook! js2-mode 'maybe-use-prettier)
+(add-hook! rjsx-mode-hook 'maybe-use-prettier)
+#+end_src
+*** Flycheck
+Enable =ESLint= in =web-mode=:
+#+begin_src emacs-lisp
+(after! flycheck
+  (flycheck-add-mode 'javascript-eslint 'web-mode))
+#+end_src
+Enable =stylelint= in =web-mode=:
+#+begin_src emacs-lisp
+(after! flycheck
+  (flycheck-add-mode 'css-stylelint 'web-mode))
+#+end_src
+** GraphQL
+Add support for ~GraphQL~:
+#+begin_src emacs-lisp :tangle packages.el
+(package! graphql-mode)
+#+end_src
+** Ruby
+*** Flycheck
+Disable =ruby-reek=
+#+begin_src emacs-lisp
+(setq flycheck-disabled-checkers '(ruby-reek))
+#+end_src
+Always execute =rubocop= with =bundle exec=
+#+begin_src emacs-lisp
+(add-hook! 'ruby-mode-hook (setq-local flycheck-checker 'ruby-rubocop))
+(add-hook 'ruby-mode-hook
+  (lambda ()
+    (setq-local flycheck-command-wrapper-function
+                (lambda (command) (append '("bundle" "exec") command)))))
+#+end_src
+*** LSP
+Add =asdf= dir to the library path:
+#+begin_src emacs-lisp
+(after! lsp-solargraph
+  (add-to-list 'lsp-solargraph-library-directories "~/.asdf/installs/ruby"))
+#+end_src
+** Go
+Use =goimports= for formatting
+#+begin_src emacs-lisp
+(setq gofmt-command "goimports")
+#+end_src
+Format file before saving it
+#+begin_src emacs-lisp
+(add-hook! go-mode-hook #'gofmt-before-save)
+#+end_src
+* Key bindings
+** Local leader key
+#+begin_src emacs-lisp :tangle +bindings.el
+(map! "C-z" nil)
+(setq doom-localleader-alt-key "C-z")
+#+end_src
+** Editing
+#+begin_src emacs-lisp :tangle packages.el
+(package! crux)
+#+end_src
+
+#+begin_src emacs-lisp :tangle +bindings.el
+(map! "C-a" #'crux-move-beginning-of-line
+      "C-k" #'crux-smart-kill-line
+      "C-x 4 t" #'crux-transpose-windows)
+#+end_src
+** Magit
+#+begin_src emacs-lisp :tangle +bindings.el
+(map! "s-g" #'magit-status
+      "C-c g" #'magit-status
+      "s-G" #'magit-blame-addition
+      "C-c G" #'magit-blame-addition)
+#+end_src
+** Navigation
+#+begin_src emacs-lisp :tangle +bindings.el
+(map! "M-g M-g" #'avy-goto-line
+      "M-g o" #'counsel-outline
+      "M-p" #'ace-window)
+#+end_src
+* Org
+** Org
+*** Packages
+#+begin_src emacs-lisp :tangle packages.el
+(package! org-gitlab :recipe (:host gitlab :repo "to1ne/org-gitlab"))
+(package! ob-graphql)
+(package! org-super-agenda)
+(package! doct)
+(package! org-journal)
+(package! toc-org)
+(package! org-download)
+#+end_src
+*** Setup =org= directories
+#+begin_src emacs-lisp
+(setq org-directory "~/org/"
+      org-archive-location (concat org-directory ".archive/%s::")
+      org-roam-directory (concat org-directory "notes/")
+      org-roam-db-location (concat org-roam-directory ".org-roam.db"))
+#+end_src
+*** Configure =org=
+#+begin_src emacs-lisp
+(after! org
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "REVIEW(r)" "PROJ(p)" "STRT(s)" "WAIT(w)" "HOLD(h)" "|" "DONE(d)" "KILL(k)" "MERGED(m)")
+        (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)"))))
+#+end_src
+
+Enable =mixed-pitch-mode=
+#+begin_src emacs-lisp
+(add-hook! 'org-mode-hook
+           #'+org-pretty-mode #'mixed-pitch-mode)
+#+end_src
+** org-journal
+*** Setup =org-journal= directories and formats
+#+begin_src emacs-lisp
+(setq org-journal-file-format "%Y%m%d.org"
+      org-journal-dir "~/org/daily/"
+      org-journal-date-prefix "#+TITLE: "
+      org-journal-file-format "%Y-%m-%d.org"
+      org-journal-date-format "%A, %d %B %Y"
+      org-journal-find-file #'find-file-other-window
+      org-journal-enable-agenda-integration t)
+#+end_src
+*** Configure =org-journal=
+#+begin_src emacs-lisp
+(after! org-journal
+  (setq org-journal-enable-agenda-integration t)
+  (customize-set-variable 'org-journal-file-format "%Y-%m-%d.org")
+  (customize-set-variable 'org-journal-date-format "%Y-%m-%d %A")
+  (setq org-journal-carryover-items "TODO=\"TODO\"|TODO=\"REVIEW\""))
+#+end_src
+Setup =org-agenda= search pattern
+#+begin_src emacs-lisp
+(setq org-agenda-files (file-expand-wildcards "~/org/gtd/*.org"))
+#+end_src
+* Mail
+** mu4e
+Load the system version of =mu4e=
+#+begin_src emacs-lisp
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
+#+end_src
+General configuration
+#+begin_src emacs-lisp
+(after! mu4e
+  (setq mu4e-get-mail-command "mbsync -c ~/.config/isync/mbsyncrc -a"
+        ;; Refresh mail using isync every 10 minutes
+        mu4e-update-interval (* 10 60)
+        ;; This is set to 't' to avoid mail syncing issues when using mbsync
+        mu4e-change-filenames-when-moving t
+        mu4e-root-maildir "~/.mail"
+        shr-use-colors nil))
+#+end_src
+** Setup accounts
+*** Personal
+#+begin_src emacs-lisp
+(after! mu4e
+  (set-email-account! "fastmail"
+                      '((mu4e-sent-folder       . "/fastmail/Sent")
+                        (mu4e-drafts-folder     . "/fastmail/Drafts")
+                        (mu4e-trash-folder      . "/fastmail/Trash")
+                        (mu4e-refile-folder     . "/fastmail/Archive")
+                        (smtpmail-smtp-user     . "vitaly_slobodin@fastmail.com"))
+                      t))
+#+end_src
+*** Work (GitLab)
+#+begin_src emacs-lisp
+(after! mu4e
+  (set-email-account! "gitlab"
+                      '((mu4e-sent-folder       . "/gitlab/\[Gmail\]/Sent Mail")
+                        (mu4e-drafts-folder     . "/gitlab/\[Gmail\]/Drafts")
+                        (mu4e-trash-folder      . "/gitlab/\[Gmail\]/Trash")
+                        (mu4e-refile-folder     . "/gitlab/\[Gmail\]/Archive")
+                        (smtpmail-smtp-user     . "vslobodin@gitlab.com")
+                        ;; don't save message to Sent Messages, GMail/IMAP will take care of this
+                        (mu4e-sent-messages-behavior 'delete)))
+
+  (add-to-list 'mu4e-bookmarks
+               (make-mu4e-bookmark
+                :name "Inbox"
+                :query "maildir:\"/gitlab/Inbox\""
+                :key ?i)))
+#+end_src
+** Setup =mu4e-alert= for notifications
+*** Packages
+#+begin_src emacs-lisp :tangle packages.el
+(package! mu4e-alert)
+#+end_src
+*** Configuration
+#+begin_src emacs-lisp
+(use-package! mu4e-alert
+  :after mu4e
+  :init
+  (setq doom-modeline-mu4e t)
+  (mu4e-alert-set-default-style (if IS-MAC 'notifier 'notifications))
+  (setq mu4e-alert-interesting-mail-query "flag:unread AND maildir:\"/gitlab/Inbox\"")
+  (mu4e-alert-enable-notifications)
+  (mu4e-alert-enable-mode-line-display))
+#+end_src
+* Completion
+** Packages
+#+begin_src emacs-lisp :tangle packages.el
+(package! orderless)
+#+end_src
+** Company
+Disable autocomplete
+#+begin_src emacs-lisp
+(after! company
+  (setq company-idle-delay nil))
+#+end_src
+** Ivy
+Use =ripgrep=
+#+begin_src emacs-lisp
+(after! ivy
+  (setq +ivy-project-search-engines '(rg)))
+#+end_src
+Enable preview of buffers
+#+begin_src emacs-lisp
+(after! ivy
+  (setq +ivy-buffer-preview t))
+#+end_src
+I prefer search matching to be ordered; it's more precise
+#+begin_src emacs-lisp
+(after! ivy
+  (add-to-list 'ivy-re-builders-alist '(counsel-projectile-find-file . ivy--regex-plus)))
+#+end_src
+* Spelling
+** Flyspell
+Correct popup
+#+begin_src emacs-lisp
+(after! flyspell
+  (setq flyspell-correct-popup t))
+#+end_src
+** ispell
+Setup multidictionary
+#+begin_src emacs-lisp
+(after! ispell
+  (setq ispell-program-name (executable-find "hunspell"))
+  (ispell-set-spellchecker-params)
+  (ispell-hunspell-add-multi-dic "en_US,ru_RU")
+  (setq ispell-dictionary "en_US,ru_RU"))
+#+end_src
+* Magit
+** Basic configuration
+#+begin_src emacs-lisp
+(after! magit
+  (setq magit-repository-directories '(("~/projects/" . 3))
+        magit-save-repository-buffers nil
+        magit-display-file-buffer-function #'switch-to-buffer-other-window
+        magithub-clone-default-directory "~/projects"
+        magithub-preferred-remote-method 'ssh_url
+        magit-diff-refine-hunk 'all
+        magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")))
+#+end_src
+** Integration with delta
+Does not work yet
+#+begin_src emacs-lisp :tangle no
+(add-hook! 'magit-mode-hook (lambda () (magit-delta-mode +1)))
+#+end_src
+* Dired
+** Prettify it
+#+begin_src emacs-lisp
+(after! dired
+  (setq dired-listing-switches "-aBhl  --group-directories-first"
+        dired-dwim-target t
+        dired-recursive-copies (quote always)
+        dired-recursive-deletes (quote top)))
+#+end_src
+** Add narrow mode
+#+begin_src emacs-lisp :tangle packages.el
+(package! dired-narrow)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! dired-narrow
+  :commands (dired-narrow-fuzzy)
+  :init
+  (map! :map dired-mode-map
+        :desc "narrow" "/" #'dired-narrow-fuzzy))
+#+end_src
+
+* Everywhere
+#+begin_src emacs-lisp
+(after! emacs-everywhere
+  ;; Easier to match with a bspwm rule:
+  ;;   bspc rule -a 'Emacs:emacs-everywhere' state=floating sticky=on
+  (setq emacs-everywhere-frame-name-format "emacs-anywhere")
+
+  ;; The modeline is not useful to me in the popup window. It looks much nicer
+  ;; to hide it.
+  (remove-hook 'emacs-everywhere-init-hooks #'hide-mode-line-mode)
+
+  ;; Semi-center it over the target window, rather than at the cursor position
+  ;; (which could be anywhere).
+  (defadvice! center-emacs-everywhere-in-origin-window (frame window-info)
+    :override #'emacs-everywhere-set-frame-position
+    (cl-destructuring-bind (x y width height)
+        (emacs-everywhere-window-geometry window-info)
+      (set-frame-position frame
+                          (+ x (/ width 2) (- (/ width 2)))
+                          (+ y (/ height 2))))))
+#+end_src
+
+* Systemd daemon
+For running a systemd service for a Emacs server I have the following
+#+name: emacsclient service
+#+begin_src systemd :tangle ~/.config/systemd/user/emacs.service :mkdirp yes
+[Unit]
+Description=Emacs server daemon
+Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
+
+[Service]
+Type=forking
+ExecStart=sh -c 'emacs --daemon && emacsclient -c --eval "(delete-frame)"'
+ExecStop=/usr/bin/emacsclient --no-wait --eval "(progn (setq kill-emacs-hook nil) (kill emacs))"
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+#+end_src
+
+which is then enabled by
+#+begin_src shell :tangle (if (string= "enabled\n" (shell-command-to-string "systemctl --user is-enabled emacs.service")) "no" "setup.sh")
+systemctl --user enable emacs.service
+#+end_src
+
+For some reason if a frame isn't opened early in the initialisation process, the
+daemon doesn't seem to like opening frames later --- hence the ~&& emacsclient~
+part of the =ExecStart= value.
+
+It can now be nice to use this as a 'default app' for opening files. If we add
+an appropriate desktop entry, and enable it in the desktop environment.
+
+#+begin_src conf :tangle ~/.local/share/applications/emacs-client.desktop :mkdirp yes
+[Desktop Entry]
+Name=Emacs client
+GenericName=Text Editor
+Comment=A flexible platform for end-user applications
+MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;
+Exec=emacsclient -create-frame --alternate-editor="" --no-wait %F
+Icon=emacs
+Type=Application
+Terminal=false
+Categories=TextEditor;Utility;
+StartupWMClass=Emacs
+Keywords=Text;Editor;
+X-KDE-StartupNotify=false
+#+end_src
+
+* Emacs client wrapper
+I frequently want to make use of Emacs while in a terminal emulator. To make
+this easier, I can construct a few handy aliases.
+
+However, a little convenience script in =~/.local/bin= can have the same effect,
+be available beyond the specific shell I plop the alias in, then also allow me
+to add a few bells and whistles --- namely:
++ Accepting stdin by putting it in a temporary file and immediately opening it.
++ Guessing that the =tty= is a good idea when ~$DISPLAY~ is unset (relevant with SSH
+  sessions, among other things).
++ With a whiff of 24-bit color support, sets ~TERM~ variable to a =terminfo= that
+  (probably) announces 24-bit color support.
++ Changes GUI =emacsclient= instances to be non-blocking by default (~--no-wait~),
+  and instead take a flag to suppress this behaviour (~-w~).
+
+I would use =sh=, but using arrays for argument manipulation is just too
+convenient, so I'll raise the requirement to =bash=. Since arrays are the only
+'extra' compared to =sh=, other shells like =csh= etc. should work too.
+
+#+name: e
+#+begin_src shell :tangle ~/.local/bin/e :mkdirp yes :tangle-mode (identity #o755) :comments none
+#!/usr/bin/env bash
+force_tty=false
+force_wait=false
+stdin_mode=""
+
+args=()
+
+while :; do
+    case "$1" in
+        -t | -nw | --tty)
+            force_tty=true
+            shift ;;
+        -w | --wait)
+            force_wait=true
+            shift ;;
+        -m | --mode)
+            stdin_mode=" ($2-mode)"
+            shift 2 ;;
+        -h | --help)
+            echo -e "\033[1mUsage: e [-t] [-m MODE] [OPTIONS] FILE [-]\033[0m
+
+Emacs client convenience wrapper.
+
+\033[1mOptions:\033[0m
+\033[0;34m-h, --help\033[0m            Show this message
+\033[0;34m-t, -nw, --tty\033[0m        Force terminal mode
+\033[0;34m-w, --wait\033[0m            Don't supply \033[0;34m--no-wait\033[0m to graphical emacsclient
+\033[0;34m-\033[0m                     Take \033[0;33mstdin\033[0m (when last argument)
+\033[0;34m-m MODE, --mode MODE\033[0m  Mode to open \033[0;33mstdin\033[0m with
+
+Run \033[0;32memacsclient --help\033[0m to see help for the emacsclient."
+            exit 0 ;;
+        --*=*)
+            set -- "$@" "${1%%=*}" "${1#*=}"
+            shift ;;
+        ,*)
+            if [ "$#" = 0 ]; then
+                break; fi
+            args+=("$1")
+            shift ;;
+    esac
+done
+
+if [ ! "${#args[*]}" = 0 ] && [ "${args[-1]}" = "-" ]; then
+    unset 'args[-1]'
+    TMP="$(mktemp /tmp/emacsstdin-XXX)"
+    cat > "$TMP"
+    args+=(--eval "(let ((b (generate-new-buffer \"*stdin*\"))) (switch-to-buffer b) (insert-file-contents \"$TMP\") (delete-file \"$TMP\")${stdin_mode})")
+fi
+
+if [ -z "$DISPLAY" ] || $force_tty; then
+    # detect terminals with sneaky 24-bit support
+    if { [ "$COLORTERM" = truecolor ] || [ "$COLORTERM" = 24bit ]; } \
+        && [ "$(tput colors 2>/dev/null)" -lt 257 ]; then
+        if echo "$TERM" | grep -q "^\w\+-[0-9]"; then
+            termstub="${TERM%%-*}"; else
+            termstub="${TERM#*-}"; fi
+        if infocmp "$termstub-direct" >/dev/null 2>&1; then
+            TERM="$termstub-direct"; else
+            TERM="xterm-direct"; fi # should be fairly safe
+    fi
+    emacsclient --tty -create-frame --alternate-editor="" "${args[@]}"
+else
+    if ! $force_wait; then
+        args+=(--no-wait); fi
+    emacsclient -create-frame --alternate-editor="" "${args[@]}"
+fi
+#+end_src
+
+Now, to set an alias to use =e= with magit, and then for maximum laziness we can
+set aliases for the terminal-forced variants.
+#+begin_src shell :tangle no
+alias m='e --eval "(progn (magit-status) (delete-other-windows))"'
+alias mt="m -t"
+alias et="e -t"
+#+end_src
