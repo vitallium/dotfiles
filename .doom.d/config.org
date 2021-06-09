@@ -59,7 +59,7 @@ have flags applied to tweak their behaviour.
        )
 #+end_src
 ** Modules
-#+name: doom-config
+#+Name: doom-config
 #+begin_src emacs-lisp
 literate
 (default +bindings +smartparens)
@@ -81,13 +81,12 @@ literate
 doom                         ; what makes DOOM look the way it does
 doom-dashboard               ; a nifty splash screen for Emacs
 doom-quit                    ; DOOM quit-message prompts when you quit Emacs
-(emoji +unicode)             ; 🙂
-;;fill-column                ; a `fill-column' indicator
+;;(emoji +unicode)           ; 🙂
 hl-todo                      ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
 ;;hydra                      ; quick documentation for related commands
 ;;indent-guides              ; highlighted indent columns, notoriously slow
 ;;minimap                    ; show a map of the code on the side
-modeline                    ; snazzy, Atom-inspired modeline, plus API
+modeline                     ; snazzy, Atom-inspired modeline, plus API
 nav-flash                    ; blink the current line after jumping
 ;;neotree                    ; a project drawer, like NERDTree for vim
 ophints                      ; highlight the region an operation acts on
@@ -123,7 +122,7 @@ snippets                     ; my elves. They type so I don't have to
 
 #+name: doom-emacs
 #+begin_src emacs-lisp
-(dired +icons)               ; making dired pretty [functional]
+(dired +ranger +icons)       ; making dired pretty [functional]
 electric                     ; smarter, keyword-based electric-indent
 (ibuffer +icons)             ; interactive buffer management
 (undo +tree)                 ; persistent, smarter undo for your inevitable mistakes
@@ -148,26 +147,26 @@ grammar                      ; tasing grammar mistake every you make
 #+name: doom-tools
 #+begin_src emacs-lisp
 ansible
-(debugger +lsp)          ; FIXME stepping through code, to help you add bugs
+(debugger +lsp)              ; FIXME stepping through code, to help you add bugs
 direnv
 (docker +lsp)
-editorconfig      ; let someone else argue about tabs vs spaces
-(eval +overlay)     ; run code, run (also, repls)
-(lookup +docsets +dictionary)              ; navigate your code and its documentation
+editorconfig                 ; let someone else argue about tabs vs spaces
+(eval +overlay)              ; run code, run (also, repls)
+;;(lookup +docsets +dictionary); navigate your code and its documentation
 (lsp +peek)
-(magit +forge)             ; a git porcelain for Emacs
-make              ; run make tasks from Emacs
-;;pass              ; password manager for nerds
-;;rgb               ; creating color strings
-taskrunner        ; taskrunner for all your projects
-;;terraform         ; infrastructure as code
-;;tmux              ; an API for interacting with tmux
-;;upload            ; map local to remote projects via ssh/ftp
+(magit +forge)               ; a git porcelain for Emacs
+make                         ; run make tasks from Emacs
+;;pass                       ; password manager for nerds
+;;rgb                        ; creating color strings
+taskrunner                   ; taskrunner for all your projects
+;;terraform                  ; infrastructure as code
+;;tmux                       ; an API for interacting with tmux
+;;upload                     ; map local to remote projects via ssh/ftp
 #+end_src
 
 #+name: doom-os
 #+begin_src emacs-lisp
-(:if IS-MAC macos)  ; improve compatibility with macOS
+(:if IS-MAC macos)           ; improve compatibility with macOS
 tty                          ; improve the terminal Emacs experience
 #+end_src
 
@@ -255,7 +254,7 @@ for more info).
       auth-sources '("~/.authinfo.gpg"))
 #+end_src
 I prefer storing keybindings in a separate file:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (load! "+bindings")
 #+end_src
 ** Customizations
@@ -275,13 +274,15 @@ String inflections anyone?
 Copy text to any format
 #+begin_src emacs-lisp :tangle packages.el
 (package! copy-as-format)
+(package! crux)
 #+end_src
+** Disable some packages
+   Disable solaire mode
+   #+begin_src emacs-lisp :tangle packages.el
+   (package! solaire-mode :disable t)
+   #+end_src
 * Visual configuration
-I really love the dark theme from Visual Studio code but it has problems in doom-emacs.
-#+begin_src emacs-lisp :tangle no
-(setq doom-theme 'doom-dark+)
-#+end_src
-So use =doom-dracula= for now.
+I use =doom-dracula=.
 #+begin_src emacs-lisp
 (setq doom-theme 'modus-operandi)
 #+end_src
@@ -289,8 +290,24 @@ But I also use =modus-operandi=.
 #+begin_src emacs-lisp :tangle packages.el
 (package! modus-themes)
 #+end_src
-Apply doom styles for themes and other components:
 #+begin_src emacs-lisp
+(use-package! modus-themes
+  :config
+  (setq modus-themes-slanted-constructs t
+        modus-themes-bold-constructs nil
+        modus-themes-fringes 'subtle ; {nil,'subtle,'intense})
+        ;; Options for `modus-themes-lang-checkers': nil,
+        ;; 'straight-underline, 'subtle-foreground,
+        ;; 'subtle-foreground-straight-underline, 'intense-foreground,
+        ;; 'intense-foreground-straight-underline, 'colored-background
+        modus-themes-lang-checkers 'straight-underline
+        ;; Options for `modus-themes-mode-line': nil, '3d, 'moody,
+        ;; 'borderless, 'borderless-3d, 'borderless-moody, 'accented,
+        ;; 'accented-3d, 'accented-moody
+        modus-themes-mode-line 'accented))
+#+end_src
+Apply doom styles for themes and other components:
+#+begin_src emacs-lisp :tangle no
 (after! doom-themes
     (setq
         doom-themes-enable-bold t     ; if nil, bold is universally disabled
@@ -337,6 +354,69 @@ But I switched to [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]].
       doom-unicode-font (font-spec :family "Noto Sans")
       doom-serif-font (font-spec :family "PragmataPro"))
 #+end_src
+** Modeline
+#+begin_src emacs-lisp
+(defun doom-modeline-conditional-buffer-encoding ()
+  "Only show text encoding when it's not UTF-8."
+  (setq-local doom-modeline-buffer-encoding
+              (unless (or (eq buffer-file-coding-system 'utf-8-unix)
+                          (eq buffer-file-coding-system 'utf-8)))))
+
+(add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
+
+(after! doom-modeline
+  (setq
+   doom-modeline-project-detection 'projectile
+   doom-modeline-checker-simple-format t
+   doom-modeline-buffer-file-name-style 'relative-to-project
+   doom-modeline-height 21
+   doom-modeline-icon t
+   all-the-icons-scale-factor 1
+   doom-modeline-major-mode-icon t
+   doom-modeline-workspace-name t))
+#+end_src
+** Popups
+   #+begin_src emacs-lisp
+(set-popup-rules!
+  '(("^\\*Completions" :ignore t)
+    ("^\\*vterm" :ignore t)
+    ("^\\*Local variables\\*$"
+     :vslot -1 :slot 1 :size +popup-shrink-to-fit)
+    ("^\\*\\(?:[Cc]ompil\\(?:ation\\|e-Log\\)\\|Messages\\)"
+     :vslot -2 :size 0.3  :autosave t :quit t :ttl nil)
+    ;; ("^\\*\\(?:doom \\|Pp E\\)"  ; transient buffers (no interaction required)
+    ;;  :vslot -3 :size +popup-shrink-to-fit :autosave t :select ignore :quit t :ttl 0)
+    ;; ("^\\*doom:"  ; editing buffers (interaction required)
+    ;;  :vslot -4 :size 0.35 :autosave t :select t :modeline t :quit nil :ttl t)
+    ("^\\*doom:\\(?:v?term\\|e?shell\\)-popup"  ; editing buffers (interaction required)
+     :ignore t)
+    ;;  :vslot -5 :size 0.35 :select t :modeline nil :quit nil :ttl nil)
+    ("^\\*\\(?:Wo\\)?Man "
+     :ignore t)
+    ;;  :vslot -6 :size 0.45 :select t :quit t :ttl 0)
+    ("^\\*Calc"
+     :vslot -7 :side bottom :size 0.4 :select t :quit nil :ttl 0)
+    ("^\\*Customize"
+     :slot 2 :side right :size 0.5 :select t :quit nil)
+    ("^ \\*undo-tree\\*"
+     :slot 2 :side left :size 20 :select t :quit t)
+    ;; `help-mode', `helpful-mode'
+    ("^\\*[Hh]elp"
+     ;;  :slot 2 :vslot -8 :size 0.35 :select t)
+     ;; ("^\\*eww\\*"  ; `eww' (and used by dash docsets)
+     :vslot -11 :size 0.35 :select t)
+    ("^\\*info\\*$"  ; `Info-mode'
+     :ignore t)
+    ("^\\*ytel-show\\*"  ; `ytel-show'
+     :vslot -12 :size 0.5)
+    ;; :slot 2 :vslot 2 :size 0.45 :select t)
+    ("^\\*Warnings" :vslot 99 :size 0.25)
+    ("^\\*Backtrace" :vslot 99 :size 0.4 :quit nil)
+    ("^\\*CPU-Profiler-Report "    :side bottom :vslot 100 :slot 1 :height 0.4 :width 0.5 :quit nil)
+    ("^\\*Memory-Profiler-Report " :side bottom :vslot 100 :slot 2 :height 0.4 :width 0.5 :quit nil)
+    ("^\\*Process List\\*" :side bottom :vslot 101 :size 0.25 :select t :quit t)
+    ("^\\*\\(?:Proced\\|timer-list\\|Abbrevs\\|Output\\|Occur\\|unsent mail\\)\\*" :ignore t)))
+   #+end_src
 * Package management
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle packages.el :comments link
@@ -360,7 +440,6 @@ Switch to new window
 I use [[https://github.com/abo-abo/ace-link][ace-link]] to quickly open links in the buffer:
 #+begin_src emacs-lisp :tangle packages.el
 (package! ace-link)
-(package! ace-window)
 #+end_src
 
 #+begin_src emacs-lisp
@@ -368,21 +447,6 @@ I use [[https://github.com/abo-abo/ace-link][ace-link]] to quickly open links in
   :commands (ace-link))
 (after! avy
   (setq avy-keys '(?a ?s ?d ?f ?j ?k ?l ?\;)))
-(after! ace-window
-  (setq aw-keys '(?f ?d ?s ?r ?e ?w)
-        aw-scope 'frame
-        aw-ignore-current t
-        aw-background nil))
-#+end_src
-** Switch to ctrlf
-#+begin_src emacs-lisp :tangle packages.el
-(package! ctrlf)
-#+end_src
-
-#+begin_src emacs-lisp
-(use-package! ctrlf
-  :hook
-  (after-init . ctrlf-mode))
 #+end_src
 ** Workspaces
 Always open up a new workspace when opening up a project.
@@ -395,6 +459,11 @@ Always open up a new workspace when opening up a project.
   (setq evil-ex-substitute-global t     ; I like my s/../.. to by global by default
         evil-move-cursor-back nil       ; Don't move the block cursor when toggling insert mode
         evil-kill-on-visual-paste nil)) ; Don't put overwritten text in the kill ring
+#+end_src
+* Key bindings
+#+begin_src emacs-lisp :tangle +bindings.el
+(map! [remap xref-find-definitions] #'lsp-ui-peek-find-definitions
+      [remap xref-find-references] #'lsp-ui-peek-find-references)
 #+end_src
 * Languages
 ** JavaScript
@@ -410,12 +479,16 @@ Tell ~Jest~ to use ~yarn~:
 And enable it in ~js2~ mode:
 #+begin_src emacs-lisp
 (add-hook! js2-mode #'jest-minor-mode)
+(add-hook! rjsx-mode #'jest-minor-mode)
 #+end_src
 Use =web-mode= for VueJS files:
 #+begin_src emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
 #+end_src
-Add support for
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! indium)
+#+end_src
 *** Prettier
 Enable prettier only if the configuration file found:
 #+begin_src emacs-lisp
@@ -425,15 +498,21 @@ Enable prettier only if the configuration file found:
       (format-all-mode)))
 
 (add-hook! js2-mode 'maybe-use-prettier)
-(add-hook! rjsx-mode-hook 'maybe-use-prettier)
+(add-hook! rjsx-mode 'maybe-use-prettier)
+(add-hook! typescript-mode 'maybe-use-prettier)
+(add-hook! web-mode 'maybe-use-prettier)
 #+end_src
 *** Flycheck
-Enable =ESLint= in =web-mode=:
+Enable =ESLint= in =web-mode=
 #+begin_src emacs-lisp
 (after! flycheck
   (flycheck-add-mode 'javascript-eslint 'web-mode))
 #+end_src
-Enable =stylelint= in =web-mode=:
+And use the =javascript-eslint= checker instead of =lsp=
+#+begin_src emacs-lisp
+(setq-hook! 'js2-mode-hook flycheck-checker 'javascript-eslint)
+#+end_src
+Enable =stylelint= in =web-mode=
 #+begin_src emacs-lisp
 (after! flycheck
   (flycheck-add-mode 'css-stylelint 'web-mode))
@@ -492,6 +571,7 @@ Format file before saving it
 (package! org-super-agenda)
 (package! org-journal)
 (package! org-download)
+(package! company-org-block)
 #+end_src
 *** Setup =org= directories
 #+begin_src emacs-lisp
@@ -503,15 +583,26 @@ Format file before saving it
 *** Configure =org=
 #+begin_src emacs-lisp
 (after! org
+  (setq org-src-fontify-natively t
+        org-hide-emphasis-markers t
+        org-fontify-whole-heading-line t
+        org-fontify-done-headline t
+        org-fontify-quote-and-verse-blocks t
+        line-spacing 0.2)
   (setq org-todo-keywords
         '((sequence "TODO(t)" "REVIEW(r)" "PROJ(p)" "STRT(s)" "WAIT(w)" "HOLD(h)" "|" "DONE(d)" "KILL(k)" "MERGED(m)")
         (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)"))))
 #+end_src
 
 Enable =mixed-pitch-mode=
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (add-hook! 'org-mode-hook
            #'+org-pretty-mode #'mixed-pitch-mode)
+#+end_src
+
+Fast and cool =src= blocks
+#+begin_src emacs-lisp :tangle no
+(add-hook! 'org-mode-hook (lambda() (add-to-list (make-local-variable 'company-backends) 'company-org-block)))
 #+end_src
 ** org-journal
 *** Setup =org-journal= directories and formats
@@ -605,12 +696,10 @@ General configuration
 (package! orderless)
 #+end_src
 ** Company
-Disable autocomplete
+Disable auto-complete
 #+begin_src emacs-lisp
 (after! company
-  (setq company-idle-delay nil)
-  ;; make aborting less annoying.
-  (add-hook 'evil-normal-state-entry-hook #'company-abort))
+  (setq company-idle-delay nil))
 #+end_src
 ** Ivy
 Use =ripgrep=
@@ -624,7 +713,7 @@ Enable preview of buffers
   (setq +ivy-buffer-preview t))
 #+end_src
 I prefer search matching to be ordered; it's more precise
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (after! ivy
   (add-to-list 'ivy-re-builders-alist '(counsel-projectile-find-file . ivy--regex-plus)))
 #+end_src
