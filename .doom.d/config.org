@@ -1,5 +1,5 @@
-#+TITLE My Doom Emacs Configuration
-#+AUTHOR Vitaly Slobodin
+#+TITLE: My Doom Emacs Configuration
+#+AUTHOR: Vitaly Slobodin
 #+property: header-args:emacs-lisp :tangle yes :comments link
 #+property: header-args:elisp :exports code
 #+property: header-args :tangle no :results silent :eval no-export
