@@ -1,53 +1,27 @@
 set -x LC_ALL en_US.UTF-8
 
-# fisher {{{
-#if not functions -q fisher; and test -z $__FISHER_FLAG
-#  set -x __FISHER_FLAG set
-#  curl -sL git.io/fisher | source
-#  fisher update
-#end
-# }}}
+source "$__fish_config_dir/xdg.fish"
 
 # environment variables {{{
 set -x fish_greeting              ''
-set -x EDITOR                     emacsclient -t
-set -x VISUAL                     emacsclient -t
 set -x GOPATH                     $HOME/.go
 set -x GOBIN                      $HOME/.go/bin
 set -x GO111MODULE                on
-
-# xdg {{{
-if test (uname -s) = Linux
-  if test ! (set -q XDG_DATA_HOME)
-    set -x XDG_DATA_HOME $HOME/.local/share
-  end
-
-  if test ! (set -q XDG_CONFIG_HOME)
-    set -x XDG_CONFIG_HOME $HOME/.config
-  end
-
-  if test ! (set -q XDG_DATA_DIRS)
-    set -x XDG_DATA_DIRS /usr/local/share/:/usr/share/
-  end
-
-  if test ! (set -q XDG_CONFIG_DIRS)
-    set -x XDG_CONFIG_DIRS /etc/xdg
-  end
-
-  if test ! (set -q XDG_CACHE_HOME)
-    set -x XDG_CACHE_HOME $HOME/.cache
-  end
-
-  if test ! (set -q XDG_RUNTIME_DIR)
-    set -q UID; set UID (id -u)
-    set -x XDG_RUNTIME_DIR "/tmp/$UID-runtime-dir"
-    if test ! -d $XDG_RUNTIME_DIR
-      mkdir $XDG_RUNTIME_DIR
-      chmod 0700 $XDG_RUNTIME_DIR
-    end
-  end
-end
+set -x BAT_THEME                  Dracula
+set -gx RIPGREP_CONFIG_PATH       "$HOME/.ripgreprc"
+set -gx GITLAB_TOKEN              SET_ME
+set -Ux CLUTTER_BACKEND wayland
+set -Ux SDL_VIDEODRIVER wayland
+set -Ux MOZ_ENABLE_WAYLAND 1
+set -Ux XDG_CURRENT_DESKTOP sway
+set -Ux XDF_SESSION_DESKTOP sway
 # }}}
+
+# fzf {{{
+set -Ux FZF_DEFAULT_OPTS "--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
+set -gx _ZO_FZF_OPTS "--height 40% --reverse $FZF_DEFAULT_OPTS"
+set -gx FZF_DEFAULT_COMMAND 'rg --files'
+set -gx FZF_CTRL_T_COMMAND 'rg --files'
 # }}}
 
 # TODO: Refactor to function
@@ -62,15 +36,5 @@ test -e $HOME/.config/fish/crystal.fish; and . $HOME/.config/fish/crystal.fish
 # asdf
 . $HOME/.asdf/asdf.fish
 
-# GIT is really slow in starship
-# eval (starship init fish)
+eval (direnv hook fish)
 
-if type -q _pure_prompt_git
-  set -g async_prompt_functions _pure_prompt_git
-end
-
-# colors {{{
-# if test -e $HOME/.config/fish/theme.fish
-#  . $HOME/.config/fish/theme.fish
-# end
-# }}}
