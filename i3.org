@@ -1,0 +1,364 @@
+#+TITLE:  i3 configuration
+#+AUTHOR: Vitaly Slobodin
+#+PROPERTY:   header-args+ :comments both
+#+PROPERTY:   header-args+ :mkdirp yes
+
+* i3
+** Set key modifier
+Set key modifier to Super
+
+#+begin_src conf :tangle ~/.config/i3/config
+set $mod Mod4
+#+end_src
+
+** Set font
+Font for window titles. Will also be used by the bar unless a different font
+is used in the bar {} block below.
+
+#+begin_src conf :tangle ~/.config/i3/config
+font pango:Inter Medium 11
+#+end_src
+
+** Key bindings
+Use =Mouse+$mod= to drag floating windows to their wanted position.
+#+begin_src conf :tangle ~/.config/i3/config
+floating_modifier $mod
+#+end_src
+
+Start a terminal.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+Return exec i3-sensible-terminal
+#+end_src
+
+Kill focused window.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+q kill
+#+end_src
+
+Start dmenu (a program launcher).
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+Tab exec --no-startup-id rofi -show window
+#+end_src
+
+Change focus.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+#+end_src
+
+Move focused window.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+#+end_src
+
+Split in horizontal orientation.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+c split horizontal
+#+end_src
+
+Split in vertical orientation.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+v split vertical
+#+end_src
+
+Enter fullscreen mode for the focused container.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+f fullscreen toggle
+#+end_src
+
+Change container layout (stacked, tabbed, toggle split).
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+#+end_src
+
+Toggle tiling / floating,
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+Shift+space floating toggle
+#+end_src
+
+Change focus between tiling / floating windows.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+space focus mode_toggle
+#+end_src
+
+Focus the parent container.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+a focus parent
+#+end_src
+
+Focus the child container.
+#+begin_src conf :tangle no
+bindsym $mod+d focus child
+#+end_src
+
+Printscreen.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym --release Print exec --no-startup-id flameshot gui
+#+end_src
+
+** Workspaces
+Define names for default workspaces for which we configure key bindings later on. We use variables to avoid repeating the names in multiple places.
+
+#+begin_src conf :tangle ~/.config/i3/config
+set $ws1 "1: web"
+set $ws2 "2: term"
+set $ws3 "3: work"
+set $ws4 "4: dev"
+set $ws5 "5: social"
+set $ws6 "6: meeting"
+set $ws7 "7: music"
+set $ws8 "8: video"
+set $ws9 "9: streaming"
+#+end_src
+
+Switch to workspace.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+#+end_src
+
+Move focused container to workspace.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+#+end_src
+
+Switch to previous/next workspace.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+bracketleft workspace prev
+bindsym $mod+bracketright workspace next
+#+end_src
+
+Reload the configuration file.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+Shift+c reload
+#+end_src
+
+Restart i3 inplace (preserves layout/session, can be used to upgrade i3).
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+Shift+r restart
+#+end_src
+
+*** Assign applications to workspaces
+Brave -> Workspace 1
+#+begin_src conf :tangle ~/.config/i3/config
+assign [class="Brave"] $ws1
+#+end_src
+
+Slack -> Workspace 3
+#+begin_src conf :tangle ~/.config/i3/config
+assign [class="Slack"] $ws3
+#+end_src
+
+Telegram -> Workspace 5
+#+begin_src conf :tangle ~/.config/i3/config
+assign [class="TelegramDesktop"] $ws5
+#+end_src
+
+Spotify -> Workspace 7
+#+begin_src conf :tangle ~/.config/i3/config
+assign [class="spotify"] $ws7
+#+end_src
+
+** Modes
+*** Resize
+Mode for resizing containers.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+r mode "resize"
+#+end_src
+
+*** System
+Mode for shut down, restart and locking features.
+#+begin_src conf :tangle ~/.config/i3/config
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Ctrl+s) shutdown
+
+mode "$mode_system" {
+  bindsym l exec --no-startup-id xsecurelock, mode "default"
+  bindsym e exec --no-startup-id i3-msg exit, mode "default"
+  bindsym s exec --no-startup-id $i3lockwall && systemctl suspend, mode "default"
+  bindsym h exec --no-startup-id $i3lockwall && systemctl hibernate, mode "default"
+  bindsym r exec --no-startup-id systemctl reboot, mode "default"
+  bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+BackSpace mode "$mode_system"
+#+end_src
+
+** Windows settings for various applications
+Make =Pavucontrol= float around.
+#+begin_src conf :tangle ~/.config/i3/config
+for_window [class="Pavucontrol"] floating enable
+#+end_src
+
+Fix size and position of the GTK File Choose Dialog.
+#+begin_src conf :tangle ~/.config/i3/config
+for_window [window_role="GtkFileChooserDialog"] resize set 1024 768
+for_window [window_role="GtkFileChooserDialog"] move position center
+#+end_src
+
+Make Zoom popups float.
+#+begin_src conf :tangle ~/.config/i3/config
+for_window [title="^zoom$"] floating enable
+#+end_src
+
+** Theme
+Disable title bars.
+#+begin_src conf :tangle no
+for_window [class=".*"] title_format " %title"
+#+end_src
+
+Set colors from the Dracula theme.
+#+begin_src conf :tangle ~/.config/i3/config
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
+#+end_src
+
+** Gaps
+Set inner gaps to 4px.
+#+begin_src conf :tangle no
+gaps inner 4
+#+end_src
+
+Set outer gaps to 12px.
+#+begin_src conf :tangle no
+gaps outer 12
+#+end_src
+
+Set window border size to 2px.
+#+begin_src conf :tangle no
+for_window [class="^.*"] border pixel 2
+#+end_src
+
+** Bar
+=i3status= configuration with custom colors from Dracula theme.
+
+#+begin_src conf :tangle ~/.config/i3/config
+bar {
+  status_command i3status
+  position top
+  strip_workspace_numbers yes
+
+  colors {
+    background #282A36
+    statusline #F8F8F2
+    separator  #44475A
+
+    focused_workspace  #44475A #44475A #F8F8F2
+    active_workspace   #282A36 #44475A #F8F8F2
+    inactive_workspace #282A36 #282A36 #BFBFBF
+    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+    binding_mode       #FF5555 #FF5555 #F8F8F2
+  }
+}
+#+end_src
+
+** Startup
+Screen locking with =xss-lock=. =xss-lock= grabs a logind suspend inhibit lock and will use [[https://github.com/google/xsecurelock][xsecurelock]] to lock the screen before suspend. Use =loginctl lock-session= to lock your screen.
+#+begin_src conf :tangle ~/.config/i3/config
+exec --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock --nofork
+#+end_src
+
+Increase a typematic delay to 210ms and a typematic rate to 40Hz.
+#+begin_src conf :tangle ~/.config/i3/config
+exec --no-startup-id xset r rate 210 40
+#+end_src
+
+Autorun applications.
+#+begin_src conf :tangle ~/.config/i3/config
+exec --no-startup-id dex -a
+#+end_src
+
+* i3status
+** General
+Update the bar each 5 seconds and set colors from Dracula theme.
+#+begin_src conf :tangle ~/.config/i3status/config
+general {
+  interval = 5
+  colors = true
+  color_good = "#50FA7B"
+  color_degraded = "#F1FA8C"
+  color_bad = "#FF5555"
+}
+#+end_src
+
+** Blocks order
+#+begin_src conf :tangle ~/.config/i3status/config
+order += "path_exists VPN"
+order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "memory"
+order += "tztime local"
+#+end_src
+
+** Blocks configuration
+*** VPN
+Checks the tunnel for [[https://nordvpn.com/][NordVPN]] and outputs yes/no.
+#+begin_src conf :tangle ~/.config/i3status/config
+path_exists VPN {
+  path = "/proc/sys/net/ipv4/conf/tun0"
+}
+#+end_src
+
+*** CPU Usage
+#+begin_src conf :tangle ~/.config/i3status/config
+cpu_usage {
+  format = " %usage"
+}
+#+end_src
+
+*** CPU Temperature
+#+begin_src conf :tangle ~/.config/i3status/config
+cpu_temperature 0 {
+  format ="%degrees°C"
+  max_threshold = 75
+  path = "/sys/devices/platform/nct6775.656/hwmon/hwmon4/temp2_input"
+}
+#+end_src
+
+*** Memory
+#+begin_src conf :tangle ~/.config/i3status/config
+memory {
+  format = " %used"
+  threshold_degraded = "1G"
+  format_degraded = "MEMORY < %available"
+}
+#+end_src
+
+*** Date and Time
+#+begin_src conf :tangle ~/.config/i3status/config
+tztime local {
+  format = " %Y-%m-%d %H:%M"
+}
+#+end_src
