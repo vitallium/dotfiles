@@ -104,19 +104,26 @@ Printscreen.
 bindsym --release Print exec --no-startup-id flameshot gui
 #+end_src
 
+Media Keys.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+#+end_src
+
 ** Workspaces
 Define names for default workspaces for which we configure key bindings later on. We use variables to avoid repeating the names in multiple places.
 
 #+begin_src conf :tangle ~/.config/i3/config
-set $ws1 "1: web"
-set $ws2 "2: term"
-set $ws3 "3: work"
-set $ws4 "4: dev"
-set $ws5 "5: social"
-set $ws6 "6: meeting"
-set $ws7 "7: music"
-set $ws8 "8: video"
-set $ws9 "9: streaming"
+set $ws1 "1:web"
+set $ws2 "2:term"
+set $ws3 "3:work"
+set $ws4 "4:dev"
+set $ws5 "5:social"
+set $ws6 "6:meeting"
+set $ws7 "7:music"
+set $ws8 "8:video"
+set $ws9 "9:streaming"
 #+end_src
 
 Switch to workspace.
@@ -187,6 +194,30 @@ assign [class="spotify"] $ws7
 Mode for resizing containers.
 #+begin_src conf :tangle ~/.config/i3/config
 bindsym $mod+r mode "resize"
+
+mode "resize" {
+  # These bindings trigger as soon as you enter the resize mode
+
+  # Pressing left will shrink the window’s width.
+  # Pressing right will grow the window’s width.
+  # Pressing up will shrink the window’s height.
+  # Pressing down will grow the window’s height.
+  bindsym h       resize shrink width 10 px or 10 ppt
+  bindsym j       resize grow height 10 px or 10 ppt
+  bindsym k       resize shrink height 10 px or 10 ppt
+  bindsym l       resize grow width 10 px or 10 ppt
+
+  # same bindings, but for the arrow keys
+  bindsym Left        resize shrink width 10 px or 10 ppt
+  bindsym Down        resize grow height 10 px or 10 ppt
+  bindsym Up          resize shrink height 10 px or 10 ppt
+  bindsym Right       resize grow width 10 px or 10 ppt
+
+  # back to normal: Enter or Escape or Mod1+r
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
+}
 #+end_src
 
 *** System
@@ -224,7 +255,7 @@ for_window [window_role="GtkFileChooserDialog"] move position center
 
 Make Zoom popups float.
 #+begin_src conf :tangle ~/.config/i3/config
-for_window [title="^zoom$"] floating enable
+for_window [class="zoom"] floating enable
 #+end_src
 
 ** Theme
@@ -243,22 +274,6 @@ client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
 client.background       #F8F8F2
-#+end_src
-
-** Gaps
-Set inner gaps to 4px.
-#+begin_src conf :tangle no
-gaps inner 4
-#+end_src
-
-Set outer gaps to 12px.
-#+begin_src conf :tangle no
-gaps outer 12
-#+end_src
-
-Set window border size to 2px.
-#+begin_src conf :tangle no
-for_window [class="^.*"] border pixel 2
 #+end_src
 
 ** Bar
@@ -293,6 +308,11 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock --nofork
 Increase a typematic delay to 210ms and a typematic rate to 40Hz.
 #+begin_src conf :tangle ~/.config/i3/config
 exec --no-startup-id xset r rate 210 40
+#+end_src
+
+Solaar for Logitech mouse.
+#+begin_src conf :tangle ~/.config/i3/config
+exec --no-startup-id solaar --window=hide
 #+end_src
 
 Autorun applications.
