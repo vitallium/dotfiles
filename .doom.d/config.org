@@ -1,5 +1,5 @@
-#+TITLE: My Doom Emacs Configuration
-#+AUTHOR: Vitaly Slobodin
+#+TITLE My Doom Emacs Configuration
+#+AUTHOR Vitaly Slobodin
 #+property: header-args:emacs-lisp :tangle yes :comments link
 #+property: header-args:elisp :exports code
 #+property: header-args :tangle no :results silent :eval no-export
@@ -282,13 +282,14 @@ Copy text to any format
    (package! solaire-mode :disable t)
    #+end_src
 * Visual configuration
-I use =doom-dracula=.
+I use =modus-operandi=.
 #+begin_src emacs-lisp
 (setq doom-theme 'modus-operandi)
 #+end_src
 But I also use =modus-operandi=.
 #+begin_src emacs-lisp :tangle packages.el
 (package! modus-themes)
+(package! timu-spacegrey-theme)
 #+end_src
 #+begin_src emacs-lisp
 (use-package! modus-themes
@@ -321,14 +322,14 @@ Apply doom styles for themes and other components:
     (doom-themes-org-config))
 #+end_src
 Apply customizations to =doom-dracula= theme:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (custom-theme-set-faces! 'doom-dracula
  `(markdown-code-face :background ,(doom-darken 'bg 0.075))
  `(font-lock-variable-name-face :foreground ,(doom-lighten 'magenta 0.6)))
 #+end_src
-Line numbers are pretty slow all around. The performance boost of disabling them outweighs the utility of always keeping them on:
+Line numbers are pretty slow all around. The performance boost of disabling them outweighs the utility of always keeping them on.
 #+begin_src emacs-lisp
-(setq display-line-numbers-type nil)
+(setq display-line-numbers-type 'relative)
 #+end_src
 Maximize the window upon startup:
 #+begin_src emacs-lisp
@@ -348,10 +349,10 @@ Prevents some cases of Emacs flickering:
 #+end_src
 But I switched to [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]].
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "PragmataPro Mono" :size 20)
+(setq doom-font (font-spec :family "PragmataPro Mono" :size 21)
       doom-big-font (font-spec :family "PragmataPro Mono" :size 28)
-      doom-variable-pitch-font (font-spec :family "PragmataPro" :size 20)
-      doom-unicode-font (font-spec :family "Noto Sans")
+      doom-variable-pitch-font (font-spec :family "PragmataPro" :size 21)
+      doom-unicode-font (font-spec :family "PragmataPro")
       doom-serif-font (font-spec :family "PragmataPro"))
 #+end_src
 ** Modeline
@@ -369,54 +370,11 @@ But I switched to [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]].
    doom-modeline-project-detection 'projectile
    doom-modeline-checker-simple-format t
    doom-modeline-buffer-file-name-style 'relative-to-project
-   doom-modeline-height 21
+   doom-modeline-height 26
    doom-modeline-icon t
-   all-the-icons-scale-factor 1
    doom-modeline-major-mode-icon t
    doom-modeline-workspace-name t))
 #+end_src
-** Popups
-   #+begin_src emacs-lisp
-(set-popup-rules!
-  '(("^\\*Completions" :ignore t)
-    ("^\\*vterm" :ignore t)
-    ("^\\*Local variables\\*$"
-     :vslot -1 :slot 1 :size +popup-shrink-to-fit)
-    ("^\\*\\(?:[Cc]ompil\\(?:ation\\|e-Log\\)\\|Messages\\)"
-     :vslot -2 :size 0.3  :autosave t :quit t :ttl nil)
-    ;; ("^\\*\\(?:doom \\|Pp E\\)"  ; transient buffers (no interaction required)
-    ;;  :vslot -3 :size +popup-shrink-to-fit :autosave t :select ignore :quit t :ttl 0)
-    ;; ("^\\*doom:"  ; editing buffers (interaction required)
-    ;;  :vslot -4 :size 0.35 :autosave t :select t :modeline t :quit nil :ttl t)
-    ("^\\*doom:\\(?:v?term\\|e?shell\\)-popup"  ; editing buffers (interaction required)
-     :ignore t)
-    ;;  :vslot -5 :size 0.35 :select t :modeline nil :quit nil :ttl nil)
-    ("^\\*\\(?:Wo\\)?Man "
-     :ignore t)
-    ;;  :vslot -6 :size 0.45 :select t :quit t :ttl 0)
-    ("^\\*Calc"
-     :vslot -7 :side bottom :size 0.4 :select t :quit nil :ttl 0)
-    ("^\\*Customize"
-     :slot 2 :side right :size 0.5 :select t :quit nil)
-    ("^ \\*undo-tree\\*"
-     :slot 2 :side left :size 20 :select t :quit t)
-    ;; `help-mode', `helpful-mode'
-    ("^\\*[Hh]elp"
-     ;;  :slot 2 :vslot -8 :size 0.35 :select t)
-     ;; ("^\\*eww\\*"  ; `eww' (and used by dash docsets)
-     :vslot -11 :size 0.35 :select t)
-    ("^\\*info\\*$"  ; `Info-mode'
-     :ignore t)
-    ("^\\*ytel-show\\*"  ; `ytel-show'
-     :vslot -12 :size 0.5)
-    ;; :slot 2 :vslot 2 :size 0.45 :select t)
-    ("^\\*Warnings" :vslot 99 :size 0.25)
-    ("^\\*Backtrace" :vslot 99 :size 0.4 :quit nil)
-    ("^\\*CPU-Profiler-Report "    :side bottom :vslot 100 :slot 1 :height 0.4 :width 0.5 :quit nil)
-    ("^\\*Memory-Profiler-Report " :side bottom :vslot 100 :slot 2 :height 0.4 :width 0.5 :quit nil)
-    ("^\\*Process List\\*" :side bottom :vslot 101 :size 0.25 :select t :quit t)
-    ("^\\*\\(?:Proced\\|timer-list\\|Abbrevs\\|Output\\|Occur\\|unsent mail\\)\\*" :ignore t)))
-   #+end_src
 * Package management
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle packages.el :comments link
@@ -691,10 +649,6 @@ General configuration
   (mu4e-alert-enable-mode-line-display))
 #+end_src
 * Completion
-** Packages
-#+begin_src emacs-lisp :tangle packages.el
-(package! orderless)
-#+end_src
 ** Company
 Disable auto-complete
 #+begin_src emacs-lisp
