@@ -122,9 +122,9 @@ snippets                     ; my elves. They type so I don't have to
 
 #+name: doom-emacs
 #+begin_src emacs-lisp
-(dired +ranger +icons)       ; making dired pretty [functional]
+(dired +ranger)              ; making dired pretty [functional]
 electric                     ; smarter, keyword-based electric-indent
-(ibuffer +icons)             ; interactive buffer management
+ibuffer                      ; interactive buffer management
 (undo +tree)                 ; persistent, smarter undo for your inevitable mistakes
 vc                           ; version-control and Emacs, sitting in a tree
 #+end_src
@@ -228,7 +228,7 @@ emacs-lisp          ; drown in parentheses
 ;;calendar                   ; A dated approach to timetabling
 ;;emms                       ; Multimedia in Emacs is music to my ears
 everywhere                   ; *leave* Emacs!? You must be joking.
-irc                          ; how neckbeards socialize
+;;irc                        ; how neckbeards socialize
 ;;(rss +org)                 ; emacs as an RSS reader
 ;;twitter                    ; twitter client https://twitter.com/vnought
 
@@ -284,31 +284,23 @@ Copy text to any format
 * Visual configuration
 I use =modus-operandi=.
 #+begin_src emacs-lisp
-(setq doom-theme 'modus-operandi)
+(setq doom-theme 'doom-dracula)
 #+end_src
 But I also use =modus-operandi=.
 #+begin_src emacs-lisp :tangle packages.el
 (package! modus-themes)
-(package! timu-spacegrey-theme)
 #+end_src
 #+begin_src emacs-lisp
 (use-package! modus-themes
   :config
   (setq modus-themes-slanted-constructs t
         modus-themes-bold-constructs nil
-        modus-themes-fringes 'subtle ; {nil,'subtle,'intense})
-        ;; Options for `modus-themes-lang-checkers': nil,
-        ;; 'straight-underline, 'subtle-foreground,
-        ;; 'subtle-foreground-straight-underline, 'intense-foreground,
-        ;; 'intense-foreground-straight-underline, 'colored-background
+        modus-themes-fringes 'subtle
         modus-themes-lang-checkers 'straight-underline
-        ;; Options for `modus-themes-mode-line': nil, '3d, 'moody,
-        ;; 'borderless, 'borderless-3d, 'borderless-moody, 'accented,
-        ;; 'accented-3d, 'accented-moody
         modus-themes-mode-line 'accented))
 #+end_src
 Apply doom styles for themes and other components:
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (after! doom-themes
     (setq
         doom-themes-enable-bold t     ; if nil, bold is universally disabled
@@ -322,7 +314,7 @@ Apply doom styles for themes and other components:
     (doom-themes-org-config))
 #+end_src
 Apply customizations to =doom-dracula= theme:
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (custom-theme-set-faces! 'doom-dracula
  `(markdown-code-face :background ,(doom-darken 'bg 0.075))
  `(font-lock-variable-name-face :foreground ,(doom-lighten 'magenta 0.6)))
@@ -349,11 +341,9 @@ Prevents some cases of Emacs flickering:
 #+end_src
 But I switched to [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]].
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "PragmataPro Mono" :size 21)
-      doom-big-font (font-spec :family "PragmataPro Mono" :size 28)
-      doom-variable-pitch-font (font-spec :family "PragmataPro" :size 21)
-      doom-unicode-font (font-spec :family "PragmataPro")
-      doom-serif-font (font-spec :family "PragmataPro"))
+(setq doom-font (font-spec :family "PragmataPro Liga" :size 20)
+      doom-big-font (font-spec :family "PragmataPro Liga" :size 28)
+      doom-variable-pitch-font (font-spec :family "PragmataPro Liga" :size 20))
 #+end_src
 ** Modeline
 #+begin_src emacs-lisp
@@ -370,7 +360,7 @@ But I switched to [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]].
    doom-modeline-project-detection 'projectile
    doom-modeline-checker-simple-format t
    doom-modeline-buffer-file-name-style 'relative-to-project
-   doom-modeline-height 26
+   doom-modeline-height 22
    doom-modeline-icon t
    doom-modeline-major-mode-icon t
    doom-modeline-workspace-name t))
@@ -443,10 +433,6 @@ Use =web-mode= for VueJS files:
 #+begin_src emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
 #+end_src
-
-#+begin_src emacs-lisp :tangle packages.el
-(package! indium)
-#+end_src
 *** Prettier
 Enable prettier only if the configuration file found:
 #+begin_src emacs-lisp
@@ -480,16 +466,17 @@ Add support for ~GraphQL~:
 #+begin_src emacs-lisp :tangle packages.el
 (package! graphql-mode)
 #+end_src
-Enable =GraphQL= linting for Flycheck.
-#+begin_src emacs-lisp
-(after! flycheck
-  (flycheck-add-mode 'javascript-eslint 'graphql-mode)
-  (setq flycheck-eslint-args '("--ext" ".js" "--ext" ".graphql" "--ext" ".vue")))
-#+end_src
 ** LSP
 #+begin_src emacs-lisp
 (after! lsp-mode
-  (setq lsp-ui-sideline-enable nil))
+  (setq lsp-ui-sideline-enable nil
+        lsp-headerline-breadcrumb-enable nil
+        lsp-enable-indentation nil
+        lsp-enable-on-type-formatting nil
+        lsp-modeline-code-actions-enable nil
+        lsp-modeline-diagnostics-enable nil))
+(after! lsp-ui
+  (setq lsp-ui-doc-enable nil))
 #+end_src
 ** Ruby
 *** Flycheck
@@ -653,7 +640,8 @@ General configuration
 Disable auto-complete
 #+begin_src emacs-lisp
 (after! company
-  (setq company-idle-delay nil))
+  (setq company-idle-delay nil
+        company-format-margin-function #'company-vscode-light-icons-margin-function))
 #+end_src
 ** Ivy
 Use =ripgrep=
