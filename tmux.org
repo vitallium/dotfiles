@@ -1,0 +1,189 @@
+#+TITLE:      tmux Configuration
+#+AUTHOR:     Vitaly Slobodin
+#+PROPERTY:   header-args+ :comments both
+#+PROPERTY:   header-args+ :tangle "~/.tmux.conf"
+
+* Common
+Spawn session if attaching when none are running.
+#+begin_src conf
+new-session
+#+end_src
+
+Enable mouse support.
+#+begin_src conf
+set -g mouse on
+#+end_src
+
+Faster command sequences.
+#+begin_src conf
+set -sg escape-time 1
+#+end_src
+
+Increase repeat timeout.
+#+begin_src conf
+set -sg repeat-time 600
+#+end_src
+
+Start window number from 1.
+#+begin_src conf
+set -g base-index 1
+set -g pane-base-index 1
+#+end_src
+
+Rename window after current program.
+#+begin_src conf
+setw -g automatic-rename on
+#+end_src
+
+Renumber windows when one is closed.
+#+begin_src conf
+set  -g renumber-windows on
+#+end_src
+
+Display tmux messages longer.
+#+begin_src conf
+set  -g display-time 1500
+set  -g display-panes-time 800
+#+end_src
+
+* Key Bindings
+Panes splitting.
+#+begin_src conf
+bind c new-window      -c '#{pane_current_path}'
+bind v split-window -h -c '#{pane_current_path}'
+bind s split-window -v -c '#{pane_current_path}'
+#+end_src
+
+Moving between panes.
+#+begin_src conf
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+#+end_src
+
+Window and session handling.
+#+begin_src conf
+bind o resize-pane -Z
+bind S choose-session
+bind W choose-window
+bind / choose-session
+#+end_src
+
+Copy mode.
+#+begin_src conf
+bind Enter copy-mode # enter copy mode
+bind b list-buffers  # list paster buffers
+bind B choose-buffer # choose which buffer to paste from
+bind p paste-buffer  # paste from the top paste buffer
+bind P run "xclip -selection clipboard -o | tmux load-buffer - ; tmux paste-buffer"
+
+bind -T copy-mode-vi v send-keys -X begin-selection
+bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
+bind -T copy-mode-vi Escape send-keys -X cancel
+bind -T copy-mode-vi C-g send-keys -X cancel
+bind -T copy-mode-vi H send-keys -X start-of-line
+bind -T copy-mode-vi L send-keys -X end-of-line
+#+end_src
+
+Reload =tmux= configuration file.
+#+begin_src conf
+bind r source-file ~/.tmux.conf
+#+end_src
+
+=ctrl-c= as prefix instead of =ctrl-b=.
+#+begin_src conf
+unbind-key C-b
+set -g prefix 'C-c'
+bind-key 'C-c' send-prefix
+#+end_src
+
+Customize key so it doesn't clash.
+#+begin_src conf
+set -g @fingers-key g
+#+end_src
+
+* VIM Integration
+[[https://github.com/christoomey/vim-tmux-navigator][Smart pane switching with awareness of vim splits]]
+#+begin_src conf
+is_vim='echo "#{pane_current_command}" | grep -iqE "(^|\/)g?(view|n?vim?x?)(diff)?$"'
+bind -n C-h if-shell "$is_vim" "send-keys C-h" "select-pane -L"
+bind -n C-j if-shell "$is_vim" "send-keys C-j" "select-pane -D"
+bind -n C-k if-shell "$is_vim" "send-keys C-k" "select-pane -U"
+bind -n C-l if-shell "$is_vim" "send-keys C-l" "select-pane -R"
+bind -n C-\\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
+#+end_src
+
+VIM-like key bindings everywhere.
+#+begin_src conf
+set -g status-key vi
+set -g mode-keys vi
+set-window-option -g mode-keys vi
+#+end_src
+* Plugins
+[[https://github.com/tmux-plugins/tpm/][TPM]]
+#+begin_src conf
+set -g @plugin 'tmux-plugins/tpm'
+#+end_src
+
+Better =tmux= default. Disabled for now because it does not work with =tmux= 3.
+#+begin_src conf
+set -g @plugin 'tmux-plugins/tmux-sensible'
+#+end_src
+
+Pane controlling and navigation bindings.
+#+begin_src conf
+set -g @plugin 'tmux-plugins/tmux-pain-control'
+#+end_src
+
+#+begin_src conf
+set -g @plugin 'tmux-plugins/tmux-logging'
+#+end_src
+
+Better copy and paste.
+#+begin_src conf
+set -g @plugin 'tmux-plugins/tmux-yank'
+#+end_src
+
+Allows path picking from any tmux window content.
+#+begin_src conf
+set -g @plugin 'jbnicolai/tmux-fpp'
+#+end_src
+
+Fancy copy.
+#+begin_src conf
+set -g @plugin 'Morantron/tmux-fingers'
+#+end_src
+
+Fancy copy but with a tool written in Rust.
+#+begin_src conf :tangle no
+set -g @plugin 'fcsonline/tmux-thumbs'
+#+end_src
+
+Control tmux with =fzf=.
+#+begin_src conf
+set -g @plugin 'sainnhe/tmux-fzf'
+#+end_src
+
+Vim Tmux Navigator
+#+begin_src conf :tangle no
+set -g @plugin 'christoomey/vim-tmux-navigator'
+#+end_src
+
+** Theme
+Dracula.
+#+begin_src conf
+set -g @plugin 'dracula/tmux'
+set -g @dracula-show-battery false
+set -g @dracula-show-network false
+set -g @dracula-show-weather false
+set -g @dracula-show-time false
+set -g @dracula-show-powerline false
+set -g @dracula-show-left-icon session
+set -g @dracula-border-contrast true
+#+end_src
+
+* Initialize TMUX plugin manager
+#+begin_src conf
+run -b '~/.tmux/plugins/tpm/tpm'
+#+end_src
