@@ -1,0 +1,151 @@
+#+TITLE:      GPG configuration
+#+AUTHOR:     Vitaly Slobodin
+#+PROPERTY:   header-args+ :comments both
+#+PROPERTY:   header-args+ :mkdirp yes
+#+PROPERTY:   header-args+ :tangle "~/.gnupg/gpg.conf"
+
+* Configuration
+Use AES256, 192, or 128 as cipher.
+#+begin_src conf
+personal-cipher-preferences AES256 AES192 AES
+#+end_src
+
+Use SHA512, 384, or 256 as digest.
+#+begin_src conf
+personal-digest-preferences SHA512 SHA384 SHA256
+#+end_src
+
+Use ZLIB, BZIP2, ZIP, or no compression.
+#+begin_src conf
+personal-compress-preferences ZLIB BZIP2 ZIP Uncompressed
+#+end_src
+
+Default preferences for new keys.
+#+begin_src conf
+default-preference-list SHA512 SHA384 SHA256 AES256 AES192 AES ZLIB BZIP2 ZIP Uncompressed
+#+end_src
+
+SHA512 as digest to sign keys.
+#+begin_src conf
+cert-digest-algo SHA512
+#+end_src
+
+SHA512 as digest for symmetric ops.
+#+begin_src conf
+s2k-digest-algo SHA512
+#+end_src
+
+AES256 as cipher for symmetric ops.
+#+begin_src conf
+s2k-cipher-algo AES256
+#+end_src
+
+UTF-8 support for compatibility.
+#+begin_src conf
+charset utf-8
+#+end_src
+
+Show Unix timestamps.
+#+begin_src conf
+fixed-list-mode
+#+end_src
+
+No comments in signature.
+#+begin_src conf
+no-comments
+#+end_src
+
+No version in signature.
+#+begin_src conf
+no-emit-version
+#+end_src
+
+Disable banner.
+#+begin_src conf
+no-greeting
+#+end_src
+
+Long hexidecimal key format.
+#+begin_src conf
+keyid-format 0xlong
+#+end_src
+
+Display UID validity.
+#+begin_src conf
+list-options show-uid-validity
+verify-options show-uid-validity
+#+end_src
+
+Display all keys and their fingerprints.
+#+begin_src conf
+with-fingerprint
+#+end_src
+
+Display key origins and updates.
+#+begin_src conf :tangle no
+#with-key-origin
+#+end_src
+
+Cross-certify subkeys are present and valid.
+#+begin_src conf
+require-cross-certification
+#+end_src
+
+Disable caching of passphrase for symmetrical ops.
+#+begin_src conf
+no-symkey-cache
+#+end_src
+
+Enable smartcard.
+#+begin_src conf
+use-agent
+#+end_src
+
+Disable recipient key ID in messages.
+#+begin_src conf
+throw-keyids
+#+end_src
+
+Default/trusted key ID to use (helpful with throw-keyids).
+#+begin_src conf :tangle no
+#default-key 0xFF3E7D88647EBCDB
+#trusted-key 0xFF3E7D88647EBCDB
+#+end_src
+
+Group recipient keys (preferred ID last).
+#+begin_src conf :tangle no
+#group keygroup = 0xFF00000000000001 0xFF00000000000002 0xFF3E7D88647EBCDB
+#+end_src
+
+Keyserver URL.
+#+begin_src conf :tangle no
+#keyserver hkps://keys.openpgp.org
+#+end_src
+
+#+begin_src conf
+keyserver hkps://keyserver.ubuntu.com:443
+#+end_src
+
+#+begin_src conf :tangle no
+#keyserver hkps://hkps.pool.sks-keyservers.net
+#keyserver hkps://pgp.ocf.berkeley.edu
+#+end_src
+
+Proxy to use for keyservers.
+#+begin_src conf :tangle no
+#keyserver-options http-proxy=socks5-hostname://127.0.0.1:9050
+#+end_src
+
+Verbose output.
+#+begin_src conf :tangle no
+#verbose
+#+end_src
+
+Show expired subkeys.
+#+begin_src conf :tangle no
+#list-options show-unusable-subkeys
+#+end_src
+* Reference
++ https://github.com/drduh/config/blob/master/gpg.conf
++ https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html
++ https://www.gnupg.org/documentation/manuals/gnupg/GPG-Esoteric-Options.html
