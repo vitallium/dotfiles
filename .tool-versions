@@ -1,4 +1,10 @@
-ruby 2.7.2
-nodejs 14.15.3
-yarn 1.22.5
-postgres 10.14
+yarn 1.22.10
+nodejs 14.17.1
+ruby 2.7.3
+crystal 1.0.0
+postgres 12.4
+erlang 24.0
+elixir 1.12.0-otp-24
+golang 1.15.8
+minikube 1.19.0
+kubectl 1.21.0
