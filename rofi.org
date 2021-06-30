@@ -1,0 +1,153 @@
+#+TITLE:      Rofi Configuration
+#+AUTHOR:     Vitaly Slobodin
+#+PROPERTY:   header-args+ :comments both
+#+PROPERTY:   header-args+ :mkdirp yes
+
+* Configuration
+#+begin_src conf :tangle "~/.config/rofi/config.rasi"
+configuration {
+  modi: "drun,ssh";
+  show-icons: true;
+  terminal: "kitty";
+  run-command: "fish -c '{cmd}'";
+  display-run: "=>";
+  display-ssh: "~>";
+  display-drun: "::";
+  theme: "./colors.rasi";
+  kb-move-front: "Control+a";
+  kb-move-end: "Control+e";
+  kb-move-word-back: "Control+Left";
+  kb-move-word-forward: "Control+Right";
+  kb-move-char-back: "Left";
+  kb-move-char-forward: "Right";
+  kb-remove-to-eol: "Control+f";
+  kb-remove-to-sol: "Control+b";
+  kb-accept-entry: "Control+m,Return,KP_Enter";
+  kb-row-up: "Control+k,Up";
+  kb-row-down: "Control+j,Down";
+}
+#+end_src
+* Style
+#+begin_src css :tangle "~/.config/rofi/colors.rasi"
+ * {
+  accent:   #bd93f9;
+  bg:       #1E2029FA;
+  bg-light: #1c1c1c;
+  bg-focus: #282a36;
+  bg-dark:  #181a23;
+  fg:       #bbc2cf;
+  fg-list:  #bbc2cf;
+  on:       #8BD49C;
+  off:      #cc6666;
+
+  magenta: #bd93f9;
+  blue:    #61bfff;
+  text-font:      "Ubuntu Mono 14";
+
+  background-color: transparent;
+  text-color: @fg-list;
+  font: @text-font;
+  border-color: @bg-dark;
+}
+textbox-icon {
+  str: "  ";
+}
+
+/**** Layout ****/
+window {
+  width:    1000px;
+  y-offset: -50px;
+  anchor:   north;
+  location: center;
+  border: 1px;
+  border-radius: 6px 6px 0 0;
+  children: [ inputbar, listview ];
+}
+
+listview {
+  lines: 12;
+  fixed-height: false;
+  /* reverse: true; */
+  columns: 2;
+  scrollbar: true;
+  spacing: 1px;
+  /* Remove strange gap between listview and inputbar */
+  margin: -2px 0 0;
+}
+
+/*
+  TODO Not supported in stable branch of rofi
+  @media only (max-height: 1080px) {
+    window {
+      y-offset: -30%;
+    }
+    listview {
+      lines: 14;
+    }
+  }
+*/
+
+scrollbar {
+  handle-width: 1px;
+}
+inputbar {
+  children: [ textbox-icon, prompt, entry ];
+  border: 0 0 0;
+}
+textbox-icon, prompt {
+  padding: 11px;
+  expand: false;
+  border: 0 1px 0 0;
+  margin: 0 -2px 0 0;
+}
+textbox-icon {
+  padding: 7px 4px 0;
+}
+entry, element {
+  padding: 10px 13px;
+}
+textbox {
+  padding: 24px;
+  margin: 20px;
+}
+
+/**** Looks ****/
+scrollbar {
+  background-color: @bg-dark;
+  handle-color: @accent;
+  border-color: @bg-dark;
+}
+listview, inputbar {
+  background-color: @bg-dark;
+}
+textbox-icon, prompt, entry {
+  text-color: @accent;
+}
+prompt, entry {
+  background-color: @bg-focus;
+}
+textbox-icon, prompt {
+  background-color: #2f313d;
+}
+prompt {
+  background-color: @bg-focus;
+}
+textbox-icon {
+  font: @icon-font;
+}
+entry {
+  font: @text-font-mono;
+  text-color: @fg;
+}
+
+element {
+  background-color: @bg;
+  text-color: @fg;
+}
+element selected {
+  background-color: @bg-dark;
+  text-color: @accent;
+}
+element-icon { size: 2.4ch; }
+#+end_src
+* TODO Break sources to sections with comments.
