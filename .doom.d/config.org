@@ -1,9 +1,9 @@
-#+TITLE My Doom Emacs Configuration
-#+AUTHOR Vitaly Slobodin
+#+TITLE:    My Doom Emacs Configuration
+#+AUTHOR:   Vitaly Slobodin
+#+startup:  fold
 #+property: header-args:emacs-lisp :tangle yes :comments link
 #+property: header-args:elisp :exports code
 #+property: header-args :tangle no :results silent :eval no-export
-#+startup: fold
 
 * DOOM configuration
 :PROPERTIES:
@@ -62,7 +62,7 @@ have flags applied to tweak their behaviour.
 #+Name: doom-config
 #+begin_src emacs-lisp
 literate
-(default +bindings +smartparens)
+(default +bindings +smartparens +evil-commands)
 #+end_src
 
 #+name: doom-completion
@@ -77,7 +77,7 @@ literate
 
 #+name: doom-ui
 #+begin_src emacs-lisp
-;;deft                       ; notational velocity for Emacs
+deft                         ; notational velocity for Emacs
 doom                         ; what makes DOOM look the way it does
 doom-dashboard               ; a nifty splash screen for Emacs
 doom-quit                    ; DOOM quit-message prompts when you quit Emacs
@@ -89,6 +89,7 @@ hl-todo                      ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
 modeline                     ; snazzy, Atom-inspired modeline, plus API
 nav-flash                    ; blink the current line after jumping
 ;;neotree                    ; a project drawer, like NERDTree for vim
+ligatures
 ophints                      ; highlight the region an operation acts on
 (popup                       ; tame sudden yet inevitable temporary windows
  +all                        ; catch all popups that start with an asterix
@@ -152,7 +153,7 @@ direnv
 (docker +lsp)
 editorconfig                 ; let someone else argue about tabs vs spaces
 (eval +overlay)              ; run code, run (also, repls)
-;;(lookup +docsets +dictionary); navigate your code and its documentation
+(lookup +devdocs +docsets)   ; navigate your code and its documentation
 (lsp +peek)
 (magit +forge)               ; a git porcelain for Emacs
 make                         ; run make tasks from Emacs
@@ -197,10 +198,10 @@ emacs-lisp          ; drown in parentheses
 (nix +lsp)          ; I hereby declare "nix geht mehr!"
 ;;ocaml             ; an objective camel
 (org +hugo
-     +noter
-     +journal
-     +pretty
-     +roam)         ; organize your plain life in plain text
+     +babel
+     +attach
+     +export
+     +pretty)       ; organize your plain life in plain text
 ;;plantuml          ; diagrams for confusing people more
 (python +lsp)       ; beautiful is better than ugly
 ;;qt                ; the 'cutest' gui framework ever
@@ -231,7 +232,6 @@ everywhere                   ; *leave* Emacs!? You must be joking.
 ;;irc                        ; how neckbeards socialize
 ;;(rss +org)                 ; emacs as an RSS reader
 ;;twitter                    ; twitter client https://twitter.com/vnought
-
 #+end_src
 * Rudimentary configuration
 Make this file run (slightly) faster with lexical binding (see [[https://nullprogram.com/blog/2016/12/22/][this blog post]]
@@ -277,14 +277,27 @@ Copy text to any format
 (package! crux)
 #+end_src
 ** Disable some packages
-   Disable solaire mode
-   #+begin_src emacs-lisp :tangle packages.el
-   (package! solaire-mode :disable t)
-   #+end_src
+Disable solaire mode
+#+begin_src emacs-lisp :tangle packages.el
+ (package! solaire-mode :disable t)
+#+end_src
+** Evil
+Disable evil-escape because it *may* have performance issues.
+It does show up a lot in the profiler when typing quickly.
+I don't use it anyway, and my muscle memory always goes for the ESC key.
+#+begin_src emacs-lisp :tangle packages.el
+(package! evil-escape :disable t)
+#+end_src
+** TreeSitter
+Semantic syntax highlighting.
+#+begin_src emacs-lisp :tangle packages.el
+(package! tree-sitter)
+(package! tree-sitter-langs)
+#+end_src
 * Visual configuration
 I use =modus-operandi=.
 #+begin_src emacs-lisp
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'modus-operandi)
 #+end_src
 But I also use =modus-operandi=.
 #+begin_src emacs-lisp :tangle packages.el
@@ -297,21 +310,29 @@ But I also use =modus-operandi=.
         modus-themes-bold-constructs nil
         modus-themes-fringes 'subtle
         modus-themes-lang-checkers 'straight-underline
-        modus-themes-mode-line 'accented))
+        modus-themes-mode-line 'accented)
+        modus-themes-headings '((t . t))
+        modus-themes-scale-headings t
+        modus-themes-scale-5 1.3
+        modus-themes-scale-4 1.2
+        modus-themes-scale-3 1.0
+        modus-themes-scale-2 1.0
+        modus-themes-scale-1 1.0
+        modus-themes-subtle-line-numbers nil)
 #+end_src
 Apply doom styles for themes and other components:
 #+begin_src emacs-lisp
 (after! doom-themes
-    (setq
-        doom-themes-enable-bold t     ; if nil, bold is universally disabled
-        doom-themes-enable-italic t)  ; if nil, italics is universally disabled
+  (setq
+      doom-themes-enable-bold t     ; if nil, bold is universally disabled
+      doom-themes-enable-italic t)  ; if nil, italics is universally disabled
 
-    ;; Enable flashing mode-line on errors
-    (doom-themes-visual-bell-config)
-    (setq doom-themes-treemacs-theme "doom-colors")
-    (doom-themes-treemacs-config)
-    ;; Corrects (and improves) org-mode's native fontification.
-    (doom-themes-org-config))
+      ;; Enable flashing mode-line on errors
+      (doom-themes-visual-bell-config)
+      (setq doom-themes-treemacs-theme "doom-colors")
+      (doom-themes-treemacs-config)
+      ;; Corrects (and improves) org-mode's native fontification.
+      (doom-themes-org-config))
 #+end_src
 Apply customizations to =doom-dracula= theme:
 #+begin_src emacs-lisp
@@ -319,9 +340,11 @@ Apply customizations to =doom-dracula= theme:
  `(markdown-code-face :background ,(doom-darken 'bg 0.075))
  `(font-lock-variable-name-face :foreground ,(doom-lighten 'magenta 0.6)))
 #+end_src
-Line numbers are pretty slow all around. The performance boost of disabling them outweighs the utility of always keeping them on.
+Use relative line numbers, but disable them for text buffer.
 #+begin_src emacs-lisp
 (setq display-line-numbers-type 'relative)
+(remove-hook! 'text-mode-hook
+              #'display-line-numbers-mode)
 #+end_src
 Maximize the window upon startup:
 #+begin_src emacs-lisp
@@ -341,9 +364,9 @@ Prevents some cases of Emacs flickering:
 #+end_src
 But I switched to [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]].
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "PragmataPro Liga" :size 20)
-      doom-big-font (font-spec :family "PragmataPro Liga" :size 28)
-      doom-variable-pitch-font (font-spec :family "PragmataPro Liga" :size 20))
+(setq doom-font (font-spec :family "MonoLisa" :size 18)
+      doom-big-font (font-spec :family "MonoLisa" :size 24)
+      doom-variable-pitch-font (font-spec :family "MonoLisa" :size 18))
 #+end_src
 ** Modeline
 #+begin_src emacs-lisp
@@ -359,7 +382,7 @@ But I switched to [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]].
   (setq
    doom-modeline-project-detection 'projectile
    doom-modeline-checker-simple-format t
-   doom-modeline-buffer-file-name-style 'relative-to-project
+   doom-modeline-buffer-file-name-style 'file-name
    doom-modeline-height 22
    doom-modeline-icon t
    doom-modeline-major-mode-icon t
@@ -379,6 +402,10 @@ This file shouldn't be byte compiled.
 :END:
 * Navigation
 ** Windows
+Navigating through emacs, across buffer.
+#+begin_src emacs-lisp
+(setq avy-all-windows t)
+#+end_src
 Switch to new window
 #+begin_src emacs-lisp
 (setq evil-vsplit-window-right t
@@ -466,18 +493,6 @@ Add support for ~GraphQL~:
 #+begin_src emacs-lisp :tangle packages.el
 (package! graphql-mode)
 #+end_src
-** LSP
-#+begin_src emacs-lisp
-(after! lsp-mode
-  (setq lsp-ui-sideline-enable nil
-        lsp-headerline-breadcrumb-enable nil
-        lsp-enable-indentation nil
-        lsp-enable-on-type-formatting nil
-        lsp-modeline-code-actions-enable nil
-        lsp-modeline-diagnostics-enable nil))
-(after! lsp-ui
-  (setq lsp-ui-doc-enable nil))
-#+end_src
 ** Ruby
 *** Flycheck
 Disable =ruby-reek=
@@ -507,70 +522,66 @@ Format file before saving it
 #+begin_src emacs-lisp
 (add-hook! go-mode-hook #'gofmt-before-save)
 #+end_src
+* LSP
+#+begin_src emacs-lisp
+(after! lsp-mode
+  (setq lsp-ui-sideline-enable nil
+        lsp-headerline-breadcrumb-enable nil
+        lsp-enable-indentation nil
+        lsp-enable-on-type-formatting nil
+        lsp-modeline-code-actions-enable nil
+        lsp-modeline-diagnostics-enable nil))
+(after! lsp-ui
+  (setq lsp-ui-doc-enable nil))
+#+end_src
+
+Configure TreeSitter.
+#+begin_src emacs-lisp
+(use-package! tree-sitter
+  :hook (after-init . global-tree-sitter-mode)
+  :config
+  (require 'tree-sitter-langs)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+#+end_src
 * Org
-** Org
-*** Packages
+** Packages
 #+begin_src emacs-lisp :tangle packages.el
 (package! org-gitlab :recipe (:host gitlab :repo "to1ne/org-gitlab"))
 (package! ob-graphql)
 (package! org-super-agenda)
 (package! org-journal)
 (package! org-download)
-(package! company-org-block)
 #+end_src
-*** Setup =org= directories
+** Setup =org= directories
 #+begin_src emacs-lisp
 (setq org-directory "~/org/"
-      org-archive-location (concat org-directory ".archive/%s::")
-      org-roam-directory (concat org-directory "notes/")
-      org-roam-db-location (concat org-roam-directory ".org-roam.db"))
+      org-archive-location (concat org-directory ".archive/%s::"))
 #+end_src
-*** Configure =org=
+** Configure =org=
 #+begin_src emacs-lisp
+(after! deft
+  (setq deft-directory "~/org/notes"))
+
 (after! org
   (setq org-src-fontify-natively t
         org-hide-emphasis-markers t
         org-fontify-whole-heading-line t
         org-fontify-done-headline t
         org-fontify-quote-and-verse-blocks t
-        line-spacing 0.2)
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "REVIEW(r)" "PROJ(p)" "STRT(s)" "WAIT(w)" "HOLD(h)" "|" "DONE(d)" "KILL(k)" "MERGED(m)")
-        (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)"))))
+        line-spacing 0.2))
 #+end_src
 
 Enable =mixed-pitch-mode=
-#+begin_src emacs-lisp :tangle no
-(add-hook! 'org-mode-hook
-           #'+org-pretty-mode #'mixed-pitch-mode)
-#+end_src
+#+begin_src emacs-lisp
+(defun gkh/org-mode-visual()
+  (setq visual-fill-column-width 100
+        visual-fill-column-center-text t
+        display-fill-column-indicator nil
+        display-line-numbers nil)
+  (visual-fill-column-mode 1))
 
-Fast and cool =src= blocks
-#+begin_src emacs-lisp :tangle no
-(add-hook! 'org-mode-hook (lambda() (add-to-list (make-local-variable 'company-backends) 'company-org-block)))
-#+end_src
-** org-journal
-*** Setup =org-journal= directories and formats
-#+begin_src emacs-lisp
-(setq org-journal-file-format "%Y%m%d.org"
-      org-journal-dir "~/org/daily/"
-      org-journal-date-prefix "#+TITLE: "
-      org-journal-file-format "%Y-%m-%d.org"
-      org-journal-date-format "%A, %d %B %Y"
-      org-journal-find-file #'find-file-other-window
-      org-journal-enable-agenda-integration t)
-#+end_src
-*** Configure =org-journal=
-#+begin_src emacs-lisp
-(after! org-journal
-  (setq org-journal-enable-agenda-integration t)
-  (customize-set-variable 'org-journal-file-format "%Y-%m-%d.org")
-  (customize-set-variable 'org-journal-date-format "%Y-%m-%d %A")
-  (setq org-journal-carryover-items "TODO=\"TODO\"|TODO=\"REVIEW\""))
-#+end_src
-Setup =org-agenda= search pattern
-#+begin_src emacs-lisp
-(setq org-agenda-files (file-expand-wildcards "~/org/gtd/*.org"))
+(add-hook! 'org-mode-hook
+           #'+org-pretty-mode #'mixed-pitch-mode #'gkh/org-mode-visual)
 #+end_src
 * Mail
 ** mu4e
