@@ -41,6 +41,11 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 #+end_src
 
+Run =emacs-anywhere=.
+#+begin_src conf :tangle ~/.config/i3/config
+bindsym $mod+Ctrl+e exec --no-startup-id ~/.emacs.d/bin/doom everywhere
+#+end_src
+
 Change focus.
 #+begin_src conf :tangle ~/.config/i3/config
 bindsym $mod+h focus left
@@ -189,6 +194,13 @@ Spotify -> Workspace 7
 assign [class="spotify"] $ws7
 #+end_src
 
+*** Additional rules for the applications or windows
+
+Let =emacs-anywhere= float.
+#+begin_src conf :tangle ~/.config/i3/config
+for_window [class="emacs-anywhere"] floating enable
+#+end_src
+
 ** Modes
 *** Resize
 Mode for resizing containers.
@@ -254,7 +266,7 @@ for_window [window_role="GtkFileChooserDialog"] move position center
 #+end_src
 
 Make Zoom popups float.
-#+begin_src conf :tangle ~/.config/i3/config
+#+begin_src conf :tangle no
 for_window [class="zoom"] floating enable
 #+end_src
 
@@ -300,6 +312,11 @@ bar {
 #+end_src
 
 ** Startup
+Set the correct DPI value with xlayoutdisplay.
+#+begin_src conf :tangle ~/.config/i3/config
+exec --no-startup-id xlayoutdisplay -q
+#+end_src
+
 Screen locking with =xss-lock=. =xss-lock= grabs a logind suspend inhibit lock and will use [[https://github.com/google/xsecurelock][xsecurelock]] to lock the screen before suspend. Use =loginctl lock-session= to lock your screen.
 #+begin_src conf :tangle ~/.config/i3/config
 exec --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock --nofork
@@ -316,7 +333,7 @@ exec --no-startup-id solaar --window=hide
 #+end_src
 
 Picom.
-#+begin_src  conf :tangle ~/.config/i3/config
+#+begin_src conf :tangle ~/.config/i3/config
 exec --no-startup-id picom --experimental-backends -b
 #+end_src
 
