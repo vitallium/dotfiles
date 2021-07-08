@@ -67,8 +67,7 @@ literate
 
 #+name: doom-completion
 #+begin_src emacs-lisp
-(company                     ; the ultimate code completion backend
- +childframe)                ; ... when your children are better than you
+company                     ; the ultimate code completion backend
 ;;helm                       ; the *other* search engine for love and life
 ;;ido                        ; the other *other* search engine...
 (ivy                         ; a search engine for love and life
@@ -89,7 +88,7 @@ hl-todo                      ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
 modeline                     ; snazzy, Atom-inspired modeline, plus API
 nav-flash                    ; blink the current line after jumping
 ;;neotree                    ; a project drawer, like NERDTree for vim
-ligatures
+;;ligatures
 ophints                      ; highlight the region an operation acts on
 (popup                       ; tame sudden yet inevitable temporary windows
  +all                        ; catch all popups that start with an asterix
@@ -137,6 +136,7 @@ vc                           ; version-control and Emacs, sitting in a tree
 ;;term                       ; basic terminal emulator for Emacs
 vterm                        ; the best terminal emulation in Emacs
 #+end_src
+
 
 #+name: doom-checkers
 #+begin_src emacs-lisp
@@ -354,6 +354,10 @@ Prevents some cases of Emacs flickering:
 #+begin_src emacs-lisp
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 #+end_src
+Display fill column indicator.
+#+begin_src emacs-lisp
+(add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
+#+end_src
 ** Font
 [[https://input.djr.com/][Input]] font is just the best font I ever used.
 #+begin_src emacs-lisp :tangle no
@@ -367,6 +371,43 @@ But I switched to [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]].
 (setq doom-font (font-spec :family "MonoLisa" :size 18)
       doom-big-font (font-spec :family "MonoLisa" :size 24)
       doom-variable-pitch-font (font-spec :family "MonoLisa" :size 18))
+#+end_src
+
+Enable ligatures.
+#+begin_src emacs-lisp :tangle packages.el
+(package! ligature :recipe (:host github :repo "mickeynp/ligature.el"))
+#+end_src
+#+begin_src emacs-lisp
+(use-package! ligature
+  :config
+  (ligature-set-ligatures 'prog-mode '("-->" "->" "->>" "-<" "--<"
+                                       "-~" "]#" ".-" "!=" "!=="
+                                       "#(" "#{" "#[" "#_" "#_("
+                                       "/=" "/==" "|||" "||" ;; "|"
+                                       "==" "===" "==>" "=>" "=>>"
+                                       "=<<" "=/" ">-" ">->" ">="
+                                       ">=>" "<-" "<--" "<->" "<-<"
+                                       "<!--" "<|" "<||" "<|||"
+                                       "<|>" "<=" "<==" "<==>" "<=>"
+                                       "<=<" "<<-" "<<=" "<~" "<~>"
+                                       "<~~" "~-" "~@" "~=" "~>"
+                                       "~~" "~~>" ".=" "..=" "---"
+                                       "{|" "[|" ".."  "..."  "..<"
+                                       ".?"  "::" ":::" "::=" ":="
+                                       ":>" ":<" ";;" "!!"  "!!."
+                                       "!!!"  "?."  "?:" "??"  "?="
+                                       "**" "***" "*>" "*/" "#:"
+                                       "#!"  "#?"  "##" "###" "####"
+                                       "#=" "/*" "/>" "//" "///"
+                                       "&&" "|}" "|]" "$>" "++"
+                                       "+++" "+>" "=:=" "=!=" ">:"
+                                       ">>" ">>>" "<:" "<*" "<*>"
+                                       "<$" "<$>" "<+" "<+>" "<>"
+                                       "<<" "<<<" "</" "</>" "^="
+                                       "%%" "'''" "\"\"\"" ))
+  ;; Enables ligature checks globally in all buffers. You can also do it
+  ;; per mode with `ligature-mode'.
+  (global-ligature-mode t))
 #+end_src
 ** Modeline
 #+begin_src emacs-lisp
@@ -383,7 +424,8 @@ But I switched to [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]].
    doom-modeline-project-detection 'projectile
    doom-modeline-checker-simple-format t
    doom-modeline-buffer-file-name-style 'file-name
-   doom-modeline-height 22
+   doom-modeline-height 20
+   doom-modeline-bar-width 6
    doom-modeline-icon t
    doom-modeline-major-mode-icon t
    doom-modeline-workspace-name t))
@@ -466,7 +508,8 @@ Enable prettier only if the configuration file found:
 (defun maybe-use-prettier()
   "Enable prettier-js-mode if an rc file is located."
   (if (locate-dominating-file default-directory ".prettierrc")
-      (format-all-mode)))
+      (format-all-mode)
+      (setq +format-with-lsp nil)))
 
 (add-hook! js2-mode 'maybe-use-prettier)
 (add-hook! rjsx-mode 'maybe-use-prettier)
@@ -559,8 +602,13 @@ Configure TreeSitter.
 #+end_src
 ** Configure =org=
 #+begin_src emacs-lisp
-(after! deft
-  (setq deft-directory "~/org/notes"))
+(use-package! deft
+  :after org
+  :custom
+  (deft-directory (concat org-directory "notes"))
+  (deft-recursive t)
+  (deft-use-filter-string-for-filename t)
+  (deft-default-extension "org"))
 
 (after! org
   (setq org-src-fontify-natively t
