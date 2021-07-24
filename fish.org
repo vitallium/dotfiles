@@ -160,6 +160,14 @@ A dark theme
 #+begin_src fish :tangle ~/.config/fish/fish_plugins
 dracula/fish
 #+end_src
+*** [[https://github.com/PatrickF1/fzf.fish][PatrickF1/fzf.fish]]
+#+begin_quote
+Augment your Fish command line with mnemonic key bindings to efficiently find what you need using fzf.
+#+end_quote
+
+#+begin_src fish :tangle ~/.config/fish/fish_plugins
+PatrickF1/fzf.fish
+#+end_src
 
 * Configuration
 Set locale to =UTF-8=.
@@ -220,6 +228,8 @@ set -gx FZF_DEFAULT_OPTS          "--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --co
 set -gx _ZO_FZF_OPTS              "--height 40% --reverse $FZF_DEFAULT_OPTS"
 set -gx FZF_DEFAULT_COMMAND       'rg --files'
 set -gx FZF_CTRL_T_COMMAND        'rg --files'
+
+fzf_configure_bindings
 #+end_src
 
 Set Wayland backends.
