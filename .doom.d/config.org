@@ -62,12 +62,13 @@ have flags applied to tweak their behaviour.
 #+Name: doom-config
 #+begin_src emacs-lisp
 literate
-(default +bindings +smartparens +evil-commands)
+(default +bindings +smartparens)
 #+end_src
 
 #+name: doom-completion
 #+begin_src emacs-lisp
-company                     ; the ultimate code completion backend
+(company                     ; the ultimate code completion backend
+ +childframe)
 ;;helm                       ; the *other* search engine for love and life
 ;;ido                        ; the other *other* search engine...
 (ivy                         ; a search engine for love and life
@@ -91,14 +92,14 @@ nav-flash                    ; blink the current line after jumping
 ;;ligatures
 ophints                      ; highlight the region an operation acts on
 (popup                       ; tame sudden yet inevitable temporary windows
- +all                        ; catch all popups that start with an asterix
+ ;;+all                      ; catch all popups that start with an asterix
  +defaults)                  ; default popup rules
 ;;(tabs                      ; an tab bar for Emacs
 ;;  +centaur-tabs)           ; ... with prettier tabs
 (treemacs +lsp)              ; a project drawer, like neotree but cooler
 ;;unicode                    ; extended unicode support for various languages
 vc-gutter                    ; vcs diff in the fringe
-vi-tilde-fringe              ; fringe tildes to mark beyond EOB
+;;vi-tilde-fringe            ; fringe tildes to mark beyond EOB
 (window-select +numbers)     ; visually switch windows
 workspaces                   ; tab emulation, persistence & separate workspaces
 zen                          ; distraction-free coding or writing
@@ -153,8 +154,11 @@ direnv
 (docker +lsp)
 editorconfig                 ; let someone else argue about tabs vs spaces
 (eval +overlay)              ; run code, run (also, repls)
-(lookup +devdocs +docsets)   ; navigate your code and its documentation
-(lsp +peek)
+(lookup                      ; navigate your code and its documentation
+  +devdocs
+  +docsets
+  +dictionary)
+lsp
 (magit +forge)               ; a git porcelain for Emacs
 make                         ; run make tasks from Emacs
 ;;pass                       ; password manager for nerds
@@ -266,6 +270,11 @@ setting, and load it if it exists.
 (when (file-exists-p custom-file)
   (load custom-file))
 #+end_src
+
+Enable local variables.
+#+begin_src emacs-lisp
+(setq-default enable-local-variables t)
+#+end_src
 ** Additional stuff to work with strings
 String inflections anyone?
 #+begin_src emacs-lisp :tangle packages.el
@@ -276,23 +285,19 @@ Copy text to any format
 (package! copy-as-format)
 (package! crux)
 #+end_src
-** Disable some packages
-Disable solaire mode
-#+begin_src emacs-lisp :tangle packages.el
- (package! solaire-mode :disable t)
-#+end_src
 ** Evil
+#+begin_src emacs-lisp
+(after! evil
+  (setq evil-ex-substitute-global t     ; I like my s/../.. to by global by default
+        evil-move-cursor-back nil       ; Don't move the block cursor when toggling insert mode
+        evil-kill-on-visual-paste nil)) ; Don't put overwritten text in the kill ring
+#+end_src
+
 Disable evil-escape because it *may* have performance issues.
 It does show up a lot in the profiler when typing quickly.
 I don't use it anyway, and my muscle memory always goes for the ESC key.
 #+begin_src emacs-lisp :tangle packages.el
 (package! evil-escape :disable t)
-#+end_src
-** TreeSitter
-Semantic syntax highlighting.
-#+begin_src emacs-lisp :tangle packages.el
-(package! tree-sitter)
-(package! tree-sitter-langs)
 #+end_src
 * Visual configuration
 I use =modus-operandi=.
@@ -321,7 +326,7 @@ But I also use =modus-operandi=.
         modus-themes-subtle-line-numbers nil)
 #+end_src
 Apply doom styles for themes and other components:
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (after! doom-themes
   (setq
       doom-themes-enable-bold t     ; if nil, bold is universally disabled
@@ -340,11 +345,9 @@ Apply customizations to =doom-dracula= theme:
  `(markdown-code-face :background ,(doom-darken 'bg 0.075))
  `(font-lock-variable-name-face :foreground ,(doom-lighten 'magenta 0.6)))
 #+end_src
-Use relative line numbers, but disable them for text buffer.
+Disable line numbers.
 #+begin_src emacs-lisp
-(setq display-line-numbers-type 'relative)
-(remove-hook! 'text-mode-hook
-              #'display-line-numbers-mode)
+(setq display-line-numbers-type nil)
 #+end_src
 Maximize the window upon startup:
 #+begin_src emacs-lisp
@@ -363,20 +366,25 @@ Display fill column indicator.
 #+begin_src emacs-lisp :tangle no
 (setq doom-font (font-spec :family "Input" :size 20)
       doom-big-font (font-spec :family "Input" :size 26)
-      doom-variable-pitch-font (font-spec :family "Overpass" :size 24)
-      doom-serif-font (font-spec :family "Ubuntu" :weight 'semi-bold :width 'extra-condensed))
+      doom-variable-pitch-font (font-spec :family "Overpass" :size 24))
 #+end_src
 But I switched to [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]].
-#+begin_src emacs-lisp
-(setq doom-font (font-spec :family "MonoLisa" :size 18)
-      doom-big-font (font-spec :family "MonoLisa" :size 24)
-      doom-variable-pitch-font (font-spec :family "MonoLisa" :size 18))
+#+begin_src emacs-lisp :tangle no
+(setq doom-font (font-spec :family "PragmataPro Mono Liga" :size 20 :weight 'normal)
+      doom-big-font (font-spec :family "PragmataPro Mono Liga" :size 22)
+      doom-variable-pitch-font (font-spec :family "PragmataPro Mono Liga" :size 18 :weight 'normal))
 #+end_src
-
+And I use MonoLisa sometimes.
+#+begin_src emacs-lisp
+(setq doom-font (font-spec :family "MonoLisa" :size 16)
+      doom-big-font (font-spec :family "MonoLisa" :size 22)
+      doom-variable-pitch-font (font-spec :family "MonoLisa" :size 16))
+#+end_src
 Enable ligatures.
 #+begin_src emacs-lisp :tangle packages.el
 (package! ligature :recipe (:host github :repo "mickeynp/ligature.el"))
 #+end_src
+
 #+begin_src emacs-lisp
 (use-package! ligature
   :config
@@ -470,17 +478,88 @@ Always open up a new workspace when opening up a project.
 #+begin_src emacs-lisp
 (setq +workspaces-on-switch-project-behavior t)
 #+end_src
-** Evil
+** AwesomeTab
+#+begin_src emacs-lisp :tangle packages.el
+(package! awesome-tab
+  :recipe (:host github :repo "manateelazycat/awesome-tab"))
+#+end_src
+
 #+begin_src emacs-lisp
-(after! evil
-  (setq evil-ex-substitute-global t     ; I like my s/../.. to by global by default
-        evil-move-cursor-back nil       ; Don't move the block cursor when toggling insert mode
-        evil-kill-on-visual-paste nil)) ; Don't put overwritten text in the kill ring
+(use-package! awesome-tab
+  :commands (awesome-tab-mode)
+  :init
+  (defhydra hydra-tab (:pre (awesome-tab-mode t)
+                       :post (awesome-tab-mode -1))
+    "
+   ^^^^Fast Move             ^^^^Tab                    ^^Search            ^^Misc
+  -^^^^--------------------+-^^^^---------------------+-^^----------------+-^^---------------------------
+     ^_k_^   prev group    | _C-a_^^     select first | _b_ switch buffer | _C-k_   kill buffer
+   _h_   _l_ switch tab    | _C-e_^^     select last  | _g_ switch group  | _C-S-k_ kill others in group
+     ^_j_^   next group    | _a_^^       ace jump     | ^^                | ^^
+   ^^0 ~ 9^^ select window | _C-h_/_C-l_ move current | ^^                | ^^
+  -^^^^--------------------+-^^^^---------------------+-^^----------------+-^^---------------------------
+  "
+    ("h" awesome-tab-backward-tab)
+    ("j" awesome-tab-forward-group)
+    ("k" awesome-tab-backward-group)
+    ("l" awesome-tab-forward-tab)
+    ("a" awesome-tab-ace-jump)
+    ("C-a" awesome-tab-select-beg-tab)
+    ("C-e" awesome-tab-select-end-tab)
+    ("C-h" awesome-tab-move-current-tab-to-left)
+    ("C-l" awesome-tab-move-current-tab-to-right)
+    ("b" ivy-switch-buffer)
+    ("g" awesome-tab-counsel-switch-group)
+    ("C-k" kill-current-buffer)
+    ("C-S-k" awesome-tab-kill-other-buffers-in-current-group)
+    ("q" nil "quit"))
+  :bind
+  (("s-t" . hydra-tab/body)))
 #+end_src
 * Key bindings
 #+begin_src emacs-lisp :tangle +bindings.el
 (map! [remap xref-find-definitions] #'lsp-ui-peek-find-definitions
       [remap xref-find-references] #'lsp-ui-peek-find-references)
+#+end_src
+
+#+begin_src emacs-lisp :tangle no
+(package! reverse-im)
+#+end_src
+
+#+begin_src emacs-lisp :tangle no
+(use-package! reverse-im
+  :after char-fold
+  :config
+  (reverse-im-input-methods '("russian-computer"))
+  :init
+  (reverse-im-mode t))
+#+end_src
+* TreeSitter
+Semantic syntax highlighting.
+#+begin_src emacs-lisp :tangle packages.el
+(package! tree-sitter)
+(package! tree-sitter-langs)
+#+end_src
+
+Configure TreeSitter.
+#+begin_src emacs-lisp
+(use-package! tree-sitter
+  :when (bound-and-true-p module-file-suffix)
+  :hook (prog-mode . tree-sitter-mode)
+  :hook (tree-sitter-after-on . tree-sitter-hl-mode)
+  :config
+  (require 'tree-sitter-langs)
+  (defadvice! doom-tree-sitter-fail-gracefully-a (orig-fn &rest args)
+    "Don't break with errors when current major mode lacks tree-sitter support."
+    :around #'tree-sitter-mode
+    (condition-case e
+        (apply orig-fn args)
+      (error
+       (unless (string-match-p (concat "^Cannot find shared library\\|"
+                                       "^No language registered\\|"
+                                       "cannot open shared object file")
+                            (error-message-string e))
+            (signal (car e) (cadr e)))))))
 #+end_src
 * Languages
 ** JavaScript
@@ -491,7 +570,10 @@ Always open up a new workspace when opening up a project.
 Tell ~Jest~ to use ~yarn~:
 #+begin_src emacs-lisp
 (after! jest
-  (setq jest-executable "yarn jest"))
+  (setq jest-executable "yarn jest")
+  (pushnew! evil-collection-mode-list 'jest-mode)
+  (pushnew! evil-normal-state-modes 'jest-mode)
+  (set-popup-rule! "^\\*jest\\*" :side 'right :width 0.4 :vslot 2 :quit 'current :select nil))
 #+end_src
 And enable it in ~js2~ mode:
 #+begin_src emacs-lisp
@@ -567,6 +649,12 @@ Format file before saving it
 #+end_src
 * LSP
 #+begin_src emacs-lisp
+(after! lsp
+  (setq!
+   lsp-bash-highlight-parsing-errors t
+   lsp-eslint-package-manager "yarn"))
+#+end_src
+#+begin_src emacs-lisp
 (after! lsp-mode
   (setq lsp-ui-sideline-enable nil
         lsp-headerline-breadcrumb-enable nil
@@ -576,15 +664,6 @@ Format file before saving it
         lsp-modeline-diagnostics-enable nil))
 (after! lsp-ui
   (setq lsp-ui-doc-enable nil))
-#+end_src
-
-Configure TreeSitter.
-#+begin_src emacs-lisp
-(use-package! tree-sitter
-  :hook (after-init . global-tree-sitter-mode)
-  :config
-  (require 'tree-sitter-langs)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 #+end_src
 * Org
 ** Packages
@@ -700,7 +779,11 @@ Disable auto-complete
 #+begin_src emacs-lisp
 (after! company
   (setq company-idle-delay nil
-        company-format-margin-function #'company-vscode-light-icons-margin-function))
+        company-selection-wrap-around t
+        company-show-numbers t
+        company-require-match nil
+        company-dabbrev-minimum-length 2
+        company-search-regexp-function #'company-search-flex-regexp))
 #+end_src
 ** Ivy
 Use =ripgrep=
@@ -714,7 +797,7 @@ Enable preview of buffers
   (setq +ivy-buffer-preview t))
 #+end_src
 I prefer search matching to be ordered; it's more precise
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (after! ivy
   (add-to-list 'ivy-re-builders-alist '(counsel-projectile-find-file . ivy--regex-plus)))
 #+end_src
@@ -776,25 +859,4 @@ Easy copy links to files
   :init
   (map! :map dired-mode-map
         :desc "narrow" "/" #'dired-narrow-fuzzy))
-#+end_src
-* Everywhere
-#+begin_src emacs-lisp
-(after! emacs-everywhere
-  ;; Easier to match with a bspwm rule:
-  ;;   bspc rule -a 'Emacs:emacs-everywhere' state=floating sticky=on
-  (setq emacs-everywhere-frame-name-format "emacs-anywhere")
-
-  ;; The modeline is not useful to me in the popup window. It looks much nicer
-  ;; to hide it.
-  (remove-hook 'emacs-everywhere-init-hooks #'hide-mode-line-mode)
-
-  ;; Semi-center it over the target window, rather than at the cursor position
-  ;; (which could be anywhere).
-  (defadvice! center-emacs-everywhere-in-origin-window (frame window-info)
-    :override #'emacs-everywhere-set-frame-position
-    (cl-destructuring-bind (x y width height)
-        (emacs-everywhere-window-geometry window-info)
-      (set-frame-position frame
-                          (+ x (/ width 2) (- (/ width 2)))
-                          (+ y (/ height 2))))))
 #+end_src
