@@ -1,0 +1,321 @@
+#+TITLE:      Sway configuration
+#+AUTHOR:     Vitaly Slobodin
+#+PROPERTY:   header-args+ :comments both
+#+PROPERTY:   header-args+ :mkdirp yes
+
+* Sway
+** Set key modifier
+Set key modifier to Super
+#+begin_src conf :tangle ~/.config/sway/config
+set $mod Mod4
+#+end_src
+** Set terminal emulator
+#+begin_src conf :tangle ~/.config/sway/config
+set $term foot
+#+end_src
+** Set application launcher
+#+begin_src conf :tangle ~/.config/sway/config
+set $menu dmenu_path | wofi --show drun | xargs swaymsg exec --
+#+end_src
+** Set font
+Font for window titles. Will also be used by the bar unless a different font
+is used in the bar {} block below.
+#+begin_src conf :tangle ~/.config/sway/config
+font SF Pro Display 12
+#+end_src
+** Configure output
+#+begin_src conf :tangle ~/.config/sway/config
+output * bg $HOME/Pictures/desktop-3440x1440.png fill
+output DP-1 {
+  mode 3440x1440@100Hz
+  subpixel rgb
+  adaptive_sync enable
+}
+#+end_src
+** Configure input
+#+begin_src conf :tangle ~/.config/sway/config
+input type:keyboard {
+  xkb_layout "us,ru"
+  xkb_options "grp:alt_shift_toggle"
+  repeat_delay 210
+  repeat_rate 40
+}
+
+input type:pointer {
+  pointer_accel 0
+}
+
+input type:mouse {
+  accel_profile "flat"
+}
+#+end_src
+** Set cursor theme
+#+begin_src conf :tangle ~/.config/sway/config
+seat seat0 xcursor_theme capitaine-cursors-light 42
+#+end_src
+** Workspace layout
+#+begin_src conf :tangle ~/.config/sway/config
+workspace_layout stacking
+#+end_src
+** Key bindings
+Use =Mouse+$mod= to drag floating windows to their wanted position.
+#+begin_src conf :tangle ~/.config/sway/config
+floating_modifier $mod normal
+#+end_src
+Start a terminal.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+Return exec $term
+#+end_src
+Kill focused window.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+q kill
+#+end_src
+Start dmenu (a program launcher).
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+d exec $menu
+#+end_src
+Run =emacs-anywhere=.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+Ctrl+e swaymsg exec ~/.emacs.d/bin/doom everywhere
+#+end_src
+Change focus.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+#+end_src
+Move focused window.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+#+end_src
+Split in horizontal orientation.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+c split horizontal
+#+end_src
+Split in vertical orientation.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+v split vertical
+#+end_src
+Enter fullscreen mode for the focused container.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+f fullscreen toggle
+#+end_src
+Change container layout (stacked, tabbed, toggle split).
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+#+end_src
+Toggle tiling / floating,
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+Shift+space floating toggle
+#+end_src
+Change focus between tiling / floating windows.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+space focus mode_toggle
+#+end_src
+Focus the parent container.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+a focus parent
+#+end_src
+Focus the child container.
+#+begin_src conf :tangle no
+bindsym $mod+d focus child
+#+end_src
+Printscreen.
+#+begin_src conf :tangle no
+bindsym --release Print exec --no-startup-id flameshot gui
+#+end_src
+Media Keys.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+#+end_src
+* Workspaces
+Define names for default workspaces for which we configure key bindings later on. We use variables to avoid repeating the names in multiple places.
+
+#+begin_src conf :tangle ~/.config/sway/config
+set $ws1 "1:web"
+set $ws2 "2:term"
+set $ws3 "3:work"
+set $ws4 "4:dev"
+set $ws5 "5:social"
+set $ws6 "6:meeting"
+set $ws7 "7:music"
+set $ws8 "8:video"
+set $ws9 "9:streaming"
+#+end_src
+
+Switch to workspace.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+#+end_src
+
+Move focused container to workspace.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+#+end_src
+
+Switch to previous/next workspace.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+bracketleft workspace prev
+bindsym $mod+bracketright workspace next
+#+end_src
+
+Reload the configuration file.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+Shift+c reload
+#+end_src
+
+Restart sway inplace.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+Shift+r restart
+#+end_src
+*** Assign applications to workspaces
+Brave -> Workspace 1
+#+begin_src conf :tangle ~/.config/sway/config
+assign [class="Brave"] $ws1
+#+end_src
+
+Slack -> Workspace 3
+#+begin_src conf :tangle ~/.config/sway/config
+assign [class="Slack"] $ws3
+#+end_src
+
+Telegram -> Workspace 5
+#+begin_src conf :tangle ~/.config/sway/config
+assign [class="TelegramDesktop"] $ws5
+#+end_src
+
+Spotify -> Workspace 7
+#+begin_src conf :tangle ~/.config/sway/config
+assign [class="spotify"] $ws7
+#+end_src
+
+*** Additional rules for the applications or windows
+
+Let =emacs-anywhere= float.
+#+begin_src conf :tangle ~/.config/sway/config
+for_window [class="emacs-anywhere"] floating enable
+#+end_src
+
+** Modes
+*** Resize
+Mode for resizing containers.
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+  # These bindings trigger as soon as you enter the resize mode
+
+  # Pressing left will shrink the window’s width.
+  # Pressing right will grow the window’s width.
+  # Pressing up will shrink the window’s height.
+  # Pressing down will grow the window’s height.
+  bindsym h       resize shrink width 10 px or 10 ppt
+  bindsym j       resize grow height 10 px or 10 ppt
+  bindsym k       resize shrink height 10 px or 10 ppt
+  bindsym l       resize grow width 10 px or 10 ppt
+
+  # same bindings, but for the arrow keys
+  bindsym Left        resize shrink width 10 px or 10 ppt
+  bindsym Down        resize grow height 10 px or 10 ppt
+  bindsym Up          resize shrink height 10 px or 10 ppt
+  bindsym Right       resize grow width 10 px or 10 ppt
+
+  # back to normal: Enter or Escape or Mod1+r
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
+}
+#+end_src
+** Theme
+Set colors from the Dracula theme.
+#+begin_src conf :tangle ~/.config/sway/config
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
+#+end_src
+
+** Bar
+=waybar= configuration with custom colors from Dracula theme.
+
+#+begin_src conf :tangle ~/.config/sway/config
+bar {
+  swaybar_command waybar
+  position top
+  strip_workspace_numbers yes
+
+  colors {
+    background #282A36
+    statusline #F8F8F2
+    separator  #44475A
+
+    focused_workspace  #44475A #44475A #F8F8F2
+    active_workspace   #282A36 #44475A #F8F8F2
+    inactive_workspace #282A36 #282A36 #BFBFBF
+    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+    binding_mode       #FF5555 #FF5555 #F8F8F2
+  }
+}
+#+end_src
+
+** Startup
+*** Import environment
+#+begin_src  conf :tangle ~/.config/sway/config
+exec_always systemctl --user import-environment
+#+end_src
+*** Activate DBus environment
+#+begin_src conf :tangle ~/.config/sway/config
+exec dbus-update-activation-environment --systemd --all
+#+end_src
+
+*** Notification daemon
+#+begin_src conf :tangle ~/.config/sway/config
+exec mako
+#+end_src
+
+*** Pipewire
+#+begin_src conf :tangle ~/.config/sway/config
+exec pipewire
+#+end_src
+
+*** Solaar for Logitech mouse.
+#+begin_src conf :tangle ~/.config/sway/config
+exec solaar --window=hide
+#+end_src
+
+*** Autorun applications.
+#+begin_src conf :tangle ~/.config/sway/config
+exec dex -a
+#+end_src
