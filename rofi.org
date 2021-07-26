@@ -13,7 +13,6 @@ configuration {
   display-run: "=>";
   display-ssh: "~>";
   display-drun: "::";
-  theme: "./colors.rasi";
   kb-move-front: "Control+a";
   kb-move-end: "Control+e";
   kb-move-word-back: "Control+Left";
@@ -28,7 +27,8 @@ configuration {
 }
 #+end_src
 * Style
-#+begin_src css :tangle "~/.config/rofi/colors.rasi"
+Dracula-like theme.
+#+begin_src css :tangle no
  * {
   accent:   #bd93f9;
   bg:       #1E2029FA;
