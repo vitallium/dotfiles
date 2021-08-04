@@ -6,11 +6,16 @@
 * Configuration
 Set font.
 #+begin_src conf
-font=MonoLisa:size=12
+font=MonoLisa:size=10
+#+end_src
+
+Draw bold text in bright.
+#+begin_src conf
+bold-text-in-bright=yes
 #+end_src
 * Theme and colors
-Set colors to Dracula.
-#+begin_src conf
+** Dracula
+#+begin_src conf :tangle no
 [cursor]
 color=282a36 f8f8f2
 
@@ -34,4 +39,31 @@ bright4=caa9fa   # bright blue
 bright5=ff92d0   # bright magenta
 bright6=9aedfe   # bright cyan
 bright7=e6e6e6   # bright white
+#+end_src
+** Modus Operandi
+#+begin_src conf
+[cursor]
+color=4a484d #ffffff
+
+[colors]
+background= ffffff
+foreground= 000000
+
+regular0=   000000
+regular1=   a60000
+regular2=   005e00
+regular3=   813e00
+regular4=   0031a9
+regular5=   721045
+regular6=   00538b
+regular7=   bfbfbf
+
+bright0=    595959
+bright1=    972500
+bright2=    315b00
+bright3=    70480f
+bright4=    2544bb
+bright5=    5317ac
+bright6=    005a5f
+bright7=    ffffff
 #+end_src
