@@ -21,15 +21,21 @@ set $menu dmenu_path | wofi --show drun | xargs swaymsg exec --
 Font for window titles. Will also be used by the bar unless a different font
 is used in the bar {} block below.
 #+begin_src conf :tangle ~/.config/sway/config
-font SF Pro Display 12
+font Inter 12
 #+end_src
 ** Configure output
-#+begin_src conf :tangle ~/.config/sway/config
+#+begin_src conf :tangle no
 output * bg $HOME/Pictures/desktop-3440x1440.png fill
 output DP-1 {
   mode 3440x1440@100Hz
   subpixel rgb
   adaptive_sync enable
+}
+#+end_src
+#+begin_src conf :tangle ~/.config/sway/config
+output DP-1 {
+  mode 3840x2160@60Hz
+  subpixel rgb
 }
 #+end_src
 ** Configure input
@@ -51,7 +57,7 @@ input type:mouse {
 #+end_src
 ** Set cursor theme
 #+begin_src conf :tangle ~/.config/sway/config
-seat seat0 xcursor_theme capitaine-cursors-light 42
+seat seat0 xcursor_theme capitaine-cursors 42
 #+end_src
 ** Workspace layout
 #+begin_src conf :tangle ~/.config/sway/config
@@ -196,6 +202,14 @@ Restart sway inplace.
 #+begin_src conf :tangle ~/.config/sway/config
 bindsym $mod+Shift+r restart
 #+end_src
+
+Shortcut to exit sway
+#+begin_src conf :tangle ~/.config/sway/config
+bindsym $mod+Shift+e exec swaynag -t warning -m \
+  'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' \
+   -b 'Yes, exit sway' 'swaymsg exit'
+#+end_src
+
 *** Assign applications to workspaces
 Brave -> Workspace 1
 #+begin_src conf :tangle ~/.config/sway/config
@@ -256,7 +270,7 @@ mode "resize" {
 #+end_src
 ** Theme
 Set colors from the Dracula theme.
-#+begin_src conf :tangle ~/.config/sway/config
+#+begin_src conf :tangle no
 # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
 client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
@@ -269,8 +283,20 @@ client.background       #F8F8F2
 
 ** Bar
 =waybar= configuration with custom colors from Dracula theme.
-
 #+begin_src conf :tangle ~/.config/sway/config
+bar {
+  height 30
+  position top
+  status_padding 0
+  strip_workspace_numbers yes
+  tray {
+    tray_padding 2
+    icon_theme   Numix
+  }
+}
+#+end_src
+
+#+begin_src conf :tangle no
 bar {
   swaybar_command waybar
   position top
@@ -318,4 +344,12 @@ exec solaar --window=hide
 *** Autorun applications.
 #+begin_src conf :tangle ~/.config/sway/config
 exec dex -a
+#+end_src
+*** GNOME Polkit
+#+begin_src conf :tangle ~/.config/sway/config
+exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#+end_src
+*** Background
+#+begin_src  conf :tangle ~/.config/sway/config
+
 #+end_src
