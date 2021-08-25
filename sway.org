@@ -21,7 +21,7 @@ set $menu dmenu_path | wofi --show drun | xargs swaymsg exec --
 Font for window titles. Will also be used by the bar unless a different font
 is used in the bar {} block below.
 #+begin_src conf :tangle ~/.config/sway/config
-font Inter 12
+font pango:Inter 12
 #+end_src
 ** Configure output
 #+begin_src conf :tangle no
@@ -238,6 +238,12 @@ Let =emacs-anywhere= float.
 for_window [class="emacs-anywhere"] floating enable
 #+end_src
 
+Zoom.
+#+begin_src conf :tangle ~/.config/sway/config
+for_window [class = "^Zoom$"] floating enable
+for_window [app_id = "zoom"] floating enable
+#+end_src
+
 ** Modes
 *** Resize
 Mode for resizing containers.
@@ -282,7 +288,7 @@ client.background       #F8F8F2
 #+end_src
 
 ** Bar
-=waybar= configuration with custom colors from Dracula theme.
+Simple bar with default colors.
 #+begin_src conf :tangle ~/.config/sway/config
 bar {
   height 30
@@ -296,6 +302,7 @@ bar {
 }
 #+end_src
 
+=waybar= configuration with custom colors from Dracula theme.
 #+begin_src conf :tangle no
 bar {
   swaybar_command waybar
@@ -350,6 +357,6 @@ exec dex -a
 exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #+end_src
 *** Background
-#+begin_src  conf :tangle ~/.config/sway/config
-
+#+begin_src conf :tangle ~/.config/sway/config
+exec_always swaybg -m fill -i $HOME/Pictures/anthony-chiado-5_PgmHaLo6w-unsplash.jpg
 #+end_src
