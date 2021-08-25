@@ -114,6 +114,10 @@ Media Keys.
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 #+end_src
 
 ** Workspaces
@@ -346,6 +350,12 @@ Set keyboard layout.
 #+begin_src conf :tangle ~/.config/i3/config
 exec --no-startup-id setxkbmap -layout us,ru -option 'grp:alt_shift_toggle'
 #+end_src
+
+Background.
+#+begin_src conf :tangle ~/.config/i3/config
+exec --no-startup-id $HOME/.fehbg
+#+end_src
+
 
 * i3status
 ** General
