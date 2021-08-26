@@ -71,8 +71,9 @@ literate
  +childframe)
 ;;helm                       ; the *other* search engine for love and life
 ;;ido                        ; the other *other* search engine...
-(ivy                         ; a search engine for love and life
- +prescient)                 ; ... I know what I want(ed)
+(vertico +icons)
+;;(ivy                         ; a search engine for love and life
+;; +prescient)                 ; ... I know what I want(ed)
 #+end_src
 
 #+name: doom-ui
@@ -83,12 +84,11 @@ doom-dashboard               ; a nifty splash screen for Emacs
 doom-quit                    ; DOOM quit-message prompts when you quit Emacs
 ;;(emoji +unicode)           ; 🙂
 hl-todo                      ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-;;hydra                      ; quick documentation for related commands
+hydra                        ; quick documentation for related commands
 ;;indent-guides              ; highlighted indent columns, notoriously slow
 ;;minimap                    ; show a map of the code on the side
 modeline                     ; snazzy, Atom-inspired modeline, plus API
 nav-flash                    ; blink the current line after jumping
-;;neotree                    ; a project drawer, like NERDTree for vim
 ;;ligatures
 ophints                      ; highlight the region an operation acts on
 (popup                       ; tame sudden yet inevitable temporary windows
@@ -110,7 +110,7 @@ zen                          ; distraction-free coding or writing
 (evil +everywhere)           ; come to the dark side, we have cookies
 file-templates               ; auto-snippets for empty files
 fold                         ; (nigh) universal code folding
-(format)                     ; automated prettiness
+format                       ; automated prettiness
 ;;god                        ; run Emacs commands without modifier keys
 ;;lispy                      ; vim for lisp, for people who don't like vim
 multiple-cursors             ; editing in many places at once
@@ -125,7 +125,7 @@ snippets                     ; my elves. They type so I don't have to
 #+begin_src emacs-lisp
 (dired +ranger)              ; making dired pretty [functional]
 electric                     ; smarter, keyword-based electric-indent
-ibuffer                      ; interactive buffer management
+(ibuffer +icons)             ; interactive buffer management
 (undo +tree)                 ; persistent, smarter undo for your inevitable mistakes
 vc                           ; version-control and Emacs, sitting in a tree
 #+end_src
@@ -141,7 +141,7 @@ vterm                        ; the best terminal emulation in Emacs
 
 #+name: doom-checkers
 #+begin_src emacs-lisp
-syntax                       ; tasing you for every semicolon you forget
+(syntax +childframe)         ; tasing you for every semicolon you forget
 (spell +hunspell +flyspell)  ; tasing you for misspelling mispelling
 grammar                      ; tasing grammar mistake every you make
 #+end_src
@@ -157,12 +157,13 @@ editorconfig                 ; let someone else argue about tabs vs spaces
 (lookup                      ; navigate your code and its documentation
   +devdocs
   +docsets
+  +offline
   +dictionary)
-lsp
+(lsp +peek)
 (magit +forge)               ; a git porcelain for Emacs
 make                         ; run make tasks from Emacs
 ;;pass                       ; password manager for nerds
-;;rgb                        ; creating color strings
+rgb                          ; creating color strings
 taskrunner                   ; taskrunner for all your projects
 ;;terraform                  ; infrastructure as code
 ;;tmux                       ; an API for interacting with tmux
@@ -205,6 +206,7 @@ emacs-lisp          ; drown in parentheses
      +babel
      +attach
      +export
+     +roam
      +pretty)       ; organize your plain life in plain text
 ;;plantuml          ; diagrams for confusing people more
 (python +lsp)       ; beautiful is better than ugly
@@ -273,7 +275,7 @@ setting, and load it if it exists.
 
 Enable local variables.
 #+begin_src emacs-lisp
-(setq-default enable-local-variables t)
+(put '+file-templates-dir 'safe-local-variable #'stringp)
 #+end_src
 ** Additional stuff to work with strings
 String inflections anyone?
@@ -359,7 +361,13 @@ Prevents some cases of Emacs flickering:
 #+end_src
 Display fill column indicator.
 #+begin_src emacs-lisp
-(add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
+(setq-default fill-column 110)
+(setq fill-column 110)
+(setq visual-fill-column-width fill-column)
+
+(setq visual-fill-column-center-text t
+      visual-fill-column-width fill-column)
+;; (add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
 #+end_src
 ** Font
 [[https://input.djr.com/][Input]] font is just the best font I ever used.
@@ -371,8 +379,8 @@ Display fill column indicator.
 But I switched to [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]].
 #+begin_src emacs-lisp :tangle no
 (setq doom-font (font-spec :family "PragmataPro Mono Liga" :size 20 :weight 'normal)
-      doom-big-font (font-spec :family "PragmataPro Mono Liga" :size 22)
-      doom-variable-pitch-font (font-spec :family "PragmataPro Mono Liga" :size 18 :weight 'normal))
+   doom-big-font (font-spec :family "PragmataPro Mono Liga" :size 22)
+   doom-variable-pitch-font (font-spec :family "PragmataPro Mono Liga" :size 18 :weight 'normal))
 #+end_src
 And I use MonoLisa sometimes.
 #+begin_src emacs-lisp
@@ -429,9 +437,8 @@ Enable ligatures.
 
 (after! doom-modeline
   (setq
-   doom-modeline-project-detection 'projectile
    doom-modeline-checker-simple-format t
-   doom-modeline-buffer-file-name-style 'file-name
+   doom-modeline-buffer-file-name-style 'relative-to-project
    doom-modeline-height 20
    doom-modeline-bar-width 6
    doom-modeline-icon t
@@ -516,10 +523,40 @@ Always open up a new workspace when opening up a project.
   :bind
   (("s-t" . hydra-tab/body)))
 #+end_src
+** Popups
+#+begin_src emacs-lisp
+(set-popup-rules!
+  '(("^\\*Org Agenda" :side right :size 0.55 :select t :modeline t :ttl nil :quit nil)
+    ("^\\*Org Src" :ignore t)
+    ("^\\*Org QL View: \\(Work \\)?Projects*" :side right :size 0.55 :select t :modeline t :ttl nil :quit nil)
+    ("^\\*PDF-Occur*" :side right :size 0.5 :select t :modeline t)
+    ("^\\*WoMan " :side right :size 0.5 :select t :modeline t :ttl nil :quit nil)
+    ("^\\*helm" :vslot -100 :size 0.32 :ttl nil)
+    ("^\\*helpful command" :side right :size 0.5 :select t :modeline t :ttl nil :quit nil)
+    ("^\\*nodejs" :side right :size 0.55 :select t :modeline t :ttl nil :quit nil)
+    ("^\\*jest" :select nil)
+    ("^\\*projectile-files-errors" :ignore t)
+    ("^\\*elfeed-entry" :modeline t :ttl nil)
+    ("^\\*Flycheck checker" :size 0.2 :select nil)))
+#+end_src
+** Projects
+** Scan directories for projects
+#+begin_src emacs-lisp
+(use-package! projectile
+  :init
+  (setq projectile-project-search-path '("~/projects/"
+                                         "~/projects/gitlab"))
+  :config
+  ;; Auto discover when running switch project for the first time
+  (add-transient-hook! 'projectile-switch-project
+    (projectile-cleanup-known-projects)
+    (projectile-discover-projects-in-search-path)))
+#+end_src
 * Key bindings
 #+begin_src emacs-lisp :tangle +bindings.el
-(map! [remap xref-find-definitions] #'lsp-ui-peek-find-definitions
-      [remap xref-find-references] #'lsp-ui-peek-find-references)
+(after! lsp-ui
+  (map! [remap xref-find-definitions] #'lsp-ui-peek-find-definitions
+        [remap xref-find-references] #'lsp-ui-peek-find-references))
 #+end_src
 
 #+begin_src emacs-lisp :tangle no
@@ -533,6 +570,42 @@ Always open up a new workspace when opening up a project.
   (reverse-im-input-methods '("russian-computer"))
   :init
   (reverse-im-mode t))
+#+end_src
+
+Window navigation without pressing the leader key.
+#+begin_src emacs-lisp
+(map!
+ :en "C-h"   #'evil-window-left
+ :en "C-j"   #'evil-window-down
+ :en "C-k"   #'evil-window-up
+ :en "C-l"   #'evil-window-right)
+
+(map!
+ :map (image-mode-map
+       magit-diff-mode-map
+       magit-revision-mode-map
+       magit-status-mode-map
+       eshell-mode-map
+       evil-org-mode-map)
+ :en "C-h"   #'evil-window-left
+ :en "C-j"   #'evil-window-down
+ :en "C-k"   #'evil-window-up
+ :en "C-l"   #'evil-window-right)
+
+(add-hook! 'eshell-first-time-mode-hook
+  (map!
+   :map eshell-mode-map
+   :en "C-h"   #'evil-window-left
+   :en "C-j"   #'evil-window-down
+   :en "C-k"   #'evil-window-up
+   :en "C-l"   #'evil-window-right))
+
+(map!
+ :map org-agenda-mode-map
+ "C-h"  #'evil-window-left
+ "C-j"  #'evil-window-down
+ "C-k"  #'evil-window-up
+ "C-l"  #'evil-window-right)
 #+end_src
 * TreeSitter
 Semantic syntax highlighting.
@@ -569,11 +642,17 @@ Configure TreeSitter.
 #+end_src
 Tell ~Jest~ to use ~yarn~:
 #+begin_src emacs-lisp
-(after! jest
+(use-package! jest
+  :after (js2-mode)
+  :hook (js2-mode . jest-minor-mode)
+  :config
   (setq jest-executable "yarn jest")
   (pushnew! evil-collection-mode-list 'jest-mode)
   (pushnew! evil-normal-state-modes 'jest-mode)
-  (set-popup-rule! "^\\*jest\\*" :side 'right :width 0.4 :vslot 2 :quit 'current :select nil))
+  (set-popup-rule! "^\\*jest\\*"
+    :side 'right
+    :size 0.5
+    :select nil :quit 'current :ttl nil))
 #+end_src
 And enable it in ~js2~ mode:
 #+begin_src emacs-lisp
@@ -593,10 +672,10 @@ Enable prettier only if the configuration file found:
       (format-all-mode)
       (setq +format-with-lsp nil)))
 
-(add-hook! js2-mode 'maybe-use-prettier)
-(add-hook! rjsx-mode 'maybe-use-prettier)
-(add-hook! typescript-mode 'maybe-use-prettier)
-(add-hook! web-mode 'maybe-use-prettier)
+(add-hook 'js2-mode 'maybe-use-prettier)
+(add-hook 'rjsx-mode 'maybe-use-prettier)
+(add-hook 'typescript-mode 'maybe-use-prettier)
+(add-hook 'web-mode 'maybe-use-prettier)
 #+end_src
 *** Flycheck
 Enable =ESLint= in =web-mode=
@@ -606,7 +685,17 @@ Enable =ESLint= in =web-mode=
 #+end_src
 And use the =javascript-eslint= checker instead of =lsp=
 #+begin_src emacs-lisp
-(setq-hook! 'js2-mode-hook flycheck-checker 'javascript-eslint)
+(after! lsp-mode
+  (remove-hook 'lsp-mode-hook #'+lsp-init-flycheck-or-flymake-h))
+
+(defun +js/fix-checker ()
+  "Fix LSP overwritten checkers."
+  (interactive)
+  (when (-contains? '(js2-mode rjsx-mode) major-mode)
+    (flycheck-select-checker 'javascript-eslint)))
+
+(add-hook 'lsp-mode-hook #'+js/fix-checker)
+;; (setq-hook! 'js2-mode-hook flycheck-checker 'javascript-eslint)
 #+end_src
 Enable =stylelint= in =web-mode=
 #+begin_src emacs-lisp
@@ -648,11 +737,34 @@ Format file before saving it
 (add-hook! go-mode-hook #'gofmt-before-save)
 #+end_src
 * LSP
+#+begin_src emacs-lisp :tangle packages.el
+(package! lsp-ui :disable t)
+(package! merlin-eldoc :disable t)
+#+end_src
+
 #+begin_src emacs-lisp
-(after! lsp
-  (setq!
-   lsp-bash-highlight-parsing-errors t
-   lsp-eslint-package-manager "yarn"))
+(setq lsp-eldoc-render-all nil
+      lsp-eldoc-enable-hover nil
+      lsp-eldoc-enable-signature-help nil
+      lsp-eldoc-prefer-signature-help nil
+      lsp-inhibit-message t
+
+      lsp-eldoc-enable-hover nil
+      ;; Disable Signature
+      lsp-signature-auto-activate nil
+      lsp-signature-render-documentation nil
+      lsp-signature-doc-lines 1
+
+      lsp-highlight-symbol-at-point nil
+      ;; Disable make error highlighting
+      lsp-prefer-flymake nil)
+
+(setq lsp-on-idle-hook nil)
+
+;; (after! lsp
+;;   (setq!
+;;    lsp-bash-highlight-parsing-errors t
+;;    lsp-eslint-package-manager "yarn"))
 #+end_src
 #+begin_src emacs-lisp
 (after! lsp-mode
@@ -695,7 +807,8 @@ Format file before saving it
         org-fontify-whole-heading-line t
         org-fontify-done-headline t
         org-fontify-quote-and-verse-blocks t
-        line-spacing 0.2))
+        line-spacing 0.2)
+  (set-popup-rule! "^CAPTURE.*\\.org$" :size 0.4 :side 'bottom :select t :autosave t))
 #+end_src
 
 Enable =mixed-pitch-mode=
@@ -709,6 +822,11 @@ Enable =mixed-pitch-mode=
 
 (add-hook! 'org-mode-hook
            #'+org-pretty-mode #'mixed-pitch-mode #'gkh/org-mode-visual)
+#+end_src
+** Roam
+#+begin_src emacs-lisp
+(after! org-roam
+  (setq org-roam-directory "~/roam"))
 #+end_src
 * Mail
 ** mu4e
@@ -816,6 +934,22 @@ Setup multidictionary
   (ispell-set-spellchecker-params)
   (ispell-hunspell-add-multi-dic "en_US,ru_RU")
   (setq ispell-dictionary "en_US,ru_RU"))
+#+end_src
+** Vale
+#+begin_src emacs-lisp
+(after! flycheck
+  (flycheck-define-checker vale
+    "A checker for prose"
+    :command ("vale" "--output" "line" "--no-wrap"
+              source)
+    :standard-input nil
+    :error-patterns
+      ((error line-start (file-name) ":" line ":" column ":" (id (one-or-more (not (any ":")))) ":" (message)   line-end))
+    :modes (markdown-mode org-mode text-mode)
+    :next-checkers ((t . markdown-markdownlint-cli))
+  )
+
+  (add-to-list 'flycheck-checkers 'vale))
 #+end_src
 * Magit
 ** Basic configuration
