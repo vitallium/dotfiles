@@ -11,7 +11,7 @@ set $mod Mod4
 #+end_src
 ** Set terminal emulator
 #+begin_src conf :tangle ~/.config/sway/config
-set $term foot
+set $term footclient
 #+end_src
 ** Set application launcher
 #+begin_src conf :tangle ~/.config/sway/config
@@ -21,7 +21,7 @@ set $menu dmenu_path | wofi --show drun | xargs swaymsg exec --
 Font for window titles. Will also be used by the bar unless a different font
 is used in the bar {} block below.
 #+begin_src conf :tangle ~/.config/sway/config
-font pango:Inter 12
+font pango:Ubuntu 14
 #+end_src
 ** Configure output
 #+begin_src conf :tangle no
@@ -42,7 +42,7 @@ output DP-1 {
 #+begin_src conf :tangle ~/.config/sway/config
 input type:keyboard {
   xkb_layout "us,ru"
-  xkb_options "grp:alt_shift_toggle"
+  xkb_options "grp:alt_space_toggle"
   repeat_delay 210
   repeat_rate 40
 }
@@ -58,10 +58,6 @@ input type:mouse {
 ** Set cursor theme
 #+begin_src conf :tangle ~/.config/sway/config
 seat seat0 xcursor_theme capitaine-cursors 42
-#+end_src
-** Workspace layout
-#+begin_src conf :tangle ~/.config/sway/config
-workspace_layout stacking
 #+end_src
 ** Key bindings
 Use =Mouse+$mod= to drag floating windows to their wanted position.
@@ -240,8 +236,13 @@ for_window [class="emacs-anywhere"] floating enable
 
 Zoom.
 #+begin_src conf :tangle ~/.config/sway/config
-for_window [class = "^Zoom$"] floating enable
-for_window [app_id = "zoom"] floating enable
+# For pop up notification windows that don't use notifications api
+for_window [app_id="zoom" title="^zoom$"] border none, floating enable
+# For specific Zoom windows
+for_window [app_id="zoom" title="^(Zoom|About)$"] border pixel, floating enable
+for_window [app_id="zoom" title="Settings"] floating enable, floating_minimum_size 960 x 700
+# for_window [class = "^Zoom$"] floating enable
+# for_window [app_id = "zoom"] floating enable
 #+end_src
 
 ** Modes
@@ -305,10 +306,10 @@ bar {
 =waybar= configuration with custom colors from Dracula theme.
 #+begin_src conf :tangle no
 bar {
-  swaybar_command waybar
   position top
   strip_workspace_numbers yes
 
+  swaybar_command waybar
   colors {
     background #282A36
     statusline #F8F8F2
@@ -332,22 +333,22 @@ exec_always systemctl --user import-environment
 #+begin_src conf :tangle ~/.config/sway/config
 exec dbus-update-activation-environment --systemd --all
 #+end_src
-
 *** Notification daemon
 #+begin_src conf :tangle ~/.config/sway/config
 exec mako
 #+end_src
-
 *** Pipewire
 #+begin_src conf :tangle ~/.config/sway/config
 exec pipewire
 #+end_src
-
-*** Solaar for Logitech mouse.
+*** Solaar for Logitech mouse
 #+begin_src conf :tangle ~/.config/sway/config
 exec solaar --window=hide
 #+end_src
-
+*** Foot server
+#+begin_src conf :tangle ~/.config/sway/config
+exec foot -s
+#+end_src
 *** Autorun applications.
 #+begin_src conf :tangle ~/.config/sway/config
 exec dex -a
