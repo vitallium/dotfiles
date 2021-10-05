@@ -1,0 +1,237 @@
+#+TITLE:      Kitty configuration
+#+AUTHOR:     Vitaly Slobodin
+#+PROPERTY:   header-args+ :comments both
+#+PROPERTY:   header-args+ :tangle "~/.config/kitty/kitty.conf"
+
+* Fonts
+Setup font and its size.
+#+begin_src conf
+font_family MonoLisa
+font_size   11.0
+#+end_src
+
+Disable ligatures and some font features.
+#+begin_src conf
+disable_ligatures never
+font_features     MonoLisa-Regular -liga -calt
+font_features     MonoLisa-Bold -liga -calt
+#+end_src
+* Performance tuning
+Sync screen updates to the refresh rate of the monitor. This
+prevents tearing (https://en.wikipedia.org/wiki/Screen_tearing)
+when scrolling. However, it limits the rendering speed to the
+refresh rate of your monitor. With a very high speed mouse/high
+keyboard repeat rate, you may notice some slight input latency. If
+so, set this to no.
+#+begin_src conf
+sync_to_monitor yes
+#+end_src
+
+The width (in pts) of window borders. Will be rounded to the
+nearest number of pixels based on screen resolution. Note that
+borders are displayed only when more than one window is visible.
+They are meant to separate multiple windows.
+#+begin_src conf
+window_border_width 0.0
+#+end_src
+
+Draw only the minimum borders needed. This means that only the
+minimum needed borders for inactive windows are drawn. That is only
+the borders that separate the inactive window from a neighbor. Note
+that setting a non-zero window margin overrides this and causes all
+borders to be drawn.
+#+begin_src conf
+draw_minimal_borders yes
+#+end_src
+
+The window padding (in pts) (blank area between the text and the
+window border)
+#+begin_src conf
+window_padding_width 0.0
+#+end_src
+
+When the window size is not an exact multiple of the cell size, the
+cell area of the terminal window will have some extra padding on
+the sides. You can control how that padding is distributed with
+this option. Using a value of center means the cell area will be
+placed centrally. A value of top-left means the padding will be on
+only the bottom and right edges.
+#+begin_src conf
+placement_strategy center
+#+end_src
+
+Hide the window decorations (title-bar and window borders). Whether
+this works and exactly what effect it has depends on the window
+manager/operating system.
+#+begin_src conf
+hide_window_decorations no
+#+end_src
+* Tab bar
+The tab bar style, can be one of: fade, separator, powerline, or
+hidden. In the fade style, each tab's edges fade into the
+background color, in the separator style, tabs are separated by a
+configurable separator, and the powerline shows the tabs as a
+continuous line.
+#+begin_src conf
+tab_bar_style powerline
+#+end_src
+
+The separator between tabs in the tab bar when using separator as
+the tab_bar_style.
+#+begin_src conf
+tab_separator " "
+#+end_src
+* Advanced
+Allow other programs to control kitty. If you turn this on other
+programs can control all aspects of kitty, including sending text
+to kitty windows, opening new windows, closing windows, reading the
+content of windows, etc.  Note that this even works over ssh
+connections. You can chose to either allow any program running
+within kitty to control it, with yes or only programs that connect
+to the socket specified with the kitty --listen-on command line
+option, if you use the value socket-only. The latter is useful if
+you want to prevent programs running on a remote computer over ssh
+from controlling kitty.
+#+begin_src conf
+allow_remote_control no
+#+end_src
+
+Allow programs running in kitty to read and write from the
+clipboard. You can control exactly which actions are allowed. The
+set of possible actions is: write-clipboard read-clipboard write-
+primary read-primary. You can additionally specify no-append to
+disable kitty's protocol extension for clipboard concatenation. The
+default is to allow writing to the clipboard and primary selection
+with concatenation enabled. Note that enabling the read
+functionality is a security risk as it means that any program, even
+one running on a remote server via SSH can read your clipboard.
+#+begin_src conf
+clipboard_control write-clipboard write-primary no-append
+#+end_src
+
+The value of the TERM environment variable to set. Changing this
+can break many terminal programs, only change it if you know what
+you are doing, not because you read some advice on Stack Overflow
+to change it. The TERM variable is used by various programs to get
+information about the capabilities and behavior of the terminal. If
+you change it, depending on what programs you run, and how
+different the terminal you are changing it to is, various things
+from key-presses, to colors, to various advanced features may not
+work.
+#+begin_src conf
+term xterm-kitty
+#+end_src
+* OS specific settings
+** macOS
+Use the option key as an alt key. With this set to no, kitty will
+use the macOS native Option+Key = unicode character behavior. This
+will break any Alt+key keyboard shortcuts in your terminal
+programs, but you can use the macOS unicode input technique. You
+can use the values: left, right, or both to use only the left,
+right or both Option keys as Alt, instead.
+#+begin_src conf
+macos_option_as_alt yes
+#+end_src
+
+Draw an extra border around the font with the given width, to
+increase legibility at small font sizes. For example, a value of
+0.75 will result in rendering that looks similar to sub-pixel
+antialiasing at common font sizes.
+#+begin_src conf
+macos_thicken_font 0.3
+#+end_src
+* Key bindings
+Change font size.
+#+begin_src conf
+map ctrl+shift+equal     change_font_size current +1.0
+map ctrl+shift+minus     change_font_size current -1.0
+map ctrl+shift+0         change_font_size current 0
+#+end_src
+* Theme
+#+begin_src conf
+include ./modus-operandi.conf
+#+end_src
+** Modus Operandi
+#+begin_src conf :tangle ~/.config/kitty/modus-operandi.conf
+cursor #4a484d
+cursor_text_color #ffffff
+url_color #1d3ccf
+
+active_border_color #5e4b4f
+inactive_border_color #efefef
+bell_border_color #8a3600
+
+active_tab_foreground #005d26
+active_tab_background #efefef
+inactive_tab_foreground #5e4b4f
+inactive_tab_background #ffffff
+
+foreground #000000
+background #ffffff
+selection_foreground #ffffff
+selection_background #4a484d
+
+color0 #000000
+color1 #a60000
+color2 #005e00
+color3 #813e00
+color4 #0031a9
+color5 #721045
+color6 #00538b
+color7 #bfbfbf
+color8 #595959
+color9 #972500
+color10 #315b00
+color11 #70480f
+color12 #2544bb
+color13 #5317ac
+color14 #005a5f
+color15 #ffffff
+#+end_src
+** Modus Vivendi
+#+begin_src conf :tangle ~/.config/kitty/modus-vivendi.conf
+foreground  #ffffff
+background  #000000
+
+## cursor
+cursor  #ffffff
+cursor_text_color  #000000
+
+## black
+color8  #555555
+color0  #222222
+
+## red
+color9  #ffa0a0
+color1  #fb6859
+
+## green
+color10  #88cf88
+color2   #00fc50
+
+## yellow
+color11  #d2b580
+color3   #ffdd00
+
+## blue
+color12  #92baff
+color4   #00a2ff
+
+## magenta
+color13  #e0b2d6
+color5   #ff8bd4
+
+## cyan
+color14  #a0bfdf
+color6   #30ffc0
+
+## white
+color15  #ffffff
+color7   #dddddd
+
+## Tabs
+active_tab_foreground  #5ac3cf
+active_tab_background  #0e0e0e
+inactive_tab_foreground  #ffffff
+inactive_tab_background  #3d3d3d
+#+end_src
