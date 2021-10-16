@@ -1,0 +1,109 @@
+#+TITLE:      Git configuration
+#+AUTHOR:     Vitaly Slobodin
+#+PROPERTY:   header-args+ :comments both
+#+PROPERTY:   header-args+ :mkdirp yes
+
+* Common configuration
+:PROPERTIES:
+:header-args: :tangle "~/.config/git/config"
+:END:
+Set username and email.
+#+begin_src conf
+[user]
+  name = Vitaly Slobodin
+  email = vitaliy.slobodin@gmail.com
+#+end_src
+
+Enable colors.
+#+begin_src conf
+[color]
+  ui = true
+#+end_src
+
+Setup useful aliases.
+#+begin_src conf
+[alias]
+  up = pull --rebase
+  st = status
+  co = checkout
+  pf = push --force-with-lease
+  am = commit --amend
+#+end_src
+
+Some core settings.
+#+begin_src conf
+[core]
+  autocrlf = false
+  precomposeUnicode = true
+  # Enable parallel index preload for operations like git diff
+  preloadindex = true
+  excludesfile = ~/.config/git/ignore
+  attributesfile = ~/.config/git/attributes
+#+end_src
+
+Use =delta= as pager.
+#+begin_src conf
+[core]
+  pager = delta
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+[delta]
+  features = side-by-side line-numbers decorations
+  whitespace-error-style = 22 reverse
+  syntax-theme = GitHub
+[interactive]
+  diffFilter = delta --color-only
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+#+end_src
+
+LFS configuration.
+#+begin_src conf
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+#+end_src
+* Global gitignore configuration
+:PROPERTIES:
+:header-args: :tangle "~/.config/git/ignore"
+:END:
+
+#+begin_src conf
+/.yalc/
+.yalc.lock
+#+end_src
+* Attributes
+:PROPERTIES:
+:header-args: :tangle "~/.config/git/attributes"
+:END:
+
+#+begin_src conf
+*.lisp  diff=lisp
+*.el    diff=lisp
+*.org   diff=org
+*.md    diff=markdown
+#+end_src
+* Work-related configuration
+Add GitLab configuration.
+#+begin_src conf
+[includeIf "gitdir:~/projects/gitlab/"]
+  path = ~/.config/git/gitlab
+#+end_src
+** GitLab
+:PROPERTIES:
+:header-args: :tangle "~/.config/git/config_gitlab"
+:END:
+
+#+begin_src conf :tangle "~/.config/git/gitlab"
+[user]
+  name = Vitaly Slobodin
+  email = vslobodin@gitlab.com
+  gpgsign = true
+#+end_src
