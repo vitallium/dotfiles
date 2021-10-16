@@ -290,7 +290,7 @@ client.background       #F8F8F2
 
 ** Bar
 Simple bar with default colors.
-#+begin_src conf :tangle ~/.config/sway/config
+#+begin_src conf :tangle no
 bar {
   height 30
   position top
@@ -323,6 +323,17 @@ bar {
   }
 }
 #+end_src
+
+=waybar= configuration with default colors.
+#+begin_src conf :tangle no
+bar {
+  position top
+  strip_workspace_numbers yes
+
+  swaybar_command waybar
+}
+#+end_src
+
 
 ** Startup
 *** Import environment
