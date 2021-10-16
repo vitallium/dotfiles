@@ -2,7 +2,6 @@
 #+AUTHOR:     Vitaly Slobodin
 #+PROPERTY:   header-args+ :comments both
 #+PROPERTY:   header-args+ :mkdirp yes
------
 
 * Aliases
 Let's start with defining some useful aliases that I use everyday.
@@ -25,7 +24,6 @@ Run =mbsync= with custom configuration file.
 #+begin_src fish :tangle ~/.config/fish/aliases.fish
 alias mbsync="mbsync -c \"$HOME/.config/isync/mbsyncrc\""
 #+end_src
-
 * XDG
 Export XDG variables just in case.
 #+begin_src fish :tangle ~/.config/fish/xdg.fish
@@ -33,10 +31,8 @@ set --export XDG_CONFIG_HOME "$HOME/.config"
 set --export XDG_CACHE_HOME "$HOME/.cache"
 set --export XDG_DATA_HOME "$HOME/.local/share"
 #+end_src
-
 * Functions
 ** Functions for working on Chromium
-
 Define functions for common tasks when I work on Chromium.
 #+begin_src fish :tangle ~/.config/fish/functions/chromium.fish
 function deps --description "run gclient sync"
@@ -51,9 +47,7 @@ function acch --description "activate chromium build mode"
   pathadd "$HOME/.local/bin/depot_tools"
 end
 #+end_src
-
 ** Functions for gitignore
-
 Useful function to quickly create and fill =.gitignore= file with most common scenarios for a given language or tool.
 #+begin_src fish :tangle ~/.config/fish/functions/gi.fish
 function gi --description "Create useful .gitignore files for your project"
@@ -61,7 +55,6 @@ function gi --description "Create useful .gitignore files for your project"
 end
 #+end_src
 ** Adds a path to PATH :)
-
 #+begin_src fish :tangle ~/.config/fish/functions/pathadd.fish
 function pathadd -a dir --description "Adds a path to PATH :)"
   if test -d $dir
@@ -69,7 +62,6 @@ function pathadd -a dir --description "Adds a path to PATH :)"
   end
 end
 #+end_src
-
 * Paths
 Add some paths
 #+begin_src fish :tangle ~/.config/fish/paths.fish
@@ -84,7 +76,6 @@ pathadd $GOBIN
 # rust
 pathadd ~/.cargo/bin
 #+end_src
-
 * Fisher
 #+begin_quote
 A plugin manager for Fish—the friendly interactive shell.
@@ -96,7 +87,6 @@ Install it.
 #+begin_src sh
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 #+end_src
-
 ** Plugins:
 *** [[https://github.com/mattgreen/lucid.fish][lucid]]
 #+begin_quote
@@ -106,7 +96,6 @@ A minimalist, high-performance fish prompt with async git dirty checks that just
 #+begin_src fish :tangle ~/.config/fish/fish_plugins
 mattgreen/lucid.fish
 #+end_src
-
 *** [[https://github.com/laughedelic/pisces][laughedelic/pisces]]
 #+begin_quote
 pisces ['paɪsiz] is a plugin for fish that helps you to work with paired symbols like () and '' in the command line. Similar to your favorite text editor!
@@ -115,7 +104,6 @@ pisces ['paɪsiz] is a plugin for fish that helps you to work with paired symbol
 #+begin_src fish :tangle ~/.config/fish/fish_plugins
 laughedelic/pisces
 #+end_src
-
 *** [[https://github.com/franciscolourenco/done][franciscolourenco/done]]
 #+begin_quote
 A fish shell package to automatically receive notifications when long processes finish.
@@ -124,7 +112,6 @@ A fish shell package to automatically receive notifications when long processes 
 #+begin_src fish :tangle ~/.config/fish/fish_plugins
 franciscolourenco/done
 #+end_src
-
 *** [[https://github.com/joehillen/to-fish][joehillen/to-fish]]
 #+begin_quote
 A directory bookmarking tool for fish-shell.
@@ -133,7 +120,6 @@ A directory bookmarking tool for fish-shell.
 #+begin_src fish :tangle ~/.config/fish/fish_plugins
 joehillen/to-fish
 #+end_src
-
 *** [[https://github.com/danhper/fish-ssh-agent][danhper/fish-ssh-agent]]
 #+begin_quote
 Utility functions to start your ssh agent when using fish shell. You will only need to run ssh-add and type your password once, after the running ssh_agent should do the work for you.
@@ -142,7 +128,6 @@ Utility functions to start your ssh agent when using fish shell. You will only n
 #+begin_src fish :tangle ~/.config/fish/fish_plugins
 danhper/fish-ssh-agent
 #+end_src
-
 *** [[https://github.com/oh-my-fish/plugin-foreign-env][oh-my-fish/plugin-foreign-env]]
 #+begin_quote
 Foreign environment wraps application execution in a way that environment variables that are exported or modified get imported back into fish. This makes possible running popular bash scripts, like the excellent nvm.
@@ -151,7 +136,6 @@ Foreign environment wraps application execution in a way that environment variab
 #+begin_src fish :tangle ~/.config/fish/fish_plugins
 oh-my-fish/plugin-foreign-env
 #+end_src
-
 *** [[https://github.com/dracula/fish][dracula/fish]]
 #+begin_quote
 A dark theme
@@ -168,7 +152,6 @@ Augment your Fish command line with mnemonic key bindings to efficiently find wh
 #+begin_src fish :tangle ~/.config/fish/fish_plugins
 PatrickF1/fzf.fish
 #+end_src
-
 * Configuration
 Set locale to =UTF-8=.
 #+begin_src fish :tangle ~/.config/fish/config.fish
@@ -198,7 +181,6 @@ Enable [[https://github.com/direnv/direnv][direnv]].
 #+begin_src fish :tangle ~/.config/fish/config.fish
 eval (direnv hook fish)
 #+end_src
-
 ** Environment variables
 Disable =fish= greeting.
 #+begin_src fish :tangle ~/.config/fish/config.fish
