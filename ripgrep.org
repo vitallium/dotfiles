@@ -1,0 +1,12 @@
+#+TITLE:  Ripgrep configuration
+#+AUTHOR: Vitaly Slobodin
+
+#+begin_src conf ~/.ripgreprc
+--ignore
+--smart-case
+--hidden
+--follow
+--no-messages
+--ignore-file
+~/.gitignore
+#+end_src

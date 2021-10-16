@@ -1,7 +1,0 @@
---ignore
---smart-case
---hidden
---follow
---no-messages
---ignore-file
-~/.gitignore
