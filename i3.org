@@ -1,12 +1,11 @@
-#+TITLE:             i3 configuration
-#+AUTHOR:           Vitaly Slobodin
+#+TITLE:      i3 configuration
+#+AUTHOR:     Vitaly Slobodin
 #+PROPERTY:   header-args+ :comments both
 #+PROPERTY:   header-args+ :mkdirp yes
 
 * i3
 ** Set key modifier
 Set key modifier to Super
-
 #+begin_src conf :tangle ~/.config/i3/config
 set $mod Mod4
 #+end_src
@@ -14,9 +13,8 @@ set $mod Mod4
 ** Set font
 Font for window titles. Will also be used by the bar unless a different font
 is used in the bar {} block below.
-
 #+begin_src conf :tangle ~/.config/i3/config
-font pango:Ubuntu 12
+font pango:Ubuntu 13
 #+end_src
 
 ** Key bindings
@@ -122,7 +120,6 @@ bindsym XF86AudioPrev exec playerctl previous
 
 ** Workspaces
 Define names for default workspaces for which we configure key bindings later on. We use variables to avoid repeating the names in multiple places.
-
 #+begin_src conf :tangle ~/.config/i3/config
 set $ws1 "1:web"
 set $ws2 "2:term"
@@ -199,7 +196,6 @@ assign [class="spotify"] $ws7
 #+end_src
 
 *** Additional rules for the applications or windows
-
 Let =emacs-anywhere= float.
 #+begin_src conf :tangle ~/.config/i3/config
 for_window [class="emacs-anywhere"] floating enable
@@ -281,7 +277,7 @@ for_window [class=".*"] title_format " %title"
 #+end_src
 
 Set colors from the Dracula theme.
-#+begin_src conf :tangle ~/.config/i3/config
+#+begin_src conf :tangle no
 # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
 client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
@@ -293,25 +289,12 @@ client.background       #F8F8F2
 #+end_src
 
 ** Bar
-=i3status= configuration with custom colors from Dracula theme.
-
+=i3status= configuration.
 #+begin_src conf :tangle ~/.config/i3/config
 bar {
   status_command i3status
   position top
   strip_workspace_numbers yes
-
-  colors {
-    background #282A36
-    statusline #F8F8F2
-    separator  #44475A
-
-    focused_workspace  #44475A #44475A #F8F8F2
-    active_workspace   #282A36 #44475A #F8F8F2
-    inactive_workspace #282A36 #282A36 #BFBFBF
-    urgent_workspace   #FF5555 #FF5555 #F8F8F2
-    binding_mode       #FF5555 #FF5555 #F8F8F2
-  }
 }
 #+end_src
 
@@ -355,46 +338,29 @@ Background.
 #+begin_src conf :tangle ~/.config/i3/config
 exec --no-startup-id $HOME/.fehbg
 #+end_src
-
-
 * i3status
 ** General
-Update the bar each 5 seconds and set colors from Dracula theme.
+Update the bar each 5 seconds.
 #+begin_src conf :tangle ~/.config/i3status/config
 general {
   interval = 5
   colors = true
-  color_good = "#50FA7B"
-  color_degraded = "#F1FA8C"
-  color_bad = "#FF5555"
 }
 #+end_src
-
 ** Blocks order
 #+begin_src conf :tangle ~/.config/i3status/config
-order += "path_exists VPN"
 order += "cpu_usage"
 order += "cpu_temperature 0"
 order += "memory"
 order += "tztime local"
 #+end_src
-
 ** Blocks configuration
-*** VPN
-Checks the tunnel for [[https://nordvpn.com/][NordVPN]] and outputs yes/no.
-#+begin_src conf :tangle ~/.config/i3status/config
-path_exists VPN {
-  path = "/proc/sys/net/ipv4/conf/tun0"
-}
-#+end_src
-
 *** CPU Usage
 #+begin_src conf :tangle ~/.config/i3status/config
 cpu_usage {
   format = " %usage"
 }
 #+end_src
-
 *** CPU Temperature
 #+begin_src conf :tangle ~/.config/i3status/config
 cpu_temperature 0 {
@@ -403,7 +369,6 @@ cpu_temperature 0 {
   path = "/sys/devices/platform/nct6775.656/hwmon/hwmon4/temp2_input"
 }
 #+end_src
-
 *** Memory
 #+begin_src conf :tangle ~/.config/i3status/config
 memory {
@@ -412,7 +377,6 @@ memory {
   format_degraded = "MEMORY < %available"
 }
 #+end_src
-
 *** Date and Time
 #+begin_src conf :tangle ~/.config/i3status/config
 tztime local {
