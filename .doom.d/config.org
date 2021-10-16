@@ -4,7 +4,6 @@
 #+property: header-args:emacs-lisp :tangle yes :comments link
 #+property: header-args:elisp :exports code
 #+property: header-args :tangle no :results silent :eval no-export
-
 * DOOM configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle no
@@ -160,7 +159,7 @@ editorconfig                 ; let someone else argue about tabs vs spaces
   +offline
   +dictionary)
 (lsp +peek)
-(magit +forge)               ; a git porcelain for Emacs
+magit                        ; a git porcelain for Emacs
 make                         ; run make tasks from Emacs
 ;;pass                       ; password manager for nerds
 rgb                          ; creating color strings
@@ -206,7 +205,9 @@ emacs-lisp          ; drown in parentheses
      +babel
      +attach
      +export
+     +journal
      +roam2
+     +present
      +pretty)       ; organize your plain life in plain text
 ;;plantuml          ; diagrams for confusing people more
 (python +lsp)       ; beautiful is better than ugly
@@ -309,22 +310,20 @@ Configure =modus-themes=.
 #+begin_src emacs-lisp
 (setq doom-theme 'modus-operandi)
 
-(after! modus-themes
+(use-package! modus-themes
   :config
   (setq modus-themes-slanted-constructs t
         modus-themes-mode-line 'accented
         modus-themes-headings '((t . t))
-        modus-themes-scale-headings t
         modus-themes-variable-pitch-ui t
         modus-themes-org-agenda
         '((header-block . (variable-pitch scale-title))
           (header-date . (grayscale bold-all)))
-        modus-themes-org-blocks
-        '(grayscale)
-        modus-themes-mode-line
-        '(borderless)
+        modus-themes-org-blocks '(grayscale)
+        modus-themes-mode-line '(borderless)
         modus-themes-region '(bg-only no-extend)
-        modus-themes-subtle-line-numbers nil))
+        modus-themes-subtle-line-numbers nil)
+  (map! "<f5>" #'modus-themes-toggle))
 #+end_src
 Apply doom styles for themes and other components:
 #+begin_src emacs-lisp :tangle no
@@ -360,21 +359,24 @@ Display fill column indicator.
 
 (setq visual-fill-column-center-text t
       visual-fill-column-width fill-column)
-;; (add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
+(add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
 #+end_src
 ** Font
+*** PragmataPro
 I use [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]] occasionally.
 #+begin_src emacs-lisp :tangle no
-(setq doom-font (font-spec :family "PragmataPro Mono Liga" :size 20 :weight 'normal)
+(setq doom-font (font-spec :family "PragmataPro Mono Liga" :size 20)
    doom-big-font (font-spec :family "PragmataPro Mono Liga" :size 22)
-   doom-variable-pitch-font (font-spec :family "PragmataPro Mono Liga" :size 18 :weight 'normal))
+   doom-variable-pitch-font (font-spec :family "PragmataPro Mono Liga" :size 18))
 #+end_src
-Now I use MonoLisa.
+*** MonoLisa
+But I use [[https://www.monolisa.dev/][MonoLisa]] now.
 #+begin_src emacs-lisp
 (setq doom-font (font-spec :family "MonoLisa" :size 16)
       doom-big-font (font-spec :family "MonoLisa" :size 22)
       doom-variable-pitch-font (font-spec :family "MonoLisa" :size 16))
 #+end_src
+
 Enable ligatures.
 #+begin_src emacs-lisp :tangle packages.el
 (package! ligature :recipe (:host github :repo "mickeynp/ligature.el"))
@@ -411,6 +413,15 @@ Enable ligatures.
   ;; Enables ligature checks globally in all buffers. You can also do it
   ;; per mode with `ligature-mode'.
   (global-ligature-mode t))
+#+end_src
+*** Iosevka
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+#+begin_src emacs-lisp :tangle no
+(setq doom-font (font-spec :family "Iosevka Term SS04" :size 18)
+      doom-big-font (font-spec :family "MonoLisa" :size 22)
+      doom-variable-pitch-font (font-spec :family "Iosevka Term SS04" :size 18))
 #+end_src
 ** Modeline
 #+begin_src emacs-lisp
@@ -520,7 +531,7 @@ Always open up a new workspace when opening up a project.
 #+end_src
 
 Window navigation without pressing the leader key.
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle +bindings.el
 (map!
  :en "C-h"   #'evil-window-left
  :en "C-j"   #'evil-window-down
@@ -553,6 +564,11 @@ Window navigation without pressing the leader key.
  "C-j"  #'evil-window-down
  "C-k"  #'evil-window-up
  "C-l"  #'evil-window-right)
+#+end_src
+
+Toggle between light and dark =modus= themes.
+#+begin_src emacs-lisp :tangle +bindings.el
+(global-set-key (kbd "<f5>") 'modus-themes-toggle)
 #+end_src
 * TreeSitter
 Semantic syntax highlighting.
@@ -688,10 +704,14 @@ Format file before saving it
 (add-hook! go-mode-hook #'gofmt-before-save)
 #+end_src
 * LSP
+** Enable/disable some LSP features
 #+begin_src emacs-lisp
 (after! lsp
   (setq lsp-prefer-flymake nil
         lsp-eslint-package-manager "yarn"))
+(after! lsp-ui
+  (setq lsp-ui-doc-enable t
+        lsp-ui-sideline-show-code-actions nil))
 #+end_src
 ** Flycheck
 Show errors inline so they never overlap with code.
@@ -705,6 +725,21 @@ Show errors inline so they never overlap with code.
 #+begin_src emacs-lisp
 (use-package! flycheck-inline
   :hook (flycheck-mode . flycheck-inline-mode))
+#+end_src
+** TabNine
+Add ~tabnine~ package.
+
+#+begin_src emacs-lisp :tangle no
+(package! company-tabnine :recipe (:host github :repo "TommyX12/company-tabnine"))
+#+end_src
+
+Configure ~tabnine~.
+
+#+begin_src emacs-lisp :tangle no
+(after! company
+  (setq +lsp-company-backends '(company-tabnine :separate company-capf company-yasnippet))
+  (setq company-show-numbers t)
+  (setq company-idle-delay 0))
 #+end_src
 * Org
 ** Packages
@@ -721,22 +756,14 @@ Show errors inline so they never overlap with code.
       org-archive-location (concat org-directory ".archive/%s::"))
 #+end_src
 ** Configure =org=
+
 #+begin_src emacs-lisp
 (use-package! deft
-  :after org
   :custom
-  (deft-directory (concat org-directory "notes"))
+  (deft-directory "~/notes")
   (deft-recursive t)
   (deft-use-filter-string-for-filename t)
   (deft-default-extension "org"))
-
-(after! org
-  (setq org-src-fontify-natively t
-        org-hide-emphasis-markers t
-        org-fontify-whole-heading-line t
-        org-fontify-done-headline t
-        org-fontify-quote-and-verse-blocks t)
-  (set-popup-rule! "^CAPTURE.*\\.org$" :size 0.4 :side 'bottom :select t :autosave t))
 #+end_src
 
 Enable =mixed-pitch-mode=
@@ -758,11 +785,14 @@ Enable =mixed-pitch-mode=
 #+end_src
 * Mail
 ** mu4e
-Load the system version of =mu4e=
+Load the system version of =mu4e.=
+
 #+begin_src emacs-lisp
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
 #+end_src
+
 General configuration
+
 #+begin_src emacs-lisp
 (after! mu4e
   (setq mu4e-get-mail-command "mbsync -c ~/.config/isync/mbsyncrc -a"
@@ -793,13 +823,11 @@ General configuration
                         (mu4e-drafts-folder     . "/gitlab/\[Gmail\]/Drafts")
                         (mu4e-trash-folder      . "/gitlab/\[Gmail\]/Trash")
                         (mu4e-refile-folder     . "/gitlab/\[Gmail\]/Archive")
-                        (smtpmail-smtp-user     . "vslobodin@gitlab.com")
-                        ;; don't save message to Sent Messages, GMail/IMAP will take care of this
-                        (mu4e-sent-messages-behavior 'delete)))
+                        (smtpmail-smtp-user     . "vslobodin@gitlab.com")))
 
   (add-to-list 'mu4e-bookmarks
                (make-mu4e-bookmark
-                :name "Inbox"
+                :name "GitLab Inbox"
                 :query "maildir:\"/gitlab/Inbox\""
                 :key ?i)))
 #+end_src
@@ -866,14 +894,13 @@ Setup multidictionary
 * Magit
 ** Basic configuration
 #+begin_src emacs-lisp
-(after! magit
-  (setq magit-repository-directories '(("~/projects/" . 3))
-        magit-save-repository-buffers nil
-        magit-display-file-buffer-function #'switch-to-buffer-other-window
-        magithub-clone-default-directory "~/projects"
-        magithub-preferred-remote-method 'ssh_url
-        magit-diff-refine-hunk 'all
-        magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")))
+(setq magit-repository-directories '(("~/projects/" . 3))
+      magit-save-repository-buffers nil
+      magit-display-file-buffer-function #'switch-to-buffer-other-window
+      magithub-clone-default-directory "~/projects"
+      magithub-preferred-remote-method 'ssh_url
+      magit-diff-refine-hunk 'all
+      magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
 #+end_src
 ** Integration with delta
 Does not work yet
