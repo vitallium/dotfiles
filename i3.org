@@ -324,6 +324,11 @@ Picom.
 exec --no-startup-id picom --experimental-backends -b
 #+end_src
 
+udiskie.
+#+begin_src conf :tangle ~/.config/i3/config
+exec --no-startup-id udiskie -t
+#+end_src
+
 Autorun applications.
 #+begin_src conf :tangle ~/.config/i3/config
 exec --no-startup-id dex -a
@@ -338,6 +343,7 @@ Background.
 #+begin_src conf :tangle ~/.config/i3/config
 exec --no-startup-id $HOME/.fehbg
 #+end_src
+
 * i3status
 ** General
 Update the bar each 5 seconds.
