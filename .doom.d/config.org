@@ -752,7 +752,7 @@ Configure ~tabnine~.
 #+end_src
 ** Setup =org= directories
 #+begin_src emacs-lisp
-(setq org-directory "~/org/"
+(setq org-directory "~/Org/"
       org-archive-location (concat org-directory ".archive/%s::"))
 #+end_src
 ** Configure =org=
@@ -760,7 +760,7 @@ Configure ~tabnine~.
 #+begin_src emacs-lisp
 (use-package! deft
   :custom
-  (deft-directory "~/notes")
+  (deft-directory "~/Notes")
   (deft-recursive t)
   (deft-use-filter-string-for-filename t)
   (deft-default-extension "org"))
@@ -781,7 +781,7 @@ Enable =mixed-pitch-mode=
 ** Roam
 #+begin_src emacs-lisp
 (after! org-roam
-  (setq org-roam-directory "~/roam"))
+  (setq org-roam-directory "~/Roam"))
 #+end_src
 * Mail
 ** mu4e
@@ -903,7 +903,7 @@ Setup multidictionary
       magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
 #+end_src
 ** Integration with delta
-Does not work yet
+TODO: Does not work yet
 #+begin_src emacs-lisp :tangle no
 (add-hook! 'magit-mode-hook (lambda () (magit-delta-mode +1)))
 #+end_src
