@@ -1,11 +1,8 @@
-! Colors
-#include ".xcolors/dracula.xcolors"
+Xcursor.theme: capitaine-cursors
+Xcursor.size: 32
 
-Xft.dpi:        109
+Xft.dpi:        111
 Xft.antialias:  true
-Xft.hinting:    true
 Xft.rgba:       rgb
+Xft.hinting:    true
 Xft.hintstyle:  hintslight
-
-Xcursor.size: 42
-Xcursor.theme: capitaine-cursors-light
