@@ -71,20 +71,13 @@ LFS configuration.
   required = true
 #+end_src
 * Global gitignore configuration
-:PROPERTIES:
-:header-args: :tangle "~/.config/git/ignore"
-:END:
-
-#+begin_src conf
+#+begin_src conf :tangle "~/.config/git/ignore"
 /.yalc/
 .yalc.lock
+.vendor/
 #+end_src
 * Attributes
-:PROPERTIES:
-:header-args: :tangle "~/.config/git/attributes"
-:END:
-
-#+begin_src conf
+#+begin_src conf :tangle "~/.config/git/attributes"
 *.lisp  diff=lisp
 *.el    diff=lisp
 *.org   diff=org
@@ -92,15 +85,11 @@ LFS configuration.
 #+end_src
 * Work-related configuration
 Add GitLab configuration.
-#+begin_src conf
-[includeIf "gitdir:~/projects/gitlab/"]
+#+begin_src conf :tangle "~/.config/git/config"
+[includeIf "gitdir:~/Work"]
   path = ~/.config/git/gitlab
 #+end_src
 ** GitLab
-:PROPERTIES:
-:header-args: :tangle "~/.config/git/config_gitlab"
-:END:
-
 #+begin_src conf :tangle "~/.config/git/gitlab"
 [user]
   name = Vitaly Slobodin
