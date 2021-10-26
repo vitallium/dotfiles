@@ -1,7 +1,7 @@
 #+TITLE:  Ripgrep configuration
 #+AUTHOR: Vitaly Slobodin
 
-#+begin_src conf ~/.ripgreprc
+#+begin_src conf :tangle ~/.ripgreprc
 --ignore
 --smart-case
 --hidden
