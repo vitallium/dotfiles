@@ -167,7 +167,7 @@ Load aliases, functions, xdg, etc.
 set configs aliases functions paths xdg
 for config in $configs
   if test -e $__fish_config_dir/$config.fish
-    . $__fish_config_dir/$confi.fish
+    . $__fish_config_dir/$config.fish
   end
 end
 set -e configs
