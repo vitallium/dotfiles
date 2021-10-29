@@ -21,8 +21,13 @@ set $menu dmenu_path | wofi --show drun | xargs swaymsg exec --
 Font for window titles. Will also be used by the bar unless a different font
 is used in the bar {} block below.
 #+begin_src conf :tangle ~/.config/sway/config
-font pango:Ubuntu 14
+font pango:Roboto 14
 #+end_src
+** Enable xwayland
+#+begin_src conf :tangle ~/.config/sway/config
+xwayland enable
+#+end_src
+** Enable xwayland
 ** Configure output
 #+begin_src conf :tangle no
 output * bg $HOME/Pictures/desktop-3440x1440.png fill
@@ -57,7 +62,7 @@ input type:mouse {
 #+end_src
 ** Set cursor theme
 #+begin_src conf :tangle ~/.config/sway/config
-seat seat0 xcursor_theme capitaine-cursors 42
+seat seat0 xcursor_theme capitaine-cursors 32
 #+end_src
 ** Key bindings
 Use =Mouse+$mod= to drag floating windows to their wanted position.
@@ -325,7 +330,7 @@ bar {
 #+end_src
 
 =waybar= configuration with default colors.
-#+begin_src conf :tangle no
+#+begin_src conf :tangle ~/.config/sway/config
 bar {
   position top
   strip_workspace_numbers yes
@@ -333,8 +338,6 @@ bar {
   swaybar_command waybar
 }
 #+end_src
-
-
 ** Startup
 *** Import environment
 #+begin_src  conf :tangle ~/.config/sway/config
