@@ -34,15 +34,19 @@ set --export XDG_DATA_HOME "$HOME/.local/share"
 * Functions
 ** Functions for working on Chromium
 Define functions for common tasks when I work on Chromium.
-#+begin_src fish :tangle ~/.config/fish/functions/chromium.fish
+#+begin_src fish :tangle ~/.config/fish/functions/chromium.deps.fish
 function deps --description "run gclient sync"
   env GYP_DEFINES=disable_nacl=1 gclient sync --jobs=70
 end
+#+end_src
 
+#+begin_src fish :tangle ~/.config/fish/functions/chromium.hooks.fish
 function hooks --description "run gclient runhooks"
   env GYP_DEFINES=disable_nacl=1 gclient runhooks
 end
+#+end_src
 
+#+begin_src fish :tangle ~/.config/fish/functions/chromium.acch.fish
 function acch --description "activate chromium build mode"
   pathadd "$HOME/.local/bin/depot_tools"
 end
@@ -158,28 +162,27 @@ Set locale to =UTF-8=.
 set -x LC_ALL en_US.UTF-8
 #+end_src
 
-Load XDG configuration.
+Load aliases, functions, xdg, etc.
 #+begin_src fish :tangle ~/.config/fish/config.fish
-source "$__fish_config_dir/xdg.fish"
-#+end_src
-
-Load aliases, functions, etc.
-#+begin_src fish :tangle ~/.config/fish/config.fish
-set configs aliases functions paths chromium
+set configs aliases functions paths xdg
 for config in $configs
-  test -e $__fish_config_dir/$config.fish; and . $__fish_config_dir/$config.fish
+  if test -e $__fish_config_dir/$config.fish
+    . $__fish_config_dir/$confi.fish
+  end
 end
 set -e configs
 #+end_src
 
 Enable integration with [[https://github.com/asdf-vm/asdf][asdf]].
 #+begin_src fish :tangle ~/.config/fish/config.fish
-source $HOME/.asdf/asdf.fish
+if test -e $HOME/.asdf/asdf.fish
+  . $HOME/.asdf/asdf.fish
+end
 #+end_src
 
-Enable [[https://github.com/direnv/direnv][direnv]].
+Enable [[https://github.com/direnv/direnv][direnv]] via ~asdf-vm~.
 #+begin_src fish :tangle ~/.config/fish/config.fish
-eval (direnv hook fish)
+eval (asdf exec direnv hook fish)
 #+end_src
 ** Environment variables
 Disable =fish= greeting.
@@ -229,6 +232,6 @@ set -gx BAT_THEME                  Dracula
 #+end_src
 
 Set Dracula-colors for fzf.
-#+begin_src  fish :tangle no
+#+begin_src fish :tangle no
 set -gx FZF_DEFAULT_OPTS          "--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
 #+end_src
