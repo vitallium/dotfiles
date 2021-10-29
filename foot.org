@@ -1,6 +1,7 @@
 #+TITLE:      Foot Configuration
 #+AUTHOR:     Vitaly Slobodin
 #+PROPERTY:   header-args+ :comments both
+#+PROPERTY:   header-args+ :mkdirp yes
 #+PROPERTY:   header-args+ :tangle "~/.config/foot/foot.ini"
 
 * Configuration
