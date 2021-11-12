@@ -14,7 +14,7 @@ set $mod Mod4
 Font for window titles. Will also be used by the bar unless a different font
 is used in the bar {} block below.
 #+begin_src conf :tangle ~/.config/i3/config
-font pango:Roboto 12
+font pango:Inter 12
 #+end_src
 
 ** Key bindings
@@ -109,13 +109,39 @@ bindsym --release Print exec --no-startup-id flameshot gui
 
 Media Keys.
 #+begin_src conf :tangle ~/.config/i3/config
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+#+end_src
+
+i3 volume integration
+#+begin_src conf :tangle ~/.config/i3/config
+## Volume control
+
+# Command for the status line
+#   ie: i3blocks, i3status
+set $statuscmd i3status
+
+# Signal used to update the status line
+#   i3blocks uses SIGRTMIN+10 by default
+#   i3status uses SIGUSR1 by default
+set $statussig SIGUSR1
+
+# Amount to increase/decrease volume as a percentage
+set $volumestep 5
+
+# pulseaudio-utils settings
+#
+# Symbolic name for sink (numeric index not supported)
+#   Recommended: comment out this setting and omit the -s option to use default sink
+#   List sink names: pacmd list-sinks | awk -F "[<>]" '/^\s+name: <.*>/{print $2}'
+#set $sinkname alsa_output.pci-0000_00_1b.0.analog-stereo
+
+# Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
+bindsym XF86AudioRaiseVolume exec --no-startup-id i3-volume -n -t $statuscmd -u $statussig up $volumestep -N dunst
+bindsym XF86AudioLowerVolume exec --no-startup-id i3-volume -n -t $statuscmd -u $statussig down $volumestep -N dunst
+bindsym XF86AudioMute        exec --no-startup-id i3-volume -n -t $statuscmd -u $statussig mute
 #+end_src
 
 ** Workspaces
@@ -299,12 +325,27 @@ bar {
 #+end_src
 
 ** Startup
-Set the correct DPI value with xlayoutdisplay.
-#+begin_src conf :tangle ~/.config/i3/config
+Set the correct DPI value with xlayoutdisplay. Disabled for now because I set the correct DPI via Xorg configuration.
+#+begin_src conf :tangle no
 exec --no-startup-id xlayoutdisplay -q
 #+end_src
 
-Screen locking with =xss-lock=. =xss-lock= grabs a logind suspend inhibit lock and will use [[https://github.com/google/xsecurelock][xsecurelock]] to lock the screen before suspend. Use =loginctl lock-session= to lock your screen.
+#+begin_src conf :tangle no :file /etc/X11/xorg.conf.d/90-monitor.conf
+Section "Monitor"
+  Identifier             "<default monitor>"
+  DisplaySize            878.11 485.35
+EndSection
+#+end_src
+
+#+begin_src conf :tangle no :file /etc/X11/xorg.conf.d/20-amdgpu.conf
+Section "Device"
+  Identifier "AMD"
+  Driver "amdgpu"
+  Option "TearFree" "true"
+EndSection
+#+end_src
+
+Screen locking with =xss-lock=. =xss-lock= grabs a =logind= suspend inhibit lock and will use [[https://github.com/google/xsecurelock][xsecurelock]] to lock the screen before suspend. Use =loginctl lock-session= to lock your screen.
 #+begin_src conf :tangle ~/.config/i3/config
 exec --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock --nofork
 #+end_src
@@ -314,7 +355,7 @@ Increase a typematic delay to 210ms and a typematic rate to 40Hz.
 exec --no-startup-id xset r rate 210 40
 #+end_src
 
-Solaar for Logitech mouse.
+Solaar for a Logitech mouse.
 #+begin_src conf :tangle ~/.config/i3/config
 exec --no-startup-id solaar --window=hide
 #+end_src
