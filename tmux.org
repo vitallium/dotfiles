@@ -37,13 +37,13 @@ set -g automatic-rename on
 
 Renumber windows when one is closed.
 #+begin_src conf
-set  -g renumber-windows on
+set -g renumber-windows on
 #+end_src
 
 Display tmux messages longer.
 #+begin_src conf
-set  -g display-time 1500
-set  -g display-panes-time 800
+set -g display-time 1500
+set -g display-panes-time 800
 #+end_src
 
 Enable focus events.
@@ -120,16 +120,6 @@ set -g @fingers-key g
 set -g @plugin 'tmux-plugins/tpm'
 #+end_src
 
-Better =tmux= default. Disabled for now because it does not work with =tmux= 3.
-#+begin_src conf
-set -g @plugin 'tmux-plugins/tmux-sensible'
-#+end_src
-
-Pane controlling and navigation bindings.
-#+begin_src conf :tangle no
-set -g @plugin 'tmux-plugins/tmux-pain-control'
-#+end_src
-
 #+begin_src conf
 set -g @plugin 'tmux-plugins/tmux-logging'
 #+end_src
@@ -165,7 +155,7 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 #+end_src
 
 ** Theme
-*** Dracula.
+*** Dracula
 #+begin_src conf :tangle no
 set -g @plugin 'dracula/tmux'
 set -g @dracula-show-battery false
