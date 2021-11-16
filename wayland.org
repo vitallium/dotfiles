@@ -1,33 +1,32 @@
-#+TITLE:      Sway configuration
+#+TITLE:      Wayland (Sway) configuration
 #+AUTHOR:     Vitaly Slobodin
-#+PROPERTY:   header-args+ :comments both
-#+PROPERTY:   header-args+ :mkdirp yes
+#+PROPERTY:   header-args+ :comments both :mkdirp yes
+#+PROPERTY:   header-args+ :tangle ~/.config/sway/config
 
 * Sway
 ** Set key modifier
 Set key modifier to Super
-#+begin_src conf :tangle ~/.config/sway/config
+#+begin_src conf
 set $mod Mod4
 #+end_src
 ** Set terminal emulator
-#+begin_src conf :tangle ~/.config/sway/config
+#+begin_src conf
 set $term footclient
 #+end_src
 ** Set application launcher
-#+begin_src conf :tangle ~/.config/sway/config
+#+begin_src conf
 set $menu dmenu_path | wofi --show drun | xargs swaymsg exec --
 #+end_src
 ** Set font
 Font for window titles. Will also be used by the bar unless a different font
 is used in the bar {} block below.
-#+begin_src conf :tangle ~/.config/sway/config
-font pango:Roboto 14
+#+begin_src conf
+font pango:Inter 14
 #+end_src
 ** Enable xwayland
-#+begin_src conf :tangle ~/.config/sway/config
-xwayland enable
+#+begin_src conf
+xwayland disable
 #+end_src
-** Enable xwayland
 ** Configure output
 #+begin_src conf :tangle no
 output * bg $HOME/Pictures/desktop-3440x1440.png fill
@@ -36,11 +35,24 @@ output DP-1 {
   subpixel rgb
   adaptive_sync enable
 }
+
+output {
+}
 #+end_src
 #+begin_src conf :tangle ~/.config/sway/config
 output DP-1 {
   mode 3840x2160@60Hz
   subpixel rgb
+  scale 1.25
+  pos 0 0
+}
+
+output HDMI-A-1 {
+  mode 3440x1440@100Hz
+  subpixel rgb
+  adaptive_sync enable
+  scale 1.25
+  pos 3440 0
 }
 #+end_src
 ** Configure input
@@ -160,6 +172,11 @@ set $ws6 "6:meeting"
 set $ws7 "7:music"
 set $ws8 "8:video"
 set $ws9 "9:streaming"
+
+workspace $ws1 output DP-1
+workspace $ws2 output DP-1
+workspace $ws3 output HDMI-A-1
+workspace $ws4 output DP-1
 #+end_src
 
 Switch to workspace.
@@ -210,7 +227,6 @@ bindsym $mod+Shift+e exec swaynag -t warning -m \
   'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' \
    -b 'Yes, exit sway' 'swaymsg exit'
 #+end_src
-
 *** Assign applications to workspaces
 Brave -> Workspace 1
 #+begin_src conf :tangle ~/.config/sway/config
@@ -231,9 +247,7 @@ Spotify -> Workspace 7
 #+begin_src conf :tangle ~/.config/sway/config
 assign [class="spotify"] $ws7
 #+end_src
-
 *** Additional rules for the applications or windows
-
 Let =emacs-anywhere= float.
 #+begin_src conf :tangle ~/.config/sway/config
 for_window [class="emacs-anywhere"] floating enable
@@ -249,7 +263,6 @@ for_window [app_id="zoom" title="Settings"] floating enable, floating_minimum_si
 # for_window [class = "^Zoom$"] floating enable
 # for_window [app_id = "zoom"] floating enable
 #+end_src
-
 ** Modes
 *** Resize
 Mode for resizing containers.
@@ -295,7 +308,7 @@ client.background       #F8F8F2
 
 ** Bar
 Simple bar with default colors.
-#+begin_src conf :tangle no
+#+begin_src conf :tangle ~/.config/sway/config
 bar {
   height 30
   position top
@@ -303,7 +316,7 @@ bar {
   strip_workspace_numbers yes
   tray {
     tray_padding 2
-    icon_theme   Numix
+    icon_theme   Zafiro
   }
 }
 #+end_src
@@ -330,7 +343,7 @@ bar {
 #+end_src
 
 =waybar= configuration with default colors.
-#+begin_src conf :tangle ~/.config/sway/config
+#+begin_src conf :tangle no
 bar {
   position top
   strip_workspace_numbers yes
@@ -339,8 +352,12 @@ bar {
 }
 #+end_src
 ** Startup
+*** Autotiling
+#+begin_src conf :tangle ~/.config/sway/config
+exec autotiling
+#+end_src
 *** Import environment
-#+begin_src  conf :tangle ~/.config/sway/config
+#+begin_src conf :tangle ~/.config/sway/config
 exec_always systemctl --user import-environment
 #+end_src
 *** Activate DBus environment
@@ -373,5 +390,32 @@ exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #+end_src
 *** Background
 #+begin_src conf :tangle ~/.config/sway/config
-exec_always swaybg -m fill -i $HOME/Pictures/anthony-chiado-5_PgmHaLo6w-unsplash.jpg
+exec_always swaybg -m fill -i $HOME/Pictures/wallpaper.jpg
 #+end_src
+** Environment
+*** swaylock
+#+begin_src conf :tangle ~/.config/swaylock/config
+daemonize
+
+ignore-empty-password
+
+fade-in=0.1
+
+# color=000000
+screenshots
+effect-blur=7x5
+effect-vignette=0.5:0.5
+
+indicator
+
+clock
+datestr=%Y-%m-%d (%a)
+#+end_src
+*** mako
+#+begin_src conf :tangle ~/.config/mako/config
+font=sans-serif 14
+default-timeout=5000
+ignore-timeout=1
+width=300
+#+end_src
+*** wofi
