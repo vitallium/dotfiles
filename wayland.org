@@ -28,31 +28,10 @@ font pango:Inter 14
 xwayland disable
 #+end_src
 ** Configure output
-#+begin_src conf :tangle no
-output * bg $HOME/Pictures/desktop-3440x1440.png fill
-output DP-1 {
-  mode 3440x1440@100Hz
-  subpixel rgb
-  adaptive_sync enable
-}
-
-output {
-}
-#+end_src
 #+begin_src conf :tangle ~/.config/sway/config
-output DP-1 {
-  mode 3840x2160@60Hz
+output eDP-1 {
   subpixel rgb
-  scale 1.25
-  pos 0 0
-}
-
-output HDMI-A-1 {
-  mode 3440x1440@100Hz
-  subpixel rgb
-  adaptive_sync enable
-  scale 1.25
-  pos 3440 0
+  scale 1.5
 }
 #+end_src
 ** Configure input
@@ -172,11 +151,6 @@ set $ws6 "6:meeting"
 set $ws7 "7:music"
 set $ws8 "8:video"
 set $ws9 "9:streaming"
-
-workspace $ws1 output DP-1
-workspace $ws2 output DP-1
-workspace $ws3 output HDMI-A-1
-workspace $ws4 output DP-1
 #+end_src
 
 Switch to workspace.
