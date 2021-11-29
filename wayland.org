@@ -352,10 +352,6 @@ bar {
 }
 #+end_src
 ** Startup
-*** Autotiling
-#+begin_src conf :tangle ~/.config/sway/config
-exec autotiling
-#+end_src
 *** Import environment
 #+begin_src conf :tangle ~/.config/sway/config
 exec_always systemctl --user import-environment
