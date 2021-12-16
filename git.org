@@ -18,6 +18,15 @@ Enable colors.
 #+begin_src conf
 [color]
   ui = true
+  branch = auto
+  diff = auto
+  status = auto
+#+end_src
+
+Enable simple push.
+#+begin_src conf
+[push]
+  default = simple
 #+end_src
 
 Setup useful aliases.
@@ -69,6 +78,16 @@ LFS configuration.
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+#+end_src
+
+Enable ~fsck~.
+#+begin_src conf
+[transfer]
+  fsckobjects = true
+[fetch]
+  fsckobjects = true
+[receive]
+  fsckObjects = true
 #+end_src
 * Global gitignore configuration
 #+begin_src conf :tangle "~/.config/git/ignore"
