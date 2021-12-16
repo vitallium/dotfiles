@@ -1,6 +1,6 @@
 #+TITLE:      Rofi Configuration
 #+AUTHOR:     Vitaly Slobodin
-#+PROPERTY:   header-args+ :comments both
+#+PROPERTY:   header-args+ :comments no
 #+PROPERTY:   header-args+ :mkdirp yes
 
 * Configuration
