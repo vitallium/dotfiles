@@ -108,14 +108,6 @@ pisces ['paɪsiz] is a plugin for fish that helps you to work with paired symbol
 #+begin_src fish :tangle ~/.config/fish/fish_plugins
 laughedelic/pisces
 #+end_src
-*** [[https://github.com/franciscolourenco/done][franciscolourenco/done]]
-#+begin_quote
-A fish shell package to automatically receive notifications when long processes finish.
-#+end_quote
-
-#+begin_src fish :tangle ~/.config/fish/fish_plugins
-franciscolourenco/done
-#+end_src
 *** [[https://github.com/joehillen/to-fish][joehillen/to-fish]]
 #+begin_quote
 A directory bookmarking tool for fish-shell.
