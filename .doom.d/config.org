@@ -368,17 +368,17 @@ I use [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]] occasionally.
 *** MonoLisa
 But I use [[https://www.monolisa.dev/][MonoLisa]] now.
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "MonoLisa" :size 17)
-      doom-big-font (font-spec :family "MonoLisa" :size 23)
-      doom-variable-pitch-font (font-spec :family "MonoLisa" :size 17))
+(setq doom-font (font-spec :family "MonoLisa" :size 16)
+      doom-big-font (font-spec :family "MonoLisa" :size 20)
+      doom-variable-pitch-font (font-spec :family "MonoLisa" :size 16))
 #+end_src
 
 Enable ligatures.
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp :tangle packages.el
 (package! ligature :recipe (:host github :repo "mickeynp/ligature.el"))
 #+end_src
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp
 (after! ligature
   :config
   (ligature-set-ligatures 'prog-mode '("-->" "->" "->>" "-<" "--<"
@@ -412,17 +412,10 @@ Enable ligatures.
 #+end_src
 *** Iosevka
 #+begin_src emacs-lisp :tangle no
-(setq doom-font (font-spec :family "Iosevka Term SS04" :size 18)
+(setq doom-font (font-spec :family "Iosevka SS08" :size 20)
       doom-big-font (font-spec :family "MonoLisa" :size 22)
-      doom-variable-pitch-font (font-spec :family "Iosevka Term SS04" :size 18))
+      doom-variable-pitch-font (font-spec :family "Iosevka SS08" :size 20))
 #+end_src
-*** Ellograph CF
-#+begin_src emacs-lisp :tangle no
-(setq doom-font (font-spec :family "Ellograph CF" :size 17)
-      doom-big-font (font-spec :family "Ellograph CF" :size 23)
-      doom-variable-pitch-font (font-spec :family "Ellograph CF" :size 17))
-#+end_src
-
 ** Modeline
 #+begin_src emacs-lisp
 (defun doom-modeline-conditional-buffer-encoding ()
