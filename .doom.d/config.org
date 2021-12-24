@@ -71,8 +71,8 @@ literate
 ;;helm                       ; the *other* search engine for love and life
 ;;ido                        ; the other *other* search engine...
 (vertico +icons)
-;;(ivy                         ; a search engine for love and life
-;; +prescient)                 ; ... I know what I want(ed)
+;;(ivy                       ; a search engine for love and life
+;; +prescient)               ; ... I know what I want(ed)
 #+end_src
 
 #+name: doom-ui
@@ -81,7 +81,7 @@ deft                         ; notational velocity for Emacs
 doom                         ; what makes DOOM look the way it does
 doom-dashboard               ; a nifty splash screen for Emacs
 doom-quit                    ; DOOM quit-message prompts when you quit Emacs
-;;(emoji +unicode)           ; 🙂
+(emoji +github)              ; 🙂
 hl-todo                      ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
 hydra                        ; quick documentation for related commands
 ;;indent-guides              ; highlighted indent columns, notoriously slow
@@ -97,7 +97,7 @@ ophints                      ; highlight the region an operation acts on
 (treemacs +lsp)              ; a project drawer, like neotree but cooler
 ;;unicode                    ; extended unicode support for various languages
 vc-gutter                    ; vcs diff in the fringe
-;;vi-tilde-fringe            ; fringe tildes to mark beyond EOB
+vi-tilde-fringe              ; fringe tildes to mark beyond EOB
 (window-select +numbers)     ; visually switch windows
 workspaces                   ; tab emulation, persistence & separate workspaces
 zen                          ; distraction-free coding or writing
@@ -245,6 +245,18 @@ for more info).
 #+begin_src shell :exports none :comments no :tangle-mode (identity #o755)
 #!/bin/bash
 #+end_src
+* Package management
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle packages.el :comments link
+:END:
+This file shouldn't be byte compiled.
+#+BEGIN_SRC emacs-lisp :tangle packages.el :comments no
+;; -*- no-byte-compile: t; -*-
+#+END_SRC
+** Loading instructions
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle no
+:END:
 * Basic configuration
 #+BEGIN_SRC emacs-lisp :comments no
 ;;; config.el -*- lexical-binding: t; -*-
@@ -298,6 +310,39 @@ I don't use it anyway, and my muscle memory always goes for the ESC key.
 (package! evil-escape :disable t)
 #+end_src
 * Visual configuration
+** Common
+Maximize the window upon startup:
+#+begin_src emacs-lisp
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+#+end_src
+Prevents some cases of Emacs flickering:
+#+begin_src emacs-lisp
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
+#+end_src
+Display fill column indicator.
+#+begin_src emacs-lisp
+(setq-default fill-column 110)
+(setq fill-column 110)
+(setq visual-fill-column-width fill-column)
+
+(setq visual-fill-column-center-text t
+      visual-fill-column-width fill-column)
+(add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
+#+end_src
+Dim inactive windows.
+#+begin_src emacs-lisp :tangle packages.el
+(package! dimmer)
+#+end_src
+
+Configure ~dimmer~.
+#+begin_src emacs-lisp
+(dimmer-configure-magit)
+(dimmer-configure-org)
+(dimmer-mode t)
+(setq highlight-indent-guides-method 'column)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+#+end_src
+** Theme
 I use =modus-themes=.
 #+begin_src emacs-lisp :tangle packages.el
 (package! modus-themes)
@@ -335,29 +380,11 @@ Apply doom styles for themes and other components:
       ;; Corrects (and improves) org-mode's native fontification.
       (doom-themes-org-config))
 #+end_src
-Disable line numbers.
-#+begin_src emacs-lisp
-(setq display-line-numbers-type nil)
-#+end_src
-Maximize the window upon startup:
-#+begin_src emacs-lisp
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-#+end_src
-Prevents some cases of Emacs flickering:
-#+begin_src emacs-lisp
-(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
-#+end_src
-Display fill column indicator.
-#+begin_src emacs-lisp
-(setq-default fill-column 110)
-(setq fill-column 110)
-(setq visual-fill-column-width fill-column)
-
-(setq visual-fill-column-center-text t
-      visual-fill-column-width fill-column)
-(add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
-#+end_src
 ** Font
+*** Set font size
+#+begin_src emacs-lisp
+(setq vitallium/font-size 30)
+#+end_src
 *** PragmataPro
 I use [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]] occasionally.
 #+begin_src emacs-lisp :tangle no
@@ -368,9 +395,9 @@ I use [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]] occasionally.
 *** MonoLisa
 But I use [[https://www.monolisa.dev/][MonoLisa]] now.
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "MonoLisa" :size 16)
-      doom-big-font (font-spec :family "MonoLisa" :size 20)
-      doom-variable-pitch-font (font-spec :family "MonoLisa" :size 16))
+(setq doom-font (font-spec :family "Source Code Pro" :size vitallium/font-size)
+      doom-big-font (font-spec :family "Source Code Pro" :size 32)
+      doom-variable-pitch-font (font-spec :family "Alegreya" :size 32))
 #+end_src
 
 Enable ligatures.
@@ -410,12 +437,6 @@ Enable ligatures.
   ;; per mode with `ligature-mode'.
   (global-ligature-mode t))
 #+end_src
-*** Iosevka
-#+begin_src emacs-lisp :tangle no
-(setq doom-font (font-spec :family "Iosevka SS08" :size 20)
-      doom-big-font (font-spec :family "MonoLisa" :size 22)
-      doom-variable-pitch-font (font-spec :family "Iosevka SS08" :size 20))
-#+end_src
 ** Modeline
 #+begin_src emacs-lisp
 (defun doom-modeline-conditional-buffer-encoding ()
@@ -433,26 +454,16 @@ Enable ligatures.
    doom-modeline-bar-width 6
    doom-modeline-icon t
    doom-modeline-major-mode-icon t
-   doom-modeline-modal-icon nil
    doom-modeline-workspace-name t))
+
+;; performance hack
+(setq inhibit-compacting-font-caches t)
 #+end_src
 ** Editor
 Matching pairs draw with the same face color, making them easily identifiable.
 #+begin_src emacs-lisp
 (add-hook! prog-mode #'rainbow-delimiters-mode-enable)
 #+end_src
-* Package management
-:PROPERTIES:
-:header-args:emacs-lisp: :tangle packages.el :comments link
-:END:
-This file shouldn't be byte compiled.
-#+BEGIN_SRC emacs-lisp :tangle packages.el :comments no
-;; -*- no-byte-compile: t; -*-
-#+END_SRC
-** Loading instructions
-:PROPERTIES:
-:header-args:emacs-lisp: :tangle no
-:END:
 * Navigation
 ** Windows
 Navigating through emacs, across buffer.
@@ -471,6 +482,10 @@ I use [[https://github.com/abo-abo/ace-link][ace-link]] to quickly open links in
 #+end_src
 
 #+begin_src emacs-lisp
+(use-package! ace-link
+  :config
+  (ace-link-setup-default))
+
 (after! avy
   (setq avy-keys '(?a ?s ?d ?f ?j ?k ?l ?\;)))
 #+end_src
@@ -512,20 +527,11 @@ Window navigation without pressing the leader key.
        magit-diff-mode-map
        magit-revision-mode-map
        magit-status-mode-map
-       eshell-mode-map
        evil-org-mode-map)
  :en "C-h"   #'evil-window-left
  :en "C-j"   #'evil-window-down
  :en "C-k"   #'evil-window-up
  :en "C-l"   #'evil-window-right)
-
-(add-hook! 'eshell-first-time-mode-hook
-  (map!
-   :map eshell-mode-map
-   :en "C-h"   #'evil-window-left
-   :en "C-j"   #'evil-window-down
-   :en "C-k"   #'evil-window-up
-   :en "C-l"   #'evil-window-right))
 
 (map!
  :map org-agenda-mode-map
@@ -568,8 +574,8 @@ Tell ~Jest~ to use ~yarn~:
 #+end_src
 And enable it in ~js2~ mode:
 #+begin_src emacs-lisp
-(add-hook! js2-mode #'jest-minor-mode)
-(add-hook! rjsx-mode #'jest-minor-mode)
+(add-hook! (js2-mode
+            rjsx-mode) #'jest-minor-mode)
 #+end_src
 Use ~web-mode~ for VueJS files:
 #+begin_src emacs-lisp
@@ -584,10 +590,12 @@ Enable prettier only if the configuration file found:
       (format-all-mode)
       (setq +format-with-lsp nil)))
 
-(add-hook 'js2-mode 'maybe-use-prettier)
-(add-hook 'rjsx-mode 'maybe-use-prettier)
-(add-hook 'typescript-mode 'maybe-use-prettier)
-(add-hook 'web-mode 'maybe-use-prettier)
+(add-hook!
+  (js2-mode
+   rjsx-mode
+   typescript-mode
+   web-mode)
+   #'maybe-use-prettier)
 #+end_src
 *** Flycheck
 Enable =ESLint= in =web-mode=
@@ -656,13 +664,23 @@ Format file before saving it
 #+end_src
 * LSP
 ** Enable/disable some LSP features
+Unpin ~lsp~.
+#+begin_src emacs-lisp :tangle packages.el
+(unpin! (:lang javascript))
+#+end_src
+
 #+begin_src emacs-lisp
+;; Lsp optimization
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
+;; disable symbol highlighting
+(setq lsp-enable-symbol-highlighting t)
+
 (after! lsp
   (setq lsp-prefer-flymake nil
         lsp-eslint-package-manager "yarn"))
 (after! lsp-ui
-  (setq lsp-ui-doc-enable t
-        lsp-ui-sideline-show-code-actions nil))
+  (setq lsp-ui-sideline-show-code-actions nil))
 #+end_src
 ** Flycheck
 Show errors inline so they never overlap with code.
@@ -675,19 +693,6 @@ Show errors inline so they never overlap with code.
 #+begin_src emacs-lisp
 (use-package! flycheck-inline
   :hook (flycheck-mode . flycheck-inline-mode))
-#+end_src
-** TabNine
-Add ~tabnine~ package.
-#+begin_src emacs-lisp :tangle packages.el
-(package! company-tabnine :recipe (:host github :repo "TommyX12/company-tabnine"))
-#+end_src
-
-Configure ~tabnine~.
-#+begin_src emacs-lisp
-(after! company
-  (setq +lsp-company-backends '(company-tabnine :separate company-capf company-yasnippet))
-  (setq company-show-numbers t)
-  (setq company-idle-delay 0))
 #+end_src
 * Org
 ** Packages
@@ -749,8 +754,16 @@ Enable =mixed-pitch-mode=
         display-line-numbers nil)
   (visual-fill-column-mode 1))
 
-(add-hook! 'org-mode-hook
-           #'+org-pretty-mode #'mixed-pitch-mode #'gkh/org-mode-visual)
+(setq mixed-pitch-variable-pitch-cursor nil)
+
+(after! org
+  (add-hook! 'org-mode-hook :append
+            #'mixed-pitch-mode
+            #'org-appear-mode
+            #'+org-pretty-mode
+            #'variable-pitch-mode
+            #'visual-line-mode
+            #'gkh/org-mode-visual))
 #+end_src
 
 #+begin_src emacs-lisp :tangle packages.el
@@ -855,6 +868,19 @@ Disable auto-complete
         company-require-match nil
         company-dabbrev-minimum-length 2
         company-search-regexp-function #'company-search-flex-regexp))
+#+end_src
+** TabNine
+Add ~tabnine~ package.
+#+begin_src emacs-lisp :tangle no
+(package! company-tabnine :recipe (:host github :repo "TommyX12/company-tabnine"))
+#+end_src
+
+Configure ~tabnine~.
+#+begin_src emacs-lisp :tangle no
+(after! company
+  (setq +lsp-company-backends '(company-tabnine :separate company-capf company-yasnippet))
+  (setq company-show-numbers t)
+  (setq company-idle-delay 0))
 #+end_src
 * Spelling
 ** Flyspell
