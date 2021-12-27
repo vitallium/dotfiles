@@ -779,25 +779,14 @@ Configure ~deft~.
   (deft-default-extension "org"))
 #+end_src
 
-Enable =mixed-pitch-mode=
+Enable ~mixed-pitch-mode~, ~org-appear-mode~ and ~org-pretty-mode~.
 #+begin_src emacs-lisp
-(defun gkh/org-mode-visual()
-  (setq visual-fill-column-width 100
-        visual-fill-column-center-text t
-        display-fill-column-indicator nil
-        display-line-numbers nil)
-  (visual-fill-column-mode 1))
-
-(setq mixed-pitch-variable-pitch-cursor nil)
-
 (after! org
   (add-hook! 'org-mode-hook :append
-            ;;#'mixed-pitch-mode
+            #'mixed-pitch-mode
             #'org-appear-mode
             #'+org-pretty-mode
-            ;;#'variable-pitch-mode
-            #'visual-line-mode
-            #'gkh/org-mode-visual))
+            #'visual-line-mode))
 #+end_src
 
 #+begin_src emacs-lisp :tangle packages.el
