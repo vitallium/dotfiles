@@ -576,6 +576,21 @@ Enable Doom Hydra keybindings
       :desc "Text-Zoom/Hydra" :m "w f" #'+hydra/text-zoom/body)
 #+end_src
 * Languages
+** TreeSitter
+Add ~tree-sitter~ packages.
+#+begin_src emacs-lisp :tangle packages.el
+(package! tree-sitter)
+(package! tree-sitter-langs)
+#+end_src
+
+Enable ~tree-sitter~.
+#+begin_src emacs-lisp
+(use-package! tree-sitter
+  :config
+  (require 'tree-sitter-langs)
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+#+end_src
 ** JavaScript
 ~Jest~ is the most popular testing framework:
 #+begin_src emacs-lisp :tangle packages.el
