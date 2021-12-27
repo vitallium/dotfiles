@@ -523,6 +523,11 @@ Always open up a new workspace when opening up a project.
     (projectile-discover-projects-in-search-path)))
 #+end_src
 * Key bindings
+Use ~,~ as local leader.
+#+begin_src emacs-lisp :tangle +bindings.el
+(setq doom-localleader-key ",")
+#+end_src
+
 #+begin_src emacs-lisp :tangle +bindings.el
 (after! lsp-ui
   (map! [remap xref-find-definitions] #'lsp-ui-peek-find-definitions
@@ -554,6 +559,9 @@ Window navigation without pressing the leader key.
  "C-j"  #'evil-window-down
  "C-k"  #'evil-window-up
  "C-l"  #'evil-window-right)
+
+;; Undo / redo.
+(map! :n "U" 'undo-tree-redo)
 #+end_src
 
 Toggle between light and dark =modus= themes.
