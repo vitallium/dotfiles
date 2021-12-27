@@ -794,10 +794,10 @@ Enable =mixed-pitch-mode=
 
 (after! org
   (add-hook! 'org-mode-hook :append
-            #'mixed-pitch-mode
+            ;;#'mixed-pitch-mode
             #'org-appear-mode
             #'+org-pretty-mode
-            #'variable-pitch-mode
+            ;;#'variable-pitch-mode
             #'visual-line-mode
             #'gkh/org-mode-visual))
 #+end_src
