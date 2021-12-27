@@ -701,11 +701,6 @@ Format file before saving it
 #+end_src
 * LSP
 ** Enable/disable some LSP features
-Unpin ~lsp~.
-#+begin_src emacs-lisp :tangle packages.el
-(unpin! (:lang javascript))
-#+end_src
-
 #+begin_src emacs-lisp
 ;; Lsp optimization
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
