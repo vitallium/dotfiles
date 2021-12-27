@@ -409,9 +409,9 @@ I use [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]] occasionally.
 *** MonoLisa
 But I use [[https://www.monolisa.dev/][MonoLisa]] now.
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "Source Code Pro" :size vitallium/font-size)
-      doom-big-font (font-spec :family "Source Code Pro" :size 32)
-      doom-variable-pitch-font (font-spec :family "Alegreya" :size 32))
+(setq doom-font (font-spec :family "MonoLisa" :size vitallium/font-size)
+      doom-big-font (font-spec :family "MonoLisa" :size 32)
+      doom-variable-pitch-font (font-spec :family "MonoLisa"))
 #+end_src
 
 Enable ligatures.
