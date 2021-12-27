@@ -204,6 +204,7 @@ markdown            ; writing docs for people to ignore
      +export
      +journal
      +roam2
+     +pretty
      +present)      ; organize your plain life in plain text
 ;;plantuml          ; diagrams for confusing people more
 (python +lsp)       ; beautiful is better than ugly
