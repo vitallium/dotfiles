@@ -285,6 +285,11 @@ Enable local variables.
 #+begin_src emacs-lisp
 (put '+file-templates-dir 'safe-local-variable #'stringp)
 #+end_src
+
+Compile all elisp
+#+begin_src emacs-lisp
+(setq comp-deferred-compilation t)
+#+end_src
 ** Additional stuff to work with strings
 String inflections anyone?
 #+begin_src emacs-lisp :tangle packages.el
