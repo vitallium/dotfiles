@@ -725,6 +725,8 @@ Show errors inline so they never overlap with code.
 #+begin_src emacs-lisp
 (use-package! flycheck-inline
   :hook (flycheck-mode . flycheck-inline-mode))
+
+(setq flycheck-check-syntax-automatically '(save idle-change))
 #+end_src
 * Org
 ** Packages
