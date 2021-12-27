@@ -334,11 +334,16 @@ Display fill column indicator.
       visual-fill-column-width fill-column)
 (add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
 #+end_src
+Add the keybinding to toggle the ~fill-column~.
+#+begin_src emacs-lisp :tangle +bindings.el
+(map! :leader
+      :desc "Auto fill"
+      :n "t a" 'auto-fill-mode)
+#+end_src
 Dim inactive windows.
 #+begin_src emacs-lisp :tangle packages.el
 (package! dimmer)
 #+end_src
-
 Configure ~dimmer~.
 #+begin_src emacs-lisp
 (dimmer-configure-magit)
