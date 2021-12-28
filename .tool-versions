@@ -1,4 +1,4 @@
-yarn 1.22.15
+yarn 1.22.17
 nodejs 16.13.1
 ruby 2.7.5
 crystal 1.2.2
@@ -8,4 +8,4 @@ python system
 direnv 2.29.0
 minikube 1.23.2
 kubectl 1.22.3
-golang 1.17.4
+golang 1.17.5
