@@ -338,10 +338,6 @@ exec dbus-update-activation-environment --systemd --all
 #+begin_src conf :tangle ~/.config/sway/config
 exec mako
 #+end_src
-*** Pipewire
-#+begin_src conf :tangle ~/.config/sway/config
-exec pipewire
-#+end_src
 *** Solaar for Logitech mouse
 #+begin_src conf :tangle ~/.config/sway/config
 exec solaar --window=hide
