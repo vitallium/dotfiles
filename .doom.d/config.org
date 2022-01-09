@@ -568,11 +568,21 @@ Toggle between light and dark =modus= themes.
 (global-set-key (kbd "<f5>") 'modus-themes-toggle)
 #+end_src
 
-Enable Doom Hydra keybindings
+Enable Doom Hydra keybindings.
 #+begin_src emacs-lisp :tangle +bindings.el
 (map! :leader
       :desc "Navigate/Hydra"  :m "w N" #'+hydra/window-nav/body
       :desc "Text-Zoom/Hydra" :m "w f" #'+hydra/text-zoom/body)
+#+end_src
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! reverse-im)
+#+end_src
+
+#+begin_src emacs-lisp :tangle +bindings.el
+(use-package reverse-im
+  :config
+  (reverse-im-activate "russian-computer"))
 #+end_src
 * Languages
 ** TreeSitter
@@ -614,7 +624,7 @@ And enable it in ~js2~ mode:
 (add-hook! (js2-mode
             rjsx-mode) #'jest-minor-mode)
 #+end_src
-Use ~web-mode~ for VueJS files:
+Use ~web-mode~ for VueJS files.
 #+begin_src emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
 #+end_src
@@ -654,7 +664,7 @@ And use the =javascript-eslint= checker instead of =lsp=
 (add-hook 'lsp-mode-hook #'+js/fix-checker)
 ;; (setq-hook! 'js2-mode-hook flycheck-checker 'javascript-eslint)
 #+end_src
-Enable =stylelint= in =web-mode=
+Enable ~stylelint~ in ~web-mode~
 #+begin_src emacs-lisp
 (after! flycheck
   (flycheck-add-mode 'css-stylelint 'web-mode))
