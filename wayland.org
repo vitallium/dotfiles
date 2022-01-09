@@ -38,17 +38,18 @@ output eDP-1 {
 #+begin_src conf :tangle ~/.config/sway/config
 input type:keyboard {
   xkb_layout "us,ru"
-  xkb_options "grp:alt_space_toggle"
+  xkb_options "grp:alt_space_toggle,caps:ctrl_modifier"
   repeat_delay 210
   repeat_rate 40
 }
 
-input type:pointer {
-  pointer_accel 0
-}
-
-input type:mouse {
-  accel_profile "flat"
+input type:touchpad {
+  accel_profile adaptive
+  drag enabled
+  dwt enabled
+  natural_scroll enabled
+  tap enabled
+  tap_button_map lrm
 }
 #+end_src
 ** Set cursor theme
