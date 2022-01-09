@@ -11,7 +11,7 @@ set $mod Mod4
 #+end_src
 ** Set terminal emulator
 #+begin_src conf
-set $term footclient
+set $term kitty
 #+end_src
 ** Set application launcher
 #+begin_src conf
@@ -347,7 +347,7 @@ exec pipewire
 exec solaar --window=hide
 #+end_src
 *** Foot server
-#+begin_src conf :tangle ~/.config/sway/config
+#+begin_src conf :tangle no
 exec foot -s
 #+end_src
 *** Autorun applications.
