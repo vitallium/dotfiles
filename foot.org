@@ -7,7 +7,7 @@
 * Configuration
 Set font.
 #+begin_src conf
-font=MonoLisa:size=10
+font=monospace term:size=12, Noto Color Emoji:size=10
 #+end_src
 
 Draw bold text in bright.
@@ -44,7 +44,7 @@ bright7=e6e6e6   # bright white
 ** Modus Operandi
 #+begin_src conf
 [cursor]
-color=4a484d #ffffff
+color=ffffff 4a484d
 
 [colors]
 background= ffffff
