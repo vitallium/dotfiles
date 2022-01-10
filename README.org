@@ -1,24 +1,17 @@
 #+TITLE: Readme
 
 * Contents :TOC:
-- [[#environment][Environment]]
+- [[#home][Home]]
   - [[#x11][X11]]
-  - [[#wayland][Wayland]]
-- [[#tools][Tools]]
+  - [[#sway][Sway]]
+- [[#emacs][Emacs]]
 
-* Environment
+* Home
+[[file:Home.org][Home configuration]] contains independent settings for my Linux and macOS boxes.
+I try to keep them common as mush as possible which means this configuration contains 0 Xorg or Wayland stuff.
 ** X11
-+ Desktop: [[file:i3.org][i3]] plus i3status
-+ Terminal emulator: [[file:fish.org][fish]] and [[file:kitty.org][kitty]]
-+ Notification daemon: dunst
-+ Launcher: [[file:rofi.org][rofi]]
-** TODO Wayland
-+ Desktop: [[file:sway.org][sway]]
-+ Terminal emulator: [[file:fish.org][fish]] and [[file:foot.org][foot]]
-+ TODO: Notification daemon: mako
-+ Launcher: wofi
-* Tools
-+ [[file:.doom.d/config.org][emacs]]
-+ [[file:tmux.org][tmux]]
-+ [[file:ripgrep.org][ripgrep]]
-+ [[file:gnupg.org][gpg]]
+[[file:X11.org][X11]] configuration defines my settings for Xorg environment with ~i3~, ~rofi~ and ~dunst~.
+** Sway
+[[file:wayland.org][Wayland]] configuration defines my settings for Wayland environment with ~sway~, ~wofi~ and ~mako~. It pretty much mimics the X11 configuration.
+* Emacs
+[[file:Emacs.org][Emacs Configuration :)]]
