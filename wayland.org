@@ -3,6 +3,31 @@
 #+PROPERTY:   header-args+ :comments both :mkdirp yes
 #+PROPERTY:   header-args+ :tangle ~/.config/sway/config
 
+* Contents :TOC:
+- [[#sway][Sway]]
+  - [[#set-key-modifier][Set key modifier]]
+  - [[#set-terminal-emulator][Set terminal emulator]]
+  - [[#set-application-launcher][Set application launcher]]
+  - [[#set-font][Set font]]
+  - [[#enable-xwayland][Enable xwayland]]
+  - [[#configure-output][Configure output]]
+  - [[#configure-input][Configure input]]
+  - [[#gaps][Gaps]]
+  - [[#set-cursor-theme][Set cursor theme]]
+  - [[#key-bindings][Key bindings]]
+  - [[#workspaces][Workspaces]]
+  - [[#modes][Modes]]
+  - [[#theme][Theme]]
+  - [[#bar][Bar]]
+  - [[#startup][Startup]]
+- [[#status-bar][Status Bar]]
+  - [[#i3status-rust][i3status-rust]]
+- [[#swaylock][swaylock]]
+- [[#mako][mako]]
+- [[#wofi][wofi]]
+- [[#foot][foot]]
+  - [[#configuration][Configuration]]
+
 * Sway
 ** Set key modifier
 Set key modifier to Super
@@ -21,7 +46,7 @@ set $menu dmenu_path | wofi --show drun | xargs swaymsg exec --
 Font for window titles. Will also be used by the bar unless a different font
 is used in the bar {} block below.
 #+begin_src conf
-font pango:Inter 14
+font pango:IBM Plex Sans 14
 #+end_src
 ** Enable xwayland
 #+begin_src conf
@@ -32,6 +57,12 @@ xwayland disable
 output eDP-1 {
   subpixel rgb
   scale 1.5
+}
+#+end_src
+
+#+begin_src conf :tangle ~/.config/sway/config
+output DP-1 {
+  subpixel rgb
 }
 #+end_src
 ** Configure input
@@ -51,6 +82,16 @@ input type:touchpad {
   tap enabled
   tap_button_map lrm
 }
+#+end_src
+** Gaps
+#+begin_src conf :tangle ~/.config/sway/config
+set $inner_gaps 4
+set $outer_gaps 12
+
+gaps inner $inner_gaps
+gaps outer $outer_gaps
+smart_gaps on
+smart_borders on
 #+end_src
 ** Set cursor theme
 #+begin_src conf :tangle ~/.config/sway/config
@@ -139,7 +180,7 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 #+end_src
-* Workspaces
+** Workspaces
 Define names for default workspaces for which we configure key bindings later on. We use variables to avoid repeating the names in multiple places.
 
 #+begin_src conf :tangle ~/.config/sway/config
@@ -289,9 +330,11 @@ bar {
   position top
   status_padding 0
   strip_workspace_numbers yes
+  status_command i3status-rs
+
   tray {
     tray_padding 2
-    icon_theme   Zafiro
+    icon_theme   Papirus-Dark
   }
 }
 #+end_src
@@ -340,10 +383,12 @@ exec dbus-update-activation-environment --systemd --all
 exec mako
 #+end_src
 *** Solaar for Logitech mouse
-#+begin_src conf :tangle ~/.config/sway/config
+Disabled because requires ~xwayland~.
+#+begin_src conf :tangle no
 exec solaar --window=hide
 #+end_src
 *** Foot server
+Disabled because I use ~kitty~.
 #+begin_src conf :tangle no
 exec foot -s
 #+end_src
@@ -359,8 +404,48 @@ exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #+begin_src conf :tangle ~/.config/sway/config
 exec_always swaybg -m fill -i $HOME/Pictures/wallpaper.jpg
 #+end_src
-** Environment
-*** swaylock
+* Status Bar
+** i3status-rust
+#+begin_src conf :tangle ~/.config/i3status-rust/config.toml
+theme = "native"
+icons = "awesome5"
+
+[[block]]
+block = "focused_window"
+max_width = 50
+show_marks = "visible"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used_percents}"
+format_swap = "{swap_used_percents}"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "networkmanager"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+interface_name_include = []
+ap_format = "{ssid^10} {strength}"
+device_format = "{icon}{ap}"
+
+[[block]]
+block = "keyboard_layout"
+driver = "sway"
+interval = 15
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %d/%m %R"
+#+end_src
+* swaylock
 #+begin_src conf :tangle ~/.config/swaylock/config
 daemonize
 
@@ -378,11 +463,86 @@ indicator
 clock
 datestr=%Y-%m-%d (%a)
 #+end_src
-*** mako
+* mako
 #+begin_src conf :tangle ~/.config/mako/config
 font=sans-serif 14
 default-timeout=5000
 ignore-timeout=1
 width=300
 #+end_src
-*** wofi
+* wofi
+#+begin_src conf :tangle ~/.config/wofi/config
+allow_markup=true
+lines=10
+width=25%
+key_up=Control_L-k
+key_down=Control_L-j
+#+end_src
+* foot
+:PROPERTIES:
+:header-args: :tangle "~/.config/foot/foot.init"
+:END:
+** Configuration
+Set font.
+#+begin_src conf
+font=monospace term:size=12, Noto Color Emoji:size=10
+#+end_src
+
+Draw bold text in bright.
+#+begin_src conf
+bold-text-in-bright=yes
+#+end_src
+*** Theme and colors
+**** Dracula
+#+begin_src conf :tangle no
+[cursor]
+color=282a36 f8f8f2
+
+[colors]
+alpha=1.0
+foreground=f8f8f2
+background=282a36
+regular0=000000  # black
+regular1=ff5555  # red
+regular2=50fa7b  # green
+regular3=f1fa8c  # yellow
+regular4=bd93f9  # blue
+regular5=ff79c6  # magenta
+regular6=8be9fd  # cyan
+regular7=bfbfbf  # white
+bright0=4d4d4d   # bright black
+bright1=ff6e67   # bright red
+bright2=5af78e   # bright green
+bright3=f4f99d   # bright yellow
+bright4=caa9fa   # bright blue
+bright5=ff92d0   # bright magenta
+bright6=9aedfe   # bright cyan
+bright7=e6e6e6   # bright white
+#+end_src
+**** Modus Operandi
+#+begin_src conf
+[cursor]
+color=ffffff 4a484d
+
+[colors]
+background= ffffff
+foreground= 000000
+
+regular0=   000000
+regular1=   a60000
+regular2=   005e00
+regular3=   813e00
+regular4=   0031a9
+regular5=   721045
+regular6=   00538b
+regular7=   bfbfbf
+
+bright0=    595959
+bright1=    972500
+bright2=    315b00
+bright3=    70480f
+bright4=    2544bb
+bright5=    5317ac
+bright6=    005a5f
+bright7=    ffffff
+#+end_src
