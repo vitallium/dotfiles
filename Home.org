@@ -1,0 +1,1319 @@
+#+TITLE:      Home Configuration
+#+AUTHOR:     Vitaly Slobodin
+#+PROPERTY:   header-args+ :mkdirp yes :noweb yes :eval no
+
+* Contents :TOC:
+- [[#fish][Fish]]
+  - [[#aliases][Aliases]]
+  - [[#xdg][XDG]]
+  - [[#functions][Functions]]
+  - [[#paths][Paths]]
+  - [[#fisher][Fisher]]
+  - [[#configuration][Configuration]]
+- [[#kitty][kitty]]
+  - [[#fonts][Fonts]]
+  - [[#performance-tuning][Performance tuning]]
+  - [[#tab-bar][Tab bar]]
+  - [[#advanced][Advanced]]
+  - [[#os-specific-settings][OS specific settings]]
+  - [[#key-bindings][Key bindings]]
+  - [[#theme][Theme]]
+- [[#git][git]]
+  - [[#common-configuration][Common configuration]]
+  - [[#global-gitignore-configuration][Global gitignore configuration]]
+  - [[#attributes][Attributes]]
+  - [[#work-related-configuration][Work-related configuration]]
+- [[#tmux][tmux]]
+  - [[#common][Common]]
+  - [[#key-bindings-1][Key Bindings]]
+  - [[#plugins][Plugins]]
+- [[#gnupg][gnupg]]
+  - [[#configuration-1][Configuration]]
+  - [[#reference][Reference]]
+- [[#ripgrep][ripgrep]]
+- [[#isync][isync]]
+- [[#fontconfig][fontconfig]]
+- [[#gtk][gtk]]
+- [[#mpv][mpv]]
+- [[#ruby][Ruby]]
+  - [[#pry][pry]]
+  - [[#gemrc][gemrc]]
+  - [[#default-gems][Default gems]]
+- [[#postgresql][PostgreSQL]]
+  - [[#psql][psql]]
+- [[#asdf][asdf]]
+  - [[#default-tool-versions][Default tool versions]]
+
+* Fish
+** Aliases
+Let's start with defining some useful aliases that I use everyday.
+
+Aliases for [[~/projects/gitlab/gdk/gitlab/ee/app/assets/javascripts/admin/init_qrtly_reconciliation_alert.js][tmux]].
+#+begin_src sh :tangle ~/.config/fish/aliases.fish
+alias t="tmux"
+alias ta="t a -t"
+alias tls="t ls"
+alias tn="t new -t"
+#+end_src
+
+Use [[https://github.com/sharkdp/bat][bat]] as ~cat~.
+#+begin_src sh :tangle ~/.config/fish/aliases.fish
+alias t="tmux"
+alias cat='bat --paging=never'
+#+end_src
+
+Run ~mbsync~ with custom configuration file.
+#+begin_src sh :tangle ~/.config/fish/aliases.fish
+alias mbsync="mbsync -c \"$HOME/.config/isync/mbsyncrc\""
+#+end_src
+** XDG
+Export XDG variables just in case.
+#+begin_src sh :tangle ~/.config/fish/xdg.fish
+set --export XDG_CONFIG_HOME "$HOME/.config"
+set --export XDG_CACHE_HOME "$HOME/.cache"
+set --export XDG_DATA_HOME "$HOME/.local/share"
+#+end_src
+** Functions
+*** Functions for working on Chromium
+Define functions for common tasks when I work on Chromium.
+#+begin_src sh :tangle ~/.config/fish/functions/chromium.deps.fish
+function deps --description "run gclient sync"
+  env GYP_DEFINES=disable_nacl=1 gclient sync --jobs=70
+end
+#+end_src
+
+#+begin_src sh :tangle ~/.config/fish/functions/chromium.hooks.fish
+function hooks --description "run gclient runhooks"
+  env GYP_DEFINES=disable_nacl=1 gclient runhooks
+end
+#+end_src
+
+#+begin_src sh :tangle ~/.config/fish/functions/chromium.acch.fish
+function acch --description "activate chromium build mode"
+  pathadd "$HOME/.local/bin/depot_tools"
+end
+#+end_src
+*** Functions for gitignore
+Useful function to quickly create and fill ~.gitignore~ file with most common scenarios for a given language or tool.
+#+begin_src sh :tangle ~/.config/fish/functions/gi.fish
+function gi --description "Create useful .gitignore files for your project"
+  curl -sL https://www.toptal.com/developers/gitignore/api/$argv
+end
+#+end_src
+*** Adds a path to PATH :)
+#+begin_src sh :tangle ~/.config/fish/functions/pathadd.fish
+function pathadd -a dir --description "Adds a path to PATH :)"
+  if test -d $dir
+    set -gx PATH $dir $PATH
+  end
+end
+#+end_src
+** Paths
+Add some paths
+#+begin_src sh :tangle ~/.config/fish/paths.fish
+pathadd ~/.local/bin
+
+# jsvu
+pathadd ~/.jsvu
+
+# golang
+pathadd $GOBIN
+
+# rust
+pathadd ~/.cargo/bin
+#+end_src
+** Fisher
+#+begin_quote
+A plugin manager for Fish—the friendly interactive shell.
+#+end_quote
+
+Manage functions, completions, bindings, and snippets from the command line. Extend your shell capabilities, change the look of your prompt and create repeatable configurations across different systems effortlessly.
+
+Install it.
+#+begin_src sh
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+#+end_src
+*** Plugins:
+**** [[https://github.com/mattgreen/lucid.fish][lucid]]
+#+begin_quote
+A minimalist, high-performance fish prompt with async git dirty checks that just work.
+#+end_quote
+
+#+begin_src sh :tangle ~/.config/fish/fish_plugins
+mattgreen/lucid.fish
+#+end_src
+**** [[https://github.com/laughedelic/pisces][laughedelic/pisces]]
+#+begin_quote
+pisces ['paɪsiz] is a plugin for fish that helps you to work with paired symbols like () and '' in the command line. Similar to your favorite text editor!
+#+end_quote
+
+#+begin_src sh :tangle ~/.config/fish/fish_plugins
+laughedelic/pisces
+#+end_src
+**** [[https://github.com/joehillen/to-fish][joehillen/to-fish]]
+#+begin_quote
+A directory bookmarking tool for fish-shell.
+#+end_quote
+
+#+begin_src sh :tangle ~/.config/fish/fish_plugins
+joehillen/to-fish
+#+end_src
+**** [[https://github.com/danhper/fish-ssh-agent][danhper/fish-ssh-agent]]
+#+begin_quote
+Utility functions to start your ssh agent when using fish shell. You will only need to run ssh-add and type your password once, after the running ssh_agent should do the work for you.
+#+end_quote
+
+#+begin_src sh :tangle ~/.config/fish/fish_plugins
+danhper/fish-ssh-agent
+#+end_src
+**** [[https://github.com/oh-my-fish/plugin-foreign-env][oh-my-fish/plugin-foreign-env]]
+#+begin_quote
+Foreign environment wraps application execution in a way that environment variables that are exported or modified get imported back into fish. This makes possible running popular bash scripts, like the excellent nvm.
+#+end_quote
+
+#+begin_src sh :tangle ~/.config/fish/fish_plugins
+oh-my-fish/plugin-foreign-env
+#+end_src
+**** [[https://github.com/dracula/fish][dracula/fish]]
+#+begin_quote
+A dark theme
+#+end_quote
+
+#+begin_src sh :tangle ~/.config/fish/fish_plugins
+dracula/fish
+#+end_src
+**** [[https://github.com/PatrickF1/fzf.fish][PatrickF1/fzf.fish]]
+#+begin_quote
+Augment your Fish command line with mnemonic key bindings to efficiently find what you need using fzf.
+#+end_quote
+
+#+begin_src sh :tangle ~/.config/fish/fish_plugins
+PatrickF1/fzf.fish
+#+end_src
+** Configuration
+Set locale to ~UTF-8~.
+#+begin_src sh :tangle ~/.config/fish/config.fish
+set -x LC_ALL en_US.UTF-8
+#+end_src
+
+Load aliases, functions, xdg, etc.
+#+begin_src sh :tangle ~/.config/fish/config.fish
+set configs aliases functions paths xdg
+for config in $configs
+  if test -e $__fish_config_dir/$config.fish
+    . $__fish_config_dir/$config.fish
+  end
+end
+set -e configs
+#+end_src
+
+Enable integration with [[https://github.com/asdf-vm/asdf][asdf]].
+#+begin_src sh :tangle ~/.config/fish/config.fish
+if test -e $HOME/.asdf/asdf.fish
+  . $HOME/.asdf/asdf.fish
+end
+#+end_src
+
+Enable [[https://github.com/direnv/direnv][direnv]] via ~asdf-vm~.
+#+begin_src sh :tangle ~/.config/fish/config.fish
+eval (asdf exec direnv hook fish)
+#+end_src
+*** Environment variables
+Disable ~fish~ greeting.
+#+begin_src sh :tangle ~/.config/fish/config.fish
+set -gx fish_greeting              ''
+#+end_src
+
+Set Go paths.
+#+begin_src sh :tangle ~/.config/fish/config.fish
+set -gx GOPATH                     $HOME/.go
+set -gx GOBIN                      $HOME/.go/bin
+set -gx GO111MODULE                on
+#+end_src
+
+Set the [[https://github.com/BurntSushi/ripgrep][ripgrep]] configuration file path.
+#+begin_src sh :tangle ~/.config/fish/config.fish
+set -gx RIPGREP_CONFIG_PATH       "$HOME/.ripgreprc"
+#+end_src
+
+Configure [[https://github.com/junegunn/fzf][fzf]].
+#+begin_src sh :tangle ~/.config/fish/config.fish
+set -gx _ZO_FZF_OPTS              "--height 40% --reverse $FZF_DEFAULT_OPTS"
+set -gx FZF_DEFAULT_COMMAND       'rg --files'
+set -gx FZF_CTRL_T_COMMAND        'rg --files'
+
+fzf_configure_bindings
+#+end_src
+
+Set Wayland backends.
+#+begin_src fish :tangle no
+set -gx CLUTTER_BACKEND     wayland
+set -gx SDL_VIDEODRIVER     wayland
+set -gx MOZ_ENABLE_WAYLAND  1
+set -gx XDG_CURRENT_DESKTOP sway
+#+end_src
+*** Colors
+**** Light
+Set [[https://github.com/sharkdp/bat][bat]] theme.
+#+begin_src sh :tangle no
+set -gx BAT_THEME                  ansi
+#+end_src
+**** Dracula
+Set [[https://github.com/sharkdp/bat][bat]] theme.
+#+begin_src sh :tangle ~/.config/fish/config.fish
+set -gx BAT_THEME                  Dracula
+#+end_src
+
+Set Dracula-colors for fzf.
+#+begin_src sh :tangle ~/.config/fish/config.fish
+set -gx FZF_DEFAULT_OPTS          "--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
+#+end_src
+* kitty
+:PROPERTIES:
+:header-args: :tangle "~/.config/kitty/kitty.conf"
+:END:
+** Fonts
+Setup font and its size.
+#+begin_src conf
+font_family JetBrains Mono
+font_size   12.0
+#+end_src
+
+Disable ligatures and tweak some font features.
+#+begin_src conf
+disable_ligatures never
+font_features     MonoLisa-Regular -liga -calt
+font_features     MonoLisa-Bold -liga -calt
+#+end_src
+** Performance tuning
+Sync screen updates to the refresh rate of the monitor. This
+prevents tearing (https://en.wikipedia.org/wiki/Screen_tearing)
+when scrolling. However, it limits the rendering speed to the
+refresh rate of your monitor. With a very high speed mouse/high
+keyboard repeat rate, you may notice some slight input latency. If
+so, set this to no.
+#+begin_src conf
+sync_to_monitor yes
+#+end_src
+
+The width (in pts) of window borders. Will be rounded to the
+nearest number of pixels based on screen resolution. Note that
+borders are displayed only when more than one window is visible.
+They are meant to separate multiple windows.
+#+begin_src conf
+window_border_width 0.0
+#+end_src
+
+Draw only the minimum borders needed. This means that only the
+minimum needed borders for inactive windows are drawn. That is only
+the borders that separate the inactive window from a neighbor. Note
+that setting a non-zero window margin overrides this and causes all
+borders to be drawn.
+#+begin_src conf
+draw_minimal_borders yes
+#+end_src
+
+The window padding (in pts) (blank area between the text and the
+window border)
+#+begin_src conf
+window_padding_width 0.0
+#+end_src
+
+When the window size is not an exact multiple of the cell size, the
+cell area of the terminal window will have some extra padding on
+the sides. You can control how that padding is distributed with
+this option. Using a value of center means the cell area will be
+placed centrally. A value of top-left means the padding will be on
+only the bottom and right edges.
+#+begin_src conf
+placement_strategy center
+#+end_src
+
+Hide the window decorations (title-bar and window borders). Whether
+this works and exactly what effect it has depends on the window
+manager/operating system.
+#+begin_src conf
+hide_window_decorations no
+#+end_src
+** Tab bar
+The tab bar style, can be one of: fade, separator, powerline, or
+hidden. In the fade style, each tab's edges fade into the
+background color, in the separator style, tabs are separated by a
+configurable separator, and the powerline shows the tabs as a
+continuous line.
+#+begin_src conf
+tab_bar_style powerline
+#+end_src
+
+The separator between tabs in the tab bar when using separator as
+the tab_bar_style.
+#+begin_src conf
+tab_separator " "
+#+end_src
+** Advanced
+Allow other programs to control kitty. If you turn this on other
+programs can control all aspects of kitty, including sending text
+to kitty windows, opening new windows, closing windows, reading the
+content of windows, etc.  Note that this even works over ssh
+connections. You can chose to either allow any program running
+within kitty to control it, with yes or only programs that connect
+to the socket specified with the kitty --listen-on command line
+option, if you use the value socket-only. The latter is useful if
+you want to prevent programs running on a remote computer over ssh
+from controlling kitty.
+#+begin_src conf
+allow_remote_control no
+#+end_src
+
+Allow programs running in kitty to read and write from the
+clipboard. You can control exactly which actions are allowed. The
+set of possible actions is: write-clipboard read-clipboard write-
+primary read-primary. You can additionally specify no-append to
+disable kitty's protocol extension for clipboard concatenation. The
+default is to allow writing to the clipboard and primary selection
+with concatenation enabled. Note that enabling the read
+functionality is a security risk as it means that any program, even
+one running on a remote server via SSH can read your clipboard.
+#+begin_src conf
+clipboard_control write-clipboard write-primary no-append
+#+end_src
+
+The value of the TERM environment variable to set. Changing this
+can break many terminal programs, only change it if you know what
+you are doing, not because you read some advice on Stack Overflow
+to change it. The TERM variable is used by various programs to get
+information about the capabilities and behavior of the terminal. If
+you change it, depending on what programs you run, and how
+different the terminal you are changing it to is, various things
+from key-presses, to colors, to various advanced features may not
+work.
+#+begin_src conf
+term xterm-kitty
+#+end_src
+** OS specific settings
+*** macOS
+Use the option key as an alt key. With this set to no, kitty will
+use the macOS native Option+Key = unicode character behavior. This
+will break any Alt+key keyboard shortcuts in your terminal
+programs, but you can use the macOS unicode input technique. You
+can use the values: left, right, or both to use only the left,
+right or both Option keys as Alt, instead.
+#+begin_src conf
+macos_option_as_alt yes
+#+end_src
+
+Draw an extra border around the font with the given width, to
+increase legibility at small font sizes. For example, a value of
+0.75 will result in rendering that looks similar to sub-pixel
+antialiasing at common font sizes.
+#+begin_src conf
+macos_thicken_font 0.3
+#+end_src
+** Key bindings
+Change font size.
+#+begin_src conf
+map ctrl+shift+equal     change_font_size current +1.0
+map ctrl+shift+minus     change_font_size current -1.0
+map ctrl+shift+0         change_font_size current 0
+#+end_src
+** Theme
+#+begin_src conf
+include ./dracula.conf
+#+end_src
+*** Modus Operandi
+#+begin_src conf :tangle ~/.config/kitty/modus-operandi.conf
+cursor #4a484d
+cursor_text_color #ffffff
+url_color #1d3ccf
+
+active_border_color #5e4b4f
+inactive_border_color #efefef
+bell_border_color #8a3600
+
+active_tab_foreground #005d26
+active_tab_background #efefef
+inactive_tab_foreground #5e4b4f
+inactive_tab_background #ffffff
+
+foreground #000000
+background #ffffff
+selection_foreground #ffffff
+selection_background #4a484d
+
+color0 #000000
+color1 #a60000
+color2 #005e00
+color3 #813e00
+color4 #0031a9
+color5 #721045
+color6 #00538b
+color7 #bfbfbf
+color8 #595959
+color9 #972500
+color10 #315b00
+color11 #70480f
+color12 #2544bb
+color13 #5317ac
+color14 #005a5f
+color15 #ffffff
+#+end_src
+*** Modus Vivendi
+#+begin_src conf :tangle ~/.config/kitty/modus-vivendi.conf
+foreground  #ffffff
+background  #000000
+
+## cursor
+cursor  #ffffff
+cursor_text_color  #000000
+
+## black
+color8  #555555
+color0  #222222
+
+## red
+color9  #ffa0a0
+color1  #fb6859
+
+## green
+color10  #88cf88
+color2   #00fc50
+
+## yellow
+color11  #d2b580
+color3   #ffdd00
+
+## blue
+color12  #92baff
+color4   #00a2ff
+
+## magenta
+color13  #e0b2d6
+color5   #ff8bd4
+
+## cyan
+color14  #a0bfdf
+color6   #30ffc0
+
+## white
+color15  #ffffff
+color7   #dddddd
+
+## Tabs
+active_tab_foreground  #5ac3cf
+active_tab_background  #0e0e0e
+inactive_tab_foreground  #ffffff
+inactive_tab_background  #3d3d3d
+#+end_src
+*** Dracula
+
+#+begin_src conf :tangle ~/.config/kitty/dracula.conf
+foreground            #f8f8f2
+background            #282a36
+selection_foreground  #ffffff
+selection_background  #44475a
+
+url_color #8be9fd
+
+# black
+color0  #21222c
+color8  #6272a4
+
+# red
+color1  #ff5555
+color9  #ff6e6e
+
+# green
+color2  #50fa7b
+color10 #69ff94
+
+# yellow
+color3  #f1fa8c
+color11 #ffffa5
+
+# blue
+color4  #bd93f9
+color12 #d6acff
+
+# magenta
+color5  #ff79c6
+color13 #ff92df
+
+# cyan
+color6  #8be9fd
+color14 #a4ffff
+
+# white
+color7  #f8f8f2
+color15 #ffffff
+
+# Cursor colors
+cursor            #f8f8f2
+cursor_text_color background
+
+# Tab bar colors
+active_tab_foreground   #282a36
+active_tab_background   #f8f8f2
+inactive_tab_foreground #282a36
+inactive_tab_background #6272a4
+
+# Marks
+mark1_foreground #282a36
+mark1_background #ff5555
+#+end_src
+
+#+begin_src conf :tangle ~/.config/kitty/diff.conf
+foreground           #f8f8f2
+background           #282a36
+title_fg             #f8f8f2
+title_bg             #282a36
+margin_bg            #6272a4
+margin_fg            #44475a
+removed_bg           #ff5555
+highlight_removed_bg #ff5555
+removed_margin_bg    #ff5555
+added_bg             #50fa7b
+highlight_added_bg   #50fa7b
+added_margin_bg      #50fa7b
+filler_bg            #44475a
+hunk_margin_bg       #44475a
+hunk_bg              #bd93f9
+search_bg            #8be9fd
+search_fg            #282a36
+select_bg            #f1fa8c
+select_fg            #282a36
+#+end_src
+
+* git
+** Common configuration
+:PROPERTIES:
+:header-args: :tangle "~/.config/git/config"
+:END:
+Set username and email.
+#+begin_src conf
+[user]
+  name = Vitaly Slobodin
+  email = vitaliy.slobodin@gmail.com
+#+end_src
+
+Enable colors.
+#+begin_src conf
+[color]
+  ui = true
+  branch = auto
+  diff = auto
+  status = auto
+#+end_src
+
+Enable simple push.
+#+begin_src conf
+[push]
+  default = simple
+#+end_src
+
+Setup useful aliases.
+#+begin_src conf
+[alias]
+  up = pull --rebase
+  st = status
+  co = checkout
+  pf = push --force-with-lease
+  am = commit --amend
+#+end_src
+
+Some core settings.
+#+begin_src conf
+[core]
+  autocrlf = false
+  precomposeUnicode = true
+  # Enable parallel index preload for operations like git diff
+  preloadindex = true
+  excludesfile = ~/.config/git/ignore
+  attributesfile = ~/.config/git/attributes
+#+end_src
+
+Use =delta= as pager.
+#+begin_src conf
+[core]
+  pager = delta
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+[delta]
+  features = side-by-side line-numbers decorations
+  whitespace-error-style = 22 reverse
+  syntax-theme = Dracula
+[interactive]
+  diffFilter = delta --color-only
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+#+end_src
+
+LFS configuration.
+#+begin_src conf
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+#+end_src
+
+Enable ~fsck~.
+#+begin_src conf :tangle no
+[transfer]
+  fsckobjects = true
+[fetch]
+  fsckobjects = true
+[receive]
+  fsckObjects = true
+#+end_src
+** Global gitignore configuration
+#+begin_src conf :tangle "~/.config/git/ignore"
+/.yalc/
+.yalc.lock
+.vendor/
+#+end_src
+** Attributes
+#+begin_src conf :tangle "~/.config/git/attributes"
+*.lisp  diff=lisp
+*.el    diff=lisp
+*.org   diff=org
+*.md    diff=markdown
+#+end_src
+** Work-related configuration
+Add GitLab configuration.
+#+begin_src conf :tangle "~/.config/git/config"
+[includeIf "gitdir:~/Work/"]
+  path = ~/.config/git/gitlab
+#+end_src
+*** GitLab
+#+begin_src conf :tangle "~/.config/git/gitlab"
+[user]
+  name = Vitaly Slobodin
+  email = vslobodin@gitlab.com
+  gpgsign = true
+#+end_src
+* tmux
+:PROPERTIES:
+:header-args: :tangle "~/.tmux.conf"
+:END:
+** Common
+Spawn session if attaching when none are running.
+#+begin_src conf
+new-session
+#+end_src
+
+Enable mouse support.
+#+begin_src conf
+set -g mouse on
+#+end_src
+
+Faster command sequences.
+#+begin_src conf
+set -sg escape-time 1
+#+end_src
+
+Increase repeat timeout.
+#+begin_src conf
+set -sg repeat-time 600
+#+end_src
+
+Start window number from 1.
+#+begin_src conf
+set -g base-index 1
+set -g pane-base-index 1
+#+end_src
+
+Rename window after current program.
+#+begin_src conf
+set -g automatic-rename on
+#+end_src
+
+Renumber windows when one is closed.
+#+begin_src conf
+set -g renumber-windows on
+#+end_src
+
+Display tmux messages longer.
+#+begin_src conf
+set -g display-time 1500
+set -g display-panes-time 800
+#+end_src
+
+Enable focus events.
+#+begin_src conf
+set-option -g focus-events on
+#+end_src
+
+** Key Bindings
+=ctrl-c= as prefix instead of =ctrl-b=.
+#+begin_src conf
+unbind-key C-b
+set -g prefix C-c
+bind-key 'C-c' send-prefix
+#+end_src
+
+VIM-like key bindings everywhere.
+#+begin_src conf
+set -g status-key vi
+set -g mode-keys vi
+set-window-option -g mode-keys vi
+#+end_src
+
+Panes splitting.
+#+begin_src conf
+bind c new-window      -c '#{pane_current_path}'
+bind v split-window -h -c '#{pane_current_path}'
+bind s split-window -v -c '#{pane_current_path}'
+#+end_src
+
+Moving between panes.
+#+begin_src conf
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+#+end_src
+
+Window and session handling.
+#+begin_src conf
+bind o resize-pane -Z
+bind S choose-session
+bind W choose-window
+bind / choose-session
+#+end_src
+
+Copy mode.
+#+begin_src conf
+bind Enter copy-mode # enter copy mode
+bind b list-buffers  # list paster buffers
+bind B choose-buffer # choose which buffer to paste from
+bind p paste-buffer  # paste from the top paste buffer
+bind P run "xclip -selection clipboard -o | tmux load-buffer - ; tmux paste-buffer"
+
+bind -T copy-mode-vi v send-keys -X begin-selection
+bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
+bind -T copy-mode-vi Escape send-keys -X cancel
+bind -T copy-mode-vi C-g send-keys -X cancel
+bind -T copy-mode-vi H send-keys -X start-of-line
+bind -T copy-mode-vi L send-keys -X end-of-line
+#+end_src
+
+Reload =tmux= configuration file.
+#+begin_src conf
+bind r source-file ~/.tmux.conf
+#+end_src
+
+Customize key so it doesn't clash.
+#+begin_src conf
+set -g @fingers-key g
+#+end_src
+** Plugins
+[[https://github.com/tmux-plugins/tpm/][TPM]]
+#+begin_src conf
+set -g @plugin 'tmux-plugins/tpm'
+#+end_src
+
+#+begin_src conf
+set -g @plugin 'tmux-plugins/tmux-logging'
+#+end_src
+
+Better copy and paste.
+#+begin_src conf
+set -g @plugin 'tmux-plugins/tmux-yank'
+#+end_src
+
+Allows path picking from any tmux window content.
+#+begin_src conf
+set -g @plugin 'jbnicolai/tmux-fpp'
+#+end_src
+
+Fancy copy.
+#+begin_src conf
+set -g @plugin 'Morantron/tmux-fingers'
+#+end_src
+
+Control tmux with =fzf=.
+#+begin_src conf
+set -g @plugin 'sainnhe/tmux-fzf'
+#+end_src
+
+Vim Tmux Navigator,
+#+begin_src conf
+set -g @plugin 'christoomey/vim-tmux-navigator'
+#+end_src
+
+Save and restore Tmux sessions.
+#+begin_src conf
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+#+end_src
+
+*** Theme
+**** Dracula
+#+begin_src conf
+set -g @plugin 'dracula/tmux'
+set -g @dracula-plugins "time"
+set -g @dracula-show-powerline true
+set -g @dracula-show-left-icon session
+set -g @dracula-border-contrast true
+#+end_src
+**** Modus Operandi like
+Light theme inspired by [[https://github.com/alexanderjeurissen/sombre.tmux/issues][sombre.tmux]]
+#+begin_src conf :tangle no
+set -g status-style fg='#424242',bg='#dfddd7'
+
+set -g window-status-separator " "
+set -g window-status-format " #I:#W "
+set -g window-status-current-format " #I:#W "
+
+set -g window-status-current-style fg='#f6f6f6',bg='#424242',bold
+set -g window-status-style fg='#b7b2a5',bg='#dfddd7',bold
+set -g window-status-activity-style fg='#424242',bg='#dfddd7',bold
+
+set -g pane-border-style fg='#dedcd6',bg=white
+set -g pane-active-border-style fg='#dedcd6',bg=white
+set -g display-panes-colour '#dedcd6'
+set -g display-panes-active-colour '#dedcd6'
+
+setw -g clock-mode-colour '#424242'
+
+set -g message-style fg='#2b2b2b',bg='#d3d1cc'
+
+set -g message-command-style fg='#2b2b2b',bg='#d3d1cc'
+
+# set-window-option -g mode fg=white,bg='#424242'
+#+end_src
+
+*** Initialize TMUX plugin manager
+#+begin_src conf
+run -b '~/.tmux/plugins/tpm/tpm'
+#+end_src
+* gnupg
+:PROPERTIES:
+:header-args: :tangle "~/.gnupg/gpg.conf" :tangle-mode (identity #o700)
+:END:
+** Configuration
+Use AES256, 192, or 128 as cipher.
+#+begin_src conf
+personal-cipher-preferences AES256 AES192 AES
+#+end_src
+
+Use SHA512, 384, or 256 as digest.
+#+begin_src conf
+personal-digest-preferences SHA512 SHA384 SHA256
+#+end_src
+
+Use ZLIB, BZIP2, ZIP, or no compression.
+#+begin_src conf
+personal-compress-preferences ZLIB BZIP2 ZIP Uncompressed
+#+end_src
+
+Default preferences for new keys.
+#+begin_src conf
+default-preference-list SHA512 SHA384 SHA256 AES256 AES192 AES ZLIB BZIP2 ZIP Uncompressed
+#+end_src
+
+SHA512 as digest to sign keys.
+#+begin_src conf
+cert-digest-algo SHA512
+#+end_src
+
+SHA512 as digest for symmetric ops.
+#+begin_src conf
+s2k-digest-algo SHA512
+#+end_src
+
+AES256 as cipher for symmetric ops.
+#+begin_src conf
+s2k-cipher-algo AES256
+#+end_src
+
+UTF-8 support for compatibility.
+#+begin_src conf
+charset utf-8
+#+end_src
+
+Show Unix timestamps.
+#+begin_src conf
+fixed-list-mode
+#+end_src
+
+No comments in signature.
+#+begin_src conf
+no-comments
+#+end_src
+
+No version in signature.
+#+begin_src conf
+no-emit-version
+#+end_src
+
+Disable banner.
+#+begin_src conf
+no-greeting
+#+end_src
+
+Long hexidecimal key format.
+#+begin_src conf
+keyid-format 0xlong
+#+end_src
+
+Display UID validity.
+#+begin_src conf
+list-options show-uid-validity
+verify-options show-uid-validity
+#+end_src
+
+Display all keys and their fingerprints.
+#+begin_src conf
+with-fingerprint
+#+end_src
+
+Display key origins and updates.
+#+begin_src conf :tangle no
+#with-key-origin
+#+end_src
+
+Cross-certify subkeys are present and valid.
+#+begin_src conf
+require-cross-certification
+#+end_src
+
+Disable caching of passphrase for symmetrical ops.
+#+begin_src conf
+no-symkey-cache
+#+end_src
+
+Enable smartcard.
+#+begin_src conf
+use-agent
+#+end_src
+
+Disable recipient key ID in messages.
+#+begin_src conf
+throw-keyids
+#+end_src
+
+Default/trusted key ID to use (helpful with throw-keyids).
+#+begin_src conf :tangle no
+#default-key 0xFF3E7D88647EBCDB
+#trusted-key 0xFF3E7D88647EBCDB
+#+end_src
+
+Group recipient keys (preferred ID last).
+#+begin_src conf :tangle no
+#group keygroup = 0xFF00000000000001 0xFF00000000000002 0xFF3E7D88647EBCDB
+#+end_src
+
+Keyserver URL.
+#+begin_src conf :tangle no
+#keyserver hkps://keys.openpgp.org
+#+end_src
+
+#+begin_src conf
+keyserver hkps://keyserver.ubuntu.com:443
+#+end_src
+
+#+begin_src conf :tangle no
+#keyserver hkps://hkps.pool.sks-keyservers.net
+#keyserver hkps://pgp.ocf.berkeley.edu
+#+end_src
+
+Proxy to use for keyservers.
+#+begin_src conf :tangle no
+#keyserver-options http-proxy=socks5-hostname://127.0.0.1:9050
+#+end_src
+
+Verbose output.
+#+begin_src conf :tangle no
+#verbose
+#+end_src
+
+Show expired subkeys.
+#+begin_src conf :tangle no
+#list-options show-unusable-subkeys
+#+end_src
+** Reference
++ https://github.com/drduh/config/blob/master/gpg.conf
++ https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html
++ https://www.gnupg.org/documentation/manuals/gnupg/GPG-Esoteric-Options.html
+* ripgrep
+#+begin_src conf :tangle ~/.ripgreprc
+--ignore
+--smart-case
+--hidden
+--follow
+--no-messages
+--ignore-file
+~/.config/git/ignore
+#+end_src
+* isync
+#+begin_src conf :tangle ~/.config/isync/mbsyncrc
+Create Both
+Expunge Both
+SyncState *
+
+# Gmail
+IMAPAccount gitlab
+Host imap.gmail.com
+User vslobodin@gitlab.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/share/credentials/gitlab-mbsync.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gitlab
+
+MaildirStore gmail-local
+Path ~/Mail/gitlab/
+Inbox ~/Mail/gitlab/Inbox
+SubFolders Legacy
+
+Channel gmail-inbox
+Far :gmail-remote:
+Near :gmail-local:Inbox
+
+Channel gmail-drafts
+Far :gmail-remote:"[Gmail]/Drafts"
+Near :gmail-local:Drafts
+
+Channel gmail-sent
+Far :gmail-remote:"[Gmail]/Sent Mail"
+Near :gmail-local:Sent
+
+Channel gmail-all
+Far :gmail-remote:"[Gmail]/All Mail"
+Near :gmail-local:All
+
+Channel gmail-trash
+Far :gmail-remote:"[Gmail]/Trash"
+Near :gmail-local:Trash
+
+Group gitlab
+Channel gmail-inbox
+Channel gmail-drafts
+Channel gmail-sent
+Channel gmail-all
+Channel gmail-thrash
+
+# Personal
+IMAPAccount fastmail
+Host imap.fastmail.com
+Port 993
+User vitaly_slobodin@fastmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/share/credentials/fastmail-mbsync.gpg"
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore fastmail-remote
+Account fastmail
+
+MaildirStore fastmail-local
+Path ~/Mail/fastmail/
+Inbox ~/Mail/fastmail/Inbox
+# The SubFolders option allows to represent all
+# IMAP subfolders as local subfolders
+SubFolders Verbatim
+
+# This section a "channel", a connection between remote and local
+Channel fastmail
+Far :fastmail-remote:
+Near :fastmail-local:
+Patterns *
+CopyArrivalDate yes
+#+end_src
+* fontconfig
+#+begin_src xml :tangle ~/.config/fontconfig/fonts.conf
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+  <!-- Prefer Liberation Sans over Helvetica -->
+  <alias>
+    <family>Helvetica</family>
+    <prefer>
+      <family>Liberation Sans</family>
+    </prefer>
+  </alias>
+  <!-- disable -->
+  <selectfont>
+    <rejectfont>
+      <glob>/usr/share/fonts/gsfonts</glob>
+      <glob>/usr/share/fonts/misc</glob>
+      <glob>/usr/share/fonts/OTF/GohaTibebZemen.otf</glob>
+      <glob>/usr/share/fonts/OTF/SyrCOM*</glob>
+      <glob>/usr/share/fonts/TTF/GohaTibebZemen.ttf</glob>
+      <glob>/usr/share/fonts/Type1</glob>
+    </rejectfont>
+  </selectfont>
+  <match target="font">
+    <edit name="antialias" mode="assign">
+      <bool>true</bool>
+    </edit>
+    <edit name="autohint" mode="assign">
+      <bool>false</bool>
+    </edit>
+    <edit name="hinting" mode="assign">
+      <bool>true</bool>
+    </edit>
+    <edit name="hintstyle" mode="assign">
+      <const>hintslight</const>
+    </edit>
+    <edit name="rgba" mode="assign">
+      <const>rgb</const>
+    </edit>
+    <edit name="lcdfilter" mode="assign">
+      <const>lcddefault</const>
+    </edit>
+    <edit name="embeddedbitmap" mode="assign">
+      <bool>false</bool>
+    </edit>
+  </match>
+</fontconfig>
+#+end_src
+* gtk
+#+begin_src conf :tangle ~/.config/gtk-3.0/settings.ini
+[Settings]
+gtk-theme-name=Adwaita
+gtk-icon-theme-name=Papirus-Dark
+gtk-font-name=IBM Plex Sans 11
+gtk-xft-antialias=1
+gtk-xft-hinting=1
+gtk-xft-hintstyle=hintslight
+gtk-xft-rgba=rgb
+#+end_src
+* mpv
+#+begin_src conf :tangle ~/.config/mpv/mpv.conf
+profile=gpu-hq
+scale=ewa_lanczossharp
+cscale=ewa_lanczossharp
+video-sync=display-resample
+interpolation
+tscale=oversample
+gpu-api=vulkan
+# Don't close the player after finishing the video
+keep-open=yes
+# The last position of your video is saved when quitting mpv
+save-position-on-quit=yes
+# Start mpv with a % smaller resolution of your screen
+autofit=50%
+# Force seeking (if seeking doesn't work)
+force-seekable=yes
+
+# OSD {{{
+#Don't show a huge volume box on screen when turning the volume up/down
+osd-bar=no
+# Cursor hide in ms
+cursor-autohide=100
+# }}}
+# gpu-context=wayland
+#
+[extension.ts]
+deinterlace=yes
+#+end_src
+* Ruby
+** pry
+#+begin_src conf :tangle ~/.pryrc
+Pry.editor = "nvim"
+
+Pry.commands.alias_command "c", "continue" rescue nil
+Pry.commands.alias_command "s", "step" rescue nil
+Pry.commands.alias_command "n", "next" rescue nil
+Pry.commands.alias_command "r!", "reload!" rescue nil
+
+begin
+  require 'awesome_print'
+  Pry.config.print = proc {|output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output)}
+rescue LoadError => err
+  puts 'gem install awesome_print  # <-- highly recommended'
+end
+
+begin
+  require 'hirb'
+  Hirb.enable
+end
+
+if Pry::Prompt[:rails]
+  Pry.config.prompt = Pry::Prompt[:rails][:value]
+end
+
+Pry.config.color = true
+Pry.config.history.file = File.join(__dir__, '.pry_history')
+#+end_src
+** gemrc
+#+begin_src yaml :tangle ~/.gemrc
+---
+:backtrace: false
+:bulk_threshold: 1000
+:sources:
+- https://rubygems.org/
+:update_sources: true
+:verbose: true
+gem: "--document=yri"
+#+end_src
+** Default gems
+#+begin_src sh :tangle ~/.default-gems
+bundler
+bundler-audit
+byebug
+fasterer
+reek
+debride
+solargraph
+brakeman
+pry
+awesome_print
+binding_of_caller
+pry-doc
+hirb
+rubocop
+rubocop-rails
+rubocop-performance
+#+end_src
+* PostgreSQL
+** psql
+#+begin_src sql :tangle ~/.psqlrc
+-- Official docs: http://www.postgresql.org/docs/9.3/static/app-psql.html
+-- Unofficial docs: http://robots.thoughtbot.com/improving-the-command-line-postgres-experience
+
+-- Don't display the "helpful" message on startup.
+\set QUIET 1
+\pset null '[NULL]'
+
+-- http://www.postgresql.org/docs/9.3/static/app-psql.html#APP-PSQL-PROMPTING
+\set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
+-- PROMPT2 is printed when the prompt expects more input, like when you type
+-- SELECT * FROM<enter>. %R shows what type of input it expects.
+\set PROMPT2 '[more] %R > '
+
+-- Show how long each query takes to execute
+\timing
+
+-- Use best available output format
+\x auto
+\set VERBOSITY verbose
+\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
+\unset QUIET
+
+-- psql can't check for a file's existence, so we'll provide an empty local
+-- file that users can override with their custom dotfiles. To set your own
+-- personal settings, place your own file in ~/.psqlrc.local
+\i ~/.psqlrc.local
+#+end_src
+* asdf
+** Default tool versions
+#+begin_src sh :tangle ~/.tool-versions
+yarn 1.22.17
+nodejs 16.13.1
+ruby 2.7.5
+crystal 1.2.2
+erlang 24.1.4
+elixir 1.12.3-otp-24
+python system
+direnv 2.29.0
+golang 1.17.5
+#+end_src
