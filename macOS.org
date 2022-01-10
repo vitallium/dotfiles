@@ -1,5 +1,8 @@
-#!/usr/bin/env bash
+#+TITLE:  MacOS configuration
+#+AUTHOR: Vitaly Slobodin
 
+* macOS settings
+#+begin_src sh
 # FROM https://github.com/paulirish/dotfiles/blob/master/.osx
 
 # Close any open System Preferences panes, to prevent them from overriding
@@ -62,9 +65,6 @@ sudo pmset -a sms 0
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
-
-# Disable “natural” (Lion-style) scrolling
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
@@ -268,17 +268,9 @@ defaults write com.apple.ActivityMonitor NetworkGraphType -int 1
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
-###############################################################################
-# Sublime Text                                                                #
-###############################################################################
-
-# Install Sublime Text settings
-cp -r sublime/* ~/Library/Application\ Support/Sublime\ Text*/Packages/User/ 2> /dev/null
-
 ##############################################################################
 # Transmission.app                                                            #
 ###############################################################################
-
 
 # Don’t prompt for confirmation before downloading
 defaults write org.m0k.transmission DownloadAsk -bool false
@@ -317,9 +309,96 @@ sudo /usr/sbin/sysadminctl -smbGuestAccess off
 ###############################################################################
 
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-	"Dock" "Finder" "Google Chrome" "Google Chrome Canary" "Mail" "Messages" \
-	"Opera" "Photos" "Safari" "SizeUp" "Spectacle" "SystemUIServer" "Terminal" \
-	"Transmission" "Tweetbot" "Twitter" "iCal"; do
-	killall "${app}" &> /dev/null
+  "Dock" "Finder" "Google Chrome" "Mail" "Messages" \
+  "Photos" "Safari" "SystemUIServer" "Terminal" \
+  "Transmission" "Tweetbot" "Twitter" "iCal"; do
+  killall "${app}" &> /dev/null
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
+#+end_src
+* Brew
+#+begin_src sh
+brew install \
+  ack \
+  asciinema \
+  bat \
+  brotli \
+  clang-format \
+  coreutils \
+  docker-clean \
+  ffmpeg \
+  fish \
+  fzf \
+  gifsicle \
+  git \
+  git-extras \
+  git-lfs \
+  git-sizer \
+  jq \
+  media-info \
+  moreutils \
+  ncdu \
+  ninja \
+  overmind \
+  starship \
+  tldr \
+  tmux \
+  tree  \
+  wget
+
+# init git-lfs
+git lfs install
+#+end_src
+** Casks
+Install ~brew-cask~.
+#+begin_src sh
+brew install caskroom/cask/brew-cask
+#+end_src
+
+And all required applications.
+#+begin_src sh
+brew cask install \
+  1password \
+  acorn \
+  alfred \
+  bartender \
+  charles \
+  choosy \
+  chromedriver \
+  dash \
+  figma \
+  firefox \
+  google-chrome \
+  google-cloud-sdk \
+  hyperdock \
+  iina \
+  imageoptim \
+  itsycal \
+  keka \
+  kitty \
+  ngrok \
+  numi \
+  paw \
+  postico \
+  qmoji \
+  spotify \
+  telegram \
+  textual \
+  transmission \
+  zoomus
+
+# quicklool plugins
+brew cask install \
+  epubquicklook \
+  qlcolorcode \
+  qlimagesize \
+  qlmarkdown \
+  qlprettypatch \
+  qlstephen \
+  qlvideo \
+  quicklook-csv \
+  quicklook-json \
+  webpquicklook
+
+brew cleanup -s
+#+end_src

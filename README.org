@@ -4,6 +4,7 @@
 - [[#home][Home]]
   - [[#x11][X11]]
   - [[#sway][Sway]]
+- [[#macos][macOS]]
 - [[#emacs][Emacs]]
 
 * Home
@@ -13,5 +14,7 @@ I try to keep them common as mush as possible which means this configuration con
 [[file:X11.org][X11]] configuration defines my settings for Xorg environment with ~i3~, ~rofi~ and ~dunst~.
 ** Sway
 [[file:Wayland.org][Wayland]] configuration defines my settings for Wayland environment with ~sway~, ~wofi~ and ~mako~. It pretty much mimics the X11 configuration.
+* macOS
+[[file:macOS.org][macOS settings and bootstrap.]] Contains my old settings and configuration. **Untested.**
 * Emacs
 [[file:Emacs.org][Emacs Configuration :)]]
