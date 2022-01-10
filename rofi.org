@@ -6,6 +6,7 @@
 * Configuration
 #+begin_src conf :tangle "~/.config/rofi/config.rasi"
 configuration {
+  icon-theme: "Papirus-Dark";
   modi: "drun,ssh";
   show-icons: true;
   terminal: "kitty";
@@ -28,126 +29,141 @@ configuration {
 #+end_src
 * Style
 Dracula-like theme.
-#+begin_src css :tangle no
- * {
-  accent:   #bd93f9;
-  bg:       #1E2029FA;
-  bg-light: #1c1c1c;
-  bg-focus: #282a36;
-  bg-dark:  #181a23;
-  fg:       #bbc2cf;
-  fg-list:  #bbc2cf;
-  on:       #8BD49C;
-  off:      #cc6666;
+#+begin_src css :tangle "~/.config/rofi/config.rasi"
+~*~ {
+    /* Dracula theme colour palette */
+    drac-bgd: #282a36;
+    drac-cur: #44475a;
+    drac-fgd: #f8f8f2;
+    drac-cmt: #6272a4;
+    drac-cya: #8be9fd;
+    drac-grn: #50fa7b;
+    drac-ora: #ffb86c;
+    drac-pnk: #ff79c6;
+    drac-pur: #bd93f9;
+    drac-red: #ff5555;
+    drac-yel: #f1fa8c;
 
-  magenta: #bd93f9;
-  blue:    #61bfff;
-  text-font:      "Ubuntu Mono 14";
+    font: "Jetbrains Mono 12";
 
-  background-color: transparent;
-  text-color: @fg-list;
-  font: @text-font;
-  border-color: @bg-dark;
-}
-textbox-icon {
-  str: "  ";
-}
+    foreground: @drac-fgd;
+    background: @drac-bgd;
+    active-background: @drac-pnk;
+    urgent-background: @drac-red;
 
-/**** Layout ****/
-window {
-  width:    1000px;
-  y-offset: -50px;
-  anchor:   north;
-  location: center;
-  border: 1px;
-  border-radius: 6px 6px 0 0;
-  children: [ inputbar, listview ];
+    selected-background: @active-background;
+    selected-urgent-background: @urgent-background;
+    selected-active-background: @active-background;
+    separatorcolor: @active-background;
+    bordercolor: #6272a4;
 }
 
-listview {
-  lines: 12;
-  fixed-height: false;
-  /* reverse: true; */
-  columns: 2;
-  scrollbar: true;
-  spacing: 1px;
-  /* Remove strange gap between listview and inputbar */
-  margin: -2px 0 0;
+#window {
+    background-color: @background;
+    border:           3;
+    border-radius: 6;
+    border-color: @bordercolor;
+    padding:          5;
 }
-
-/*
-  TODO Not supported in stable branch of rofi
-  @media only (max-height: 1080px) {
-    window {
-      y-offset: -30%;
-    }
-    listview {
-      lines: 14;
-    }
-  }
-*/
-
-scrollbar {
-  handle-width: 1px;
+#mainbox {
+    border:  0;
+    padding: 5;
 }
-inputbar {
-  children: [ textbox-icon, prompt, entry ];
-  border: 0 0 0;
+#message {
+    border:       1px dash 0px 0px ;
+    border-color: @separatorcolor;
+    padding:      1px ;
 }
-textbox-icon, prompt {
-  padding: 11px;
-  expand: false;
-  border: 0 1px 0 0;
-  margin: 0 -2px 0 0;
+#textbox {
+    text-color: @foreground;
 }
-textbox-icon {
-  padding: 7px 4px 0;
+#listview {
+    fixed-height: 0;
+    border:       2px dash 0px 0px ;
+    border-color: @bordercolor;
+    spacing:      2px ;
+    scrollbar:    false;
+    padding:      2px 0px 0px ;
 }
-entry, element {
-  padding: 10px 13px;
+#element {
+    border:  0;
+    padding: 1px ;
 }
-textbox {
-  padding: 24px;
-  margin: 20px;
+#element.normal.normal {
+    background-color: @background;
+    text-color:       @foreground;
 }
-
-/**** Looks ****/
-scrollbar {
-  background-color: @bg-dark;
-  handle-color: @accent;
-  border-color: @bg-dark;
+#element.normal.urgent {
+    background-color: @urgent-background;
+    text-color:       @urgent-foreground;
 }
-listview, inputbar {
-  background-color: @bg-dark;
+#element.normal.active {
+    background-color: @active-background;
+    text-color:       @background;
 }
-textbox-icon, prompt, entry {
-  text-color: @accent;
+#element.selected.normal {
+    background-color: @selected-background;
+    text-color:       @foreground;
 }
-prompt, entry {
-  background-color: @bg-focus;
+#element.selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color:       @foreground;
 }
-textbox-icon, prompt {
-  background-color: #2f313d;
+#element.selected.active {
+    background-color: @selected-active-background;
+    text-color:       @background;
 }
-prompt {
-  background-color: @bg-focus;
+#element.alternate.normal {
+    background-color: @background;
+    text-color:       @foreground;
 }
-textbox-icon {
-  font: @icon-font;
+#element.alternate.urgent {
+    background-color: @urgent-background;
+    text-color:       @foreground;
 }
-entry {
-  font: @text-font-mono;
-  text-color: @fg;
+#element.alternate.active {
+    background-color: @active-background;
+    text-color:       @foreground;
 }
-
-element {
-  background-color: @bg;
-  text-color: @fg;
+#scrollbar {
+    width:        2px ;
+    border:       0;
+    handle-width: 8px ;
+    padding:      0;
 }
-element selected {
-  background-color: @bg-dark;
-  text-color: @accent;
+#sidebar {
+    border:       2px dash 0px 0px ;
+    border-color: @separatorcolor;
+}
+#button.selected {
+    background-color: @selected-background;
+    text-color:       @foreground;
+}
+#inputbar {
+    spacing:    0;
+    text-color: @foreground;
+    padding:    1px ;
+}
+#case-indicator {
+    spacing:    0;
+    text-color: @foreground;
+}
+#entry {
+    spacing:    0;
+    text-color: @drac-cya;
+}
+#prompt {
+    spacing:    0;
+    text-color: @drac-grn;
+}
+#inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+#textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @drac-grn;
 }
 element-icon { size: 2.4ch; }
 #+end_src
-* TODO Break sources to sections with comments.

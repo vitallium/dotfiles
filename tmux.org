@@ -156,19 +156,16 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 
 ** Theme
 *** Dracula
-#+begin_src conf :tangle no
+#+begin_src conf
 set -g @plugin 'dracula/tmux'
-set -g @dracula-show-battery false
-set -g @dracula-show-network false
-set -g @dracula-show-weather false
-set -g @dracula-show-time false
-set -g @dracula-show-powerline false
+set -g @dracula-plugins "time"
+set -g @dracula-show-powerline true
 set -g @dracula-show-left-icon session
 set -g @dracula-border-contrast true
 #+end_src
 *** Modus Operandi like
 Light theme inspired by [[https://github.com/alexanderjeurissen/sombre.tmux/issues][sombre.tmux]]
-#+begin_src conf
+#+begin_src conf :tangle no
 set -g status-style fg='#424242',bg='#dfddd7'
 
 set -g window-status-separator " "

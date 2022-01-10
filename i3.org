@@ -14,7 +14,7 @@ set $mod Mod4
 Font for window titles. Will also be used by the bar unless a different font
 is used in the bar {} block below.
 #+begin_src conf :tangle ~/.config/i3/config
-font pango:Inter 12
+font pango:IBM Plex Sans 12
 #+end_src
 
 ** Key bindings
@@ -39,7 +39,7 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 #+end_src
 
-Run =emacs-anywhere=.
+Run ~emacs-anywhere~.
 #+begin_src conf :tangle ~/.config/i3/config
 bindsym $mod+Ctrl+e exec --no-startup-id ~/.emacs.d/bin/doom everywhere
 #+end_src
@@ -314,8 +314,8 @@ for_window [class=".*"] title_format " %title"
 #+end_src
 
 Set colors from the Dracula theme.
-#+begin_src conf :tangle no
-# class                 border  bground text    indicator child_border
+#+begin_src conf :tangle ~/.config/i3/config
+ # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
 client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
 client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
@@ -332,23 +332,30 @@ bar {
   status_command i3status
   position top
   strip_workspace_numbers yes
+
+  colors {
+    background #282A36
+    statusline #F8F8F2
+    separator  #44475A
+
+    focused_workspace  #44475A #44475A #F8F8F2
+    active_workspace   #282A36 #44475A #F8F8F2
+    inactive_workspace #282A36 #282A36 #BFBFBF
+    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+    binding_mode       #FF5555 #FF5555 #F8F8F2
+  }
 }
 #+end_src
 
 ** Startup
-Set the correct DPI value with xlayoutdisplay. Disabled for now because I set the correct DPI via Xorg configuration.
-#+begin_src conf :tangle no
-exec --no-startup-id xlayoutdisplay -q
-#+end_src
-
-#+begin_src conf :tangle no :file /etc/X11/xorg.conf.d/90-monitor.conf
+#+begin_src conf :tangle /sudo::/etc/X11/xorg.conf.d/90-monitor.conf
 Section "Monitor"
   Identifier             "<default monitor>"
   DisplaySize            878.11 485.35
 EndSection
 #+end_src
 
-#+begin_src conf :tangle no :file /etc/X11/xorg.conf.d/20-amdgpu.conf
+#+begin_src conf :tangle /sudo::/etc/X11/xorg.conf.d/20-amdgpu.conf
 Section "Device"
   Identifier "AMD"
   Driver "amdgpu"
@@ -403,6 +410,10 @@ Update the bar each 5 seconds.
 general {
   interval = 5
   colors = true
+
+  color_good = "#50FA7B"
+  color_degraded = "#F1FA8C"
+  color_bad = "#FF5555"
 }
 #+end_src
 ** Blocks order

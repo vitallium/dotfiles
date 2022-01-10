@@ -52,7 +52,7 @@ function acch --description "activate chromium build mode"
 end
 #+end_src
 ** Functions for gitignore
-Useful function to quickly create and fill =.gitignore= file with most common scenarios for a given language or tool.
+Useful function to quickly create and fill ~.gitignore~ file with most common scenarios for a given language or tool.
 #+begin_src fish :tangle ~/.config/fish/functions/gi.fish
 function gi --description "Create useful .gitignore files for your project"
   curl -sL https://www.toptal.com/developers/gitignore/api/$argv
@@ -137,7 +137,7 @@ oh-my-fish/plugin-foreign-env
 A dark theme
 #+end_quote
 
-#+begin_src fish :tangle no
+#+begin_src fish :tangle ~/.config/fish/fish_plugins
 dracula/fish
 #+end_src
 *** [[https://github.com/PatrickF1/fzf.fish][PatrickF1/fzf.fish]]
@@ -149,7 +149,7 @@ Augment your Fish command line with mnemonic key bindings to efficiently find wh
 PatrickF1/fzf.fish
 #+end_src
 * Configuration
-Set locale to =UTF-8=.
+Set locale to ~UTF-8~.
 #+begin_src fish :tangle ~/.config/fish/config.fish
 set -x LC_ALL en_US.UTF-8
 #+end_src
@@ -177,7 +177,7 @@ Enable [[https://github.com/direnv/direnv][direnv]] via ~asdf-vm~.
 eval (asdf exec direnv hook fish)
 #+end_src
 ** Environment variables
-Disable =fish= greeting.
+Disable ~fish~ greeting.
 #+begin_src fish :tangle ~/.config/fish/config.fish
 set -gx fish_greeting              ''
 #+end_src
@@ -213,17 +213,17 @@ set -gx XDG_CURRENT_DESKTOP sway
 ** Colors
 *** Light
 Set [[https://github.com/sharkdp/bat][bat]] theme.
-#+begin_src fish :tangle ~/.config/fish/config.fish
+#+begin_src fish :tangle no
 set -gx BAT_THEME                  ansi
 #+end_src
 
 *** Dracula
 Set [[https://github.com/sharkdp/bat][bat]] theme.
-#+begin_src fish :tangle no
+#+begin_src fish :tangle ~/.config/fish/config.fish
 set -gx BAT_THEME                  Dracula
 #+end_src
 
 Set Dracula-colors for fzf.
-#+begin_src fish :tangle no
+#+begin_src fish :tangle ~/.config/fish/config.fish
 set -gx FZF_DEFAULT_OPTS          "--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
 #+end_src
