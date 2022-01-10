@@ -12,6 +12,6 @@ I try to keep them common as mush as possible which means this configuration con
 ** X11
 [[file:X11.org][X11]] configuration defines my settings for Xorg environment with ~i3~, ~rofi~ and ~dunst~.
 ** Sway
-[[file:wayland.org][Wayland]] configuration defines my settings for Wayland environment with ~sway~, ~wofi~ and ~mako~. It pretty much mimics the X11 configuration.
+[[file:Wayland.org][Wayland]] configuration defines my settings for Wayland environment with ~sway~, ~wofi~ and ~mako~. It pretty much mimics the X11 configuration.
 * Emacs
 [[file:Emacs.org][Emacs Configuration :)]]
