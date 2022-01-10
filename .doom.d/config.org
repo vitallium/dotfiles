@@ -4,6 +4,64 @@
 #+property: header-args:emacs-lisp :tangle yes :comments link
 #+property: header-args:elisp :exports code
 #+property: header-args :tangle no :results silent :eval no-export
+
+* Contents :TOC:
+- [[#doom-configuration][DOOM configuration]]
+  - [[#modules][Modules]]
+- [[#rudimentary-configuration][Rudimentary configuration]]
+- [[#package-management][Package management]]
+  - [[#loading-instructions][Loading instructions]]
+  - [[#disable-packages][Disable packages]]
+- [[#basic-configuration][Basic configuration]]
+  - [[#personal-configuration][Personal configuration]]
+  - [[#customizations][Customizations]]
+  - [[#additional-stuff-to-work-with-strings][Additional stuff to work with strings]]
+  - [[#evil][Evil]]
+- [[#visual-configuration][Visual configuration]]
+  - [[#common][Common]]
+  - [[#theme][Theme]]
+  - [[#font][Font]]
+  - [[#modeline][Modeline]]
+- [[#navigation][Navigation]]
+  - [[#windows][Windows]]
+  - [[#workspaces][Workspaces]]
+- [[#key-bindings][Key bindings]]
+- [[#languages][Languages]]
+  - [[#treesitter][TreeSitter]]
+  - [[#javascript][JavaScript]]
+  - [[#graphql][GraphQL]]
+  - [[#ruby][Ruby]]
+  - [[#go][Go]]
+  - [[#markdown][Markdown]]
+- [[#lsp][LSP]]
+  - [[#enabledisable-some-lsp-features][Enable/disable some LSP features]]
+  - [[#flycheck][Flycheck]]
+- [[#org][Org]]
+  - [[#packages][Packages]]
+  - [[#setup-org-directories][Setup ~org~ directories]]
+  - [[#configure-org][Configure ~org~]]
+  - [[#roam][Roam]]
+- [[#mail][Mail]]
+  - [[#mu4e][mu4e]]
+  - [[#setup-accounts][Setup accounts]]
+  - [[#setup-mu4e-alert-for-notifications][Setup ~mu4e-alert~ for notifications]]
+- [[#completion][Completion]]
+  - [[#company][Company]]
+  - [[#tabnine][TabNine]]
+- [[#spelling][Spelling]]
+  - [[#flyspell][Flyspell]]
+  - [[#ispell][ispell]]
+  - [[#vale][Vale]]
+  - [[#languagetool][LanguageTool]]
+- [[#magit][Magit]]
+  - [[#basic-configuration-1][Basic configuration]]
+  - [[#integration-with-delta][Integration with delta]]
+  - [[#working-with-git][Working with GIT]]
+- [[#dired][Dired]]
+  - [[#prettify-it][Prettify it]]
+- [[#cloud][Cloud]]
+  - [[#vagrant][Vagrant]]
+
 * DOOM configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle no
@@ -84,7 +142,7 @@ doom-dashboard               ; a nifty splash screen for Emacs
 ;; (emoji +github)           ; 🙂
 hl-todo                      ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
 hydra                        ; quick documentation for related commands
-;;indent-guides              ; highlighted indent columns, notoriously slow
+indent-guides                ; highlighted indent columns, notoriously slow
 ;;minimap                    ; show a map of the code on the side
 modeline                     ; snazzy, Atom-inspired modeline, plus API
 nav-flash                    ; blink the current line after jumping
@@ -154,8 +212,7 @@ editorconfig                 ; let someone else argue about tabs vs spaces
 (eval +overlay)              ; run code, run (also, repls)
 (lookup                      ; navigate your code and its documentation
   +docsets
-  +dictionary
-  +offline)
+  +devdocs)
 (lsp +peek)
 magit                        ; a git porcelain for Emacs
 make                         ; run make tasks from Emacs
@@ -200,7 +257,6 @@ markdown            ; writing docs for people to ignore
 ;;(nix +lsp)        ; I hereby declare "nix geht mehr!"
 ;;ocaml             ; an objective camel
 (org +babel
-     +attach
      +export
      +journal
      +roam2
@@ -258,6 +314,10 @@ This file shouldn't be byte compiled.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle no
 :END:
+** Disable packages
+#+begin_src emacs-lisp :tangle packages.el
+(disable-packages! solaire-mode)
+#+end_src
 * Basic configuration
 #+BEGIN_SRC emacs-lisp :comments no
 ;;; config.el -*- lexical-binding: t; -*-
@@ -325,6 +385,10 @@ Prevents some cases of Emacs flickering:
 #+begin_src emacs-lisp
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 #+end_src
+Disable line numbers.
+#+begin_src emacs-lisp
+(setq display-line-numbers-type nil)
+#+end_src
 Display fill column indicator.
 #+begin_src emacs-lisp
 (setq-default fill-column 120)
@@ -334,12 +398,6 @@ Display fill column indicator.
 (setq visual-fill-column-center-text t
       visual-fill-column-width fill-column)
 (add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
-#+end_src
-Add the keybinding to toggle the ~fill-column~.
-#+begin_src emacs-lisp :tangle +bindings.el
-(map! :leader
-      :desc "Auto fill"
-      :n "t a" 'auto-fill-mode)
 #+end_src
 Dim inactive windows.
 #+begin_src emacs-lisp :tangle packages.el
@@ -351,34 +409,10 @@ Configure ~dimmer~.
 (dimmer-configure-org)
 (dimmer-mode t)
 #+end_src
-
-Set all-the-icons factor to 1.0 to prevent weird issues with the modeline.
-#+begin_src emacs-lisp
-(setq all-the-icons-scale-factor 1.0)
-#+end_src
 ** Theme
-I use =modus-themes=.
-#+begin_src emacs-lisp :tangle packages.el
-(package! modus-themes)
-#+end_src
-Configure =modus-themes=.
+I use ~doom-dracula~.
 #+begin_src emacs-lisp
-(setq doom-theme 'modus-operandi)
-
-(use-package! modus-themes
-  :init
-  (setq modus-themes-completions 'moderate
-        modus-themes-mode-line '(borderless accented)
-        modus-themes-region 'accent-no-extend
-        modus-themes-org-blocks 'tinted-background
-        modus-themes-variable-pitch-headings t
-        modus-themes-lang-checkers nil
-        modus-themes-paren-match 'intense
-        modus-themes-hl-line 'accented-background
-        modus-themes-slanted-constructs t)
-  (modus-themes-load-themes))
-
-  (map! "<f5>" #'modus-themes-toggle)
+(setq doom-theme 'doom-dracula)
 #+end_src
 Apply doom styles for themes and other components:
 #+begin_src emacs-lisp
@@ -397,7 +431,7 @@ Apply doom styles for themes and other components:
 ** Font
 *** Set font size
 #+begin_src emacs-lisp
-(setq vitallium/font-size 30)
+(setq my/font-size 16)
 #+end_src
 *** PragmataPro
 I use [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]] occasionally.
@@ -409,9 +443,8 @@ I use [[https://fsd.it/shop/fonts/pragmatapro/][PragmataPro]] occasionally.
 *** MonoLisa
 But I use [[https://www.monolisa.dev/][MonoLisa]] now.
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "MonoLisa" :size vitallium/font-size)
-      doom-big-font (font-spec :family "MonoLisa" :size 32)
-      doom-variable-pitch-font (font-spec :family "MonoLisa"))
+(setq doom-font (font-spec :family "JetBrains Mono" :size 18 :weight 'light)
+      doom-variable-pitch-font (font-spec :family "IBM Plex Serif" :size 20))
 #+end_src
 
 Enable ligatures.
@@ -463,20 +496,13 @@ Enable ligatures.
 
 (after! doom-modeline
   (setq
-   doom-modeline-checker-simple-format t
    doom-modeline-buffer-file-name-style 'relative-to-project
-   doom-modeline-bar-width 6
    doom-modeline-icon t
    doom-modeline-major-mode-icon t
    doom-modeline-workspace-name t))
 
 ;; performance hack
 (setq inhibit-compacting-font-caches t)
-#+end_src
-** Editor
-Matching pairs draw with the same face color, making them easily identifiable.
-#+begin_src emacs-lisp
-(add-hook! prog-mode #'rainbow-delimiters-mode-enable)
 #+end_src
 * Navigation
 ** Windows
@@ -489,37 +515,10 @@ Switch to new window
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
 #+end_src
-** Opening links
-I use [[https://github.com/abo-abo/ace-link][ace-link]] to quickly open links in the buffer:
-#+begin_src emacs-lisp :tangle packages.el
-(package! ace-link)
-#+end_src
-
-#+begin_src emacs-lisp
-(use-package! ace-link
-  :config
-  (ace-link-setup-default))
-
-(after! avy
-  (setq avy-keys '(?a ?s ?d ?f ?j ?k ?l ?\;)))
-#+end_src
 ** Workspaces
 Always open up a new workspace when opening up a project.
 #+begin_src emacs-lisp
 (setq +workspaces-on-switch-project-behavior t)
-#+end_src
-** Projects
-*** Scan directories for projects
-#+begin_src emacs-lisp
-(after! projectile
-  :init
-  (setq projectile-project-search-path '("~/Projects/"
-                                         "~/Work"))
-  :config
-  ;; Auto discover when running switch project for the first time
-  (add-transient-hook! 'projectile-switch-project
-    (projectile-cleanup-known-projects)
-    (projectile-discover-projects-in-search-path)))
 #+end_src
 * Key bindings
 Use ~,~ as local leader.
@@ -568,21 +567,18 @@ Toggle between light and dark =modus= themes.
 (global-set-key (kbd "<f5>") 'modus-themes-toggle)
 #+end_src
 
-Enable Doom Hydra keybindings.
+Add the keybinding to toggle the ~fill-column~.
 #+begin_src emacs-lisp :tangle +bindings.el
 (map! :leader
-      :desc "Navigate/Hydra"  :m "w N" #'+hydra/window-nav/body
-      :desc "Text-Zoom/Hydra" :m "w f" #'+hydra/text-zoom/body)
-#+end_src
-
-#+begin_src emacs-lisp :tangle packages.el
-(package! reverse-im)
+      :desc "Auto fill"
+      :n "t a" 'auto-fill-mode)
 #+end_src
 
 #+begin_src emacs-lisp :tangle +bindings.el
-(use-package reverse-im
-  :config
-  (reverse-im-activate "russian-computer"))
+(map! :map org-mode-map
+      :after org
+      :localleader
+      :desc "Outline" "O" #'org-ol-tree)
 #+end_src
 * Languages
 ** TreeSitter
@@ -624,7 +620,7 @@ And enable it in ~js2~ mode:
 (add-hook! (js2-mode
             rjsx-mode) #'jest-minor-mode)
 #+end_src
-Use ~web-mode~ for VueJS files.
+Use ~web-mode~ for VueJS files:
 #+begin_src emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
 #+end_src
@@ -664,7 +660,7 @@ And use the =javascript-eslint= checker instead of =lsp=
 (add-hook 'lsp-mode-hook #'+js/fix-checker)
 ;; (setq-hook! 'js2-mode-hook flycheck-checker 'javascript-eslint)
 #+end_src
-Enable ~stylelint~ in ~web-mode~
+Enable =stylelint= in =web-mode=
 #+begin_src emacs-lisp
 (after! flycheck
   (flycheck-add-mode 'css-stylelint 'web-mode))
@@ -679,6 +675,13 @@ The language server ~VLS~ does not analyze the templates of ~.vue~ files by defa
 Add support for ~GraphQL~:
 #+begin_src emacs-lisp :tangle packages.el
 (package! graphql-mode)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! graphql-mode
+  :defer t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.graphqls\\'" . graphql-mode)))
 #+end_src
 ** Ruby
 *** Flycheck
@@ -709,20 +712,24 @@ Format file before saving it
 #+begin_src emacs-lisp
 (add-hook! go-mode-hook #'gofmt-before-save)
 #+end_src
+** Markdown
+#+begin_src emacs-lisp
+(setq markdown-fontify-code-blocks-natively t)
+#+end_src
 * LSP
 ** Enable/disable some LSP features
 #+begin_src emacs-lisp
 ;; Lsp optimization
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
-;; disable symbol highlighting
-(setq lsp-enable-symbol-highlighting t)
-
 (after! lsp
   (setq lsp-prefer-flymake nil
-        lsp-eslint-package-manager "yarn"))
+        lsp-eslint-package-manager "yarn"
+        lsp-enable-symbol-highlighting nil
+        +lsp-prompt-to-install-server 'quiet))
 (after! lsp-ui
-  (setq lsp-ui-sideline-show-code-actions nil))
+  (setq lsp-ui-sideline-enable nil
+        lsp-ui-doc-enable nil))
 #+end_src
 ** Flycheck
 Show errors inline so they never overlap with code.
@@ -744,14 +751,16 @@ Show errors inline so they never overlap with code.
 (package! org-gitlab :recipe (:host gitlab :repo "to1ne/org-gitlab"))
 (package! ob-graphql)
 (package! org-super-agenda)
-(package! org-download)
 #+end_src
-** Setup =org= directories
+** Setup ~org~ directories
 #+begin_src emacs-lisp
 (setq org-directory "~/Org/"
       org-archive-location (concat org-directory ".archive/%s::"))
 #+end_src
 ** Configure ~org~
+#+begin_src emacs-lisp
+(setq org-ellipsis " [...] ")
+#+end_src
 Configure ~org-super-agenda~.
 #+begin_src emacs-lisp
 (use-package! org-super-agenda
@@ -789,38 +798,17 @@ Configure ~deft~.
   (deft-default-extension "org"))
 #+end_src
 
-Enable ~mixed-pitch-mode~, ~org-appear-mode~ and ~org-pretty-mode~.
-#+begin_src emacs-lisp
-(after! org
-  (add-hook! 'org-mode-hook :append
-            #'mixed-pitch-mode
-            #'org-appear-mode
-            #'+org-pretty-mode
-            #'visual-line-mode))
-#+end_src
-
 #+begin_src emacs-lisp :tangle packages.el
-(package! org-appear :recipe (:host github :repo "awth13/org-appear"))
 (package! org-ol-tree :recipe (:host github :repo "Townk/org-ol-tree"))
 #+end_src
 
 #+begin_src emacs-lisp
-(use-package! org-appear
-  :hook (org-mode . org-appear-mode)
-  :config
-  (setq org-appear-autoemphasis t
-        org-appear-autosubmarkers t
-        org-appear-autolinks nil)
-  ;; for proper first-time setup, `org-appear--set-elements'
-  ;; needs to be run after other hooks have acted.
-  (run-at-time nil nil #'org-appear--set-elements))
-
 (use-package! org-ol-tree
   :commands org-ol-tree)
-(map! :map org-mode-map
-      :after org
-      :localleader
-      :desc "Outline" "O" #'org-ol-tree)
+#+end_src
+
+#+begin_src emacs-lisp
+(add-hook! 'org-agenda-mode #'org-super-agenda-mode)
 #+end_src
 ** Roam
 #+begin_src emacs-lisp
@@ -874,7 +862,7 @@ General configuration.
                 :query "maildir:\"/gitlab/Inbox\""
                 :key ?i)))
 #+end_src
-** Setup =mu4e-alert= for notifications
+** Setup ~mu4e-alert~ for notifications
 *** Packages
 #+begin_src emacs-lisp :tangle packages.el
 (package! mu4e-alert)
@@ -979,18 +967,6 @@ Easy copy links to files
         dired-dwim-target t
         dired-recursive-copies (quote always)
         dired-recursive-deletes (quote top)))
-#+end_src
-** Add narrow mode
-#+begin_src emacs-lisp :tangle packages.el
-(package! dired-narrow)
-#+end_src
-
-#+begin_src emacs-lisp
-(use-package! dired-narrow
-  :commands (dired-narrow-fuzzy)
-  :init
-  (map! :map dired-mode-map
-        :desc "narrow" "/" #'dired-narrow-fuzzy))
 #+end_src
 * Cloud
 ** Vagrant
