@@ -134,6 +134,14 @@ Install it.
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 #+end_src
 *** Plugins:
+**** [[https://github.com/jorgebucaran/fisher][fisher]]
+#+begin_quote
+A plugin manager for Fish—the friendly interactive shell.
+#+end_quote
+
+#+begin_src sh :tangle ~/.config/fish/fish_plugins
+jorgebucaran/fisher
+#+end_src
 **** [[https://github.com/mattgreen/lucid.fish][lucid]]
 #+begin_quote
 A minimalist, high-performance fish prompt with async git dirty checks that just work.
@@ -179,7 +187,7 @@ oh-my-fish/plugin-foreign-env
 A dark theme
 #+end_quote
 
-#+begin_src sh :tangle ~/.config/fish/fish_plugins
+#+begin_src sh :tangle no
 dracula/fish
 #+end_src
 **** [[https://github.com/PatrickF1/fzf.fish][PatrickF1/fzf.fish]]
@@ -255,17 +263,17 @@ set -gx XDG_CURRENT_DESKTOP sway
 *** Colors
 **** Light
 Set [[https://github.com/sharkdp/bat][bat]] theme.
-#+begin_src sh :tangle no
+#+begin_src sh :tangle ~/.config/fish/config.fish
 set -gx BAT_THEME                  ansi
 #+end_src
 **** Dracula
 Set [[https://github.com/sharkdp/bat][bat]] theme.
-#+begin_src sh :tangle ~/.config/fish/config.fish
+#+begin_src sh :tangle no
 set -gx BAT_THEME                  Dracula
 #+end_src
 
 Set Dracula-colors for fzf.
-#+begin_src sh :tangle ~/.config/fish/config.fish
+#+begin_src sh :tangle no
 set -gx FZF_DEFAULT_OPTS          "--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
 #+end_src
 * kitty
@@ -418,7 +426,7 @@ map ctrl+shift+0         change_font_size current 0
 #+end_src
 ** Theme
 #+begin_src conf
-include ./dracula.conf
+include ./modus-operandi.conf
 #+end_src
 *** Modus Operandi
 #+begin_src conf :tangle ~/.config/kitty/modus-operandi.conf
@@ -643,7 +651,7 @@ Use =delta= as pager.
 [delta]
   features = side-by-side line-numbers decorations
   whitespace-error-style = 22 reverse
-  syntax-theme = Dracula
+  syntax-theme = ansi
 [interactive]
   diffFilter = delta --color-only
 [delta "decorations"]
@@ -853,7 +861,7 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 
 *** Theme
 **** Dracula
-#+begin_src conf
+#+begin_src conf :tangle no
 set -g @plugin 'dracula/tmux'
 set -g @dracula-plugins "time"
 set -g @dracula-show-powerline true
@@ -862,7 +870,7 @@ set -g @dracula-border-contrast true
 #+end_src
 **** Modus Operandi like
 Light theme inspired by [[https://github.com/alexanderjeurissen/sombre.tmux/issues][sombre.tmux]]
-#+begin_src conf :tangle no
+#+begin_src conf
 set -g status-style fg='#424242',bg='#dfddd7'
 
 set -g window-status-separator " "

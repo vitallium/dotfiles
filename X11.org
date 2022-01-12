@@ -42,7 +42,7 @@ Section "Device"
 EndSection
 #+end_src
 
-#+begin_src sh ~/.Xresources
+#+begin_src sh :tangle ~/.Xresources
 Xcursor.theme: capitaine-cursors
 Xcursor.size: 32
 
@@ -52,7 +52,10 @@ Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 Xft.autohint:   0
+#+end_src
 
+Dracula colors.
+#+begin_src sh :tangle no
 !! Colors
 #define blk  #1E2029
 #define bblk #5B6268
@@ -413,7 +416,7 @@ for_window [class=".*"] title_format " %title"
 #+end_src
 
 Set colors from the Dracula theme.
-#+begin_src conf :tangle ~/.config/i3/config
+#+begin_src conf :tangle no
  # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
 client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
@@ -430,18 +433,6 @@ bar {
   status_command i3status
   position top
   strip_workspace_numbers yes
-
-  colors {
-    background #282A36
-    statusline #F8F8F2
-    separator  #44475A
-
-    focused_workspace  #44475A #44475A #F8F8F2
-    active_workspace   #282A36 #44475A #F8F8F2
-    inactive_workspace #282A36 #282A36 #BFBFBF
-    urgent_workspace   #FF5555 #FF5555 #F8F8F2
-    binding_mode       #FF5555 #FF5555 #F8F8F2
-  }
 }
 #+end_src
 ** Startup
@@ -492,10 +483,6 @@ Update the bar each 5 seconds.
 general {
   interval = 5
   colors = true
-
-  color_good = "#50FA7B"
-  color_degraded = "#F1FA8C"
-  color_bad = "#FF5555"
 }
 #+end_src
 ** Blocks order
@@ -561,7 +548,7 @@ configuration {
 #+end_src
 ** Style
 Dracula-like theme.
-#+begin_src css :tangle "~/.config/rofi/config.rasi"
+#+begin_src css :tangle no
 ~*~ {
     /* Dracula theme colour palette */
     drac-bgd: #282a36;
@@ -781,7 +768,10 @@ startup_notification = false
 sticky_history = yes
 transparency = 5
 word_wrap = yes
+#+end_src
 
+Dracula colors.
+#+begin_src conf :tangle no
 [urgency_low]
   background = "#282a36"
   foreground = "#6272a4"
@@ -818,6 +808,10 @@ vsync = true;
 # with GLX backend for some users.
 xrender-sync-fence = true;
 
+glx-copy-from-front = false;
+glx-no-rebind-pixmap = true;
+use-damage = true;
+
 # Enabled client-side shadows on windows. Note desktop windows
 # (windows with '_NET_WM_WINDOW_TYPE_DESKTOP') never get shadow,
 # unless explicitly requested using the wintypes option.
@@ -842,27 +836,34 @@ fade-out-step = 0.012;
 # The time between steps in fade step, in milliseconds. (> 0, defaults to 10)
 fade-delta = 1;
 
-opacity-rules = [
-        # "100:class_g = 'Firefox'"
-        # "100:class_g = 'Vivaldi-stable'"
-        "100:class_g = 'VirtualBox Machine'"
-        # Art/image programs where we need fidelity
-        "100:class_g = 'Gimp'"
-        "100:class_g = 'Inkscape'"
-        "100:class_g = 'aseprite'"
-        "100:class_g = 'krita'"
-        "100:class_g = 'feh'"
-        "100:class_g = 'mpv'"
-        "100:class_g = 'Rofi'"
-        "100:class_g = 'Peek'"
-        "99:_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'"
+detect-client-opacity = true;
+inactive-opacity = 1;
+active-opacity = 1;
+frame-opacity = 1;
+inactive-opacity-override = false;
+opacity-rule = [
+  # "100:class_g = 'Firefox'"
+  "100:class_g = 'VirtualBox Machine'",
+  # Art/image programs where we need fidelity
+  "100:class_g = 'Gimp'",
+  "100:class_g = 'Inkscape'",
+  "100:class_g = 'feh'",
+  "100:class_g = 'mpv'",
+  "80:class_g = 'Rofi'",
+  "90:class_g = 'kitty'",
+  "99:_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'"
 ]
 
 blur: {
   method           = "gaussian";
-  strength         = 10;
-  background       = false;
-  background-frame = false;
-  background-fixed = false;
+  strength         = 2;
+  background       = true;
+  background-frame = true;
+  background-fixed = true;
+}
+
+wintypes: {
+  normal = { blue-background = true; };
+  splash = { blur-background = false; };
 }
 #+end_src
