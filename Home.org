@@ -236,14 +236,6 @@ set -gx FZF_CTRL_T_COMMAND        'rg --files'
 
 fzf_configure_bindings
 #+end_src
-
-Set Wayland backends.
-#+begin_src fish :tangle no
-set -gx CLUTTER_BACKEND     wayland
-set -gx SDL_VIDEODRIVER     wayland
-set -gx MOZ_ENABLE_WAYLAND  1
-set -gx XDG_CURRENT_DESKTOP sway
-#+end_src
 *** Colors
 Set [[https://github.com/sharkdp/bat][bat]] theme.
 #+begin_src sh :tangle ~/.config/fish/config.fish
