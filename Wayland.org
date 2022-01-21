@@ -1,15 +1,15 @@
 #+TITLE:      Wayland (Sway) configuration
 #+AUTHOR:     Vitaly Slobodin
 #+PROPERTY:   header-args+ :comments both :mkdirp yes
-#+PROPERTY:   header-args+ :tangle ~/.config/sway/config
 
 * Contents :TOC:
 - [[#sway][Sway]]
+  - [[#include-host-specific-configuration][Include host-specific configuration]]
   - [[#set-key-modifier][Set key modifier]]
   - [[#set-terminal-emulator][Set terminal emulator]]
   - [[#set-application-launcher][Set application launcher]]
   - [[#set-font][Set font]]
-  - [[#enable-xwayland][Enable xwayland]]
+  - [[#disable-xwayland][Disable xwayland]]
   - [[#configure-output][Configure output]]
   - [[#configure-input][Configure input]]
   - [[#gaps][Gaps]]
@@ -17,7 +17,6 @@
   - [[#key-bindings][Key bindings]]
   - [[#workspaces][Workspaces]]
   - [[#modes][Modes]]
-  - [[#theme][Theme]]
   - [[#bar][Bar]]
   - [[#startup][Startup]]
 - [[#status-bar][Status Bar]]
@@ -27,8 +26,17 @@
 - [[#wofi][wofi]]
 - [[#foot][foot]]
   - [[#configuration][Configuration]]
+- [[#scripts][Scripts]]
+  - [[#starting-sway][Starting sway]]
 
 * Sway
+:PROPERTIES:
+:header-args: :tangle "~/.config/sway/config" :mkdirp yes
+:END:
+** Include host-specific configuration
+#+begin_src conf
+include $HOME/.config/sway/$(hostname)/*.conf
+#+end_src
 ** Set key modifier
 Set key modifier to Super
 #+begin_src conf
@@ -46,26 +54,28 @@ set $menu dmenu_path | wofi --show drun | xargs swaymsg exec --
 Font for window titles. Will also be used by the bar unless a different font
 is used in the bar {} block below.
 #+begin_src conf
-font pango:IBM Plex Sans 14
+font pango:sanf-serif 14
 #+end_src
-** Enable xwayland
+** Disable xwayland
 #+begin_src conf
 xwayland disable
 #+end_src
 ** Configure output
-#+begin_src conf :tangle ~/.config/sway/config
+#+begin_src conf :tangle ~/.config/sway/serenity/02_output.conf
 output eDP-1 {
   subpixel rgb
   scale 1.5
 }
 #+end_src
 
-#+begin_src conf :tangle ~/.config/sway/config
+#+begin_src conf :tangle ~/.config/sway/firefly/02_output.conf
 output DP-1 {
   subpixel rgb
+  scale 1.25
 }
 #+end_src
 ** Configure input
+*** Common
 #+begin_src conf :tangle ~/.config/sway/config
 input type:keyboard {
   xkb_layout "us,ru"
@@ -73,7 +83,10 @@ input type:keyboard {
   repeat_delay 210
   repeat_rate 40
 }
-
+#+end_src
+*** Serenity
+Touchpad configuration.
+#+begin_src conf :tangle ~/.config/sway/serenity/03_input.conf
 input type:touchpad {
   accel_profile adaptive
   drag enabled
@@ -85,7 +98,7 @@ input type:touchpad {
 #+end_src
 ** Gaps
 #+begin_src conf :tangle ~/.config/sway/config
-set $inner_gaps 4
+set $inner_gaps 8
 set $outer_gaps 12
 
 gaps inner $inner_gaps
@@ -98,7 +111,7 @@ smart_borders on
 seat seat0 xcursor_theme capitaine-cursors 32
 #+end_src
 ** Key bindings
-Use =Mouse+$mod= to drag floating windows to their wanted position.
+Use ~Mouse+$mod~ to drag floating windows to their wanted position.
 #+begin_src conf :tangle ~/.config/sway/config
 floating_modifier $mod normal
 #+end_src
@@ -113,10 +126,6 @@ bindsym $mod+q kill
 Start dmenu (a program launcher).
 #+begin_src conf :tangle ~/.config/sway/config
 bindsym $mod+d exec $menu
-#+end_src
-Run =emacs-anywhere=.
-#+begin_src conf :tangle ~/.config/sway/config
-bindsym $mod+Ctrl+e swaymsg exec ~/.emacs.d/bin/doom everywhere
 #+end_src
 Change focus.
 #+begin_src conf :tangle ~/.config/sway/config
@@ -264,11 +273,6 @@ Spotify -> Workspace 7
 assign [class="spotify"] $ws7
 #+end_src
 *** Additional rules for the applications or windows
-Let =emacs-anywhere= float.
-#+begin_src conf :tangle ~/.config/sway/config
-for_window [class="emacs-anywhere"] floating enable
-#+end_src
-
 Zoom.
 #+begin_src conf :tangle ~/.config/sway/config
 # For pop up notification windows that don't use notifications api
@@ -326,7 +330,6 @@ client.background       #F8F8F2
 Simple bar with default colors.
 #+begin_src conf :tangle ~/.config/sway/config
 bar {
-  height 30
   position top
   status_padding 0
   strip_workspace_numbers yes
@@ -382,11 +385,6 @@ exec dbus-update-activation-environment --systemd --all
 #+begin_src conf :tangle ~/.config/sway/config
 exec mako
 #+end_src
-*** Solaar for Logitech mouse
-Disabled because requires ~xwayland~.
-#+begin_src conf :tangle no
-exec solaar --window=hide
-#+end_src
 *** Foot server
 Disabled because I use ~kitty~.
 #+begin_src conf :tangle no
@@ -403,6 +401,16 @@ exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 *** Background
 #+begin_src conf :tangle ~/.config/sway/config
 exec_always swaybg -m fill -i $HOME/Pictures/wallpaper.jpg
+#+end_src
+*** GTK settings
+#+begin_src conf :tangle ~/.config/sway/config
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+  gsettings set $gnome-schema cursor-theme 'capitaine-cursors'
+  gsettings set $gnome-schema font-name 'sans-serif 11'
+  gsettings set $gnome-schema font-antialiasing 'rgba'
+}
 #+end_src
 * Status Bar
 ** i3status-rust
@@ -478,9 +486,19 @@ width=25%
 key_up=Control_L-k
 key_down=Control_L-j
 #+end_src
+
+#+begin_src css :tangle ~/.config/wofi/style.css
+window {
+  border-radius: 0px;
+}
+
+#input {
+  border-radius: 0px;
+}
+#+end_src
 * foot
 :PROPERTIES:
-:header-args: :tangle "~/.config/foot/foot.init"
+:header-args: :tangle "~/.config/foot/foot.ini" :mkdirp yes
 :END:
 ** Configuration
 Set font.
@@ -545,4 +563,27 @@ bright4=    2544bb
 bright5=    5317ac
 bright6=    005a5f
 bright7=    ffffff
+#+end_src
+* Scripts
+** Starting sway
+#+begin_src sh :tangle ~/.local/bin/start-sway :shebang "#!/usr/bin/env sh"
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=sway
+export XDG_CURRENT_DESKTOP=sway
+
+export MOZ_ENABLE_WAYLAND=1
+export CLUTTER_BACKEND=wayland
+
+export QT_QPA_PLATFORM=wayland-egl
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_WAYLAND_FORCE_DPI=111
+
+export ECORE_EVAS_ENGINE=wayland-egl
+export ELM_ENGINE=wayland_egl
+export SDL_VIDEODRIVER=wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
+export NO_AT_BRIDGE=1
+
+systemd-cat --identifier=sway sway $@
 #+end_src
