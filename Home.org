@@ -17,7 +17,7 @@
   - [[#work-related-configuration][Work-related configuration]]
 - [[#tmux][tmux]]
   - [[#common][Common]]
-  - [[#key-bindings-1][Key Bindings]]
+  - [[#key-bindings][Key Bindings]]
   - [[#plugins][Plugins]]
 - [[#gnupg][gnupg]]
   - [[#configuration-1][Configuration]]
@@ -174,14 +174,6 @@ Foreign environment wraps application execution in a way that environment variab
 #+begin_src sh :tangle ~/.config/fish/fish_plugins
 oh-my-fish/plugin-foreign-env
 #+end_src
-**** [[https://github.com/dracula/fish][dracula/fish]]
-#+begin_quote
-A dark theme
-#+end_quote
-
-#+begin_src sh :tangle no
-dracula/fish
-#+end_src
 **** [[https://github.com/PatrickF1/fzf.fish][PatrickF1/fzf.fish]]
 #+begin_quote
 Augment your Fish command line with mnemonic key bindings to efficiently find what you need using fzf.
@@ -253,20 +245,9 @@ set -gx MOZ_ENABLE_WAYLAND  1
 set -gx XDG_CURRENT_DESKTOP sway
 #+end_src
 *** Colors
-**** Light
 Set [[https://github.com/sharkdp/bat][bat]] theme.
 #+begin_src sh :tangle ~/.config/fish/config.fish
 set -gx BAT_THEME                  ansi
-#+end_src
-**** Dracula
-Set [[https://github.com/sharkdp/bat][bat]] theme.
-#+begin_src sh :tangle no
-set -gx BAT_THEME                  Dracula
-#+end_src
-
-Set Dracula-colors for fzf.
-#+begin_src sh :tangle no
-set -gx FZF_DEFAULT_OPTS          "--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
 #+end_src
 * git
 ** Common configuration
@@ -434,7 +415,7 @@ set-option -g focus-events on
 #+end_src
 
 ** Key Bindings
-=ctrl-c= as prefix instead of =ctrl-b=.
+~ctrl-c~ as prefix instead of ~ctrl-b~.
 #+begin_src conf
 unbind-key C-b
 set -g prefix C-c
@@ -537,14 +518,6 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 #+end_src
 
 *** Theme
-**** Dracula
-#+begin_src conf :tangle no
-set -g @plugin 'dracula/tmux'
-set -g @dracula-plugins "time"
-set -g @dracula-show-powerline true
-set -g @dracula-show-left-icon session
-set -g @dracula-border-contrast true
-#+end_src
 **** Modus Operandi like
 Light theme inspired by [[https://github.com/alexanderjeurissen/sombre.tmux/issues][sombre.tmux]]
 #+begin_src conf
