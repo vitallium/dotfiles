@@ -313,19 +313,6 @@ mode "resize" {
   bindsym $mod+r mode "default"
 }
 #+end_src
-** Theme
-Set colors from the Dracula theme.
-#+begin_src conf :tangle no
-# class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-
-client.background       #F8F8F2
-#+end_src
-
 ** Bar
 Simple bar with default colors.
 #+begin_src conf :tangle ~/.config/sway/config
@@ -339,37 +326,6 @@ bar {
     tray_padding 2
     icon_theme   Papirus-Dark
   }
-}
-#+end_src
-
-=waybar= configuration with custom colors from Dracula theme.
-#+begin_src conf :tangle no
-bar {
-  position top
-  strip_workspace_numbers yes
-
-  swaybar_command waybar
-  colors {
-    background #282A36
-    statusline #F8F8F2
-    separator  #44475A
-
-    focused_workspace  #44475A #44475A #F8F8F2
-    active_workspace   #282A36 #44475A #F8F8F2
-    inactive_workspace #282A36 #282A36 #BFBFBF
-    urgent_workspace   #FF5555 #FF5555 #F8F8F2
-    binding_mode       #FF5555 #FF5555 #F8F8F2
-  }
-}
-#+end_src
-
-=waybar= configuration with default colors.
-#+begin_src conf :tangle no
-bar {
-  position top
-  strip_workspace_numbers yes
-
-  swaybar_command waybar
 }
 #+end_src
 ** Startup
@@ -511,32 +467,6 @@ Draw bold text in bright.
 bold-text-in-bright=yes
 #+end_src
 *** Theme and colors
-**** Dracula
-#+begin_src conf :tangle no
-[cursor]
-color=282a36 f8f8f2
-
-[colors]
-alpha=1.0
-foreground=f8f8f2
-background=282a36
-regular0=000000  # black
-regular1=ff5555  # red
-regular2=50fa7b  # green
-regular3=f1fa8c  # yellow
-regular4=bd93f9  # blue
-regular5=ff79c6  # magenta
-regular6=8be9fd  # cyan
-regular7=bfbfbf  # white
-bright0=4d4d4d   # bright black
-bright1=ff6e67   # bright red
-bright2=5af78e   # bright green
-bright3=f4f99d   # bright yellow
-bright4=caa9fa   # bright blue
-bright5=ff92d0   # bright magenta
-bright6=9aedfe   # bright cyan
-bright7=e6e6e6   # bright white
-#+end_src
 **** Modus Operandi
 #+begin_src conf
 [cursor]
