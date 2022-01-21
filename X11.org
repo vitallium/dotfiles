@@ -11,7 +11,6 @@
   - [[#workspaces][Workspaces]]
   - [[#modes][Modes]]
   - [[#windows-settings-for-various-applications][Windows settings for various applications]]
-  - [[#theme][Theme]]
   - [[#bar][Bar]]
   - [[#startup][Startup]]
 - [[#i3status][i3status]]
@@ -20,7 +19,6 @@
   - [[#blocks-configuration][Blocks configuration]]
 - [[#rofi][rofi]]
   - [[#configuration][Configuration]]
-  - [[#style][Style]]
 - [[#feh][feh]]
 - [[#dunst][dunst]]
 - [[#picom][Picom]]
@@ -60,59 +58,6 @@ Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 Xft.autohint:   0
-#+end_src
-
-Dracula colors.
-#+begin_src sh :tangle no
-!! Colors
-#define blk  #1E2029
-#define bblk #5B6268
-#define red  #ffb86c
-#define bred #de935f
-#define grn  #50fa7b
-#define bgrn #0189cc
-#define ylw  #f0c674
-#define bylw #f9a03f
-#define blu  #61bfff
-#define bblu #8be9fd
-#define mag  #bd93f9
-#define bmag #ff79c6
-#define cyn  #8be9fd
-#define bcyn #0189cc
-#define wht  #f8f8f2
-#define bwht #e2e2dc
-#define bg blk
-#define fg wht
-
-*.foreground:  fg
-*.background:  bg
-*.cursorColor: mag
-
-*.color0:  blk
-*.color8:  bblk
-*.color1:  red
-*.color9:  bred
-*.color2:  grn
-*.color10: bgrn
-*.color3:  ylw
-*.color11: bylw
-*.color4:  blu
-*.color12: bblu
-*.color5:  mag
-*.color13: bmag
-*.color6:  cyn
-*.color14: bcyn
-*.color7:  wht
-*.color15: bwht
-
-! greys
-*.color234: #1E2029
-*.color235: #282a36
-*.color236: #373844
-*.color237: #44475a
-*.color239: #565761
-*.color240: #6272a4
-*.color241: #b6b6b2
 #+end_src
 * i3
 ** Set key modifier
@@ -417,22 +362,6 @@ Make Zoom popups float.
 #+begin_src conf :tangle no
 for_window [class="zoom"] floating enable
 #+end_src
-** Theme
-Disable title bars.
-#+begin_src conf :tangle no
-for_window [class=".*"] title_format " %title"
-#+end_src
-
-Set colors from the Dracula theme.
-#+begin_src conf :tangle no
- # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-
-client.background       #F8F8F2
 #+end_src
 ** Bar
 ~i3status~ configuration.
@@ -554,146 +483,6 @@ configuration {
   kb-row-down: "Control+j,Down";
 }
 #+end_src
-** Style
-Dracula-like theme.
-#+begin_src css :tangle no
-~*~ {
-    /* Dracula theme colour palette */
-    drac-bgd: #282a36;
-    drac-cur: #44475a;
-    drac-fgd: #f8f8f2;
-    drac-cmt: #6272a4;
-    drac-cya: #8be9fd;
-    drac-grn: #50fa7b;
-    drac-ora: #ffb86c;
-    drac-pnk: #ff79c6;
-    drac-pur: #bd93f9;
-    drac-red: #ff5555;
-    drac-yel: #f1fa8c;
-
-    font: "Jetbrains Mono 12";
-
-    foreground: @drac-fgd;
-    background: @drac-bgd;
-    active-background: @drac-pnk;
-    urgent-background: @drac-red;
-
-    selected-background: @active-background;
-    selected-urgent-background: @urgent-background;
-    selected-active-background: @active-background;
-    separatorcolor: @active-background;
-    bordercolor: #6272a4;
-}
-
-#window {
-    background-color: @background;
-    border:           3;
-    border-radius: 6;
-    border-color: @bordercolor;
-    padding:          5;
-}
-#mainbox {
-    border:  0;
-    padding: 5;
-}
-#message {
-    border:       1px dash 0px 0px ;
-    border-color: @separatorcolor;
-    padding:      1px ;
-}
-#textbox {
-    text-color: @foreground;
-}
-#listview {
-    fixed-height: 0;
-    border:       2px dash 0px 0px ;
-    border-color: @bordercolor;
-    spacing:      2px ;
-    scrollbar:    false;
-    padding:      2px 0px 0px ;
-}
-#element {
-    border:  0;
-    padding: 1px ;
-}
-#element.normal.normal {
-    background-color: @background;
-    text-color:       @foreground;
-}
-#element.normal.urgent {
-    background-color: @urgent-background;
-    text-color:       @urgent-foreground;
-}
-#element.normal.active {
-    background-color: @active-background;
-    text-color:       @background;
-}
-#element.selected.normal {
-    background-color: @selected-background;
-    text-color:       @foreground;
-}
-#element.selected.urgent {
-    background-color: @selected-urgent-background;
-    text-color:       @foreground;
-}
-#element.selected.active {
-    background-color: @selected-active-background;
-    text-color:       @background;
-}
-#element.alternate.normal {
-    background-color: @background;
-    text-color:       @foreground;
-}
-#element.alternate.urgent {
-    background-color: @urgent-background;
-    text-color:       @foreground;
-}
-#element.alternate.active {
-    background-color: @active-background;
-    text-color:       @foreground;
-}
-#scrollbar {
-    width:        2px ;
-    border:       0;
-    handle-width: 8px ;
-    padding:      0;
-}
-#sidebar {
-    border:       2px dash 0px 0px ;
-    border-color: @separatorcolor;
-}
-#button.selected {
-    background-color: @selected-background;
-    text-color:       @foreground;
-}
-#inputbar {
-    spacing:    0;
-    text-color: @foreground;
-    padding:    1px ;
-}
-#case-indicator {
-    spacing:    0;
-    text-color: @foreground;
-}
-#entry {
-    spacing:    0;
-    text-color: @drac-cya;
-}
-#prompt {
-    spacing:    0;
-    text-color: @drac-grn;
-}
-#inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
-}
-#textbox-prompt-colon {
-    expand:     false;
-    str:        ":";
-    margin:     0px 0.3em 0em 0em ;
-    text-color: @drac-grn;
-}
-element-icon { size: 2.4ch; }
-#+end_src
 * feh
 Set VIM-like keybindings.
 #+begin_src sh :tangle ~/.config/feh/keys
@@ -778,23 +567,6 @@ transparency = 5
 word_wrap = yes
 #+end_src
 
-Dracula colors.
-#+begin_src conf :tangle no
-[urgency_low]
-  background = "#282a36"
-  foreground = "#6272a4"
-  timeout = 10
-
-[urgency_normal]
-  background = "#282a36"
-  foreground = "#bd93f9"
-  timeout = 10
-
-[urgency_critical]
-  background = "#ff5555"
-  foreground = "#f8f8f2"
-  frame_color = "#ff5555"
-#+end_src
 * Picom
 #+begin_quote
 Composing manager.
