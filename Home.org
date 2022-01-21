@@ -122,8 +122,8 @@ A plugin manager for Fish—the friendly interactive shell.
 Manage functions, completions, bindings, and snippets from the command line. Extend your shell capabilities, change the look of your prompt and create repeatable configurations across different systems effortlessly.
 
 Install it.
-#+begin_src sh
-curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+#+begin_src sh :tangle no
+curl -sL https://git.io/fisher | source
 #+end_src
 *** Plugins:
 **** [[https://github.com/jorgebucaran/fisher][fisher]]
