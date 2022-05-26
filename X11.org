@@ -52,7 +52,7 @@ EndSection
 Xcursor.theme: capitaine-cursors
 Xcursor.size: 32
 
-Xft.dpi:        111
+Xft.dpi:        153
 Xft.antialias:  true
 Xft.rgba:       none
 Xft.hinting:    true
@@ -462,6 +462,7 @@ tztime local {
 ** Configuration
 #+begin_src conf :tangle "~/.config/rofi/config.rasi"
 configuration {
+  dpi: 153;
   icon-theme: "Papirus-Dark";
   modi: "drun,ssh";
   show-icons: true;

@@ -830,7 +830,7 @@ CopyArrivalDate yes
       <bool>false</bool>
     </edit>
     <edit name="dpi" mode="assign">
-      <double>111</double>
+      <double>153</double>
     </edit>
   </match>
 </fontconfig>
