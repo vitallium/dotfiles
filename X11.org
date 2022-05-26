@@ -405,7 +405,7 @@ exec --no-startup-id dex -a
 
 Set keyboard layout.
 #+begin_src conf :tangle ~/.config/i3/config
-exec --no-startup-id setxkbmap -layout us,ru -option 'grp:alt_shift_toggle'
+exec --no-startup-id setxkbmap -layout us,ru -option 'grp:alt_shift_toggle,caps:ctrl_modifier'
 #+end_src
 
 Background.
