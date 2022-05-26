@@ -425,7 +425,6 @@ general {
 ** Blocks order
 #+begin_src conf :tangle ~/.config/i3status/config
 order += "cpu_usage"
-order += "cpu_temperature 0"
 order += "memory"
 order += "tztime local"
 #+end_src
