@@ -188,29 +188,6 @@ Set locale to ~UTF-8~.
 set -x LC_ALL en_US.UTF-8
 #+end_src
 
-Load aliases, functions, xdg, etc.
-#+begin_src sh :tangle ~/.config/fish/config.fish
-set configs aliases functions paths xdg
-for config in $configs
-  if test -e $__fish_config_dir/$config.fish
-    . $__fish_config_dir/$config.fish
-  end
-end
-set -e configs
-#+end_src
-
-Enable integration with [[https://github.com/asdf-vm/asdf][asdf]].
-#+begin_src sh :tangle ~/.config/fish/config.fish
-if test -e $HOME/.asdf/asdf.fish
-  . $HOME/.asdf/asdf.fish
-end
-#+end_src
-
-Enable [[https://github.com/direnv/direnv][direnv]] via ~asdf-vm~.
-#+begin_src sh :tangle ~/.config/fish/config.fish
-eval (asdf exec direnv hook fish)
-#+end_src
-*** Environment variables
 Disable ~fish~ greeting.
 #+begin_src sh :tangle ~/.config/fish/config.fish
 set -gx fish_greeting              ''
@@ -234,7 +211,30 @@ set -gx _ZO_FZF_OPTS              "--height 40% --reverse $FZF_DEFAULT_OPTS"
 set -gx FZF_DEFAULT_COMMAND       'rg --files'
 set -gx FZF_CTRL_T_COMMAND        'rg --files'
 
-fzf_configure_bindings
+fzf_configure_bindings --variables=
+#+end_src
+
+Load aliases, functions, xdg, etc.
+#+begin_src sh :tangle ~/.config/fish/config.fish
+set configs aliases functions paths xdg
+for config in $configs
+  if test -e $__fish_config_dir/$config.fish
+    . $__fish_config_dir/$config.fish
+  end
+end
+set -e configs
+#+end_src
+
+Enable integration with [[https://github.com/asdf-vm/asdf][asdf]].
+#+begin_src sh :tangle ~/.config/fish/config.fish
+if test -e $HOME/.asdf/asdf.fish
+  . $HOME/.asdf/asdf.fish
+end
+#+end_src
+
+Enable [[https://github.com/direnv/direnv][direnv]] via ~asdf-vm~.
+#+begin_src sh :tangle ~/.config/fish/config.fish
+eval (asdf exec direnv hook fish)
 #+end_src
 *** Colors
 Set [[https://github.com/sharkdp/bat][bat]] theme.
