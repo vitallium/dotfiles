@@ -301,7 +301,7 @@ Use =delta= as pager.
 [delta]
   features = side-by-side line-numbers decorations
   whitespace-error-style = 22 reverse
-  syntax-theme = ansi
+  syntax-theme = GitHub
 [interactive]
   diffFilter = delta --color-only
 [delta "decorations"]
