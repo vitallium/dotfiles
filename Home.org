@@ -969,10 +969,9 @@ rubocop-performance
 * asdf
 ** Default tool versions
 #+begin_src sh :tangle ~/.tool-versions
-yarn 1.22.17
-nodejs 16.13.1
-ruby 2.7.5
+nodejs 16.15.0
+ruby 2.7.6
 python system
-direnv 2.30.3
-golang 1.17.6
+direnv 2.31.0
+golang 1.18.2
 #+end_src
