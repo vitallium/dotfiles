@@ -598,6 +598,15 @@ use-damage = true;
 # unless explicitly requested using the wintypes option.
 shadow = true;
 
+# The blur radius for shadows. (default 12)
+shadow-radius = 7;
+# The left offset for shadows. (default -15)
+shadow-offset-x = -5;
+# The top offset for shadows. (default -15)
+shadow-offset-y = -5;
+# The translucency for shadows. (default .75)
+shadow-opacity = 0.8;
+
 # Specify a list of conditions of windows that should have no shadow.
 shadow-exclude = [
   # Put shadows on notifications, the scratch popup and rofi only
