@@ -262,10 +262,10 @@ Enable colors.
   status = auto
 #+end_src
 
-Enable simple push.
+Enable ~current~ push.
 #+begin_src conf
 [push]
-  default = simple
+  default = current
 #+end_src
 
 Setup useful aliases.
