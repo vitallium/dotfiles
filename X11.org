@@ -384,7 +384,7 @@ exec --no-startup-id xset r rate 210 40
 #+end_src
 
 Solaar for a Logitech mouse.
-#+begin_src conf :tangle ~/.config/i3/config
+#+begin_src conf :tangle no
 exec --no-startup-id solaar --window=hide
 #+end_src
 
