@@ -33,14 +33,14 @@
 
 * X11 configuration
 Add system configurations for X11.
-#+begin_src conf :tangle /sudo::/etc/X11/xorg.conf.d/90-monitor.conf
+#+begin_src conf :tangle no
 Section "Monitor"
   Identifier             "<default monitor>"
   DisplaySize            878.11 485.35
 EndSection
 #+end_src
 
-#+begin_src conf :tangle /sudo::/etc/X11/xorg.conf.d/20-amdgpu.conf
+#+begin_src conf :tangle no
 Section "Device"
   Identifier "AMD"
   Driver "amdgpu"
