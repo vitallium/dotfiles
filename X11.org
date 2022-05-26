@@ -636,7 +636,7 @@ opacity-rule = [
 ]
 
 blur: {
-  method           = "gaussian";
+  method           = "dual_kawase";
   strength         = 2;
   background       = true;
   background-frame = true;
