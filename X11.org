@@ -665,8 +665,8 @@ wintypes: {
 ** Fonts
 Setup font and its size.
 #+begin_src conf
-font_family JetBrains Mono
-font_size   12.0
+font_family monospace term
+font_size   11.0
 #+end_src
 ** Performance tuning
 Sync screen updates to the refresh rate of the monitor. This
