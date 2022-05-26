@@ -54,7 +54,7 @@ Xcursor.size: 32
 
 Xft.dpi:        111
 Xft.antialias:  true
-Xft.rgba:       rgb
+Xft.rgba:       none
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 Xft.autohint:   0

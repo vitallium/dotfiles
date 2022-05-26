@@ -821,7 +821,7 @@ CopyArrivalDate yes
       <const>hintslight</const>
     </edit>
     <edit name="rgba" mode="assign">
-      <const>rgb</const>
+      <const>none</const>
     </edit>
     <edit name="lcdfilter" mode="assign">
       <const>lcddefault</const>
@@ -844,7 +844,7 @@ gtk-font-name=sans-serif 11
 gtk-xft-antialias=1
 gtk-xft-hinting=1
 gtk-xft-hintstyle=hintslight
-gtk-xft-rgba=rgb
+gtk-xft-rgba=none
 #+end_src
 * mpv
 #+begin_src conf :tangle ~/.config/mpv/mpv.conf
