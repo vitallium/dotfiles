@@ -70,7 +70,7 @@ set $mod Mod4
 Font for window titles. Will also be used by the bar unless a different font
 is used in the bar {} block below.
 #+begin_src conf :tangle ~/.config/i3/config
-font pango:IBM Plex Sans 12
+font pango:sans-serif 12
 #+end_src
 
 ** Key bindings
@@ -539,7 +539,7 @@ browser = firefox -new-tab
 corner_radius = 2
 dmenu = rofi -dmenu -p dunst:
 follow = none
-font = IBM Plex Sans 11
+font = sans-serif 12
 format = "<b>%s</b>\n%b"
 frame_color = "#282a36"
 frame_width = 1
