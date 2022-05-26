@@ -864,14 +864,11 @@ autofit=50%
 # Force seeking (if seeking doesn't work)
 force-seekable=yes
 
-# OSD {{{
-#Don't show a huge volume box on screen when turning the volume up/down
+# Don't show a huge volume box on screen when turning the volume up/down
 osd-bar=no
 # Cursor hide in ms
 cursor-autohide=100
-# }}}
-# gpu-context=wayland
-#
+
 [extension.ts]
 deinterlace=yes
 #+end_src
