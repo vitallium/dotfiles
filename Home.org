@@ -344,7 +344,7 @@ Enable ~fsck~.
 ** Work-related configuration
 Add GitLab configuration.
 #+begin_src conf :tangle "~/.config/git/config"
-[includeIf "gitdir:~/Work/"]
+[includeIf "gitdir:~/Development/gitlab/"]
   path = ~/.config/git/gitlab
 #+end_src
 *** GitLab
