@@ -895,6 +895,11 @@ work.
 #+begin_src conf
 term xterm-kitty
 #+end_src
+
+Do not show the alert about closing the window.
+#+begin_src conf
+confirm_os_window_close 0
+#+end_src
 ** OS specific settings
 *** macOS
 Use the option key as an alt key. With this set to no, kitty will
