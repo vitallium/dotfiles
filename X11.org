@@ -31,6 +31,7 @@
   - [[#os-specific-settings][OS specific settings]]
   - [[#key-bindings-1][Key bindings]]
   - [[#theme][Theme]]
+- [[#gtk][gtk]]
 
 * X11 configuration
 Add system configurations for X11.
@@ -963,3 +964,15 @@ active_tab_background  #0e0e0e
 inactive_tab_foreground  #ffffff
 inactive_tab_background  #3d3d3d
 #+end_src
+* gtk
+#+begin_src conf :tangle ~/.config/gtk-3.0/settings.ini
+[Settings]
+gtk-theme-name=Adwaita
+gtk-icon-theme-name=Papirus-Dark
+gtk-font-name=sans-serif 11
+gtk-xft-antialias=1
+gtk-xft-hinting=1
+gtk-xft-hintstyle=hintslight
+gtk-xft-rgba=rgba
+#+end_src
+
