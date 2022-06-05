@@ -36,19 +36,30 @@
 - [[#mpv][mpv]]
 
 * X11 configuration
-Add system configurations for X11.
+Device configuration with ~modesetting~ driver.
 #+begin_src conf :tangle no
-Section "Monitor"
-  Identifier             "<default monitor>"
-  DisplaySize            878.11 485.35
+Section "Device"
+    Identifier  "Intel Graphics"
+    Driver      "modesetting"
+    Option      "DRI"            "3"
+    Option      "TearFree"       "true"
 EndSection
 #+end_src
 
+Trackpad configuration.
 #+begin_src conf :tangle no
-Section "Device"
-  Identifier "AMD"
-  Driver "amdgpu"
-  Option "TearFree" "true"
+Section "InputClass"
+   Identifier "libinput touchpad"
+   Driver "libinput"
+   MatchIsTouchpad "on"
+   MatchDevicePath "/dev/input/event*"
+   Option "Tapping" "False"
+   Option "TappingDrag" "True"
+   # Trackpad no longer has middle and right button areas and instead
+   # two-finger click is a context click and three-finger click is a middle click
+   # https://wayland.freedesktop.org/libinput/doc/latest/clickpad-softbuttons.html#clickfinger-behavior
+   Option "ClickMethod" "clickfinger"
+   Option "NaturalScrolling" "True"
 EndSection
 #+end_src
 
