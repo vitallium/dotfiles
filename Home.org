@@ -32,6 +32,9 @@
   - [[#psql][psql]]
 - [[#asdf][asdf]]
   - [[#default-tool-versions][Default tool versions]]
+  - [[#default-npm-packages][Default npm packages]]
+  - [[#default-ruby-gems][Default Ruby gems]]
+  - [[#default-go-packages][Default Go packages]]
 
 * Fish
 ** Aliases
@@ -856,4 +859,50 @@ ruby 2.7.6
 python system
 direnv 2.31.0
 golang 1.18.2
+#+end_src
+** Default npm packages
+#+begin_src sh :tangle ~/.default-npm-packages
+yarn
+yarn-deduplicate
+vls
+typescript
+typescript-language-server
+yaml-language-server
+marked
+#+end_src
+** Default Ruby gems
+#+begin_src sh :tangle ~/.default-gems
+bundler
+bundler-audit
+byebug
+fasterer
+reek
+debride
+solargraph
+brakeman
+pry
+awesome_print
+binding_of_caller
+pry-doc
+hirb
+rubocop
+rubocop-rails
+rubocop-performance
+#+end_src
+** Default Go packages
+#+begin_src sh :tangle ~/.default-golang-pkgs
+github.com/x-motemen/gore/cmd/gore@latest
+github.com/stamblerre/gocode@latest
+golang.org/x/tools/cmd/godoc@latest
+golang.org/x/tools/cmd/goimports@latest
+golang.org/x/tools/cmd/gorename@latest
+golang.org/x/tools/cmd/guru@latest
+github.com/cweill/gotests/...@latest
+github.com/fatih/gomodifytags@latest
+
+# gopls for (+lsp)
+golang.org/x/tools/gopls@latest
+
+# golangci
+github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 #+end_src
