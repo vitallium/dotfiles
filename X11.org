@@ -4,6 +4,7 @@
 
 * Contents :TOC:
 - [[#x11-configuration][X11 configuration]]
+- [[#fontconfig][fontconfig]]
 - [[#i3][i3]]
   - [[#set-key-modifier][Set key modifier]]
   - [[#set-font][Set font]]
@@ -58,6 +59,80 @@ Xft.rgba:       none
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 Xft.autohint:   0
+* fontconfig
+#+begin_src xml :tangle ~/.config/fontconfig/fonts.conf
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+  <!-- Font aliases -->
+  <alias>
+    <family>serif</family>
+    <prefer>
+      <family>Roboto</family>
+    </prefer>
+  </alias>
+  <alias>
+    <family>sans-serif</family>
+    <prefer>
+      <family>Roboto</family>
+    </prefer>
+  </alias>
+  <alias>
+    <family>monospace</family>
+    <prefer>
+      <family>Iosevka Comfy</family>
+    </prefer>
+  </alias>
+  <alias>
+    <family>monospace term</family>
+    <prefer>
+      <family>Iosevka Comfy</family>
+    </prefer>
+  </alias>
+  <!-- Prefer Liberation Sans over Helvetica -->
+  <alias>
+    <family>Helvetica</family>
+    <prefer>
+      <family>Liberation Sans</family>
+    </prefer>
+  </alias>
+  <!-- disable -->
+  <selectfont>
+    <rejectfont>
+      <glob>/usr/share/fonts/gsfonts</glob>
+      <glob>/usr/share/fonts/misc</glob>
+      <glob>/usr/share/fonts/OTF/GohaTibebZemen.otf</glob>
+      <glob>/usr/share/fonts/OTF/SyrCOM*</glob>
+      <glob>/usr/share/fonts/TTF/GohaTibebZemen.ttf</glob>
+      <glob>/usr/share/fonts/Type1</glob>
+    </rejectfont>
+  </selectfont>
+  <match target="font">
+    <edit name="antialias" mode="assign">
+      <bool>true</bool>
+    </edit>
+    <edit name="autohint" mode="assign">
+      <bool>false</bool>
+    </edit>
+    <edit name="hinting" mode="assign">
+      <bool>true</bool>
+    </edit>
+    <edit name="hintstyle" mode="assign">
+      <const>hintslight</const>
+    </edit>
+    <edit name="rgba" mode="assign">
+      <const>none</const>
+    </edit>
+    <edit name="lcdfilter" mode="assign">
+      <const>lcddefault</const>
+    </edit>
+    <edit name="embeddedbitmap" mode="assign">
+      <bool>false</bool>
+    </edit>
+    <edit name="dpi" mode="assign">
+      <double>153</double>
+    </edit>
+  </match>
+</fontconfig>
 #+end_src
 * i3
 ** Set key modifier
