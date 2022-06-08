@@ -11,15 +11,6 @@
 
 (advice-add #'doom-modeline-segment--modals :override #'ignore)
 
-(use-package doom-themes
-  :custom
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Configure treemacs styling
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
-
 (use-package! company-posframe
   :hook (company-mode . company-posframe-mode))
 
@@ -44,10 +35,8 @@
 
 ;; Visual Fill Column
 (setq-default fill-column 120)
-(setq fill-column 120)
-(setq visual-fill-column-width fill-column)
-
-(setq visual-fill-column-center-text t
+(setq fill-column 120
+      visual-fill-column-center-text t
       visual-fill-column-width fill-column)
 (add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
 
@@ -69,3 +58,4 @@
 ;;   (set-popup-rule! "^\\*magit-gitflow.*popup\\*" :slot 0 :side 'bottom :size 0.25 :modeline nil :select  t)
 ;;   (set-popup-rule! "^\\*magit-revision:.*" :slot  0 :side  'right :window-height 0.6 :modeline  nil :select  t)
 ;;   (set-popup-rule! "^\\*magit-diff:.*" :slot  0 :side 'right :window-height  0.6 :modeline nil :select nil))
+

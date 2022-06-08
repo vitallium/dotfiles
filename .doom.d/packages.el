@@ -51,10 +51,10 @@
 
 (package! git-link)
 (package! string-inflection)
+(package! transpose-frame)
 
 (package! deadgrep)
 (package! company-posframe)
-(package! modus-themes)
 
 (package! prettier)
 (package! jest)
@@ -65,5 +65,5 @@
 (package! org-ol-tree :recipe (:host github :repo "Townk/org-ol-tree"))
 (package! org-appear)
 
+(package! modus-themes)
 (unpin! doom-themes)
-;; (package! ligature :recipe (:host github :repo "mickeynp/ligature.el"))

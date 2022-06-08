@@ -15,15 +15,23 @@
 (define-key evil-motion-state-map (kbd "C-k") #'evil-window-up)
 (define-key evil-motion-state-map (kbd "C-l") #'evil-window-right)
 
-(use-package avy
-  :defer t
-  :bind (:map evil-normal-state-map
-         ("SPC k l" . avy-kill-whole-line)
-         ("SPC k r" . avy-kill-region))
-  :custom
-  (avy-single-candidate-jump t)
-  (avy-keys '(?w ?e ?r ?t ?y ?u ?i ?o ?p ?a ?s ?d ?f ?g ?h ?j ?k ?l ?z ?x ?c ?v ?b ?n ?m)))
+(after! avy
+  (map! :nvm "s" #'avy-goto-char-timer)
+  (setq avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
 
 (use-package reverse-im
   :config
   (reverse-im-activate "russian-computer"))
+
+(use-package! transpose-frame
+  :config
+  (map! :leader
+        :prefix ("r" . "rotate")
+        :desc "Transpose frames" "t" #'transpose-frame
+        :desc "Flop frames horizontally" "f" #'flop-frame
+        :desc "Flip frames vertically" "v" #'flip-frame
+        :desc "Rotate frames 180 degrees" "r" #'rotate-frame
+        :desc "Rotate frames clockwise" "c" #'rotate-frame-clockwise
+        :desc "Rotate frames anticlockwise" "a" #'rotate-frame-anticlockwise))
+
+(map! :leader :desc "Find file in other window" "fo" #'find-file-other-window)

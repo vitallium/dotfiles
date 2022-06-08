@@ -31,9 +31,6 @@
   (setq org-projectile-per-project-filepath "TODO.org")
   (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
 
-(after! org-roam
-  (setq org-roam-directory "~/Wiki"))
-
 (after! org-journal
   (setq org-journal-dir "~/Journal"
         org-journal-date-prefix "#+TITLE: "

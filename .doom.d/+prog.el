@@ -19,8 +19,16 @@
 
 ;; LSP
 (after! lsp-mode
-  (setq lsp-enable-symbol-highlighting nil
-        ;; If an LSP server isn't present when I start a prog-mode buffer, you
+  (map! :leader
+        :desc "Diagnostics" "c-" #'lsp-ui-flycheck-list
+        :desc "Imenu" "c," #'lsp-ui-imenu)
+  (setq lsp-headerline-breadcrumb-enable-diagnostics nil
+        lsp-headerline-breadcrumb-enable t
+        lsp-lens-enable t
+        lsp-ui-sideline-show-code-actions nil
+        lsp-ui-imenu--custom-mode-line-format ""
+        +lsp-company-backends '(company-capf company-yasnippet)
+          ;; If an LSP server isn't present when I start a prog-mode buffer, you
         ;; don't need to tell me. I know. On some systems I don't care to have a
         ;; whole development environment for some ecosystems.
         lsp-enable-server-download nil

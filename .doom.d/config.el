@@ -2,8 +2,8 @@
 
 (setq user-full-name "Vitaly Slobodin"
       user-mail-address "vslobodin@gitlab.com"
-      doom-font (font-spec :family "Iosevka Comfy" :size 22)
-      doom-variable-pitch-font (font-spec :family "Iosevka Comfy" :size 22)
+      doom-font (font-spec :family "Iosevka Comfy" :size 24)
+      doom-variable-pitch-font (font-spec :family "Iosevka Comfy" :size 24)
       doom-theme 'modus-operandi
       display-line-numbers-type nil
       read-process-output-max (* 1024 1024)
