@@ -35,6 +35,9 @@
         lsp-enable-suggest-server-download nil
         lsp-eslint-package-manager "yarn")
   (remove-hook 'lsp-mode-hook #'+lsp-init-flycheck-or-flymake-h))
+(after! lsp-ui
+  (setq lsp-ui-sideline-enable nil  ; no more useful than flycheck
+        lsp-ui-doc-enable nil))     ; redundant with K
 
 ;; (defun +js/fix-checker ()
 ;;   "Fix LSP overwritten checkers."
@@ -43,10 +46,6 @@
 ;;     (flycheck-select-checker 'javascript-eslint)))
 
 ;; (add-hook 'lsp-mode-hook #'+js/fix-checker)
-
-(after! lsp-ui
-  (setq lsp-ui-sideline-enable nil  ; no more useful than flycheck
-        lsp-ui-doc-enable nil))     ; redundant with K
 
 ;; Ruby
 (setq flycheck-disabled-checkers '(ruby-reek))
@@ -64,8 +63,9 @@
    rjsx-mode
    typescript-mode
    web-mode)
-  #'prettier-mode)
+  #'apheleia-mode)
 
 ;; Activate bug-reference-prog-mode
 (after! prog-mode
   (bug-reference-prog-mode))
+

@@ -53,8 +53,10 @@
 (package! string-inflection)
 (package! transpose-frame)
 
+;; auto-format different source code files extremely intelligently
+(package! apheleia)
+
 (package! deadgrep)
-(package! company-posframe)
 
 (package! prettier)
 (package! jest)
@@ -64,6 +66,8 @@
 (package! org-modern)
 (package! org-ol-tree :recipe (:host github :repo "Townk/org-ol-tree"))
 (package! org-appear)
+(package! org-pretty-table-mode
+  :recipe (:host github :repo "Fuco1/org-pretty-table"))
 
 (package! modus-themes)
 (unpin! doom-themes)

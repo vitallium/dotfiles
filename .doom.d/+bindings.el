@@ -10,11 +10,6 @@
       :desc "Org Project Capture"
       :n "n p" 'org-projectile-project-todo-completing-read)
 
-(define-key evil-motion-state-map (kbd "C-h") #'evil-window-left)
-(define-key evil-motion-state-map (kbd "C-j") #'evil-window-down)
-(define-key evil-motion-state-map (kbd "C-k") #'evil-window-up)
-(define-key evil-motion-state-map (kbd "C-l") #'evil-window-right)
-
 (after! avy
   (map! :nvm "s" #'avy-goto-char-timer)
   (setq avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
@@ -35,3 +30,6 @@
         :desc "Rotate frames anticlockwise" "a" #'rotate-frame-anticlockwise))
 
 (map! :leader :desc "Find file in other window" "fo" #'find-file-other-window)
+
+(map! :n [mouse-8] #'better-jumper-jump-backward
+      :n [mouse-9] #'better-jumper-jump-forward)
