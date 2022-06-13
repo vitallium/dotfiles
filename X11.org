@@ -4,7 +4,6 @@
 
 * Contents :TOC:
 - [[#x11-configuration][X11 configuration]]
-  - [[#colors][Colors]]
 - [[#fontconfig][fontconfig]]
 - [[#i3][i3]]
   - [[#set-key-modifier][Set key modifier]]
@@ -68,42 +67,12 @@ Xorg resources.
 Xcursor.theme:  phinger-cursors
 Xcursor.size:   42
 
-Xft.dpi:        153
+Xft.dpi:        140
 Xft.antialias:  true
-Xft.rgba:       rgba
+Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 Xft.autohint:   0
-
-! Colors
-#include "~/.config/.Xresources.d/tokyo-night"
-#+end_src
-
-** Colors
-Tokyo night.
-#+begin_src conf :tangle ~/.config/.Xresources.d/tokyo-night
-! TokyoNight colors for Xresources
-
-*background: #1a1b26
-*foreground: #c0caf5
-
-*color0: #15161E
-*color1: #f7768e
-*color2: #9ece6a
-*color3: #e0af68
-*color4: #7aa2f7
-*color5: #bb9af7
-*color6: #7dcfff
-*color7: #a9b1d6
-
-*color8: #414868
-*color9: #f7768e
-*color10: #9ece6a
-*color11: #e0af68
-*color12: #7aa2f7
-*color13: #bb9af7
-*color14: #7dcfff
-*color15: #c0caf5
 #+end_src
 * fontconfig
 #+begin_src xml :tangle ~/.config/fontconfig/fonts.conf
@@ -113,19 +82,19 @@ Tokyo night.
   <alias>
     <family>serif</family>
     <prefer>
-      <family>Roboto</family>
+      <family>Ubuntu</family>
     </prefer>
   </alias>
   <alias>
     <family>sans-serif</family>
     <prefer>
-      <family>Roboto</family>
+      <family>Ubuntu</family>
     </prefer>
   </alias>
   <alias>
     <family>monospace</family>
     <prefer>
-      <family>Iosevka Comfy</family>
+      <family>Source Code Pro</family>
     </prefer>
   </alias>
   <alias>
@@ -191,7 +160,7 @@ set $mod Mod4
 Font for window titles. Will also be used by the bar unless a different font
 is used in the bar {} block below.
 #+begin_src conf :tangle ~/.config/i3/config
-font pango:sans-serif 12
+font pango:sans-serif 11
 #+end_src
 
 ** Key bindings
@@ -474,18 +443,6 @@ Make =Pavucontrol= float around.
 #+begin_src conf :tangle ~/.config/i3/config
 for_window [class="Pavucontrol"] floating enable
 #+end_src
-
-Fix size and position of the GTK File Choose Dialog.
-#+begin_src conf :tangle ~/.config/i3/config
-for_window [window_role="GtkFileChooserDialog"] resize set 1024 768
-for_window [window_role="GtkFileChooserDialog"] move position center
-#+end_src
-
-Make Zoom popups float.
-#+begin_src conf :tangle no
-for_window [class="zoom"] floating enable
-#+end_src
-#+end_src
 ** Bar
 ~i3status~ configuration.
 #+begin_src conf :tangle ~/.config/i3/config
@@ -549,27 +506,27 @@ general {
 #+begin_src conf :tangle ~/.config/i3status/config
 order += "cpu_usage"
 order += "memory"
+order += "battery 1"
+order += "cpu_temperature 0"
 order += "tztime local"
 #+end_src
 ** Blocks configuration
 *** CPU Usage
 #+begin_src conf :tangle ~/.config/i3status/config
 cpu_usage {
-  format = " %usage"
+  format = "C: %usage"
 }
 #+end_src
 *** CPU Temperature
 #+begin_src conf :tangle ~/.config/i3status/config
 cpu_temperature 0 {
-  format ="%degrees°C"
-  max_threshold = 75
-  path = "/sys/devices/platform/nct6775.656/hwmon/hwmon4/temp2_input"
+  format = "T: %degrees °C"
 }
 #+end_src
 *** Memory
 #+begin_src conf :tangle ~/.config/i3status/config
 memory {
-  format = " %used"
+  format = "M: %used"
   threshold_degraded = "1G"
   format_degraded = "MEMORY < %available"
 }
@@ -577,7 +534,15 @@ memory {
 *** Date and Time
 #+begin_src conf :tangle ~/.config/i3status/config
 tztime local {
-  format = " %Y-%m-%d %H:%M"
+  format = "%Y-%m-%d %H:%M"
+}
+#+end_src
+*** Battery
+#+begin_src conf :tangle ~/.config/i3status/config
+battery 1 {
+  format = "B: %status %remaining (%consumption)"
+  status_chr = "CHR"
+  status_bat = "BAT"
 }
 #+end_src
 * rofi
@@ -1014,53 +979,6 @@ active_tab_background  #0e0e0e
 inactive_tab_foreground  #ffffff
 inactive_tab_background  #3d3d3d
 #+end_src
-*** Tokyo Night
-#+begin_src conf :tangle ~/.config/kitty/tokyo-night.conf
-# vim:ft=kitty
-
-## name: Tokyo Night
-## license: MIT
-## author: Folke Lemaitre
-## upstream: https://github.com/folke/tokyonight.nvim/raw/main/extras/kitty_tokyonight_night.conf
-
-background #1a1b26
-foreground #c0caf5
-selection_background #33467C
-selection_foreground #c0caf5
-url_color #73daca
-cursor #c0caf5
-
-# Tabs
-active_tab_background #7aa2f7
-active_tab_foreground #1f2335
-inactive_tab_background #292e42
-inactive_tab_foreground #545c7e
-#tab_bar_background #15161E
-
-# normal
-color0 #15161E
-color1 #f7768e
-color2 #9ece6a
-color3 #e0af68
-color4 #7aa2f7
-color5 #bb9af7
-color6 #7dcfff
-color7 #a9b1d6
-
-# bright
-color8 #414868
-color9 #f7768e
-color10 #9ece6a
-color11 #e0af68
-color12 #7aa2f7
-color13 #bb9af7
-color14 #7dcfff
-color15 #c0caf5
-
-# extended colors
-color16 #ff9e64
-color17 #db4b4b
-#+end_src
 * gtk
 #+begin_src conf :tangle ~/.config/gtk-3.0/settings.ini
 [Settings]
@@ -1070,18 +988,10 @@ gtk-font-name=sans-serif 11
 gtk-xft-antialias=1
 gtk-xft-hinting=1
 gtk-xft-hintstyle=hintslight
-gtk-xft-rgba=rgba
+gtk-xft-rgba=rgb
 #+end_src
-
 * mpv
 #+begin_src conf :tangle ~/.config/mpv/mpv.conf
-profile=gpu-hq
-scale=ewa_lanczossharp
-cscale=ewa_lanczossharp
-video-sync=display-resample
-interpolation
-tscale=oversample
-gpu-api=vulkan
 # Don't close the player after finishing the video
 keep-open=yes
 # The last position of your video is saved when quitting mpv
