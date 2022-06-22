@@ -1,0 +1,22 @@
+{{ if (eq .chezmoi.osRelease.id "arch") -}}
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+packages=(
+  curl
+  git
+  git-lfs
+  neovim
+  python-pynvim
+  tmux
+  unzip
+)
+
+aur_packages+=(
+  emacs-gcc-wayland-devel-bin
+  git-extras
+  fuzzel-git
+)
+
+{{- end }}

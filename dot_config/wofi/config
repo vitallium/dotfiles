@@ -1,0 +1,6 @@
+allow_markup=true
+lines=10
+width=25%
+key_up=Control_L-k
+key_down=Control_L-j
+insensitive = true

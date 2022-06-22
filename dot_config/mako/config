@@ -1,0 +1,8 @@
+font=sans-serif 14
+default-timeout=5000
+icons=1
+anchor=top-right
+
+[urgency="high"]
+background-color=#E33400FF
+default-timeout=0

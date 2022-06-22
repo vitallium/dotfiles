@@ -1,0 +1,8 @@
+Xcursor.theme:  phinger-cursors
+Xcursor.size:   38
+
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+Xft.autohint:   0

@@ -1,0 +1,26 @@
+{{ if (eq .chezmoi.osRelease.id "arch") -}}
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+# ask sudo upfront
+sudo -v
+
+# pacman config
+sudo sed -i '/Color$/s/^#//g' /etc/pacman.conf
+sudo sed -i '/TotalDownload$/s/^#//g' /etc/pacman.conf
+sudo sed -i '/CheckSpace$/s/^#//g' /etc/pacman.conf
+sudo sed -i '/VerbosePkgLists$/s/^#//g' /etc/pacman.conf
+
+# time
+sudo timedatectl set-ntp true
+sudo ln -sf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+sudo hwclock --systohc
+
+# locale
+sudo sed -i '/en_US.UTF-8$/s/^#//g' /etc/pacman.conf
+sudo locale-gen
+
+# shell
+sudo chsh -s /usr/bin/fish {{ .chezmoi.username }}
+{{- end }}

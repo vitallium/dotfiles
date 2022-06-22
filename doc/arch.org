@@ -1,0 +1,65 @@
+#+title: Arch Linux Installation
+#+startup:  fold
+#+property: header-args:emacs-lisp :tangle yes :comments link
+#+property: header-args:elisp :exports code
+#+property: header-args:tangle ./arch_install.sh :results silent :eval no-export :shebang "#!/usr/bin/env bash"
+
+Define variables.
+#+begin_src sh
+export BOOT_PARTITION=/dev/nvme0n1p1
+export ROOT_PARTITION=/dev/nvme0n1p2
+#+end_src
+
+* Prepare the hard drive
+#+begin_src sh
+cfdisk --zap-all /dev/nvme0n1
+#+end_src
+** Partitioning
+- ~EFI~ FAT32 512MB
+- ~LUKS~ Rest of the disk
+
+#+begin_src
+cfdisk /dev/nvme0n1
+#+end_src
+** Encrypt partition
+#+begin_src sh
+cryptsetup luksFormat --perf-no_read_workqueue --perf-no_write_workqueue --type luks2 --cipher aes-xts-plain64 --key-size 512 --iter-time 2000 --pbkdf argon2id --hash sha3-512 $ROOT_PARTITION
+cryptsetup --allow-discards --perf-no_read_workqueue --perf-no_write_workqueue --persistent open $ROOT_PARTITION crypt
+#+end_src
+** Format partitions
+#+begin_src shell
+mkfs.vfat -F32 -n "EFI" $BOOT_PARTITION &&
+mkfs.btrfs -L Arch -f /dev/mapper/crypt
+#+end_src
+** Create and mount subvolumes
+#+begin_src shell
+mount /dev/mapper/crypt /mnt && \
+mkdir /mnt/arch && \
+
+btrfs sub create /mnt/arch/@          && \
+btrfs sub create /mnt/arch/@home      && \
+btrfs sub create /mnt/arch/@abs       && \
+btrfs sub create /mnt/arch/@tmp       && \
+btrfs sub create /mnt/arch/@srv       && \
+btrfs sub create /mnt/arch/@snapshots && \
+btrfs sub create /mnt/@btrfs          && \
+btrfs sub create /mnt/arch/@log       && \
+btrfs sub create /mnt/arch/@cache     && \
+btrfs sub create /mnt/@development    && \
+
+umount /mnt
+#+end_src
+** Set mount options :ATTACH:
+:PROPERTIES:
+:ID:       2255db5c-45b6-41f8-89cd-fd5386dbf57f
+:END:
+#+begin_src shell
+export HDD_MOUNT_OPTIONS="noatime,compress-force=zstd,autodefrag"
+export SSD_MOUNT_OPTIONS="$HDD_MOUNT_OPTIONS,space_cache=v2,ssd,commit=120,discard=async"
+
+export MOUNT_OPTIONS=$SSD_MOUNT_OPTIONS
+#+end_src
+
+
+* References
+- https://gist.github.com/Th3Whit3Wolf/0150bd13f4b2667437c55b71bfb073e4

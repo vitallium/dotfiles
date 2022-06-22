@@ -1,0 +1,34 @@
+README.org
+install.sh
+doc
+
+{{- if not .swaywm }}
+.config/foot
+.config/gtk-3.0
+.config/isync
+.config/mako
+.config/sway
+.config/systemd
+.config/waybar
+.config/zathura
+.Xresources
+
+run_once_after_80-install-global-configs.sh
+
+{{ if (eq .chezmoi.osRelease.id "arch") -}}
+run_once_after_90-configure-archlinux.sh
+run_once_before_10-install-packages-arch-linux.sh
+{{- end }}
+
+{{ if (eq .chezmoi.osRelease.id "ubuntu") -}}
+run_once_before_40-install-packages-ubuntu.sh.tmpl
+run_once_after_90-configure-ubuntu.sh
+{{- end }}
+
+run_once_after_90-start-services.sh
+{{- end }}
+
+{{- if not .darwin }}
+run_once_after_90-configure-macos.sh.tmpl
+run_once_before_10-install-packages-macos.sh.tmpl
+{{- end }}

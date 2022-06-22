@@ -1,0 +1,25 @@
+{{ if (eq .chezmoi.os "linux") -}}
+#!/usr/bin/env sh
+
+{{ if not (eq .chezmoi.osRelease.id "ubuntu") -}}
+set -euo pipefail
+{{- end }}
+
+# ask sudo upfront
+sudo -v
+
+mkdir -p "$HOME/.config/systemd/user/"
+
+# Start the SSH Agent
+systemctl --user enable --now ssh-agent.service
+
+{{ if (eq .chezmoi.osRelease.id "arch") -}}
+# Start relector (pacman mirrors)
+sudo systemctl enable --now reflector.timer
+
+# Start psd (profile-sync-daemon)
+systemctl --user enable --now psd.service
+
+{{- end }}
+
+{{- end }}
