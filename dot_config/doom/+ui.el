@@ -1,8 +1,8 @@
 ;;; $DOOMDIR/+ui.el -*- lexical-binding: t; -*-
 
 ;; Theme and font settings
-(setq doom-font (font-spec :family "MonoLisa" :size 21)
-      doom-variable-pitch-font (font-spec :family "MonoLisa" :size 21)
+(setq doom-font (font-spec :family "MonoLisa" :size 17)
+      doom-variable-pitch-font (font-spec :family "MonoLisa" :size 17)
       doom-theme 'modus-operandi
       display-line-numbers-type nil)
 
