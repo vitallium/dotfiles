@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# ask sudo upfront
+sudo -v
+
+{{ if (eq .chezmoi.osRelease.id "arch") -}}
+set -eufo pipefail
+
+sudo pacman -S --needed base-devel libffi libyaml openssl zlib
+{{- end }}
+
+{{ if (eq .chezmoi.osRelease.id "ubuntu") -}}
+apt-get install autoconf bison build-essential \
+                libssl-dev libyaml-dev libreadline6-dev \
+                zlib1g-dev libncurses5-dev libffi-dev \
+                libgdbm6 libgdbm-dev libdb-dev
+{{- end }}
+
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0
+
+# reload shell before installing asdf plugins
+source $HOME/.asdf/asdf.sh
+
+asdf plugin add ruby
+asdf plugin add nodejs
+asdf plugin add yarn
+asdf plugin add erlang
+asdf plugin add elixir
+asdf plugin add python
+asdf plugin add direnv
+
+asdf plugin install direnv

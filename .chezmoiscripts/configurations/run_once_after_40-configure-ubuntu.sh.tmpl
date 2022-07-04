@@ -1,4 +1,7 @@
 {{ if (eq .chezmoi.osRelease.id "ubuntu") -}}
 #!/usr/bin/env sh
 
+# shell
+sudo chsh -s /usr/bin/fish {{ .chezmoi.username }}
+
 {{- end }}

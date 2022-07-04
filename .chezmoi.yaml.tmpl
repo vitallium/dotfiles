@@ -1,14 +1,11 @@
 {{- $name := "Vitaly Slobodin" -}}
 {{- $email := "vitaliy.slobodin@gmail.com" -}}
 {{- $swaywm := false -}}
+{{- $i3wm := false -}}
 {{- $gnome := false -}}
 {{- $darwin := false -}}
 
 {{- $hostname := .chezmoi.hostname -}}
-
-{{- if eq $hostname "serenity" -}}
-{{-   $swaywm = true -}}
-{{- end -}}
 
 {{- if eq $hostname "firefly" -}}
 {{-   $darwin = true -}}
@@ -16,6 +13,7 @@
 
 data:
   swaywm: {{ $swaywm }}
+  i3: {{ $i3wm }}
   gnome: {{ $gnome }}
   darwin: {{ $darwin }}
 format: yaml
