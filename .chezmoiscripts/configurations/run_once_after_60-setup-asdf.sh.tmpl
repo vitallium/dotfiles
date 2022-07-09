@@ -1,21 +1,20 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # ask sudo upfront
 sudo -v
 
-{{ if (eq .chezmoi.osRelease.id "arch") -}}
 set -eufo pipefail
 
-sudo pacman -S --needed base-devel libffi libyaml openssl zlib
-{{- end }}
+# Ruby
+sudo dnf install -y gcc make bzip2 openssl-devel \
+                    libyaml-devel libffi-devel readline-devel \
+                    zlib-devel gdbm-devel ncurses-devel \
+                    libcurl-devel uuid-devel libuuid-devel \
+                    sqlite sqlite-devel tk-devel xz-devel \
+                    m4 ncurses-devel autoconf
 
-{{ if (eq .chezmoi.osRelease.id "ubuntu") -}}
-apt-get install autoconf bison build-essential \
-                libssl-dev libyaml-dev libreadline6-dev \
-                zlib1g-dev libncurses5-dev libffi-dev \
-                libgdbm6 libgdbm-dev libdb-dev
-{{- end }}
-
+# TODO: Instead of deleting the asdf we need to check if the directory exists and update asdf version
+rm -rf ~/.asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0
 
 # reload shell before installing asdf plugins
@@ -29,4 +28,4 @@ asdf plugin add elixir
 asdf plugin add python
 asdf plugin add direnv
 
-asdf plugin install direnv
+asdf install direnv latest

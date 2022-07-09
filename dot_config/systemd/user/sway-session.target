@@ -1,9 +1,0 @@
-# See: https://github.com/swaywm/sway/wiki/Systemd-integration
-# See: https://wiki.archlinux.org/title/Sway#Manage_Sway-specific_daemons_with_systemd
-[Unit]
-Description=sway compositor session
-Documentation=man:systemd.special(7)
-BindsTo=graphical-session.target
-Wants=graphical-session-pre.target
-After=graphical-session-pre.target
-

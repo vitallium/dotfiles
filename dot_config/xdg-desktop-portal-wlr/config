@@ -1,4 +1,0 @@
-# 2021-05-24: See https://github.com/emersion/xdg-desktop-portal-wlr/issues/124
-[screencast]
-chooser_cmd = wofi -d -n --prompt='Select the monitor to share:'
-chooser_type = dmenu

@@ -1,8 +1,0 @@
-profile dock {
-  output eDP-1 disable
-  output DP-3 mode 3840x2160@144Hz
-}
-
-profile undock {
-  output eDP-1 enable scale 1
-}

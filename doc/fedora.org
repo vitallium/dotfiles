@@ -1,16 +1,13 @@
 #+title: Fedora installation guide
 
 * Post installation steps
-:PROPERTIES:
-:ID:       a8e1aa77-b5c2-4378-b4fe-148ad19dfc29
-:END:
 Install updates.
 #+begin_src sh :dir /sudo::
 dnf upgrade --refresh
 #+end_src
 
 Change the hostname to ~serenity~.
-#+begin_src sh :dir /sudo::
+#+begin_src shell :dir /sudo::
 hostnamectl set-hostname serenity
 #+end_src
 
@@ -33,14 +30,13 @@ TODO: Check if these settings can be configured with ~dconf~.
 Remove redundant stuff.
 #+begin_src sh :dir /sudo::
 dnf remove -y cheese rhythmbox totem orca \
-
               gnome-contacts gnome-getting-started-docs \
               nautilus-sendto gnome-shell-extension-* \
               libreoffice-* gnome-characters gnome-maps \
               gnome-photos simple-scan virtualbox-guest-additions \
               gedit gnome-tour gnome-connections mediawriter yelp \
               podman
-dnf autoremove
+dnf autoremove -y
 #+end_src
 
 Configure ~dnf~.
@@ -69,7 +65,7 @@ mount -a
 
 Change default user shell to ~fish~.
 #+begin_src sh :dir /sudo::
-sudo dnf install -y fish util-linux-user
+dnf install -y fish util-linux-user
 chsh -s $(which fish) vitaly
 #+end_src
 
@@ -146,7 +142,8 @@ dnf install -y git git-lfs git-delta \
                profile-sync-daemon \
                editorconfig maildir-utils \
                kernel-tools wl-clipboard \
-               cmake ninja-build jq
+               cmake ninja-build jq \
+               celluloid
 #+end_src
 
 Install packages for ~Yubikey~.
@@ -168,10 +165,24 @@ dnf install -y google-chrome-stable
 #+end_src
 
 Disable ~Spectre~ mitigations.
-#+begin_src shell :tangle no :dir /sudo:: results output
+#+begin_src shell :tangle no :dir /sudo:: :results output
 grubby --update-kernel=ALL --args=mitigations=off
 #+end_src
 
+Enable [[https://github.com/lassekongo83/adw-gtk3][adw3]] copr and install ~adwaita~ theme for legacy applications.
+#+begin_src shell :tangle no :dir /sudo:: :results output
+dnf copr enable -y nickavem/adw-gtk3
+dnf install -y adw-gtk3
+#+end_src
+
+** Enable and install ~neovim~ stuff.
+#+begin_src shell :tangle no :dir /sudo:: :results output
+dnf copr enable -y vitallium/neovim-default-editor
+dnf install -y --allowerasing neovim-default-editor
+dnf remove -y nano
+#+end_src
+
+TODO: Enable copr for with symlinks ~vim => nvim~.
 * Configure user environment
 Install [[https://github.com/doomemacs][doomemacs]].
 #+begin_src shell :tangle no :results output
