@@ -1,24 +1,63 @@
-#+title: Fedora installation guide
+#+TITLE: Fedora installation guide
+#+PROPERTY: header-args :comments no :mkdirp yes :tangle no :results output
+
+* Contents :TOC:
+- [[#post-installation-steps][Post installation steps]]
+  - [[#install-updates][Install updates]]
+  - [[#change-the-hostname-to-serenity][Change the hostname to ~serenity~]]
+  - [[#reboot-the-system-to-install-and-apply-updates][Reboot the system to install and apply updates]]
+  - [[#open-settings-and-verify-the-following-settings][Open ~Settings~ and verify the following settings]]
+  - [[#remove-redundant-stuff][Remove redundant stuff]]
+  - [[#configure-dnf][Configure ~dnf~]]
+  - [[#enable-fstrim][Enable ~fstrim~]]
+  - [[#adjust-btrfs-mount-options-taken-from-here][Adjust ~btrfs~ mount options (taken from here)]]
+  - [[#change-default-user-shell-to-fish][Change default user shell to ~fish~]]
+  - [[#install-gnome-extensions-applications][Install Gnome extensions applications]]
+  - [[#enable-rpm-fusion-repositories][Enable RPM Fusion repositories]]
+  - [[#install-emacs-with-native-comp][Install ~emacs~ with native-comp]]
+  - [[#install-drivers-for-intel-gpu][Install drivers for Intel GPU]]
+  - [[#enable-and-install-openh264-for-firefox][Enable and install OpenH264 for Firefox]]
+  - [[#configure-system-settings][Configure system settings]]
+  - [[#enable-visual-studio-code-repository-and-install-it][Enable Visual Studio Code repository and install it]]
+  - [[#instal-development-tools][Instal ~Development Tools~]]
+  - [[#install-other-packages-i-use][Install other packages I use]]
+  - [[#install-packages-for-yubikey][Install packages for ~Yubikey~]]
+  - [[#install-keybase][Install Keybase]]
+  - [[#enable-google-chrome-repo-and-install-it][Enable Google Chrome repo and install it]]
+  - [[#disable-spectre-mitigations][Disable ~Spectre~ mitigations]]
+  - [[#enable-adw3-copr-and-install-adwaita-theme-for-legacy-applications][Enable adw3 copr and install ~adwaita~ theme for legacy applications]]
+  - [[#enable-and-install-neovim-stuff][Enable and install ~neovim~ stuff]]
+- [[#configure-user-environment][Configure user environment]]
+  - [[#install-doomemacs][Install doomemacs]]
+  - [[#enable-flathub][Enable flathub]]
+  - [[#install-flatpaks][Install ~flatpaks~]]
+  - [[#install-git-lfs][Install ~git-lfs~]]
+  - [[#enable-profile-sync-daemon][Enable ~profile-sync-daemon~]]
+  - [[#install-firefox-gnome-theme][Install firefox-gnome-theme]]
+  - [[#install-asdf][Install asdf]]
+  - [[#install-dotfiles][Install dotfiles]]
+  - [[#clean-up-unused-directories-and-bookmarks][Clean up unused directories and bookmarks]]
+  - [[#configure-rust-development-environment][Configure Rust development environment]]
 
 * Post installation steps
-Install updates.
-#+begin_src sh :dir /sudo::
+** Install updates
+#+begin_src shell :dir /sudo::
 dnf upgrade --refresh
 #+end_src
 
-Change the hostname to ~serenity~.
+** Change the hostname to ~serenity~
 #+begin_src shell :dir /sudo::
 hostnamectl set-hostname serenity
 #+end_src
 
 Verify the hostname.
-#+begin_src sh
+#+begin_src shell
 hostnamectl hostname
 #+end_src
 
-Reboot the system to install and apply updates.
+** Reboot the system to install and apply updates
 
-Open ~Settings~ and verify the following settings:
+** Open ~Settings~ and verify the following settings
 - Refresh rate is set to 144Hz for an external monitor.
 - Scaling is set to ~100%~.
 - Go to ~Accessibility~.
@@ -27,8 +66,8 @@ Open ~Settings~ and verify the following settings:
 
 TODO: Check if these settings can be configured with ~dconf~.
 
-Remove redundant stuff.
-#+begin_src sh :dir /sudo::
+** Remove redundant stuff
+#+begin_src shell :dir /sudo::
 dnf remove -y cheese rhythmbox totem orca \
               gnome-contacts gnome-getting-started-docs \
               nautilus-sendto gnome-shell-extension-* \
@@ -39,18 +78,18 @@ dnf remove -y cheese rhythmbox totem orca \
 dnf autoremove -y
 #+end_src
 
-Configure ~dnf~.
-#+begin_src sh :dir /sudo::
+** Configure ~dnf~
+#+begin_src shell :dir /sudo::
 echo 'max_parallel_downloads=10' | tee -a /etc/dnf/dnf.conf
 echo 'deltarpm=true' | tee -a /etc/dnf/dnf.conf
 #+end_src
 
-Enable ~fstrim~.
-#+begin_src sh :dir /sudo::
+** Enable ~fstrim~
+#+begin_src shell :dir /sudo::
 systemctl enable fstrim.timer
 #+end_src
 
-Adjust ~btrfs~ mount options (taken from [[https://mutschler.dev/linux/fedora-post-install/#btrfs-filesystem-optimizations][here]]):
+** Adjust ~btrfs~ mount options (taken from [[https://mutschler.dev/linux/fedora-post-install/#btrfs-filesystem-optimizations][here]])
 - ~ssd~: use SSD specific options for optimal use on SSD and NVME
 - ~noatime~: prevent frequent disk writes by instructing the Linux kernel not to store the last access time of files and folders
 - ~space_cache~: allows btrfs to store free space cache on the disk to make caching of a block group much quicker
@@ -59,35 +98,35 @@ Adjust ~btrfs~ mount options (taken from [[https://mutschler.dev/linux/fedora-po
 - ~discard=async~: Btrfs Async Discard Support Looks To Be Ready For Linux 5.6.
 
 Remount all paritions.
-#+begin_src sh :dir /sudo::
+#+begin_src shell :dir /sudo::
 mount -a
 #+end_src
 
-Change default user shell to ~fish~.
-#+begin_src sh :dir /sudo::
+** Change default user shell to ~fish~
+#+begin_src shell :dir /sudo::
 dnf install -y fish util-linux-user
 chsh -s $(which fish) vitaly
 #+end_src
 
-Install Gnome extensions applications.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Install Gnome extensions applications
+#+begin_src shell :dir /sudo::
 dnf install -y gnome-extensions-app gnome-tweaks
 #+end_src
 
-Enable RPM Fusion repositories.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Enable RPM Fusion repositories
+#+begin_src shell :dir /sudo::
 dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 #+end_src
 
-Enable ~emacs~ with native-comp copr.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Install ~emacs~ with native-comp
+#+begin_src shell :dir /sudo::
 dnf copr enable -y deathwish/emacs-pgtk-nativecomp
 dnf install -y emacs
 #+end_src
 
-Install drivers for Intel GPU.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Install drivers for Intel GPU
+#+begin_src shell :dir /sudo::
 dnf groupinstall -y multimedia
 dnf install -y intel-media-driver ffmpeg libva \
                libva-utils gstreamer1-vaapi ffmpeg \
@@ -95,48 +134,48 @@ dnf install -y intel-media-driver ffmpeg libva \
 #+end_src
 
 Enable Intel GuC and HuC and Framebuffer compression.
-#+begin_src shell :tangle no :dir /sudo:: :results no
+#+begin_src shell :dir /sudo:: :results no
 echo 'options i915 enable_guc=2' > /etc/modprobe.d/i915.conf
 echo 'options i915 enable_fbc=3' >> /etc/modprobe.d/i915.conf
 #+end_src
 
 Verify options for ~i915~.
-#+begin_src shell :tangle no :results output
+#+begin_src shell
 cat /etc/modprobe.d/i915.conf
 #+end_src
 
 Rebuild ~initramfs~.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+#+begin_src shell :dir /sudo::
 dracut --force
 #+end_src
 
-Enable and install OpenH264 for Firefox.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Enable and install OpenH264 for Firefox
+#+begin_src shell :dir /sudo::
 dnf config-manager --set-enabled fedora-cisco-openh264
 dnf install -y gstreamer1-plugin-openh264 mozilla-openh264
 #+end_src
 
-Configure system settings.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Configure system settings
+#+begin_src shell :dir /sudo::
 echo 'fs.inotify.max_user_watches = 524288' >> /etc/sysctl.conf
 echo 'vm.swappiness = 10' >> /etc/sysctl.conf
 sysctl -p
 #+end_src
 
-Enable Visual Studio Code repository and install it.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Enable Visual Studio Code repository and install it
+#+begin_src shell :dir /sudo::
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 dnf install -y code
 #+end_src
 
-Instal ~Development Tools~.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Instal ~Development Tools~
+#+begin_src shell :dir /sudo::
 dnf install -y make gcc-c++ gcc make bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel
 #+end_src
 
-Install other packages I use.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Install other packages I use
+#+begin_src shell :dir /sudo::
 dnf install -y git git-lfs git-delta \
                bat fzf ripgrep fd-find \
                profile-sync-daemon \
@@ -146,58 +185,58 @@ dnf install -y git git-lfs git-delta \
                celluloid
 #+end_src
 
-Install packages for ~Yubikey~.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Install packages for ~Yubikey~
+#+begin_src shell :dir /sudo::
 dnf install -y gpg gnupg2 gnupg-pkcs11-scd pcsc-tools opensc pcsc-lite-ccid
 systemctl enable --now pcscd
 #+end_src
 
-Install [[https://keybase.io/][Keybase]].
-#+begin_src shell :tangle no :dir 
-/sudo:: :results output
+** Install [[https://keybase.io/][Keybase]]
+#+begin_src shell :dir
+/sudo::
 dnf install -y https://prerelease.keybase.io/keybase_amd64.rpm
 #+end_src
 
-Enable Google Chrome repo and install it.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Enable Google Chrome repo and install it
+#+begin_src shell :dir /sudo::
 dnf config-manager --set-enabled google-chrome
 dnf install -y google-chrome-stable
 #+end_src
 
-Disable ~Spectre~ mitigations.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Disable ~Spectre~ mitigations
+#+begin_src shell :dir /sudo::
 grubby --update-kernel=ALL --args=mitigations=off
 #+end_src
 
-Enable [[https://github.com/lassekongo83/adw-gtk3][adw3]] copr and install ~adwaita~ theme for legacy applications.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Enable [[https://github.com/lassekongo83/adw-gtk3][adw3]] copr and install ~adwaita~ theme for legacy applications
+#+begin_src shell :dir /sudo::
 dnf copr enable -y nickavem/adw-gtk3
 dnf install -y adw-gtk3
 #+end_src
 
-** Enable and install ~neovim~ stuff.
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Enable and install ~neovim~ stuff
+#+begin_src shell :dir /sudo::
 dnf copr enable -y vitallium/neovim-default-editor
 dnf install -y --allowerasing neovim-default-editor
 dnf remove -y nano
 #+end_src
 
-TODO: Enable copr for with symlinks ~vim => nvim~.
+TODO: Enable copr for symlinks ~vim => nvim~.
 * Configure user environment
-Install [[https://github.com/doomemacs][doomemacs]].
-#+begin_src shell :tangle no :results output
+** Install [[https://github.com/doomemacs][doomemacs]]
+#+begin_src shell
 git clone --depth 1 --single-branch https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install --force
 #+end_src
 
-Enable [[https://flatpak.org/setup/Fedora][flathub]].
-#+begin_src shell :tangle no :dir /sudo:: :results output
+** Enable [[https://flatpak.org/setup/Fedora][flathub]]
+#+begin_src shell :dir /sudo::
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-modify flathub --enable
 #+end_src
 
-Install ~flatpaks~.
-#+begin_src shell :tangle no :results output
+** Install ~flatpaks~
+#+begin_src shell
 flatpak install -y flathub com.discordapp.Discord \
                            com.spotify.Client \
                            org.telegram.desktop \
@@ -207,39 +246,97 @@ flatpak install -y flathub com.discordapp.Discord \
                            org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 #+end_src
 
-Install ~git-lfs~.
-#+begin_src shell :tangle no :results output
+** Install ~git-lfs~
+#+begin_src shell
 git-lfs install
 #+end_src
 
-Enable ~profile-sync-daemon~.
-#+begin_src shell :tangle no :results output
+** Enable ~profile-sync-daemon~
+#+begin_src shell
 psd
 systemctl --user enable --now psd.service
 psd preview
 #+end_src
 
-Install [[https://github.com/rafaelmardojai/firefox-gnome-theme][firefox-gnome-theme]].
-#+begin_src shell :tangle no :results output
+** Install [[https://github.com/rafaelmardojai/firefox-gnome-theme][firefox-gnome-theme]]
+#+begin_src shell
 git clone https://github.com/rafaelmardojai/firefox-gnome-theme/ $HOME/Development/firefox-gnome-theme
 cd $HOME/Development/firefox-gnome-theme
 ./scripts/install.sh
 #+end_src
 
-Install [[https://asdf-vm.com/][asdf]].
-#+begin_src shell :tangle no :results output
+** Install [[https://asdf-vm.com/][asdf]]
+#+begin_src shell
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0
 #+end_src
 
-Install [[https://github.com/vitallium/dotfiles][dotfiles]].
-#+begin_src shell :tangle no :results output
+** Install [[https://github.com/vitallium/dotfiles][dotfiles]]
+#+begin_src shell
 git clone https://github.com/vitallium/dotfiles.git $HOME/Development/dotfiles
 cd $HOME/Development/dotfiles
 ./install.sh
 #+end_src
 
-Clean up unused directories and bookmarks.
-#+begin_src shell :tangle no :results output
-rm -R ~/Documents ~/Music ~/Public ~/Templates ~/Desktop
+** Clean up unused directories and bookmarks
+#+begin_src shell
+rm -rf ~/Documents ~/Music ~/Public ~/Templates ~/Desktop
 echo "file:///home/vitaly/Downloads" > ~/.config/gtk-3.0/bookmarks
+#+end_src
+** Configure Rust development environment
+*** Install [[https://rustup.rs/][rustup]]
+#+begin_src shell :results output silent
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+#+end_src
+*** Install ~fish~ completions for ~rustup~
+#+begin_src shell :results output silent
+rustup completions fish rustup >> $HOME/.config/fish/completions/rustup.fish
+#+end_src
+*** Install [[https://rust-analyzer.github.io/][rust-analyzer]]
+#+begin_src shell :results output silent
+curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+chmod +x ~/.local/bin/rust-analyzer
+#+end_src
+*** Install ~rust-src~.
+#+begin_src shell
+rustup component add rust-src
+#+end_src
+*** Install [[https://crates.io/crates/cargo-audit][cargo-audit]]
+#+begin_quote
+Audit Cargo.lock for crates with security vulnerabilities
+#+end_quote
+
+#+begin_src shell :results output silent
+cargo install cargo-audit --features=fix
+#+end_src
+*** Install [[https://crates.io/crates/cargo-nextest][cargo-nextest]]
+#+begin_quote
+A next-generation test runner for Rust.
+#+end_quote
+
+#+begin_src shell :results output silent
+cargo install cargo-nextest
+#+end_src
+*** Install [[https://crates.io/crates/cargo-edit][cargo-edit]]
+#+begin_quote
+This tool extends Cargo to allow you to add, remove, and upgrade dependencies by modifying your Cargo.toml file from the command line.
+#+end_quote
+
+#+begin_src shell :results output silent
+cargo install cargo-edit
+#+end_src
+*** Install [[https://crates.io/crates/cargo-update][cargo-update]]
+#+begin_quote
+A cargo subcommand for checking and applying updates to installed executables
+#+end_quote
+
+#+begin_src shell :results output silent
+cargo install cargo-update
+#+end_src
+*** Install ~rustfmt~
+#+begin_src shell :results output silent
+rustup component add rustfmt
+#+end_src
+*** Install ~clippy~
+#+begin_src shell :results output silent
+rustup component add clippy
 #+end_src
