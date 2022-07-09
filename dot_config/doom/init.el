@@ -46,11 +46,13 @@
               +all
               +defaults)
        ;;tabs                ; a tab bar for Emacs
-       ;;treemacs            ; a project drawer, like neotree but cooler
+       treemacs              ; a project drawer, like neotree but cooler
        ;;unicode             ; extended unicode support for various languages
        vc-gutter             ; vcs diff in the fringe
        vi-tilde-fringe       ; fringe tildes to mark beyond EOB
-       window-select         ; visually switch windows
+       (window-select
+                     +numbers)
+                             ; visually switch windows
        workspaces            ; tab emulation, persistence & separate workspaces
        zen                   ; distraction-free coding or writing
 
@@ -70,7 +72,8 @@
 
        :emacs
        (dired                ; making dired pretty [functional]
-              +ranger)
+              +icons
+              +dirvish)
        electric          ; smarter, keyword-based electric-indent
        ibuffer           ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
@@ -83,8 +86,10 @@
        vterm             ; the best terminal emulation in Emacs
 
        :checkers
-       (syntax)             ; tasing you for every semicolon you forget
-       (spell +flyspell +hunspell) ; tasing you for misspelling mispelling
+       (syntax +childframme) ; tasing you for every semicolon you forget
+       (spell
+             +flyspell
+             +hunspell)      ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
@@ -111,6 +116,7 @@
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
+       tree-sitter         ; syntax and parsing, sitting in a tree...
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
@@ -131,7 +137,7 @@
        ;;dhall
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
-       emacs-lisp        ; drown in parentheses
+       (emacs-lisp +lsp)    ; drown in parentheses
        ;;erlang            ; an elegant language for a more civilized age
        ;;ess               ; emacs speaks statistics
        ;;factor
@@ -160,6 +166,7 @@
        ;;ocaml             ; an objective camel
        (org                ; organize your plain life in plain text
             +dragndrop
+            +hugo
             +pandoc
             +journal
             +pretty)
@@ -193,7 +200,7 @@
        :app
        ;;calendar
        ;;emms
-       everywhere          ; *leave* Emacs!? You must be joking
+       ;;everywhere        ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought

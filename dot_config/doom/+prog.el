@@ -23,7 +23,7 @@
         :desc "Diagnostics" "c-" #'lsp-ui-flycheck-list
         :desc "Imenu" "c," #'lsp-ui-imenu)
   (setq lsp-headerline-breadcrumb-enable-diagnostics nil
-        lsp-headerline-breadcrumb-enable t
+        lsp-headerline-breadcrumb-enable nil
         lsp-lens-enable t
         lsp-ui-sideline-show-code-actions nil
         lsp-ui-imenu--custom-mode-line-format ""
@@ -69,3 +69,5 @@
 (after! prog-mode
   (bug-reference-prog-mode))
 
+(after! lsp-solargraph
+  (add-to-list 'lsp-solargraph-library-directories "~/.asdf/installs/ruby"))

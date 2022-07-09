@@ -9,7 +9,7 @@
 (load! "+evil")
 (load! "+prog")
 (load! "+bindings.el")
-(load! "+mail.el")
+;;(load! "+mail.el")
 (load! "+org.el")
 
 ;; Here are some additional functions/macros that could help you configure Doom:

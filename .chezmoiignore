@@ -1,0 +1,8 @@
+README.org
+install.sh
+doc/
+
+{{- if not .darwin }}
+run_once_after_90-configure-macos.sh.tmpl
+run_once_before_10-install-packages-macos.sh.tmpl
+{{- end }}

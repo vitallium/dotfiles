@@ -1,0 +1,56 @@
+[user]
+  name = Vitaly Slobodin
+  email = vitaliy.slobodin@gmail.com
+
+[color]
+  ui = true
+  branch = auto
+  diff = auto
+  status = auto
+
+[push]
+  default = current
+
+[alias]
+  up = pull --rebase
+  st = status
+  co = checkout
+  pf = push --force-with-lease
+  am = commit --amend
+
+[core]
+  autocrlf = false
+  precomposeUnicode = true
+  # Enable parallel index preload for operations like git diff
+  preloadindex = true
+  excludesfile = ~/.config/git/ignore
+  attributesfile = ~/.config/git/attributes
+  pager = delta
+
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+
+[delta]
+  features = side-by-side line-numbers decorations
+  whitespace-error-style = 22 reverse
+  syntax-theme = GitHub
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+[includeIf "gitdir:~/Development/gitlab/"]
+  path = ~/.config/git/gitlab

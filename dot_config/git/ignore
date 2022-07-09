@@ -1,0 +1,4 @@
+/.yalc/
+.yalc.lock
+.vendor/
+.log/

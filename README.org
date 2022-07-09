@@ -1,20 +1,33 @@
 #+TITLE: #define home
 
 * Contents :TOC:
-- [[#home][Home]]
-  - [[#x11][X11]]
-  - [[#sway][Sway]]
-- [[#macos][macOS]]
-- [[#emacs][Emacs]]
+- [[#whats-inside][What's inside]]
+  - [[#common-configuration][Common configuration]]
+  - [[#fedora-configuration-for-my-framework-laptop][Fedora configuration for my Framework Laptop]]
+  - [[#macos-configuration-for-my-work-laptop][~macOS configuration~ for my work laptop]]
+- [[#plans-0][Plans]]
 
-* Home
-[[file:Home.org][Home configuration]] contains independent settings for my Linux and macOS boxes.
-I try to keep them common as mush as possible which means this configuration contains 0 Xorg or Wayland stuff.
-** X11
-[[file:X11.org][X11]] configuration defines my settings for Xorg environment with ~i3~, ~rofi~ and ~dunst~.
-** Sway
-[[file:Wayland.org][Wayland]] configuration defines my settings for Wayland environment with ~sway~, ~wofi~ and ~mako~. It pretty much mimics the X11 configuration.
-* macOS
-[[file:macOS.org][macOS settings and bootstrap.]] Contains my old settings and configuration. **Untested.**
-* Emacs
-[[file:Emacs.org][Emacs Configuration :)]]
+* What's inside
+** Common configuration
+- [[https://sw.kovidgoyal.net/kitty/][kitty]] as a terminal emulator.
+- emacs ([[https://github.com/doomemacs/][doomemacs]]).
+** [[file:doc/fedora.org][Fedora configuration]] for my [[https://frame.work][Framework Laptop]]
+- [[https://www.gnome.org/][Gnome]] with extensions:
+  - [[https://extensions.gnome.org/extension/4703/dock-from-dash/][Dock from Dash]]
+  - [[https://extensions.gnome.org/extension/4135/espresso/][Espresso]]
+  - [[https://extensions.gnome.org/extension/4158/gnome-40-ui-improvements/][Gnome 4x UI Improvements]]
+  - [[https://extensions.gnome.org/extension/3780/ddterm/][ddterm]]
+  - [[https://extensions.gnome.org/extension/595/autohide-battery/][Autohide Battery]]
+  - [[https://extensions.gnome.org/extension/1460/vitals/][Vitals]]
+  - [[https://extensions.gnome.org/extension/3560/mullvad-indicator/][Mullvad Indicator]]
+  - [[https://extensions.gnome.org/extension/906/sound-output-device-chooser/][Sound Input & Output Device Chooser]]
+  - [[https://extensions.gnome.org/extension/3193/blur-my-shell/][Blur my Shell]]
+  - [[https://extensions.gnome.org/extension/1112/screenshot-tool/][Screenshot Tool]]
+  - [[https://extensions.gnome.org/extension/5165/upower-battery/][UPower Battery]]
+  - [[https://extensions.gnome.org/extension/5090/space-bar/][Space Bar]]
+** ~macOS configuration~ for my [[https://about.gitlab.com/][work]] laptop
+* Plans [0%]
+- [ ] Add ~kitty~ configuration.
+- [ ] Replace ~doc/fedora.org~ with ~chezmoi~ post install script.
+- [ ] Add screenshots?
+- [ ] Add ~macOS~ configuration.
