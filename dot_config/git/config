@@ -54,3 +54,5 @@
 
 [includeIf "gitdir:~/Development/gitlab/"]
   path = ~/.config/git/gitlab
+[gpg]
+	program = gpg2
