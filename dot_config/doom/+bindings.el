@@ -2,6 +2,9 @@
 
 (map! "<f5>" #'modus-themes-toggle)
 
+(setq doom-localleader-key ","
+      doom-localleader-alt-key "M-,")
+
 (map! :leader
       :desc "Auto fill"
       :n "t a" 'auto-fill-mode)

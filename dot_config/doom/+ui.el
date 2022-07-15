@@ -1,8 +1,8 @@
 ;;; $DOOMDIR/+ui.el -*- lexical-binding: t; -*-
 
 ;; Theme and font settings
-(setq doom-font (font-spec :family "MonoLisa" :size 17)
-      doom-variable-pitch-font (font-spec :family "MonoLisa" :size 17)
+(setq doom-font (font-spec :family "MonoLisa" :size 16)
+      doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :size 20)
       doom-theme 'modus-operandi
       display-line-numbers-type nil)
 
@@ -18,13 +18,6 @@
       visual-fill-column-center-text t
       visual-fill-column-width fill-column)
 (add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
-
-;; Dim inactive windows
-(use-package! dimmer
-  :config
-  (dimmer-configure-magit)
-  (dimmer-configure-org)
-  (dimmer-mode t))
 
 ;; Popups
 (set-popup-rule! "^\\*info.*" :size 82 :side 'right :ttl t :select t :quit t)
