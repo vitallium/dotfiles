@@ -44,7 +44,6 @@
 #+begin_src shell :dir /sudo::
 dnf upgrade --refresh
 #+end_src
-
 ** Change the hostname to ~serenity~
 #+begin_src shell :dir /sudo::
 hostnamectl set-hostname serenity
@@ -54,7 +53,6 @@ Verify the hostname.
 #+begin_src shell
 hostnamectl hostname
 #+end_src
-
 ** Reboot the system to install and apply updates
 
 ** Open ~Settings~ and verify the following settings
@@ -65,7 +63,6 @@ hostnamectl hostname
 - Change Cursor Size to ~Medium~.
 
 TODO: Check if these settings can be configured with ~dconf~.
-
 ** Remove redundant stuff
 #+begin_src shell :dir /sudo::
 dnf remove -y cheese rhythmbox totem orca \
@@ -77,18 +74,15 @@ dnf remove -y cheese rhythmbox totem orca \
               podman
 dnf autoremove -y
 #+end_src
-
 ** Configure ~dnf~
 #+begin_src shell :dir /sudo::
 echo 'max_parallel_downloads=10' | tee -a /etc/dnf/dnf.conf
 echo 'deltarpm=true' | tee -a /etc/dnf/dnf.conf
 #+end_src
-
 ** Enable ~fstrim~
 #+begin_src shell :dir /sudo::
 systemctl enable fstrim.timer
 #+end_src
-
 ** Adjust ~btrfs~ mount options (taken from [[https://mutschler.dev/linux/fedora-post-install/#btrfs-filesystem-optimizations][here]])
 - ~ssd~: use SSD specific options for optimal use on SSD and NVME
 - ~noatime~: prevent frequent disk writes by instructing the Linux kernel not to store the last access time of files and folders
@@ -135,8 +129,7 @@ dnf install -y intel-media-driver ffmpeg libva \
 
 Enable Intel GuC and HuC and Framebuffer compression.
 #+begin_src shell :dir /sudo:: :results no
-echo 'options i915 enable_guc=2' > /etc/modprobe.d/i915.conf
-echo 'options i915 enable_fbc=3' >> /etc/modprobe.d/i915.conf
+echo 'options i915 enable_guc=2 enable_fbc=3' > /etc/modprobe.d/i915.conf
 #+end_src
 
 Verify options for ~i915~.
@@ -148,20 +141,17 @@ Rebuild ~initramfs~.
 #+begin_src shell :dir /sudo::
 dracut --force
 #+end_src
-
 ** Enable and install OpenH264 for Firefox
 #+begin_src shell :dir /sudo::
 dnf config-manager --set-enabled fedora-cisco-openh264
 dnf install -y gstreamer1-plugin-openh264 mozilla-openh264
 #+end_src
-
 ** Configure system settings
 #+begin_src shell :dir /sudo::
 echo 'fs.inotify.max_user_watches = 524288' >> /etc/sysctl.conf
 echo 'vm.swappiness = 10' >> /etc/sysctl.conf
 sysctl -p
 #+end_src
-
 ** Enable Visual Studio Code repository and install it
 #+begin_src shell :dir /sudo::
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
