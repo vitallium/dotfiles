@@ -37,7 +37,25 @@
   - [[#install-asdf][Install asdf]]
   - [[#install-dotfiles][Install dotfiles]]
   - [[#clean-up-unused-directories-and-bookmarks][Clean up unused directories and bookmarks]]
-  - [[#configure-rust-development-environment][Configure Rust development environment]]
+  - [[#install-fonts][Install fonts]]
+- [[#configure-rust-development-environment][Configure Rust development environment]]
+  - [[#install-rustup][Install rustup]]
+  - [[#install-fish-completions-for-rustup][Install ~fish~ completions for ~rustup~]]
+  - [[#install-rust-analyzer][Install rust-analyzer]]
+  - [[#install-rust-src][Install ~rust-src~.]]
+  - [[#install-cargo-audit][Install cargo-audit]]
+  - [[#install-cargo-nextest][Install cargo-nextest]]
+  - [[#install-cargo-edit][Install cargo-edit]]
+  - [[#install-cargo-update][Install cargo-update]]
+  - [[#install-rustfmt][Install ~rustfmt~]]
+  - [[#install-clippy][Install ~clippy~]]
+- [[#configure-gnome][Configure Gnome]]
+  - [[#install-required-tools][Install required tools]]
+  - [[#theme-and-user-interface][Theme and user interface]]
+  - [[#peripherals][Peripherals]]
+  - [[#key-bindings][Key bindings]]
+  - [[#fonts][Fonts]]
+  - [[#extensions][Extensions]]
 
 * Post installation steps
 ** Install updates
@@ -141,17 +159,20 @@ Rebuild ~initramfs~.
 #+begin_src shell :dir /sudo::
 dracut --force
 #+end_src
+
 ** Enable and install OpenH264 for Firefox
 #+begin_src shell :dir /sudo::
 dnf config-manager --set-enabled fedora-cisco-openh264
 dnf install -y gstreamer1-plugin-openh264 mozilla-openh264
 #+end_src
+
 ** Configure system settings
 #+begin_src shell :dir /sudo::
 echo 'fs.inotify.max_user_watches = 524288' >> /etc/sysctl.conf
 echo 'vm.swappiness = 10' >> /etc/sysctl.conf
 sysctl -p
 #+end_src
+
 ** Enable Visual Studio Code repository and install it
 #+begin_src shell :dir /sudo::
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
@@ -172,12 +193,12 @@ dnf install -y git git-lfs git-delta \
                editorconfig maildir-utils \
                kernel-tools wl-clipboard \
                cmake ninja-build jq \
-               celluloid
+               celluloid transmission-gtk
 #+end_src
 
 ** Install packages for ~Yubikey~
 #+begin_src shell :dir /sudo::
-dnf install -y gpg gnupg2 gnupg-pkcs11-scd pcsc-tools opensc pcsc-lite-ccid
+dnf install -y gpg gnupg2 gnupg-pkcs11-scd pcsc-tools pcsc-lite-ccid
 systemctl enable --now pcscd
 #+end_src
 
@@ -197,6 +218,8 @@ dnf install -y google-chrome-stable
 #+begin_src shell :dir /sudo::
 grubby --update-kernel=ALL --args=mitigations=off
 #+end_src
+
+#+RESULTS:
 
 ** Enable [[https://github.com/lassekongo83/adw-gtk3][adw3]] copr and install ~adwaita~ theme for legacy applications
 #+begin_src shell :dir /sudo::
@@ -257,7 +280,7 @@ cd $HOME/Development/firefox-gnome-theme
 
 ** Install [[https://asdf-vm.com/][asdf]]
 #+begin_src shell
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.0
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 #+end_src
 
 ** Install [[https://github.com/vitallium/dotfiles][dotfiles]]
@@ -272,61 +295,125 @@ cd $HOME/Development/dotfiles
 rm -rf ~/Documents ~/Music ~/Public ~/Templates ~/Desktop
 echo "file:///home/vitaly/Downloads" > ~/.config/gtk-3.0/bookmarks
 #+end_src
-** Configure Rust development environment
-*** Install [[https://rustup.rs/][rustup]]
+
+** Install fonts
+*** Iosevka
+Install ~Etoile~ variant for Org mode in Emacs.
+#+begin_src shell :dir /sudo::
+dnf copr enable -y peterwu/iosevka
+dnf install -y iosevka-etoile-fonts
+#+end_src
+*** Adobe Pro fonts
+#+begin_src shell :dir /sudo::
+dnf install -y adobe-source-sans-pro-fonts \
+               adobe-source-serif-pro-fonts
+#+end_src
+* Configure Rust development environment
+** Install [[https://rustup.rs/][rustup]]
 #+begin_src shell :results output silent
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 #+end_src
-*** Install ~fish~ completions for ~rustup~
-#+begin_src shell :results output silent
+** Install ~fish~ completions for ~rustup~
+#+begin_src shell
 rustup completions fish rustup >> $HOME/.config/fish/completions/rustup.fish
 #+end_src
-*** Install [[https://rust-analyzer.github.io/][rust-analyzer]]
-#+begin_src shell :results output silent
+** Install [[https://rust-analyzer.github.io/][rust-analyzer]]
+#+begin_src shell
 curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
 chmod +x ~/.local/bin/rust-analyzer
 #+end_src
-*** Install ~rust-src~.
+** Install ~rust-src~.
 #+begin_src shell
 rustup component add rust-src
 #+end_src
-*** Install [[https://crates.io/crates/cargo-audit][cargo-audit]]
+
+** Install [[https://crates.io/crates/cargo-audit][cargo-audit]]
 #+begin_quote
 Audit Cargo.lock for crates with security vulnerabilities
 #+end_quote
 
-#+begin_src shell :results output silent
+#+begin_src shell
 cargo install cargo-audit --features=fix
 #+end_src
-*** Install [[https://crates.io/crates/cargo-nextest][cargo-nextest]]
+
+** Install [[https://crates.io/crates/cargo-nextest][cargo-nextest]]
 #+begin_quote
 A next-generation test runner for Rust.
 #+end_quote
 
-#+begin_src shell :results output silent
+#+begin_src shell
 cargo install cargo-nextest
 #+end_src
-*** Install [[https://crates.io/crates/cargo-edit][cargo-edit]]
+** Install [[https://crates.io/crates/cargo-edit][cargo-edit]]
 #+begin_quote
 This tool extends Cargo to allow you to add, remove, and upgrade dependencies by modifying your Cargo.toml file from the command line.
 #+end_quote
 
-#+begin_src shell :results output silent
+#+begin_src shell
 cargo install cargo-edit
 #+end_src
-*** Install [[https://crates.io/crates/cargo-update][cargo-update]]
+** Install [[https://crates.io/crates/cargo-update][cargo-update]]
 #+begin_quote
 A cargo subcommand for checking and applying updates to installed executables
 #+end_quote
 
-#+begin_src shell :results output silent
+#+begin_src shell
 cargo install cargo-update
 #+end_src
-*** Install ~rustfmt~
-#+begin_src shell :results output silent
+** Install ~rustfmt~
+#+begin_src shell
 rustup component add rustfmt
 #+end_src
-*** Install ~clippy~
-#+begin_src shell :results output silent
+** Install ~clippy~
+#+begin_src shell
 rustup component add clippy
 #+end_src
+* Configure Gnome
+** Install required tools
+#+begin_src shell :dir /sudo::
+dnf install -y dconf-editor \
+               papirus-icon-theme \
+               adobe-source-sans-pro-fonts \
+               adobe-source-serif-pro-fonts
+#+end_src
+** Theme and user interface
+#+begin_src shell
+gsettings set org.gnome.desktop.interface clock-show-weekday true
+gsettings set org.gnome.desktop.interface font-antialiasing "rgba"
+gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"
+gsettings set org.gnome.desktop.interface icon-theme "Papirus"
+#+end_src
+*** Adjust search locations
+#+begin_src shell
+gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.clocks.desktop']"
+#+end_src
+
+** Peripherals
+Enable blazing fast keyboard repeat.
+#+begin_src shell
+gsettings set org.gnome.desktop.peripherals.keyboard delay 210
+#+end_src
+** Key bindings
+#+begin_src shell
+gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Super>h']"
+gsettings set org.gnome.mutter.keybindings toggle-tiled-right "['<Super>l']"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>Return']"
+
+gsettings set org.gnome.desktop.wm.keybindings minimize "['<Super>apostrophe']"
+gsettings set org.gnome.desktop.wm.keybindings maximize "['<Super>k']"
+gsettings set org.gnome.desktop.wm.keybindings unmaximize "['<Super>j']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"
+#+end_src
+
+** Fonts
+#+begin_src shell
+gsettings set org.gnome.desktop.interface document-font-name "Source Sans 3 Regular 11"
+gsettings set org.gnome.desktop.interface font-name "Source Sans 3 Regular 11"
+gsettings set org.gnome.desktop.interface monospace-font-name "Source Code Pro 10"
+gsettings set org.gnome.desktop.wm.preferences titlebar-font "Source Sans 3 Semi-Bold 11"
+#+end_src
+** Extensions
