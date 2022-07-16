@@ -404,6 +404,12 @@ gsettings set org.gnome.desktop.interface font-antialiasing "rgba"
 gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"
 gsettings set org.gnome.desktop.interface icon-theme "Papirus"
 #+end_src
+
+Set the application on the dash.
+#+begin_src shell
+gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'emacs.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'org.telegram.desktop.desktop']"
+#+end_src
+
 *** Adjust search locations
 #+begin_src shell
 gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.clocks.desktop']"
@@ -438,3 +444,9 @@ gsettings set org.gnome.desktop.interface monospace-font-name "Source Code Pro 1
 gsettings set org.gnome.desktop.wm.preferences titlebar-font "Source Sans 3 Semi-Bold 11"
 #+end_src
 ** Extensions
+*** CPU Power
+Do not forger to logout and login again.
+#+begin_src shell :dir /sudo::
+dnf copr enable -y fin-ger/cpupower
+dnf install -y gnome-shell-extension-cpupower
+#+end_src
