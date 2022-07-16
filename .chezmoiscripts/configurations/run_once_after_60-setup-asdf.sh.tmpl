@@ -5,14 +5,6 @@ sudo -v
 
 set -eufo pipefail
 
-# Ruby
-sudo dnf install -y gcc make bzip2 openssl-devel \
-                    libyaml-devel libffi-devel readline-devel \
-                    zlib-devel gdbm-devel ncurses-devel \
-                    libcurl-devel uuid-devel libuuid-devel \
-                    sqlite sqlite-devel tk-devel xz-devel \
-                    m4 ncurses-devel autoconf
-
 # TODO: Instead of deleting the asdf we need to check if the directory exists and update asdf version
 rm -rf ~/.asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2

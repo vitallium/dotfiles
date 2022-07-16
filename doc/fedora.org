@@ -183,7 +183,11 @@ dnf install -y code
 
 ** Instal ~Development Tools~
 #+begin_src shell :dir /sudo::
-dnf install -y make gcc-c++ gcc make bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel
+dnf install -y make gcc-c++ gcc make bzip2 \
+               openssl-devel libyaml-devel libffi-devel \
+               readline-devel zlib-devel gdbm-devel ncurses-devel \
+               sqlite sqlite-devel tk-devel xz-devel \
+               m4 ncurses-devel autoconf
 #+end_src
 
 ** Install other packages I use

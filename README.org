@@ -4,13 +4,16 @@
 - [[#whats-inside][What's inside]]
   - [[#common-configuration][Common configuration]]
   - [[#fedora-configuration-for-my-framework-laptop][Fedora configuration for my Framework Laptop]]
-  - [[#macos-configuration-for-my-work-laptop][~macOS configuration~ for my work laptop]]
+  - [[#macos-configuration-for-my-work-laptop][macOS configuration for my work laptop]]
 - [[#plans-0][Plans]]
 
 * What's inside
 ** Common configuration
 - [[https://sw.kovidgoyal.net/kitty/][kitty]] as a terminal emulator.
+- [[https://fishshell.com/][fish]] as a shell.
 - emacs ([[https://github.com/doomemacs/][doomemacs]]).
+- tmux.
+- [[https://github.com/sharkdp/bat][bat]] instead of ~cat~.
 ** [[file:doc/fedora.org][Fedora configuration]] for my [[https://frame.work][Framework Laptop]]
 - [[https://www.gnome.org/][Gnome]] with extensions:
   - [[https://extensions.gnome.org/extension/4703/dock-from-dash/][Dock from Dash]]
@@ -25,7 +28,8 @@
   - [[https://extensions.gnome.org/extension/1112/screenshot-tool/][Screenshot Tool]]
   - [[https://extensions.gnome.org/extension/5165/upower-battery/][UPower Battery]]
   - [[https://extensions.gnome.org/extension/5090/space-bar/][Space Bar]]
-** ~macOS configuration~ for my [[https://about.gitlab.com/][work]] laptop
+  - [[https://github.com/deinstapel/cpupower][CPU Power]]
+** macOS configuration for my [[https://about.gitlab.com/][work]] laptop
 * Plans [0%]
 - [ ] Add ~kitty~ configuration.
 - [ ] Replace ~doc/fedora.org~ with ~chezmoi~ post install script.
