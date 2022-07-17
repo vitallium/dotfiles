@@ -198,7 +198,8 @@ dnf install -y git git-lfs git-delta \
                editorconfig maildir-utils \
                kernel-tools wl-clipboard \
                cmake ninja-build jq \
-               celluloid transmission-gtk
+               celluloid transmission-gtk \
+               ShellCheck scrot ImageMagick
 #+end_src
 
 ** Install packages for ~Yubikey~
@@ -438,6 +439,8 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']"
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"
+
+for app_id in (seq 1 9); gsettings set org.gnome.shell.keybindings switch-to-application-$app_id "[]"; end
 #+end_src
 
 ** Fonts
