@@ -14,7 +14,6 @@
   - [[#change-default-user-shell-to-fish][Change default user shell to ~fish~]]
   - [[#install-gnome-extensions-applications][Install Gnome extensions applications]]
   - [[#enable-rpm-fusion-repositories][Enable RPM Fusion repositories]]
-  - [[#install-emacs-with-native-comp][Install ~emacs~ with native-comp]]
   - [[#install-drivers-for-intel-gpu][Install drivers for Intel GPU]]
   - [[#enable-and-install-openh264-for-firefox][Enable and install OpenH264 for Firefox]]
   - [[#configure-system-settings][Configure system settings]]
@@ -27,8 +26,8 @@
   - [[#disable-spectre-mitigations][Disable ~Spectre~ mitigations]]
   - [[#enable-adw3-copr-and-install-adwaita-theme-for-legacy-applications][Enable adw3 copr and install ~adwaita~ theme for legacy applications]]
   - [[#enable-and-install-neovim-stuff][Enable and install ~neovim~ stuff]]
+  - [[#configure-btrfs-snapshots][Configure BTRFS snapshots]]
 - [[#configure-user-environment][Configure user environment]]
-  - [[#install-doomemacs][Install doomemacs]]
   - [[#enable-flathub][Enable flathub]]
   - [[#install-flatpaks][Install ~flatpaks~]]
   - [[#install-git-lfs][Install ~git-lfs~]]
@@ -39,10 +38,11 @@
   - [[#clean-up-unused-directories-and-bookmarks][Clean up unused directories and bookmarks]]
   - [[#install-fonts][Install fonts]]
   - [[#install-docker][Install docker]]
+  - [[#install-protonvpn][Install ProtonVPN]]
+  - [[#install-mullvadvpn][Install MullvadVPN]]
 - [[#configure-rust-development-environment][Configure Rust development environment]]
   - [[#install-rustup][Install rustup]]
   - [[#install-fish-completions-for-rustup][Install ~fish~ completions for ~rustup~]]
-  - [[#install-rust-analyzer][Install rust-analyzer]]
   - [[#install-rust-src][Install ~rust-src~.]]
   - [[#install-cargo-audit][Install cargo-audit]]
   - [[#install-cargo-nextest][Install cargo-nextest]]
@@ -50,12 +50,14 @@
   - [[#install-cargo-update][Install cargo-update]]
   - [[#install-rustfmt][Install ~rustfmt~]]
   - [[#install-clippy][Install ~clippy~]]
+  - [[#install-fd-find][Install ~fd-find~]]
 - [[#configure-gnome][Configure Gnome]]
-  - [[#install-required-tools][Install required tools]]
+  - [[#install-packages][Install packages]]
   - [[#theme-and-user-interface][Theme and user interface]]
   - [[#peripherals][Peripherals]]
   - [[#key-bindings][Key bindings]]
   - [[#fonts][Fonts]]
+  - [[#enable-minimizemaximize-buttons][Enable minimize,maximize buttons]]
   - [[#extensions][Extensions]]
 
 * Post installation steps
@@ -73,15 +75,13 @@ Verify the hostname.
 hostnamectl hostname
 #+end_src
 ** Reboot the system to install and apply updates
-
 ** Open ~Settings~ and verify the following settings
 - Refresh rate is set to 144Hz for an external monitor.
-- Scaling is set to ~100%~.
-- Go to ~Accessibility~.
-- Enable ~Large Text~.
-- Change Cursor Size to ~Medium~.
 
-TODO: Check if these settings can be configured with ~dconf~.
+#+begin_src shell
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+gsettings set org.gnome.desktop.interface cursor-size 32
+#+end_src
 ** Remove redundant stuff
 #+begin_src shell :dir /sudo::
 dnf remove -y cheese rhythmbox totem orca \
@@ -114,30 +114,20 @@ Remount all paritions.
 #+begin_src shell :dir /sudo::
 mount -a
 #+end_src
-
 ** Change default user shell to ~fish~
 #+begin_src shell :dir /sudo::
 dnf install -y fish util-linux-user
 chsh -s $(which fish) vitaly
 #+end_src
-
 ** Install Gnome extensions applications
 #+begin_src shell :dir /sudo::
 dnf install -y gnome-extensions-app gnome-tweaks
 #+end_src
-
 ** Enable RPM Fusion repositories
 #+begin_src shell :dir /sudo::
 dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 #+end_src
-
-** Install ~emacs~ with native-comp
-#+begin_src shell :dir /sudo::
-dnf copr enable -y deathwish/emacs-pgtk-nativecomp
-dnf install -y emacs
-#+end_src
-
 ** Install drivers for Intel GPU
 #+begin_src shell :dir /sudo::
 dnf groupinstall -y multimedia
@@ -147,7 +137,7 @@ dnf install -y intel-media-driver ffmpeg libva \
 #+end_src
 
 Enable Intel GuC and HuC and Framebuffer compression.
-#+begin_src shell :dir /sudo:: :results no
+#+begin_src shell :dir /sudo::
 echo 'options i915 enable_guc=2 enable_fbc=3' > /etc/modprobe.d/i915.conf
 #+end_src
 
@@ -160,27 +150,23 @@ Rebuild ~initramfs~.
 #+begin_src shell :dir /sudo::
 dracut --force
 #+end_src
-
 ** Enable and install OpenH264 for Firefox
 #+begin_src shell :dir /sudo::
 dnf config-manager --set-enabled fedora-cisco-openh264
 dnf install -y gstreamer1-plugin-openh264 mozilla-openh264
 #+end_src
-
 ** Configure system settings
 #+begin_src shell :dir /sudo::
 echo 'fs.inotify.max_user_watches = 524288' >> /etc/sysctl.conf
 echo 'vm.swappiness = 10' >> /etc/sysctl.conf
 sysctl -p
 #+end_src
-
 ** Enable Visual Studio Code repository and install it
 #+begin_src shell :dir /sudo::
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 dnf install -y code
 #+end_src
-
 ** Instal ~Development Tools~
 #+begin_src shell :dir /sudo::
 dnf install -y make gcc-c++ gcc make bzip2 \
@@ -189,11 +175,10 @@ dnf install -y make gcc-c++ gcc make bzip2 \
                sqlite sqlite-devel tk-devel xz-devel \
                m4 ncurses-devel autoconf
 #+end_src
-
 ** Install other packages I use
 #+begin_src shell :dir /sudo::
 dnf install -y git git-lfs git-delta \
-               bat fzf ripgrep fd-find \
+               bat fzf ripgrep \
                profile-sync-daemon \
                editorconfig maildir-utils \
                kernel-tools wl-clipboard \
@@ -201,59 +186,89 @@ dnf install -y git git-lfs git-delta \
                celluloid transmission-gtk \
                ShellCheck scrot ImageMagick
 #+end_src
-
 ** Install packages for ~Yubikey~
 #+begin_src shell :dir /sudo::
 dnf install -y gpg gnupg2 gnupg-pkcs11-scd pcsc-tools pcsc-lite-ccid
 systemctl enable --now pcscd
 #+end_src
-
 ** Install [[https://keybase.io/][Keybase]]
 #+begin_src shell :dir
 /sudo::
 dnf install -y https://prerelease.keybase.io/keybase_amd64.rpm
 #+end_src
-
 ** Enable Google Chrome repo and install it
 #+begin_src shell :dir /sudo::
 dnf config-manager --set-enabled google-chrome
 dnf install -y google-chrome-stable
 #+end_src
-
 ** Disable ~Spectre~ mitigations
 #+begin_src shell :dir /sudo::
 grubby --update-kernel=ALL --args=mitigations=off
 #+end_src
-
-#+RESULTS:
-
 ** Enable [[https://github.com/lassekongo83/adw-gtk3][adw3]] copr and install ~adwaita~ theme for legacy applications
 #+begin_src shell :dir /sudo::
 dnf copr enable -y nickavem/adw-gtk3
 dnf install -y adw-gtk3
 #+end_src
-
 ** Enable and install ~neovim~ stuff
 #+begin_src shell :dir /sudo::
 dnf copr enable -y vitallium/neovim-default-editor
 dnf install -y --allowerasing neovim-default-editor
 dnf remove -y nano
 #+end_src
-
 TODO: Enable copr for symlinks ~vim => nvim~.
-* Configure user environment
-** Install [[https://github.com/doomemacs][doomemacs]]
-#+begin_src shell
-git clone --depth 1 --single-branch https://github.com/doomemacs/doomemacs ~/.config/emacs
-~/.config/emacs/bin/doom install --force
+** Configure BTRFS snapshots
+Credits to [[https://davejansen.com/fedora-root-snapshot-support/][Dave Jansen]].
+Install snapper
+#+begin_src shell :dir /sudo::
+dnf install -y snapper python-dnf-plugin-snapper
+#+end_src
+*** Configure root snapshots
+Create configuration for ~/~.
+#+begin_src shell :dir /sudo::
+snapper -c root create-config /
 #+end_src
 
+Create a root-level ~.snapshots~ subvolume.
+#+begin_src shell :dir /sudo::
+btrfs subvolume delete /.snapshots
+#+end_src
+
+Check the ~/etc/fstab~ file and copy&paste the mount point of home but replace ~home~ with ~.snapshots~.
+#+begin_src shell :dir /sudo::
+mkdir /mnt/btrfs /.snapshots
+#+end_src
+
+#+begin_src shell :dir /sudo::
+mount /dev/disk/by-uuid/<INSERT_UUID_HERE> /mnt/btrfs
+#+end_src
+
+Create new root-level snapshot subvolume.
+#+begin_src shell :dir /sudo::
+cd /mnt/btrfs
+btrfs subvolume create snapshots
+cd ~
+umount /mnt/btrfs
+rmdir /mnt/btrfs
+#+end_src
+
+Auto-mount everything.
+#+begin_src shell :dir /sudo::
+systemctl daemon-reload
+mount -a
+#+end_src
+
+Configure ~grub2~ to use ~root~ subvolume.
+#+begin_src shell :dir /sudo::
+btrfs subvolume set-default 257 /
+grubby --update-kernel=ALL --remove-args="rootflags=subvol=root"
+#+end_src
+* Configure user environment
 ** Enable [[https://flatpak.org/setup/Fedora][flathub]]
 #+begin_src shell :dir /sudo::
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-modify flathub --enable
 #+end_src
-
 ** Install ~flatpaks~
 #+begin_src shell
 flatpak install -y flathub com.discordapp.Discord \
@@ -264,44 +279,37 @@ flatpak install -y flathub com.discordapp.Discord \
                            com.github.tchx84.Flatseal \
                            org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 #+end_src
-
 ** Install ~git-lfs~
 #+begin_src shell
 git-lfs install
 #+end_src
-
 ** Enable ~profile-sync-daemon~
 #+begin_src shell
 psd
 systemctl --user enable --now psd.service
 psd preview
 #+end_src
-
 ** Install [[https://github.com/rafaelmardojai/firefox-gnome-theme][firefox-gnome-theme]]
 #+begin_src shell
 git clone https://github.com/rafaelmardojai/firefox-gnome-theme/ $HOME/Development/firefox-gnome-theme
 cd $HOME/Development/firefox-gnome-theme
 ./scripts/install.sh
 #+end_src
-
 ** Install [[https://asdf-vm.com/][asdf]]
 #+begin_src shell
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 #+end_src
-
 ** Install [[https://github.com/vitallium/dotfiles][dotfiles]]
 #+begin_src shell
 git clone https://github.com/vitallium/dotfiles.git $HOME/Development/dotfiles
 cd $HOME/Development/dotfiles
 ./install.sh
 #+end_src
-
 ** Clean up unused directories and bookmarks
 #+begin_src shell
 rm -rf ~/Documents ~/Music ~/Public ~/Templates ~/Desktop
 echo "file:///home/vitaly/Downloads" > ~/.config/gtk-3.0/bookmarks
 #+end_src
-
 ** Install fonts
 *** Iosevka
 Install ~Etoile~ variant for Org mode in Emacs.
@@ -322,6 +330,7 @@ dnf config-manager -y \
 dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 usermod -aG docker $USER
 #+end_src
+
 Disable copy-on-write (COW).
 #+begin_src shell :dir /sudo::
 mkdir -p /var/lib/docker
@@ -333,7 +342,15 @@ Enable and start ~systemd~ services.
 systemctl enable --now docker.service
 systemctl enable --now containerd.service
 #+end_src
-
+** Install ProtonVPN
+#+begin_src shell :dir /sudo::
+rpm -i https://protonvpn.com/download/protonvpn-stable-release-1.0.1-1.noarch.rpm
+dnf install -y protonvpn
+#+end_src
+** Install MullvadVPN
+#+begin_src shell :dir /sudo::
+rpm -i https://mullvad.net/media/app/MullvadVPN-2022.2_x86_64.rpm
+#+end_src
 * Configure Rust development environment
 ** Install [[https://rustup.rs/][rustup]]
 #+begin_src shell :results output silent
@@ -343,7 +360,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 #+begin_src shell
 rustup completions fish rustup >> $HOME/.config/fish/completions/rustup.fish
 #+end_src
-** Install [[https://rust-analyzer.github.io/][rust-analyzer]]
+
 #+begin_src shell
 curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
 chmod +x ~/.local/bin/rust-analyzer
@@ -394,13 +411,22 @@ rustup component add rustfmt
 #+begin_src shell
 rustup component add clippy
 #+end_src
+** Install ~fd-find~
+#+begin_src shell
+cargo install fd-find
+#+end_src
 * Configure Gnome
-** Install required tools
+** Install packages
 #+begin_src shell :dir /sudo::
 dnf install -y dconf-editor \
                papirus-icon-theme \
-               adobe-source-sans-pro-fonts \
-               adobe-source-serif-pro-fonts
+               # webp support in nautilus
+               webp-pixbuf-loader \
+               # image viewer with advanced features
+               gthumb
+
+# Restart nautilus
+nautulis -q
 #+end_src
 ** Theme and user interface
 #+begin_src shell
@@ -414,14 +440,12 @@ Set the application on the dash.
 #+begin_src shell
 gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'emacs.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'org.telegram.desktop.desktop']"
 #+end_src
-
 *** Adjust search locations
 #+begin_src shell
 gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.clocks.desktop']"
 #+end_src
-
 ** Peripherals
-Enable blazing fast keyboard repeat.
+Enable blazingly fast keyboard repeat.
 #+begin_src shell
 gsettings set org.gnome.desktop.peripherals.keyboard delay 210
 #+end_src
@@ -442,7 +466,6 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4
 
 for app_id in (seq 1 9); gsettings set org.gnome.shell.keybindings switch-to-application-$app_id "[]"; end
 #+end_src
-
 ** Fonts
 #+begin_src shell
 gsettings set org.gnome.desktop.interface document-font-name "Source Sans 3 Regular 11"
@@ -450,9 +473,13 @@ gsettings set org.gnome.desktop.interface font-name "Source Sans 3 Regular 11"
 gsettings set org.gnome.desktop.interface monospace-font-name "Source Code Pro 10"
 gsettings set org.gnome.desktop.wm.preferences titlebar-font "Source Sans 3 Semi-Bold 11"
 #+end_src
+** Enable minimize,maximize buttons
+#+begin_src shell
+gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
+#+end_src
 ** Extensions
 *** CPU Power
-Do not forger to logout and login again.
+Do not forget to logout and login again.
 #+begin_src shell :dir /sudo::
 dnf copr enable -y fin-ger/cpupower
 dnf install -y gnome-shell-extension-cpupower
