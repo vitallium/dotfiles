@@ -1,17 +1,11 @@
 ;;; $DOOMDIR/+bindings.el -*- lexical-binding: t; -*-
 
-(map! "<f5>" #'modus-themes-toggle)
-
 (setq doom-localleader-key ","
       doom-localleader-alt-key "M-,")
 
 (map! :leader
       :desc "Auto fill"
       :n "t a" 'auto-fill-mode)
-
-(map! :leader
-      :desc "Org Project Capture"
-      :n "n p" 'org-projectile-project-todo-completing-read)
 
 (after! avy
   (map! :nvm "s" #'avy-goto-char-timer)
