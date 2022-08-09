@@ -196,7 +196,10 @@ dnf install -y git git-lfs git-delta \
                kernel-tools wl-clipboard \
                cmake ninja-build jq \
                celluloid transmission-gtk \
-               ShellCheck scrot ImageMagick
+               ShellCheck scrot ImageMagick \
+               perl-core git-extras
+
+dnf groupinstall -y "Development Tools"
 #+end_src
 
 ** Install packages for ~Yubikey~
@@ -204,6 +207,7 @@ dnf install -y git git-lfs git-delta \
 dnf install -y gpg gnupg2 gnupg-pkcs11-scd pcsc-tools pcsc-lite-ccid
 systemctl enable --now pcscd
 #+end_src
+
 ** Install [[https://keybase.io/][Keybase]]
 #+begin_src shell :dir
 /sudo::
@@ -214,6 +218,7 @@ dnf install -y https://prerelease.keybase.io/keybase_amd64.rpm
 dnf config-manager --set-enabled google-chrome
 dnf install -y google-chrome-stable
 #+end_src
+
 ** Enable [[https://github.com/lassekongo83/adw-gtk3][adw3]] copr and install ~adwaita~ theme for legacy applications
 #+begin_src shell :dir /sudo::
 dnf copr enable -y nickavem/adw-gtk3
@@ -371,7 +376,7 @@ dnf install -y protonvpn
 
 ** Install MullvadVPN
 #+begin_src shell :dir /sudo::
-rpm -i https://mullvad.net/media/app/MullvadVPN-2022.2_x86_64.rpm
+dnf install -y https://mullvad.net/media/app/MullvadVPN-2022.2_x86_64.rpm
 #+end_src
 
 * Configure Rust development environment
