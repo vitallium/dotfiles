@@ -3,7 +3,6 @@ install.sh
 doc/
 
 {{- if (eq .chezmoi.os "darwin") }}
-.config/psd
 .config/fontconfig
 {{- end }}
 
