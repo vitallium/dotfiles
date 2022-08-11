@@ -11,6 +11,14 @@
   (map! :nvm "s" #'avy-goto-char-timer)
   (setq avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
 
+(after! evil
+  ;; Switch windows with control key.
+  (map! "C-h" #'evil-window-left
+        "C-j" #'evil-window-down
+        "C-k" #'evil-window-up
+        "C-l" #'evil-window-right)
+  )
+
 (use-package reverse-im
   :config
   (reverse-im-activate "russian-computer"))
