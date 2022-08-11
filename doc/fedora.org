@@ -57,7 +57,7 @@
   - [[#key-bindings][Key bindings]]
   - [[#fonts][Fonts]]
   - [[#enable-minimizemaximize-buttons][Enable minimize,maximize buttons]]
-  - [[#extensions][Extensions]]
+  - [[#framework-laptop-configuration][Framework Laptop configuration]]
 
 * Post installation steps
 ** Install updates
@@ -216,7 +216,7 @@ dnf install -y https://prerelease.keybase.io/keybase_amd64.rpm
 ** Enable Google Chrome repo and install it
 #+begin_src shell :dir /sudo::
 dnf config-manager --set-enabled google-chrome
-dnf install -y google-chrome-stable
+dnf install -y google-chrome-stable chromedriver
 #+end_src
 
 ** Enable [[https://github.com/lassekongo83/adw-gtk3][adw3]] copr and install ~adwaita~ theme for legacy applications
@@ -509,10 +509,20 @@ gsettings set org.gnome.desktop.wm.preferences titlebar-font "Source Sans 3 Semi
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
 #+end_src
 
-** Extensions
-*** CPU Power
-Do not forget to logout and login again.
+** Framework Laptop configuration
+*** Configure power saving
 #+begin_src shell :dir /sudo::
-dnf copr enable -y fin-ger/cpupower
-dnf install -y gnome-shell-extension-cpupower
+sudo grubby --update-kernel=ALL --args="nvme.noacpi=1"
+sudo grubby --update-kernel=ALL --args=mem_sleep_default=deep
+#+end_src
+
+Enable audio power saving.
+#+begin_src shell :dir /sudo::
+echo 'options snd_hda_intel power_save=1' > /etc/modprobe.d/audio_powersave.conf
+#+end_src
+
+Enable Wi-Fi power saving.
+#+begin_src shell :dir /sudo::
+echo 'options iwlwifi power_save=1' > /etc/modprobe.d/iwlwifi.conf
+echo 'options iwlwifi power_save=1' >> /etc/modprobe.d/iwlwifi.conf
 #+end_src
