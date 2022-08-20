@@ -5,7 +5,14 @@
   - [[#common-configuration][Common configuration]]
   - [[#fedora-configuration-for-my-framework-laptop][Fedora configuration for my Framework Laptop]]
   - [[#macos-configuration-for-my-work-laptop][macOS configuration for my work laptop]]
-- [[#plans][Plans]]
+- [[#todo][TODO]]
+  - [[#add-macos-configuration][Add ~macOS~ configuration.]]
+  - [[#add-tpm][Add tpm]]
+  - [[#add-vim-configuration][Add vim configuration]]
+  - [[#revise-tmux-configuration][Revise tmux configuration]]
+  - [[#extensions-settings][Extensions settings]]
+  - [[#add-sublime-text-and-sublime-merge][Add Sublime Text and Sublime Merge]]
+  - [[#add-brave-browser][Add Brave Browser]]
 
 * What's inside
 ** Common configuration
@@ -23,13 +30,15 @@
   - [[https://extensions.gnome.org/extension/595/autohide-battery/][Autohide Battery]]
   - [[https://extensions.gnome.org/extension/1460/vitals/][Vitals]]
   - [[https://extensions.gnome.org/extension/3560/mullvad-indicator/][Mullvad Indicator]]
-  - [[https://extensions.gnome.org/extension/906/sound-output-device-chooser/][Sound Input & Output Device Chooser]]
   - [[https://extensions.gnome.org/extension/3193/blur-my-shell/][Blur my Shell]]
-  - [[https://extensions.gnome.org/extension/1112/screenshot-tool/][Screenshot Tool]]
-  - [[https://extensions.gnome.org/extension/5165/upower-battery/][UPower Battery]]
   - [[https://extensions.gnome.org/extension/5090/space-bar/][Space Bar]]
   - [[https://github.com/deinstapel/cpupower][CPU Power]]
 ** macOS configuration for my [[https://about.gitlab.com/][work]] laptop
-* Plans
-- [ ] Add screenshots?
-- [ ] Add ~macOS~ configuration.
+* TODO
+** TODO Add ~macOS~ configuration.
+** TODO Add tpm
+** TODO Add vim configuration
+** TODO Revise tmux configuration
+** TODO Extensions settings :fedora:
+** TODO Add Sublime Text and Sublime Merge
+** TODO Add Brave Browser
