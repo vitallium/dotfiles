@@ -24,7 +24,7 @@
   - [[#install-keybase][Install Keybase]]
   - [[#enable-google-chrome-repo-and-install-it][Enable Google Chrome repo and install it]]
   - [[#enable-adw3-copr-and-install-adwaita-theme-for-legacy-applications][Enable adw3 copr and install ~adwaita~ theme for legacy applications]]
-  - [[#enable-and-install-neovim-stuff][Enable and install ~neovim~ stuff]]
+  - [[#enable-and-install-vim-stuff][Enable and install ~vim~ stuff]]
   - [[#configure-btrfs-snapshots][Configure BTRFS snapshots]]
 - [[#configure-user-environment][Configure user environment]]
   - [[#enable-flathub][Enable flathub]]
@@ -57,6 +57,10 @@
   - [[#key-bindings][Key bindings]]
   - [[#fonts][Fonts]]
   - [[#enable-minimizemaximize-buttons][Enable minimize,maximize buttons]]
+  - [[#install-phinger-cursors][Install phinger-cursors]]
+  - [[#install-nord-theme-for-gnome-terminal][Install Nord theme for Gnome terminal]]
+  - [[#install-cpu-power][Install cpu-power]]
+  - [[#set-casp-lock-as-additional-ctrl][Set Casp Lock as additional Ctrl]]
   - [[#framework-laptop-configuration][Framework Laptop configuration]]
 
 * Post installation steps
@@ -196,7 +200,7 @@ dnf install -y git git-lfs git-delta \
                kernel-tools wl-clipboard \
                cmake ninja-build jq \
                celluloid transmission-gtk \
-               ShellCheck scrot ImageMagick \
+               ShellCheck ImageMagick \
                perl-core git-extras
 
 dnf groupinstall -y "Development Tools"
@@ -209,8 +213,7 @@ systemctl enable --now pcscd
 #+end_src
 
 ** Install [[https://keybase.io/][Keybase]]
-#+begin_src shell :dir
-/sudo::
+#+begin_src shell :dir /sudo::
 dnf install -y https://prerelease.keybase.io/keybase_amd64.rpm
 #+end_src
 ** Enable Google Chrome repo and install it
@@ -225,11 +228,9 @@ dnf copr enable -y nickavem/adw-gtk3
 dnf install -y adw-gtk3
 #+end_src
 
-** Enable and install ~neovim~ stuff
+** Enable and install ~vim~ stuff
 #+begin_src shell :dir /sudo::
-dnf copr enable -y vitallium/neovim-default-editor
-dnf install -y --allowerasing neovim-default-editor
-dnf remove -y nano
+dnf install -y --allowerasing vim-default-editor
 #+end_src
 
 TODO: Enable copr for symlinks ~vim => nvim~.
@@ -316,6 +317,7 @@ git clone https://github.com/rafaelmardojai/firefox-gnome-theme/ $HOME/Developme
 cd $HOME/Development/firefox-gnome-theme
 ./scripts/install.sh
 #+end_src
+
 ** Install [[https://asdf-vm.com/][asdf]]
 #+begin_src shell
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
@@ -327,6 +329,7 @@ git clone https://github.com/vitallium/dotfiles.git $HOME/Development/dotfiles
 cd $HOME/Development/dotfiles
 ./install.sh
 #+end_src
+
 ** Clean up unused directories and bookmarks
 #+begin_src shell
 rm -rf ~/Documents ~/Music ~/Public ~/Templates ~/Desktop
@@ -456,6 +459,12 @@ dnf install -y dconf-editor \
 nautilus -q
 #+end_src
 
+Install ~gnome-shell~ with patches:
+#+begin_src shell :dir /sudo::
+dnf copr enable -y calcastor/gnome-patched
+dnf upgrade -y --refresh
+#+end_src
+
 ** Theme and user interface
 #+begin_src shell
 gsettings set org.gnome.desktop.interface clock-show-weekday true
@@ -468,10 +477,12 @@ Set the application on the dash.
 #+begin_src shell
 gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'emacs.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'org.telegram.desktop.desktop']"
 #+end_src
+
 *** Adjust search locations
 #+begin_src shell
 gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.clocks.desktop']"
 #+end_src
+
 ** Peripherals
 Enable blazingly fast keyboard repeat.
 #+begin_src shell
@@ -507,6 +518,33 @@ gsettings set org.gnome.desktop.wm.preferences titlebar-font "Source Sans 3 Semi
 ** Enable minimize,maximize buttons
 #+begin_src shell
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
+#+end_src
+
+** Install [[https://github.com/phisch/phinger-cursors][phinger-cursors]]
+#+begin_src shell :dir /sudo::
+wget -cO- https://github.com/phisch/phinger-cursors/releases/latest/download/phinger-cursors-variants.tar.bz2 | tar xfj - -C /usr/share/icons
+#+end_src
+
+And enable them.
+#+begin_src shell
+gsettings set org.gnome.desktop.interface cursor-theme "phinger-cursors"
+#+end_src
+
+** Install Nord theme for Gnome terminal
+#+begin_src shell
+git clone --depth=1 https://github.com/arcticicestudio/nord-gnome-terminal.git /tmp/nord-gnome-terminal &&
+cd /tmp/nord-gnome-terminal && ./src/nord.sh && rm -rf /tmp/nord-gnome-terminal
+#+end_src
+
+** Install [[https://github.com/deinstapel/cpupower][cpu-power]]
+#+begin_src shell :dir /sudo::
+dnf copr enable -y fin-ger/cpupower
+dnf install -y gnome-shell-extension-cpupower
+#+end_src
+
+** Set Casp Lock as additional Ctrl
+#+begin_src shell
+gsettings set org.gnome.desktop.input-sources xkb-options ['caps:ctrl_modifier']
 #+end_src
 
 ** Framework Laptop configuration
