@@ -61,6 +61,7 @@
   - [[#install-nord-theme-for-gnome-terminal][Install Nord theme for Gnome terminal]]
   - [[#install-cpu-power][Install cpu-power]]
   - [[#set-casp-lock-as-additional-ctrl][Set Casp Lock as additional Ctrl]]
+  - [[#install-brave-browser][Install Brave Browser]]
   - [[#framework-laptop-configuration][Framework Laptop configuration]]
 
 * Post installation steps
@@ -545,6 +546,12 @@ dnf install -y gnome-shell-extension-cpupower
 ** Set Casp Lock as additional Ctrl
 #+begin_src shell
 gsettings set org.gnome.desktop.input-sources xkb-options ['caps:ctrl_modifier']
+
+** Install Brave Browser
+#+begin_src shell :dir /sudo::
+dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+dnf install -y brave-browser
 #+end_src
 
 ** Framework Laptop configuration
