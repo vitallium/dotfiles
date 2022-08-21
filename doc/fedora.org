@@ -189,7 +189,7 @@ dnf install -y make gcc-c++ gcc make bzip2 \
                openssl-devel libyaml-devel libffi-devel \
                readline-devel zlib-devel gdbm-devel ncurses-devel \
                sqlite sqlite-devel tk-devel xz-devel \
-               m4 ncurses-devel autoconf
+               m4 ncurses-devel autoconf re2 re2-devel libcurl-devel libuuid-devel
 #+end_src
 
 ** Install other packages I use
