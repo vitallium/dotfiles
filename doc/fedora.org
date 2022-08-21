@@ -32,7 +32,7 @@
   - [[#install-git-lfs][Install ~git-lfs~]]
   - [[#enable-profile-sync-daemon][Enable ~profile-sync-daemon~]]
   - [[#install-firefox-gnome-theme][Install firefox-gnome-theme]]
-  - [[#install-asdf][Install asdf]]
+  - [[#install-tmux-plugin-manager][Install Tmux Plugin Manager]]
   - [[#install-dotfiles][Install dotfiles]]
   - [[#clean-up-unused-directories-and-bookmarks][Clean up unused directories and bookmarks]]
   - [[#install-fonts][Install fonts]]
@@ -318,9 +318,9 @@ cd $HOME/Development/firefox-gnome-theme
 ./scripts/install.sh
 #+end_src
 
-** Install [[https://asdf-vm.com/][asdf]]
+** Install [[https://github.com/tmux-plugins/tpm][Tmux Plugin Manager]]
 #+begin_src shell
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 #+end_src
 
 ** Install [[https://github.com/vitallium/dotfiles][dotfiles]]

@@ -7,7 +7,6 @@
   - [[#macos-configuration-for-my-work-laptop][macOS configuration for my work laptop]]
 - [[#todo][TODO]]
   - [[#add-macos-configuration][Add ~macOS~ configuration.]]
-  - [[#add-tpm][Add tpm]]
   - [[#add-vim-configuration][Add vim configuration]]
   - [[#revise-tmux-configuration][Revise tmux configuration]]
   - [[#extensions-settings][Extensions settings]]
@@ -36,7 +35,6 @@
 ** macOS configuration for my [[https://about.gitlab.com/][work]] laptop
 * TODO
 ** TODO Add ~macOS~ configuration.
-** TODO Add tpm
 ** TODO Add vim configuration
 ** TODO Revise tmux configuration
 ** TODO Extensions settings :fedora:
