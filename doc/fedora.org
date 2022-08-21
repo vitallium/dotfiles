@@ -545,7 +545,8 @@ dnf install -y gnome-shell-extension-cpupower
 
 ** Set Casp Lock as additional Ctrl
 #+begin_src shell
-gsettings set org.gnome.desktop.input-sources xkb-options ['caps:ctrl_modifier']
+gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier']"
+#+end_src
 
 ** Install Brave Browser
 #+begin_src shell :dir /sudo::
