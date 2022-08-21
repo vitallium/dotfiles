@@ -62,6 +62,7 @@
   - [[#install-cpu-power][Install cpu-power]]
   - [[#set-casp-lock-as-additional-ctrl][Set Casp Lock as additional Ctrl]]
   - [[#install-brave-browser][Install Brave Browser]]
+  - [[#install-sublime-text-and-sublime-merge][Install Sublime Text and Sublime Merge]]
   - [[#framework-laptop-configuration][Framework Laptop configuration]]
 
 * Post installation steps
@@ -553,6 +554,13 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier'
 dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
 rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 dnf install -y brave-browser
+#+end_src
+
+** Install Sublime Text and Sublime Merge
+#+begin_src shell :dir /sudo::
+rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+dnf install -y sublime-text sublime-merge
 #+end_src
 
 ** Framework Laptop configuration

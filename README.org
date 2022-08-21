@@ -10,7 +10,6 @@
   - [[#add-vim-configuration][Add vim configuration]]
   - [[#revise-tmux-configuration][Revise tmux configuration]]
   - [[#extensions-settings][Extensions settings]]
-  - [[#add-sublime-text-and-sublime-merge][Add Sublime Text and Sublime Merge]]
 
 * What's inside
 ** Common configuration
@@ -37,4 +36,3 @@
 ** TODO Add vim configuration
 ** TODO Revise tmux configuration
 ** TODO Extensions settings :fedora:
-** TODO Add Sublime Text and Sublime Merge
