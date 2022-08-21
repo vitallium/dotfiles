@@ -559,7 +559,8 @@ dnf install -y brave-browser
 *** Configure power saving
 #+begin_src shell :dir /sudo::
 sudo grubby --update-kernel=ALL --args="nvme.noacpi=1"
-sudo grubby --update-kernel=ALL --args=mem_sleep_default=deep
+sudo grubby --update-kernel=ALL --args="mem_sleep_default=deep"
+sudo grubby --update-kernel=ALL --args="nmi_watchdog=0"
 #+end_src
 
 Enable audio power saving.
