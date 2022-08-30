@@ -190,7 +190,9 @@ dnf install -y make gcc-c++ gcc make bzip2 \
                openssl-devel libyaml-devel libffi-devel \
                readline-devel zlib-devel gdbm-devel ncurses-devel \
                sqlite sqlite-devel tk-devel xz-devel \
-               m4 ncurses-devel autoconf re2 re2-devel libcurl-devel libuuid-devel
+               m4 ncurses-devel autoconf re2 re2-devel \
+               libcurl-devel libuuid-devel \
+               libvterm-devel gpgme-devel icu
 #+end_src
 
 ** Install other packages I use
@@ -283,6 +285,7 @@ Configure ~grub2~ to use ~root~ subvolume.
 btrfs subvolume set-default 257 /
 grubby --update-kernel=ALL --remove-args="rootflags=subvol=root"
 #+end_src
+
 * Configure user environment
 ** Enable [[https://flatpak.org/setup/Fedora][flathub]]
 #+begin_src shell :dir /sudo::
@@ -298,7 +301,12 @@ flatpak install -y flathub com.discordapp.Discord \
                            us.zoom.Zoom \
                            com.slack.Slack \
                            com.github.tchx84.Flatseal \
-                           org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
+                           org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark \
+                           re.sonny.Junction \
+                           com.belmoussaoui.Obfuscate \
+                           com.getpostman.Postman \
+                           com.obsproject.Studio \
+                           com.usebottles.bottles
 #+end_src
 
 ** Install ~git-lfs~
@@ -344,12 +352,6 @@ Install ~Etoile~ variant for Org mode in Emacs.
 #+begin_src shell :dir /sudo::
 dnf copr enable -y peterwu/iosevka
 dnf install -y iosevka-etoile-fonts
-#+end_src
-
-*** Adobe Pro fonts
-#+begin_src shell :dir /sudo::
-dnf install -y adobe-source-sans-pro-fonts \
-               adobe-source-serif-pro-fonts
 #+end_src
 
 ** Install docker
@@ -453,9 +455,10 @@ cargo install fd-find
 ** Install packages
 #+begin_src shell :dir /sudo::
 dnf install -y dconf-editor \
-               papirus-icon-theme \
                webp-pixbuf-loader \
-               gthumb
+               gthumb \
+               tilix \
+               tilix-nautilus
 
 # Restart nautilus
 nautilus -q
@@ -472,7 +475,6 @@ dnf upgrade -y --refresh
 gsettings set org.gnome.desktop.interface clock-show-weekday true
 gsettings set org.gnome.desktop.interface font-antialiasing "rgba"
 gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"
-gsettings set org.gnome.desktop.interface icon-theme "Papirus"
 #+end_src
 
 Set the application on the dash.
@@ -492,7 +494,7 @@ gsettings set org.gnome.desktop.peripherals.keyboard delay 180
 #+end_src
 
 ** Key bindings
-#+begin_src shell
+#+begin_src shell :shebang "#!/bin/bash"
 gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Super>h']"
 gsettings set org.gnome.mutter.keybindings toggle-tiled-right "['<Super>l']"
 
@@ -501,15 +503,33 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super
 gsettings set org.gnome.desktop.wm.keybindings minimize "['<Super>apostrophe']"
 gsettings set org.gnome.desktop.wm.keybindings maximize "['<Super>k']"
 gsettings set org.gnome.desktop.wm.keybindings unmaximize "['<Super>j']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"
 
-for app_id in (seq 1 9); gsettings set org.gnome.shell.keybindings switch-to-application-$app_id "[]"; end
+END=9; for num in $(seq 1 $END); do
+  gsettings set org.gnome.shell.keybindings switch-to-application-$num "[]";
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$num "['<Super>$num']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$num "['<Super><Shift>$num']"
+done
 #+end_src
 
 ** Fonts
+Trying the PopOS font configuration.
+#+begin_src shell :dir /sudo::
+dnf install -y 'mozilla-fira*' 'google-roboto*'
+#+end_src
+
+#+begin_src shell
+gsettings set org.gnome.desktop.interface document-font-name "Roboto Slab 11"
+gsettings set org.gnome.desktop.interface font-name "Fira Sans Semi-Light 10"
+gsettings set org.gnome.desktop.interface monospace-font-name "Source Code Pro 10"
+gsettings set org.gnome.desktop.wm.preferences titlebar-font "Source Sans 3 Semi-Bold 10"
+#+end_src
+
+My previous font settings.
+#+begin_src shell :dir /sudo::
+dnf install -y adobe-source-sans-pro-fonts \
+               adobe-source-serif-pro-fonts
+#+end_src
+
 #+begin_src shell
 gsettings set org.gnome.desktop.interface document-font-name "Source Sans 3 Regular 11"
 gsettings set org.gnome.desktop.interface font-name "Source Sans 3 Regular 11"
