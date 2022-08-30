@@ -4,6 +4,7 @@ marked
 neovim
 typescript
 typescript-language-server
+vls
 vscode-css-languageserver-bin
 vscode-json-languageserver
 yalc
