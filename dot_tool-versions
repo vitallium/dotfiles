@@ -1,5 +1,5 @@
-nodejs 16.16.0
+nodejs 16.17.0
 ruby 2.7.6
 python system
 direnv 2.32.1
-golang 1.18.4
+golang 1.18.5
