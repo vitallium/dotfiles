@@ -36,7 +36,7 @@
 [delta]
   features = side-by-side line-numbers decorations
   whitespace-error-style = 22 reverse
-  syntax-theme = Nord
+  syntax-theme = GitHub
 
 [interactive]
   diffFilter = delta --color-only
@@ -54,5 +54,6 @@
 
 [includeIf "gitdir:~/Development/gitlab/"]
   path = ~/.config/git/gitlab
+
 [gpg]
-	program = gpg2
+  program = gpg2
