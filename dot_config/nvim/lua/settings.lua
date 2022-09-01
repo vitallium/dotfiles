@@ -32,8 +32,8 @@ vim.opt.relativenumber = true                -- Enable relative line numbers
 vim.opt.showmatch = true                     -- Show matching braces
 vim.opt.colorcolumn = '100'                  -- Fill column
 vim.opt.termguicolors = true                 -- Enable TrueColor support
-vim.opt.background = 'dark'                  -- Set background to dark
-vim.cmd('colorscheme nord')        -- Set theme to Nord
+vim.opt.background = 'light'                 -- Set background to light
+vim.cmd('colorscheme modus-operandi')        -- Set theme to modus operandi
 
 -- Status line
 require('lualine').setup {
