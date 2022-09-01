@@ -3,7 +3,7 @@
 ;; Theme and font settings
 (setq doom-font (font-spec :family "MonoLisa" :size 18)
       doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :size 22)
-      doom-theme 'doom-nord
+      doom-theme 'modus-operandi
       display-line-numbers-type nil
       ;; Do not use variable pitch font for treemacs.
       doom-themes-treemacs-enable-variable-pitch nil)
