@@ -71,3 +71,4 @@
   :recipe (:host github :repo "Fuco1/org-pretty-table"))
 
 (package! modus-themes)
+(package! dimmer)
