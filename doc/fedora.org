@@ -58,7 +58,6 @@
   - [[#fonts][Fonts]]
   - [[#enable-minimizemaximize-buttons][Enable minimize,maximize buttons]]
   - [[#install-phinger-cursors][Install phinger-cursors]]
-  - [[#install-nord-theme-for-gnome-terminal][Install Nord theme for Gnome terminal]]
   - [[#install-cpu-power][Install cpu-power]]
   - [[#set-casp-lock-as-additional-ctrl][Set Casp Lock as additional Ctrl]]
   - [[#install-brave-browser][Install Brave Browser]]
@@ -151,7 +150,7 @@ dnf install -y intel-media-driver ffmpeg libva \
 
 Enable Intel GuC and HuC and Framebuffer compression.
 #+begin_src shell :dir /sudo::
-echo 'options i915 enable_guc=2 enable_fbc=3' > /etc/modprobe.d/i915.conf
+echo 'options i915 enable_fbc=1' > /etc/modprobe.d/i915.conf
 #+end_src
 
 Verify options for ~i915~.
@@ -234,7 +233,8 @@ dnf install -y adw-gtk3
 
 ** Enable and install ~vim~ stuff
 #+begin_src shell :dir /sudo::
-dnf install -y --allowerasing vim-default-editor
+dnf copr enable -y vitallium/neovim-default-editor
+dnf install -y --allowerasing neovim-default-editor
 #+end_src
 
 TODO: Enable copr for symlinks ~vim => nvim~.
@@ -457,8 +457,7 @@ cargo install fd-find
 dnf install -y dconf-editor \
                webp-pixbuf-loader \
                gthumb \
-               tilix \
-               tilix-nautilus
+               kitty
 
 # Restart nautilus
 nautilus -q
@@ -550,12 +549,6 @@ wget -cO- https://github.com/phisch/phinger-cursors/releases/latest/download/phi
 And enable them.
 #+begin_src shell
 gsettings set org.gnome.desktop.interface cursor-theme "phinger-cursors"
-#+end_src
-
-** Install Nord theme for Gnome terminal
-#+begin_src shell
-git clone --depth=1 https://github.com/arcticicestudio/nord-gnome-terminal.git /tmp/nord-gnome-terminal &&
-cd /tmp/nord-gnome-terminal && ./src/nord.sh && rm -rf /tmp/nord-gnome-terminal
 #+end_src
 
 ** Install [[https://github.com/deinstapel/cpupower][cpu-power]]
