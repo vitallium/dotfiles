@@ -1,15 +1,9 @@
 ;;; $DOOMDIR/+ui.el -*- lexical-binding: t; -*-
 
-(use-package! modus-themes
-  :init
-  (modus-themes-load-themes))
-
-(map! "<f5>" #'modus-themes-toggle)
-
 ;; Theme and font settings
-(setq doom-font (font-spec :family "PragmataPro Mono Liga" :size 23)
+(setq doom-font (font-spec :family "MonoLisa" :size 20)
       doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :size 22)
-      doom-theme 'modus-operandi
+      doom-theme 'doom-tokyo-night
       display-line-numbers-type nil
       ;; Do not use variable pitch font for treemacs.
       doom-themes-treemacs-enable-variable-pitch nil

@@ -18,8 +18,8 @@ require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   -- modus themes
   use 'ishan9299/modus-theme-vim'
-  -- Nord
-  use 'arcticicestudio/nord-vim'
+  -- Tokyo Night
+  use 'folke/tokyonight.nvim'
   -- Fancier statusline
   use 'nvim-lualine/lualine.nvim'
   -- tmux integration

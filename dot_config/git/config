@@ -34,9 +34,10 @@
   show = delta
 
 [delta]
-  features = side-by-side line-numbers decorations
-  whitespace-error-style = 22 reverse
-  syntax-theme = GitHub
+  navigate = true
+  light = false
+  line-numbers = true
+  syntax-theme = Enki-Tokyo-Night
 
 [interactive]
   diffFilter = delta --color-only
@@ -57,3 +58,6 @@
 
 [gpg]
   program = gpg2
+
+[fetch]
+  prune = true

@@ -32,14 +32,14 @@ vim.opt.relativenumber = true                -- Enable relative line numbers
 vim.opt.showmatch = true                     -- Show matching braces
 vim.opt.colorcolumn = '100'                  -- Fill column
 vim.opt.termguicolors = true                 -- Enable TrueColor support
-vim.opt.background = 'light'                 -- Set background to light
-vim.cmd('colorscheme modus-operandi')        -- Set theme to modus operandi
+vim.opt.background = 'dark'                  -- Set background to dark
+vim.cmd('colorscheme tokyonight-night')      -- Set theme to tokyonight-night
 
 -- Status line
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = onedark,
+    theme = 'tokyonight',
     component_separators = '|',
     section_separators = '',
   },
