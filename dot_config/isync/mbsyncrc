@@ -14,8 +14,8 @@ IMAPStore gmail-remote
 Account gitlab
 
 MaildirStore gmail-local
-Path ~/Mail/gitlab/
-Inbox ~/Mail/gitlab/Inbox
+Path ~/.mail/gitlab/
+Inbox ~/.mail/gitlab/Inbox
 SubFolders Legacy
 
 Channel gmail-inbox
@@ -59,8 +59,8 @@ IMAPStore fastmail-remote
 Account fastmail
 
 MaildirStore fastmail-local
-Path ~/Mail/fastmail/
-Inbox ~/Mail/fastmail/Inbox
+Path ~/.mail/fastmail/
+Inbox ~/.mail/fastmail/Inbox
 # The SubFolders option allows to represent all
 # IMAP subfolders as local subfolders
 SubFolders Verbatim
