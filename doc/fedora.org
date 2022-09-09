@@ -10,7 +10,6 @@
   - [[#remove-redundant-stuff][Remove redundant stuff]]
   - [[#configure-dnf][Configure ~dnf~]]
   - [[#enable-fstrim][Enable ~fstrim~]]
-  - [[#adjust-btrfs-mount-options-taken-from-here][Adjust ~btrfs~ mount options (taken from here)]]
   - [[#change-default-user-shell-to-fish][Change default user shell to ~fish~]]
   - [[#install-gnome-extensions-applications][Install Gnome extensions applications]]
   - [[#enable-rpm-fusion-repositories][Enable RPM Fusion repositories]]
@@ -33,12 +32,12 @@
   - [[#enable-profile-sync-daemon][Enable ~profile-sync-daemon~]]
   - [[#install-firefox-gnome-theme][Install firefox-gnome-theme]]
   - [[#install-tmux-plugin-manager][Install Tmux Plugin Manager]]
-  - [[#install-dotfiles][Install dotfiles]]
   - [[#clean-up-unused-directories-and-bookmarks][Clean up unused directories and bookmarks]]
   - [[#install-fonts][Install fonts]]
   - [[#install-docker][Install docker]]
   - [[#install-protonvpn][Install ProtonVPN]]
   - [[#install-mullvadvpn][Install MullvadVPN]]
+  - [[#install-xanmod-kernel][Install XanMod Kernel]]
 - [[#configure-rust-development-environment][Configure Rust development environment]]
   - [[#install-rustup][Install rustup]]
   - [[#install-fish-completions-for-rustup][Install ~fish~ completions for ~rustup~]]
@@ -111,18 +110,6 @@ echo 'deltarpm=true' | tee -a /etc/dnf/dnf.conf
 systemctl enable fstrim.timer
 #+end_src
 
-** Adjust ~btrfs~ mount options (taken from [[https://mutschler.dev/linux/fedora-post-install/#btrfs-filesystem-optimizations][here]])
-- ~ssd~: use SSD specific options for optimal use on SSD and NVME
-- ~noatime~: prevent frequent disk writes by instructing the Linux kernel not to store the last access time of files and folders
-- ~space_cache~: allows btrfs to store free space cache on the disk to make caching of a block group much quicker
-- ~commit=120~: time interval in which data is written to the filesystem (value of 120 is taken from Manjaro’s minimal iso)
-- ~compress=zstd~: allows to specify the compression algorithm which we want to use. btrfs provides lzo, zstd and zlib compression algorithms. Based on some Phoronix test cases, zstd seems to be the better performing candidate.
-- ~discard=async~: Btrfs Async Discard Support Looks To Be Ready For Linux 5.6.
-
-Remount all paritions.
-#+begin_src shell :dir /sudo::
-mount -a
-#+end_src
 ** Change default user shell to ~fish~
 #+begin_src shell :dir /sudo::
 dnf install -y fish util-linux-user
@@ -307,6 +294,8 @@ flatpak install -y flathub com.discordapp.Discord \
                            com.getpostman.Postman \
                            com.obsproject.Studio \
                            com.usebottles.bottles
+
+xdg-settings set default-web-browser re.sonny.Junction.desktop
 #+end_src
 
 ** Install ~git-lfs~
@@ -331,13 +320,6 @@ cd $HOME/Development/firefox-gnome-theme
 ** Install [[https://github.com/tmux-plugins/tpm][Tmux Plugin Manager]]
 #+begin_src shell
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-#+end_src
-
-** Install [[https://github.com/vitallium/dotfiles][dotfiles]]
-#+begin_src shell
-git clone https://github.com/vitallium/dotfiles.git $HOME/Development/dotfiles
-cd $HOME/Development/dotfiles
-./install.sh
 #+end_src
 
 ** Clean up unused directories and bookmarks
@@ -383,7 +365,13 @@ dnf install -y protonvpn
 
 ** Install MullvadVPN
 #+begin_src shell :dir /sudo::
-dnf install -y https://mullvad.net/media/app/MullvadVPN-2022.2_x86_64.rpm
+dnf install -y https://mullvad.net/media/app/MullvadVPN-2022.4_x86_64.rpm
+#+end_src
+
+** Install XanMod Kernel
+#+begin_src shell :dir /sudo::
+sudo dnf copr enable -t rmnscnce/kernel-xanmod
+sudo dnf install kernel-xanmod-edge -y
 #+end_src
 
 * Configure Rust development environment
@@ -580,7 +568,6 @@ dnf install -y sublime-text sublime-merge
 *** Configure power saving
 #+begin_src shell :dir /sudo::
 sudo grubby --update-kernel=ALL --args="nvme.noacpi=1"
-sudo grubby --update-kernel=ALL --args="mem_sleep_default=deep"
 sudo grubby --update-kernel=ALL --args="nmi_watchdog=0"
 #+end_src
 
