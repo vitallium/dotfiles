@@ -39,13 +39,15 @@
   (setq lsp-ui-sideline-enable nil  ; no more useful than flycheck
         lsp-ui-doc-enable nil))     ; redundant with K
 
-;; (defun +js/fix-checker ()
-;;   "Fix LSP overwritten checkers."
-;;   (interactive)
-;;   (when (-contains? '(js2-mode rjsx-mode) major-mode)
-;;     (flycheck-select-checker 'javascript-eslint)))
+(setq flycheck-javascript-eslint-executable "eslint_d")
 
-;; (add-hook 'lsp-mode-hook #'+js/fix-checker)
+(defun +js/fix-checker ()
+  "Fix LSP overwritten checkers."
+  (interactive)
+  (when (-contains? '(js2-mode rjsx-mode) major-mode)
+    (flycheck-select-checker 'javascript-eslint)))
+
+(add-hook 'lsp-mode-hook #'+js/fix-checker)
 
 ;; Ruby
 (setq flycheck-disabled-checkers '(ruby-reek))

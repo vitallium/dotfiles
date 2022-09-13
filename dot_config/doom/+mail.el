@@ -29,13 +29,7 @@
                         (mu4e-trash-folder      . "/gitlab/Trash")
                         (mu4e-refile-folder     . "/gitlab/Archive")
                         (smtpmail-smtp-user     . "vslobodin@gitlab.com"))
-                      t)
-
-  (add-to-list 'mu4e-bookmarks
-               (make-mu4e-bookmark
-                :name "GitLab Inbox"
-                :query "maildir:\"/gitlab/Inbox\""
-                :key ?i)))
+                      t))
 
 ;; (use-package! mu4e-views
 ;;   :after mu4e

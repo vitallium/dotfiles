@@ -26,7 +26,6 @@
 
 (use-package! dimmer
   :init
-  (setq dimmer-fraction 0.4)
   (dimmer-configure-posframe)
   (dimmer-configure-hydra)
   (dimmer-configure-company-box)
