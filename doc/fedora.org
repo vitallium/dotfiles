@@ -113,7 +113,7 @@ systemctl enable fstrim.timer
 ** Change default user shell to ~fish~
 #+begin_src shell :dir /sudo::
 dnf install -y fish util-linux-user
-chsh -s $(which fish) vitaly
+chsh -s $(which fish) vslobodin
 #+end_src
 
 ** Install Gnome extensions applications
@@ -206,6 +206,7 @@ systemctl enable --now pcscd
 #+begin_src shell :dir /sudo::
 dnf install -y https://prerelease.keybase.io/keybase_amd64.rpm
 #+end_src
+
 ** Enable Google Chrome repo and install it
 #+begin_src shell :dir /sudo::
 dnf config-manager --set-enabled google-chrome
@@ -342,6 +343,9 @@ dnf config-manager -y \
     --add-repo \
     https://download.docker.com/linux/fedora/docker-ce.repo
 dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+#+end_src
+
+#+begin_src shell :dir /sudo::
 usermod -aG docker $USER
 #+end_src
 
@@ -370,7 +374,7 @@ dnf install -y https://mullvad.net/media/app/MullvadVPN-2022.4_x86_64.rpm
 
 ** Install XanMod Kernel
 #+begin_src shell :dir /sudo::
-sudo dnf copr enable -t rmnscnce/kernel-xanmod
+sudo dnf copr enable -y rmnscnce/kernel-xanmod
 sudo dnf install kernel-xanmod-edge -y
 #+end_src
 
