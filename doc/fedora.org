@@ -481,7 +481,7 @@ gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.clocks.de
 ** Peripherals
 Enable blazingly fast keyboard repeat.
 #+begin_src shell
-gsettings set org.gnome.desktop.peripherals.keyboard delay 180
+gsettings set org.gnome.desktop.peripherals.keyboard delay 150
 #+end_src
 
 ** Key bindings
