@@ -2,11 +2,7 @@ README.org
 install.sh
 doc/
 
-{{- if (eq .chezmoi.os "darwin") }}
+{{ if ne .chezmoi.os "darwin" }}
 .config/fontconfig
-{{- end }}
+{{ end }}
 
-{{- if (eq .chezmoi.os "linux") }}
-run_once_after_90-configure-macos.sh.tmpl
-run_once_before_10-install-packages-macos.sh.tmpl
-{{- end }}
