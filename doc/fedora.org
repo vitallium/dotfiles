@@ -573,6 +573,7 @@ dnf install -y sublime-text sublime-merge
 #+begin_src shell :dir /sudo::
 sudo grubby --update-kernel=ALL --args="nvme.noacpi=1"
 sudo grubby --update-kernel=ALL --args="nmi_watchdog=0"
+sudo grubby --update-kernel=ALL --args="ibt=off"
 #+end_src
 
 Enable audio power saving.
