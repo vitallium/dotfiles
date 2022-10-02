@@ -20,7 +20,6 @@
   - [[#instal-development-tools][Instal ~Development Tools~]]
   - [[#install-other-packages-i-use][Install other packages I use]]
   - [[#install-packages-for-yubikey][Install packages for ~Yubikey~]]
-  - [[#install-keybase][Install Keybase]]
   - [[#enable-google-chrome-repo-and-install-it][Enable Google Chrome repo and install it]]
   - [[#enable-adw3-copr-and-install-adwaita-theme-for-legacy-applications][Enable adw3 copr and install ~adwaita~ theme for legacy applications]]
   - [[#enable-and-install-vim-stuff][Enable and install ~vim~ stuff]]
@@ -200,11 +199,6 @@ dnf groupinstall -y "Development Tools"
 #+begin_src shell :dir /sudo::
 dnf install -y gpg gnupg2 gnupg-pkcs11-scd pcsc-tools pcsc-lite-ccid
 systemctl enable --now pcscd
-#+end_src
-
-** Install [[https://keybase.io/][Keybase]]
-#+begin_src shell :dir /sudo::
-dnf install -y https://prerelease.keybase.io/keybase_amd64.rpm
 #+end_src
 
 ** Enable Google Chrome repo and install it
