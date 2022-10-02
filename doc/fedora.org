@@ -60,7 +60,9 @@
   - [[#set-casp-lock-as-additional-ctrl][Set Casp Lock as additional Ctrl]]
   - [[#install-brave-browser][Install Brave Browser]]
   - [[#install-sublime-text-and-sublime-merge][Install Sublime Text and Sublime Merge]]
-  - [[#framework-laptop-configuration][Framework Laptop configuration]]
+- [[#framework-laptop-configuration][Framework Laptop configuration]]
+  - [[#configure-power-saving][Configure power saving]]
+  - [[#fix-freeze-during-virtual-machine-startup-with-11th-generation-intel-cpu][Fix freeze during virtual machine startup with 11th generation Intel CPU]]
 
 * Post installation steps
 ** Install updates
@@ -567,8 +569,8 @@ dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64
 dnf install -y sublime-text sublime-merge
 #+end_src
 
-** Framework Laptop configuration
-*** Configure power saving
+* Framework Laptop configuration
+** Configure power saving
 #+begin_src shell :dir /sudo::
 sudo grubby --update-kernel=ALL --args="nvme.noacpi=1"
 sudo grubby --update-kernel=ALL --args="nmi_watchdog=0"
@@ -584,7 +586,7 @@ Enable Wi-Fi power saving.
 echo 'options iwlwifi power_save=1 uapsd_disable=1' > /etc/modprobe.d/iwlwifi.conf
 echo 'options iwlmvm power_scheme=3' >> /etc/modprobe.d/iwlwifi.conf
 #+end_src
-*** [[https://wiki.archlinux.org/title/VirtualBox#Freeze_during_virtual_machine_startup_with_11th_generation_Intel_CPU][Fix freeze during virtual machine startup with 11th generation Intel CPU]]
+** [[https://wiki.archlinux.org/title/VirtualBox#Freeze_during_virtual_machine_startup_with_11th_generation_Intel_CPU][Fix freeze during virtual machine startup with 11th generation Intel CPU]]
 #+begin_src shell :dir /sudo::
 sudo grubby --update-kernel=ALL --args="ibt=off"
 #+end_src
