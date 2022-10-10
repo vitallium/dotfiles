@@ -7,6 +7,11 @@
       :desc "Auto fill"
       :n "t a" 'auto-fill-mode)
 
+;; Shortcut to open ranger
+(map! :leader
+      :prefix "f"
+      :desc "Ranger" "m" #'ranger)
+
 (after! avy
   (map! :nvm "s" #'avy-goto-char-timer)
   (setq avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))

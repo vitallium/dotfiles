@@ -1,18 +1,20 @@
 ;;; $DOOMDIR/+ui.el -*- lexical-binding: t; -*-
 
 ;; Theme and font settings
-(setq doom-font (font-spec :family "MonoLisa" :size 20)
-      doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :size 22)
-      doom-theme 'doom-tokyo-night
+(setq doom-font (font-spec :family "MonoLisa" :size 19)
+      doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :size 24)
+      doom-theme 'modus-operandi
       display-line-numbers-type nil
-      ;; Do not use variable pitch font for treemacs.
+      ;; Set the icons to be the same as in dired (all-the-icons)
+      doom-themes-treemacs-theme "doom-colors"
+      ;; Do not use variable pitch font for treemacs
       doom-themes-treemacs-enable-variable-pitch nil
       ;; use unicode as a fallback (instead of ASCII) when not using icons
       doom-modeline-unicode-fallback t
       ;; don't display the buffer encoding
       doom-modeline-buffer-encoding nil
       ;; I like a little padding for my modeline
-      doom-modeline-height 40
+      doom-modeline-height 30
       doom-modeline-buffer-file-name-style 'truncate-with-project
       highlight-indent-guides-method 'character
       highlight-indent-guides-responsive 'stack)

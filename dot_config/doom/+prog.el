@@ -1,5 +1,9 @@
 ;;; $DOOMDIR/+prog.el -*- lexical-binding: t; -*-
 
+(after! company
+  ;; Only complete when asked
+  (setq company-idle-delay nil))
+
 ;; JavaScript
 (use-package jest
   :after (js2-mode)
@@ -39,7 +43,7 @@
   (setq lsp-ui-sideline-enable nil  ; no more useful than flycheck
         lsp-ui-doc-enable nil))     ; redundant with K
 
-(setq flycheck-javascript-eslint-executable "eslint_d")
+;; (setq flycheck-javascript-eslint-executable "eslint_d")
 
 (defun +js/fix-checker ()
   "Fix LSP overwritten checkers."

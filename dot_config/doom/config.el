@@ -10,8 +10,21 @@
 (load! "+evil")
 (load! "+prog")
 (load! "+bindings.el")
-(load! "+mail.el")
 (load! "+org.el")
+
+(if IS-LINUX
+  (load! "+mail.el"))
+
+;; Convert images from unknown formats to PNG.
+(setq image-use-external-converter t)
+
+(after! ranger
+  ;; Show hidden files in ranger windows.
+  (setq ranger-show-hidden t))
+
+(after! treemacs
+  ;; Better git mode (requires Python 3).
+  (setq treemacs-git-mode 'deferred))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
