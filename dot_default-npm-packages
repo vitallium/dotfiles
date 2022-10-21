@@ -7,8 +7,7 @@ npm
 typescript
 typescript-language-server
 vls
-vscode-css-languageserver-bin
-vscode-json-languageserver
+vscode-langservers-extracted
 yalc
 yaml-language-server
 yarn
