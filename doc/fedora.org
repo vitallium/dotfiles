@@ -528,19 +528,6 @@ gsettings set org.gnome.desktop.interface monospace-font-name "Source Code Pro 1
 gsettings set org.gnome.desktop.wm.preferences titlebar-font "Source Sans 3 Semi-Bold 10"
 #+end_src
 
-My previous font settings.
-#+begin_src shell :dir /sudo::
-dnf install -y adobe-source-sans-pro-fonts \
-               adobe-source-serif-pro-fonts
-#+end_src
-
-#+begin_src shell
-gsettings set org.gnome.desktop.interface document-font-name "Source Sans 3 Regular 11"
-gsettings set org.gnome.desktop.interface font-name "Source Sans 3 Regular 11"
-gsettings set org.gnome.desktop.interface monospace-font-name "Source Code Pro 10"
-gsettings set org.gnome.desktop.wm.preferences titlebar-font "Source Sans 3 Semi-Bold 11"
-#+end_src
-
 ** Enable minimize,maximize buttons
 #+begin_src shell
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
