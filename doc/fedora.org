@@ -93,7 +93,7 @@ gsettings set org.gnome.desktop.interface cursor-size 32
 dnf remove -y cheese rhythmbox totem orca \
               gnome-contacts gnome-getting-started-docs \
               nautilus-sendto gnome-shell-extension-* \
-              libreoffice-* gnome-characters gnome-maps \
+              libreoffice-* gnome-characters \
               gnome-photos simple-scan virtualbox-guest-additions \
               gedit gnome-tour gnome-connections mediawriter yelp \
               podman
@@ -126,6 +126,10 @@ dnf install -y gnome-tweaks
 #+begin_src shell :dir /sudo::
 dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+dnf upgrade --refresh
+dnf groupupdate -y core
+dnf install -y rpmfusion-free-release-tainted
+dnf install -y dnf-plugins-core
 #+end_src
 
 ** Install drivers for Intel GPU
@@ -179,7 +183,7 @@ dnf install -y make gcc-c++ gcc make bzip2 \
                sqlite sqlite-devel tk-devel xz-devel \
                m4 ncurses-devel autoconf re2 re2-devel \
                libcurl-devel libuuid-devel \
-               libvterm-devel gpgme-devel icu
+               libvterm-devel gpgme-devel icu krb5-devel gtk4-devel
 #+end_src
 
 ** Install other packages I use
@@ -192,7 +196,7 @@ dnf install -y git git-lfs git-delta \
                cmake ninja-build jq \
                celluloid transmission-gtk \
                ShellCheck ImageMagick \
-               perl-core git-extras
+               perl-core git-extras htop
 
 dnf groupinstall -y "Development Tools"
 #+end_src
@@ -286,7 +290,6 @@ flatpak remote-modify flathub --enable
 flatpak install -y flathub com.discordapp.Discord \
                            com.spotify.Client \
                            org.telegram.desktop \
-                           us.zoom.Zoom \
                            com.slack.Slack \
                            com.github.tchx84.Flatseal \
                            org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark \
@@ -295,7 +298,7 @@ flatpak install -y flathub com.discordapp.Discord \
                            com.getpostman.Postman \
                            com.obsproject.Studio \
                            com.usebottles.bottles \
-                           org.gnome.Extensions
+                           com.mattjakeman.ExtensionManager
 
 xdg-settings set default-web-browser re.sonny.Junction.desktop
 #+end_src
@@ -474,11 +477,20 @@ Set the application on the dash.
 gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'emacs.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'org.telegram.desktop.desktop']"
 #+end_src
 
+Resize windows with ~Super+Right Click~:
+#+begin_src shell
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+#+end_src
+
 *** Adjust search locations
 #+begin_src shell
 gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.clocks.desktop']"
 #+end_src
-
+*** Nautilus
+Sort directories first.
+#+begin_src shell
+gsettings set org.gtk.Settings.FileChooser sort-directories-first true
+#+end_src
 ** Peripherals
 Enable blazingly fast keyboard repeat.
 #+begin_src shell
@@ -586,6 +598,7 @@ Enable Wi-Fi power saving.
 echo 'options iwlwifi power_save=1 uapsd_disable=1' > /etc/modprobe.d/iwlwifi.conf
 echo 'options iwlmvm power_scheme=3' >> /etc/modprobe.d/iwlwifi.conf
 #+end_src
+
 ** [[https://wiki.archlinux.org/title/VirtualBox#Freeze_during_virtual_machine_startup_with_11th_generation_Intel_CPU][Fix freeze during virtual machine startup with 11th generation Intel CPU]]
 #+begin_src shell :dir /sudo::
 sudo grubby --update-kernel=ALL --args="ibt=off"
