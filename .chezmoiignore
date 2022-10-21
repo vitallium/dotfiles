@@ -2,7 +2,6 @@ README.org
 install.sh
 doc/
 
-{{ if ne .chezmoi.os "darwin" }}
+{{-  if ne .chezmoi.os "linux" }}
 .config/fontconfig
-{{ end }}
-
+{{- end }}
