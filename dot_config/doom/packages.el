@@ -71,4 +71,7 @@
   :recipe (:host github :repo "Fuco1/org-pretty-table"))
 
 (package! dimmer)
-(package! modus-themes)
+(package! company-quickhelp)
+(package! treemacs-all-the-icons)
+
+(package! posframe)

@@ -1,9 +1,5 @@
 ;;; $DOOMDIR/+prog.el -*- lexical-binding: t; -*-
 
-(after! company
-  ;; Only complete when asked
-  (setq company-idle-delay nil))
-
 ;; JavaScript
 (use-package jest
   :after (js2-mode)
@@ -26,22 +22,28 @@
   (map! :leader
         :desc "Diagnostics" "c-" #'lsp-ui-flycheck-list
         :desc "Imenu" "c," #'lsp-ui-imenu)
-  (setq lsp-headerline-breadcrumb-enable-diagnostics nil
-        lsp-headerline-breadcrumb-enable nil
-        lsp-lens-enable t
-        lsp-ui-sideline-show-code-actions nil
-        lsp-ui-imenu--custom-mode-line-format ""
-        +lsp-company-backends '(company-capf company-yasnippet)
-          ;; If an LSP server isn't present when I start a prog-mode buffer, you
+  ;; Core
+  (setq lsp-headerline-breadcrumb-enable nil
+        lsp-signature-render-documentation nil
+        lsp-signature-function 'lsp-signature-posframe
+        lsp-semantic-tokens-enable t
+        ;; Smoother LSP features response in cost of performance (Most servers I use have good performance)
+        lsp-idle-delay 0.2
+        lsp-use-plists nil
+        ;; If an LSP server isn't present when I start a prog-mode buffer, you
         ;; don't need to tell me. I know. On some systems I don't care to have a
         ;; whole development environment for some ecosystems.
         lsp-enable-server-download nil
         lsp-enable-suggest-server-download nil
         lsp-eslint-package-manager "yarn")
   (remove-hook 'lsp-mode-hook #'+lsp-init-flycheck-or-flymake-h))
-(after! lsp-ui
-  (setq lsp-ui-sideline-enable nil  ; no more useful than flycheck
-        lsp-ui-doc-enable nil))     ; redundant with K
+
+(use-package! lsp-ui
+  :after lsp-mode
+  :commands lsp-ui-mode
+  :config
+  (setq lsp-ui-doc-enable nil
+        lsp-ui-peek-enable nil))
 
 ;; (setq flycheck-javascript-eslint-executable "eslint_d")
 

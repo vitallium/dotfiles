@@ -1,10 +1,15 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
+(general-auto-unbind-keys :off)
+(remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 (setq user-full-name "Vitaly Slobodin"
       user-mail-address "vslobodin@gitlab.com"
       read-process-output-max (* 1024 1024)
       load-prefer-newer t
-      scroll-margin 8)
+      scroll-margin 8
+      projectile-project-search-path '("~/Development/"))
 
 (load! "+ui")
 (load! "+evil")
