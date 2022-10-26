@@ -12,36 +12,29 @@ vim.cmd [[
   augroup end
 ]]
 
-local use = require('packer').use
-require('packer').startup(function()
+return require('packer').startup(function(use)
   -- Package manager
-  use 'wbthomason/packer.nvim'
-  -- modus themes
-  use 'ishan9299/modus-theme-vim'
-  -- Tokyo Night
-  use 'folke/tokyonight.nvim'
+  use('wbthomason/packer.nvim')
+  --
+  use 'nvim-lua/plenary.nvim'
+  use 'Mofiqul/dracula.nvim'
   -- Fancier statusline
   use 'nvim-lualine/lualine.nvim'
   -- tmux integration
   use 'christoomey/vim-tmux-navigator'
   -- A highly extendable fuzzy finder over lists
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
+  use 'nvim-telescope/telescope.nvim'
   -- Add git related info in the signs columns and popups
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use 'lewis6991/gitsigns.nvim'
   -- Highlight, edit, and navigate code using a fast incremental parsing library
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-  }
-  -- Additional textobjects for treesitter
-  use 'nvim-treesitter/nvim-treesitter-textobjects'
-
+  use("nvim-treesitter/nvim-treesitter", {
+        run = ":TSUpdate"
+    })
   -- LSP
   -- Integration with progress notifications
   use 'arkav/lualine-lsp-progress'
   -- Collection of configurations for built-in LSP client
   use 'neovim/nvim-lspconfig'
+  -- Magit for neovim
+  use 'TimUntersberger/neogit'
 end)

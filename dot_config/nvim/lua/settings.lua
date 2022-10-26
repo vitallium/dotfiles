@@ -33,53 +33,10 @@ vim.opt.showmatch = true                     -- Show matching braces
 vim.opt.colorcolumn = '100'                  -- Fill column
 vim.opt.termguicolors = true                 -- Enable TrueColor support
 vim.opt.background = 'dark'                  -- Set background to dark
-vim.cmd('colorscheme tokyonight-night')      -- Set theme to tokyonight-night
+vim.cmd('colorscheme dracula')      -- Set theme to tokyonight-night
 
--- Status line
-require('lualine').setup {
-  options = {
-    icons_enabled = false,
-    theme = 'tokyonight',
-    component_separators = '|',
-    section_separators = '',
-  },
-  sections = {
-    lualine_a = { 'mode' },
-    lualine_b = { 'filename' },
-    lualine_c = { 'lsp_progress' },
-    lualine_x = { 'filetype' },
-    lualine_y = { 'progress' },
-    lualine_z = { 'location' },
-  },
-}
-
--- Key bindings
 -- Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Files
-vim.api.nvim_set_keymap('n', '<leader>f', [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<cr>]], { noremap = true, silent = true })
-
--- Buffers
--- Delete current buffer
-vim.api.nvim_set_keymap('n', '<leader>bd', ':bdelete<CR>', { noremap = true, silent = true })
--- List all buffers
-vim.api.nvim_set_keymap(
-  'n',
-  '<leader>,',
-  [[<cmd>lua require('telescope.builtin').buffers({sort_lastused = true})<cr>]],
-  { noremap = true, silent = true }
-)
-
--- Gitsigns
-require('gitsigns').setup {
-  signs = {
-    add = { hl = 'GitGutterAdd', text = '+' },
-    change = { hl = 'GitGutterChange', text = '~' },
-    delete = { hl = 'GitGutterDelete', text = '_' },
-    topdelete = { hl = 'GitGutterDelete', text = '‾' },
-    changedelete = { hl = 'GitGutterChange', text = '~' },
-  },
-}
