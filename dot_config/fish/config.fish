@@ -1,7 +1,5 @@
 set -gx fish_greeting              ''
 
-. $__fish_config_dir/themes/tokyonight-night.fish
-
 # GPG
 set -x                             GPG_TTY (tty)
 set -x                             SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)

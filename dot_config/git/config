@@ -37,15 +37,10 @@
   navigate = true
   light = false
   line-numbers = true
-  syntax-theme = Enki-Tokyo-Night
+  syntax-theme = Dracula
 
 [interactive]
   diffFilter = delta --color-only
-
-[delta "decorations"]
-  commit-decoration-style = bold yellow box ul
-  file-style = bold yellow ul
-  file-decoration-style = none
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
