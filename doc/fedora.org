@@ -37,6 +37,10 @@
   - [[#install-protonvpn][Install ProtonVPN]]
   - [[#install-mullvadvpn][Install MullvadVPN]]
   - [[#install-xanmod-kernel][Install XanMod Kernel]]
+  - [[#install-brave-browser][Install Brave Browser]]
+  - [[#install-sublime-text-and-sublime-merge][Install Sublime Text and Sublime Merge]]
+  - [[#install-teleport][Install Teleport]]
+  - [[#install-lazygit][Install lazygit]]
 - [[#configure-rust-development-environment][Configure Rust development environment]]
   - [[#install-rustup][Install rustup]]
   - [[#install-fish-completions-for-rustup][Install ~fish~ completions for ~rustup~]]
@@ -58,8 +62,6 @@
   - [[#install-phinger-cursors][Install phinger-cursors]]
   - [[#install-cpu-power][Install cpu-power]]
   - [[#set-casp-lock-as-additional-ctrl][Set Casp Lock as additional Ctrl]]
-  - [[#install-brave-browser][Install Brave Browser]]
-  - [[#install-sublime-text-and-sublime-merge][Install Sublime Text and Sublime Merge]]
 - [[#framework-laptop-configuration][Framework Laptop configuration]]
   - [[#configure-power-saving][Configure power saving]]
   - [[#fix-freeze-during-virtual-machine-startup-with-11th-generation-intel-cpu][Fix freeze during virtual machine startup with 11th generation Intel CPU]]
@@ -183,7 +185,10 @@ dnf install -y make gcc-c++ gcc make bzip2 \
                sqlite sqlite-devel tk-devel xz-devel \
                m4 ncurses-devel autoconf re2 re2-devel \
                libcurl-devel libuuid-devel \
-               libvterm-devel gpgme-devel icu krb5-devel gtk4-devel
+               libvterm-devel gpgme-devel icu krb5-devel gtk4-devel \
+               libusb1-devel rpm-devel java-latest-openjdk
+
+dnf groupinstall -y "Development Tools"
 #+end_src
 
 ** Install other packages I use
@@ -196,9 +201,8 @@ dnf install -y git git-lfs git-delta \
                cmake ninja-build jq \
                celluloid transmission-gtk \
                ShellCheck ImageMagick \
-               perl-core git-extras htop
-
-dnf groupinstall -y "Development Tools"
+               perl-core git-extras htop \
+               GraphicsMagick microdnf yamllint
 #+end_src
 
 ** Install packages for ~Yubikey~
@@ -353,12 +357,6 @@ dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 usermod -aG docker $USER
 #+end_src
 
-Disable copy-on-write (COW).
-#+begin_src shell :dir /sudo::
-mkdir -p /var/lib/docker
-chattr +C /var/lib/docker
-#+end_src
-
 Enable and start ~systemd~ services.
 #+begin_src shell :dir /sudo::
 systemctl enable --now docker.service
@@ -373,13 +371,39 @@ dnf install -y protonvpn
 
 ** Install MullvadVPN
 #+begin_src shell :dir /sudo::
-dnf install -y https://mullvad.net/media/app/MullvadVPN-2022.4_x86_64.rpm
+dnf install -y https://mullvad.net/media/app/MullvadVPN-2022.5_x86_64.rpm
 #+end_src
 
 ** Install XanMod Kernel
 #+begin_src shell :dir /sudo::
-sudo dnf copr enable -y rmnscnce/kernel-xanmod
-sudo dnf install kernel-xanmod-edge -y
+dnf copr enable -y rmnscnce/kernel-xanmod
+dnf install kernel-xanmod-edge -y
+dnf upgrade -y
+#+end_src
+
+** Install Brave Browser
+#+begin_src shell :dir /sudo::
+dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+dnf install -y brave-browser
+#+end_src
+
+** Install Sublime Text and Sublime Merge
+#+begin_src shell :dir /sudo::
+rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+dnf install -y sublime-text sublime-merge
+#+end_src
+
+** Install Teleport
+#+begin_src shell :dir /sudo::
+dnf install -y https://cdn.teleport.dev/teleport-11.0.1-1.x86_64.rpm
+#+end_src
+
+** Install lazygit
+#+begin_src shell :dir /sudo::
+dnf copr enable -y atim/lazygit
+dnf install -y lazygit
 #+end_src
 
 * Configure Rust development environment
@@ -486,11 +510,13 @@ gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
 #+begin_src shell
 gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.clocks.desktop']"
 #+end_src
+
 *** Nautilus
 Sort directories first.
 #+begin_src shell
 gsettings set org.gtk.Settings.FileChooser sort-directories-first true
 #+end_src
+
 ** Peripherals
 Enable blazingly fast keyboard repeat.
 #+begin_src shell
@@ -554,25 +580,11 @@ dnf install -y gnome-shell-extension-cpupower
 gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier']"
 #+end_src
 
-** Install Brave Browser
-#+begin_src shell :dir /sudo::
-dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
-rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-dnf install -y brave-browser
-#+end_src
-
-** Install Sublime Text and Sublime Merge
-#+begin_src shell :dir /sudo::
-rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
-dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
-dnf install -y sublime-text sublime-merge
-#+end_src
-
 * Framework Laptop configuration
 ** Configure power saving
 #+begin_src shell :dir /sudo::
-sudo grubby --update-kernel=ALL --args="nvme.noacpi=1"
-sudo grubby --update-kernel=ALL --args="nmi_watchdog=0"
+grubby --update-kernel=ALL --args="nvme.noacpi=1"
+grubby --update-kernel=ALL --args="nmi_watchdog=0"
 #+end_src
 
 Enable audio power saving.
@@ -588,5 +600,5 @@ echo 'options iwlmvm power_scheme=3' >> /etc/modprobe.d/iwlwifi.conf
 
 ** [[https://wiki.archlinux.org/title/VirtualBox#Freeze_during_virtual_machine_startup_with_11th_generation_Intel_CPU][Fix freeze during virtual machine startup with 11th generation Intel CPU]]
 #+begin_src shell :dir /sudo::
-sudo grubby --update-kernel=ALL --args="ibt=off"
+grubby --update-kernel=ALL --args="ibt=off"
 #+end_src
