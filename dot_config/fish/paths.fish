@@ -1,11 +1,11 @@
 # Local stuff
-pathadd ~/.local/bin
+fish_add_path ~/.local/bin
 
 # jsvu
-pathadd ~/.jsvu
+fish_add_path ~/.jsvu
 
 # golang
-pathadd $GOBIN
+fish_add_path $GOBIN
 
 # rust
-pathadd ~/.cargo/bin
+fish_add_path ~/.cargo/bin
