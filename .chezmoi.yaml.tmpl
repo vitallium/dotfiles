@@ -1,10 +1,20 @@
 data:
   {{- if eq .chezmoi.os "linux" }}
+  hostname: serenity
   pinentry_bin: /usr/bin/pinentry-gnome3
   git_gpg: gpg2
+  fonts:
+    emacs:
+      monospace: 22
+      variable: 24
   {{- else if eq .chezmoi.os "darwin" }}
+  hostname: firefly
   pinentry_bin: /usr/bin/pinentry-mac
   git_gpg: gpg
+  fonts:
+    emacs:
+      monospace: 16
+      variable: 16
   {{- end }}
   asdf_version: v0.10.2
 format: yaml

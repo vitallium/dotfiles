@@ -4,8 +4,8 @@
 (use-package! treemacs-all-the-icons
   :after treemacs)
 
-(setq doom-font (font-spec :family "Source Code Pro" :size 22)
-      doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :size 24)
+(setq doom-font (font-spec :family "Source Code Pro" :size {{ .fonts.emacs.monospace }})
+      doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :size {{ .fonts.emacs.variable }})
       doom-theme 'doom-tokyo-night
       display-line-numbers-type nil
       ;; Set the icons to be the same as in dired (all-the-icons)

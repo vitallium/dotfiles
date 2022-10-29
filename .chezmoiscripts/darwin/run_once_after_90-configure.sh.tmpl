@@ -8,10 +8,10 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "firefly"
-sudo scutil --set HostName "firefly"
-sudo scutil --set LocalHostName "firefly"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "firefly"
+sudo scutil --set ComputerName "{{ .hostname }}"
+sudo scutil --set HostName "{{ .hostname }}"
+sudo scutil --set LocalHostName "{{ .hostname }}"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "{{ .hostname }}"
 
 # Set key repeat and disable press and hold
 defaults write -g InitialKeyRepeat -int 10
@@ -41,4 +41,9 @@ defaults write com.apple.finder QuitMenuItem -bool true
 defaults write com.apple.finder DisableAllAnimations -bool true
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-{{ end -}}
+
+# Setup fish
+sudo sh -c 'echo $(which fish) >> /etc/shells'
+
+sudo chsh -s $(which fish) $USER
+{{- end -}}
