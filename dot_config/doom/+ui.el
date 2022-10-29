@@ -4,7 +4,7 @@
 (use-package! treemacs-all-the-icons
   :after treemacs)
 
-(setq doom-font (font-spec :family "MonoLisa" :size 20 :weight 'semi-light)
+(setq doom-font (font-spec :family "Source Code Pro" :size 22)
       doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :size 24)
       doom-theme 'doom-tokyo-night
       display-line-numbers-type nil
