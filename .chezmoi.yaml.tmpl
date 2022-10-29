@@ -1,19 +1,10 @@
-{{- $name := "Vitaly Slobodin" -}}
-{{- $email := "vitaliy.slobodin@gmail.com" -}}
-{{- $gnome := false -}}
-{{- $darwin := false -}}
-
-{{- $hostname := .chezmoi.hostname -}}
-
-{{- if eq $hostname "serenity" -}}
-{{-   $gnome = true -}}
-{{- end -}}
-
-{{- if eq $hostname "firefly" -}}
-{{-   $darwin = true -}}
-{{- end -}}
-
 data:
-  gnome: {{ $gnome }}
-  darwin: {{ $darwin }}
+  {{- if eq .chezmoi.os "linux" }}
+  pinentry_bin: /usr/bin/pinentry-gnome3
+  git_gpg: gpg2
+  {{- else if eq .chezmoi.os "darwin" }}
+  pinentry_bin: /usr/bin/pinentry-mac
+  git_gpg: gpg
+  {{- end }}
+  asdf_version: v0.10.2
 format: yaml

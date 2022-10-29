@@ -2,9 +2,9 @@
 
 set -eufo pipefail
 
-# TODO: Instead of deleting the asdf we need to check if the directory exists and update asdf version
-rm -rf ~/.asdf
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
+if [[ ! -d "$HOME/.asdf" ]]; then
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch "{{ .asdf_version }}"
+fi
 
 # reload shell before installing asdf plugins
 . "$HOME/.asdf/asdf.sh"

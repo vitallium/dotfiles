@@ -2,6 +2,6 @@ README.org
 install.sh
 doc/
 
-{{-  if ne .chezmoi.os "linux" }}
+{{- if ne .chezmoi.os "linux" }}
 .config/fontconfig
 {{- end }}
