@@ -28,6 +28,7 @@ brew "imagemagick"
 brew "jq"
 brew "libiconv"
 brew "libyaml"
+brew "mas"
 brew "neovim"
 brew "ossp-uuid"
 brew "pinentry-mac"
@@ -70,3 +71,10 @@ cask "sublime-text"
 cask "telegram"
 cask "visual-studio-code"
 cask "zoom"
+mas "1Password for Safari", id: 1569813296
+mas "Amphetamine", id: 937984704
+mas "Keynote", id: 409183694
+mas "Magnet", id: 441258766
+mas "Monosnap", id: 540348655
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
