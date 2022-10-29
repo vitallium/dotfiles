@@ -5,10 +5,6 @@
   - [[#common-configuration][Common configuration]]
   - [[#fedora-configuration-for-my-framework-laptop][Fedora configuration for my Framework Laptop]]
   - [[#macos-configuration-for-my-work-laptop][macOS configuration for my work laptop]]
-- [[#todo][TODO]]
-  - [[#add-macos-configuration][Add ~macOS~ configuration.]]
-  - [[#add-vim-configuration][Add vim configuration]]
-  - [[#extensions-settings][Extensions settings]]
 
 * What's inside
 ** Common configuration
@@ -29,8 +25,6 @@
   - [[https://extensions.gnome.org/extension/3193/blur-my-shell/][Blur my Shell]]
   - [[https://extensions.gnome.org/extension/5090/space-bar/][Space Bar]]
   - [[https://github.com/deinstapel/cpupower][CPU Power]]
+*** TODO Extensions settings :fedora:
 ** macOS configuration for my [[https://about.gitlab.com/][work]] laptop
-* TODO
-** TODO Add ~macOS~ configuration.
-** TODO Add vim configuration
-** TODO Extensions settings :fedora:
+*** TODO Add ~macOS~ configuration :darwin:
