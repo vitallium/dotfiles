@@ -1,7 +1,7 @@
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'dracula-nvim',
+    theme = 'tokyonight',
     component_separators = '|',
     section_separators = '',
   },

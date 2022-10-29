@@ -14,10 +14,10 @@ vim.cmd [[
 
 return require('packer').startup(function(use)
   -- Package manager
-  use('wbthomason/packer.nvim')
-  --
+  use 'wbthomason/packer.nvim'
   use 'nvim-lua/plenary.nvim'
-  use 'Mofiqul/dracula.nvim'
+
+  use 'folke/tokyonight.nvim'
   -- Fancier statusline
   use 'nvim-lualine/lualine.nvim'
   -- tmux integration

@@ -33,7 +33,7 @@ vim.opt.showmatch = true                     -- Show matching braces
 vim.opt.colorcolumn = '100'                  -- Fill column
 vim.opt.termguicolors = true                 -- Enable TrueColor support
 vim.opt.background = 'dark'                  -- Set background to dark
-vim.cmd('colorscheme dracula')      -- Set theme to tokyonight-night
+vim.cmd('colorscheme tokyonight-night')      -- Set theme to tokyonight-night
 
 -- Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })

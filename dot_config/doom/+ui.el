@@ -1,13 +1,12 @@
 ;;; $DOOMDIR/+ui.el -*- lexical-binding: t; -*-
 
 ;; Theme and font settings
-
 (use-package! treemacs-all-the-icons
   :after treemacs)
 
 (setq doom-font (font-spec :family "MonoLisa" :size 20 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :size 24)
-      doom-theme 'doom-dracula
+      doom-theme 'doom-tokyo-night
       display-line-numbers-type nil
       ;; Set the icons to be the same as in dired (all-the-icons)
       doom-themes-treemacs-theme "all-the-icons"
