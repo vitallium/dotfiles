@@ -41,6 +41,7 @@
   - [[#install-sublime-text-and-sublime-merge][Install Sublime Text and Sublime Merge]]
   - [[#install-teleport][Install Teleport]]
   - [[#install-lazygit][Install lazygit]]
+  - [[#install-1password-cli][Install 1password CLI]]
 - [[#configure-rust-development-environment][Configure Rust development environment]]
   - [[#install-rustup][Install rustup]]
   - [[#install-fish-completions-for-rustup][Install ~fish~ completions for ~rustup~]]
@@ -404,6 +405,14 @@ dnf install -y https://cdn.teleport.dev/teleport-11.0.1-1.x86_64.rpm
 #+begin_src shell :dir /sudo::
 dnf copr enable -y atim/lazygit
 dnf install -y lazygit
+#+end_src
+
+** Install 1password CLI
+#+begin_src shell :dir /sudo::
+rpm --import https://downloads.1password.com/linux/keys/1password.asc
+sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
+dnf check-update -y 1password-cli
+dnf install -y 1password-cli
 #+end_src
 
 * Configure Rust development environment
