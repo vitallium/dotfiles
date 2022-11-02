@@ -208,7 +208,7 @@ dnf install -y git git-lfs git-delta \
 
 ** Install packages for ~Yubikey~
 #+begin_src shell :dir /sudo::
-dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime pcsc-tools opensc pcsc-lite secure-delete pgp-tools yubikey-personalization-gui
+dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime pcsc-tools opensc pcsc-lite pgp-tools yubikey-personalization-gui
 systemctl enable --now pcscd
 #+end_src
 
@@ -487,8 +487,10 @@ dnf install -y dconf-editor \
                webp-pixbuf-loader \
                gthumb \
                kitty
+#+end_src
 
-# Restart nautilus
+Restart nautilus
+#+begin_src shell
 nautilus -q
 #+end_src
 
@@ -542,18 +544,20 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super
 gsettings set org.gnome.desktop.wm.keybindings minimize "['<Super>apostrophe']"
 gsettings set org.gnome.desktop.wm.keybindings maximize "['<Super>k']"
 gsettings set org.gnome.desktop.wm.keybindings unmaximize "['<Super>j']"
+gsettings set org.gnome.desktop.wm.keybindings close "['<Super><Shift>q']"
 
 END=9; for num in $(seq 1 $END); do
   gsettings set org.gnome.shell.keybindings switch-to-application-$num "[]";
   gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$num "['<Super>$num']"
   gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$num "['<Super><Shift>$num']"
 done
+
 #+end_src
 
 ** Fonts
 Trying the PopOS font configuration.
 #+begin_src shell :dir /sudo::
-dnf install -y 'mozilla-fira*' 'google-roboto*'
+dnf install -y 'google-roboto*'
 #+end_src
 
 #+begin_src shell
