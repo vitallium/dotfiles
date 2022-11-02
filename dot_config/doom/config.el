@@ -1,7 +1,5 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(general-auto-unbind-keys :off)
-(remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (setq user-full-name "Vitaly Slobodin"
@@ -18,7 +16,8 @@
 (load! "+org.el")
 
 (if IS-LINUX
-  (load! "+mail.el"))
+  (load! "+mail.el")
+  (setenv "SSH_AUTH_SOCK" (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket")))
 
 ;; Convert images from unknown formats to PNG.
 (setq image-use-external-converter t)
