@@ -1,0 +1,123 @@
+{
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "breadcrumbs.enabled": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": false,
+  "editor.accessibilitySupport": "off",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": false,
+  "editor.cursorWidth": 1,
+  "editor.fontFamily": "'Source Code Pro', monospace",
+  "editor.fontLigatures": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.glyphMargin": true,
+  "editor.matchBrackets": "always",
+  "editor.minimap.enabled": false,
+  "editor.renderControlCharacters": false,
+  "editor.scrollBeyondLastLine": false,
+  "editor.smoothScrolling": true,
+  "editor.suggestSelection": "first",
+  "emmet.includeLanguages": {
+    "phoenix-heex": "html"
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.packageManager": "yarn",
+  "eslint.run": "onSave",
+  "eslint.validate": ["vue", "html", "javascript"],
+  "explorer.compactFolders": false,
+  "explorer.confirmDragAndDrop": false,
+  "extensions.autoUpdate": false,
+  "extensions.ignoreRecommendations": true,
+  "files.associations": {
+    "Gemfile": "ruby"
+  },
+  "files.exclude": {
+    "**/.elixir_ls": true,
+    "**/deps": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "gitlens.currentLine.enabled": false,
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.referencesCodeLens.enabled": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "prettier.requireConfig": true,
+  "redhat.telemetry.enabled": false,
+  "ruby.lint": {
+    "reek": false,
+    "rubocop": true,
+    "standard": false
+  },
+  "search.exclude": {
+    "**/.elixir_ls": true,
+    "**/_build": true,
+    "**/vendor/ruby": true
+  },
+  "solargraph.commandPath": "",
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": false,
+  "solargraph.logLevel": "warn",
+  "solargraph.symbols": true,
+  "solargraph.transport": "socket",
+  "spellright.groupDictionaries": false,
+  "spellright.ignoreFiles": ["yarn.lock", "**/.gitignore", "**/.spellignore"],
+  "spellright.language": ["en-US"],
+  "tabnine.experimentalAutoImports": true,
+  "terminal.external.osxExec": "kitty.app",
+  "typescript.implementationsCodeLens.enabled": true,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.referencesCodeLens.enabled": true,
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "wallaby.startAutomatically": false,
+  "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
+  "workbench.list.smoothScrolling": true,
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "newUntitledFile",
+  "yaml.schemas": {
+    "file:///toc.schema.json": "/toc\\.yml/i"
+  },
+  "terminal.integrated.defaultLocation": "editor",
+  "gitlens.codeLens.enabled": false,
+  "gitlens.statusBar.enabled": false,
+  "remote.SSH.defaultExtensions": [
+    "gitpod.gitpod-remote-ssh"
+  ],
+  "terminal.integrated.fontSize": 16,
+  "settingsSync.ignoredSettings": [],
+  "workbench.iconTheme": "chalice-icon-theme",
+  "workbench.colorTheme": "Tokyo Night Storm",
+  "hamlLint.useBundler": true,
+  "editor.fontSize": 16
+}
