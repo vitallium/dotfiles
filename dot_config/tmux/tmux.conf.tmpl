@@ -39,7 +39,7 @@ bind / choose-session
 bind R source-file ~/.config/tmux/tmux.conf
 
 # Colors
-set -g default-terminal "tmux-256color"
+set -g default-terminal "{{ .tmux_term }}"
 # tell Tmux that outside terminal supports true color and fix italics
 set -ga terminal-overrides ",xterm-256color*:Tc:sitm=\\E[3m"
 # undercurl support
