@@ -14,7 +14,6 @@
   - [[#install-gnome-extensions-applications][Install Gnome extensions applications]]
   - [[#enable-rpm-fusion-repositories][Enable RPM Fusion repositories]]
   - [[#install-drivers-for-intel-gpu][Install drivers for Intel GPU]]
-  - [[#enable-and-install-openh264-for-firefox][Enable and install OpenH264 for Firefox]]
   - [[#configure-system-settings][Configure system settings]]
   - [[#enable-visual-studio-code-repository-and-install-it][Enable Visual Studio Code repository and install it]]
   - [[#instal-development-tools][Instal ~Development Tools~]]
@@ -158,12 +157,6 @@ Rebuild ~initramfs~.
 dracut --force
 #+end_src
 
-** Enable and install OpenH264 for Firefox
-#+begin_src shell :dir /sudo::
-dnf config-manager --set-enabled fedora-cisco-openh264
-dnf install -y gstreamer1-plugin-openh264 mozilla-openh264
-#+end_src
-
 ** Configure system settings
 #+begin_src shell :dir /sudo::
 echo 'fs.inotify.max_user_watches = 524288' >> /etc/sysctl.conf
@@ -215,7 +208,7 @@ systemctl enable --now pcscd
 ** Enable Google Chrome repo and install it
 #+begin_src shell :dir /sudo::
 dnf config-manager --set-enabled google-chrome
-dnf install -y google-chrome-stable chromedriver
+dnf install -y google-chrome-stable
 #+end_src
 
 ** Enable [[https://github.com/lassekongo83/adw-gtk3][adw3]] copr and install ~adwaita~ theme for legacy applications
@@ -324,7 +317,7 @@ psd preview
 #+begin_src shell
 git clone https://github.com/rafaelmardojai/firefox-gnome-theme/ $HOME/Development/firefox-gnome-theme
 cd $HOME/Development/firefox-gnome-theme
-./scripts/install.sh
+./scripts/auto-install.sh
 #+end_src
 
 ** Install [[https://github.com/tmux-plugins/tpm][Tmux Plugin Manager]]
@@ -557,7 +550,7 @@ done
 ** Fonts
 Trying the PopOS font configuration.
 #+begin_src shell :dir /sudo::
-dnf install -y 'mozilla-fira-*' 'google-roboto*'
+dnf install -y 'google-roboto*'
 #+end_src
 
 #+begin_src shell
