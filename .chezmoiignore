@@ -10,4 +10,5 @@ settings.json
 
 {{ if ne .chezmoi.os "darwin" }}
 Library/Application Support/Code/User/settings.json
-{{ end }}
+.Brewfile
+{{- end }}
