@@ -30,4 +30,4 @@ if test -e $HOME/.asdf/asdf.fish
 end
 
 eval (asdf exec direnv hook fish)
-
+eval (dircolors -c)
