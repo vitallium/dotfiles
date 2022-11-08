@@ -15,9 +15,7 @@
 (load! "+bindings.el")
 (load! "+org.el")
 
-(if IS-LINUX
-  (load! "+mail.el")
-  (setenv "SSH_AUTH_SOCK" (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket")))
+(if IS-LINUX (load! "+linux.el"))
 
 ;; Convert images from unknown formats to PNG.
 (setq image-use-external-converter t)
