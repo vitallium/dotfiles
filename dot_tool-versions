@@ -3,3 +3,4 @@ ruby 2.7.6
 python system
 direnv 2.32.1
 golang 1.18.8
+chezmoi 2.26.0
