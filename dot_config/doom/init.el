@@ -89,7 +89,7 @@
        (spell
              +flyspell
              +hunspell)      ; tasing you for misspelling mispelling
-       ;;grammar           ; tasing grammar mistake every you make
+       grammar           ; tasing grammar mistake every you make
 
        :tools
        ansible
@@ -115,7 +115,7 @@
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
-       ;;tree-sitter       ; syntax and parsing, sitting in a tree...
+       tree-sitter       ; syntax and parsing, sitting in a tree...
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
@@ -147,15 +147,18 @@
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
        ;;gdscript          ; the language you waited for
        (go
-          +lsp)    ; the hipster dialect
+          +lsp
+          +treesitter)     ; the hipster dialect
        (graphql +lsp)      ; Give queries a REST
        ;;(haskell +lsp)    ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
-       (json +lsp)         ; At least it ain't XML
+       (json +lsp
+             +treesitter)  ; At least it ain't XML
        ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
        (javascript
-                  +lsp)    ; all(hope(abandon(ye(who(enter(here))))))
+                  +lsp
+                  +treesitter)    ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        ;;latex             ; writing papers in Emacs has never been so fun
@@ -183,9 +186,11 @@
        ;;rst               ; ReST in peace
        (ruby
             +rails
-            +lsp)          ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+            +lsp
+            +treesitter)   ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        (rust
-            +lsp)          ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+            +lsp
+            +treesitter)   ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;(scheme +guile)   ; a fully conniving family of lisps
        (sh +lsp)           ; she sells {ba,z,fi}sh shells on the C xor
