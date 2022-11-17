@@ -15,8 +15,6 @@ set -gx _ZO_FZF_OPTS              "--height 40% --reverse $FZF_DEFAULT_OPTS"
 set -gx FZF_DEFAULT_COMMAND       'rg --files'
 set -gx FZF_CTRL_T_COMMAND        'rg --files'
 
-fzf_configure_bindings --variables=
-
 set configs aliases functions paths
 for config in $configs
   if test -e $__fish_config_dir/$config.fish
