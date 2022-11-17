@@ -1,7 +1,6 @@
 README.org
 install.sh
 doc/
-settings.json
 
 {{- if ne .chezmoi.os "linux" }}
 .config/fontconfig

@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
   use("nvim-treesitter/nvim-treesitter", {
     run = ":TSUpdate"
   })
+
   -- LSP
   -- Integration with progress notifications
   use 'arkav/lualine-lsp-progress'
@@ -53,8 +54,12 @@ return require('packer').startup(function(use)
   use 'onsails/lspkind.nvim' -- Icons in completion dialogue
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'jose-elias-alvarez/null-ls.nvim' -- NeoVim as LSP server
+
   use 'MunifTanjim/prettier.nvim' -- Prettier for TS/JS formatting
   -- Magit for neovim
   use 'TimUntersberger/neogit'
-  use 'folke/which-key.nvim' -- Like Emacs which key
+  -- Generate shareable file permalinks to GIT hosts
+  use 'ruifm/gitlinker.nvim'
+  -- Like Emacs which key
+  use 'folke/which-key.nvim'
 end)
