@@ -4,21 +4,17 @@ data:
   pinentry_bin: /usr/bin/pinentry-gnome3
   git_gpg: gpg2
   tmux_term: tmux-256color
+  dircolors_bin: dircolors
   fonts:
     kitty: 12
-    emacs:
-      monospace: 20
-      variable: 24
   {{- else if eq .chezmoi.os "darwin" }}
   hostname: firefly
   pinentry_bin: /opt/homebrew/bin/pinentry-mac
   git_gpg: gpg
   tmux_term: screen-256color
+  dircolors_bin: gdircolors
   fonts:
     kitty: 16
-    emacs:
-      monospace: 16
-      variable: 16
   {{- end }}
   asdf_version: v0.10.2
 format: yaml
