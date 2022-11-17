@@ -5,10 +5,8 @@ settings.json
 
 {{- if ne .chezmoi.os "linux" }}
 .config/fontconfig
-.config/Code/User/settings.json
 {{- end }}
 
 {{ if ne .chezmoi.os "darwin" }}
-Library/Application Support/Code/User/settings.json
 .Brewfile
 {{- end }}
