@@ -6,7 +6,9 @@ data:
   tmux_term: tmux-256color
   dircolors_bin: dircolors
   fonts:
-    kitty: 12
+    kitty:
+      name: MonoLisa
+      size: 12
   {{- else if eq .chezmoi.os "darwin" }}
   hostname: firefly
   pinentry_bin: /opt/homebrew/bin/pinentry-mac
@@ -14,7 +16,9 @@ data:
   tmux_term: screen-256color
   dircolors_bin: gdircolors
   fonts:
-    kitty: 14
+    kitty:
+      name: MonoLisa
+      size: 14
   {{- end }}
   asdf_version: v0.10.2
 format: yaml
