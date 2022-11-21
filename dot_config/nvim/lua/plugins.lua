@@ -24,12 +24,17 @@ return require('packer').startup(function(use)
   -- A highly extendable fuzzy finder over lists
   use 'nvim-telescope/telescope.nvim'
   -- Think Emacs directory browser
-  use 'nvim-telescope/telescope-file-browser.nvim' 
+  use 'nvim-telescope/telescope-file-browser.nvim'
   -- Add git related info in the signs columns and popups
   use 'lewis6991/gitsigns.nvim'
   -- Highlight, edit, and navigate code using a fast incremental parsing library
-  use("nvim-treesitter/nvim-treesitter", {
-    run = ":TSUpdate"
+  use({"nvim-treesitter/nvim-treesitter",
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({
+        with_sync = true,
+      })
+      ts_update()
+    end,
   })
 
   -- LSP

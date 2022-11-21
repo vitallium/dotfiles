@@ -1,6 +1,6 @@
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local lsp_servers = { 'bashls', 'pyright', 'clangd', 'html', 'tsserver', 'solargraph', 'gopls', 'volar', 'jsonls', 'cssls', 'dockerls', 'eslint', 'html' }
+local lsp_servers = { 'bashls', 'pyright', 'clangd', 'html', 'tsserver', 'solargraph', 'gopls', 'volar', 'jsonls', 'cssls', 'dockerls', 'eslint', 'html', 'sumneko_lua' }
 -- IMPORTANT: Mason must be set up before lspconfig
 -- Mason to manage external tools like language servers
 require('mason').setup()
@@ -71,7 +71,7 @@ cmp.setup {
       ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
       -- The function below will be called before any actual modifications from lspkind
       -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-      before = function (entry, vim_item)
+      before = function (_, vim_item)
         return vim_item
       end
     })
@@ -143,20 +143,17 @@ saga.init_lsp_saga({
 -- NeoVim LSP server capabilities
 local null_ls = require("null-ls")
 null_ls.setup({
-    sources = {
-        null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.diagnostics.actionlint,
-        null_ls.builtins.diagnostics.ansiblelint,
-        null_ls.builtins.diagnostics.gitlint,
-        null_ls.builtins.diagnostics.shellcheck,
-        null_ls.builtins.completion.spell,
-        null_ls.builtins.code_actions.eslint_d,
-        null_ls.builtins.code_actions.gitrebase,
-        null_ls.builtins.code_actions.gitsigns,
-        null_ls.builtins.code_actions.shellcheck,
-        null_ls.builtins.formatting.eslint_d,
-        null_ls.builtins.formatting.prettierd,
-        null_ls.builtins.formatting.stylua,
-        -- There are *so* many more ...
-    },
+  sources = {
+    null_ls.builtins.diagnostics.eslint_d,
+    null_ls.builtins.diagnostics.ansiblelint,
+    null_ls.builtins.diagnostics.shellcheck,
+    null_ls.builtins.completion.spell,
+    null_ls.builtins.code_actions.eslint_d,
+    null_ls.builtins.code_actions.gitrebase,
+    null_ls.builtins.code_actions.gitsigns,
+    null_ls.builtins.code_actions.shellcheck,
+    null_ls.builtins.formatting.eslint_d,
+    null_ls.builtins.formatting.stylua,
+    -- There are *so* many more ...
+ },
 })
