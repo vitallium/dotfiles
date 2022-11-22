@@ -1,4 +1,4 @@
-Pry.editor = "vim"
+Pry.editor = "emacs"
 
 unless defined?(Pry::Prompt)
   Pry.config.prompt =  Pry::NAV_PROMPT
