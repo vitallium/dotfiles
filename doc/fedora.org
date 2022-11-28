@@ -15,7 +15,6 @@
   - [[#enable-rpm-fusion-repositories][Enable RPM Fusion repositories]]
   - [[#install-drivers-for-intel-gpu][Install drivers for Intel GPU]]
   - [[#configure-system-settings][Configure system settings]]
-  - [[#enable-visual-studio-code-repository-and-install-it][Enable Visual Studio Code repository and install it]]
   - [[#instal-development-tools][Instal ~Development Tools~]]
   - [[#install-other-packages-i-use][Install other packages I use]]
   - [[#install-packages-for-yubikey][Install packages for ~Yubikey~]]
@@ -162,13 +161,6 @@ dracut --force
 echo 'fs.inotify.max_user_watches = 524288' >> /etc/sysctl.conf
 echo 'vm.swappiness = 10' >> /etc/sysctl.conf
 sysctl -p
-#+end_src
-
-** Enable Visual Studio Code repository and install it
-#+begin_src shell :dir /sudo::
-rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-dnf install -y code
 #+end_src
 
 ** Instal ~Development Tools~
