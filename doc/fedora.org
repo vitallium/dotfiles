@@ -54,7 +54,6 @@
   - [[#fonts][Fonts]]
   - [[#enable-minimizemaximize-buttons][Enable minimize,maximize buttons]]
   - [[#install-phinger-cursors][Install phinger-cursors]]
-  - [[#install-cpu-power][Install cpu-power]]
   - [[#set-casp-lock-as-additional-ctrl][Set Casp Lock as additional Ctrl]]
 - [[#framework-laptop-configuration][Framework Laptop configuration]]
   - [[#configure-power-saving][Configure power saving]]
@@ -531,12 +530,6 @@ wget -cO- https://github.com/phisch/phinger-cursors/releases/latest/download/phi
 And enable them.
 #+begin_src shell
 gsettings set org.gnome.desktop.interface cursor-theme "phinger-cursors"
-#+end_src
-
-** Install [[https://github.com/deinstapel/cpupower][cpu-power]]
-#+begin_src shell :dir /sudo::
-dnf copr enable -y fin-ger/cpupower
-dnf install -y gnome-shell-extension-cpupower
 #+end_src
 
 ** Set Casp Lock as additional Ctrl
