@@ -193,7 +193,7 @@ dnf install -y git git-lfs git-delta \
 
 ** Install packages for ~Yubikey~
 #+begin_src shell :dir /sudo::
-dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime pcsc-tools opensc pcsc-lite pgp-tools yubikey-personalization-gui
+dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime pcsc-tools opensc pcsc-lite pgp-tools
 systemctl enable --now pcscd
 #+end_src
 
