@@ -34,7 +34,6 @@
   - [[#install-xanmod-kernel][Install XanMod Kernel]]
   - [[#install-sublime-text-and-sublime-merge][Install Sublime Text and Sublime Merge]]
   - [[#install-teleport][Install Teleport]]
-  - [[#install-lazygit][Install lazygit]]
   - [[#install-1password-cli][Install 1password CLI]]
 - [[#configure-rust-development-environment][Configure Rust development environment]]
   - [[#install-rustup][Install rustup]]
@@ -357,12 +356,6 @@ dnf install -y sublime-text sublime-merge
 ** Install Teleport
 #+begin_src shell :dir /sudo::
 dnf install -y https://cdn.teleport.dev/teleport-11.0.1-1.x86_64.rpm
-#+end_src
-
-** Install lazygit
-#+begin_src shell :dir /sudo::
-dnf copr enable -y atim/lazygit
-dnf install -y lazygit
 #+end_src
 
 ** Install 1password CLI
