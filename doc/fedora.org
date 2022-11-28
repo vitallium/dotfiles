@@ -18,7 +18,6 @@
   - [[#instal-development-tools][Instal ~Development Tools~]]
   - [[#install-other-packages-i-use][Install other packages I use]]
   - [[#install-packages-for-yubikey][Install packages for ~Yubikey~]]
-  - [[#enable-google-chrome-repo-and-install-it][Enable Google Chrome repo and install it]]
   - [[#enable-adw3-copr-and-install-adwaita-theme-for-legacy-applications][Enable adw3 copr and install ~adwaita~ theme for legacy applications]]
   - [[#enable-and-install-vim-stuff][Enable and install ~vim~ stuff]]
   - [[#configure-btrfs-snapshots][Configure BTRFS snapshots]]
@@ -26,8 +25,6 @@
   - [[#enable-flathub][Enable flathub]]
   - [[#install-flatpaks][Install ~flatpaks~]]
   - [[#install-git-lfs][Install ~git-lfs~]]
-  - [[#enable-profile-sync-daemon][Enable ~profile-sync-daemon~]]
-  - [[#install-firefox-gnome-theme][Install firefox-gnome-theme]]
   - [[#install-tmux-plugin-manager][Install Tmux Plugin Manager]]
   - [[#clean-up-unused-directories-and-bookmarks][Clean up unused directories and bookmarks]]
   - [[#install-fonts][Install fonts]]
@@ -35,7 +32,6 @@
   - [[#install-protonvpn][Install ProtonVPN]]
   - [[#install-mullvadvpn][Install MullvadVPN]]
   - [[#install-xanmod-kernel][Install XanMod Kernel]]
-  - [[#install-brave-browser][Install Brave Browser]]
   - [[#install-sublime-text-and-sublime-merge][Install Sublime Text and Sublime Merge]]
   - [[#install-teleport][Install Teleport]]
   - [[#install-lazygit][Install lazygit]]
@@ -97,7 +93,7 @@ dnf remove -y cheese rhythmbox totem orca \
               libreoffice-* gnome-characters \
               gnome-photos simple-scan virtualbox-guest-additions \
               gedit gnome-tour gnome-connections mediawriter yelp \
-              podman
+              podman firefox
 dnf autoremove -y
 #+end_src
 
@@ -197,12 +193,6 @@ dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime pcsc-tools opensc pcsc-lit
 systemctl enable --now pcscd
 #+end_src
 
-** Enable Google Chrome repo and install it
-#+begin_src shell :dir /sudo::
-dnf config-manager --set-enabled google-chrome
-dnf install -y google-chrome-stable
-#+end_src
-
 ** Enable [[https://github.com/lassekongo83/adw-gtk3][adw3]] copr and install ~adwaita~ theme for legacy applications
 #+begin_src shell :dir /sudo::
 dnf copr enable -y nickavem/adw-gtk3
@@ -288,7 +278,11 @@ flatpak install -y flathub com.discordapp.Discord \
                            com.getpostman.Postman \
                            com.obsproject.Studio \
                            com.usebottles.bottles \
-                           com.mattjakeman.ExtensionManager
+                           com.mattjakeman.ExtensionManager \
+                           org.mozilla.firefox \
+                           com.google.Chrome \
+                           com.brave.Browser \
+                           uz.zoom.Zoom
 
 xdg-settings set default-web-browser re.sonny.Junction.desktop
 #+end_src
@@ -296,20 +290,6 @@ xdg-settings set default-web-browser re.sonny.Junction.desktop
 ** Install ~git-lfs~
 #+begin_src shell
 git-lfs install
-#+end_src
-
-** Enable ~profile-sync-daemon~
-#+begin_src shell
-psd
-systemctl --user enable --now psd.service
-psd preview
-#+end_src
-
-** Install [[https://github.com/rafaelmardojai/firefox-gnome-theme][firefox-gnome-theme]]
-#+begin_src shell
-git clone https://github.com/rafaelmardojai/firefox-gnome-theme/ $HOME/Development/firefox-gnome-theme
-cd $HOME/Development/firefox-gnome-theme
-./scripts/auto-install.sh
 #+end_src
 
 ** Install [[https://github.com/tmux-plugins/tpm][Tmux Plugin Manager]]
@@ -365,13 +345,6 @@ dnf install -y https://mullvad.net/media/app/MullvadVPN-2022.5_x86_64.rpm
 dnf copr enable -y rmnscnce/kernel-xanmod
 dnf install kernel-xanmod-edge -y
 dnf upgrade -y
-#+end_src
-
-** Install Brave Browser
-#+begin_src shell :dir /sudo::
-dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
-rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-dnf install -y brave-browser
 #+end_src
 
 ** Install Sublime Text and Sublime Merge
@@ -494,7 +467,7 @@ gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"
 
 Set the application on the dash.
 #+begin_src shell
-gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'emacs.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'org.telegram.desktop.desktop']"
+gsettings set org.gnome.shell favorite-apps "['org.mozilla.firefox.desktop', 'emacs.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'org.telegram.desktop.desktop']"
 #+end_src
 
 Resize windows with ~Super+Right Click~:
