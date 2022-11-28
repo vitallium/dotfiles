@@ -133,7 +133,7 @@ dnf install -y dnf-plugins-core
 #+begin_src shell :dir /sudo::
 dnf groupinstall -y multimedia
 dnf install -y intel-media-driver ffmpeg libva \
-               libva-utils gstreamer1-vaapi ffmpeg \
+               libva-utils gstreamer1-vaapi \
                intel-gpu-tools mesa-dri-drivers
 #+end_src
 
@@ -300,7 +300,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ** Clean up unused directories and bookmarks
 #+begin_src shell
 rm -rf ~/Documents ~/Music ~/Public ~/Templates ~/Desktop
-echo "file:///home/vitaly/Downloads" > ~/.config/gtk-3.0/bookmarks
+echo "file:///home/vslobodin/Downloads" > ~/.config/gtk-3.0/bookmarks
 #+end_src
 
 ** Install fonts
