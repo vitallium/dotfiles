@@ -60,17 +60,15 @@
 
 * Post installation steps
 ** Install updates
+
 #+begin_src shell :dir /sudo::
 dnf upgrade --refresh
 #+end_src
+
 ** Change the hostname to ~serenity~
+
 #+begin_src shell :dir /sudo::
 hostnamectl set-hostname serenity
-#+end_src
-
-Verify the hostname.
-#+begin_src shell
-hostnamectl hostname
 #+end_src
 
 ** Reboot the system to install and apply updates
@@ -86,10 +84,10 @@ gsettings set org.gnome.desktop.interface cursor-size 32
 #+begin_src shell :dir /sudo::
 dnf remove -y cheese rhythmbox totem orca \
               gnome-contacts gnome-getting-started-docs \
-              nautilus-sendto gnome-shell-extension-* \
+              gnome-shell-extension-* \
               libreoffice-* gnome-characters \
               gnome-photos simple-scan virtualbox-guest-additions \
-              gedit gnome-tour gnome-connections mediawriter yelp \
+              gnome-tour gnome-connections mediawriter yelp \
               podman firefox
 dnf autoremove -y
 #+end_src
@@ -352,11 +350,13 @@ dnf install -y sublime-text sublime-merge
 #+end_src
 
 ** Install Teleport
+
 #+begin_src shell :dir /sudo::
 dnf install -y https://cdn.teleport.dev/teleport-11.0.1-1.x86_64.rpm
 #+end_src
 
 ** Install 1password CLI
+
 #+begin_src shell :dir /sudo::
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
 sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
@@ -369,6 +369,7 @@ dnf install -y 1password-cli
 #+begin_src shell :results output silent
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 #+end_src
+
 ** Install ~fish~ completions for ~rustup~
 #+begin_src shell
 rustup completions fish rustup >> $HOME/.config/fish/completions/rustup.fish
@@ -401,6 +402,7 @@ A next-generation test runner for Rust.
 #+begin_src shell
 cargo install cargo-nextest
 #+end_src
+
 ** Install [[https://crates.io/crates/cargo-edit][cargo-edit]]
 #+begin_quote
 This tool extends Cargo to allow you to add, remove, and upgrade dependencies by modifying your Cargo.toml file from the command line.
@@ -409,6 +411,7 @@ This tool extends Cargo to allow you to add, remove, and upgrade dependencies by
 #+begin_src shell
 cargo install cargo-edit
 #+end_src
+
 ** Install [[https://crates.io/crates/cargo-update][cargo-update]]
 #+begin_quote
 A cargo subcommand for checking and applying updates to installed executables
@@ -435,12 +438,8 @@ cargo install fd-find
 dnf install -y dconf-editor \
                webp-pixbuf-loader \
                gthumb \
-               kitty
-#+end_src
-
-Restart nautilus
-#+begin_src shell
-nautilus -q
+               tilix \
+               tilix-nautilus
 #+end_src
 
 Install ~gnome-shell~ with patches:
@@ -452,7 +451,6 @@ dnf upgrade -y --refresh
 ** Theme and user interface
 #+begin_src shell
 gsettings set org.gnome.desktop.interface clock-show-weekday true
-gsettings set org.gnome.desktop.interface font-antialiasing "rgba"
 gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"
 #+end_src
 
