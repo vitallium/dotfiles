@@ -1,5 +1,7 @@
 ;;; $DOOMDIR/+prog.el -*- lexical-binding: t; -*-
 
+;; TODO: Split this file into private modules per lang
+
 ;; JavaScript
 (use-package jest
   :after (js2-mode)
@@ -56,7 +58,18 @@
 (add-hook 'lsp-mode-hook #'+js/fix-checker)
 
 ;; Ruby
-(setq flycheck-disabled-checkers '(ruby-reek))
+(defvar ruby-disabled-checkers '(ruby-reek lsp ruby-rubylint) "Checkers to automatically disable on ruby files.")
+(add-hook! 'ruby-mode-hook (setq-local flycheck-disabled-checkers ruby-disabled-checkers))
+
+;; Rspec Stuff
+(after! rspec-mode
+  (set-popup-rule! "^\\*\\(rspec-\\)?compilation" :size 0.5 :ttl nil :select t)
+  (map! :leader :desc "Rspec" "t" #'rspec-mode-keymap)
+  (map! :leader :desc "Run Last Failed" "tl" #'rspec-run-last-failed))
+
+(after! ruby-mode
+  (map! :mode ruby-mode :leader :desc "Go to Test" "a" 'goto-test)
+  (map! :mode ruby-mode :leader :desc "Go to Test and split" "A" 'goto-test-and-vsplit))
 
 (add-hook! 'ruby-mode-hook (setq-local flycheck-checker 'ruby-rubocop))
 (add-hook 'ruby-mode-hook
@@ -64,6 +77,7 @@
     (setq-local flycheck-command-wrapper-function
                 (lambda (command) (append '("bundle" "exec") command)))))
 
+;; Vue
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
 
 (add-hook!

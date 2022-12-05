@@ -79,3 +79,4 @@
 
 ; Disable
 (package! nvm :disable)
+(package! robe :disable)

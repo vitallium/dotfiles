@@ -14,6 +14,7 @@
 (load! "+prog")
 (load! "+bindings.el")
 (load! "+org.el")
+(load! "+git.el")
 
 (if IS-LINUX (load! "+linux.el"))
 
