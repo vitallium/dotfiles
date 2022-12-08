@@ -277,7 +277,8 @@ flatpak install -y flathub com.discordapp.Discord \
                            org.mozilla.firefox \
                            com.google.Chrome \
                            com.brave.Browser \
-                           uz.zoom.Zoom
+                           us.zoom.Zoom \
+                           com.github.maoschanz.drawing
 
 xdg-settings set default-web-browser re.sonny.Junction.desktop
 #+end_src
