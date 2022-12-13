@@ -9,14 +9,24 @@
       scroll-margin 8
       projectile-project-search-path '("~/Development/"))
 
+;; Tweak evil mode
+(setq evil-ex-substitute-global t    ;; I like my s/../.. to be global by default
+      evil-move-cursor-back nil      ;; Do not move the block cursor when toggling insert mode
+      evil-kill-on-visual-paste nil  ;; Do not put overwritten text in the kill ring
+      evil-vsplit-window-right t
+      evil-split-window-below t)
+
 (load! "+ui")
-(load! "+evil")
 (load! "+prog")
 (load! "+bindings.el")
 (load! "+org.el")
 (load! "+git.el")
 
 (if IS-LINUX (load! "+linux.el"))
+
+;;
+(require 's)
+(setenv "SSH_AUTH_SOCK" (s-trim (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket")))
 
 ;; Convert images from unknown formats to PNG.
 (setq image-use-external-converter t)

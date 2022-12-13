@@ -56,9 +56,6 @@
 ;; auto-format different source code files extremely intelligently
 (package! apheleia)
 
-(package! deadgrep)
-
-(package! prettier)
 (package! jest)
 (package! jsonnet-mode)
 
@@ -70,12 +67,9 @@
 (package! org-pretty-table-mode
   :recipe (:host github :repo "Fuco1/org-pretty-table"))
 
-(package! modus-themes)
 (package! dimmer)
 (package! company-quickhelp)
 (package! treemacs-all-the-icons)
-
-(package! posframe)
 
 ; Disable
 (package! nvm :disable)

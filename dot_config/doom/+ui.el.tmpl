@@ -6,19 +6,12 @@
 
 (setq doom-font (font-spec :family "MonoLisa" :size {{ .fonts.emacs.monospace }} :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Iosevka Etoile" :size {{ .fonts.emacs.variable }})
-      doom-theme 'doom-tokyo-night
+      doom-theme 'doom-one-light
       display-line-numbers-type nil
       ;; Set the icons to be the same as in dired (all-the-icons)
       doom-themes-treemacs-theme "all-the-icons"
       treemacs-width-is-initially-locked nil
       mode-line-default-help-echo nil)
-
-(use-package! modus-themes
-  :config
-  (setq modus-themes-diffs 'bg-only
-        modus-themes-lang-checkers '(text-also straight-underline)
-        modus-themes-region '(bg-only no-extend)
-        modus-themes-subtle-line-numbers t))
 
 ;; Visual Fill Column
 (setq-default fill-column 120)
