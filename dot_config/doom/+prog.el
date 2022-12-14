@@ -66,10 +66,6 @@
   (map! :leader :desc "Rspec" "t" #'rspec-mode-keymap)
   (map! :leader :desc "Run Last Failed" "tl" #'rspec-run-last-failed))
 
-(after! ruby-mode
-  (map! :mode ruby-mode :leader :desc "Go to Test" "a" 'goto-test)
-  (map! :mode ruby-mode :leader :desc "Go to Test and split" "A" 'goto-test-and-vsplit))
-
 (add-hook! 'ruby-mode-hook (setq-local flycheck-checker 'ruby-rubocop))
 (add-hook 'ruby-mode-hook
   (lambda ()
