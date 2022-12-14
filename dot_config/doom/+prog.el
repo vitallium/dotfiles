@@ -4,15 +4,14 @@
 
 ;; JavaScript
 (use-package jest
-  :after (js2-mode)
+  :after (js2-mode rjsx-mode)
   :config
   (setq jest-executable "yarn jest")
   (pushnew! evil-collection-mode-list 'jest-mode)
   (pushnew! evil-normal-state-modes 'jest-mode)
   (set-popup-rule! "^\\*jest\\*"
-    :side 'bottom
-    :size 0.25
-    :quit 'current :ttl nil))
+    :size 0.5
+    :ttl nil :select t))
 
 (add-hook! (js2-mode rjsx-mode) #'jest-minor-mode)
 
