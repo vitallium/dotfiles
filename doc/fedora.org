@@ -76,7 +76,7 @@ gsettings set org.gnome.desktop.interface cursor-size 32
 ** Remove redundant stuff
 #+begin_src shell :dir /sudo::
 dnf remove -y cheese rhythmbox totem orca \
-              gnome-contacts gnome-getting-started-docs \
+              gnome-contacts \
               gnome-shell-extension-* \
               libreoffice-* gnome-characters \
               gnome-photos simple-scan virtualbox-guest-additions \
@@ -98,8 +98,8 @@ systemctl enable fstrim.timer
 
 ** Change default user shell to ~fish~
 #+begin_src shell :dir /sudo::
-dnf install -y fish util-linux-user
-chsh -s $(which fish) $USER
+dnf install -y fish
+usermod -s $(which fish) vslobodin
 #+end_src
 
 ** Install Gnome extensions applications
@@ -149,7 +149,7 @@ sysctl -p
 
 ** Instal ~Development Tools~
 #+begin_src shell :dir /sudo::
-dnf install -y make gcc-c++ gcc make bzip2 \
+dnf install -y make gcc-c++ gcc make bzip2 openssl \
                openssl-devel libyaml-devel libffi-devel \
                readline-devel zlib-devel gdbm-devel ncurses-devel \
                sqlite sqlite-devel tk-devel xz-devel \
@@ -341,7 +341,8 @@ dnf install -y sublime-text sublime-merge
 ** Install Teleport
 
 #+begin_src shell :dir /sudo::
-dnf install -y https://cdn.teleport.dev/teleport-11.0.1-1.x86_64.rpm
+dnf config-manager --add-repo https://rpm.releases.teleport.dev/teleport.repo
+dnf install -y teleport
 #+end_src
 
 ** Install 1password CLI
@@ -385,8 +386,7 @@ rustup component add clippy
 dnf install -y dconf-editor \
                webp-pixbuf-loader \
                gthumb \
-               tilix \
-               tilix-nautilus
+               kitty
 #+end_src
 
 Install ~gnome-shell~ with patches:
@@ -485,7 +485,6 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier'
 ** Configure power saving
 #+begin_src shell :dir /sudo::
 grubby --update-kernel=ALL --args="nvme.noacpi=1"
-grubby --update-kernel=ALL --args="nmi_watchdog=0"
 #+end_src
 
 Enable audio power saving.
