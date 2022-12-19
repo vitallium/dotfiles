@@ -24,7 +24,6 @@
 - [[#configure-user-environment][Configure user environment]]
   - [[#enable-flathub][Enable flathub]]
   - [[#install-flatpaks][Install ~flatpaks~]]
-  - [[#install-git-lfs][Install ~git-lfs~]]
   - [[#install-tmux-plugin-manager][Install Tmux Plugin Manager]]
   - [[#clean-up-unused-directories-and-bookmarks][Clean up unused directories and bookmarks]]
   - [[#install-fonts][Install fonts]]
@@ -275,11 +274,6 @@ flatpak install -y flathub com.discordapp.Discord \
                            com.github.maoschanz.drawing
 
 xdg-settings set default-web-browser re.sonny.Junction.desktop
-#+end_src
-
-** Install ~git-lfs~
-#+begin_src shell
-git-lfs install
 #+end_src
 
 ** Install [[https://github.com/tmux-plugins/tpm][Tmux Plugin Manager]]
