@@ -1,0 +1,6 @@
+cargo-audit
+cargo-nextest
+cargo-edit
+cargo-update
+fd-find
+topgrade

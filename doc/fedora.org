@@ -36,16 +36,10 @@
   - [[#install-teleport][Install Teleport]]
   - [[#install-1password-cli][Install 1password CLI]]
 - [[#configure-rust-development-environment][Configure Rust development environment]]
-  - [[#install-rustup][Install rustup]]
   - [[#install-fish-completions-for-rustup][Install ~fish~ completions for ~rustup~]]
   - [[#install-rust-src][Install ~rust-src~.]]
-  - [[#install-cargo-audit][Install cargo-audit]]
-  - [[#install-cargo-nextest][Install cargo-nextest]]
-  - [[#install-cargo-edit][Install cargo-edit]]
-  - [[#install-cargo-update][Install cargo-update]]
   - [[#install-rustfmt][Install ~rustfmt~]]
   - [[#install-clippy][Install ~clippy~]]
-  - [[#install-fd-find][Install ~fd-find~]]
 - [[#configure-gnome][Configure Gnome]]
   - [[#install-packages][Install packages]]
   - [[#theme-and-user-interface][Theme and user interface]]
@@ -366,11 +360,6 @@ dnf install -y 1password-cli
 #+end_src
 
 * Configure Rust development environment
-** Install [[https://rustup.rs/][rustup]]
-#+begin_src shell :results output silent
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-#+end_src
-
 ** Install ~fish~ completions for ~rustup~
 #+begin_src shell
 rustup completions fish rustup >> $HOME/.config/fish/completions/rustup.fish
@@ -386,53 +375,16 @@ chmod +x ~/.local/bin/rust-analyzer
 rustup component add rust-src
 #+end_src
 
-** Install [[https://crates.io/crates/cargo-audit][cargo-audit]]
-#+begin_quote
-Audit Cargo.lock for crates with security vulnerabilities
-#+end_quote
-
-#+begin_src shell
-cargo install cargo-audit --features=fix
-#+end_src
-
-** Install [[https://crates.io/crates/cargo-nextest][cargo-nextest]]
-#+begin_quote
-A next-generation test runner for Rust.
-#+end_quote
-
-#+begin_src shell
-cargo install cargo-nextest
-#+end_src
-
-** Install [[https://crates.io/crates/cargo-edit][cargo-edit]]
-#+begin_quote
-This tool extends Cargo to allow you to add, remove, and upgrade dependencies by modifying your Cargo.toml file from the command line.
-#+end_quote
-
-#+begin_src shell
-cargo install cargo-edit
-#+end_src
-
-** Install [[https://crates.io/crates/cargo-update][cargo-update]]
-#+begin_quote
-A cargo subcommand for checking and applying updates to installed executables
-#+end_quote
-
-#+begin_src shell
-cargo install cargo-update
-#+end_src
 ** Install ~rustfmt~
 #+begin_src shell
 rustup component add rustfmt
 #+end_src
+
 ** Install ~clippy~
 #+begin_src shell
 rustup component add clippy
 #+end_src
-** Install ~fd-find~
-#+begin_src shell
-cargo install fd-find
-#+end_src
+
 * Configure Gnome
 ** Install packages
 #+begin_src shell :dir /sudo::
