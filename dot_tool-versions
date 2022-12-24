@@ -5,4 +5,4 @@ direnv 2.32.1
 golang 1.18.8
 chezmoi 2.27.2
 shellcheck 0.9.0
-rust 1.65.0
+rust 1.66.0
