@@ -12,3 +12,4 @@ github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 github.com/go-delve/delve/cmd/dlv@latest
 honnef.co/go/tools/cmd/staticcheck@latest
 github.com/DarthSim/hivemind@latest
+github.com/nao1215/gup@latest
