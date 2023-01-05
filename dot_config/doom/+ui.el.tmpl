@@ -44,6 +44,10 @@
   (dimmer-configure-which-key)
   (dimmer-mode))
 
+(after! highlight-indent-guides
+  ;; Set the highlighting to bitmap instead of character to have consistent color.
+  (setq highlight-indent-guides-method 'bitmap))
+
 (put 'narrow-to-region 'disabled nil)
 
 (def-modeline-var! +modeline-modes ; remove minor modes

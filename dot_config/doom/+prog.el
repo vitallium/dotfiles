@@ -60,12 +60,6 @@
 (defvar ruby-disabled-checkers '(ruby-reek lsp ruby-rubylint) "Checkers to automatically disable on ruby files.")
 (add-hook! 'ruby-mode-hook (setq-local flycheck-disabled-checkers ruby-disabled-checkers))
 
-;; Rspec Stuff
-(after! rspec-mode
-  (set-popup-rule! "^\\*\\(rspec-\\)?compilation" :size 0.5 :ttl nil :select t)
-  (map! :leader :desc "Rspec" "t" #'rspec-mode-keymap)
-  (map! :leader :desc "Run Last Failed" "tl" #'rspec-run-last-failed))
-
 (add-hook! 'ruby-mode-hook (setq-local flycheck-checker 'ruby-rubocop))
 (add-hook 'ruby-mode-hook
   (lambda ()

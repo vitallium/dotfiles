@@ -71,6 +71,6 @@
 (package! company-quickhelp)
 (package! treemacs-all-the-icons)
 
-; Disable
+;; Disable packages I don't use
 (package! nvm :disable)
 (package! robe :disable)
