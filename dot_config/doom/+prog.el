@@ -80,5 +80,8 @@
 (after! prog-mode
   (bug-reference-prog-mode))
 
+(after! company
+  (setq company-idle-delay nil))
+
 (after! lsp-solargraph
   (add-to-list 'lsp-solargraph-library-directories "~/.asdf/installs/ruby"))
