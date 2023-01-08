@@ -83,5 +83,12 @@
 (after! company
   (setq company-idle-delay nil))
 
+(setq magit-save-repository-buffers nil
+      ;; Don't restore the wconf after quitting magit, it's jarring
+      magit-inhibit-save-previous-winconf t
+      transient-values '((magit-rebase "--autosquash" "--autostash")
+                         (magit-pull "--rebase" "--autostash")
+                         (magit-revert "--autostash")))
+
 (after! lsp-solargraph
   (add-to-list 'lsp-solargraph-library-directories "~/.asdf/installs/ruby"))
