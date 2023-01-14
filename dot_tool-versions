@@ -1,8 +1,8 @@
-nodejs 18.12.1
+nodejs 18.13.0
 ruby 2.7.7
 python system
-direnv 2.32.1
-golang 1.18.8
-chezmoi 2.27.2
+direnv 2.32.2
+golang 1.18.10
+chezmoi 2.29.1
 shellcheck 0.9.0
-rust 1.66.0
+rust 1.66.1
