@@ -3,6 +3,6 @@ ruby 2.7.7
 python system
 direnv 2.32.2
 golang 1.18.10
-chezmoi 2.29.1
+chezmoi 2.29.4
 shellcheck 0.9.0
 rust 1.66.1
