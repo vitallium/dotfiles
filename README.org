@@ -24,4 +24,3 @@
   - [[https://extensions.gnome.org/extension/5090/space-bar/][Space Bar]]
 *** TODO Extensions settings :fedora:
 ** macOS configuration for my [[https://about.gitlab.com/][work]] laptop
-*** TODO Add ~macOS~ configuration :darwin:

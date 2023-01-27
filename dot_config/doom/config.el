@@ -16,6 +16,14 @@
       evil-vsplit-window-right t
       evil-split-window-below t)
 
+(use-package! evil-owl
+  :hook (doom-first-file . evil-owl-mode)
+  :config
+  (setq evil-owl-display-method 'posframe
+        evil-owl-extra-posframe-args `(:internal-border-color "gray50"
+                                       :internal-border-width 2)
+        evil-owl-idle-delay 0.5))
+
 (load! "+ui")
 (load! "+prog")
 (load! "+bindings.el")

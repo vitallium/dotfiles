@@ -53,6 +53,9 @@
 (package! string-inflection)
 (package! transpose-frame)
 
+;; Evil goodies
+(package! evil-owl)
+
 ;; auto-format different source code files extremely intelligently
 (package! apheleia)
 
