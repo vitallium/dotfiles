@@ -1,3 +1,4 @@
+tap "d12frosted/emacs-plus"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
@@ -40,10 +41,12 @@ brew "libiconv"
 brew "libvterm"
 brew "libyaml"
 brew "mas"
+brew "tree-sitter"
 brew "neovim"
 brew "ossp-uuid"
 brew "pinentry-mac"
 brew "re2"
+brew "reattach-to-user-namespace"
 brew "ripgrep"
 brew "ripsecrets"
 brew "runit"
@@ -60,7 +63,9 @@ brew "wget"
 brew "yamllint"
 brew "ykman"
 brew "ykpers"
+brew "yt-dlp"
 brew "zlib"
+brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-imagemagick", "with-modern-sjrmanning-icon", "with-native-comp", "with-no-frame-refocus", "with-xwidgets"]
 cask "1password"
 cask "1password-cli"
 cask "acorn"
@@ -71,15 +76,15 @@ cask "discord"
 cask "figma"
 cask "firefox"
 cask "font-iosevka-etoile"
+cask "font-powerline-symbols"
+cask "font-symbols-only-nerd-font"
 cask "google-chrome"
 cask "handbrake"
 cask "iina"
-cask "kaleidoscope"
 cask "keycastr"
 cask "kitty"
 cask "little-snitch"
 cask "mimestream"
-cask "mouse-fix"
 cask "obs"
 cask "openinterminal"
 cask "protonvpn"
@@ -94,7 +99,6 @@ cask "spotify"
 cask "sublime-merge"
 cask "sublime-text"
 cask "telegram"
-cask "via"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
 mas "Amphetamine", id: 937984704
@@ -106,9 +110,7 @@ mas "Location Helper", id: 488536386
 mas "Magnet", id: 441258766
 mas "Monosnap", id: 540348655
 mas "Numbers", id: 409203825
-mas "Outline", id: 1356178125
 mas "Pages", id: 409201541
 mas "Velja", id: 1607635845
 mas "Vimari", id: 1480933944
-mas "Webcam Settings", id: 533696630
 mas "Wipr", id: 1320666476
