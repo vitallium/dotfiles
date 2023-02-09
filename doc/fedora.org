@@ -80,8 +80,7 @@ dnf remove -y cheese rhythmbox totem orca \
               gnome-shell-extension-* \
               libreoffice-* gnome-characters \
               gnome-photos simple-scan virtualbox-guest-additions \
-              gnome-tour gnome-connections mediawriter yelp \
-              podman firefox
+              gnome-tour gnome-connections firefox
 dnf autoremove -y
 #+end_src
 
@@ -193,59 +192,6 @@ dnf copr enable -y vitallium/neovim-default-editor
 dnf install -y --allowerasing neovim-default-editor
 #+end_src
 
-TODO: Enable copr for symlinks ~vim => nvim~.
-** Configure BTRFS snapshots
-Credits to [[https://davejansen.com/fedora-root-snapshot-support/][Dave Jansen]].
-Install snapper
-#+begin_src shell :dir /sudo::
-dnf install -y snapper python-dnf-plugin-snapper
-#+end_src
-
-*** Configure root snapshots
-Create configuration for ~/~.
-#+begin_src shell :dir /sudo::
-snapper -c root create-config /
-#+end_src
-
-Create a root-level ~.snapshots~ subvolume.
-#+begin_src shell :dir /sudo::
-btrfs subvolume delete /.snapshots
-#+end_src
-
-Check the ~/etc/fstab~ file and copy&paste the mount point of home but replace ~home~ with ~.snapshots~.
-#+begin_src shell :dir /sudo::
-mkdir /mnt/btrfs /.snapshots
-#+end_src
-
-#+begin_src shell :dir /sudo::
-mount /dev/disk/by-uuid/<INSERT_UUID_HERE> /mnt/btrfs
-#+end_src
-
-Create new root-level snapshot subvolume.
-#+begin_src shell :dir /sudo::
-cd /mnt/btrfs
-btrfs subvolume create snapshots
-btrfs subvolume create docker
-btrfs subvolume create development
-cd ~
-umount /mnt/btrfs
-rmdir /mnt/btrfs
-#+end_src
-
-Create entries in ~/etc/fstab~.
-
-Auto-mount everything.
-#+begin_src shell :dir /sudo::
-systemctl daemon-reload
-mount -a
-#+end_src
-
-Configure ~grub2~ to use ~root~ subvolume.
-#+begin_src shell :dir /sudo::
-btrfs subvolume set-default 257 /
-grubby --update-kernel=ALL --remove-args="rootflags=subvol=root"
-#+end_src
-
 * Configure user environment
 ** Enable [[https://flatpak.org/setup/Fedora][flathub]]
 #+begin_src shell :dir /sudo::
@@ -287,14 +233,6 @@ rm -rf ~/Documents ~/Music ~/Public ~/Templates ~/Desktop
 echo "file:///home/vslobodin/Downloads" > ~/.config/gtk-3.0/bookmarks
 #+end_src
 
-** Install fonts
-*** Iosevka
-Install ~Etoile~ variant for Org mode in Emacs.
-#+begin_src shell :dir /sudo::
-dnf copr enable -y peterwu/iosevka
-dnf install -y iosevka-etoile-fonts
-#+end_src
-
 ** Install docker
 #+begin_src shell :dir /sudo::
 dnf config-manager -y \
@@ -324,13 +262,6 @@ dnf install -y protonvpn
 dnf install -y https://mullvad.net/media/app/MullvadVPN-2022.5_x86_64.rpm
 #+end_src
 
-** Install XanMod Kernel
-#+begin_src shell :dir /sudo::
-dnf copr enable -y rmnscnce/kernel-xanmod
-dnf install kernel-xanmod-edge -y
-dnf upgrade -y
-#+end_src
-
 ** Install Sublime Text and Sublime Merge
 #+begin_src shell :dir /sudo::
 rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
@@ -354,37 +285,12 @@ dnf check-update -y 1password-cli
 dnf install -y 1password-cli
 #+end_src
 
-* Configure Rust development environment
-** Install ~fish~ completions for ~rustup~
-#+begin_src shell
-rustup completions fish rustup >> $HOME/.config/fish/completions/rustup.fish
-#+end_src
-
-#+begin_src shell
-curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
-chmod +x ~/.local/bin/rust-analyzer
-#+end_src
-
-** Install ~rust-src~.
-#+begin_src shell
-rustup component add rust-src
-#+end_src
-
-** Install ~rustfmt~
-#+begin_src shell
-rustup component add rustfmt
-#+end_src
-
-** Install ~clippy~
-#+begin_src shell
-rustup component add clippy
-#+end_src
-
 * Configure Gnome
 ** Install packages
 #+begin_src shell :dir /sudo::
 dnf install -y dconf-editor \
                webp-pixbuf-loader \
+               avif-pixbuf-loader \
                gthumb \
                kitty
 #+end_src
@@ -445,7 +351,6 @@ END=9; for num in $(seq 1 $END); do
   gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$num "['<Super>$num']"
   gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$num "['<Super><Shift>$num']"
 done
-
 #+end_src
 
 ** Fonts
@@ -485,6 +390,7 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier'
 ** Configure power saving
 #+begin_src shell :dir /sudo::
 grubby --update-kernel=ALL --args="nvme.noacpi=1"
+grubby --update-kernel=ALL --args="mem_sleep_default=deep"
 #+end_src
 
 Enable audio power saving.
