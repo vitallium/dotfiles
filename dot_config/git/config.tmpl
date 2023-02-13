@@ -1,6 +1,7 @@
 [user]
   name = Vitaly Slobodin
   email = vitaliy.slobodin@gmail.com
+  signingkey = {{ .git.gpg.key }}
 
 [color]
   ui = true
@@ -52,7 +53,7 @@
   path = ~/.config/git/gitlab
 
 [gpg]
-  program = {{ .git_gpg }}
+  program = {{ .git.gpg.bin }}
 
 [fetch]
   prune = true
