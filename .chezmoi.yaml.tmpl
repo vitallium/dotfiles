@@ -8,9 +8,6 @@ data:
     kitty:
       name: MonoLisa
       size: 12
-    emacs:
-      monospace: "12.0"
-      variable: "12.0"
   {{- else if eq .chezmoi.os "darwin" }}
   hostname: firefly
   pinentry_bin: /opt/homebrew/bin/pinentry-mac
@@ -20,9 +17,6 @@ data:
     kitty:
       name: MonoLisa
       size: 14
-    emacs:
-      monospace: "14.0"
-      variable: "16.0"
   {{- end }}
-  asdf_version: v0.11.0
+  asdf_version: v0.11.1
 format: yaml
