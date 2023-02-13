@@ -224,7 +224,7 @@ xdg-settings set default-web-browser re.sonny.Junction.desktop
 
 ** Install [[https://github.com/tmux-plugins/tpm][Tmux Plugin Manager]]
 #+begin_src shell
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 #+end_src
 
 ** Clean up unused directories and bookmarks
