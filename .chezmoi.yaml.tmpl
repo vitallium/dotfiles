@@ -1,8 +1,4 @@
 data:
-  git:
-    gpg:
-      bin: gpg2
-      key: EA8703DF57BC7168
   {{- if eq .chezmoi.os "linux" }}
   hostname: serenity
   pinentry_bin: /usr/bin/pinentry-gnome3
@@ -11,6 +7,10 @@ data:
     kitty:
       name: MonoLisa
       size: 12
+  git:
+    gpg:
+      key: EA8703DF57BC7168
+      bin: gpg2
   {{- else if eq .chezmoi.os "darwin" }}
   hostname: firefly
   pinentry_bin: /opt/homebrew/bin/pinentry-mac
@@ -19,6 +19,10 @@ data:
     kitty:
       name: MonoLisa
       size: 14
+  git:
+    gpg:
+      key: EA8703DF57BC7168
+      bin: gpg
   {{- end }}
   asdf_version: v0.11.1
 format: yaml
