@@ -2,7 +2,7 @@ nodejs 18.14.0
 ruby 3.0.5
 python system
 direnv 2.32.2
-golang 1.18.10
+golang 1.19.6
 chezmoi 2.30.1
 shellcheck 0.9.0
 rust 1.67.1
