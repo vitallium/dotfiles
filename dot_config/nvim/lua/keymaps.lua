@@ -65,6 +65,9 @@ wk.register({
     v = { ":vsplit<CR>", "Vertically split window" },
     s = { ":split<CR>", "Split window" },
   },
+  o = {
+    p = { ":NvimTreeToggle<CR>", "Toggle Nvim Tree" },
+  },
   q = { name = "Quit", q = { ":quitall<CR>", "Quit all" } },
 }, { prefix = "<leader>" })
 
