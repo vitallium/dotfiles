@@ -1,14 +1,7 @@
-bash-language-server
 eslint_d
-graphql-language-service-cli
 jsvu
 marked
 npm
-typescript
-typescript-language-server
-vls
-vscode-langservers-extracted
 yalc
-yaml-language-server
 yarn
 yarn-deduplicate
