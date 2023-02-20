@@ -4,7 +4,6 @@ brakeman
 bundler
 bundler-audit
 byebug
-neovim
 pry
 pry-doc
 rubocop

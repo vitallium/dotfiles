@@ -1,5 +1,10 @@
 enable-ssh-support
 default-cache-ttl 60
 max-cache-ttl 120
-pinentry-program {{ .pinentry_bin }}
+{{- if eq .chezmoi.arch "arm64" -}}
+pinentry-program {{ .pinentry_bin.arm }}
+{{- else }}
+pinentry-program {{ .pinentry_bin.intel }}
+{{- end }}
 allow-loopback-pinentry
+allow-emacs-pinentry
