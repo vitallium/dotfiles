@@ -1,3 +1,5 @@
 poetry
 qmk
 wheel
+yamllint
+yt-dlp
