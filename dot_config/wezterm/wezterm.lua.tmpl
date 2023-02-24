@@ -1,0 +1,14 @@
+local wezterm = require 'wezterm'
+
+return {
+  font = wezterm.font('{{ .fonts.wezterm.name }}'),
+  font_size = {{ .fonts.wezterm.size }},
+  color_scheme = 'Catppuccin Latte',
+  hide_tab_bar_if_only_one_tab = true,
+  window_padding = {
+    left = 0,
+    right = 0,
+    top = 0,
+    bottom = 0,
+  }
+}
