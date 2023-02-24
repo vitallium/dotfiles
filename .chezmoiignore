@@ -2,10 +2,6 @@ README.md
 install.sh
 doc/
 
-{{- if ne .chezmoi.os "linux" }}
-.config/fontconfig
-{{- end }}
-
 {{ if ne .chezmoi.os "darwin" }}
 .Brewfile
 {{- end }}

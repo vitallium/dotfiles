@@ -11,7 +11,7 @@ set -gx GO111MODULE                on
 
 set -gx RIPGREP_CONFIG_PATH       "$HOME/.ripgreprc"
 
-set configs aliases functions paths
+set configs aliases paths
 for config in $configs
   if test -e $__fish_config_dir/$config.fish
     . $__fish_config_dir/$config.fish
