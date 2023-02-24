@@ -6,9 +6,8 @@
 
 ## Common configuration
 
-- [kitty](https://sw.kovidgoyal.net/kitty/) as a terminal emulator.
+- [wezterm](https://wezfurlong.org/wezterm/) as a terminal emulator.
 - [fish](https://fishshell.com/) as a shell.
-- tmux.
 - [bat](https://github.com/sharkdp/bat) instead of `cat`.
 
 ## [Fedora configuration](doc/fedora.org) for my [Framework Laptop](https://frame.work)
