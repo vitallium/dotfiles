@@ -1,4 +1,6 @@
 data:
+  fish:
+    theme: "Catppuccin Latte"
   {{- if eq .chezmoi.os "linux" }}
   hostname: serenity
   pinentry_bin: /usr/bin/pinentry-gnome3
@@ -14,6 +16,8 @@ data:
     gpg:
       key: EA8703DF57BC7168
       bin: gpg2
+    delta:
+      theme: GitHub
   {{- else if eq .chezmoi.os "darwin" }}
   hostname: firefly
   pinentry_bin:
@@ -31,6 +35,8 @@ data:
     gpg:
       key: EA8703DF57BC7168
       bin: gpg
+    delta:
+      theme: GitHub
   {{- end }}
   asdf_version: v0.11.1
 format: yaml
