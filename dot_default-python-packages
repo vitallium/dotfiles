@@ -1,5 +1,6 @@
 docutils
 poetry
+pynvim
 qmk
 wheel
 yamllint
