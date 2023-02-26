@@ -41,3 +41,12 @@ opt.splitbelow = true -- bool: Place new window to bottom of current one
 
 -- [[ Completion ]]
 opt.completeopt = "menuone,noselect" -- str: Better completion experience
+
+-- [[ Undo ]]
+opt.undofile = true
+opt.undolevels = 10000
+
+if vim.fn.has("nvim-0.9.0") == 1 then
+	opt.splitkeep = "screen"
+	opt.shortmess:append({ C = true })
+end
