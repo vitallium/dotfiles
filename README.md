@@ -6,7 +6,7 @@
 
 ## Common configuration
 
-- [wezterm](https://wezfurlong.org/wezterm/) as a terminal emulator.
+- [kitty](https://sw.kovidgoyal.net/kitty/) as a terminal emulator.
 - [fish](https://fishshell.com/) as a shell.
 - [bat](https://github.com/sharkdp/bat) instead of `cat`.
 
