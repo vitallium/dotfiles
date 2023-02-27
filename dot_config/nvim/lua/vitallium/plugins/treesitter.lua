@@ -13,11 +13,6 @@ return {
     config = true,
   },
   {
-    "mrjones2014/nvim-ts-rainbow", -- Rainbow parentheses
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = "nvim-treesitter/nvim-treesitter",
-  },
-  {
     "windwp/nvim-ts-autotag", -- Auto-tags for HTML, Vue, etc.
     event = { "BufReadPost", "BufNewFile" },
     dependencies = "nvim-treesitter/nvim-treesitter",
@@ -92,11 +87,6 @@ return {
           -- Using this option may slow down your editor, and you may see some duplicate highlights.
           -- Instead of true it can also be a list of languages
           additional_vim_regex_highlighting = false,
-        },
-
-        rainbow = {
-          enable = true,
-          extended_mode = true,
         },
 
         autotag = {

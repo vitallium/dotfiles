@@ -18,7 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- must be first to make mapping correct
 vim.g.mapleader = " "
-vim.g.localleader = ","
+vim.g.maplocalleader = ","
 
 require("vitallium.options")
 require("lazy").setup("vitallium.plugins", {
@@ -36,3 +36,11 @@ require("lazy").setup("vitallium.plugins", {
 	},
 })
 require("vitallium.keymaps")
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 100 })
+	end,
+	desc = "Highlights the yanked text",
+})
