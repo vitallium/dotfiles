@@ -1,4 +1,8 @@
 -- Options.
+-- must be first to make mapping correct
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
 -- [[ opts.lua ]]
 local opt = vim.opt
 
@@ -20,14 +24,15 @@ opt.fileencoding = "utf8" -- str: File encoding to use
 opt.syntax = "ON" -- str: Allow syntax highlighting
 opt.termguicolors = true -- bool: If term supports ui color then enable
 opt.cursorline = true -- bool: Highlight current line
-opt.listchars = "space:·,tab:>~,trail:~,extends:>,precedes:<"
-opt.list = true
+opt.list = true -- bool: Show some invisible characters (tabs...
+opt.relativenumber = true -- bool: Relative line numbers
 
 -- [[ Search ]]
 opt.ignorecase = true -- bool: Ignore case in search patterns
 opt.smartcase = true -- bool: Override ignorecase if search contains capitals
 opt.incsearch = true -- bool: Use incremental search
-opt.grepprg = "rg --vimgrep --smart-case --follow" -- str: Configure grep to use rg
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep" -- str: Configure grep to use rg
 
 -- [[ Whitespace ]]
 opt.expandtab = true -- bool: Use spaces instead of tabs
@@ -40,13 +45,20 @@ opt.splitright = true -- bool: Place new window to right of current one
 opt.splitbelow = true -- bool: Place new window to bottom of current one
 
 -- [[ Completion ]]
-opt.completeopt = "menuone,noselect" -- str: Better completion experience
+opt.completeopt = "menu,menuone,noselect" -- str: Better completion experience
 
 -- [[ Undo ]]
 opt.undofile = true
 opt.undolevels = 10000
 
+opt.wildmode = "longest:full,full" -- Command-line completion mode
+opt.winminwidth = 5 -- Minimum window width
+opt.wrap = false -- Disable line wrap
+
 if vim.fn.has("nvim-0.9.0") == 1 then
 	opt.splitkeep = "screen"
 	opt.shortmess:append({ C = true })
 end
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0

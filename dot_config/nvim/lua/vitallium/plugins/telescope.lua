@@ -130,6 +130,7 @@ return {
 						},
 						n = { ["<c-t>"] = trouble.open_with_trouble },
 					},
+					layout_strategy = "bottom_pane",
 				},
 				pickers = {
 					find_files = {
@@ -139,7 +140,10 @@ return {
 					},
 				},
 				extensions = {
-					file_browser = { hijack_netrw = true },
+					file_browser = {
+						hijack_netrw = true,
+						previewer = false,
+					},
 					fzf = {
 						fuzzy = true, -- false will only do exact matching
 						override_generic_sorter = true, -- override the generic sorter

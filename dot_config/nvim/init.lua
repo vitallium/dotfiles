@@ -16,10 +16,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- must be first to make mapping correct
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
-
 require("vitallium.options")
 require("lazy").setup("vitallium.plugins", {
 	checker = {
