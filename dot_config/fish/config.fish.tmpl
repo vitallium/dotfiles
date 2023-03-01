@@ -19,9 +19,8 @@ for config in $configs
 end
 set -e configs
 
-if test -e $HOME/.asdf/asdf.fish
-  . $HOME/.asdf/asdf.fish
+if type -q rtx
+  rtx activate fish | source
+  eval (rtx exec -- direnv hook fish)
 end
-
-eval (asdf exec direnv hook fish)
 eval ({{ .dircolors_bin }} -c)
