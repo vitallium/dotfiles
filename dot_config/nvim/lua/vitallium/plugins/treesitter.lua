@@ -58,14 +58,11 @@ return {
           "vue",
           "yaml",
         },
-
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = false,
-
         -- Automatically install missing parsers when entering buffer
         -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
         auto_install = true,
-
         -- List of parsers to ignore installing (for "all")
         -- ignore_install = {  },
 
@@ -88,15 +85,12 @@ return {
           -- Instead of true it can also be a list of languages
           additional_vim_regex_highlighting = false,
         },
-
         autotag = {
           enable = true, -- Through auto-tag plugin
         },
-
         indent = { -- Indentation based on = operator (experimental)
           enable = true,
         },
-
         context_commentstring = { -- For nvim-ts-context-commentstring plugin
           enable = true,
           enable_autocmd = false, -- Disabled when used with Comment.nvim
