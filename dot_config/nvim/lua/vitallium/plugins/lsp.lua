@@ -34,14 +34,14 @@ local on_attach = function(client, bufnr)
 
   -- Without prefix:
   wk.register({
-    ["["] = {
+        ["["] = {
       d = {
         vim.lsp.diagnostic.goto_prev,
         "Previous diagnostic",
         buffer = bufnr,
       },
     },
-    ["]"] = {
+        ["]"] = {
       d = {
         vim.lsp.diagnostic.goto_next,
         "Next diagnostic",
@@ -88,7 +88,7 @@ local on_attach = function(client, bufnr)
       k = { vim.lsp.buf.signature_help, "Signature help", buffer = bufnr },
       r = { vim.lsp.buf.rename, "Rename", buffer = bufnr },
     },
-    ["<tab>"] = {
+        ["<tab>"] = {
       name = "Workspace",
       a = {
         vim.lsp.buf.add_workspace_folder,
@@ -129,8 +129,8 @@ return {
     "neovim/nvim-lspconfig", -- Configurations for Nvim LSP
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
-      "b0o/schemastore.nvim", -- Schemas for JSON files
-      "hrsh7th/cmp-nvim-lsp", -- See cmp.lua for more info
+      "b0o/schemastore.nvim",      -- Schemas for JSON files
+      "hrsh7th/cmp-nvim-lsp",      -- See cmp.lua for more info
       {
         "williamboman/mason.nvim", -- Manage language servers, linters, etc.
         -- IMPORTANT: Mason must be set up before lspconfig and null-ls
@@ -223,7 +223,6 @@ return {
         end,
       },
     },
-
     config = function()
       local lsp_flags = {
         -- This is the default in Nvim 0.7+
@@ -267,6 +266,10 @@ return {
         }),
         null_ls.builtins.diagnostics.hadolint, -- Docker best practices
         null_ls.builtins.diagnostics.shellcheck,
+        null_ls.builtins.diagnostics.rubocop.with({
+          command = "bundle",
+          args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
+        }),
         null_ls.builtins.formatting.jq,
         null_ls.builtins.formatting.shfmt, -- Shell
         null_ls.builtins.formatting.stylua,

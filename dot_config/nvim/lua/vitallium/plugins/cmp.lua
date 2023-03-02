@@ -12,7 +12,7 @@ return {
       "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
       "onsails/lspkind.nvim", -- Icons in completion dialogue
       "ray-x/cmp-treesitter",
-      "cmp-tabnine",
+      { "tzachar/cmp-tabnine", build = "./install.sh" },
     },
     config = function()
       -- nvim-cmp setup
@@ -134,20 +134,5 @@ return {
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
-  },
-  {
-    "tzachar/cmp-tabnine",
-    build = "./install.sh",
-    config = function()
-      local tabnine = require("cmp_tabnine.config")
-      tabnine:setup({
-        max_lines = 1000,
-        max_num_results = 20,
-        sort = true,
-        run_on_every_keystroke = true,
-        snippet_placeholder = "..",
-      })
-    end,
-    lazy = true,
   },
 }
