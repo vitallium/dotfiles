@@ -69,4 +69,6 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     config = true,
   },
+  -- Git client in your neovim
+  { "kdheepak/lazygit.nvim", cmd = "LazyGit" },
 }

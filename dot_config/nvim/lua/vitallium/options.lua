@@ -24,6 +24,7 @@ opt.fileencoding = "utf8" -- str: File encoding to use
 opt.syntax = "ON" -- str: Allow syntax highlighting
 opt.termguicolors = true -- bool: If term supports ui color then enable
 opt.cursorline = true -- bool: Highlight current line
+opt.listchars = "space:·,tab:>~,trail:~,extends:>,precedes:<" -- str: how to render invisible chars
 opt.list = true -- bool: Show some invisible characters (tabs...
 opt.relativenumber = true -- bool: Relative line numbers
 

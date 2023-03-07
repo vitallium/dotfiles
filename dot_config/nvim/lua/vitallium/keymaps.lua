@@ -49,6 +49,12 @@ wk.register({
     name = "Git",
     t = { ":Gitsigns toggle_current_line_blame<CR>", "Toggle blame" },
     g = { ":Neogit<CR>", "Neogit" },
+    G = { ":LazyGit<CR>", "LazyGit" },
+  },
+  h = {
+    name = "Help",
+    t = { ":Telescope colorscheme<CR>", "Change Theme" },
+    m = { ":Mason<CR>", "Mason" },
   },
   t = {
     name = "Tab",
