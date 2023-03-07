@@ -4,7 +4,6 @@ data:
   {{- if eq .chezmoi.os "linux" }}
   hostname: serenity
   pinentry_bin: /usr/bin/pinentry-gnome3
-  dircolors_bin: dircolors
   fonts:
     wezterm:
       name: MonoLisa
@@ -20,7 +19,6 @@ data:
   pinentry_bin:
     arm: /opt/homebrew/bin/pinentry-mac
     intel: /usr/local/bin/pinentry-mac
-  dircolors_bin: gdircolors
   fonts:
     wezterm:
       name: MonoLisa
@@ -32,5 +30,4 @@ data:
     delta:
       theme: TokyoNight
   {{- end }}
-  asdf_version: v0.11.1
 format: yaml

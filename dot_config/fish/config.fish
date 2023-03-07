@@ -1,4 +1,6 @@
 set -gx fish_greeting              ''
+set -gx EDITOR nvim
+set -gx VISUAL $EDITOR
 
 # GPG
 set -x                             GPG_TTY (tty)
@@ -19,9 +21,14 @@ for config in $configs
 end
 set -e configs
 
-if test -e $HOME/.asdf/asdf.fish
-  . $HOME/.asdf/asdf.fish
+if command -sq direnv
+  direnv hook fish | source
 end
 
-eval (asdf exec direnv hook fish)
-eval ({{ .dircolors_bin }} -c)
+if command -sq rtx
+  rtx activate fish | source
+end
+
+if command -sq gdircolors
+  eval (gdircolors -c)
+end
