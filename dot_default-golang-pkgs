@@ -1,15 +1,3 @@
-golang.org/x/tools/gopls@latest
-github.com/x-motemen/gore/cmd/gore@latest
-github.com/stamblerre/gocode@latest
-golang.org/x/tools/cmd/godoc@latest
-golang.org/x/tools/cmd/goimports@latest
-golang.org/x/tools/cmd/gorename@latest
-golang.org/x/tools/cmd/guru@latest
-github.com/cweill/gotests/...@latest
-github.com/fatih/gomodifytags@latest
-golang.org/x/tools/gopls@latest
-github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 github.com/go-delve/delve/cmd/dlv@latest
-honnef.co/go/tools/cmd/staticcheck@latest
 github.com/DarthSim/hivemind@latest
 github.com/nao1215/gup@latest
