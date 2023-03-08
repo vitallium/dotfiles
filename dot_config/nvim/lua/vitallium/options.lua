@@ -9,6 +9,7 @@ local opt = vim.opt
 -- [[ Misc ]]
 opt.timeoutlen = 300 -- num: Timeout, e.g. for which-key
 opt.clipboard = "unnamedplus" -- str: Clipboard integration with macOS
+opt.updatetime = 1000 -- num: Faster update times.
 
 -- [[ Context ]]
 opt.colorcolumn = "80" -- str: Show col for max line length
@@ -24,7 +25,7 @@ opt.fileencoding = "utf8" -- str: File encoding to use
 opt.syntax = "ON" -- str: Allow syntax highlighting
 opt.termguicolors = true -- bool: If term supports ui color then enable
 opt.cursorline = true -- bool: Highlight current line
-opt.listchars = "space:·,tab:>~,trail:~,extends:>,precedes:<" -- str: how to render invisible chars
+opt.listchars = "eol:↲,tab:» ,trail:·,extends:<,precedes:>,conceal:┊,nbsp:␣" -- str: how to render invisible chars
 opt.list = true -- bool: Show some invisible characters (tabs...
 opt.relativenumber = true -- bool: Relative line numbers
 
@@ -33,7 +34,7 @@ opt.ignorecase = true -- bool: Ignore case in search patterns
 opt.smartcase = true -- bool: Override ignorecase if search contains capitals
 opt.incsearch = true -- bool: Use incremental search
 opt.grepformat = "%f:%l:%c:%m"
-opt.grepprg = "rg --vimgrep" -- str: Configure grep to use rg
+opt.grepprg = "rg --vimgrep --smart-case --follow" -- str: Configure grep to use rg
 
 -- [[ Whitespace ]]
 opt.expandtab = true -- bool: Use spaces instead of tabs

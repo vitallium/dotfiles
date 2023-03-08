@@ -12,9 +12,9 @@ return {
     require("lualine").setup({
       options = {
         icons_enabled = true,
-        theme = "tokyonight",
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
+        theme = "catppuccin",
+        component_separators = "",
+        section_separators = "",
         disabled_filetypes = {
           statusline = {},
           winbar = { "NvimTree", "NeogitCommitMessage", "NeogitStatus", "aerial" },
@@ -37,7 +37,7 @@ return {
         lualine_b = { "mode", "searchcount", get_branch, "diff" },
         lualine_c = { { "filename", path = 1, shorting_target = 70 } },
         lualine_x = { { "diagnostics", sources = { "nvim_lsp", "nvim_diagnostic" } } },
-        lualine_y = { "filetype", "locally", "progress" },
+        lualine_y = { "filetype", "locally", "progress", "cmp_tabnine" },
         lualine_z = {},
       },
       tabline = {},

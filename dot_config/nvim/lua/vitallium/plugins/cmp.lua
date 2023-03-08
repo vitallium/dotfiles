@@ -10,11 +10,15 @@ return {
       "hrsh7th/cmp-cmdline", -- Command line source for nvim-cmp
       "L3MON4D3/LuaSnip", -- Snippets plugin
       "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-      "onsails/lspkind.nvim", -- Icons in completion dialogue
+      -- Icons in completion dialogue
+      "onsails/lspkind.nvim",
       "ray-x/cmp-treesitter",
       { "tzachar/cmp-tabnine", build = "./install.sh" },
+      -- working with neovim config/plugins
+      "folke/neodev.nvim",
     },
     config = function()
+      require("neodev").setup({})
       -- nvim-cmp setup
       local cmp = require("cmp")
       local luasnip = require("luasnip")

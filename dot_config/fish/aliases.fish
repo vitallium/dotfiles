@@ -4,6 +4,4 @@ alias tls="t ls"
 alias tn="t new -t"
 
 alias t="tmux"
-alias cat='bat --paging=never'
 
-alias mbsync="mbsync -c \"$HOME/.config/isync/mbsyncrc\""

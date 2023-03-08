@@ -9,14 +9,14 @@ end)
 return {
 	font = wezterm.font_with_fallback({
 		{
-			family = "{{ .fonts.wezterm.name }}",
+			family = "MonoLisa",
 		},
 		{
 			family = "Symbols Nerd Font Mono",
 		},
 	}),
-	font_size = {{ .fonts.wezterm.size }},
-	color_scheme = "tokyonight-storm",
+	font_size = 14.0,
+	color_scheme = "Catppuccin Mocha",
 	enable_scroll_bar = false,
 	-- tab
 	tab_max_width = 32,
