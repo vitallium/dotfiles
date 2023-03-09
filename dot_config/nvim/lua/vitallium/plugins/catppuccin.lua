@@ -7,6 +7,7 @@ return {
       flavour = "mocha",
       integrations = {
         aerial = true,
+        beacon = true,
         cmp = true,
         dap = {
           enabled = true,
@@ -25,6 +26,7 @@ return {
         native_lsp = {
           enabled = true,
         },
+        hop = true,
         navic = {
           enabled = true,
           custom_bg = "NONE",

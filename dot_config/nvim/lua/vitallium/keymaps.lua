@@ -7,18 +7,6 @@ wk.register({
     s = { ":split<CR>", "Split window" },
     v = { ":vsplit<CR>", "Split window vertically" },
   },
-  ["["] = {
-    name = "Previous",
-    d = { vim.diagnostic.goto_prev, "Previous diagnostic" },
-    b = { ":bp<CR>", "Previous buffer" },
-    t = { ":tabprevious<CR>", "Previous tab" },
-  },
-  ["]"] = {
-    name = "Next",
-    d = { vim.diagnostic.goto_next, "Next diagnostic" },
-    b = { ":bn<CR>", "Next buffer" },
-    t = { ":tabnext<CR>", "Next tab" },
-  },
 })
 
 -- With leader prefix:

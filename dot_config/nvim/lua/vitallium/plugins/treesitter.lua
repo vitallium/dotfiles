@@ -25,6 +25,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPost", "BufNewFile" },
     build = function()
       local ts_update = require("nvim-treesitter.install").update({
         with_sync = true,
@@ -72,7 +73,6 @@ return {
         highlight = {
           -- `false` will disable the whole extension
           enable = true,
-
           -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
           -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
           -- the name of the parser)
@@ -91,7 +91,8 @@ return {
         indent = { -- Indentation based on = operator (experimental)
           enable = true,
         },
-        context_commentstring = { -- For nvim-ts-context-commentstring plugin
+        context_commentstring = {
+          -- For nvim-ts-context-commentstring plugin
           enable = true,
           enable_autocmd = false, -- Disabled when used with Comment.nvim
         },

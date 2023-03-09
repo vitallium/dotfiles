@@ -1,6 +1,6 @@
 return {
   -- Plugin with util functions required by other plugins
-  "nvim-lua/plenary.nvim",
+  { "nvim-lua/plenary.nvim", lazy = true },
   -- EditorConfig
   "gpanders/editorconfig.nvim",
   -- [[ Theming ]]
