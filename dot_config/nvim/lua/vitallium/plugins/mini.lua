@@ -22,6 +22,11 @@ return {
       options = {
         basic = true,
         extra_ui = true,
+        autocommands = {
+          -- When enabled, Neogit starts in insert mode due to background terminal
+          -- See also https://github.com/TimUntersberger/neogit/issues/426#issuecomment-1374832606
+          basic = false,
+        },
       },
     })
 

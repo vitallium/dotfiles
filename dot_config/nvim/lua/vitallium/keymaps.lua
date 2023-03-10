@@ -45,17 +45,21 @@ wk.register({
     m = { ":Mason<CR>", "Mason" },
   },
   t = {
-    name = "Tab",
-    c = { ":tabclose<CR>", "Close tab" },
-    n = { ":tabnext<CR>", "Next tab" },
-    p = { ":tabprevious<CR>", "Previous tab" },
-    t = { ":tabnew<CR>", "New tab" },
+    name = "Toggle",
+    c = { ":set nolist!<CR>", "Toggle invisible chars" },
   },
   w = {
     name = "Window",
     c = { ":close<CR>", "Close window" },
     s = { ":split<CR>", "Split window" },
     v = { ":vsplit<CR>", "Vertically split window" },
+    t = {
+      name = "Tab",
+      c = { ":tabclose<CR>", "Close tab" },
+      n = { ":tabnext<CR>", "Next tab" },
+      p = { ":tabprevious<CR>", "Previous tab" },
+      t = { ":tabnew<CR>", "New tab" },
+    },
   },
   q = { name = "Quit", q = { ":quitall<CR>", "Quit all" } },
 }, { prefix = "<leader>" })

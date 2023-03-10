@@ -26,7 +26,7 @@ opt.syntax = "ON" -- str: Allow syntax highlighting
 opt.termguicolors = true -- bool: If term supports ui color then enable
 opt.cursorline = true -- bool: Highlight current line
 opt.listchars = "eol:↲,tab:» ,trail:·,extends:<,precedes:>,conceal:┊,nbsp:␣" -- str: how to render invisible chars
-opt.list = true -- bool: Show some invisible characters (tabs...
+opt.list = false -- bool: Show some invisible characters (tabs...
 opt.relativenumber = true -- bool: Relative line numbers
 
 -- [[ Search ]]
