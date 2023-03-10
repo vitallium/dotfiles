@@ -39,10 +39,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("gitsigns").setup({
-        current_line_blame = true,
-        current_line_blame_opts = {
-          delay = 100,
-        },
+        current_line_blame = false,
       })
       -- This is for diagnostic signs on the line number column.
       -- Use this to beautify the plain E W signs.
