@@ -16,7 +16,7 @@ return {
 		},
 	}),
 	font_size = 14.0,
-	color_scheme = "Catppuccin Mocha",
+	color_scheme = "tokyonight-storm",
 	enable_scroll_bar = false,
 	-- tab
 	tab_max_width = 32,
