@@ -53,6 +53,9 @@ return {
   {
     "tpope/vim-fugitive", -- For :Git
     cmd = { "Git", "Gedit", "Gdiffsplit", "Gvdiffsplit" },
+    keys = {
+      { "<leader>gs", vim.cmd.Git, noremap = true, silent = true, desc = "Open Git" },
+    },
   },
   {
     "sindrets/diffview.nvim",
@@ -78,19 +81,19 @@ return {
             { "n", "<leader>ft", actions.toggle_files },
           },
           file_panel = {
-            { "n", "j", actions.select_next_entry },
-            { "n", "k", actions.select_prev_entry },
-            { "n", "q", ":tabclose<CR>" },
-            { "n", "<cr>", "<c-w>k" },
-            { "n", "o", actions.close },
+            { "n", "j",          actions.select_next_entry },
+            { "n", "k",          actions.select_prev_entry },
+            { "n", "q",          ":tabclose<CR>" },
+            { "n", "<cr>",       "<c-w>k" },
+            { "n", "o",          actions.close },
             { "n", "<leader>ft", actions.toggle_files },
           },
           file_history_panel = {
-            { "n", "j", actions.select_next_entry },
-            { "n", "k", actions.select_prev_entry },
-            { "n", "q", ":tabclose<CR>" },
-            { "n", "<cr>", "<c-w>k" },
-            { "n", "o", actions.close },
+            { "n", "j",          actions.select_next_entry },
+            { "n", "k",          actions.select_prev_entry },
+            { "n", "q",          ":tabclose<CR>" },
+            { "n", "<cr>",       "<c-w>k" },
+            { "n", "o",          actions.close },
             { "n", "<leader>ft", actions.toggle_files },
           },
         },
