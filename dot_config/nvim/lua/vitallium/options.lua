@@ -53,6 +53,13 @@ opt.completeopt = "menu,menuone,noselect" -- str: Better completion experience
 opt.undofile = true
 opt.undolevels = 10000
 
+-- [[ Folding ]]
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldlevel = 100 -- don't autofold anything
+opt.foldnestmax = 3 -- maximum nesting
+opt.foldopen:append("jump") -- what movements open folds
+
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap

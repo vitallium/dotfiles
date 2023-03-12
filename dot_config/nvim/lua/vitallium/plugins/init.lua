@@ -5,21 +5,6 @@ return {
   "gpanders/editorconfig.nvim",
   -- [[ Theming ]]
   {
-    "lewis6991/gitsigns.nvim", -- Git gutter
-    event = { "BufReadPost", "BufNewFile" },
-    config = function(_, opts)
-      require("gitsigns").setup(opts)
-      -- This is for diagnostic signs on the line number column.
-      -- Use this to beautify the plain E W signs.
-      local signs = require("vitallium.icons").diagnostics
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
-    end,
-  },
-
-  {
     "folke/todo-comments.nvim", -- Highlight and list TODOs, etc.
     event = { "BufReadPost", "BufNewFile" },
     opts = {

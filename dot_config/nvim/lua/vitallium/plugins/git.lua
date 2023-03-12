@@ -81,19 +81,19 @@ return {
             { "n", "<leader>ft", actions.toggle_files },
           },
           file_panel = {
-            { "n", "j",          actions.select_next_entry },
-            { "n", "k",          actions.select_prev_entry },
-            { "n", "q",          ":tabclose<CR>" },
-            { "n", "<cr>",       "<c-w>k" },
-            { "n", "o",          actions.close },
+            { "n", "j", actions.select_next_entry },
+            { "n", "k", actions.select_prev_entry },
+            { "n", "q", ":tabclose<CR>" },
+            { "n", "<cr>", "<c-w>k" },
+            { "n", "o", actions.close },
             { "n", "<leader>ft", actions.toggle_files },
           },
           file_history_panel = {
-            { "n", "j",          actions.select_next_entry },
-            { "n", "k",          actions.select_prev_entry },
-            { "n", "q",          ":tabclose<CR>" },
-            { "n", "<cr>",       "<c-w>k" },
-            { "n", "o",          actions.close },
+            { "n", "j", actions.select_next_entry },
+            { "n", "k", actions.select_prev_entry },
+            { "n", "q", ":tabclose<CR>" },
+            { "n", "<cr>", "<c-w>k" },
+            { "n", "o", actions.close },
             { "n", "<leader>ft", actions.toggle_files },
           },
         },
@@ -128,15 +128,10 @@ return {
     end,
   },
   {
-    "pwntester/octo.nvim", -- GitHub inside Neovim
-    cmd = "Octo",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "kyazdani42/nvim-web-devicons",
+    "ruifm/gitlinker.nvim", -- Shareable permalinks to git hosts
+    keys = {
+      { "<leader>gy", "", mode = { "n", "v" }, desc = "copy sharable git URL" },
     },
-    config = function()
-      require("octo").setup()
-    end,
+    config = true,
   },
 }

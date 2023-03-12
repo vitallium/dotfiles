@@ -3,13 +3,13 @@ return {
     "hrsh7th/nvim-cmp", -- Autocompletion plugin
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",                -- LSP source for nvim-cmp
+      "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
       "hrsh7th/cmp-nvim-lsp-signature-help", -- Function signature source for nvim-cmp
-      "hrsh7th/cmp-buffer",                  -- Buffer source for nvim-cmp
-      "hrsh7th/cmp-path",                    -- Path source for nvim-cmp
-      "hrsh7th/cmp-cmdline",                 -- Command line source for nvim-cmp
+      "hrsh7th/cmp-buffer", -- Buffer source for nvim-cmp
+      "hrsh7th/cmp-path", -- Path source for nvim-cmp
+      "hrsh7th/cmp-cmdline", -- Command line source for nvim-cmp
       {
-        "L3MON4D3/LuaSnip",                  -- Snippets plugin
+        "L3MON4D3/LuaSnip", -- Snippets plugin
         dependencies = {
           "rafamadriz/friendly-snippets",
         },
@@ -31,7 +31,7 @@ return {
       "simrat39/inlay-hints.nvim",
     },
     config = function()
-      require("neodev").setup({})
+      require("neodev").setup({ library = { plugins = { "neotest" }, types = true } })
       -- nvim-cmp setup
       local cmp = require("cmp")
       local luasnip = require("luasnip")
