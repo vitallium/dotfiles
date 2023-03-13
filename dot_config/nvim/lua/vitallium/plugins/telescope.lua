@@ -8,72 +8,52 @@ return {
         "nvim-telescope/telescope-fzf-native.nvim", -- FZF algorithm for telescope
         build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
       },
-      "nvim-lua/plenary.nvim",
-      "folke/trouble.nvim",
     },
     cmd = { "Telescope" },
     keys = {
       {
         "<leader><leader>",
-        function()
-          require("telescope.builtin").find_files()
-        end,
+        function() require("telescope.builtin").find_files() end,
         desc = "Find file",
       },
       {
         "<leader>/",
-        function()
-          require("telescope.builtin").live_grep()
-        end,
+        function() require("telescope.builtin").live_grep() end,
         desc = "Grep directory",
       },
       {
         "<leader>?",
-        function()
-          require("telescope.builtin").current_buffer_fuzzy_find()
-        end,
+        function() require("telescope.builtin").current_buffer_fuzzy_find() end,
         desc = "Grep current buffer",
       },
       {
         "<leader>;",
-        function()
-          require("telescope.builtin").command_history()
-        end,
+        function() require("telescope.builtin").command_history() end,
         desc = "Command history",
       },
       {
         "<leader>:",
-        function()
-          require("telescope.builtin").commands()
-        end,
+        function() require("telescope.builtin").commands() end,
         desc = "Commands",
       },
       {
         "<leader>r",
-        function()
-          require("telescope.builtin").resume()
-        end,
+        function() require("telescope.builtin").resume() end,
         desc = "Resume telescope",
       },
       {
         "<leader>bb",
-        function()
-          require("telescope.builtin").buffers()
-        end,
+        function() require("telescope.builtin").buffers() end,
         desc = "Find buffer",
       },
       {
         "<leader>cs",
-        function()
-          require("telescope.builtin").lsp_document_symbols()
-        end,
+        function() require("telescope.builtin").lsp_document_symbols() end,
         desc = "Symbols in document",
       },
       {
         "<leader>fr",
-        function()
-          require("telescope.builtin").oldfiles()
-        end,
+        function() require("telescope.builtin").oldfiles() end,
         desc = "Find previously opened file",
       },
       {
@@ -89,38 +69,35 @@ return {
       },
       {
         "<leader>gb",
-        function()
-          require("telescope.builtin").git_branches()
-        end,
+        function() require("telescope.builtin").git_branches() end,
         desc = "Branches",
       },
       {
         "<leader>h",
-        function()
-          require("telescope.builtin").help_tags()
-        end,
+        function() require("telescope.builtin").help_tags() end,
         desc = "NeoVim help tags",
       },
     },
     config = function()
       local telescope = require("telescope")
-      local telescopeConfig = require("telescope.config")
       local actions = require("telescope.actions")
-
-      -- Clone the default Telescope configuration
-      local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
-
-      -- I want to search in hidden/dot files.
-      table.insert(vimgrep_arguments, "--hidden")
-      -- I don't want to search in the `.git` directory.
-      table.insert(vimgrep_arguments, "--glob")
-      table.insert(vimgrep_arguments, "!.git/*")
 
       local trouble = require("trouble.providers.telescope")
       telescope.setup({
         defaults = {
           -- `hidden = true` is not supported in text grep commands.
-          vimgrep_arguments = vimgrep_arguments,
+          vimgrep_arguments = {
+            "rg",
+            "--hidden",
+            "--no-ignore-vcs",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--trim",
+          },
+          sorting_strategy = "ascending",
           mappings = {
             i = {
               ["<c-j>"] = actions.move_selection_next,
@@ -135,8 +112,20 @@ return {
         pickers = {
           find_files = {
             previewer = false,
+            find_command = {
+              "rg",
+              "--files",
+              "--no-ignore-vcs",
+              "--hidden",
+              "--no-heading",
+              "--with-filename",
+              "--column",
+              "--smart-case",
+              "--iglob",
+              "!.git",
+            },
             -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-            find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+            -- find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
           },
         },
         extensions = {

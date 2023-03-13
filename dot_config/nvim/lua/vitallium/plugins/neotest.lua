@@ -1,5 +1,6 @@
 return {
   "nvim-neotest/neotest",
+  event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     "antoinemadec/FixCursorHold.nvim",
     -- adapters

@@ -1,5 +1,6 @@
 return {
   "rcarriga/nvim-dap-ui",
+  event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     "mfussenegger/nvim-dap",
     { "rcarriga/nvim-dap-ui", config = true },

@@ -4,15 +4,15 @@ local wk = require("which-key")
 wk.register({
   g = {
     name = "Git",
+    t = { ":Gitsigns toggle_current_line_blame<CR>", "Toggle blame" },
+    g = { ":Neogit<CR>", "Neogit" },
+    G = { ":LazyGit<CR>", "LazyGit" },
     b = {
-      function()
-        require("telescope.builtin").git_branches()
-      end,
+      function() require("telescope.builtin").git_branches() end,
       "Branches",
     },
     d = { ":DiffviewOpen<CR>", "Diff view" },
     f = { ":DiffviewFileHistory -f %<CR>", "File history" },
-    g = { ":Neogit<CR>", "Neogit" },
     h = {
       name = "Highlighting",
       b = { ":Gitsigns toggle_current_line_blame<CR>", "Toggle blame" },
@@ -134,4 +134,6 @@ return {
     },
     config = true,
   },
+  -- Git client in your neovim
+  { "kdheepak/lazygit.nvim", cmd = "LazyGit" },
 }

@@ -41,9 +41,7 @@ return {
     require("mini.comment").setup({
       -- Easier (un)commenting.
       hooks = {
-        pre = function()
-          require("ts_context_commentstring.internal").update_commentstring()
-        end,
+        pre = function() require("ts_context_commentstring.internal").update_commentstring() end,
       },
     })
 

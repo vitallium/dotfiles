@@ -46,14 +46,18 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     config = true,
   },
-  -- Keep windows around when deleting buffers
-  "famiu/bufdelete.nvim",
+  {
+    -- Keep windows around when deleting buffers
+    "famiu/bufdelete.nvim",
+    cmd = "Bdelete",
+    keys = {
+      { "<leader>bd", ":Bdelete<CR>", desc = "Delete buffer" },
+    },
+  },
   {
     -- Auto-pair tags, etc.
     "windwp/nvim-autopairs",
     event = { "BufReadPost", "BufNewFile" },
     config = true,
   },
-  -- Git client in your neovim
-  { "kdheepak/lazygit.nvim", cmd = "LazyGit" },
 }

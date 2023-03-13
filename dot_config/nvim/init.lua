@@ -31,12 +31,27 @@ require("lazy").setup("vitallium.plugins", {
     notify = false,
   },
 })
+
+require("vitallium.autocmds")
 require("vitallium.keymaps")
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-  pattern = "*",
-  callback = function()
-    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 100 })
-  end,
-  desc = "Highlights the yanked text",
+local _border = "single"
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = _border,
+})
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = _border,
+})
+
+vim.diagnostic.config({
+  float = {
+    border = _border,
+    source = "always",
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  virtual_text = true,
+  severity_sort = true,
 })
