@@ -11,6 +11,7 @@ local lsp_servers = {
   "tsserver",
   "solargraph",
   "volar",
+  "yamlls",
 }
 
 -- LSP custom function when client attaches to buffer.
@@ -19,14 +20,9 @@ local lsp_servers = {
 local on_attach = function(client, bufnr)
   local format_timeout_ms = 2000
   local lsp_format = require("lsp-format")
-  local navic = require("nvim-navic")
+
   -- Auto-format on save
   lsp_format.on_attach(client)
-
-  -- Attach navic for winbar breadcrumbs
-  if client.server_capabilities.documentSymbolProvider then
-    navic.attach(client, bufnr)
-  end
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -34,14 +30,14 @@ local on_attach = function(client, bufnr)
 
   -- Without prefix:
   wk.register({
-        ["["] = {
+    ["["] = {
       d = {
         vim.lsp.diagnostic.goto_prev,
         "Previous diagnostic",
         buffer = bufnr,
       },
     },
-        ["]"] = {
+    ["]"] = {
       d = {
         vim.lsp.diagnostic.goto_next,
         "Next diagnostic",
@@ -65,18 +61,14 @@ local on_attach = function(client, bufnr)
   wk.register({
     b = {
       f = {
-        function()
-          vim.lsp.buf.format({ async = true, timeout_ms = format_timeout_ms })
-        end,
+        function() vim.lsp.buf.format({ async = true, timeout_ms = format_timeout_ms }) end,
         "Format buffer",
         buffer = bufnr,
       },
     },
     c = {
       a = {
-        function()
-          vim.lsp.buf.code_action({ apply = true })
-        end,
+        function() vim.lsp.buf.code_action({ apply = true }) end,
         "Code actions",
         buffer = bufnr,
       },
@@ -88,7 +80,7 @@ local on_attach = function(client, bufnr)
       k = { vim.lsp.buf.signature_help, "Signature help", buffer = bufnr },
       r = { vim.lsp.buf.rename, "Rename", buffer = bufnr },
     },
-        ["<tab>"] = {
+    ["<tab>"] = {
       name = "Workspace",
       a = {
         vim.lsp.buf.add_workspace_folder,
@@ -96,9 +88,7 @@ local on_attach = function(client, bufnr)
         buffer = bufnr,
       },
       l = {
-        function()
-          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end,
+        function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
         "List workspace folders",
         buffer = bufnr,
       },
@@ -114,9 +104,7 @@ local on_attach = function(client, bufnr)
   wk.register({
     c = {
       a = {
-        function()
-          vim.lsp.buf.code_action({ apply = true })
-        end,
+        function() vim.lsp.buf.code_action({ apply = true }) end,
         "Code actions",
         buffer = bufnr,
       },
@@ -129,8 +117,8 @@ return {
     "neovim/nvim-lspconfig", -- Configurations for Nvim LSP
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
-      "b0o/schemastore.nvim",      -- Schemas for JSON files
-      "hrsh7th/cmp-nvim-lsp",      -- See cmp.lua for more info
+      "b0o/schemastore.nvim", -- Schemas for JSON files
+      "hrsh7th/cmp-nvim-lsp", -- See cmp.lua for more info
       {
         "williamboman/mason.nvim", -- Manage language servers, linters, etc.
         -- IMPORTANT: Mason must be set up before lspconfig and null-ls
@@ -171,57 +159,6 @@ return {
           },
         },
       },
-      {
-        "SmiteshP/nvim-navic", -- Winbar breadcrumbs, e.g. for code context
-        config = function()
-          -- Navic shows breadcrumbs in the buffer line
-          local navic = require("nvim-navic")
-          local icons = require("vitallium.icons").kind
-          navic.setup({
-            icons = {
-              Array = icons.Array .. " ",
-              Boolean = icons.Boolean,
-              Class = icons.Class .. " ",
-              Color = icons.Color .. " ",
-              Constant = icons.Constant .. " ",
-              Constructor = icons.Constructor .. " ",
-              Enum = icons.Enum .. " ",
-              EnumMember = icons.EnumMember .. " ",
-              Event = icons.Event .. " ",
-              Field = icons.Field .. " ",
-              File = icons.File .. " ",
-              Folder = icons.Folder .. " ",
-              Function = icons.Function .. " ",
-              Interface = icons.Interface .. " ",
-              Key = icons.Key .. " ",
-              Keyword = icons.Keyword .. " ",
-              Method = icons.Method .. " ",
-              Module = icons.Module .. " ",
-              Namespace = icons.Namespace .. " ",
-              Null = icons.Null .. " ",
-              Number = icons.Number .. " ",
-              Object = icons.Object .. " ",
-              Operator = icons.Operator .. " ",
-              Package = icons.Package .. " ",
-              Property = icons.Property .. " ",
-              Reference = icons.Reference .. " ",
-              Snippet = icons.Snippet .. " ",
-              String = icons.String .. " ",
-              Struct = icons.Struct .. " ",
-              Text = icons.Text .. " ",
-              TypeParameter = icons.TypeParameter .. " ",
-              Unit = icons.Unit .. " ",
-              Value = icons.Value .. " ",
-              Variable = icons.Variable .. " ",
-            },
-            highlight = true,
-            separator = " " .. require("vitallium.icons").ui.ChevronShortRight .. " ",
-            depth_limit = 0,
-            depth_limit_indicator = "..",
-            safe_output = true,
-          })
-        end,
-      },
     },
     config = function()
       local lsp_flags = {
@@ -250,6 +187,9 @@ return {
                 globals = { "vim" },
               },
             },
+            yaml = {
+              schemas = require("schemastore").yaml.schemas(),
+            },
           },
         })
       end
@@ -265,11 +205,18 @@ return {
           filetypes = { "gitcommit", "NeogitCommitMessage" },
         }),
         null_ls.builtins.diagnostics.hadolint, -- Docker best practices
+        null_ls.builtins.diagnostics.markdownlint,
         null_ls.builtins.diagnostics.shellcheck,
         null_ls.builtins.diagnostics.rubocop.with({
           command = "bundle",
           args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
         }),
+        null_ls.builtins.diagnostics.haml_lint.with({
+          command = "bundle",
+          args = vim.list_extend({ "exec", "haml-lint" }, null_ls.builtins.diagnostics.haml_lint._opts.args),
+        }),
+        null_ls.builtins.diagnostics.yamllint,
+        --  formatting
         null_ls.builtins.formatting.jq,
         null_ls.builtins.formatting.shfmt, -- Shell
         null_ls.builtins.formatting.stylua,

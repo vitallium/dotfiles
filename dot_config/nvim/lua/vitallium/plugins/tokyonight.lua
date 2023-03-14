@@ -2,9 +2,7 @@ return {
   "folke/tokyonight.nvim",
   lazy = false,
   opts = {
-    style = "storm",
+    style = "night",
   },
-  config = function()
-    vim.cmd("colorscheme tokyonight")
-  end,
+  config = function() vim.cmd("colorscheme tokyonight-night") end,
 }
