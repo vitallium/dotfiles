@@ -16,7 +16,7 @@ return {
 		},
 	}),
 	font_size = 14.0,
-	color_scheme = "tokyonight-storm",
+	color_scheme = "tokyonight",
 	enable_scroll_bar = false,
 	-- tab
 	tab_max_width = 32,
