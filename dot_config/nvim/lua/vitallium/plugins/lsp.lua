@@ -5,11 +5,11 @@ local lsp_servers = {
   "dockerls",
   "eslint",
   "gopls",
-  "html",
+  "jsonls",
   "jsonls",
   "lua_ls",
-  "tsserver",
   "solargraph",
+  "tsserver",
   "volar",
   "yamlls",
 }
@@ -159,12 +159,15 @@ return {
           },
         },
       },
+      "mihyaeru21/nvim-lspconfig-bundler", -- prepend Ruby commands with "bundle exec"
     },
     config = function()
       local lsp_flags = {
         -- This is the default in Nvim 0.7+
         debounce_text_changes = 150,
       }
+
+      require("lspconfig-bundler").setup()
 
       -- Add additional capabilities supported by nvim-cmp
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -182,9 +185,21 @@ return {
               validate = { enable = true },
             },
             Lua = {
+              runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = "LuaJIT",
+              },
               diagnostics = {
                 -- Get the language server to recognize the `vim` global
                 globals = { "vim" },
+              },
+              workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+              },
+              -- Do not send telemetry data containing a randomized but unique identifier
+              telemetry = {
+                enable = false,
               },
             },
             yaml = {
@@ -207,16 +222,12 @@ return {
         null_ls.builtins.diagnostics.hadolint, -- Docker best practices
         null_ls.builtins.diagnostics.markdownlint,
         null_ls.builtins.diagnostics.shellcheck,
-        null_ls.builtins.diagnostics.rubocop.with({
-          command = "bundle",
-          args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
-        }),
         null_ls.builtins.diagnostics.haml_lint.with({
           command = "bundle",
           args = vim.list_extend({ "exec", "haml-lint" }, null_ls.builtins.diagnostics.haml_lint._opts.args),
         }),
         null_ls.builtins.diagnostics.yamllint,
-        --  formatting
+        -- Formatting
         null_ls.builtins.formatting.jq,
         null_ls.builtins.formatting.shfmt, -- Shell
         null_ls.builtins.formatting.stylua,
