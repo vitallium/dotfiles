@@ -12,7 +12,7 @@ return {
     require("lualine").setup({
       options = {
         icons_enabled = true,
-        theme = "tokyonight",
+        theme = "catppuccin",
         component_separators = "",
         section_separators = "",
         disabled_filetypes = {
@@ -44,11 +44,7 @@ return {
       winbar = {
         lualine_a = {},
         lualine_b = { { "filetype", icon_only = true }, "filename" },
-        lualine_c = {
-          function()
-            return require("nvim-navic").get_location()
-          end,
-        },
+        lualine_c = {},
         lualine_x = {},
         lualine_y = {},
         lualine_z = {},
@@ -56,11 +52,7 @@ return {
       inactive_winbar = {
         lualine_a = {},
         lualine_b = { { "filetype", icon_only = true }, "filename" },
-        lualine_c = {
-          function()
-            return require("nvim-navic").get_location()
-          end,
-        },
+        lualine_c = {},
         lualine_x = {},
         lualine_y = {},
         lualine_z = {},
