@@ -9,13 +9,13 @@ end)
 return {
 	font = wezterm.font_with_fallback({
 		{
-			family = "Berkeley Mono",
+			family = "MonoLisa",
 		},
 		{
 			family = "Symbols Nerd Font Mono",
 		},
 	}),
-	font_size = 16.0,
+	font_size = 14.0,
 	color_scheme = "Catppuccin Mocha",
 	enable_scroll_bar = false,
 	-- tab
