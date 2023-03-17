@@ -44,6 +44,7 @@ return {
           "json",
           "lua",
           "make",
+          "markdown",
           "python",
           "ruby",
           "rust",

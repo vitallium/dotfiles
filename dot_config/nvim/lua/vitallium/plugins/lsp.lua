@@ -162,12 +162,12 @@ return {
       "mihyaeru21/nvim-lspconfig-bundler", -- prepend Ruby commands with "bundle exec"
     },
     config = function()
+      require("lspconfig-bundler").setup()
+
       local lsp_flags = {
         -- This is the default in Nvim 0.7+
         debounce_text_changes = 150,
       }
-
-      require("lspconfig-bundler").setup()
 
       -- Add additional capabilities supported by nvim-cmp
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -192,10 +192,6 @@ return {
               diagnostics = {
                 -- Get the language server to recognize the `vim` global
                 globals = { "vim" },
-              },
-              workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
               },
               -- Do not send telemetry data containing a randomized but unique identifier
               telemetry = {
@@ -222,16 +218,10 @@ return {
         null_ls.builtins.diagnostics.hadolint, -- Docker best practices
         null_ls.builtins.diagnostics.markdownlint,
         null_ls.builtins.diagnostics.shellcheck,
-        null_ls.builtins.diagnostics.haml_lint.with({
-          command = "bundle",
-          args = vim.list_extend({ "exec", "haml-lint" }, null_ls.builtins.diagnostics.haml_lint._opts.args),
-        }),
+        null_ls.builtins.diagnostics.haml_lint,
         null_ls.builtins.diagnostics.yamllint,
         -- Formatting
-        null_ls.builtins.formatting.jq,
-        null_ls.builtins.formatting.shfmt, -- Shell
         null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.yamlfmt,
       }
       --
       -- NeoVim LSP server capabilities
