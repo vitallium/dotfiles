@@ -11,3 +11,4 @@ rubocop
 rubocop-performance
 rubocop-rails
 solargraph
+gitlab-development-kit
