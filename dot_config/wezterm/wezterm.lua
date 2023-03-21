@@ -10,6 +10,11 @@ return {
 	font = wezterm.font_with_fallback({
 		{
 			family = "MonoLisa",
+			weight = "DemiLight",
+			harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+		},
+		{
+			family = "Berkeley Mono",
 		},
 		{
 			family = "Symbols Nerd Font Mono",
