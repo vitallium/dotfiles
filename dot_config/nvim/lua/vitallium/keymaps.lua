@@ -23,22 +23,22 @@ map("n", "Q", "@@")
 
 wk.setup({
   plugins = {
-    marks = true, -- shows a list of your marks on ' and `
+    marks = true,     -- shows a list of your marks on ' and `
     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
     -- the presets plugin, adds help for a bunch of default keybindings in Neovim
     -- No actual key bindings are created
     spelling = {
-      enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+      enabled = true,   -- enabling this will show WhichKey when pressing z= to select spelling suggestions
       suggestions = 20, -- how many suggestions should be shown in the list?
     },
     presets = {
-      operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-      motions = false, -- adds help for motions
+      operators = false,   -- adds help for operators like d, y, ... and registers them for motion / text object completion
+      motions = false,     -- adds help for motions
       text_objects = true, -- help for text objects triggered after entering an operator
-      windows = false, -- default bindings on <c-w>
-      nav = true, -- misc bindings to work with windows
-      z = true, -- bindings for folds, spelling and others prefixed with z
-      g = true, -- bindings for prefixed with g
+      windows = false,     -- default bindings on <c-w>
+      nav = true,          -- misc bindings to work with windows
+      z = true,            -- bindings for folds, spelling and others prefixed with z
+      g = true,            -- bindings for prefixed with g
     },
   },
   key_labels = {
@@ -51,7 +51,7 @@ wk.setup({
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
     separator = "➜", -- symbol used between a key and it's label
-    group = "+", -- symbol prepended to a group
+    group = "+",      -- symbol prepended to a group
   },
 })
 
@@ -101,6 +101,10 @@ wk.register({
     c = { ":close<CR>", "Close window" },
     s = { ":split<CR>", "Split window" },
     v = { ":vsplit<CR>", "Vertically split window" },
+    h = { ":wincmd h<CR>", "Go to window to the left" },
+    j = { ":wincmd j<CR>", "Go to window to the bottom" },
+    k = { ":wincmd k<CR>", "Go to window to the top" },
+    l = { ":wincmd l<CR>", "Go to window to the right" },
   },
   q = { name = "Quit", q = { ":quitall<CR>", "Quit all" } },
 }, { prefix = "<leader>" })

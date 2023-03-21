@@ -41,13 +41,6 @@ return {
       require("gitsigns").setup({
         current_line_blame = false,
       })
-      -- This is for diagnostic signs on the line number column.
-      -- Use this to beautify the plain E W signs.
-      local signs = require("vitallium.icons").diagnostics
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
     end,
   },
   {
@@ -59,23 +52,12 @@ return {
   },
   {
     "sindrets/diffview.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim" },
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     config = function()
-      local icons = require("vitallium.icons")
       local actions = require("diffview.actions")
 
       require("diffview").setup({
-        icons = {
-          -- Only applies when use_icons is true.
-          folder_closed = icons.Folder,
-          folder_open = icons.FolderOpen,
-        },
-        signs = {
-          fold_closed = icons.ui.ChevronShortRight,
-          fold_open = icons.ui.ChevronShortDown,
-          done = icons.BoxChecked,
-        },
         keymaps = {
           view = {
             { "n", "<leader>ft", actions.toggle_files },
@@ -105,18 +87,12 @@ return {
     dependencies = { "sindrets/diffview.nvim" },
     cmd = "Neogit",
     config = function()
-      local icons = require("vitallium.icons")
-
       require("neogit").setup({
         disable_builtin_notifications = true,
         disable_commit_confirmation = true,
         disable_insert_on_commit = false,
         integrations = {
           diffview = true,
-        },
-        signs = {
-          section = { icons.ui.ChevronShortRight, icons.ui.ChevronShortDown },
-          item = { icons.ui.ChevronShortRight, icons.ui.ChevronShortDown },
         },
         mappings = {
           status = {

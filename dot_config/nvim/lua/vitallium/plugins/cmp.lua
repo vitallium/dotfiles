@@ -21,8 +21,6 @@ return {
         end,
       },
       "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-      -- Icons in completion dialogue
-      "onsails/lspkind.nvim",
       "ray-x/cmp-treesitter",
       { "tzachar/cmp-tabnine", build = "./install.sh" },
       -- working with neovim config/plugins
@@ -35,62 +33,9 @@ return {
       -- nvim-cmp setup
       local cmp = require("cmp")
       local luasnip = require("luasnip")
-      local lspkind = require("lspkind")
-      local icons = require("vitallium.icons").kind
-      lspkind.init({
-        mode = "symbol_text",
-        symbol_map = {
-          Class = icons.Class,
-          Color = icons.Color,
-          Constant = icons.Constant,
-          Constructor = icons.Constructor,
-          Enum = icons.Enum,
-          EnumMember = icons.Enum,
-          Event = icons.Event,
-          Field = icons.Field,
-          File = icons.File,
-          Folder = icons.Folder,
-          Function = icons.Function,
-          Interface = icons.Interface,
-          Keyword = icons.Keyword,
-          Method = icons.Method,
-          Module = icons.Module,
-          Operator = icons.Operator,
-          Property = icons.Property,
-          Reference = icons.Reference,
-          Snippet = icons.Snippet,
-          Struct = icons.Struct,
-          Text = icons.Text,
-          TypeParameter = icons.TypeParameter,
-          Unit = icons.Unit,
-          Value = icons.Value,
-          Variable = icons.Variable,
-        },
-      })
       cmp.setup({
         snippet = {
           expand = function(args) luasnip.lsp_expand(args.body) end,
-        },
-        window = {
-          -- Style completion window to have icons on the left.
-          -- In combination with `formatting` below.
-          completion = {
-            col_offset = -3,
-            side_padding = 0,
-          },
-          documentation = cmp.config.window.bordered(),
-        },
-        formatting = {
-          fields = { "kind", "abbr", "menu" },
-          format = function(entry, vim_item)
-            local kind = lspkind.cmp_format({ maxwidth = 50 })(entry, vim_item)
-
-            local strings = vim.split(kind.kind, "%s", { trimempty = true })
-            kind.kind = " " .. strings[1] .. " "
-            kind.menu = "    (" .. strings[2] .. ")"
-
-            return kind
-          end,
         },
         mapping = cmp.mapping.preset.insert({
           -- Use <C-j/k> to select candidates:
