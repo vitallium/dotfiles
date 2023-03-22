@@ -34,67 +34,49 @@ return {
   keys = {
     {
       "<localleader>tt",
-      function()
-        require("neotest").run.run()
-      end,
+      function() require("neotest").run.run() end,
       desc = "run nearest test",
     },
     {
       "<localleader>tf",
-      function()
-        require("neotest").run.run(vim.fn.expand("%"))
-      end,
+      function() require("neotest").run.run(vim.fn.expand("%")) end,
       desc = "test file",
     },
     {
       "<localleader>td",
-      function()
-        require("neotest").run.run({ strategy = "dap" })
-      end,
+      function() require("neotest").run.run({ strategy = "dap" }) end,
       desc = "debug nearest test",
     },
     {
       "<localleader>tk",
-      function()
-        require("neotest").run.stop()
-      end,
+      function() require("neotest").run.stop() end,
       desc = "stop test",
     },
     {
       "<localleader>ta",
-      function()
-        require("neotest").run.attach()
-      end,
+      function() require("neotest").run.attach() end,
       desc = "attach to nearest test",
     },
     {
       "<localleader>tl",
-      function()
-        require("neotest").run.run_last()
-      end,
+      function() require("neotest").run.run_last() end,
       desc = "run last test",
     },
     {
       "<localleader>ts",
-      function()
-        require("neotest").summary.toggle()
-      end,
+      function() require("neotest").summary.toggle() end,
       desc = "show test summary",
     },
     {
       "<localleader>to",
-      function()
-        require("neotest").output.open()
-      end,
+      function() require("neotest").output.open() end,
       desc = "show test output",
     },
     {
       "<localleader>tw",
       function()
         require("neotest").output.open({
-          open_win = function()
-            vim.cmd("bel split")
-          end,
+          open_win = function() vim.cmd("bel split") end,
         })
       end,
       desc = "show test window",

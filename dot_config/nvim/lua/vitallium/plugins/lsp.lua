@@ -218,6 +218,7 @@ return {
         null_ls.builtins.diagnostics.hadolint, -- Docker best practices
         null_ls.builtins.diagnostics.markdownlint,
         null_ls.builtins.diagnostics.shellcheck,
+        null_ls.builtins.diagnostics.stylelint,
         null_ls.builtins.diagnostics.haml_lint,
         null_ls.builtins.diagnostics.yamllint,
         -- Formatting

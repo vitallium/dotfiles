@@ -1,6 +1,9 @@
 return {
   "folke/trouble.nvim", -- Better looking quicklist, diagnostics, etc.
   cmd = "Trouble",
+  opts = {
+    icons = false,
+  },
   config = function(_, opts)
     require("trouble").setup(opts)
     -- Disable width ruler in trouble window:
