@@ -13,15 +13,15 @@ return {
 			weight = "DemiLight",
 			harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 		},
-		{
-			family = "Berkeley Mono",
-		},
+		-- {
+		-- 	family = "Berkeley Mono",
+		-- },
 		{
 			family = "Symbols Nerd Font Mono",
 		},
 	}),
 	font_size = 14.0,
-	color_scheme = "Catppuccin Mocha",
+	color_scheme = "tokyonight",
 	enable_scroll_bar = false,
 	-- tab
 	tab_max_width = 32,
