@@ -26,6 +26,19 @@ require("lazy").setup("vitallium.plugins", {
     cache = {
       enabled = true,
     },
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
   },
   change_detection = {
     notify = false,

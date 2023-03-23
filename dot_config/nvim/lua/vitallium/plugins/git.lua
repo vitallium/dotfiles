@@ -46,6 +46,7 @@ return {
   {
     "tpope/vim-fugitive", -- For :Git
     cmd = { "Git", "Gedit", "Gdiffsplit", "Gvdiffsplit" },
+    event = "VeryLazy",
     keys = {
       { "<leader>gs", vim.cmd.Git, noremap = true, silent = true, desc = "Open Git" },
     },
