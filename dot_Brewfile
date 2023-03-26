@@ -1,112 +1,118 @@
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-tap "homebrew/core"
-brew "bat"
-brew "fontconfig"
-brew "cmake"
-brew "colima"
-brew "coreutils"
-brew "curl"
-brew "direnv"
-brew "docker"
-brew "docker-compose"
-brew "editorconfig"
-brew "exiftool"
-brew "fd"
-brew "ffmpeg"
-brew "fish"
-brew "fzf"
-brew "git"
-brew "git-delta"
-brew "git-extras"
-brew "git-lfs"
-brew "gitleaks"
-brew "gnupg"
-brew "gpgme"
-brew "graphicsmagick"
-brew "grep"
-brew "heimdal"
-brew "hunspell"
-brew "imagemagick"
-brew "jq"
-brew "lazygit"
-brew "libiconv"
-brew "mas"
-brew "neovim"
-brew "pinentry-mac"
-brew "pkg-config"
-brew "re2"
-brew "ripgrep"
-brew "runit"
-brew "shfmt"
-brew "sqlite"
-brew "tmux"
-brew "tree"
-brew "vale"
-brew "vault"
-brew "wget"
-brew "zlib"
-cask "1password"
-cask "1password-cli"
-cask "chromedriver"
-cask "dash"
-cask "firefox"
-cask "font-symbols-only-nerd-font"
-cask "google-chrome"
-cask "handbrake"
-cask "iina"
-cask "imageoptim"
-cask "keka"
-cask "keycastr"
-cask "monodraw"
-cask "mos"
-cask "mullvadvpn"
-cask "obs"
-cask "openinterminal-lite"
-cask "protonvpn"
-cask "qlmarkdown"
-cask "quicklook-json"
-cask "rapidapi"
-cask "raycast"
-cask "screenflow"
-cask "sublime-merge"
-cask "sublime-text"
-cask "wezterm"
-mas "1Password for Safari", id: 1569813296
-mas "Amphetamine", id: 937984704
-mas "Display Menu", id: 549083868
-mas "Gapplin", id: 768053424
-mas "JSON Helper", id: 453114608
-mas "Keynote", id: 409183694
-mas "LanguageTool", id: 1534275760
-mas "Location Helper", id: 488536386
-mas "Magnet", id: 441258766
-mas "Monosnap", id: 540348655
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Velja", id: 1607635845
-mas "Vimari", id: 1480933944
-mas "Wipr", id: 1320666476
+tap 'homebrew/bundle'
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/core'
+brew 'bat'
+brew 'fontconfig'
+brew 'cmake'
+brew 'colima'
+brew 'coreutils'
+brew 'curl'
+brew 'direnv'
+brew 'dive'
+brew 'docker'
+brew 'docker-compose'
+brew 'editorconfig'
+brew 'exiftool'
+brew 'fd'
+brew 'ffmpeg'
+brew 'fish'
+brew 'fzf'
+brew 'git'
+brew 'git-delta'
+brew 'git-extras'
+brew 'git-lfs'
+brew 'gitleaks'
+brew 'gnupg'
+brew 'gpgme'
+brew 'graphicsmagick'
+brew 'grep'
+brew 'heimdal'
+brew 'hunspell'
+brew 'imagemagick'
+brew 'jq'
+brew 'lazygit'
+brew 'libiconv'
+brew 'mas'
+brew 'neovim'
+brew 'pinentry-mac'
+brew 'pkg-config'
+brew 're2'
+brew 'ripgrep'
+brew 'runit'
+brew 'shfmt'
+brew 'skopeo'
+brew 'sqlite'
+brew 'tmux'
+brew 'tree'
+brew 'vale'
+brew 'vault'
+brew 'wget'
+brew 'zlib'
+
+# Casks
+cask '1password'
+cask '1password-cli'
+cask 'chromedriver'
+cask 'dash'
+cask 'firefox'
+cask 'font-symbols-only-nerd-font'
+cask 'google-chrome'
+cask 'handbrake'
+cask 'iina'
+cask 'imageoptim'
+cask 'keka'
+cask 'keycastr'
+cask 'monodraw'
+cask 'mos'
+cask 'obs'
+cask 'openinterminal-lite'
+cask 'protonvpn'
+cask 'qlmarkdown'
+cask 'quicklook-json'
+cask 'rapidapi'
+cask 'raycast'
+cask 'screenflow'
+cask 'sublime-merge'
+cask 'sublime-text'
+cask 'wezterm'
+mas '1Password for Safari', id: 1_569_813_296
+mas 'Amphetamine', id: 937_984_704
+mas 'Display Menu', id: 549_083_868
+mas 'Gapplin', id: 768_053_424
+mas 'JSON Helper', id: 453_114_608
+mas 'Keynote', id: 409_183_694
+mas 'LanguageTool', id: 1_534_275_760
+mas 'Location Helper', id: 488_536_386
+mas 'Magnet', id: 441_258_766
+mas 'Monosnap', id: 540_348_655
+mas 'Numbers', id: 409_203_825
+mas 'Pages', id: 409_201_541
+mas 'Velja', id: 1_607_635_845
+mas 'Vimari', id: 1_480_933_944
+mas 'Wipr', id: 1_320_666_476
 
 # Personaly only
-if `hostname`.start_with?("firefly")
-  cask "acorn"
-  cask "bartender"
-  cask "discord"
-  cask "little-snitch"
-  cask "nvidia-geforce-now"
-  cask "qbittorrent"
-  cask "spotify"
-  cask "steam"
-  cask "telegram"
-  cask "whatsapp"
+if `hostname`.start_with?('firefly')
+  cask 'acorn'
+  cask 'bartender'
+  cask 'discord'
+  cask 'little-snitch'
+  cask 'nvidia-geforce-now'
+  cask 'qbittorrent'
+  cask 'spotify'
+  cask 'steam'
+  cask 'telegram'
+  cask 'whatsapp'
 end
 
 # Work starts here
-if `hostname`.start_with?("vslobodin-")
-  brew "teleport"
-  cask "figma"
-  cask "slack"
-  cask "zoom"
+if `hostname`.start_with?('vslobodin-')
+  brew 'teleport'
+  cask 'figma'
+  cask 'mullvadvpn'
+  cask 'slack'
+  cask 'zoom'
 end
+
+# vi: ft=ruby
