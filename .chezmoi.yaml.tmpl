@@ -1,13 +1,11 @@
 data:
   {{- if eq .chezmoi.os "linux" }}
-  hostname: serenity
   pinentry_bin: /usr/bin/pinentry-gnome3
   git:
     gpg:
       key: EA8703DF57BC7168
       bin: gpg2
   {{- else if eq .chezmoi.os "darwin" }}
-  hostname: firefly
   pinentry_bin:
     arm: /opt/homebrew/bin/pinentry-mac
     intel: /usr/local/bin/pinentry-mac
