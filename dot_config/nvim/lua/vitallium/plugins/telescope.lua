@@ -13,47 +13,65 @@ return {
     keys = {
       {
         "<leader><leader>",
-        function() require("telescope.builtin").find_files() end,
+        function()
+          require("telescope.builtin").find_files()
+        end,
         desc = "Find file",
       },
       {
         "<leader>/",
-        function() require("telescope.builtin").live_grep() end,
+        function()
+          require("telescope.builtin").live_grep()
+        end,
         desc = "Grep directory",
       },
       {
         "<leader>?",
-        function() require("telescope.builtin").current_buffer_fuzzy_find() end,
+        function()
+          require("telescope.builtin").current_buffer_fuzzy_find()
+        end,
         desc = "Grep current buffer",
       },
       {
         "<leader>;",
-        function() require("telescope.builtin").command_history() end,
+        function()
+          require("telescope.builtin").command_history()
+        end,
         desc = "Command history",
       },
       {
         "<leader>:",
-        function() require("telescope.builtin").commands() end,
+        function()
+          require("telescope.builtin").commands()
+        end,
         desc = "Commands",
       },
       {
         "<leader>r",
-        function() require("telescope.builtin").resume() end,
+        function()
+          require("telescope.builtin").resume()
+        end,
         desc = "Resume telescope",
       },
       {
         "<leader>bb",
-        function() require("telescope.builtin").buffers() end,
+        function()
+          require("telescope.builtin").buffers()
+        end,
         desc = "Find buffer",
       },
       {
         "<leader>cs",
-        function() require("telescope.builtin").lsp_document_symbols() end,
+        function()
+          require("telescope.builtin").lsp_document_symbols()
+        end,
         desc = "Symbols in document",
       },
       {
         "<leader>fr",
-        function() require("telescope.builtin").oldfiles() end,
+        function()
+          require("telescope.builtin").oldfiles()
+        end,
         desc = "Find previously opened file",
       },
       {
@@ -68,14 +86,18 @@ return {
         desc = "Browse files",
       },
       {
-        "<leader>gb",
-        function() require("telescope.builtin").git_branches() end,
-        desc = "Branches",
+        "<leader>h",
+        function()
+          require("telescope.builtin").help_tags()
+        end,
+        desc = "NeoVim help tags",
       },
       {
-        "<leader>h",
-        function() require("telescope.builtin").help_tags() end,
-        desc = "NeoVim help tags",
+        "<leader>pf",
+        function()
+          require("telescope.builtin").git_files()
+        end,
+        desc = "Find files",
       },
     },
     config = function()
@@ -126,6 +148,9 @@ return {
             },
             -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
             -- find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+          },
+          git_files = {
+            previewer = false,
           },
         },
         extensions = {

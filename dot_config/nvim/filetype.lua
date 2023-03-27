@@ -5,9 +5,6 @@ vim.filetype.add({
     jpg = "image",
     jpeg = "image",
     gif = "image",
-    es6 = "javascript",
-    mts = "typescript",
-    cts = "typescript",
   },
   filename = {
     [".eslintrc"] = "json",
@@ -21,13 +18,9 @@ vim.filetype.add({
     [".*%.conf"] = "conf",
     [".*%.theme"] = "conf",
     [".*ignore"] = "conf",
-    [".nvimrc"] = "lua",
     ["default-*%-packages"] = "conf",
-    [".*%.gradle"] = "groovy",
     [".*%.env%..*"] = "env",
     [".*%.prettierrc%..*"] = "jsonc",
     [".*%.eslintrc%..*"] = "jsonc",
-    [".*%.jst.eco"] = "jst",
-    [".*%.html.en"] = "html",
   },
 })

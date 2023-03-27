@@ -3,8 +3,7 @@ return {
   version = "*",
   cmd = { "ToggleTerm", "ToggleTermToggleAll" },
   keys = {
-    { "<leader>l", ":ToggleTerm<CR>", silent = true, desc = "Toggle terminal" },
-    { "<leader>L", ":ToggleTermToggleAll<CR>", silent = true, desc = "Toggle all terminals" },
+    { "<leader>ot", ":ToggleTerm<CR>", silent = true, desc = "Toggle terminal" },
   },
   opts = {
     direction = "horizontal",

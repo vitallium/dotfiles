@@ -3,7 +3,9 @@ local wk = require("which-key")
 local function map(modes, lhs, rhs, opts)
   opts = opts or {}
   opts.noremap = opts.noremap == nil and true or opts.noremap
-  if type(modes) == "string" then modes = { modes } end
+  if type(modes) == "string" then
+    modes = { modes }
+  end
   for _, mode in ipairs(modes) do
     if type(rhs) == "string" then
       vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
@@ -95,6 +97,16 @@ wk.register({
   t = {
     name = "Toggle",
     c = { ":set nolist!<CR>", "Toggle invisible chars" },
+    w = { ":set wrap!<CR>", "Toggle word wrap" },
+  },
+  l = {
+    name = "Launch",
+  },
+  o = {
+    name = "Open",
+  },
+  p = {
+    name = "Project",
   },
   w = {
     name = "Window",

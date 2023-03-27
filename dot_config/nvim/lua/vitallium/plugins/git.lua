@@ -4,13 +4,9 @@ local wk = require("which-key")
 wk.register({
   g = {
     name = "Git",
-    t = { ":Gitsigns toggle_current_line_blame<CR>", "Toggle blame" },
+    b = { ":Gitsigns toggle_current_line_blame<CR>", "Toggle blame" },
     g = { ":Neogit<CR>", "Neogit" },
     G = { ":LazyGit<CR>", "LazyGit" },
-    b = {
-      function() require("telescope.builtin").git_branches() end,
-      "Branches",
-    },
     d = { ":DiffviewOpen<CR>", "Diff view" },
     f = { ":DiffviewFileHistory -f %<CR>", "File history" },
     h = {
@@ -107,7 +103,7 @@ return {
   {
     "ruifm/gitlinker.nvim", -- Shareable permalinks to git hosts
     keys = {
-      { "<leader>gy", "", mode = { "n", "v" }, desc = "copy sharable git URL" },
+      { "<leader>gy", "", mode = { "n", "v" }, desc = "Copy sharable git URL" },
     },
     config = true,
   },

@@ -61,14 +61,18 @@ local on_attach = function(client, bufnr)
   wk.register({
     b = {
       f = {
-        function() vim.lsp.buf.format({ async = true, timeout_ms = format_timeout_ms }) end,
+        function()
+          vim.lsp.buf.format({ async = true, timeout_ms = format_timeout_ms })
+        end,
         "Format buffer",
         buffer = bufnr,
       },
     },
     c = {
       a = {
-        function() vim.lsp.buf.code_action({ apply = true }) end,
+        function()
+          vim.lsp.buf.code_action({ apply = true })
+        end,
         "Code actions",
         buffer = bufnr,
       },
@@ -88,7 +92,9 @@ local on_attach = function(client, bufnr)
         buffer = bufnr,
       },
       l = {
-        function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+        function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end,
         "List workspace folders",
         buffer = bufnr,
       },
@@ -104,7 +110,9 @@ local on_attach = function(client, bufnr)
   wk.register({
     c = {
       a = {
-        function() vim.lsp.buf.code_action({ apply = true }) end,
+        function()
+          vim.lsp.buf.code_action({ apply = true })
+        end,
         "Code actions",
         buffer = bufnr,
       },
@@ -117,7 +125,6 @@ return {
     "neovim/nvim-lspconfig", -- Configurations for Nvim LSP
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
-      "b0o/schemastore.nvim", -- Schemas for JSON files
       "hrsh7th/cmp-nvim-lsp", -- See cmp.lua for more info
       {
         "williamboman/mason.nvim", -- Manage language servers, linters, etc.
@@ -159,6 +166,7 @@ return {
           },
         },
       },
+      "b0o/schemastore.nvim", -- Schemas for JSON files
       "mihyaeru21/nvim-lspconfig-bundler", -- prepend Ruby commands with "bundle exec"
     },
     config = function()
