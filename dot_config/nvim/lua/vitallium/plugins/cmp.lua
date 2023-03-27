@@ -22,7 +22,7 @@ return {
       },
       "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
       "ray-x/cmp-treesitter",
-      { "tzachar/cmp-tabnine", build = "./install.sh" },
+      -- { "tzachar/cmp-tabnine", build = "./install.sh" },
       -- working with neovim config/plugins
       "folke/neodev.nvim",
       -- hints
@@ -35,12 +35,18 @@ return {
       local luasnip = require("luasnip")
       cmp.setup({
         snippet = {
-          expand = function(args) luasnip.lsp_expand(args.body) end,
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
         },
         mapping = cmp.mapping.preset.insert({
           -- Use <C-j/k> to select candidates:
-          ["<C-j>"] = cmp.mapping(function() cmp.select_next_item() end),
-          ["<C-k>"] = cmp.mapping(function() cmp.select_prev_item() end),
+          ["<C-j>"] = cmp.mapping(function()
+            cmp.select_next_item()
+          end),
+          ["<C-k>"] = cmp.mapping(function()
+            cmp.select_prev_item()
+          end),
           -- Other mappings:
           ["<C-d>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -77,7 +83,7 @@ return {
           { name = "buffer" },
           { name = "luasnip" },
           { name = "nvim_lsp_signature_help" },
-          { name = "cmp_tabnine" },
+          -- { name = "cmp_tabnine" },
           { name = "treesitter" },
         },
       })
