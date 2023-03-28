@@ -12,9 +12,9 @@ return {
     require("lualine").setup({
       options = {
         icons_enabled = true,
-        theme = "tokyonight",
-        component_separators = "",
-        section_separators = "",
+        theme = "auto",
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
         disabled_filetypes = {
           statusline = {},
           winbar = { "NvimTree", "NeogitCommitMessage", "NeogitStatus", "aerial" },
