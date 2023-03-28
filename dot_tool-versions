@@ -2,5 +2,5 @@ nodejs 18.15.0
 ruby 3.2.1
 python 3.11.2
 golang 1.20.2
-rust 1.68.0
 chezmoi 2.33.0
+rust 1.68.2
