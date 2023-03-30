@@ -10,7 +10,7 @@ end
 
 # == Pry-Nav - Using pry as a debugger ==
 
-# Shortcut for calling pry_debug
+# Shortcut for calling pry_byebug
 def pd
   Pry.commands.alias_command 't', 'backtrace'
   Pry.commands.alias_command 's', 'step'
@@ -35,6 +35,8 @@ Pry.config.commands.alias_command "hr", "hist -r", desc: "hist -r <command numbe
 # WARNING: the show-doc command is deprecated. It will be removed from future Pry versions.
 # Please use 'show-source' with the -d (or --doc) switch instead
 Pry.commands.alias_command '?', 'show-source -d'
+
+require 'pry-byebug'
 
 if defined?(PryByebug)
    def pry_debug
