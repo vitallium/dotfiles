@@ -10,21 +10,20 @@ return {
 	font = wezterm.font_with_fallback({
 		-- {
 		--   family = "MonoLisa",
-		--   weight = "DemiLight",
 		--   harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 		-- },
-		{
-			family = "mononoki",
-		},
 		-- {
-		-- 	family = "Berkeley Mono",
+		-- 	family = "mononoki",
 		-- },
+		{
+			family = "Berkeley Mono",
+		},
 		{
 			family = "Symbols Nerd Font Mono",
 		},
 	}),
 	font_size = 16.0,
-	color_scheme = "tokyonight",
+	color_scheme = "One Light (base16)",
 	enable_scroll_bar = false,
 	-- tab
 	tab_max_width = 32,

@@ -37,7 +37,7 @@ return {
         lualine_b = { "mode", "searchcount", get_branch, "diff" },
         lualine_c = { { "filename", path = 1, shorting_target = 70 } },
         lualine_x = { { "diagnostics", sources = { "nvim_lsp", "nvim_diagnostic" } } },
-        lualine_y = { "filetype", "locally", "progress", "cmp_tabnine" },
+        lualine_y = { "filetype", "locally", "progress" },
         lualine_z = {},
       },
       tabline = {},
