@@ -100,6 +100,8 @@
 
 ;; Disable frame suspension
 (unbind-key "C-z")
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'super)
 
 ;; TODO: 
 (use-package s

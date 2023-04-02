@@ -10,14 +10,15 @@
   (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs t))
 
-(defun gf3/apply-theme (appearance)
+;; Taken from https://github.com/gf3/dotfiles/blob/main/.config/emacs/init/init-theme.el
+(defun my/apply-theme (appearance)
   "Load theme, taking current system APPEARANCE into consideration."
   (mapc #'disable-theme custom-enabled-themes)
   (pcase appearance
     ('light (load-theme 'modus-operandi t))
     ('dark (load-theme 'modus-vivendi t))))
 
-(add-hook 'ns-system-appearance-change-functions #'gf3/apply-theme)
+(add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
 
 (provide 'init-theme)
 ;;; init-theme.el ends here.
