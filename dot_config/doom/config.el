@@ -2,7 +2,7 @@
 
 (setq user-full-name "Vitaly Slobodin"
       user-mail-address "vslobodin@gitlab.com"
-      doom-theme 'modus-operandi
+      doom-theme 'doom-tokyo-night
       read-process-output-max (* 1024 1024)
       load-prefer-newer t
       scroll-margin 8
@@ -12,9 +12,7 @@
       ;; Set font settings
       doom-font                (font-spec :family "MonoLisa" :size 14 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Iosevka Aile" :size 14)
-      doom-serif-font          (font-spec :family "Iosevka Etoile" :size 15)
-      ;; Set org directory
-      org-directory "~/Org/")
+      doom-serif-font          (font-spec :family "Iosevka Etoile" :size 15))
 
 (load! "+theme.el")
 
@@ -48,6 +46,11 @@
     (add-to-list 'ispell-local-dictionary-alist
                  '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" t ("-d" "en_US") nil utf-8)))))
 
+(setq evil-ex-substitute-global t    ;; I like my s/../.. to be global by default
+      evil-move-cursor-back nil      ;; Do not move the block cursor when toggling insert mode
+      evil-kill-on-visual-paste nil  ;; Do not put overwritten text in the kill ring
+      evil-vsplit-window-right t
+      evil-split-window-below t)
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;

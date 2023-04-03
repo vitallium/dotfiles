@@ -147,7 +147,8 @@
         +lsp
         +tree-sitter)
        (graphql            ; Give queries a REST
-        +lsp)
+        +lsp
+        +tree-sitter)
        ;;(haskell +lsp)    ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
@@ -162,7 +163,8 @@
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
        ;;lua               ; one-based indices? one-based indices
-       markdown            ; writing docs for people to ignore
+       (markdown           ; writing docs for people to ignore
+        +tree-sitter)
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel

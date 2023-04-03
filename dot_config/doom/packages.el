@@ -51,6 +51,7 @@
 
 (package! git-link)
 (package! string-inflection)
+(package! transpose-frame)
 
 ;; auto-format different source code files extremely intelligently
 (package! apheleia)
@@ -58,5 +59,9 @@
 (package! jest)
 (package! company-tabnine)
 
-;; Trialing the Modus themes in stock Emacs
-(package! modus-themes)
+;; Org modes goodies
+(package! org-modern)
+(package! org-ol-tree :recipe (:host github :repo "Townk/org-ol-tree"))
+(package! org-appear)
+(package! org-pretty-table-mode
+  :recipe (:host github :repo "Fuco1/org-pretty-table"))

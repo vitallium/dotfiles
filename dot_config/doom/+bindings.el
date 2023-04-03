@@ -15,3 +15,14 @@
 (after! avy
   (map! :nvm "s" #'avy-goto-char-timer)
   (setq avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
+
+(use-package! transpose-frame
+  :config
+  (map! :leader
+        :prefix ("r" . "rotate")
+        :desc "Transpose frames" "t" #'transpose-frame
+        :desc "Flop frames horizontally" "f" #'flop-frame
+        :desc "Flip frames vertically" "v" #'flip-frame
+        :desc "Rotate frames 180 degrees" "r" #'rotate-frame
+        :desc "Rotate frames clockwise" "c" #'rotate-frame-clockwise
+        :desc "Rotate frames anticlockwise" "a" #'rotate-frame-anticlockwise))
