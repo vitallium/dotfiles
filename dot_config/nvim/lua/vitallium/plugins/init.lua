@@ -1,8 +1,19 @@
 return {
   -- Plugin with util functions required by other plugins
   { "nvim-lua/plenary.nvim", lazy = true },
-  -- EditorConfig
-  "gpanders/editorconfig.nvim",
+  {
+    "direnv/direnv.vim",
+    event = "BufRead",
+  },
+  {
+    "johmsalas/text-case.nvim",
+    event = "BufRead",
+    opts = {},
+  },
+  {
+    "gpanders/editorconfig.nvim",
+    event = "BufRead",
+  },
   -- [[ Theming ]]
   {
     "folke/todo-comments.nvim", -- Highlight and list TODOs, etc.

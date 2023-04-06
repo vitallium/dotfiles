@@ -227,7 +227,10 @@ return {
         null_ls.builtins.diagnostics.markdownlint,
         null_ls.builtins.diagnostics.shellcheck,
         null_ls.builtins.diagnostics.stylelint,
-        null_ls.builtins.diagnostics.haml_lint,
+        null_ls.builtins.diagnostics.haml_lint.with({
+          command = "bundle",
+          args = vim.list_extend({ "exec", "haml-lint" }, null_ls.builtins.diagnostics.haml_lint._opts.args),
+        }),
         null_ls.builtins.diagnostics.yamllint,
         -- Formatting
         null_ls.builtins.formatting.stylua,

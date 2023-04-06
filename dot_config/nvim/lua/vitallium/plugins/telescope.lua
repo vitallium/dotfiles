@@ -1,13 +1,12 @@
 return {
   {
-    "nvim-telescope/telescope.nvim", -- Fancy picker (think fzf on steroids)
-    version = "*",
+    "nvim-telescope/telescope.nvim",
     dependencies = {
-      "nvim-telescope/telescope-file-browser.nvim", -- Think Emacs directory browser
-      {
-        "nvim-telescope/telescope-fzf-native.nvim", -- FZF algorithm for telescope
-        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-      },
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-ui-select.nvim", -- optional, for using telescope in more places
+      "nvim-telescope/telescope-file-browser.nvim",
+      "nvim-tree/nvim-web-devicons", -- optional, for icons
+      "debugloop/telescope-undo.nvim",
     },
     cmd = { "Telescope" },
     keys = {
@@ -100,54 +99,70 @@ return {
         desc = "Find files",
       },
     },
-    config = function()
+    config = function(_, opts)
+      local telescope = require("telescope")
+      telescope.load_extension("undo")
+      telescope.load_extension("file_browser")
+      telescope.load_extension("fzf")
+      telescope.load_extension("frecency")
+      telescope.load_extension("ui-select")
+      telescope.load_extension("textcase")
+    end,
+    opts = function(_, opts)
       local telescope = require("telescope")
       local actions = require("telescope.actions")
-
       local trouble = require("trouble.providers.telescope")
+      local actionlayout = require("telescope.actions.layout")
+
       telescope.setup({
         defaults = {
-          -- `hidden = true` is not supported in text grep commands.
+          sorting_strategy = "ascending",
           vimgrep_arguments = {
             "rg",
-            "--hidden",
-            "--no-ignore-vcs",
+            "--color=never",
             "--no-heading",
             "--with-filename",
             "--line-number",
             "--column",
             "--smart-case",
+            "--hidden",
             "--trim",
           },
-          sorting_strategy = "ascending",
+          color_devicons = true,
+          layout_strategy = "horizontal",
+          winblend = 5,
+          layout_config = {
+            prompt_position = "top",
+            horizontal = {
+              width = 0.75,
+              height = 0.85,
+              width_padding = 0.04,
+              height_padding = 0.1,
+              preview_width = 0.6,
+            },
+            vertical = {
+              width_padding = 0.05,
+              height_padding = 1,
+              preview_height = 0.5,
+            },
+          },
           mappings = {
             i = {
-              ["<c-j>"] = actions.move_selection_next,
-              ["<c-k>"] = actions.move_selection_previous,
-              ["<c-t>"] = trouble.open_with_trouble,
-              ["<esc>"] = actions.close, -- Close on first press of esc. No "normal" mode.
+              ["<C-u>"] = actions.preview_scrolling_up,
+              ["<C-d>"] = actions.preview_scrolling_down,
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+              ["<C-Space>"] = actionlayout.toggle_preview,
+              ["<esc>"] = actions.close,
+              ["<C-x>"] = actions.cycle_previewers_next,
+              ["<C-a>"] = actions.cycle_previewers_prev,
             },
             n = { ["<c-t>"] = trouble.open_with_trouble },
           },
-          layout_strategy = "bottom_pane",
         },
         pickers = {
           find_files = {
             previewer = false,
-            find_command = {
-              "rg",
-              "--files",
-              "--no-ignore-vcs",
-              "--hidden",
-              "--no-heading",
-              "--with-filename",
-              "--column",
-              "--smart-case",
-              "--iglob",
-              "!.git",
-            },
-            -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-            -- find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
           },
           git_files = {
             previewer = false,
@@ -166,8 +181,22 @@ return {
           },
         },
       })
-      telescope.load_extension("file_browser")
-      telescope.load_extension("fzf")
     end,
+  },
+  {
+    -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+    cond = vim.fn.executable("make") == 1,
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+  },
+  {
+    -- Order fuzzy list by frequency
+    "nvim-telescope/telescope-frecency.nvim",
+    dependencies = {
+      "kkharji/sqlite.lua",
+    },
   },
 }
