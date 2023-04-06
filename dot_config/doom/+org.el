@@ -13,10 +13,10 @@
         org-journal-file-format "%Y-%m-%d.org"
         org-journal-date-format "%A, %d %B %Y"))
 
-(use-package! org-ol-tree
-  :after org
-  :config
-  (add-hook 'org-agenda-mode #'org-super-agenda-mode))
+;; (use-package! org-ol-tree
+;;   :after org
+;;   :config
+;;   (add-hook 'org-agenda-mode #'org-super-agenda-mode))
 
 (add-hook! 'org-mode-hook
   #'mixed-pitch-mode

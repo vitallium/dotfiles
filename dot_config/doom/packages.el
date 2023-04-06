@@ -61,7 +61,6 @@
 
 ;; Org modes goodies
 (package! org-modern)
-(package! org-ol-tree :recipe (:host github :repo "Townk/org-ol-tree"))
 (package! org-appear)
 (package! org-pretty-table-mode
   :recipe (:host github :repo "Fuco1/org-pretty-table"))

@@ -2,19 +2,21 @@
 
 (setq user-full-name "Vitaly Slobodin"
       user-mail-address "vslobodin@gitlab.com"
-      doom-theme 'doom-tokyo-night
+      doom-theme 'modus-operandi
       read-process-output-max (* 1024 1024)
       load-prefer-newer t
       scroll-margin 8
       display-line-numbers t
       display-line-numbers-type 'relative
       projectile-project-search-path '("~/Development/")
+      doom-modeline-persp-name t
       ;; Set font settings
       doom-font                (font-spec :family "MonoLisa" :size 14 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Iosevka Aile" :size 14)
       doom-serif-font          (font-spec :family "Iosevka Etoile" :size 15))
 
 (load! "+theme.el")
+(load! "+org.el")
 
 (require 's)
 (setenv "SSH_AUTH_SOCK" (s-trim (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket")))
