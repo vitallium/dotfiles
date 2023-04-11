@@ -23,7 +23,7 @@ return {
 		},
 	}),
 	font_size = 16.0,
-	color_scheme = "One Light (base16)",
+	color_scheme = "tokyonight_storm",
 	enable_scroll_bar = false,
 	-- tab
 	tab_max_width = 32,
