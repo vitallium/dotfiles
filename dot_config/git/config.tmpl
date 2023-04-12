@@ -21,6 +21,8 @@
   co = checkout
   pf = push --force-with-lease
   am = commit --amend
+  changed = show --pretty=\"format:\" --name-only
+  commend = commit -s --amend --no-edit
 
 [core]
   autocrlf = false
@@ -61,3 +63,18 @@
 
 [fetch]
   prune = true
+
+[diff]
+  tool = nvimdiff
+
+[difftool "nvimdiff"]
+  cmd = nvim -d "$LOCAL" "$REMOTE"
+
+[merge]
+  tool = nvimmerge
+
+[mergetool "nvimmerge"]
+  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+[rerere]
+	enabled = true
