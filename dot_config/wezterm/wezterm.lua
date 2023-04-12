@@ -6,24 +6,39 @@ wezterm.on("gui-startup", function()
 	window:gui_window():maximize()
 end)
 
+---@diagnostic disable-next-line: unused-local
+local monolisa = wezterm.font("Monolisa")
+---@diagnostic disable-next-line: unused-local
+local mononoki = wezterm.font("mononoki")
+---@diagnostic disable-next-line: unused-local
+local berkeley = wezterm.font("Berkeley Mono")
+
+local scheme = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
+scheme.background = "#000000"
+
 return {
-	font = wezterm.font_with_fallback({
-		-- {
-		--   family = "MonoLisa",
-		--   harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-		-- },
-		-- {
-		-- 	family = "mononoki",
-		-- },
-		{
-			family = "Berkeley Mono",
-		},
-		{
-			family = "Symbols Nerd Font Mono",
-		},
-	}),
-	font_size = 16.0,
-	color_scheme = "tokyonight_storm",
+	font = monolisa,
+	harfbuzz_features = {
+		"zero=1",
+		"ss01=1",
+		"ss02=1",
+		"ss03=1",
+		"ss04=1",
+		"ss05=1",
+		"ss06=1",
+		"onum=0",
+		"frac=0",
+		"sups=0",
+		"subs=0",
+		"calt=1",
+		"liga=1",
+	},
+	font_size = 14.0,
+	-- colors
+	color_schemes = {
+		["OLEDppuccin"] = scheme,
+	},
+	color_scheme = "OLEDppuccin",
 	enable_scroll_bar = false,
 	-- tab
 	tab_max_width = 32,
