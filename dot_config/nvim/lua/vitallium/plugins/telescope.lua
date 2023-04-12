@@ -126,7 +126,7 @@ return {
             "--column",
             "--smart-case",
             "--hidden",
-            "--trim",
+            "--glob=!.git",
           },
           color_devicons = true,
           layout_strategy = "horizontal",
@@ -163,6 +163,7 @@ return {
         pickers = {
           find_files = {
             previewer = false,
+            find_command = { "rg", "--hidden", "--files", "--smart-case", "--glob=!.git" },
           },
           git_files = {
             previewer = false,

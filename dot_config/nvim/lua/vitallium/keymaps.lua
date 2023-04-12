@@ -1,27 +1,26 @@
+local opts = { noremap = true, silent = true }
+-- Shorten function name
+local keymap = vim.keymap.set
+
 local wk = require("which-key")
 
-local function map(modes, lhs, rhs, opts)
-  opts = opts or {}
-  opts.noremap = opts.noremap == nil and true or opts.noremap
-  if type(modes) == "string" then
-    modes = { modes }
-  end
-  for _, mode in ipairs(modes) do
-    if type(rhs) == "string" then
-      vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
-    else
-      opts.callback = rhs
-      vim.api.nvim_set_keymap(mode, lhs, "", opts)
-    end
-  end
-end
+--Remap space as leader key
+keymap("", "<Space>", "<Nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- Faster scrolling
-map("n", "<c-e>", "3<c-e>")
-map("n", "<c-y>", "3<c-y>")
+-- Normal --
+-- disable Ex mode, I always enter in it by mistake
+keymap("n", "Q", "<Nop>", opts)
 
--- Ex-mode is weird and not useful so it seems better to repeat the last macro
-map("n", "Q", "@@")
+-- move record macro to Q instead of q
+keymap("n", "Q", "q", opts)
+keymap("n", "q", "<Nop>", opts)
+
+-- Visual --
+-- Stay in indent mode
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
 
 wk.setup({
   plugins = {

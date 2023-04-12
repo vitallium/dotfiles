@@ -8,6 +8,8 @@ return {
       "hrsh7th/cmp-buffer", -- Buffer source for nvim-cmp
       "hrsh7th/cmp-path", -- Path source for nvim-cmp
       "hrsh7th/cmp-cmdline", -- Command line source for nvim-cmp
+      "hrsh7th/cmp-emoji",
+      "hrsh7th/cmp-calc",
       {
         "L3MON4D3/LuaSnip", -- Snippets plugin
         dependencies = {
@@ -49,6 +51,7 @@ return {
       "simrat39/inlay-hints.nvim",
     },
     config = function()
+      ---@diagnostic disable-next-line: unused-local
       local source_mapping = {
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
@@ -66,6 +69,23 @@ return {
           expand = function(args)
             luasnip.lsp_expand(args.body)
           end,
+        },
+        window = {
+          documentation = cmp.config.window.bordered(),
+          completion = {
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+            col_offset = -3,
+            side_padding = 0,
+          },
+        },
+        view = {
+          entries = {
+            name = "custom",
+            selection_order = "near_cursor",
+          },
+        },
+        completion = {
+          keyword_length = 3,
         },
         mapping = cmp.mapping.preset.insert({
           -- Use <C-j/k> to select candidates:
@@ -104,22 +124,46 @@ return {
             end
           end, { "i", "s" }),
         }),
-        sources = {
-          -- Output will be prioritized according to order.
+        sources = cmp.config.sources({
+          { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
+          { name = "cmp_tabnine" },
+          { name = "luasnip" },
+        }, {
           { name = "path" },
           { name = "buffer" },
-          { name = "luasnip" },
-          { name = "nvim_lsp_signature_help" },
-          { name = "cmp_tabnine" },
-          { name = "treesitter" },
+          { name = "emoji" },
+          { name = "calc" },
+        }),
+        confirm_opts = {
+          behavior = cmp.ConfirmBehavior.Select,
+        },
+        experimental = {
+          native_menu = false,
+          ghost_text = false,
         },
         formatting = {
+          fields = { "kind", "abbr", "menu" },
           format = function(entry, vim_item)
+            local icons = require("vitallium.icons").kinds
+            if icons[vim_item.kind] then
+              vim_item.kind = icons[vim_item.kind] .. vim_item.kind
+            end
+
             -- if you have lspkind installed, you can use it like
             -- in the following line:
             -- vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = "symbol" })
-            vim_item.menu = source_mapping[entry.source.name]
+
+            local strings = vim.split(vim_item.kind, "%s", {
+              trimempty = true,
+            })
+            vim_item.kind = " " .. strings[1] .. " "
+            if #strings > 1 then
+              vim_item.menu = "    (" .. strings[2] .. ")"
+            end
+            -- vim_item.menu = source_mapping[entry.source.name]
+
+            -- TabNine
             if entry.source.name == "cmp_tabnine" then
               local detail = (entry.completion_item.data or {}).detail
               vim_item.kind = ""
@@ -131,6 +175,7 @@ return {
                 vim_item.kind = vim_item.kind .. " " .. "[ML]"
               end
             end
+
             local maxwidth = 80
             vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
             return vim_item
@@ -147,8 +192,10 @@ return {
       -- `:` cmdline setup.
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({ { name = "path" } }, {
-          { name = "cmdline", option = { ignore_cmds = { "Man", "!" } } },
+        sources = cmp.config.sources({
+          { name = "cmdline" },
+        }, {
+          { name = "path" },
         }),
       })
 

@@ -17,15 +17,10 @@ return {
   -- [[ Theming ]]
   {
     "folke/todo-comments.nvim", -- Highlight and list TODOs, etc.
-    event = { "BufReadPost", "BufNewFile" },
+    event = "BufReadPost",
     opts = {
       highlight = {
-        pattern = [[.*<(KEYWORDS)\s*]], -- pattern or table of patterns, used for highlightng (vim regex)
-        -- Was [[.*<(KEYWORDS)\s*:]] including colon.
-      },
-      search = {
-        pattern = [[\b(KEYWORDS)]], -- ripgrep regex
-        -- Was [[\b(KEYWORDS):]] including colon.
+        keyword = "bg",
       },
     },
   },

@@ -32,7 +32,7 @@ wk.register({
 return {
   {
     "lewis6991/gitsigns.nvim", -- Git gutter
-    event = { "BufReadPost", "BufNewFile" },
+    event = "BufEnter",
     config = function()
       require("gitsigns").setup({
         current_line_blame = false,
