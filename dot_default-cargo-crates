@@ -2,5 +2,4 @@ cargo-audit
 cargo-nextest
 cargo-edit
 cargo-update
-topgrade
 tree-sitter-cli
