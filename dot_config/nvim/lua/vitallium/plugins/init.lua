@@ -66,4 +66,9 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     config = true,
   },
+  -- Ruby improvement
+  {
+    "jlcrochet/vim-ruby",
+    event = { "BufReadPost", "BufNewFile" },
+  },
 }
