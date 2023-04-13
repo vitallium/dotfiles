@@ -39,6 +39,7 @@ return {
 		["OLEDppuccin"] = scheme,
 	},
 	color_scheme = "OLEDppuccin",
+	default_cursor_style = "BlinkingBar",
 	enable_scroll_bar = false,
 	-- tab
 	tab_max_width = 32,
