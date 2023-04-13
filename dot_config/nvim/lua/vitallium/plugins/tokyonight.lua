@@ -5,9 +5,9 @@ return {
   opts = {
     style = "storm",
   },
-  config = function(_, opts)
-    local tokyonight = require("tokyonight")
-    tokyonight.setup(opts)
-    tokyonight.load()
-  end,
+  -- config = function(_, opts)
+  --   local tokyonight = require("tokyonight")
+  --   tokyonight.setup(opts)
+  --   tokyonight.load()
+  -- end,
 }
