@@ -168,6 +168,9 @@ return {
           git_files = {
             previewer = false,
           },
+          buffers = {
+            sort_lastused = true,
+          },
         },
         extensions = {
           file_browser = {
