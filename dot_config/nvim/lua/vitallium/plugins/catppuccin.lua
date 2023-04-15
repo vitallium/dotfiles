@@ -10,7 +10,17 @@ return {
       color_overrides = {
         mocha = {
           base = "#000000",
+          mantle = "#000000",
+          crust = "#000000",
         },
+      },
+      highlight_overrides = {
+        mocha = function(C)
+          return {
+            TabLineSel = { bg = C.pink },
+            TelescopeBorder = { link = "FloatBorder" },
+          }
+        end,
       },
       custom_highlights = {
         Comment = { fg = colors.overlay1 },
@@ -23,6 +33,7 @@ return {
         dashboard = true,
         fidget = true,
         gitsigns = true,
+        harpoon = true,
         hop = true,
         illuminate = true,
         indent_blankline = {
