@@ -53,14 +53,6 @@ return {
     config = true,
   },
   {
-    -- Keep windows around when deleting buffers
-    "famiu/bufdelete.nvim",
-    cmd = "Bdelete",
-    keys = {
-      { "<leader>bd", ":Bdelete<CR>", desc = "Delete buffer" },
-    },
-  },
-  {
     -- Auto-pair tags, etc.
     "windwp/nvim-autopairs",
     event = { "BufReadPost", "BufNewFile" },

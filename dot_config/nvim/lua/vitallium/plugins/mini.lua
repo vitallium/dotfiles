@@ -41,7 +41,9 @@ return {
     require("mini.comment").setup({
       -- Easier (un)commenting.
       hooks = {
-        pre = function() require("ts_context_commentstring.internal").update_commentstring() end,
+        pre = function()
+          require("ts_context_commentstring.internal").update_commentstring()
+        end,
       },
     })
 
@@ -59,5 +61,16 @@ return {
 
     -- [[highlight trailing spaces]]
     require("mini.trailspace").setup()
+
+    require("mini.bufremove").setup({})
   end,
+  keys = {
+    {
+      "<leader>bd",
+      function()
+        require("mini.bufremove").delete(0, true)
+      end,
+      desc = "Delete buffer",
+    },
+  },
 }

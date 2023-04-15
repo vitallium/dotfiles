@@ -3,8 +3,6 @@ return {
   name = "catppuccin",
   priority = 1000,
   config = function()
-    local colors = require("catppuccin.palettes").get_palette()
-
     require("catppuccin").setup({
       flavour = "mocha",
       color_overrides = {
@@ -22,10 +20,6 @@ return {
           }
         end,
       },
-      custom_highlights = {
-        Comment = { fg = colors.overlay1 },
-        LineNr = { fg = colors.overlay1 },
-      },
       integrations = {
         aerial = true,
         beacon = true,
@@ -33,7 +27,6 @@ return {
         dashboard = true,
         fidget = true,
         gitsigns = true,
-        harpoon = true,
         hop = true,
         illuminate = true,
         indent_blankline = {
@@ -46,10 +39,6 @@ return {
         mini = true,
         native_lsp = {
           enabled = true,
-        },
-        navic = {
-          enabled = true,
-          custom_bg = "NONE",
         },
         neogit = true,
         neotree = true,
