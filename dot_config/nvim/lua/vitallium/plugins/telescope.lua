@@ -96,18 +96,14 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
-      "debugloop/telescope-undo.nvim",
       "nvim-telescope/telescope-symbols.nvim", -- Provides its users with the ability of picking symbols and insert them at point.
-      "tsakirist/telescope-lazy.nvim", -- Telescope extension that provides handy functionality about plugins installed via lazy.nvim
     },
     cmd = { "Telescope" },
     keys = keys,
-    config = function(_, opts)
+    config = function()
       local telescope = require("telescope")
-      telescope.load_extension("undo")
       telescope.load_extension("file_browser")
       telescope.load_extension("fzf")
-      telescope.load_extension("frecency")
       telescope.load_extension("textcase")
     end,
     opts = function()
@@ -195,13 +191,6 @@ return {
     cond = vim.fn.executable("make") == 1,
     dependencies = {
       "nvim-telescope/telescope.nvim",
-    },
-  },
-  {
-    -- Order fuzzy list by frequency
-    "nvim-telescope/telescope-frecency.nvim",
-    dependencies = {
-      "kkharji/sqlite.lua",
     },
   },
 }

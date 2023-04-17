@@ -82,6 +82,7 @@ local on_attach = function(client, bufnr)
       },
       k = { vim.lsp.buf.signature_help, "Signature help", buffer = bufnr },
       r = { vim.lsp.buf.rename, "Rename", buffer = bufnr },
+      S = { ":OutputPanel<CR>", "Show LSP servers output panel" },
     },
     ["<tab>"] = {
       name = "Workspace",

@@ -7,7 +7,7 @@ local wk = require("which-key")
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ","
 
 -- Normal --
 -- disable Ex mode, I always enter in it by mistake
@@ -119,6 +119,13 @@ wk.register({
   },
   q = { name = "Quit", q = { ":quitall<CR>", "Quit all" } },
 }, { prefix = "<leader>" })
+
+-- With local predix:
+wk.register({
+  t = {
+    name = "Test",
+  },
+}, { prefix = "<localleader>" })
 
 -- Terminal:
 wk.register({ ["<esc><esc>"] = { "<C-\\><C-n>", "Escape terminal mode." } }, { mode = "t" })

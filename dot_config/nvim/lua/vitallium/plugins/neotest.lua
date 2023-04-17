@@ -39,7 +39,7 @@ local keys = {
     desc = "Open test summary",
   },
   {
-    "<localleader>rt",
+    "<localleader>to",
     function()
       require("neotest").output.open({ enter = true })
     end,
