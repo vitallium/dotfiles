@@ -1,5 +1,5 @@
 return {
-  "nvim-tree/nvim-web-devicons", -- Fancy icons in pop-ups
+  "kyazdani42/nvim-web-devicons", -- Fancy icons in pop-ups
   lazy = true,
   opts = {
     -- globally enable different highlight colors per icon (default to true)
