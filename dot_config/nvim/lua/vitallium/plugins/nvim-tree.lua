@@ -1,8 +1,7 @@
 return {
   "nvim-tree/nvim-tree.lua", -- File browser
   keys = {
-    { "<leader>ft", ":NvimTreeFindFileToggle<CR>", desc = "Toggle file tree at current buffer" },
-    { "<leader>fT", ":NvimTreeToggle<CR>", desc = "Toggle file tree" },
+    { "<leader>o-", ":NvimTreeFindFileToggle<CR>", desc = "Toggle file tree at current buffer" },
   },
   config = function()
     require("nvim-tree").setup({

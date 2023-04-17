@@ -3,11 +3,11 @@ return {
   lazy = false,
   priority = 1000,
   opts = {
-    style = "storm",
+    style = "night",
   },
-  -- config = function(_, opts)
-  --   local tokyonight = require("tokyonight")
-  --   tokyonight.setup(opts)
-  --   tokyonight.load()
-  -- end,
+  config = function(_, opts)
+    local tokyonight = require("tokyonight")
+    tokyonight.setup(opts)
+    tokyonight.load()
+  end,
 }

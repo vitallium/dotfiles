@@ -63,4 +63,9 @@ return {
     "jlcrochet/vim-ruby",
     event = { "BufReadPost", "BufNewFile" },
   },
+  -- Dash.app integration
+  {
+    "mrjones2014/dash.nvim",
+    build = "make install",
+  },
 }
