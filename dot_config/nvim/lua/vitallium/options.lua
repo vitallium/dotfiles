@@ -10,6 +10,8 @@ local opt = vim.opt
 opt.timeoutlen = 300 -- num: Timeout, e.g. for which-key
 opt.clipboard = "unnamedplus" -- str: Clipboard integration with macOS
 opt.updatetime = 1000 -- num: Faster update times.
+opt.hidden = true -- bool: This makes vim act like all other editors, buffers can exist in the background without being in a window.
+opt.lazyredraw = true -- bool: Make macros render faster (lazy draw)
 
 -- [[ Context ]]
 opt.colorcolumn = "80" -- str: Show col for max line length
@@ -63,10 +65,10 @@ opt.spell = true
 opt.spelllang = { "en_us" }
 opt.spellfile = vim.fn.expand("~/.local/share/nvim/site/spell/spf.%s.add"):format(vim.o.encoding)
 
--- Fix markdown indentation settings
-vim.g.markdown_recommended_style = 0
+-- [[ Global options ]]
+vim.g.loaded_perl_provider = 0 -- disable Perl support
 
-if vim.fn.has("nvim-0.9.0") == 1 then
+if vim.fn.has("nvim-0.9") == 1 then
   opt.splitkeep = "screen"
   opt.shortmess:append({ C = true })
 end
