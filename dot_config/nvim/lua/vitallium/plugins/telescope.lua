@@ -3,7 +3,6 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-ui-select.nvim", -- optional, for using telescope in more places
       "nvim-telescope/telescope-file-browser.nvim",
       "nvim-tree/nvim-web-devicons", -- optional, for icons
       "debugloop/telescope-undo.nvim",
@@ -105,7 +104,6 @@ return {
       telescope.load_extension("file_browser")
       telescope.load_extension("fzf")
       telescope.load_extension("frecency")
-      telescope.load_extension("ui-select")
       telescope.load_extension("textcase")
     end,
     opts = function(_, opts)
