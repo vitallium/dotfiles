@@ -5,4 +5,5 @@ return {
   opts = {
     text = { spinner = "dots_pulse" },
   },
+  config = true,
 }

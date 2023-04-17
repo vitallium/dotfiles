@@ -8,7 +8,6 @@ return {
   {
     "johmsalas/text-case.nvim",
     event = "BufRead",
-    opts = {},
   },
   {
     "gpanders/editorconfig.nvim",
@@ -43,8 +42,7 @@ return {
   {
     -- Like Emacs which key
     "folke/which-key.nvim",
-    event = { "VeryLazy" },
-    config = true,
+    lazy = true,
   },
   {
     -- Alt-h/j/k/l to move line
@@ -66,6 +64,14 @@ return {
   -- Dash.app integration
   {
     "mrjones2014/dash.nvim",
+    event = { "BufReadPost", "BufNewFile" },
     build = "make install",
+  },
+  {
+    "dstein64/vim-startuptime",
+    cmd = "StartupTime",
+    init = function()
+      vim.g.startuptime_tries = 10
+    end,
   },
 }

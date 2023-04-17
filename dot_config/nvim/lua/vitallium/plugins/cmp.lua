@@ -1,15 +1,15 @@
 return {
   {
     "hrsh7th/nvim-cmp", -- Autocompletion plugin
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
-      "hrsh7th/cmp-nvim-lsp-signature-help", -- Function signature source for nvim-cmp
       "hrsh7th/cmp-buffer", -- Buffer source for nvim-cmp
       "hrsh7th/cmp-path", -- Path source for nvim-cmp
+      "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+      "hrsh7th/cmp-nvim-lua", -- Lua Completions
+      "hrsh7th/cmp-nvim-lsp-signature-help", -- Function signature source for nvim-cmp
       "hrsh7th/cmp-cmdline", -- Command line source for nvim-cmp
       "hrsh7th/cmp-emoji",
-      "hrsh7th/cmp-calc",
       {
         "L3MON4D3/LuaSnip", -- Snippets plugin
         dependencies = {
@@ -60,51 +60,55 @@ return {
             cmp.select_prev_item()
           end),
           -- Other mappings:
-          ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = false, -- Selection required to complete on "Enter".
           }),
-          -- For (S-)Tab, prefer snippet over completion.
-          -- (Prefer C-j/k for completion anyway)
           ["<Tab>"] = cmp.mapping(function(fallback)
-            if luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            elseif cmp.visible() then
+            if cmp.visible() then
               cmp.select_next_item()
+            elseif luasnip.expandable() then
+              luasnip.expand()
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
             else
               fallback()
             end
-          end, { "i", "s" }),
+          end, {
+            "i",
+            "s",
+          }),
           ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            elseif cmp.visible() then
+            if cmp.visible() then
               cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
             else
               fallback()
             end
-          end, { "i", "s" }),
+          end, {
+            "i",
+            "s",
+          }),
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
+          { name = "nvim_lsp_signature_help" },
           { name = "cmp_tabnine" },
           { name = "luasnip" },
         }, {
-          { name = "path" },
           { name = "buffer" },
+          { name = "path" },
           { name = "emoji" },
-          { name = "calc" },
         }),
         confirm_opts = {
           behavior = cmp.ConfirmBehavior.Select,
         },
         experimental = {
-          native_menu = false,
-          ghost_text = false,
+          ghost_text = true,
         },
       })
 

@@ -6,7 +6,9 @@ return {
   priority = 1, -- Load after LSP, etc.
   opts = {
     close_fold_kinds = { "imports" },
-    provider_selector = function() return { "treesitter", "indent" } end,
+    provider_selector = function()
+      return { "treesitter", "indent" }
+    end,
   },
   config = function(_, opts)
     vim.o.foldcolumn = "0" -- '0' to hide or '1' to show

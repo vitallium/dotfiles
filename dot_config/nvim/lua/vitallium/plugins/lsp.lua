@@ -6,7 +6,6 @@ local lsp_servers = {
   "eslint",
   "gopls",
   "jsonls",
-  "jsonls",
   "lua_ls",
   "solargraph",
   "tsserver",
@@ -120,15 +119,6 @@ local on_attach = function(client, bufnr)
   }, { prefix = "<leader>", mode = "v" })
 end
 
--- local _border = "single"
---
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
---     border = _border,
--- })
--- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
---     border = _border,
--- })
-
 local float_config = {
   focusable = false,
   style = "minimal",
@@ -148,27 +138,6 @@ vim.diagnostic.config({
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, float_config)
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, float_config)
-
--- change documentation to be rouded and non-focusable...
--- any time I focus into one of these, is by accident, and it always take me
--- a couple of seconds to figure out what I did.
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-  focusable = false,
-})
-
---
--- vim.diagnostic.config({
---     float = {
---         border = _border,
---         source = "always",
---     },
---     signs = true,
---     underline = true,
---     update_in_insert = false,
---     virtual_text = true,
---     severity_sort = true,
--- })
 
 return {
   {
