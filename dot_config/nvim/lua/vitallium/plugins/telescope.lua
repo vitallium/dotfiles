@@ -1,103 +1,107 @@
+local keys = {
+  {
+    "<leader><leader>",
+    function()
+      require("telescope.builtin").find_files()
+    end,
+    desc = "Find file",
+  },
+  {
+    "<leader>/",
+    function()
+      require("telescope.builtin").live_grep()
+    end,
+    desc = "Grep directory",
+  },
+  {
+    "<leader>?",
+    function()
+      require("telescope.builtin").current_buffer_fuzzy_find()
+    end,
+    desc = "Grep current buffer",
+  },
+  {
+    "<leader>;",
+    function()
+      require("telescope.builtin").command_history()
+    end,
+    desc = "Command history",
+  },
+  {
+    "<leader>:",
+    function()
+      require("telescope.builtin").commands()
+    end,
+    desc = "Commands",
+  },
+  {
+    "<leader>r",
+    function()
+      require("telescope.builtin").resume()
+    end,
+    desc = "Resume telescope",
+  },
+  {
+    "<leader>bb",
+    function()
+      require("telescope.builtin").buffers()
+    end,
+    desc = "Find buffer",
+  },
+  {
+    "<leader>cs",
+    function()
+      require("telescope.builtin").lsp_document_symbols()
+    end,
+    desc = "Symbols in document",
+  },
+  {
+    "<leader>fr",
+    function()
+      require("telescope.builtin").oldfiles()
+    end,
+    desc = "Find previously opened file",
+  },
+  {
+    "<leader>ff",
+    function()
+      require("telescope").extensions.file_browser.file_browser({
+        path = "%:p:h",
+        hidden = true,
+        grouped = true,
+      })
+    end,
+    desc = "Browse files",
+  },
+  {
+    "<leader>h",
+    function()
+      require("telescope.builtin").help_tags()
+    end,
+    desc = "NeoVim help tags",
+  },
+  {
+    "<leader>pf",
+    function()
+      require("telescope.builtin").git_files()
+    end,
+    desc = "Find files",
+  },
+}
+
 return {
   {
     "nvim-telescope/telescope.nvim",
+    version = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
-      "nvim-tree/nvim-web-devicons", -- optional, for icons
       "debugloop/telescope-undo.nvim",
+      "nvim-telescope/telescope-symbols.nvim", -- Provides its users with the ability of picking symbols and insert them at point.
+      "tsakirist/telescope-lazy.nvim", -- Telescope extension that provides handy functionality about plugins installed via lazy.nvim
     },
     cmd = { "Telescope" },
-    keys = {
-      {
-        "<leader><leader>",
-        function()
-          require("telescope.builtin").find_files()
-        end,
-        desc = "Find file",
-      },
-      {
-        "<leader>/",
-        function()
-          require("telescope.builtin").live_grep()
-        end,
-        desc = "Grep directory",
-      },
-      {
-        "<leader>?",
-        function()
-          require("telescope.builtin").current_buffer_fuzzy_find()
-        end,
-        desc = "Grep current buffer",
-      },
-      {
-        "<leader>;",
-        function()
-          require("telescope.builtin").command_history()
-        end,
-        desc = "Command history",
-      },
-      {
-        "<leader>:",
-        function()
-          require("telescope.builtin").commands()
-        end,
-        desc = "Commands",
-      },
-      {
-        "<leader>r",
-        function()
-          require("telescope.builtin").resume()
-        end,
-        desc = "Resume telescope",
-      },
-      {
-        "<leader>bb",
-        function()
-          require("telescope.builtin").buffers()
-        end,
-        desc = "Find buffer",
-      },
-      {
-        "<leader>cs",
-        function()
-          require("telescope.builtin").lsp_document_symbols()
-        end,
-        desc = "Symbols in document",
-      },
-      {
-        "<leader>fr",
-        function()
-          require("telescope.builtin").oldfiles()
-        end,
-        desc = "Find previously opened file",
-      },
-      {
-        "<leader>ff",
-        function()
-          require("telescope").extensions.file_browser.file_browser({
-            path = "%:p:h",
-            hidden = true,
-            grouped = true,
-          })
-        end,
-        desc = "Browse files",
-      },
-      {
-        "<leader>h",
-        function()
-          require("telescope.builtin").help_tags()
-        end,
-        desc = "NeoVim help tags",
-      },
-      {
-        "<leader>pf",
-        function()
-          require("telescope.builtin").git_files()
-        end,
-        desc = "Find files",
-      },
-    },
+    keys = keys,
     config = function(_, opts)
       local telescope = require("telescope")
       telescope.load_extension("undo")
@@ -106,7 +110,7 @@ return {
       telescope.load_extension("frecency")
       telescope.load_extension("textcase")
     end,
-    opts = function(_, opts)
+    opts = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
       local trouble = require("trouble.providers.telescope")
@@ -126,9 +130,7 @@ return {
             "--hidden",
             "--glob=!.git",
           },
-          color_devicons = true,
           layout_strategy = "horizontal",
-          winblend = 5,
           layout_config = {
             prompt_position = "top",
             horizontal = {
@@ -167,6 +169,7 @@ return {
             previewer = false,
           },
           buffers = {
+            previewer = false,
             sort_lastused = true,
           },
         },

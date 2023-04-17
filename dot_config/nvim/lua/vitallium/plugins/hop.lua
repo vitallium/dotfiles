@@ -1,7 +1,7 @@
 return {
   "phaazon/hop.nvim", -- Snipe words/letters on screen
   branch = "v2", -- optional but strongly recommended
-  event = "VeryLazy",
+  event = { "BufReadPost", "BufNewFile" },
   config = function()
     require("hop").setup({ keys = "asdfghjkl;qwerpoiuzxcv.,mn" })
 
