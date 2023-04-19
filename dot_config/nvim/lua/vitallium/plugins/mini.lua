@@ -2,21 +2,16 @@ return {
   "echasnovski/mini.nvim",
   version = false,
   event = "VeryLazy",
+  keys = {
+    {
+      "<leader>bd",
+      function()
+        require("mini.bufremove").delete(0, true)
+      end,
+      desc = "Delete buffer",
+    },
+  },
   config = function()
-    -- [[ai]]
-    local spec_treesitter = require("mini.ai").gen_spec.treesitter
-    require("mini.ai").setup({
-      -- Better selection inside/around things.
-      custom_textobjects = {
-        c = spec_treesitter({ a = "@class.outer", i = "@class.inner" }),
-        f = spec_treesitter({ a = "@function.outer", i = "@function.inner" }),
-        o = spec_treesitter({
-          a = { "@conditional.outer", "@loop.outer" },
-          i = { "@conditional.inner", "@loop.inner" },
-        }),
-      },
-    })
-
     -- [[sane defaults]]
     require("mini.basics").setup({
       options = {
@@ -62,15 +57,6 @@ return {
     -- [[highlight trailing spaces]]
     require("mini.trailspace").setup()
 
-    require("mini.bufremove").setup({})
+    require("mini.bufremove").setup()
   end,
-  keys = {
-    {
-      "<leader>bd",
-      function()
-        require("mini.bufremove").delete(0, true)
-      end,
-      desc = "Delete buffer",
-    },
-  },
 }

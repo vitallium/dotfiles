@@ -152,8 +152,12 @@ return {
               ["<esc>"] = actions.close,
               ["<C-x>"] = actions.cycle_previewers_next,
               ["<C-a>"] = actions.cycle_previewers_prev,
+              ["<A-d>"] = actions.delete_buffer + actions.move_to_top,
             },
-            n = { ["<c-t>"] = trouble.open_with_trouble },
+            n = {
+              ["<c-t>"] = trouble.open_with_trouble,
+              ["d"] = actions.delete_buffer + actions.move_to_top,
+            },
           },
         },
         pickers = {
@@ -166,7 +170,9 @@ return {
           },
           buffers = {
             previewer = false,
+            show_all_buffers = true,
             sort_lastused = true,
+            theme = "dropdown",
           },
         },
         extensions = {

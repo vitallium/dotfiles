@@ -126,6 +126,3 @@ wk.register({
     name = "Test",
   },
 }, { prefix = "<localleader>" })
-
--- Terminal:
-wk.register({ ["<esc><esc>"] = { "<C-\\><C-n>", "Escape terminal mode." } }, { mode = "t" })
