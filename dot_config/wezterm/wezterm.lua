@@ -13,13 +13,13 @@ local mononoki = wezterm.font("mononoki")
 ---@diagnostic disable-next-line: unused-local
 local berkeley = wezterm.font("Berkeley Mono")
 
-local scheme = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
-scheme.background = "#000000"
+local font = monolisa
+local font_size = 16.0
 
-return {
-	font = monolisa,
+local harfbuzz_features = {}
+if font == monolisa then
 	harfbuzz_features = {
-		"zero=1",
+	  "zero=1",
 		"ss01=1",
 		"ss02=1",
 		"ss03=1",
@@ -32,8 +32,17 @@ return {
 		"subs=0",
 		"calt=1",
 		"liga=1",
-	},
-	font_size = 14.0,
+	}
+	font_size = 14.0
+end
+
+local scheme = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
+scheme.background = "#000000"
+
+return {
+	font = font,
+	harfbuzz_features = harfbuzz_features,
+	font_size = font_size,
 	-- colors
 	color_schemes = {
 		["OLEDppuccin"] = scheme,
