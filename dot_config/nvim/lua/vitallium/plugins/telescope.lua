@@ -174,6 +174,14 @@ return {
             sort_lastused = true,
             theme = "dropdown",
           },
+          oldfiles = {
+            previewer = false,
+            sort_lastused = true,
+            cwd_only = true,
+          },
+          live_grep = {
+            path_display = { "shorten" },
+          },
         },
         extensions = {
           file_browser = {
