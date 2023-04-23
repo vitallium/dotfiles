@@ -9,10 +9,6 @@ return {
     "johmsalas/text-case.nvim",
     event = "BufRead",
   },
-  {
-    "gpanders/editorconfig.nvim",
-    event = "BufRead",
-  },
   -- [[ Theming ]]
   {
     "folke/todo-comments.nvim", -- Highlight and list TODOs, etc.
