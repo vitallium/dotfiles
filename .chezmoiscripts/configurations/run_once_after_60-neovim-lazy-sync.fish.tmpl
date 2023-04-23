@@ -1,0 +1,12 @@
+#!/usr/bin/env fish
+
+## Install fisher
+if not type -q nvim
+  echo "neovim not found. Exiting."
+  exit 1
+end
+
+# This script will run whenever I update .config/nvim/lazy-lock.json
+# .config/nvim/lazy-lock.json hash: {{ include "dot_config/nvim/lazy-lock.json" | sha256sum }}
+echo "Syncing neovim packages with Lazy..."
+nvim --headless "+Lazy! sync" +qa
