@@ -1,6 +1,7 @@
 return {
   "akinsho/toggleterm.nvim", -- Toggle terminals like Doom Emacs
   version = "*",
+  event = "VeryLazy",
   cmd = { "ToggleTerm" },
   keys = {
     { "<leader>ot", ":ToggleTerm<CR>", silent = true, desc = "Toggle terminal" },
