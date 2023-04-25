@@ -74,8 +74,8 @@ return {
       vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
       vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
       vim.keymap.set("n", "o", function()
-        local node = api.tree.get_node_under_cursor()
-        -- your code goes here
+        api.node.open.edit()
+        api.tree.close()
       end, opts("edit_and_close"))
     end
 

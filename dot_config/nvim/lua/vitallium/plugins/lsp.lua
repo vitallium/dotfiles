@@ -199,6 +199,11 @@ return {
 
       -- Add additional capabilities supported by nvim-cmp
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- Add nvim-ufo folding
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
       local lspconfig = require("lspconfig")
 
       -- Enable some language servers with the additional completion capabilities offered by nvim-cmp

@@ -172,7 +172,6 @@ return {
             previewer = false,
             show_all_buffers = true,
             sort_lastused = true,
-            theme = "dropdown",
           },
           oldfiles = {
             previewer = false,

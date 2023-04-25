@@ -3,9 +3,6 @@ return {
   version = "*",
   event = "VeryLazy",
   cmd = { "ToggleTerm" },
-  keys = {
-    { "<leader>ot", ":ToggleTerm<CR>", silent = true, desc = "Toggle terminal" },
-  },
   opts = {
     direction = "horizontal",
     -- size can be a number or function which is passed the current terminal
@@ -16,5 +13,8 @@ return {
         return vim.o.columns * 0.4
       end
     end,
+    open_mapping = [[<C-\>]],
+    start_in_insert = true,
+    close_on_exit = false,
   },
 }
