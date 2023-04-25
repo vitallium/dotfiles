@@ -24,6 +24,11 @@ return {
     dependencies = "nvim-treesitter/nvim-treesitter",
   },
   {
+    "RRethy/nvim-treesitter-endwise",
+    event = { "BufReadPost", "BufNewFile" },
+    dependencies = "nvim-treesitter/nvim-treesitter",
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
     build = function()
@@ -99,6 +104,9 @@ return {
           -- For nvim-ts-context-commentstring plugin
           enable = true,
           enable_autocmd = false, -- Disabled when used with Comment.nvim
+        },
+        endwise = {
+          enable = true,
         },
       })
     end,
