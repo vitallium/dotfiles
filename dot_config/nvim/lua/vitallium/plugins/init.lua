@@ -15,9 +15,15 @@ return {
     event = "BufReadPost",
     opts = {
       highlight = {
+        pattern = [[.*<(KEYWORDS)\s*]], -- pattern or table of patterns, used for highlightng (vim regex)
         keyword = "bg",
       },
+      search = {
+        pattern = [[\b(KEYWORDS)]], -- ripgrep regex
+        -- Was [[\b(KEYWORDS):]] including colon.
+      },
     },
+    config = true,
   },
   {
     "norcalli/nvim-colorizer.lua", -- Show color-codes colored
