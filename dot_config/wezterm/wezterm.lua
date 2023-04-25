@@ -7,11 +7,11 @@ wezterm.on("gui-startup", function()
 end)
 
 ---@diagnostic disable-next-line: unused-local
-local monolisa = wezterm.font("Monolisa")
+local monolisa = "Monolisa"
 ---@diagnostic disable-next-line: unused-local
-local mononoki = wezterm.font("mononoki")
+local mononoki = "mononoki"
 ---@diagnostic disable-next-line: unused-local
-local berkeley = wezterm.font("Berkeley Mono")
+local berkeley = "Berkeley Mono"
 
 local font = berkeley
 local font_size = 16.0
@@ -40,7 +40,7 @@ local scheme = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
 scheme.background = "#000000"
 
 return {
-	font = font,
+	font = wezterm.font_with_fallback({ font, "Symbols Nerd Font Mono" }),
 	harfbuzz_features = harfbuzz_features,
 	font_size = font_size,
 	-- colors
@@ -68,4 +68,6 @@ return {
 	-- general config
 	clean_exit_codes = { 130 },
 	automatically_reload_config = true,
+	send_composed_key_when_left_alt_is_pressed = false,
+	send_composed_key_when_right_alt_is_pressed = false,
 }
