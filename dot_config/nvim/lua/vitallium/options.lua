@@ -60,6 +60,10 @@ opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
+-- [[ Session ]]
+opt.sessionoptions = "buffers,curdir,tabpages,winsize"
+opt.shada = ""
+
 -- [[ Spellcheck ]]
 opt.spell = true
 opt.spelllang = { "en_us" }
@@ -67,6 +71,32 @@ opt.spellfile = vim.fn.expand("~/.local/share/nvim/site/spell/spf.%s.add"):forma
 
 -- [[ Global options ]]
 vim.g.loaded_perl_provider = 0 -- disable Perl support
+-- Disable some in built plugins completely
+vim.g.loaded_matchparen = 1
+vim.g.loaded_matchit = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_getscriptPlugin = 1
+vim.g.loaded_gzip = 1
+vim.g.loaded_logipat = 1
+vim.g.loaded_rrhelper = 1
+vim.g.loaded_spellfile_plugin = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_vimballPlugin = 1
+vim.g.loaded_zipPlugin = 1
+-- Disable virtual text for all diagnostics
+vim.diagnostic.config({
+  underline = true,
+  signs = true,
+  virtual_text = false,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    header = false,
+    source = "always",
+    border = "rounded",
+    focusable = false,
+  },
+})
 
 if vim.fn.has("nvim-0.9") == 1 then
   opt.splitkeep = "screen"
