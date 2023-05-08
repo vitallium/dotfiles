@@ -7,6 +7,7 @@ byebug
 neovim
 pry
 pry-doc
+reek
 rubocop
 rubocop-performance
 rubocop-rails
