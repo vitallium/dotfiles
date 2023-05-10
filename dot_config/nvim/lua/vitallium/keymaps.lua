@@ -24,22 +24,22 @@ keymap("v", ">", ">gv", opts)
 
 wk.setup({
   plugins = {
-    marks = true, -- shows a list of your marks on ' and `
+    marks = true,     -- shows a list of your marks on ' and `
     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
     -- the presets plugin, adds help for a bunch of default keybindings in Neovim
     -- No actual key bindings are created
     spelling = {
-      enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+      enabled = true,   -- enabling this will show WhichKey when pressing z= to select spelling suggestions
       suggestions = 20, -- how many suggestions should be shown in the list?
     },
     presets = {
-      operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-      motions = false, -- adds help for motions
+      operators = false,   -- adds help for operators like d, y, ... and registers them for motion / text object completion
+      motions = false,     -- adds help for motions
       text_objects = true, -- help for text objects triggered after entering an operator
-      windows = false, -- default bindings on <c-w>
-      nav = true, -- misc bindings to work with windows
-      z = true, -- bindings for folds, spelling and others prefixed with z
-      g = true, -- bindings for prefixed with g
+      windows = false,     -- default bindings on <c-w>
+      nav = true,          -- misc bindings to work with windows
+      z = true,            -- bindings for folds, spelling and others prefixed with z
+      g = true,            -- bindings for prefixed with g
     },
   },
   key_labels = {
@@ -52,7 +52,7 @@ wk.setup({
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
     separator = "➜", -- symbol used between a key and it's label
-    group = "+", -- symbol prepended to a group
+    group = "+",      -- symbol prepended to a group
   },
 })
 
@@ -126,3 +126,28 @@ wk.register({
     name = "Test",
   },
 }, { prefix = "<localleader>" })
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Buffer local mappings.
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gd', function()
+      require('telescope.builtin').lsp_definitions({ jump_type = "tab" })
+    end, opts)
+    vim.keymap.set('n', 'gr', function()
+      require('telescope.builtin').lsp_references({ jump_type = "tab" })
+    end, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set({ 'n', 'v' }, '<leader>c', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>F', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})

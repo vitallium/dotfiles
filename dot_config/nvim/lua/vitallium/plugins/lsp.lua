@@ -1,277 +1,191 @@
-local lsp_servers = {
-  "ansiblels",
-  "bashls",
-  "cssls",
-  "dockerls",
-  "eslint",
-  "gopls",
-  "jsonls",
-  "lua_ls",
-  "solargraph",
-  "tsserver",
-  "volar",
-  "yamlls",
-}
-
--- LSP custom function when client attaches to buffer.
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  local format_timeout_ms = 2000
-  local lsp_format = require("lsp-format")
-
-  -- Auto-format on save
-  lsp_format.on_attach(client)
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local wk = require("which-key")
-
-  -- Without prefix:
-  wk.register({
-    ["["] = {
-      d = {
-        vim.lsp.diagnostic.goto_prev,
-        "Previous diagnostic",
-        buffer = bufnr,
-      },
-    },
-    ["]"] = {
-      d = {
-        vim.lsp.diagnostic.goto_next,
-        "Next diagnostic",
-        buffer = bufnr,
-      },
-    },
-    g = {
-      d = { vim.lsp.buf.definition, "Go to definition", buffer = bufnr },
-      i = { vim.lsp.buf.implementation, "Go to implementation", buffer = bufnr },
-      r = {
-        ":Trouble lsp_references<CR>",
-        "List references",
-        buffer = bufnr,
-      },
-      t = { vim.lsp.buf.type_definition, "Go to type definition", buffer = bufnr },
-    },
-    K = { vim.lsp.buf.hover, "Hover doc", buffer = bufnr },
-  })
-
-  -- With leader prefix:
-  wk.register({
-    b = {
-      f = {
-        function()
-          vim.lsp.buf.format({ async = true, timeout_ms = format_timeout_ms })
-        end,
-        "Format buffer",
-        buffer = bufnr,
-      },
-    },
-    c = {
-      a = {
-        function()
-          vim.lsp.buf.code_action({ apply = true })
-        end,
-        "Code actions",
-        buffer = bufnr,
-      },
-      e = {
-        vim.lsp.diagnostic.open_float,
-        "Line diagnostics",
-        buffer = bufnr,
-      },
-      k = { vim.lsp.buf.signature_help, "Signature help", buffer = bufnr },
-      r = { vim.lsp.buf.rename, "Rename", buffer = bufnr },
-      S = { ":OutputPanel<CR>", "Show LSP servers output panel" },
-    },
-    ["<tab>"] = {
-      name = "Workspace",
-      a = {
-        vim.lsp.buf.add_workspace_folder,
-        "Add workspace folder",
-        buffer = bufnr,
-      },
-      l = {
-        function()
-          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end,
-        "List workspace folders",
-        buffer = bufnr,
-      },
-      r = {
-        vim.lsp.buf.remove_workspace_folder,
-        "Remove workspace folder",
-        buffer = bufnr,
-      },
-    },
-  }, { prefix = "<leader>" })
-
-  -- Visual mode with leader prefix:
-  wk.register({
-    c = {
-      a = {
-        function()
-          vim.lsp.buf.code_action({ apply = true })
-        end,
-        "Code actions",
-        buffer = bufnr,
-      },
-    },
-  }, { prefix = "<leader>", mode = "v" })
-end
-
-local float_config = {
-  focusable = false,
-  style = "minimal",
-  border = "rounded",
-  source = "always",
-  header = "",
-  prefix = "",
-}
-
-vim.diagnostic.config({
-  underline = true,
-  update_in_insert = false,
-  virtual_text = { spacing = 4, prefix = "●" },
-  severity_sort = true,
-  float = float_config,
-})
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, float_config)
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, float_config)
-
 return {
   {
-    "neovim/nvim-lspconfig", -- Configurations for Nvim LSP
-    event = { "BufReadPost", "BufNewFile" },
+    "williamboman/mason-lspconfig.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp", -- See cmp.lua for more info
-      {
-        "williamboman/mason.nvim", -- Manage language servers, linters, etc.
-        -- IMPORTANT: Mason must be set up before lspconfig and null-ls
-        priority = 500,
-        config = function()
-          -- Mason to manage external tools like language servers
-          require("mason").setup()
-          require("mason-lspconfig").setup({
-            ensure_installed = lsp_servers,
-            automatic_installation = true,
-          })
-        end,
-      },
-      {
-        "williamboman/mason-lspconfig.nvim", -- Integration mason/lsp
-      },
-      {
-        "jayp0521/mason-null-ls.nvim", -- Integration mason/null-ls
-        config = function()
-          -- Mason Null-ls handles the installation of the configured sources
-          require("mason-null-ls").setup({
-            ensure_installed = nil, -- nil, as taken from null_ls setup
-            automatic_installation = true,
-            automatic_setup = true,
-          })
-        end,
-      },
-      {
-        "lukas-reineke/lsp-format.nvim", -- Easier management of auto-saving from LSP sources
-        opts = {
-          typescript = {
-            -- Prettier overrides LSP and ESLint
-            order = { "tsserver", "eslint", "null-ls" },
-          },
-          lua = {
-            -- StyLua overrides LSP
-            order = { "lua_ls", "null-ls" },
-          },
-        },
-      },
       "b0o/schemastore.nvim", -- Schemas for JSON files
+      "doums/lsp_spinner.nvim",
+      "williamboman/mason.nvim", -- Manage language servers, linters, etc.
+      "neovim/nvim-lspconfig",
+      "folke/neodev.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
       "mihyaeru21/nvim-lspconfig-bundler", -- prepend Ruby commands with "bundle exec"
     },
     config = function()
+      require("mason").setup()
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "ansiblels",
+          "bashls",
+          "cssls",
+          "dockerls",
+          "eslint",
+          "gopls",
+          "jsonls",
+          "lua_ls",
+          "solargraph",
+          "tsserver",
+          "volar",
+          "yamlls",
+        },
+      })
+
+      local lsp_spinner = require("lsp_spinner")
+      lsp_spinner.setup({
+        spinner = { " ⠋", " ⠙", " ⠹", " ⠸", " ⠼", " ⠴", " ⠦", " ⠧", " ⠇", " ⠏" },
+        interval = 30,
+        redraw_rate = 100,
+      })
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      lsp_spinner.init_capabilities(capabilities)
+
+      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+      local on_attach = function(client, bufnr)
+        lsp_spinner.on_attach(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+              vim.lsp.buf.format({ bufnr = bufnr })
+            end,
+          })
+        end
+      end
+
       require("lspconfig-bundler").setup()
 
-      local lsp_flags = {
-        -- This is the default in Nvim 0.7+
-        debounce_text_changes = 150,
-      }
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        debounce = 150,
+        sources = {
+          null_ls.builtins.code_actions.eslint_d,
+          -- formatting
+          null_ls.builtins.formatting.eslint_d,
+          null_ls.builtins.formatting.prettierd,
+          null_ls.builtins.formatting.rubocop,
+          -- diagnostics
+          null_ls.builtins.diagnostics.rubocop,
+          null_ls.builtins.diagnostics.reek,
 
-      -- Add additional capabilities supported by nvim-cmp
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      -- Add nvim-ufo folding
-      capabilities.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true,
-      }
-      local lspconfig = require("lspconfig")
+          null_ls.builtins.diagnostics.gitlint.with({
+            filetypes = { "gitcommit", "NeogitCommitMessage" },
+          }),
+          null_ls.builtins.diagnostics.markdownlint,
+          null_ls.builtins.diagnostics.shellcheck,
+          null_ls.builtins.diagnostics.stylelint,
+          null_ls.builtins.diagnostics.eslint_d,
+          -- null_ls.builtins.diagnostics.haml_lint.with({
+          --   command = "bundle",
+          --   args = vim.list_extend({ "exec", "haml-lint" }, null_ls.builtins.diagnostics.haml_lint._opts.args),
+          -- }),
+          -- null_ls.builtins.diagnostics.rubocop.with({
+          --   command = "bundle",
+          --   args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
+          -- }),
+        },
+        on_attach = on_attach,
+      })
 
-      -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-      for _, lsp in ipairs(lsp_servers) do
-        lspconfig[lsp].setup({
-          on_attach = on_attach,
-          flags = lsp_flags,
-          capabilities = capabilities,
-          settings = {
-            json = {
-              schemas = require("schemastore").json.schemas(),
-              validate = { enable = true },
-            },
-            Lua = {
-              runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = "LuaJIT",
-              },
-              diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { "vim" },
-              },
-              -- Do not send telemetry data containing a randomized but unique identifier
-              telemetry = {
-                enable = false,
+      require("mason-lspconfig").setup_handlers({
+        function(server_name) -- default handler (optional)
+          require("lspconfig")[server_name].setup({ on_attach = on_attach, capabilities = capabilities })
+        end,
+        ["jsonls"] = function()
+          require("lspconfig").jsonls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
+              json = {
+                schemas = require("schemastore").json.schemas(),
+                validate = { enable = true },
               },
             },
-            yaml = {
-              schemas = require("schemastore").yaml.schemas(),
+          })
+        end,
+        ["yamlls"] = function()
+          require("lspconfig").jsonls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
+              yaml = {
+                schemas = require("schemastore").yaml.schemas(),
+              },
             },
-          },
-        })
-      end
+          })
+        end,
+        ["tsserver"] = function()
+          require("lspconfig").tsserver.setup({
+            capabilities = capabilities,
+            on_attach = function(client, bufnr)
+              client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+              on_attach(client, bufnr)
+            end,
+          })
+        end,
+        ["lua_ls"] = function()
+          require("lspconfig").lua_ls.setup({
+            single_file_support = true,
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
+              Lua = {
+                workspace = {
+                  checkThirdParty = false,
+                },
+                completion = {
+                  workspaceWord = true,
+                  callSnippet = "Both",
+                },
+                diagnostics = {
+                  groupFileStatus = {
+                    ["ambiguity"] = "Opened",
+                    ["await"] = "Opened",
+                    ["codestyle"] = "None",
+                    ["duplicate"] = "Opened",
+                    ["global"] = "Opened",
+                    ["luadoc"] = "Opened",
+                    ["redefined"] = "Opened",
+                    ["strict"] = "Opened",
+                    ["strong"] = "Opened",
+                    ["type-check"] = "Opened",
+                    ["unbalanced"] = "Opened",
+                    ["unused"] = "Opened",
+                  },
+                  unusedLocalExclude = { "_*" },
+                },
+                format = {
+                  enable = true,
+                  defaultConfig = {
+                    indent_style = "space",
+                    indent_size = "2",
+                    continuation_indent_size = "2",
+                  },
+                },
+              },
+            },
+          })
+        end,
+      })
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim", -- NeoVim as LSP server
-    event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      local null_ls = require("null-ls")
-      local null_ls_sources = {
-        null_ls.builtins.diagnostics.gitlint.with({
-          filetypes = { "gitcommit", "NeogitCommitMessage" },
-        }),
-        null_ls.builtins.diagnostics.hadolint, -- Docker best practices
-        null_ls.builtins.diagnostics.markdownlint,
-        null_ls.builtins.diagnostics.shellcheck,
-        null_ls.builtins.diagnostics.stylelint,
-        -- Ruby
-        null_ls.builtins.diagnostics.haml_lint.with({
-          command = "bundle",
-          args = vim.list_extend({ "exec", "haml-lint" }, null_ls.builtins.diagnostics.haml_lint._opts.args),
-        }),
-        null_ls.builtins.diagnostics.rubocop.with({
-          command = "bundle",
-          args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
-        }),
-        null_ls.builtins.diagnostics.reek,
-        null_ls.builtins.diagnostics.yamllint,
-        -- Formatting
-        null_ls.builtins.formatting.stylua,
-      }
-      --
-      -- NeoVim LSP server capabilities
-      null_ls.setup({
-        sources = null_ls_sources,
-        on_attach = on_attach,
-      })
-    end,
+    "folke/neodev.nvim",
+    config = {
+      override = function(_root_dir, library)
+        library.enabled = true
+        library.plugins = true
+      end,
+    },
+  },
+  {
+    "kosayoda/nvim-lightbulb",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      autocmd = { enabled = true },
+      sign = { enabled = false },
+      virtual_text = { enabled = true, hl_mode = "blend", text = "" },
+    },
   },
 }
