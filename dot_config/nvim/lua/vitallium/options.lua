@@ -62,7 +62,6 @@ opt.wrap = false -- Disable line wrap
 
 -- [[ Session ]]
 opt.sessionoptions = "buffers,curdir,tabpages,winsize"
-opt.shada = ""
 
 -- [[ Spellcheck ]]
 opt.spell = true
@@ -83,22 +82,6 @@ vim.g.loaded_spellfile_plugin = 1
 vim.g.loaded_tarPlugin = 1
 vim.g.loaded_vimballPlugin = 1
 vim.g.loaded_zipPlugin = 1
--- Disable virtual text for all diagnostics
-vim.diagnostic.config({
-  underline = true,
-  signs = true,
-  virtual_text = false,
-  update_in_insert = false,
-  severity_sort = true,
-  float = {
-    header = false,
-    source = "always",
-    border = "rounded",
-    focusable = false,
-  },
-})
 
-if vim.fn.has("nvim-0.9") == 1 then
-  opt.splitkeep = "screen"
-  opt.shortmess:append({ C = true })
-end
+opt.splitkeep = "screen"
+opt.shortmess:append({ C = true })
