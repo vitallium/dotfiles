@@ -11,6 +11,7 @@ opt.timeoutlen = 300 -- num: Timeout, e.g. for which-key
 opt.clipboard = "unnamedplus" -- str: Clipboard integration with macOS
 opt.updatetime = 1000 -- num: Faster update times.
 opt.hidden = true -- bool: This makes vim act like all other editors, buffers can exist in the background without being in a window.
+opt.lazyredraw = true -- bool: Make macros render faster (lazy draw)
 
 -- [[ Context ]]
 opt.colorcolumn = "80" -- str: Show col for max line length
@@ -82,6 +83,20 @@ vim.g.loaded_spellfile_plugin = 1
 vim.g.loaded_tarPlugin = 1
 vim.g.loaded_vimballPlugin = 1
 vim.g.loaded_zipPlugin = 1
+-- Disable virtual text for all diagnostics
+vim.diagnostic.config({
+  underline = true,
+  signs = true,
+  virtual_text = false,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    header = false,
+    source = "always",
+    border = "rounded",
+    focusable = false,
+  },
+})
 
 if vim.fn.has("nvim-0.9") == 1 then
   opt.splitkeep = "screen"

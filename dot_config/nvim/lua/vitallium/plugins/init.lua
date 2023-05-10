@@ -63,7 +63,6 @@ return {
     "jlcrochet/vim-ruby",
     event = { "BufReadPost", "BufNewFile" },
   },
-  { "tpope/vim-rails",       ft = "ruby", cmd = "Rails" },
   -- Dash.app integration
   {
     "mrjones2014/dash.nvim",
