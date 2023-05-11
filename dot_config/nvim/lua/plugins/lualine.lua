@@ -13,7 +13,7 @@ return {
         theme = "auto",
         disabled_filetypes = {
           statusline = {},
-          winbar = { "NvimTree", "NeogitCommitMessage", "NeogitStatus", "aerial" },
+          winbar = { "NvimTree", "NeogitCommitMessage", "NeogitStatus" },
         },
         ignore_focus = {},
         always_divide_middle = true,
@@ -37,7 +37,7 @@ return {
         lualine_z = {},
       },
       tabline = {},
-      extensions = { "aerial", "lazy", "nvim-tree" },
+      extensions = { "lazy", "nvim-tree" },
     })
   end,
 }

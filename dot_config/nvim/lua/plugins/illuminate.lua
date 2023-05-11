@@ -6,7 +6,6 @@ return {
     filetypes_denylist = {
       "dirvish",
       "fugitive",
-      "aerial",
       "NvimTree",
       "NeogitCommitMessage",
       "NeogitStatus",

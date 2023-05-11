@@ -10,17 +10,18 @@ return {
     { "<leader>'", "<cmd>FzfLua resume<CR>" },
     { "<leader>h", "<cmd>FzfLua help_tags<CR>" },
     { "<leader>fr", "<cmd>FzfLua oldfiles<CR>" },
-    { "<leader>/", "<cmd>FzfLua live_grep<CR>" },
+    { "<leader>sp", "<cmd>FzfLua live_grep<CR>" },
     { "<leader>gb", "<cmd>FzfLua git_branches<CR>" },
   },
   opts = {
     winopts = {
-      split = "belowright 10new",
+      split = "belowright 15new",
       border = "single",
       preview = {
+        default = "bat",
         hidden = "hidden",
         border = "border",
-        -- title = false,
+        title = false,
         layout = "horizontal",
         horizontal = "right:50%",
       },

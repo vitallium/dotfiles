@@ -1,10 +1,27 @@
 return {
+  {
+    "bluz71/vim-nightfly-guicolors",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "dstein64/vim-startuptime",
+    cmd = "StartupTime",
+  },
   -- Plugin with util functions required by other plugins
   { "nvim-lua/plenary.nvim", lazy = true },
   {
     "direnv/direnv.vim",
     event = "BufRead",
   },
+  {
+    "nvchad/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
+    cmd = { "ColorizerAttachToBuffer", "ColorizerDetachFromBuffer" },
+  },
+
   {
     "johmsalas/text-case.nvim",
     event = "BufRead",
@@ -23,11 +40,6 @@ return {
         -- Was [[\b(KEYWORDS):]] including colon.
       },
     },
-    config = true,
-  },
-  {
-    "norcalli/nvim-colorizer.lua", -- Show color-codes colored
-    event = { "BufReadPost", "BufNewFile" },
     config = true,
   },
   {
@@ -68,13 +80,6 @@ return {
     "mrjones2014/dash.nvim",
     event = { "BufReadPost", "BufNewFile" },
     build = "make install",
-  },
-  {
-    "dstein64/vim-startuptime",
-    cmd = "StartupTime",
-    init = function()
-      vim.g.startuptime_tries = 10
-    end,
   },
   {
     "mhanberg/output-panel.nvim",

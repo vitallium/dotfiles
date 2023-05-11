@@ -35,6 +35,14 @@ return {
     event = "BufEnter",
     config = function()
       require("gitsigns").setup({
+        signs = {
+          add = { text = "┃" },
+          change = { text = "┃" },
+          delete = { text = "_" },
+          topdelete = { text = "‾" },
+          changedelete = { text = "~" },
+          untracked = { text = "┆" },
+        },
         current_line_blame = false,
       })
     end,
@@ -44,7 +52,7 @@ return {
     cmd = { "Git", "Gedit", "Gdiffsplit", "Gvdiffsplit" },
     event = "VeryLazy",
     keys = {
-      { "<leader>gs", vim.cmd.Git, noremap = true, silent = true, desc = "Open Git" },
+      { "<leader>gs", "<Esc>:Git<CR>", silent = true, desc = "Open Git" },
     },
   },
   {
@@ -74,27 +82,6 @@ return {
             { "n", "<cr>", "<c-w>k" },
             { "n", "o", actions.close },
             { "n", "<leader>ft", actions.toggle_files },
-          },
-        },
-      })
-    end,
-  },
-  {
-    "TimUntersberger/neogit", -- Think magit
-    dependencies = { "sindrets/diffview.nvim" },
-    cmd = "Neogit",
-    config = function()
-      require("neogit").setup({
-        disable_builtin_notifications = true,
-        disable_commit_confirmation = true,
-        disable_insert_on_commit = false,
-        integrations = {
-          diffview = true,
-        },
-        mappings = {
-          status = {
-            ["zM"] = "Depth1",
-            ["zR"] = "Depth4",
           },
         },
       })

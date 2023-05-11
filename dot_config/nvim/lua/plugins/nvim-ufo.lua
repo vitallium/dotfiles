@@ -15,7 +15,6 @@ return {
     -- Disable the fold column for certain filetypes:
     vim.api.nvim_create_autocmd("Filetype", {
       pattern = {
-        "aerial",
         "gitcommit",
         "NvimTree",
         "NeogitCommitMessage",

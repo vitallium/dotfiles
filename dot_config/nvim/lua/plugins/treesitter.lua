@@ -1,36 +1,38 @@
 return {
   {
-    -- Used by mini.ai. No need to specify the text objects within treesitter config.
-    "nvim-treesitter/nvim-treesitter-textobjects", -- Additional textobjects for treesitter
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = "nvim-treesitter/nvim-treesitter",
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-context", -- Keep e.g. function at top when scrolling below
-    name = "treesitter-context",
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = true,
-  },
-  {
-    "windwp/nvim-ts-autotag", -- Auto-tags for HTML, Vue, etc.
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = "nvim-treesitter/nvim-treesitter",
-  },
-  {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    name = "ts_context_commentstring",
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = "nvim-treesitter/nvim-treesitter",
-  },
-  {
-    "RRethy/nvim-treesitter-endwise",
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = "nvim-treesitter/nvim-treesitter",
-  },
-  {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
+    dependencies = {
+      {
+        -- Used by mini.ai. No need to specify the text objects within treesitter config.
+        "nvim-treesitter/nvim-treesitter-textobjects", -- Additional textobjects for treesitter
+        event = { "BufReadPost", "BufNewFile" },
+        dependencies = "nvim-treesitter/nvim-treesitter",
+      },
+      {
+        "nvim-treesitter/nvim-treesitter-context", -- Keep e.g. function at top when scrolling below
+        name = "treesitter-context",
+        event = { "BufReadPost", "BufNewFile" },
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = true,
+      },
+      {
+        "windwp/nvim-ts-autotag", -- Auto-tags for HTML, Vue, etc.
+        event = { "BufReadPost", "BufNewFile" },
+        dependencies = "nvim-treesitter/nvim-treesitter",
+      },
+      {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        name = "ts_context_commentstring",
+        event = { "BufReadPost", "BufNewFile" },
+        dependencies = "nvim-treesitter/nvim-treesitter",
+      },
+      {
+        "RRethy/nvim-treesitter-endwise",
+        event = { "BufReadPost", "BufNewFile" },
+        dependencies = "nvim-treesitter/nvim-treesitter",
+      },
+    },
     build = function()
       local ts_update = require("nvim-treesitter.install").update({
         with_sync = true,
@@ -80,19 +82,12 @@ return {
         -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
         highlight = {
-          -- `false` will disable the whole extension
           enable = true,
-          -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-          -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-          -- the name of the parser)
-          -- list of language that will be disabled
-          -- disable = { },
-
-          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-          -- Using this option may slow down your editor, and you may see some duplicate highlights.
-          -- Instead of true it can also be a list of languages
-          additional_vim_regex_highlighting = false,
+          disable = {
+            -- Makes MD|inline highlights ugly
+            "md",
+            "markdown",
+          },
         },
         autotag = {
           enable = true, -- Through auto-tag plugin
