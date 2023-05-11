@@ -14,7 +14,7 @@ local mononoki = "mononoki"
 local berkeley = "Berkeley Mono"
 
 local font = berkeley
-local font_size = 16.0
+local font_size = 14.0
 
 local harfbuzz_features = {}
 if font == monolisa then
@@ -33,7 +33,6 @@ if font == monolisa then
 		"calt=1",
 		"liga=1",
 	}
-	font_size = 14.0
 end
 
 local scheme = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
@@ -44,9 +43,6 @@ return {
 	harfbuzz_features = harfbuzz_features,
 	font_size = font_size,
 	-- colors
-	color_schemes = {
-		["OLEDppuccin"] = scheme,
-	},
 	color_scheme = "tokyonight_night",
 	enable_scroll_bar = false,
 	-- tab
