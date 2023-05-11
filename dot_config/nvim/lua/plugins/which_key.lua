@@ -105,7 +105,6 @@ return {
       g = {
         name = "Git",
         b = { ":Gitsigns toggle_current_line_blame<CR>", "Toggle blame" },
-        g = { ":Neogit<CR>", "Neogit" },
         G = { ":LazyGit<CR>", "LazyGit" },
         d = { ":DiffviewOpen<CR>", "Diff view" },
         f = { ":DiffviewFileHistory -f %<CR>", "File history" },
@@ -136,6 +135,9 @@ return {
       },
       p = {
         name = "Project",
+      },
+      s = {
+        name = "Search",
       },
       w = {
         name = "Window",

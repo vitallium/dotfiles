@@ -1,7 +1,7 @@
 return {
   "nvim-tree/nvim-tree.lua", -- File browser
   keys = {
-    { "<leader>o-", ":NvimTreeFindFileToggle<CR>", desc = "Toggle file tree at current buffer" },
+    { "<leader>op", ":NvimTreeFindFileToggle<CR>", desc = "Toggle file tree" },
   },
   config = function()
     local function on_attach(bufnr)
