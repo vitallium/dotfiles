@@ -107,8 +107,17 @@ return {
         confirm_opts = {
           behavior = cmp.ConfirmBehavior.Select,
         },
+        window = {
+          documentation = cmp.config.window.bordered(),
+          completion = {
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+            col_offset = 3,
+            side_padding = 0,
+          },
+        },
         experimental = {
-          ghost_text = true,
+          native_menu = false,
+          ghost_text = false,
         },
       })
 
