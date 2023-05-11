@@ -75,12 +75,6 @@ return {
     "jlcrochet/vim-ruby",
     event = { "BufReadPost", "BufNewFile" },
   },
-  -- Dash.app integration
-  {
-    "mrjones2014/dash.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    build = "make install",
-  },
   {
     "mhanberg/output-panel.nvim",
     event = "VeryLazy",

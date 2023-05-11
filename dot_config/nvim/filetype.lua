@@ -11,7 +11,6 @@ vim.filetype.add({
     [".prettierrc"] = "json",
     [".babelrc"] = "json",
     [".stylelintrc"] = "json",
-    ["NEOGIT_COMMIT_EDITMSG"] = "NeogitCommitMessage",
   },
   pattern = {
     [".*config/git/config"] = "gitconfig",
