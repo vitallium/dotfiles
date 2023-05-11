@@ -1,34 +1,3 @@
-local wk = require("which-key")
-
--- Normal mode
-wk.register({
-  g = {
-    name = "Git",
-    b = { ":Gitsigns toggle_current_line_blame<CR>", "Toggle blame" },
-    g = { ":Neogit<CR>", "Neogit" },
-    G = { ":LazyGit<CR>", "LazyGit" },
-    d = { ":DiffviewOpen<CR>", "Diff view" },
-    f = { ":DiffviewFileHistory -f %<CR>", "File history" },
-    h = {
-      name = "Highlighting",
-      b = { ":Gitsigns toggle_current_line_blame<CR>", "Toggle blame" },
-      l = { ":Gitsigns toggle_linehl<CR>", "Toggle line highlighting" },
-      n = { ":Gitsigns toggle_numhl<CR>", "Toggle number highlighting" },
-      s = { ":Gitsigns toggle_signs<CR>", "Toggle signs" },
-      w = { ":Gitsigns toggle_current_word_diff<CR>", "Toggle word diff" },
-    },
-    l = { "V:'<,'>DiffviewFileHistory -f<CR>", "Line history" },
-  },
-}, { prefix = "<leader>" })
-
--- Visual mode
-wk.register({
-  g = {
-    name = "Git",
-    l = { ":'<,'>DiffviewFileHistory -f<CR>", "Line history" },
-  },
-}, { prefix = "<leader>", mode = "v" })
-
 return {
   {
     "lewis6991/gitsigns.nvim", -- Git gutter

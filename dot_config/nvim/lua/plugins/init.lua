@@ -54,11 +54,6 @@ return {
     event = { "VeryLazy" },
   },
   {
-    -- Like Emacs which key
-    "folke/which-key.nvim",
-    lazy = true,
-  },
-  {
     -- Alt-h/j/k/l to move line
     "booperlv/nvim-gomove",
     event = { "BufReadPost", "BufNewFile" },
