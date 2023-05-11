@@ -90,7 +90,6 @@ wk.register({
   },
   h = {
     name = "Help",
-    t = { ":Telescope colorscheme<CR>", "Change Theme" },
     m = { ":Mason<CR>", "Mason" },
   },
   t = {
