@@ -4,7 +4,7 @@ return {
     dependencies = {
       "roginfarrer/vim-dirvish-dovish",
     },
-    events = "VeryLazy",
+    event = "VeryLazy",
     keys = {
       { "<leader>o-", ":Dirvish<CR>", desc = "Dirvish" },
     },

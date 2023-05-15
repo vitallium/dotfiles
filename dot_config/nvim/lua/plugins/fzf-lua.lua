@@ -39,5 +39,5 @@ return {
       previewer = false,
     },
   },
-  setup = true,
+  config = true,
 }
