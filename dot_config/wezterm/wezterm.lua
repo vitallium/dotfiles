@@ -35,9 +35,6 @@ if font == monolisa then
 	}
 end
 
-local scheme = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
-scheme.background = "#000000"
-
 return {
 	font = wezterm.font_with_fallback({ font, "Symbols Nerd Font Mono" }),
 	harfbuzz_features = harfbuzz_features,
