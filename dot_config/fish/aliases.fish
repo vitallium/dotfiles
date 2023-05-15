@@ -4,4 +4,5 @@ alias tls="t ls"
 alias tn="t new -t"
 
 alias t="tmux"
+alias vi="nvim"
 alias vim="nvim"
