@@ -30,11 +30,15 @@ if command -sq direnv
   direnv hook fish | source
 end
 
-if test -e $HOME/.asdf/asdf.fish
-  . $HOME/.asdf/asdf.fish
+if command -qa rtx
+  rtx activate fish | source
 end
 
-if command -sq gdircolors
+# if test -e $HOME/.asdf/asdf.fish
+#   . $HOME/.asdf/asdf.fish
+# end
+
+if command -qa gdircolors
   eval (gdircolors -c)
 end
 
