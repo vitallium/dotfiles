@@ -8,9 +8,9 @@ set -gx EDITOR nvim
 set -gx VISUAL $EDITOR
 
 # GPG
+gpgconf --launch gpg-agent
 set -x                             GPG_TTY (tty)
 set -x                             SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
 
 set -gx GOPATH                     $HOME/.go
 set -gx GOBIN                      $HOME/.go/bin
@@ -26,7 +26,7 @@ for config in $configs
 end
 set -e configs
 
-if command -sq direnv
+if command -qa direnv
   direnv hook fish | source
 end
 
@@ -40,10 +40,5 @@ end
 
 if command -qa gdircolors
   eval (gdircolors -c)
-end
-
-if command -qa bat
-  alias cat=bat
-  set -Ux MANPAGER "sh -c 'col -bx | bat -l man -p'"
 end
 
