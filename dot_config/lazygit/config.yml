@@ -1,2 +1,10 @@
 gui:
   showIcons: true
+git:
+  paging:
+    colorArg: always
+    pager: delta --paging=never
+    useConfig: false
+os:
+  edit: "nvim"
+  editAtLine: "{{editor}} --server $NVIM --remote-tab {{filename}}"
