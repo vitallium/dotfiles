@@ -140,6 +140,20 @@ vim.diagnostic.config({
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, float_config)
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, float_config)
 
+--- set up diagnostic signs
+for type, icon in pairs(require("icons").diagnostics) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+--- change documentation to be rouded and non-focusable...
+--- any time I focus into one of these, is by accident, and it always take me
+--- a couple of seconds to figure out what I did.
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+  focusable = false,
+})
+
 return {
   {
     "neovim/nvim-lspconfig", -- Configurations for Nvim LSP
@@ -188,8 +202,12 @@ return {
       },
       "b0o/schemastore.nvim", -- Schemas for JSON files
       "mihyaeru21/nvim-lspconfig-bundler", -- prepend Ruby commands with "bundle exec"
+      -- working with neovim config/plugins
+      "folke/neodev.nvim",
     },
     config = function()
+      require("neodev").setup({ library = { plugins = true, types = true } })
+
       require("lspconfig-bundler").setup()
 
       local lsp_flags = {

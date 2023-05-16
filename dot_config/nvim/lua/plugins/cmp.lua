@@ -22,20 +22,38 @@ return {
           require("luasnip").filetype_extend("typescript", { "javascript", "jsdoc" })
         end,
       },
+      "onsails/lspkind.nvim",
       "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
       {
         "tzachar/cmp-tabnine", -- TabNine
         build = "./install.sh",
+        dependencies = "hrsh7th/nvim-cmp",
+        config = function()
+          local tabnine = require("cmp_tabnine.config")
+          tabnine:setup({
+            max_lines = 1000,
+            max_num_results = 20,
+            sort = true,
+            run_on_every_keystroke = true,
+            snippet_placeholder = "..",
+            ignored_file_types = {
+              lua = true,
+            },
+            show_prediction_strength = false,
+          })
+        end,
       },
-      -- working with neovim config/plugins
-      "folke/neodev.nvim",
     },
     config = function()
-      require("neodev").setup({ library = { plugins = { "neotest" }, types = true } })
-
       -- nvim-cmp setup
       local cmp = require("cmp")
       local luasnip = require("luasnip")
+      local lspkind = require("lspkind")
+      lspkind.init({
+        mode = "symbol_text",
+      })
+      local icons = require("icons").kind
+
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -110,7 +128,6 @@ return {
         window = {
           documentation = cmp.config.window.bordered(),
           completion = {
-            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
             col_offset = 3,
             side_padding = 0,
           },
@@ -118,6 +135,20 @@ return {
         experimental = {
           native_menu = false,
           ghost_text = false,
+        },
+        formatting = {
+          fields = { "kind", "abbr", "menu" },
+          format = function(entry, vim_item)
+            local kind = lspkind.cmp_format({ maxwidth = 50 })(entry, vim_item)
+
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            kind.kind = " " .. strings[1] .. " "
+            if #strings > 1 then
+              kind.menu = "    (" .. strings[2] .. ")"
+            end
+
+            return kind
+          end,
         },
       })
 
