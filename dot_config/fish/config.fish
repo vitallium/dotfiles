@@ -38,7 +38,3 @@ end
 #   . $HOME/.asdf/asdf.fish
 # end
 
-if command -qa gdircolors
-  eval (gdircolors -c)
-end
-
