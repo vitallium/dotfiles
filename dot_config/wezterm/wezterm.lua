@@ -39,6 +39,7 @@ return {
 	font = wezterm.font_with_fallback({ font, "Symbols Nerd Font Mono" }),
 	harfbuzz_features = harfbuzz_features,
 	font_size = font_size,
+	use_cap_height_to_scale_fallback_fonts = true,
 	-- colors
 	color_scheme = "tokyonight_night",
 	enable_scroll_bar = false,
