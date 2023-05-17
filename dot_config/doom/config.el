@@ -3,7 +3,7 @@
 (setq user-full-name "Vitaly Slobodin"
       user-mail-address "vslobodin@gitlab.com"
       doom-theme 'modus-operandi
-      read-process-output-max (* 1024 1024)
+      read-process-output-max (* 1024 1024 4)
       load-prefer-newer t
       scroll-margin 8
       display-line-numbers t

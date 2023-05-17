@@ -56,6 +56,8 @@
 (package! apheleia)
 
 (package! jest)
+(package! indium)
+
 (package! company-tabnine)
 
 ;; Org modes goodies
@@ -63,3 +65,6 @@
 (package! org-appear)
 (package! org-pretty-table-mode
   :recipe (:host github :repo "Fuco1/org-pretty-table"))
+
+(unpin! flycheck)
+

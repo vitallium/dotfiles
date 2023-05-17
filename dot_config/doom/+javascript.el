@@ -31,3 +31,21 @@
    typescript-mode
    web-mode)
   #'apheleia-mode)
+
+;; Workaround flycheck issue for new stylelint version
+;; https://github.com/flycheck/flycheck/issues/1912#issuecomment-1048460384
+(flycheck-define-checker scss-stylelint
+  "A SCSS syntax and style checker using stylelint.
+
+See URL `http://stylelint.io/'."
+  :command ("stylelint"
+            (eval flycheck-stylelint-args)
+;; "--syntax" "scss"
+            (option-flag "--quiet" flycheck-stylelint-quiet)
+            (config-file "--config" flycheck-stylelintrc))
+  :standard-input t
+  :error-parser flycheck-parse-stylelint
+  :modes (scss-mode))
+
+(require 'indium)
+(add-hook 'js-mode-hook #'indium-interaction-mode)

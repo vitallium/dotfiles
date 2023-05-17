@@ -19,7 +19,6 @@
 ;;   (add-hook 'org-agenda-mode #'org-super-agenda-mode))
 
 (add-hook! 'org-mode-hook
-  #'mixed-pitch-mode
   #'+org-pretty-mode
   #'org-pretty-table-mode
   #'org-appear-mode
