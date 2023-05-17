@@ -56,6 +56,7 @@ cask '1password-cli'
 cask 'chromedriver'
 cask 'dash'
 cask 'firefox'
+cask 'font-mononoki'
 cask 'font-symbols-only-nerd-font'
 cask 'google-chrome'
 cask 'handbrake'
@@ -63,6 +64,7 @@ cask 'iina'
 cask 'imageoptim'
 cask 'keka'
 cask 'keycastr'
+cask 'kitty'
 cask 'monodraw'
 cask 'mos'
 cask 'obs'
@@ -74,11 +76,9 @@ cask 'rapidapi'
 cask 'raycast'
 cask 'screenflow'
 cask 'sublime-merge'
-cask 'sublime-text'
 cask 'wezterm'
 mas '1Password for Safari', id: 1_569_813_296
 mas 'Amphetamine', id: 937_984_704
-mas 'Display Menu', id: 549_083_868
 mas 'Gapplin', id: 768_053_424
 mas 'JSON Helper', id: 453_114_608
 mas 'Keynote', id: 409_183_694
