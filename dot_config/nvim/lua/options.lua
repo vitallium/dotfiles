@@ -6,17 +6,12 @@ local g = vim.g
 g.mapleader = " "
 g.maplocalleader = ","
 
--- Disable netrw
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
-
 -- [[ Misc ]]
 opt.timeoutlen = 300 -- num: Timeout, e.g. for which-key
 opt.clipboard = "unnamedplus" -- str: Clipboard integration with macOS
 opt.updatetime = 1000 -- num: Faster update times.
 opt.hidden = true -- bool: This makes vim act like all other editors, buffers can exist in the background without being in a window.
 opt.splitkeep = "screen" -- screen:
-opt.shortmess:append({ C = true })
 
 -- [[ Context ]]
 opt.colorcolumn = "80" -- str: Show col for max line length
@@ -35,9 +30,9 @@ opt.cursorline = true -- bool: Highlight current line
 opt.listchars = {
   tab = "→ ",
   eol = "↲",
-  nbsp = "␣",
-  lead = "␣",
-  space = "␣",
+  nbsp = "·",
+  lead = "·",
+  space = "·",
   trail = "•",
   extends = "⟩",
   precedes = "⟨",
@@ -141,10 +136,6 @@ g.netrw_winsize = 25
 
 -- Disable some in built plugins completely
 local disabled_built_ins = {
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
   "gzip",
   "zip",
   "zipPlugin",

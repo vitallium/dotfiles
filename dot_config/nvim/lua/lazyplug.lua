@@ -20,7 +20,7 @@ end
 
 lazy.setup("plugins", {
   defaults = { lazy = true },
-  install = { colorscheme = { "nightfly", "tokyonight" } },
+  install = { colorscheme = { "tokyonight" } },
   checker = { enabled = false },
   ui = {
     border = "rounded",

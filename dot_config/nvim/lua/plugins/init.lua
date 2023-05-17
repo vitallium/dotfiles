@@ -1,10 +1,5 @@
 return {
   {
-    "bluz71/vim-nightfly-guicolors",
-    lazy = false,
-    priority = 1000,
-  },
-  {
     "dstein64/vim-startuptime",
     cmd = "StartupTime",
   },
