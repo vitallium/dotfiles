@@ -30,11 +30,7 @@ if command -qa direnv
   direnv hook fish | source
 end
 
-if command -qa rtx
-  rtx activate fish | source
+if test -e $HOME/.asdf/asdf.fish
+  . $HOME/.asdf/asdf.fish
 end
-
-# if test -e $HOME/.asdf/asdf.fish
-#   . $HOME/.asdf/asdf.fish
-# end
 
