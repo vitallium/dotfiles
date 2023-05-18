@@ -1,7 +1,5 @@
 tap 'homebrew/bundle'
-tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
-tap 'homebrew/core'
 tap 'jdxcode/tap'
 brew 'bat'
 brew 'fontconfig'
@@ -66,7 +64,6 @@ cask 'iina'
 cask 'imageoptim'
 cask 'keka'
 cask 'keycastr'
-cask 'kitty'
 cask 'monodraw'
 cask 'mos'
 cask 'obs'
@@ -76,7 +73,6 @@ cask 'qlmarkdown'
 cask 'quicklook-json'
 cask 'rapidapi'
 cask 'raycast'
-cask 'screenflow'
 cask 'sublime-merge'
 cask 'wezterm'
 mas '1Password for Safari', id: 1_569_813_296
@@ -87,7 +83,6 @@ mas 'Keynote', id: 409_183_694
 mas 'LanguageTool', id: 1_534_275_760
 mas 'Location Helper', id: 488_536_386
 mas 'Magnet', id: 441_258_766
-mas 'Monosnap', id: 540_348_655
 mas 'Numbers', id: 409_203_825
 mas 'Pages', id: 409_201_541
 mas 'Velja', id: 1_607_635_845
@@ -99,6 +94,7 @@ if `hostname`.start_with?('firefly')
   cask 'acorn'
   cask 'bartender'
   cask 'discord'
+  cask 'kitty'
   cask 'little-snitch'
   cask 'nvidia-geforce-now'
   cask 'qbittorrent'
@@ -106,6 +102,8 @@ if `hostname`.start_with?('firefly')
   cask 'steam'
   cask 'telegram'
   cask 'whatsapp'
+
+  mas 'Monosnap', id: 540_348_655
 end
 
 # Work starts here
@@ -113,6 +111,7 @@ if `hostname`.start_with?('vslobodin-')
   brew 'teleport'
   cask 'figma'
   cask 'mullvadvpn'
+  cask 'screenflow'
   cask 'slack'
   cask 'zoom'
 end
