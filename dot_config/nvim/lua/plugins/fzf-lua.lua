@@ -17,7 +17,7 @@ return {
     { "<leader>h", "<cmd>FzfLua help_tags<CR>" },
     { "<leader>fr", "<cmd>FzfLua oldfiles<CR>" },
     { "<leader>sp", "<cmd>FzfLua live_grep<CR>", desc = "Live grep" },
-    { "<leader>gb", "<cmd>FzfLua git_branches<CR>" },
+    { "<leader>gb", "<cmd>FzfLua git_branches<CR>", desc = "List branches" },
   },
   opts = {
     winopts = {

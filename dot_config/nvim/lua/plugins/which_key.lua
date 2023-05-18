@@ -1,8 +1,7 @@
 return {
   "folke/which-key.nvim",
   -- "VeryLazy" hides splash screen
-  -- lazy = false,
-  event = "BufReadPost",
+  lazy = false,
   config = function()
     -- If we do not wish to wait for timeoutlen
     vim.keymap.set("v", "<Leader>?", "<Esc>:WhichKey '' v<CR>", { silent = true })
@@ -104,19 +103,9 @@ return {
       },
       g = {
         name = "Git",
-        b = { ":Gitsigns toggle_current_line_blame<CR>", "Toggle blame" },
         G = { ":LazyGit<CR>", "LazyGit" },
         d = { ":DiffviewOpen<CR>", "Diff view" },
-        f = { ":DiffviewFileHistory -f %<CR>", "File history" },
-        h = {
-          name = "Highlighting",
-          b = { ":Gitsigns toggle_current_line_blame<CR>", "Toggle blame" },
-          l = { ":Gitsigns toggle_linehl<CR>", "Toggle line highlighting" },
-          n = { ":Gitsigns toggle_numhl<CR>", "Toggle number highlighting" },
-          s = { ":Gitsigns toggle_signs<CR>", "Toggle signs" },
-          w = { ":Gitsigns toggle_current_word_diff<CR>", "Toggle word diff" },
-        },
-        l = { "V:'<,'>DiffviewFileHistory -f<CR>", "Line history" },
+        L = { ":DiffviewFileHistory -f %<CR>", "File history" },
       },
       h = {
         name = "Help",
@@ -142,6 +131,7 @@ return {
       w = {
         name = "Window",
         c = { ":close<CR>", "Close window" },
+        d = { ":close<CR>", "Close window" },
         s = { ":split<CR>", "Split window" },
         v = { ":vsplit<CR>", "Vertically split window" },
         h = { ":wincmd h<CR>", "Go to window to the left" },
