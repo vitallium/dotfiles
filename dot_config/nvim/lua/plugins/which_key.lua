@@ -139,6 +139,10 @@ return {
         k = { ":wincmd k<CR>", "Go to window to the top" },
         l = { ":wincmd l<CR>", "Go to window to the right" },
       },
+      x = {
+        name = "Diagnostic",
+        s = { vim.diagnostic.open_float, "Show in float" },
+      },
       q = { name = "Quit", q = { ":quitall<CR>", "Quit all" } },
     }, { prefix = "<leader>" })
 
@@ -146,6 +150,9 @@ return {
     wk.register({
       t = {
         name = "Test",
+      },
+      p = {
+        name = "Packages",
       },
     }, { prefix = "<localleader>" })
   end,

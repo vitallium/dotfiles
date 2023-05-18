@@ -120,40 +120,6 @@ local on_attach = function(client, bufnr)
   }, { prefix = "<leader>", mode = "v" })
 end
 
-local float_config = {
-  focusable = false,
-  style = "minimal",
-  border = "rounded",
-  source = "always",
-  header = "",
-  prefix = "",
-}
-
-vim.diagnostic.config({
-  underline = true,
-  update_in_insert = false,
-  virtual_text = { spacing = 4, prefix = "●" },
-  severity_sort = true,
-  float = float_config,
-})
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, float_config)
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, float_config)
-
---- set up diagnostic signs
-for type, icon in pairs(require("icons").diagnostics) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
---- change documentation to be rouded and non-focusable...
---- any time I focus into one of these, is by accident, and it always take me
---- a couple of seconds to figure out what I did.
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-  focusable = false,
-})
-
 return {
   {
     "neovim/nvim-lspconfig", -- Configurations for Nvim LSP
@@ -210,11 +176,6 @@ return {
 
       require("lspconfig-bundler").setup()
 
-      local lsp_flags = {
-        -- This is the default in Nvim 0.7+
-        debounce_text_changes = 150,
-      }
-
       -- Add additional capabilities supported by nvim-cmp
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       -- Add nvim-ufo folding
@@ -228,7 +189,6 @@ return {
       for _, lsp in ipairs(lsp_servers) do
         lspconfig[lsp].setup({
           on_attach = on_attach,
-          flags = lsp_flags,
           capabilities = capabilities,
           settings = {
             json = {
@@ -259,10 +219,15 @@ return {
   },
   {
     "jose-elias-alvarez/null-ls.nvim", -- NeoVim as LSP server
-    event = { "BufReadPost", "BufNewFile" },
+    event = "VeryLazy",
     config = function()
       local null_ls = require("null-ls")
       local null_ls_sources = {
+        -- code actions
+        null_ls.builtins.code_actions.gitrebase,
+
+        -- diagnostics
+        null_ls.builtins.diagnostics.buf,
         null_ls.builtins.diagnostics.gitlint.with({
           filetypes = { "gitcommit", "NeogitCommitMessage" },
         }),
@@ -281,14 +246,30 @@ return {
         }),
         null_ls.builtins.diagnostics.reek,
         null_ls.builtins.diagnostics.yamllint,
-        -- Formatting
+
+        -- formatting
         null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.gofumpt,
+        null_ls.builtins.formatting.goimports,
+        null_ls.builtins.formatting.golines,
       }
-      --
+
       -- NeoVim LSP server capabilities
       null_ls.setup({
+        debug = false,
         sources = null_ls_sources,
+        should_attach = function(bufnr)
+          local filename = vim.api.nvim_buf_get_name(bufnr)
+
+          -- Ignore 3rd party code.
+          if filename:match("/(node_modules|__pypackages__|site_packages)/") then
+            return false
+          end
+
+          return not vim.g.large_file
+        end,
         on_attach = on_attach,
+        update_in_insert = false,
       })
     end,
   },

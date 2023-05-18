@@ -11,7 +11,8 @@ opt.timeoutlen = 300 -- num: Timeout, e.g. for which-key
 opt.clipboard = "unnamedplus" -- str: Clipboard integration with macOS
 opt.updatetime = 1000 -- num: Faster update times.
 opt.hidden = true -- bool: This makes vim act like all other editors, buffers can exist in the background without being in a window.
-opt.splitkeep = "screen" -- screen:
+opt.splitkeep = "screen" -- string: Keep the text on the same screen line.
+opt.shortmess = "filnxtToOFWIcC"
 
 -- [[ Context ]]
 opt.colorcolumn = "80" -- str: Show col for max line length
@@ -79,29 +80,25 @@ opt.wrap = false -- bool: Disable line wrap
 -- [[ Spellcheck ]]
 opt.spell = true
 opt.spelllang = { "en_us" }
-opt.spellfile = vim.fn.expand("~/.local/share/nvim/site/spell/spf.%s.add"):format(vim.o.encoding)
+opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+opt.spelloptions:append({ "camel" })
+opt.spellsuggest = "best,9"
 
 -- [[ Formatting ]]
--- c: auto-wrap comments using textwidth
--- r: auto-insert the current comment leader after hitting <Enter>
--- o: auto-insert the current comment leader after hitting 'o' or 'O'
--- q: allow formatting comments with 'gq'
--- n: recognize numbered lists
--- 1: don't break a line after a one-letter word
--- j: remove comment leader when it makes sense
--- this gets overwritten by ftplugins (:verb set fo)
--- we use autocmd to remove 'o' in '/lua/autocmd.lua'
--- borrowed from tjdevries
-opt.formatoptions = opt.formatoptions
-  - "a" -- Auto formatting is BAD.
-  - "t" -- Don't auto format my code. I got linters for that.
-  + "c" -- In general, I like it when comments respect textwidth
-  + "q" -- Allow formatting comments w/ gq
-  - "o" -- O and o, don't continue comments
-  + "r" -- But do continue when pressing enter.
-  + "n" -- Indent past the formatlistpat, not underneath it.
-  + "j" -- Auto-remove comments if possible.
-  - "2" -- I'm not in gradeschool anymore
+-- This order is the same as the documentation.
+opt.formatoptions = {
+  t = false, -- Auto-wrap lines using text width value.
+  c = true, -- Auto-wrap comments using 'textwidth', inserting the current comment leader automatically.
+  r = true, -- Automatically insert the current comment leader after hitting <Enter> in Insert mode.
+  o = false, -- Insert the current comment leader after hitting 'o' or 'O' in Normal mode.
+  q = true, -- Allow formatting of comments with "gq".
+  a = false, -- Automatic formatting of paragraphs. Every time text is inserted or deleted the paragraph will be reformatted.
+  n = true, -- When formatting text, recognize numbered lists.
+  [2] = true, -- Use the indent of the second line of a paragraph for the rest of the paragraph.
+  l = true, -- Long lines are not broken in insert mode.
+  [1] = true, -- Don't break a line after a one-letter word.
+  j = true, -- Where it makes sense, remove a comment leader when joining lines.
+}
 
 --[[
   ShDa (viminfo for vim): session data history
@@ -154,3 +151,83 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
   vim.g["loaded_" .. plugin] = 1
 end
+
+-- Flag for disabling null-ls and others for large files.
+vim.g.large_file = false
+
+-- Load clipboard.vim faster.
+if vim.g.os == "Darwin" then
+  vim.g.clipboard = {
+    name = "macOS",
+    copy = {
+      ["+"] = "pbcopy",
+      ["*"] = "pbcopy",
+    },
+    paste = {
+      ["+"] = "pbpaste",
+      ["*"] = "pbpaste",
+    },
+    cache_enabled = false,
+  }
+
+  vim.g.opener = "open"
+else
+  if vim.fn.executable("xdg-open") == 1 then
+    vim.g.opener = "xdg-open"
+  else
+    vim.g.opener = ""
+  end
+end
+
+-- [[ Diagnostic ]]
+-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#show-source-in-diagnostics
+-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#change-prefixcharacter-preceding-the-diagnostics-virtual-text
+local icons = {
+  error = "󰅚 ",
+  warn = "󰀪 ",
+  info = " ",
+  hint = "󰌶 ",
+}
+
+local function sign(opts)
+  vim.fn.sign_define(opts.highlight, {
+    text = opts.icon,
+    texthl = opts.highlight,
+    numhl = opts.linehl ~= false and opts.highlight .. "Nr" or nil,
+    culhl = opts.linehl ~= false and opts.highlight .. "CursorNr" or nil,
+    linehl = opts.linehl ~= false and opts.highlight .. "Line" or nil,
+  })
+end
+
+sign({ highlight = "DiagnosticSignError", icon = icons.error })
+sign({ highlight = "DiagnosticSignWarn", icon = icons.warn })
+sign({ highlight = "DiagnosticSignInfo", linehl = false, icon = icons.info })
+sign({ highlight = "DiagnosticSignHint", linehl = false, icon = icons.hint })
+vim.diagnostic.config({
+  float = {
+    border = vim.g.border,
+    focusable = true,
+    header = { " Issues:" },
+    max_height = math.min(math.floor(vim.o.lines * 0.3), 30),
+    max_width = math.min(math.floor(vim.o.columns * 0.7), 100),
+    prefix = function(diag)
+      local level = vim.diagnostic.severity[diag.severity]
+      local prefix = string.format("%s ", icons[level:lower()])
+      return prefix, "Diagnostic" .. level:gsub("^%l", string.upper)
+    end,
+    source = "if_many",
+  },
+  underline = true,
+  signs = true,
+  severity_sort = true,
+  update_in_insert = false, -- https://www.reddit.com/r/neovim/comments/pfk209/nvimlsp_too_fast/
+  virtual_text = {
+    format = function(diagnostic)
+      -- https://www.reddit.com/r/neovim/comments/q9dxnp/set_lsp_messages_max_width/
+      return string.sub(diagnostic.message, 1, 80)
+    end,
+    prefix = "❰",
+    source = "if_many",
+    spacing = 1,
+  },
+})

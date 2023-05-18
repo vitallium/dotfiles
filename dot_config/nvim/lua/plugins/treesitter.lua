@@ -7,30 +7,24 @@ return {
         -- Used by mini.ai. No need to specify the text objects within treesitter config.
         "nvim-treesitter/nvim-treesitter-textobjects", -- Additional textobjects for treesitter
         event = { "BufReadPost", "BufNewFile" },
-        dependencies = "nvim-treesitter/nvim-treesitter",
       },
       {
         "nvim-treesitter/nvim-treesitter-context", -- Keep e.g. function at top when scrolling below
         name = "treesitter-context",
         event = { "BufReadPost", "BufNewFile" },
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = true,
       },
       {
         "windwp/nvim-ts-autotag", -- Auto-tags for HTML, Vue, etc.
         event = { "BufReadPost", "BufNewFile" },
-        dependencies = "nvim-treesitter/nvim-treesitter",
       },
       {
         "JoosepAlviste/nvim-ts-context-commentstring",
         name = "ts_context_commentstring",
         event = { "BufReadPost", "BufNewFile" },
-        dependencies = "nvim-treesitter/nvim-treesitter",
       },
       {
         "RRethy/nvim-treesitter-endwise",
-        event = { "BufReadPost", "BufNewFile" },
-        dependencies = "nvim-treesitter/nvim-treesitter",
+        event = { "InsertEnter" },
       },
     },
     build = function()
@@ -100,6 +94,7 @@ return {
           enable = true,
           enable_autocmd = false, -- Disabled when used with Comment.nvim
         },
+        -- https://github.com/RRethy/nvim-treesitter-endwise
         endwise = {
           enable = true,
         },

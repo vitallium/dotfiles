@@ -1,9 +1,11 @@
 return {
   -- Spinner to show when LSP Server starts
   "j-hui/fidget.nvim",
-  event = "VeryLazy",
+  event = "LspAttach",
   opts = {
-    text = { spinner = "dots_pulse" },
+    sources = {
+      ["null-ls"] = { ignore = true },
+    },
+    text = { spinner = "dots" },
   },
-  config = true,
 }

@@ -1,7 +1,8 @@
 return {
   {
     "hrsh7th/nvim-cmp", -- Autocompletion plugin
-    event = { "InsertEnter", "CmdlineEnter" },
+    cmd = "CmpStatus",
+    event = "VeryLazy",
     dependencies = {
       "hrsh7th/cmp-buffer", -- Buffer source for nvim-cmp
       "hrsh7th/cmp-path", -- Path source for nvim-cmp
@@ -27,7 +28,6 @@ return {
       {
         "tzachar/cmp-tabnine", -- TabNine
         build = "./install.sh",
-        dependencies = "hrsh7th/nvim-cmp",
         config = function()
           local tabnine = require("cmp_tabnine.config")
           tabnine:setup({
@@ -52,7 +52,6 @@ return {
       lspkind.init({
         mode = "symbol_text",
       })
-      local icons = require("icons").kind
 
       cmp.setup({
         snippet = {
