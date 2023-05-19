@@ -19,15 +19,53 @@ if not ok then
 end
 
 lazy.setup("plugins", {
-  defaults = { lazy = true },
-  install = { colorscheme = { "tokyonight" } },
-  checker = { enabled = false },
-  ui = {
-    border = "rounded",
-    custom_keys = {
-      ["<localleader>l"] = false,
-      ["<localleader>t"] = false,
+  change_detection = {
+    enabled = false,
+    notify = false,
+  },
+  checker = {
+    enabled = true,
+    notify = false,
+  },
+  defaults = {
+    lazy = true,
+  },
+  install = { colorscheme = { "tokyonight" }, missing = true },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "2html_plugin",
+        "getscript",
+        "getscriptPlugin",
+        "gzip",
+        "health",
+        "logipat",
+        "man",
+        "matchit",
+        "matchparen",
+        "rplugin",
+        "rrhelper",
+        "spellfile",
+        "spellfile_plugin",
+        "tar",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "vimball",
+        "vimballPlugin",
+        "zip",
+        "zipPlugin",
+        "nvim-treesitter-textobjects",
+        "nvim-web-devicons",
+        "plenary",
+      },
     },
   },
-  debug = false,
+  ui = {
+    border = vim.g.border,
+  },
 })
+
+vim.keymap.set("n", "<leader>pi", require("lazy").show, { desc = " Plugin Info" })
+vim.keymap.set("n", "<leader>pp", require("lazy").profile, { desc = " Profile Plugins" })
+vim.keymap.set("n", "<leader>ps", require("lazy").sync, { desc = " Sync Plugins" })

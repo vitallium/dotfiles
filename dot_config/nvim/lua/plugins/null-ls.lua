@@ -2,7 +2,7 @@ return {
   "jose-elias-alvarez/null-ls.nvim", -- NeoVim as LSP server
   event = "VeryLazy",
   config = function()
-    local common = require("plugins.lsp.common")
+    local handlers = require("plugins.lsp.handlers")
 
     local null_ls = require("null-ls")
     local null_ls_sources = {
@@ -51,8 +51,8 @@ return {
 
         return not vim.g.large_file
       end,
-      on_attach = common.on_attach,
+      on_attach = handlers.on_attach,
       update_in_insert = false,
     })
-  end
+  end,
 }

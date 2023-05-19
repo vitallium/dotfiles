@@ -14,8 +14,8 @@ keymap("n", "q", "<Nop>", { desc = "hidden" })
 keymap("n", "Q", "<Nop>", { desc = "hidden" })
 keymap("n", "q:", "<Nop>", { desc = "hidden" })
 
-keymap("n", "]d", vim.diagnostic.goto_next, { desc = "󰙨󰙨 Next Diagnostic" })
-keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "󰙨󰙨 Previous Diagnostic" })
+keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
 
 -- Quitting / Sessions
 keymap("n", "qq", vim.cmd.quitall, { desc = "Quit" })

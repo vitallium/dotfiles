@@ -1,4 +1,4 @@
-local common = require("plugins.lsp.common")
+local handlers = require("plugins.lsp.handlers")
 
 local servers = {
   bashls = {},
@@ -8,8 +8,7 @@ local servers = {
   graphql = {},
   html = {},
   marksman = {},
-  solargraph = {
-  },
+  solargraph = {},
   gopls = {
     init_options = {
       usePlaceholders = true,
@@ -22,7 +21,7 @@ local servers = {
           tokenTypes = client.config.capabilities.textDocument.semanticTokens.tokenTypes,
         },
       }
-      common.on_attach(client, ...)
+      handlers.on_attach(client, ...)
     end,
     settings = {
       gopls = {
@@ -91,9 +90,9 @@ local servers = {
         fallback = true, -- Fall back to standard LSP definition on failure.
       },
       server = {
-        capabilities = common.capabilities(),
+        capabilities = handlers.capabilities(),
         filetypes = { "javascript", "javascript.jsx", "typescript", "typescript.tsx" },
-        on_attach = common.on_attach,
+        on_attach = handlers.on_attach,
         settings = {
           completions = {
             completeFunctionCalls = true,
@@ -139,54 +138,6 @@ return {
       vim.keymap.set("n", "<leader>ll", vim.cmd.LspLog, { desc = "LSP Log" })
       vim.keymap.set("n", "<leader>lr", vim.cmd.LspRestart, { desc = "  LSP Restart" })
     end,
-  },
-  -- Mason related packages follow.
-  {
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate",
-    cmd = { "Mason", "MasonInstall", "MasonUninstall" },
-    config = function()
-      require("mason").setup({
-        ensure_installed = { "glow" },
-        ui = {
-          border = vim.g.border,
-        },
-      })
-    end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-      local handlers = {}
-
-      for name, handler in pairs(servers) do
-        if type(handler) == "function" then
-          handlers[name] = handler
-        else
-          handlers[name] = function()
-            require("lspconfig")[name].setup(vim.tbl_deep_extend("force", {
-              capabilities = common.capabilities(),
-              on_attach = common.on_attach,
-            }, handler))
-          end
-        end
-      end
-
-      require("mason-lspconfig").setup({
-        automatic_installation = true,
-        ensure_installed = vim.tbl_keys(handlers),
-        handlers = handlers,
-      })
-    end,
-    event = { "BufReadPre", "BufNewFile" },
-  },
-  {
-    "jay-babu/mason-null-ls.nvim",
-    dependencies = { "mason.nvim", "null-ls.nvim" },
-    event = "VeryLazy",
-    opts = {
-      automatic_installation = true,
-    },
   },
   {
     "aznhe21/actions-preview.nvim",

@@ -100,27 +100,15 @@ opt.formatoptions = {
   j = true, -- Where it makes sense, remove a comment leader when joining lines.
 }
 
---[[
-  ShDa (viminfo for vim): session data history
-  --------------------------------------------
-  ! - Save and restore global variables (their names should be without lowercase letter).
-  ' - Specify the maximum number of marked files remembered. It also saves the jump list and the change list.
-  < - Maximum of lines saved for each register. All the lines are saved if this is not included, <0 to disable pessistent registers.
-  % - Save and restore the buffer list. You can specify the maximum number of buffer stored with a number.
-  / or : - Number of search patterns and entries from the command-line history saved. o.history is used if it’s not specified.
-  f - Store file (uppercase) marks, use 'f0' to disable.
-  s - Specify the maximum size of an item’s content in KiB (kilobyte).
-      For the viminfo file, it only applies to register.
-      For the shada file, it applies to all items except for the buffer list and header.
-  h - Disable the effect of 'hlsearch' when loading the shada file.
+vim.opt.sessionoptions = {
+  "buffers",
+  "curdir",
+  "globals",
+  "options",
+}
 
-  :oldfiles - all files with a mark in the shada file
-  :rshada   - read the shada file (:rviminfo for vim)
-  :wshada   - write the shada file (:wrviminfo for vim)
-]]
-opt.shada = [[!,'100,<0,s100,h]]
-opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize"
-opt.diffopt = "internal,filler,algorithm:histogram,indent-heuristic"
+-- Preferences
+g.border = "single"
 
 -- [[ Global options ]]
 g.loaded_perl_provider = 0 -- disable Perl support
@@ -130,27 +118,6 @@ g.netrw_liststyle = 1 -- wide view
 g.netrw_browse_split = 3
 g.netrw_altv = 1
 g.netrw_winsize = 25
-
--- Disable some in built plugins completely
-local disabled_built_ins = {
-  "gzip",
-  "zip",
-  "zipPlugin",
-  "tar",
-  "tarPlugin",
-  "getscript",
-  "getscriptPlugin",
-  "vimball",
-  "vimballPlugin",
-  "2html_plugin",
-  "logipat",
-  "rrhelper",
-  "spellfile_plugin",
-  "fzf",
-}
-for _, plugin in pairs(disabled_built_ins) do
-  vim.g["loaded_" .. plugin] = 1
-end
 
 -- Flag for disabling null-ls and others for large files.
 vim.g.large_file = false

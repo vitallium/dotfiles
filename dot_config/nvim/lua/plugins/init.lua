@@ -1,8 +1,4 @@
 return {
-  {
-    "dstein64/vim-startuptime",
-    cmd = "StartupTime",
-  },
   -- Plugin with util functions required by other plugins
   { "nvim-lua/plenary.nvim", lazy = true },
   {
@@ -54,22 +50,9 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     config = true,
   },
-  {
-    -- Auto-pair tags, etc.
-    "windwp/nvim-autopairs",
-    event = { "BufReadPost", "BufNewFile" },
-    config = true,
-  },
   -- Ruby improvement
   {
     "jlcrochet/vim-ruby",
     event = { "BufReadPost", "BufNewFile" },
-  },
-  {
-    "mhanberg/output-panel.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("output_panel").setup()
-    end,
   },
 }

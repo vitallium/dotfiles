@@ -14,10 +14,10 @@ return {
       desc = "Find file in current dir",
     },
     { "<leader>'", "<cmd>FzfLua resume<CR>", desc = "Resume last FzfLua command" },
-    { "<leader>h", "<cmd>FzfLua help_tags<CR>" },
-    { "<leader>fr", "<cmd>FzfLua oldfiles<CR>" },
+    { "<leader>ht", "<cmd>FzfLua help_tags<CR>", desc = "Help tags" },
+    { "<leader>fr", "<cmd>FzfLua oldfiles<CR>", desc = "Recent files" },
     { "<leader>sp", "<cmd>FzfLua live_grep<CR>", desc = "Live grep" },
-    { "<leader>gb", "<cmd>FzfLua git_branches<CR>", desc = "List branches" },
+    { "<leader>gb", "<cmd>FzfLua git_branches<CR>", desc = "List GIT branches" },
   },
   opts = {
     winopts = {

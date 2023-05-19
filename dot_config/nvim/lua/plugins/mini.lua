@@ -50,7 +50,7 @@ return {
     require("mini.surround").setup({
       -- Manipulate "surrounding" characters.
       mappings = {
-        replace = "sc",
+        replace = "cs",
       },
     })
 
