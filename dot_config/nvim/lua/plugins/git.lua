@@ -1,12 +1,16 @@
 return {
   {
     "lewis6991/gitsigns.nvim", -- Git gutter
-    event = { "BufReadPost", "BufNewFile" },
+    event = "VeryLazy",
     keys = {
       { "<leader>gB", ":Gitsigns toggle_current_line_blame<CR>", desc = "Blame" },
     },
     config = function()
       require("gitsigns").setup({
+        preview_config = {
+          border = vim.g.border,
+        },
+        trouble = true,
         current_line_blame = false,
       })
     end,

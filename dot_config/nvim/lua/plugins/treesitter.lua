@@ -1,6 +1,15 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    cmd = {
+      "TSBufDisable",
+      "TSBufEnable",
+      "TSDisable",
+      "TSEnable",
+      "TSInstall",
+      "TSModuleInfo",
+      "TSUpdateSync",
+    },
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       {

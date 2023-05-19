@@ -1,5 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim", -- Modeline
+  event = "VeryLazy",
   config = function()
     local branch_max_length = 30
     local function get_branch()
@@ -11,6 +12,8 @@ return {
     require("lualine").setup({
       options = {
         theme = "auto",
+        component_separators = "",
+        section_separators = { left = "", right = "" },
         disabled_filetypes = {
           statusline = {},
           winbar = { "NvimTree", "NeogitCommitMessage", "NeogitStatus" },
@@ -37,7 +40,7 @@ return {
         lualine_z = {},
       },
       tabline = {},
-      extensions = { "lazy", "nvim-tree" },
+      extensions = { "quickfix", "lazy", "nvim-tree" },
     })
   end,
 }
