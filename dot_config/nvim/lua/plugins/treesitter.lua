@@ -63,6 +63,7 @@ return {
           "markdown",
           "markdown_inline",
           "python",
+          "regex",
           "ruby",
           "rust",
           "scss",

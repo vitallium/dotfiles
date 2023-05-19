@@ -24,7 +24,6 @@ return {
         end,
       },
       "onsails/lspkind.nvim",
-      "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
       {
         "tzachar/cmp-tabnine", -- TabNine
         build = "./install.sh",
