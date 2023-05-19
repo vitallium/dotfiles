@@ -150,6 +150,54 @@ return {
       })
     end,
   },
+  -- Mason related packages follow.
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+    cmd = { "Mason", "MasonInstall", "MasonUninstall" },
+    config = function()
+      require("mason").setup({
+        ensure_installed = { "glow" },
+        ui = {
+          border = vim.g.border,
+        },
+      })
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      local hhandlers = {}
+
+      for name, handler in pairs(servers) do
+        if type(handler) == "function" then
+          hhandlers[name] = handler
+        else
+          hhandlers[name] = function()
+            require("lspconfig")[name].setup(vim.tbl_deep_extend("force", {
+              capabilities = handlers.capabilities(),
+              on_attach = handlers.on_attach,
+            }, handler))
+          end
+        end
+      end
+
+      require("mason-lspconfig").setup({
+        automatic_installation = true,
+        ensure_installed = vim.tbl_keys(hhandlers),
+        handlers = hhandlers,
+      })
+    end,
+    event = { "BufReadPre", "BufNewFile" },
+  },
+  {
+    "jay-babu/mason-null-ls.nvim",
+    dependencies = { "mason.nvim", "null-ls.nvim" },
+    event = "VeryLazy",
+    opts = {
+      automatic_installation = true,
+    },
+  },
   { "b0o/schemastore.nvim", version = false },
   {
     "folke/neodev.nvim",
