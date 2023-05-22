@@ -8,10 +8,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlights the yanked text",
 })
 
--- Hide cursorline in insert mode
-vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, { command = "set cursorline", group = group })
-vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, { command = "set nocursorline", group = group })
-
 -- Automatically close Vim if the quickfix window is the only one open
 vim.api.nvim_create_autocmd("WinEnter", {
   group = group,
@@ -24,7 +20,7 @@ vim.api.nvim_create_autocmd("WinEnter", {
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
   desc = "Map q to close the buffer.",
-  pattern = { "qf", "checkhealth", "help", "man", "notify", "fugitive" },
+  pattern = { "qf", "checkhealth", "help", "man", "notify", "query", "tsplayground", "fugitive" },
   callback = function(event)
     vim.opt_local.spell = false
     vim.bo[event.buf].buflisted = false

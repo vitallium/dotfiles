@@ -19,6 +19,7 @@ return {
     "help",
     "keymenu",
     "lazy",
+    "log",
     "lspinfo",
     "mason",
     "noice",

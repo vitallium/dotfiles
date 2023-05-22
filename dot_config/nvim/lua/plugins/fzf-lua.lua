@@ -5,7 +5,7 @@ return {
   },
   keys = {
     { "<leader><leader>", "<cmd>FzfLua files<CR>", desc = "Find file" },
-    { "<leader>b", "<cmd>FzfLua buffers<CR>", desc = "List buffers" },
+    { "<leader>bb", "<cmd>FzfLua buffers<CR>", desc = "List buffers" },
     {
       "<leader>ff",
       function()
@@ -39,5 +39,4 @@ return {
       previewer = false,
     },
   },
-  config = true,
 }
