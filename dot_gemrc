@@ -5,4 +5,7 @@
 - https://rubygems.org/
 :update_sources: true
 :verbose: true
-gem: "--document=yri"
+:concurrent_downloads: 8
+benchmark: false
+gem: "--document=yri,ri,rdoc"
+update: "--document=yri,ri,rdoc"
