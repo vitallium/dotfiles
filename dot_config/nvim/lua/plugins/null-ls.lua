@@ -10,7 +10,6 @@ return {
       null_ls.builtins.code_actions.gitrebase,
 
       -- diagnostics
-      null_ls.builtins.diagnostics.buf,
       null_ls.builtins.diagnostics.gitlint.with({
         filetypes = { "gitcommit", "NeogitCommitMessage" },
       }),
