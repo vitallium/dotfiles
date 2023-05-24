@@ -17,7 +17,7 @@ return {
     { "<leader>'", "<cmd>FzfLua resume<CR>", desc = "Resume last FzfLua command" },
     { "<leader>ht", "<cmd>FzfLua help_tags<CR>", desc = "Help tags" },
     { "<leader>fr", "<cmd>FzfLua oldfiles<CR>", desc = "Recent files" },
-    { "<leader>sp", "<cmd>FzfLua live_grep_blob<CR>", desc = "Live grep" },
+    { "<leader>sp", "<cmd>FzfLua live_grep_glob<CR>", desc = "Live grep" },
     { "<leader>gb", "<cmd>FzfLua git_branches<CR>", desc = "List GIT branches" },
   },
   opts = {
