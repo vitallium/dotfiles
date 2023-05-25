@@ -10,9 +10,3 @@
   ;; Ignore asdf for LSP file watcher
   (add-to-list 'lsp-file-watch-ignored-directories "~/.asdf"))
 
-(after! flycheck
-  (flycheck-add-next-checker 'ruby-reek 'ruby-rubocop)
-  (setq flycheck-ruby-rubocop-executable "exec")
-  (setq flycheck-ruby-rubocop-prefix ["bundle"])
-  (setq flycheck-ruby-rubocop-command
-        (append flycheck-ruby-rubocop-prefix (list flycheck-ruby-rubocop-executable "rubocop"))))
