@@ -1,6 +1,6 @@
+tap "d12frosted/emacs-plus"
 tap 'homebrew/bundle'
 tap 'homebrew/cask-fonts'
-tap 'jdxcode/tap'
 brew 'bat'
 brew 'fontconfig'
 brew 'cmake'
@@ -38,7 +38,6 @@ brew 'pinentry-mac'
 brew 'pkg-config'
 brew 're2'
 brew 'ripgrep'
-brew 'rtx'
 brew 'runit'
 brew 'shfmt'
 brew 'skopeo'
@@ -91,6 +90,7 @@ mas 'Wipr', id: 1_320_666_476
 
 # Personaly only
 if `hostname`.start_with?('firefly')
+  brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-debug", "with-imagemagick", "with-native-comp", "with-no-frame-refocus", "with-poll", "with-savchenkovaleriy-big-sur-icon", "with-xwidgets"]
   cask 'acorn'
   cask 'bartender'
   cask 'discord'
@@ -108,6 +108,7 @@ end
 
 # Work starts here
 if `hostname`.start_with?('vslobodin-')
+  brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-debug", "with-imagemagick", "with-no-frame-refocus", "with-poll", "with-savchenkovaleriy-big-sur-icon", "with-xwidgets"]
   brew 'teleport'
   cask 'figma'
   cask 'mullvadvpn'
