@@ -13,3 +13,9 @@
         "r" #'jest-test-mode-rerun
         "a" #'jest-test-mode-run-all
         "s" #'jest-test-run-at-point))
+
+(pushnew! auto-mode-alist
+          '("\\manifest.webapp\\'" . json-mode)
+          '("\\.eslintrc\\'" . json-mode)
+          '("\\.prettierrc\\'" . json-mode)
+          '("\\.babelrc\\'" . json-mode))

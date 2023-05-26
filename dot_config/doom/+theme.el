@@ -3,11 +3,11 @@
 (setq
  ;; Fonts
  ;; Primary font to use
- doom-font (font-spec :family "Berkeley Mono" :size 16)
+ doom-font (font-spec :family "MonoLisa" :size 16.0 :weight 'semi-light)
  ;; Non-monospace font
- doom-variable-pitch-font (font-spec :family "ETBembo" :size 16)
+ doom-variable-pitch-font (font-spec :family "ETBembo" :size 14.0)
  ;; For big-font-mode
- doom-big-font (font-spec :family (if IS-MAC "Monaco" "mononoki") :size 20)
+ doom-big-font (font-spec :family (if IS-MAC "Monaco" "mononoki") :size 20.0)
  ;; For unicode glyphs
  ;; (doom-unicode-font)
  ;; For `fixed-pitch-serif' face
@@ -15,7 +15,8 @@
  ;; Theme
  doom-theme 'doom-one
  ;; Setup the style of line numbers
- display-line-numbers-type 'relative)
+ display-line-numbers-type 'relative
+ window-resize-pixelwise t)
 
 (after! doom-themes
   (setq doom-themes-enable-bold t
