@@ -109,7 +109,6 @@ return {
       },
       h = {
         name = "Help",
-        -- m = { ":Mason<CR>", "Mason" },
       },
       t = {
         name = "Toggle",

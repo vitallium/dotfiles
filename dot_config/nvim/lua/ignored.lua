@@ -21,7 +21,6 @@ return {
     "lazy",
     "log",
     "lspinfo",
-    "mason",
     "noice",
     "notify",
     "qf",

@@ -64,7 +64,7 @@ return {
       options = { try_as_border = true },
     })
     vim.api.nvim_create_autocmd("FileType", {
-      pattern = { "help", "Trouble", "lazy", "mason" },
+      pattern = { "help", "Trouble", "lazy" },
       callback = function()
         vim.b.miniindentscope_disable = true
       end,

@@ -1,15 +1,18 @@
 local handlers = require("plugins.lsp.handlers")
 
-local servers = {
-  bashls = {},
-  cmake = {},
-  cssls = {},
-  dockerls = {},
-  graphql = {},
-  html = {},
-  marksman = {},
-  solargraph = {},
-  gopls = {
+local setupServers = function()
+  local lspconfig = require("lspconfig")
+
+  lspconfig.solargraph.setup({})
+  lspconfig.bashls.setup({})
+  lspconfig.cmake.setup({})
+  lspconfig.cssls.setup({})
+  lspconfig.dockerls.setup({})
+  lspconfig.graphql.setup({})
+  lspconfig.html.setup({})
+  lspconfig.marksman.setup({})
+
+  lspconfig.gopls.setup({
     init_options = {
       usePlaceholders = true,
     },
@@ -41,14 +44,16 @@ local servers = {
         staticcheck = true,
       },
     },
-  },
-  jsonls = {
+  })
+
+  lspconfig.jsonls.setup({
     before_init = function(_, config)
       config.settings.json.schemas = require("schemastore").json.schemas()
     end,
     filetypes = { "json", "json5", "jsonc" },
-  },
-  lua_ls = {
+  })
+
+  lspconfig.lua_ls.setup({
     settings = {
       Lua = {
         completion = {
@@ -80,31 +85,9 @@ local servers = {
         },
       },
     },
-  },
-  tsserver = function()
-    require("typescript").setup({
-      debug = false,
-      disable_commands = false,
-      disable_formatting = true,
-      go_to_source_definition = {
-        fallback = true, -- Fall back to standard LSP definition on failure.
-      },
-      server = {
-        capabilities = handlers.capabilities(),
-        filetypes = { "javascript", "javascript.jsx", "typescript", "typescript.tsx" },
-        on_attach = handlers.on_attach,
-        settings = {
-          completions = {
-            completeFunctionCalls = true,
-          },
-        },
-      },
-    })
+  })
 
-    -- Inject code actions to null-ls.
-    require("null-ls").register(require("typescript.extensions.null-ls.code-actions"))
-  end,
-  yamlls = {
+  lspconfig.yamlls.setup({
     before_init = function(_, config)
       config.settings.yaml.schemas = require("schemastore").json.schemas()
     end,
@@ -121,8 +104,8 @@ local servers = {
         validate = true,
       },
     },
-  },
-}
+  })
+end
 
 return {
   {
@@ -150,54 +133,6 @@ return {
       })
     end,
   },
-  -- Mason related packages follow.
-  {
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate",
-    cmd = { "Mason", "MasonInstall", "MasonUninstall" },
-    config = function()
-      require("mason").setup({
-        ensure_installed = { "glow" },
-        ui = {
-          border = vim.g.border,
-        },
-      })
-    end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-      local hhandlers = {}
-
-      for name, handler in pairs(servers) do
-        if type(handler) == "function" then
-          hhandlers[name] = handler
-        else
-          hhandlers[name] = function()
-            require("lspconfig")[name].setup(vim.tbl_deep_extend("force", {
-              capabilities = handlers.capabilities(),
-              on_attach = handlers.on_attach,
-            }, handler))
-          end
-        end
-      end
-
-      require("mason-lspconfig").setup({
-        automatic_installation = true,
-        ensure_installed = vim.tbl_keys(hhandlers),
-        handlers = hhandlers,
-      })
-    end,
-    event = { "BufReadPre", "BufNewFile" },
-  },
-  {
-    "jay-babu/mason-null-ls.nvim",
-    dependencies = { "mason.nvim", "null-ls.nvim" },
-    event = "VeryLazy",
-    opts = {
-      automatic_installation = true,
-    },
-  },
   { "b0o/schemastore.nvim", version = false },
   {
     "folke/neodev.nvim",
@@ -209,7 +144,31 @@ return {
       setup_jsonls = false,
     },
   },
-  { "jose-elias-alvarez/typescript.nvim" },
+  {
+    "jose-elias-alvarez/typescript.nvim",
+    config = function()
+      require("typescript").setup({
+        debug = false,
+        disable_commands = false,
+        disable_formatting = true,
+        go_to_source_definition = {
+          fallback = true, -- Fall back to standard LSP definition on failure.
+        },
+        server = {
+          capabilities = handlers.capabilities(),
+          filetypes = { "javascript", "javascript.jsx", "typescript", "typescript.tsx" },
+          on_attach = handlers.on_attach,
+          settings = {
+            completions = {
+              completeFunctionCalls = true,
+            },
+          },
+        },
+      })
+
+      require("null-ls").register(require("typescript.extensions.null-ls.code-actions"))
+    end,
+  },
   { "smjonas/inc-rename.nvim", config = true },
   { "yioneko/nvim-type-fmt", lazy = false }, -- LSP handler of textDocument/onTypeFormatting for nvim. Sets itself up via an LspAttach autocmd.
   { "zbirenbaum/neodim", branch = "v2", config = true, event = "LspAttach" },
