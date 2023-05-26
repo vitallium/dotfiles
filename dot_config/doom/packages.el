@@ -50,6 +50,7 @@
 ;(unpin! t)
 
 (package! git-link)
+(package! jest-test-mode)
 
 (package! company-quickhelp)
 (package! company-tabnine)
