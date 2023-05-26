@@ -2,9 +2,10 @@ jsvu
 marked
 neovim
 npm
-yalc
-yarn
-yarn-deduplicate
 typescript
 typescript-langugage-server
+vscode-langservers-extracted
+yalc
 yaml-language-server
+yarn
+yarn-deduplicate
