@@ -49,6 +49,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! apheleia)
 (package! git-link)
 (package! jest-test-mode)
 
