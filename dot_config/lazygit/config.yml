@@ -6,5 +6,5 @@ git:
     pager: delta --paging=never
     useConfig: false
 os:
-  edit: "nvim"
+  editor: "nvim"
   editAtLine: "{{editor}} --server $NVIM --remote-tab {{filename}}"
