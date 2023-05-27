@@ -52,6 +52,8 @@ return {
       end,
       on_attach = handlers.on_attach,
       update_in_insert = false,
+      -- Let the LSP client set the root directory.
+      root_dir = require("null-ls.utils").root_pattern(),
     })
   end,
 }

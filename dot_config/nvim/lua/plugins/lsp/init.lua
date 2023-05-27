@@ -1,6 +1,6 @@
 local handlers = require("plugins.lsp.handlers")
 
-local setupServers = function()
+local setup_servers = function()
   local lspconfig = require("lspconfig")
 
   lspconfig.solargraph.setup({})
@@ -117,9 +117,11 @@ return {
 
       require("vim.lsp.log").set_format_func(vim.inspect)
 
-      vim.keymap.set("n", "<leader>li", vim.cmd.LspInfo, { desc = "  LSP Info" })
-      vim.keymap.set("n", "<leader>ll", vim.cmd.LspLog, { desc = "LSP Log" })
-      vim.keymap.set("n", "<leader>lr", vim.cmd.LspRestart, { desc = "  LSP Restart" })
+      vim.keymap.set("n", "<leader>li", vim.cmd.LspInfo, { desc = "LSP Info" })
+      vim.keymap.set("n", "<leader>ll", vim.cmd.LspLog, { desc = "LSP Log" })
+      vim.keymap.set("n", "<leader>lr", vim.cmd.LspRestart, { desc = "LSP Restart" })
+
+      setup_servers()
     end,
   },
   {
