@@ -3,7 +3,7 @@
 (setq
  ;; Fonts
  ;; Primary font to use
- doom-font (font-spec :family "MonoLisa" :size 16.0 :weight 'semi-light)
+ doom-font (font-spec :family "Berkeley Mono" :size 16.0)
  ;; Non-monospace font
  doom-variable-pitch-font (font-spec :family "ETBembo" :size 14.0)
  ;; For big-font-mode
