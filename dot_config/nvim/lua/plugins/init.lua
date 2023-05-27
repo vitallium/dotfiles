@@ -53,6 +53,8 @@ return {
   -- Ruby improvement
   {
     "jlcrochet/vim-ruby",
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPre" },
   },
+  -- Python requirements.txt
+  { "raimon49/requirements.txt.vim", event = { "BufReadPre" } },
 }

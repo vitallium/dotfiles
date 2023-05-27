@@ -138,7 +138,7 @@ return {
   { "b0o/schemastore.nvim", version = false },
   {
     "folke/neodev.nvim",
-    ft = "lua",
+    event = "VeryLazy",
     opts = {
       library = {
         plugins = false,
