@@ -2,5 +2,5 @@ nodejs 18.16.0
 ruby 3.2.2
 python 3.11.3
 golang 1.20.4
-chezmoi 2.33.5
+chezmoi 2.33.6
 rust 1.69.0
