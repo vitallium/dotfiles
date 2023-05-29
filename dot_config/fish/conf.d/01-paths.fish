@@ -1,8 +1,7 @@
-# Local stuff
-fish_add_path ~/.local/bin
-
-# jsvu
-fish_add_path ~/.jsvu
-
-# rust
-fish_add_path ~/.cargo/bin
+fish_add_path --append \
+  # Local stuff
+  $HOME/.local/bin \
+  # https://github.com/GoogleChromeLabs/jsvu
+  $HOME/.jsvu \
+  # Rust
+  $HOME/.cargo/bin
