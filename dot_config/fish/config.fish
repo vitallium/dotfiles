@@ -4,8 +4,6 @@ if not status --is-interactive
 end
 
 set -gx fish_greeting              ''
-set -gx EDITOR nvim
-set -gx VISUAL $EDITOR
 # https://emacs-lsp.github.io/lsp-mode/page/performance/#use-plists-for-deserialization
 set -gx LSP_USE_PLISTS             true
 
