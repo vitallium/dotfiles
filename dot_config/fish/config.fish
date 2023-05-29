@@ -1,21 +1,12 @@
+set -gx fish_greeting              ''
+
 # put anything needed for a non-interactive shell before this
 if not status --is-interactive
   exit 0
 end
 
-set -gx fish_greeting              ''
 # https://emacs-lsp.github.io/lsp-mode/page/performance/#use-plists-for-deserialization
 set -gx LSP_USE_PLISTS             true
-
-# GPG
-gpgconf --launch gpg-agent
-set -x                             GPG_TTY (tty)
-set -x                             SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-
-set -gx GOPATH                     $HOME/.go
-set -gx GOBIN                      $HOME/.go/bin
-set -gx GO111MODULE                on
-
 set -gx RIPGREP_CONFIG_PATH       "$HOME/.ripgreprc"
 
 set configs aliases paths
