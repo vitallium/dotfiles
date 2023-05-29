@@ -1,6 +1,7 @@
 cargo-audit
-cargo-nextest
 cargo-edit
+cargo-nextest
+cargo-sweep
 cargo-update
-tree-sitter-cli
 stylua
+tree-sitter-cli
