@@ -1,6 +1,6 @@
 # put anything needed for a non-interactive shell before this
 if not status --is-interactive
-  exit 0
+    exit 0
 end
 
 alias t="tmux"
