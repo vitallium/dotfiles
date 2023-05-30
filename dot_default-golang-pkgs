@@ -1,3 +1,5 @@
 github.com/go-delve/delve/cmd/dlv@latest
 github.com/DarthSim/hivemind@latest
 github.com/nao1215/gup@latest
+mvdan.cc/gofumpt@latest
+github.com/segmentio/golines@latest
