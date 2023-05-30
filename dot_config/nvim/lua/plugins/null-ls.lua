@@ -41,16 +41,6 @@ return {
     null_ls.setup({
       debug = false,
       sources = null_ls_sources,
-      should_attach = function(bufnr)
-        local filename = vim.api.nvim_buf_get_name(bufnr)
-
-        -- Ignore 3rd party code.
-        if filename:match("/(node_modules|__pypackages__|site_packages)/") then
-          return false
-        end
-
-        return not vim.g.large_file
-      end,
       on_attach = handlers.on_attach,
       update_in_insert = false,
       -- Let the LSP client set the root directory.

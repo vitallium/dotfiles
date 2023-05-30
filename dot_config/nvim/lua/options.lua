@@ -119,9 +119,6 @@ g.netrw_browse_split = 3
 g.netrw_altv = 1
 g.netrw_winsize = 25
 
--- Flag for disabling null-ls and others for large files.
-vim.g.large_file = false
-
 -- Load clipboard.vim faster.
 if vim.g.os == "Darwin" then
   vim.g.clipboard = {
@@ -147,41 +144,13 @@ else
 end
 
 -- [[ Diagnostic ]]
--- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#show-source-in-diagnostics
--- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#change-prefixcharacter-preceding-the-diagnostics-virtual-text
-local icons = {
-  error = "󰅚 ",
-  warn = "󰀪 ",
-  info = " ",
-  hint = "󰌶 ",
-}
-
-local function sign(opts)
-  vim.fn.sign_define(opts.highlight, {
-    text = opts.icon,
-    texthl = opts.highlight,
-    numhl = opts.linehl ~= false and opts.highlight .. "Nr" or nil,
-    culhl = opts.linehl ~= false and opts.highlight .. "CursorNr" or nil,
-    linehl = opts.linehl ~= false and opts.highlight .. "Line" or nil,
-  })
-end
-
-sign({ highlight = "DiagnosticSignError", icon = icons.error })
-sign({ highlight = "DiagnosticSignWarn", icon = icons.warn })
-sign({ highlight = "DiagnosticSignInfo", linehl = false, icon = icons.info })
-sign({ highlight = "DiagnosticSignHint", linehl = false, icon = icons.hint })
 vim.diagnostic.config({
   float = {
     border = vim.g.border,
     focusable = true,
-    header = { " Issues:" },
+    header = { "Issues:" },
     max_height = math.min(math.floor(vim.o.lines * 0.3), 30),
     max_width = math.min(math.floor(vim.o.columns * 0.7), 100),
-    prefix = function(diag)
-      local level = vim.diagnostic.severity[diag.severity]
-      local prefix = string.format("%s ", icons[level:lower()])
-      return prefix, "Diagnostic" .. level:gsub("^%l", string.upper)
-    end,
     source = "if_many",
   },
   underline = true,

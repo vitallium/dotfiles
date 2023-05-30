@@ -1,5 +1,6 @@
 return {
   "L3MON4D3/LuaSnip",
+  dependencies = { "rafamadriz/friendly-snippets" },
   lazy = true,
   config = function()
     local luasnip = require("luasnip")
@@ -50,6 +51,10 @@ return {
         end
       end,
     })
+
+    -- Load "friendly-snippets" (dependency):
+    require("luasnip.loaders.from_vscode").lazy_load()
+    -- Extend filetypes:
+    require("luasnip").filetype_extend("typescript", { "javascript", "jsdoc" })
   end,
-  dependencies = { "rafamadriz/friendly-snippets" },
 }

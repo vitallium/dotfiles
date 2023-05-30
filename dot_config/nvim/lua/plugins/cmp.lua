@@ -11,18 +11,6 @@ return {
       "hrsh7th/cmp-nvim-lsp-signature-help", -- Function signature source for nvim-cmp
       "hrsh7th/cmp-cmdline", -- Command line source for nvim-cmp
       "hrsh7th/cmp-emoji",
-      {
-        "L3MON4D3/LuaSnip", -- Snippets plugin
-        dependencies = {
-          "rafamadriz/friendly-snippets",
-        },
-        config = function()
-          -- Load "friendly-snippets" (dependency):
-          require("luasnip.loaders.from_vscode").lazy_load()
-          -- Extend filetypes:
-          require("luasnip").filetype_extend("typescript", { "javascript", "jsdoc" })
-        end,
-      },
       "onsails/lspkind.nvim",
       {
         "tzachar/cmp-tabnine", -- TabNine
