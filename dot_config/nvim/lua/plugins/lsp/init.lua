@@ -1,7 +1,11 @@
-local handlers = require("plugins.lsp.handlers")
+local function setup_lsp_servers()
+  local handlers = require("plugins.lsp.handlers")
+  local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local setup_servers = function()
   local lspconfig = require("lspconfig")
+  local lsp_defaults = lspconfig.util.default_config
+
+  lsp_defaults.capabilities = vim.tbl_deep_extend("force", lsp_defaults.capabilities, capabilities)
 
   lspconfig.solargraph.setup({})
   lspconfig.bashls.setup({})
@@ -11,6 +15,7 @@ local setup_servers = function()
   lspconfig.graphql.setup({})
   lspconfig.html.setup({})
   lspconfig.marksman.setup({})
+  lspconfig.vuels.setup({})
 
   lspconfig.gopls.setup({
     init_options = {
@@ -110,6 +115,10 @@ end
 return {
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      "lukas-reineke/lsp-format.nvim",
+    },
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("lspconfig.ui.windows").default_options.border = vim.g.border
 
@@ -121,7 +130,7 @@ return {
       vim.keymap.set("n", "<leader>ll", vim.cmd.LspLog, { desc = "LSP Log" })
       vim.keymap.set("n", "<leader>lr", vim.cmd.LspRestart, { desc = "LSP Restart" })
 
-      setup_servers()
+      setup_lsp_servers()
     end,
   },
   {
@@ -135,17 +144,18 @@ return {
       })
     end,
   },
-  { "b0o/schemastore.nvim", version = false },
   {
-    "folke/neodev.nvim",
-    event = "VeryLazy",
-    opts = {
-      library = {
-        plugins = false,
-      },
-      setup_jsonls = false,
-    },
+    "SmiteshP/nvim-navic",
+    config = function()
+      vim.g.navic_silence = true
+
+      require("nvim-navic").setup({
+        highlight = true,
+      })
+    end,
+    event = "LspAttach",
   },
+  { "b0o/schemastore.nvim", version = false },
   {
     "jose-elias-alvarez/typescript.nvim",
     config = function()
@@ -157,7 +167,7 @@ return {
           fallback = true, -- Fall back to standard LSP definition on failure.
         },
         server = {
-          capabilities = handlers.capabilities(),
+          capabilities = capabilities,
           filetypes = { "javascript", "javascript.jsx", "typescript", "typescript.tsx" },
           on_attach = handlers.on_attach,
           settings = {
@@ -171,7 +181,28 @@ return {
       require("null-ls").register(require("typescript.extensions.null-ls.code-actions"))
     end,
   },
+  {
+    "folke/neodev.nvim",
+    opts = {
+      library = {
+        plugins = false,
+      },
+      setup_jsonls = false,
+    },
+    event = "VeryLazy",
+  },
+  {
+    "crispgm/nvim-go",
+    cmd = {
+      "GoFormat",
+      "GoGet",
+      "GoInstall",
+      "GoLint",
+    },
+    event = "VeryLazy",
+  },
+  { "VidocqH/lsp-lens.nvim", config = true, lazy = false },
   { "smjonas/inc-rename.nvim", config = true },
-  { "yioneko/nvim-type-fmt", lazy = false }, -- LSP handler of textDocument/onTypeFormatting for nvim. Sets itself up via an LspAttach autocmd.
   { "zbirenbaum/neodim", branch = "v2", config = true, event = "LspAttach" },
+  { "simrat39/rust-tools.nvim" },
 }

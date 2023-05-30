@@ -1,25 +1,8 @@
 local M = {}
 
--- Hook up autocomplete for LSP to nvim-cmp, see: https://github.com/hrsh7th/cmp-nvim-lsp
-M.capabilities = function()
-  --
-  -- Since cmp-nvim-lsp has an after/ file which load cmp, which I want deferred until InsertEnter,
-  -- create a cache of the table that .default_capabilities() emits to JSON to be loaded instead.
-  local path = vim.fn.stdpath("cache") .. "/capabilities.json"
-  local module = "cmp_nvim_lsp"
-
-  if not vim.loop.fs_stat(path) then
-    require("lazy").load({ plugins = { "cmp-nvim-lsp" } })
-
-    vim.fn.writefile({ vim.json.encode(require(module).default_capabilities()) }, path)
-
-    require("plenary.reload").reload_module(module)
-  end
-
-  return vim.json.decode(vim.fn.readfile(path)[1])
-end
-
 M.on_attach = function(client, buffer)
+  require("lsp-format").on_attach(client)
+
   -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#highlight-symbol-under-cursor
   if client.server_capabilities.documentHighlightProvider then
     local group = vim.api.nvim_create_augroup("LSPHighlightReferences", {})
@@ -95,61 +78,6 @@ M.on_attach = function(client, buffer)
       vim.cmd.FzfLua.lsp_implementations()
     end, { desc = "Go To Implementations(s)" })
   end
-end
-
--- Adapted from folke/lazyvim
--- Searches & sets the root directory based on:
---
--- * LSP workspace folders
--- * LSP root_dir
--- * root pattern of filename of the current buffer
--- * root pattern of cwd
-M.find_root = function()
-  local root_patterns = {
-    ".git",
-    ".null-ls-root",
-    "Cargo.toml",
-    "Gemfile",
-    "go.mod",
-    "config.fish",
-    "configure",
-    "package.json",
-    "requirements.txt",
-    "stylua.toml",
-  }
-
-  ---@type string?
-  local path = vim.api.nvim_buf_get_name(0)
-  path = path ~= "" and vim.loop.fs_realpath(path) or nil
-  ---@type string[]
-  local roots = {}
-  if path then
-    for _, client in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
-      local workspace = client.config.workspace_folders
-      local paths = workspace and vim.tbl_map(function(ws)
-        return vim.uri_to_fname(ws.uri)
-      end, workspace) or client.config.root_dir and { client.config.root_dir } or {}
-      for _, p in ipairs(paths) do
-        local r = vim.loop.fs_realpath(p)
-        if path:find(r, 1, true) then
-          roots[#roots + 1] = r
-        end
-      end
-    end
-  end
-  table.sort(roots, function(a, b)
-    return #a > #b
-  end)
-  ---@type string?
-  local root = roots[1]
-  if not root then
-    path = path and vim.fs.dirname(path) or vim.loop.cwd()
-    ---@type string?
-    root = vim.fs.find(M.root_patterns, { path = path, upward = true })[1]
-    root = root and vim.fs.dirname(root) or vim.loop.cwd()
-  end
-  ---@cast root string
-  return root
 end
 
 return M
