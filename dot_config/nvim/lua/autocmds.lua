@@ -21,15 +21,19 @@ vim.api.nvim_create_autocmd("WinEnter", {
 vim.api.nvim_create_autocmd({ "FileType" }, {
   desc = "Map q to close the buffer.",
   pattern = {
-    "qf",
     "checkhealth",
+    "checkhealth",
+    "fugitive",
     "help",
+    "lspinfo",
     "man",
+    "neotest-output",
+    "neotest-output-panel",
+    "neotest-summary",
     "notify",
+    "qf",
     "query",
     "tsplayground",
-    "fugitive",
-    "neotest-output-panel",
   },
   callback = function(event)
     vim.opt_local.spell = false

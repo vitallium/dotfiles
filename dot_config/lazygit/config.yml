@@ -4,8 +4,7 @@ gui:
 git:
   paging:
     colorArg: always
-    pager: delta --paging=never
+    pager: delta --dark --paging=never
     useConfig: false
 os:
-  editor: "nvim"
-  editAtLine: "{{editor}} --server $NVIM --remote-tab {{filename}}"
+  editPreset: "nvim"

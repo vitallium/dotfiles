@@ -11,7 +11,6 @@ return {
       "hrsh7th/cmp-nvim-lsp-signature-help", -- Function signature source for nvim-cmp
       "hrsh7th/cmp-cmdline", -- Command line source for nvim-cmp
       "hrsh7th/cmp-emoji",
-      "onsails/lspkind.nvim",
       {
         "tzachar/cmp-tabnine", -- TabNine
         build = "./install.sh",
@@ -35,10 +34,6 @@ return {
       -- nvim-cmp setup
       local cmp = require("cmp")
       local luasnip = require("luasnip")
-      local lspkind = require("lspkind")
-      lspkind.init({
-        mode = "symbol_text",
-      })
 
       cmp.setup({
         snippet = {
@@ -106,7 +101,6 @@ return {
         }, {
           { name = "buffer" },
           { name = "path" },
-          { name = "emoji" },
         }),
         confirm_opts = {
           behavior = cmp.ConfirmBehavior.Select,
@@ -120,21 +114,9 @@ return {
         },
         experimental = {
           native_menu = false,
-          ghost_text = false,
-        },
-        formatting = {
-          fields = { "kind", "abbr", "menu" },
-          format = function(entry, vim_item)
-            local kind = lspkind.cmp_format({ maxwidth = 50 })(entry, vim_item)
-
-            local strings = vim.split(kind.kind, "%s", { trimempty = true })
-            kind.kind = " " .. strings[1] .. " "
-            if #strings > 1 then
-              kind.menu = "    (" .. strings[2] .. ")"
-            end
-
-            return kind
-          end,
+          ghost_text = {
+            hl_group = "LspCodeLens",
+          },
         },
       })
 

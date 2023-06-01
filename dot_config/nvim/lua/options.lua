@@ -41,6 +41,7 @@ opt.listchars = {
 opt.list = false -- bool: Show some invisible characters (tabs...
 opt.relativenumber = true -- bool: Relative line numbers
 opt.smartindent = true
+opt.cmdheight = 1
 
 -- [[ Search ]]
 opt.ignorecase = true -- bool: Ignore case in search patterns
@@ -142,28 +143,3 @@ else
     vim.g.opener = ""
   end
 end
-
--- [[ Diagnostic ]]
-vim.diagnostic.config({
-  float = {
-    border = vim.g.border,
-    focusable = true,
-    header = { "Issues:" },
-    max_height = math.min(math.floor(vim.o.lines * 0.3), 30),
-    max_width = math.min(math.floor(vim.o.columns * 0.7), 100),
-    source = "if_many",
-  },
-  underline = true,
-  signs = true,
-  severity_sort = true,
-  update_in_insert = false, -- https://www.reddit.com/r/neovim/comments/pfk209/nvimlsp_too_fast/
-  virtual_text = {
-    format = function(diagnostic)
-      -- https://www.reddit.com/r/neovim/comments/q9dxnp/set_lsp_messages_max_width/
-      return string.sub(diagnostic.message, 1, 80)
-    end,
-    prefix = "❰",
-    source = "if_many",
-    spacing = 1,
-  },
-})
