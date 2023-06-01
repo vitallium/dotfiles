@@ -146,6 +146,7 @@ return {
   },
   {
     "SmiteshP/nvim-navic",
+    event = "LspAttach",
     config = function()
       vim.g.navic_silence = true
 
@@ -153,12 +154,14 @@ return {
         highlight = true,
       })
     end,
-    event = "LspAttach",
   },
   { "b0o/schemastore.nvim", version = false },
   {
     "jose-elias-alvarez/typescript.nvim",
     config = function()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local handlers = require("plugins.lsp.handlers")
+
       require("typescript").setup({
         debug = false,
         disable_commands = false,
@@ -205,4 +208,5 @@ return {
   { "smjonas/inc-rename.nvim", config = true },
   { "zbirenbaum/neodim", branch = "v2", config = true, event = "LspAttach" },
   { "simrat39/rust-tools.nvim" },
+  { "anuvyklack/hydra.nvim" }
 }

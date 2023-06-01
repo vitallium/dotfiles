@@ -65,6 +65,6 @@ lazy.setup("plugins", {
   },
 })
 
-vim.keymap.set("n", "<leader>pi", require("lazy").show, { desc = "Plugin Info" })
-vim.keymap.set("n", "<leader>pp", require("lazy").profile, { desc = "Profile Plugins" })
-vim.keymap.set("n", "<leader>ps", require("lazy").sync, { desc = "Sync Plugins" })
+vim.keymap.set("n", "<leader>pi", lazy.show, { desc = "Plugin Info" })
+vim.keymap.set("n", "<leader>pp", lazy.profile, { desc = "Profile Plugins" })
+vim.keymap.set("n", "<leader>ps", lazy.sync, { desc = "Sync Plugins" })

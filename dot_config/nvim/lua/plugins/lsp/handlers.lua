@@ -69,6 +69,10 @@ M.on_attach = function(client, buffer)
     })
   end
 
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, buffer)
+  end
+
   if client.server_capabilities.definitionProvider then
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go To Definition(s)" })
   end

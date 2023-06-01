@@ -20,7 +20,17 @@ vim.api.nvim_create_autocmd("WinEnter", {
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
   desc = "Map q to close the buffer.",
-  pattern = { "qf", "checkhealth", "help", "man", "notify", "query", "tsplayground", "fugitive" },
+  pattern = {
+    "qf",
+    "checkhealth",
+    "help",
+    "man",
+    "notify",
+    "query",
+    "tsplayground",
+    "fugitive",
+    "neotest-output-panel",
+  },
   callback = function(event)
     vim.opt_local.spell = false
     vim.bo[event.buf].buflisted = false
@@ -44,4 +54,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.go.backupext = backup
   end,
   desc = "Create directories when needed, when saving a file.",
+})
+
+-- resize splits if window got resized
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+  callback = function()
+    vim.cmd("tabdo wincmd =")
+  end,
 })

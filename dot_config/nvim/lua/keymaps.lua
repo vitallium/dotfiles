@@ -17,13 +17,6 @@ keymap("n", "q:", "<Nop>", { desc = "hidden" })
 keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
 keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
 
--- Quitting / Sessions
-keymap("n", "qq", vim.cmd.quitall, { desc = "Quit" })
-keymap("n", "qw", vim.cmd.wqall, { desc = "Quit & Write All" })
-keymap("n", "q!", function()
-  vim.cmd.quitall("!")
-end, { desc = "Quit without saving" })
-
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
