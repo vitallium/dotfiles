@@ -1,6 +1,6 @@
 ---
 gui:
-  showIcons: true
+  showIcons: false
 git:
   paging:
     colorArg: always
