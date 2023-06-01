@@ -1,6 +1,6 @@
-tap "d12frosted/emacs-plus"
 tap 'homebrew/bundle'
 tap 'homebrew/cask-fonts'
+brew 'aspell'
 brew 'bat'
 brew 'fontconfig'
 brew 'cmake'
@@ -28,7 +28,6 @@ brew 'graphicsmagick'
 brew 'grep'
 brew 'hadolint'
 brew 'heimdal'
-brew 'hunspell'
 brew 'imagemagick'
 brew 'jq'
 brew 'lazygit'
@@ -93,9 +92,7 @@ mas 'Wipr', id: 1_320_666_476
 
 # Personaly only
 if `hostname`.start_with?('firefly')
-  brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-debug", "with-imagemagick", "with-native-comp", "with-no-frame-refocus", "with-poll", "with-savchenkovaleriy-big-sur-icon", "with-xwidgets"]
   cask 'acorn'
-  cask 'bartender'
   cask 'discord'
   cask 'kitty'
   cask 'little-snitch'
@@ -111,7 +108,6 @@ end
 
 # Work starts here
 if `hostname`.start_with?('vslobodin-')
-  brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-debug", "with-imagemagick", "with-no-frame-refocus", "with-poll", "with-savchenkovaleriy-big-sur-icon", "with-xwidgets"]
   brew 'teleport'
   cask 'figma'
   cask 'mullvadvpn'
