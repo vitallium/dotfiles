@@ -1,7 +1,8 @@
+bash-language-server
+dockerfile-language-server-nodejs
 jsvu
 markdownlint-cli
 marked
-neovim
 npm
 typescript
 typescript-language-server
