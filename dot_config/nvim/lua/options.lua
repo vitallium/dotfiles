@@ -85,34 +85,9 @@ opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 opt.spelloptions:append({ "camel" })
 opt.spellsuggest = "best,9"
 
--- [[ Formatting ]]
--- This order is the same as the documentation.
-opt.formatoptions = {
-  t = false, -- Auto-wrap lines using text width value.
-  c = true, -- Auto-wrap comments using 'textwidth', inserting the current comment leader automatically.
-  r = true, -- Automatically insert the current comment leader after hitting <Enter> in Insert mode.
-  o = false, -- Insert the current comment leader after hitting 'o' or 'O' in Normal mode.
-  q = true, -- Allow formatting of comments with "gq".
-  a = false, -- Automatic formatting of paragraphs. Every time text is inserted or deleted the paragraph will be reformatted.
-  n = true, -- When formatting text, recognize numbered lists.
-  [2] = true, -- Use the indent of the second line of a paragraph for the rest of the paragraph.
-  l = true, -- Long lines are not broken in insert mode.
-  [1] = true, -- Don't break a line after a one-letter word.
-  j = true, -- Where it makes sense, remove a comment leader when joining lines.
-}
-
-vim.opt.sessionoptions = {
-  "buffers",
-  "curdir",
-  "globals",
-  "options",
-}
-
--- Preferences
-g.border = "single"
-
 -- [[ Global options ]]
 g.loaded_perl_provider = 0 -- disable Perl support
+g.border = "single"
 
 -- [[ netrw customization (https://shapeshed.com/vim-netrw/) ]]
 g.netrw_liststyle = 1 -- wide view

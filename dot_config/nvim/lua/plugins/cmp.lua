@@ -7,10 +7,9 @@ return {
       "hrsh7th/cmp-buffer", -- Buffer source for nvim-cmp
       "hrsh7th/cmp-path", -- Path source for nvim-cmp
       "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
-      "hrsh7th/cmp-nvim-lua", -- Lua Completions
       "hrsh7th/cmp-nvim-lsp-signature-help", -- Function signature source for nvim-cmp
       "hrsh7th/cmp-cmdline", -- Command line source for nvim-cmp
-      "hrsh7th/cmp-emoji",
+      "saadparwaiz1/cmp_luasnip", -- LuaSnip integration
       {
         "tzachar/cmp-tabnine", -- TabNine
         build = "./install.sh",
