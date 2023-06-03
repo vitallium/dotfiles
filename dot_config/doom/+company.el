@@ -8,6 +8,7 @@
         company-tooltip-align-annotations t
         company-frontends '(company-pseudo-tooltip-frontend))
   (set-company-backend! '(prog-mode)  '(
+                                        company-capf
                                         company-files
                                         company-yasnippet
                                         :separate

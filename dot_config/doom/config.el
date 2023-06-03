@@ -23,14 +23,18 @@
 (when (modulep! :term vterm)
   (load! "+vterm"))
 
-(when (modulep! :tools tree-sitter)
-  (load! "+tree-sitter"))
+;; FIXME: Conflicts with Doom's tree-sitter module
+;; (when (modulep! :tools tree-sitter)
+;;   (load! "+tree-sitter"))
 
 (when (modulep! :lang ruby)
   (load! "+ruby"))
 
 (when (modulep! :lang javascript)
   (load! "+javascript"))
+
+(when (modulep! :lang org)
+  (load! "+org"))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.

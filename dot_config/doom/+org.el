@@ -1,7 +1,7 @@
 ;;; $DOOMDIR/+org.el -*- lexical-binding: t; -*-
 
 ;; Set the org-mode folder location
-(setq org-directory "~/Org/")
+(setq org-directory "~/Documents/Org/")
 
 (after! org
   (setq

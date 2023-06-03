@@ -9,8 +9,8 @@
 
 (map! :leader :desc "Find file in other window" "fo" #'find-file-other-window)
 
-(map! :n [mouse-8] #'better-jumper-jump-backward
-      :n [mouse-9] #'better-jumper-jump-forward)
+(map! :g [mouse-8] #'better-jumper-jump-backward
+      :g [mouse-9] #'better-jumper-jump-forward)
 
 (after! avy
   (map! :nvm "s" #'avy-goto-char-timer)

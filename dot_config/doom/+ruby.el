@@ -4,9 +4,11 @@
   (add-hook! rspec-compilation-mode #'inf-ruby-switch-from-compilation)
   (set-popup-rule! "\\`\\*rspec-compilation.*?\\*\\'" :width 0.25 :side 'right :quit 'current))
 
-(after! lsp-solargraph
-  ;; Add asdf installations for Ruby
-  (add-to-list 'lsp-solargraph-library-directories "~/.asdf/installs/ruby")
-  ;; Ignore asdf for LSP file watcher
-  (add-to-list 'lsp-file-watch-ignored-directories "~/.asdf"))
+(when (modulep! :tools lsp)
+  (after! lsp-solargraph
+    ;; Add asdf installations for Ruby
+    (add-to-list 'lsp-solargraph-library-directories "~/.asdf/installs/ruby")
+    ;; Ignore asdf for LSP file watcher
+    (add-to-list 'lsp-file-watch-ignored-directories "~/.asdf")))
 
+(set-docsets! 'ruby-mode "Ruby_3" "Ruby_on_Rails_7")
