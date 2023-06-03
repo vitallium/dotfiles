@@ -1,0 +1,23 @@
+#+#+title:    :editor format
+
+* Description :unfold:
+This module is indented to replace old and scheduled for a rewrite module =format=. It uses
+[[https://github.com/radian-software/apheleia][apheleia]] package to provide formatting capabilities through the same Doom function. All credits
+go to https://github.com/luisholanda/dotfiles/blob/main/config/doom-emacs/config.org.
+
+This module integrates code formatters provided by =apheleia= into Emacs. Here are some of the
+formatters that it currently supports:
+
+#+begin_quote
+asmfmt, black, brittany, cabal-fmt, clang-format, cmake-format, dartfmt, dfmt,
+dhall format, dockfmt, elm-format, emacs, fish_indent, fprettify, gleam format,
+gofmt, iStyle, jsonnetfmt, ktlint, latexindent, ledger-mode, lua-fmt, mix
+format, nixfmt, node-cljfmt, ocp-indent, perltidy, prettier, purty, rufo,
+rustfmt, scalafmt, script shfmt, snakefmt, sqlformat, styler, swiftformat, tidy
+#+end_quote
+
+** Module flags
+- +onsave ::
+  Enable reformatting of a buffer when it is saved. See
+  [[var:+format-on-save-enabled-modes]] to control what major modes to (or not to)
+  format on save.

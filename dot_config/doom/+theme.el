@@ -41,3 +41,9 @@
   (auto-dark-light-theme 'doom-one-light)
   :config
   (auto-dark-mode t))
+
+(when IS-MAC
+  (setq frame-title-format nil)
+  (dolist (filter '((ns-transparent-titlebar . t)
+                    (ns-appearance . unbound)))
+    (cl-pushnew filter default-frame-alist :test #'equal)))
