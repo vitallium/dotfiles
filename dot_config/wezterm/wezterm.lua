@@ -19,7 +19,7 @@ local monolisa = "Monolisa"
 ---@diagnostic disable-next-line: unused-local
 local mononoki = "mononoki"
 ---@diagnostic disable-next-line: unused-local
-local berkeley = "Berkeley Mono"
+local berkeley = "Berkeley Mono Variable"
 
 local font = berkeley
 local font_size = 16.0
@@ -40,6 +40,11 @@ if font == monolisa then
 		"subs=0",
 		"calt=1",
 		"liga=1",
+	}
+elseif font == berkeley then
+	harfbuzz_features = {
+		"calt=0",
+		"dlig=1",
 	}
 end
 
