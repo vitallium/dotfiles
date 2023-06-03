@@ -51,7 +51,6 @@
 
 (package! auto-dark)
 (package! benchmark-init)
-(package! apheleia)
 (package! git-link)
 (package! jest-test-mode)
 
