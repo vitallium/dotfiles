@@ -1,6 +1,7 @@
 docutils
 gitlint
 poetry
+ranger-fm
 pynvim
 qmk
 wheel
