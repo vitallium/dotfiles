@@ -58,6 +58,7 @@
 (package! company-tabnine)
 
 (package! visual-fill-column)
+(package! string-inflection)
 
 ;; Pull latest tree-sitter packages
 (package! treesit-auto)

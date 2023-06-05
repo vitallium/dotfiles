@@ -4,10 +4,11 @@
 ;; sync' after modifying this file!
 
 ;; Always start Emacs window maximized
-(add-hook 'window-setup-hook 'toggle-frame-maximized)
+;; (add-hook 'window-setup-hook 'toggle-frame-maximized)
 
 (load! "+personal")
-(load! "+theme")
+(if (display-graphic-p)
+  (load! "+theme"))
 (load! "+bindings")
 (load! "+editor")
 
