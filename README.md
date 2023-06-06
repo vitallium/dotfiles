@@ -1,14 +1,10 @@
-# Contents
+# What's inside
 
-- [Common configuration](#common-configuration)
-- [Fedora configuration for my Framework Laptop](#fedora-configuration-for-my-framework-laptop)
-- [macOS configuration for my worklaptop](#macos-configuration-for-my-work-laptop)
-
-## Common configuration
-
-- [kitty](https://sw.kovidgoyal.net/kitty/) as a terminal emulator.
+- [kitty](https://sw.kovidgoyal.net/kitty/) as a terminal emulator on my Intel MBP.
+- [wezterm](https://wezfurlong.org/wezterm/) as a terminal emulator.
 - [fish](https://fishshell.com/) as a shell.
-- [bat](https://github.com/sharkdp/bat) instead of `cat`.
+- [neovim](https://neovim.io/).
+- [Doom Emacs](https://github.com/doomemacs/doomemacs).
 
 ## [Fedora configuration](doc/fedora.org) for my [Framework Laptop](https://frame.work)
 
@@ -21,8 +17,6 @@
   - [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell/)
   - [Space Bar](https://extensions.gnome.org/extension/5090/space-bar/)
 
-### TODO
+## TODO
 
 - [ ] Extensions settings
-
-## macOS configuration for my [work](https://about.gitlab.com/) laptop
