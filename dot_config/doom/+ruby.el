@@ -1,8 +1,7 @@
 ;;; $DOOMDIR/+ruby.el -*- lexical-binding: t; -*-
 
 (after! rspec-mode
-  (add-hook! rspec-compilation-mode #'inf-ruby-switch-from-compilation)
-  (set-popup-rule! "\\`\\*rspec-compilation.*?\\*\\'" :width 0.25 :side 'right :quit 'current))
+  (set-popup-rule! "\\`\\*rspec-compilation.*?\\*\\'" :side 'bottom :quit 'current))
 
 (when (modulep! :tools lsp)
   (after! lsp-solargraph
