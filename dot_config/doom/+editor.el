@@ -1,8 +1,5 @@
 ;;; $DOOMDIR/+editor.el -*- lexical-binding: t; -*-
 
-; Iterate through CamelCase words
-(global-subword-mode 1)
-
 ;; Visual Fill Column
 (setq-default fill-column 120)
 (setq fill-column 120
@@ -16,7 +13,7 @@
 
 ;; Indent guides
 (after! highlight-indent-guides
-  (setq highlight-indent-guides-method 'fill
+  (setq highlight-indent-guides-method 'bitmap
         highlight-indent-guides-auto-odd-face-perc 3
         highlight-indent-guides-auto-even-face-perc 1.5))
 
@@ -24,8 +21,6 @@
 (after! apheleia
   (setf (alist-get 'elisp-mode apheleia-mode-alist)
         '(list-indent)))
-
-
 
 (use-package! string-inflection
   :commands (string-inflection-all-cycle

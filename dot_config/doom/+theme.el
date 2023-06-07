@@ -17,14 +17,12 @@
  ;; For `fixed-pitch-serif' face
  ;; (doom-serif-font)
  ;; Theme
- doom-theme 'doom-one
+ doom-theme 'modus-operandi
  ;; Disable line numbers
  display-line-numbers-type nil
  window-resize-pixelwise t)
 
 (after! doom-themes
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; Corrects (and improves) org-mode's native fontification.
@@ -37,8 +35,8 @@
 
 (use-package! auto-dark
   :custom
-  (auto-dark-dark-theme 'doom-one)
-  (auto-dark-light-theme 'doom-one-light)
+  (auto-dark-dark-theme 'modus-vivendi)
+  (auto-dark-light-theme 'modus-operandi)
   :config
   (auto-dark-mode t))
 
