@@ -16,7 +16,7 @@ selected buffers.")
   "Set this to explicitly use a certain formatter for the current buffer.")
 
 ;; Enable formatting on-save if =+onsave= is enabled.
-(when (featurep! +onsave)
+(when (modulep! :editor format +onsave)
   (add-hook 'doom-first-file-hook #'apheleia-global-mode))
 
 ;; Fix integration between =apheleia= and some modes.
