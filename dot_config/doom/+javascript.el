@@ -21,3 +21,6 @@
           '("\\.babelrc\\'" . json-mode))
 
 (set-docsets! 'js2-mode "JavaScript")
+
+(after! web-mode
+  (web-mode-toggle-current-element-highlight))
