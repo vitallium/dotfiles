@@ -33,11 +33,6 @@ return {
     },
     config = true,
   },
-  {
-    "danilamihailov/beacon.nvim", -- Highlight cursor on jump
-    event = { "BufReadPost", "BufNewFile" },
-  },
-
   -- [[ Interface ]]
   {
     -- Switch windows/panes vim/tmux
