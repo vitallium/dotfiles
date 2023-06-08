@@ -11,16 +11,16 @@
 (after! prog-mode
   (bug-reference-prog-mode))
 
-;; Indent guides
-(after! highlight-indent-guides
-  (setq highlight-indent-guides-method 'bitmap
-        highlight-indent-guides-auto-odd-face-perc 3
-        highlight-indent-guides-auto-even-face-perc 1.5))
-
 ;; Setup apheleia
 (after! apheleia
   (setf (alist-get 'elisp-mode apheleia-mode-alist)
-        '(list-indent)))
+        '(lisp-indent))
+  ;; Configure rubocop
+  (setf (alist-get 'rubocop apheleia-mode-alist)
+        '("rubocop" "--stdin" filepath "--autocorrect"
+          "--stderr" "--format" "quiet" "--fail-level" "fatal"))
+  (setf (alist-get 'ruby-mode apheleia-mode-alist)
+        '(rubocop)))
 
 (use-package! string-inflection
   :commands (string-inflection-all-cycle
