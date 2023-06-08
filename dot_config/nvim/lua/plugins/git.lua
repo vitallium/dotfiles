@@ -59,6 +59,7 @@ return {
       local actions = require("diffview.actions")
 
       require("diffview").setup({
+        use_icons = false,
         keymaps = {
           view = {
             { "n", "<leader>ft", actions.toggle_files },

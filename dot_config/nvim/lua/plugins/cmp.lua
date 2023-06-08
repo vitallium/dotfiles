@@ -2,7 +2,7 @@ return {
   {
     "hrsh7th/nvim-cmp", -- Autocompletion plugin
     cmd = "CmpStatus",
-    event = "InsertEnter",
+    event = "VeryLazy",
     dependencies = {
       "f3fora/cmp-spell",
       "hrsh7th/cmp-buffer",
@@ -45,6 +45,9 @@ return {
             luasnip.lsp_expand(args.body)
           end,
         },
+        completion = {
+          keyword_length = 3,
+        },
         mapping = cmp.mapping.preset.insert({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -81,9 +84,19 @@ return {
             "s",
           }),
         }),
+        view = {
+          entries = "custom",
+        },
+        window = {
+          documentation = cmp.config.window.bordered({
+            border = vim.g.border,
+          }),
+        },
         formatting = {
           format = lspkind.cmp_format({
             with_text = true,
+            maxwidth = 50,
+            mode = "text",
             menu = {
               buffer = "[buf]",
               nvim_lsp = "[LSP]",
@@ -104,22 +117,14 @@ return {
         }, {
           { name = "buffer", keyword_length = 5 },
         }),
-        experimental = {
-          native_menu = false,
-          ghost_text = {
-            hl_group = "LspCodeLens",
-          },
-        },
       })
 
-      for _, key in ipairs({ "/", "?" }) do
-        cmp.setup.cmdline(key, {
-          sources = {
-            { name = "nvim_lsp_document_symbol" },
-            { name = "buffer" },
-          },
-        })
-      end
+      cmp.setup.cmdline({ "/", "?" }, {
+        sources = {
+          { name = "nvim_lsp_document_symbol" },
+          { name = "buffer" },
+        },
+      })
 
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),

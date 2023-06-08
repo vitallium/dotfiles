@@ -84,7 +84,6 @@ return {
         name = "Buffer",
         n = { ":bn<CR>", "Next buffer" },
         p = { ":bp<CR>", "Previous buffer" },
-        d = { ":bdelete<CR>", "Delete buffer" },
       },
       c = {
         name = "Code",

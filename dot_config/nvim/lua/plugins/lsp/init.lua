@@ -117,6 +117,15 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "lukas-reineke/lsp-format.nvim",
+      dependencies = {
+        "folke/neodev.nvim",
+        opts = {
+          library = {
+            plugins = false,
+          },
+          setup_jsonls = false,
+        },
+      },
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
@@ -185,16 +194,6 @@ return {
     end,
   },
   {
-    "folke/neodev.nvim",
-    opts = {
-      library = {
-        plugins = false,
-      },
-      setup_jsonls = false,
-    },
-    event = "VeryLazy",
-  },
-  {
     "crispgm/nvim-go",
     cmd = {
       "GoFormat",
@@ -208,5 +207,5 @@ return {
   { "smjonas/inc-rename.nvim", config = true },
   { "zbirenbaum/neodim", branch = "v2", config = true, event = "LspAttach" },
   { "simrat39/rust-tools.nvim" },
-  { "anuvyklack/hydra.nvim" }
+  { "anuvyklack/hydra.nvim" },
 }
