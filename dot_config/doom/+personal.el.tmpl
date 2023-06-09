@@ -4,3 +4,12 @@
 
 (setq user-full-name "Vitaly Slobodin"
       user-mail-address "{{ .email }}")
+
+;; Pull the SSH_AUTH_SOCK for Yubikey
+(require 's)
+(setenv "SSH_AUTH_SOCK" (s-trim (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket")))
+
+(setq +lookup-provider-url-alist
+      '(("Google" "https://google.com/search?q=%s")
+        ("GitHub" "https://github.com/search?ref=simplesearch&q=%s")
+        ("Sourcegraph" "https://sourcegraph.com/search?q=context:global+%s&patternType=literal")))
