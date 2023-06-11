@@ -70,4 +70,4 @@
 (package! org-modern)
 (package! org-pretty-table :recipe (:host github :repo "Fuco1/org-pretty-table"))
 
-(package! modus-themes)
+(package! modus-themes :pin "ee35a9af344d2b2920589ec4d66e9cb513bdfb80")

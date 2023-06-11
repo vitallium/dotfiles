@@ -22,6 +22,12 @@
  display-line-numbers-type nil
  window-resize-pixelwise t)
 
+(use-package! modus-themes
+  :init
+  (setq modus-themes-mode-line '(accented))
+  :config
+  (modus-themes-load-operandi))
+
 (after! doom-themes
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
@@ -32,6 +38,13 @@
   (add-hook 'treemacs-mode #'treemacs-follow-mode)
   (setq doom-themes-treemacs-enable-variable-pitch nil
         doom-themes-treemacs-theme "doom-colors"))
+
+(after! doom-modeline
+  (setq doom-modeline-bar-width 4
+        doom-modeline-mu4e t
+        doom-modeline-major-mode-icon t
+        doom-modeline-major-mode-color-icon t
+        doom-modeline-buffer-file-name-style 'truncate-upto-project))
 
 (use-package! auto-dark
   :custom
