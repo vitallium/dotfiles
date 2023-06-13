@@ -33,6 +33,12 @@
   attributesfile = ~/.config/git/attributes
   pager = delta
   editor = nvim
+  # Make `git rebase` safer on macOS.
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
+  # Speed up commands involving untracked files such as `git status`.
+  # https://git-scm.com/docs/git-update-index#_untracked_cache
+  untrackedCache = true
 
 [pager]
   diff = delta
@@ -58,12 +64,17 @@
   path = ~/.config/git/gitlab
 
 [gpg]
-  program = {{ .git.gpg.bin }}
+  program = gpg
 
 [fetch]
   prune = true
 
 [diff]
+  # Use n and N to move between diff sections
+  navigate = true
+  noprefix = true
+  # Detect copies as well as renames
+  renames = copies
   tool = nvimdiff
 
 [difftool "nvimdiff"]
