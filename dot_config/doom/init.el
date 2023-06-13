@@ -14,8 +14,8 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
-(defconst *is-emacs-28* EMACS28+)
-(defconst *is-emacs-29* EMACS29+)
+(defconst *is-emacs-28* (= emacs-major-version 28))
+(defconst *is-emacs-29* (>= emacs-major-version 29))
 
 (doom! :input
        ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
@@ -58,7 +58,7 @@
        svg
        ;;window-select     ; visually switch windows
        workspaces          ; tab emulation, persistence & separate workspaces
-       ;;zen               ; distraction-free coding or writing
+       zen                 ; distraction-free coding or writing
 
        :editor
        (evil +everywhere)  ; come to the dark side, we have cookies
@@ -179,7 +179,8 @@
        ;;ocaml             ; an objective camel
        (org                ; organize your plain life in plain text
         +journal
-        +pretty)
+        +pretty
+        +present)
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional

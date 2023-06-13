@@ -18,11 +18,6 @@
         org-journal-file-format "%Y-%m-%d.org"
         org-journal-date-format "%A, %d %B %Y"))
 
-;; TODO: Does not work with newer org-mode version.
-;; (use-package! org-ol-tree
-;;   :config
-;;   (add-hook 'org-agenda-mode #'org-super-agenda-mode))
-
 (add-hook! 'org-mode-hook
            #'+org-pretty-mode
            #'org-pretty-table-mode

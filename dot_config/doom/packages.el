@@ -64,7 +64,6 @@
 (unpin! tree-sitter-langs)
 
 ;; Org mode goodies
-(package! org-ol-tree :recipe (:host github :repo "Townk/org-ol-tree"))
 (package! org-modern)
 (package! org-pretty-table :recipe (:host github :repo "Fuco1/org-pretty-table"))
 
