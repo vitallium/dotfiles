@@ -46,13 +46,6 @@
         doom-modeline-major-mode-color-icon t
         doom-modeline-buffer-file-name-style 'truncate-upto-project))
 
-(use-package! auto-dark
-  :custom
-  (auto-dark-dark-theme 'modus-vivendi)
-  (auto-dark-light-theme 'modus-operandi)
-  :config
-  (auto-dark-mode t))
-
 (when IS-MAC
   (setq frame-title-format nil)
   (dolist (filter '((ns-transparent-titlebar . t)

@@ -49,7 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! auto-dark)
 (package! benchmark-init)
 (package! git-link)
 (package! jest-test-mode)
