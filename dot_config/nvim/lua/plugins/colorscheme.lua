@@ -2,6 +2,7 @@ return {
   {
     "folke/tokyonight.nvim",
     priority = 1000,
+    lazy = false,
     opts = {
       style = "night",
       on_colors = function(colors)
@@ -9,9 +10,9 @@ return {
       end,
     },
     config = function(_, opts)
-      local tokyonight = require("tokyonight")
-      tokyonight.setup(opts)
-      tokyonight.load()
+      require("tokyonight").setup(opts)
+
+      vim.cmd.colorscheme("tokyonight")
     end,
   },
 }
