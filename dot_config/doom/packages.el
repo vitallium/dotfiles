@@ -66,8 +66,13 @@
 ;; Org mode goodies
 (package! org-modern)
 (package! org-pretty-table :recipe (:host github :repo "Fuco1/org-pretty-table"))
+(package! org-appear :recipe (:host github :repo "awth13/org-appear"))
 
 (package! modus-themes :pin "ee35a9af344d2b2920589ec4d66e9cb513bdfb80")
 
 (unpin! lsp-mode)
+(unpin! lsp-ui)
 (unpin! lsp-treemacs)
+(unpin! consult-lsp)
+
+(unpin! vterm)

@@ -18,8 +18,18 @@
         org-journal-file-format "%Y-%m-%d.org"
         org-journal-date-format "%A, %d %B %Y"))
 
+(use-package! org-appear
+  :defer t
+  :hook (org-mode . org-appear-mode)
+  :config
+  (setq org-appear-autolinks t
+        org-appear-autosubmarkers t
+        org-appear-delay 0.3))
+
 (add-hook! 'org-mode-hook
            #'+org-pretty-mode
            #'org-pretty-table-mode
-           #'org-appear-mode
            #'org-modern-mode)
+
+(add-hook! 'gfm-mode-hook #'mixed-pitch-mode)
+(add-hook! 'markdown-mode-hook #'mixed-pitch-mode)

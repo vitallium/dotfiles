@@ -20,6 +20,7 @@
  doom-theme 'doom-one
  ;; Disable line numbers
  display-line-numbers-type nil
+ doom-font-increment 1.0
  window-resize-pixelwise t)
 
 (use-package! modus-themes
