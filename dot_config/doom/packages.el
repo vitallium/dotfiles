@@ -74,5 +74,3 @@
 (unpin! lsp-ui)
 (unpin! lsp-treemacs)
 (unpin! consult-lsp)
-
-(unpin! vterm)
