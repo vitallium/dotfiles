@@ -3,6 +3,7 @@ dockerfile-language-server-nodejs
 jsvu
 markdownlint-cli
 marked
+@microsoft/compose-language-service
 npm
 typescript
 typescript-language-server
