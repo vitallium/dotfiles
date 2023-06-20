@@ -5,6 +5,8 @@ local function setup_lsp_servers()
   local lspconfig = require("lspconfig")
   local lsp_defaults = lspconfig.util.default_config
 
+  require("lspconfig-bundler").setup()
+
   lsp_defaults.capabilities = vim.tbl_deep_extend("force", lsp_defaults.capabilities, capabilities)
 
   lspconfig.solargraph.setup({})
@@ -116,16 +118,19 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "lukas-reineke/lsp-format.nvim",
-      dependencies = {
-        "folke/neodev.nvim",
-        opts = {
-          library = {
-            plugins = false,
+      {
+        "lukas-reineke/lsp-format.nvim",
+        dependencies = {
+          "folke/neodev.nvim",
+          opts = {
+            library = {
+              plugins = false,
+            },
+            setup_jsonls = false,
           },
-          setup_jsonls = false,
         },
       },
+      "mihyaeru21/nvim-lspconfig-bundler",
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
