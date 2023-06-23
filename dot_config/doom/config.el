@@ -25,8 +25,8 @@
   (load! "+vterm"))
 
 ;; FIXME: Conflicts with Doom's tree-sitter module
-(when (and (modulep! :tools tree-sitter) *is-emacs-29*)
-  (load! "+tree-sitter"))
+;; (when (and (modulep! :tools tree-sitter) *is-emacs-29*)
+;;   (load! "+tree-sitter"))
 
 (when (modulep! :lang ruby)
   (load! "+ruby"))
