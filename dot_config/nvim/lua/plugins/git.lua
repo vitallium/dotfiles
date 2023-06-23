@@ -49,6 +49,7 @@ return {
     keys = {
       { "<leader>gs", "<Esc>:Git<CR>", silent = true, desc = "Open Git" },
       { "<leader>gg", "<Esc>:Git<CR>", silent = true, desc = "Open Git" },
+      { "<leader>gb", "<Esc>:Git blame<CR>", silent = true, desc = "Open Git" },
     },
   },
   {
