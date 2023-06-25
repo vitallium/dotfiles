@@ -6,6 +6,8 @@
 ;; Always start Emacs window maximized
 (add-hook 'window-setup-hook 'toggle-frame-maximized)
 
+(setq enable-local-variables :all)
+
 (load! "+personal")
 (if (display-graphic-p)
   (load! "+theme"))
