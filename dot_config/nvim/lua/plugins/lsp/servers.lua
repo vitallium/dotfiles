@@ -13,6 +13,7 @@ M.setup = function()
 
   lspconfig.solargraph.setup({})
   lspconfig.bashls.setup({})
+  lspconfig.clangd.setup({})
   lspconfig.cmake.setup({})
   lspconfig.cssls.setup({})
   lspconfig.dockerls.setup({})
