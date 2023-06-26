@@ -34,10 +34,13 @@ return {
       },
     },
     files = {
-      previewer = false,
+      fzf_opts = { ["--ansi"] = false },
     },
-    buffers = {
-      previewer = false,
-    },
+    manpages = { previewer = "man_native" },
+    helptags = { previewer = "help_native" },
+    tags = { previewer = "bat" },
+    btags = { previewer = "bat" },
+    global_git_icons = false,
+    global_file_icons = false,
   },
 }
