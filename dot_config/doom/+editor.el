@@ -56,3 +56,8 @@
       (string-inflection-all-cycle)
       (setq evil-repeat-info '([?g ?~])))
     (define-key evil-normal-state-map (kbd "g~") 'evil-operator-string-inflection)))
+
+(use-package! ts-fold
+  :config
+  (global-ts-fold-mode)
+  (global-ts-fold-indicators-mode))

@@ -76,3 +76,5 @@
 (unpin! consult-lsp)
 
 (unpin! magit)
+
+(package! ts-fold :recipe (:host github :repo "emacs-tree-sitter/ts-fold"))
