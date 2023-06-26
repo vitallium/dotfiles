@@ -23,9 +23,7 @@
  doom-font-increment 1.0
  window-resize-pixelwise t)
 
-(use-package! modus-themes
-  :init
-  (setq modus-themes-mode-line '(accented)))
+(setq modus-themes-mode-line '(accented))
 
 (after! doom-themes
   ;; Enable flashing mode-line on errors
