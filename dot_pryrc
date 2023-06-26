@@ -13,7 +13,6 @@ Pry::Commands.command /^$/, "repeat last command" do
 end
 
 # == Pry-Nav - Using pry as a debugger ==
-
 Pry.commands.alias_command 't', 'backtrace'
 Pry.commands.alias_command 's', 'step'
 Pry.commands.alias_command 'n', 'next'
