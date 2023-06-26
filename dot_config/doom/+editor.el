@@ -5,7 +5,6 @@
 (setq fill-column 120
       visual-fill-column-center-text t
       visual-fill-column-width fill-column)
-(add-hook! 'prog-mode-hook #'display-fill-column-indicator-mode)
 
 ;; don't enable smartparens by default - when it doesn't work, it's really frustrating
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
