@@ -34,7 +34,7 @@
   (doom-themes-org-config))
 
 (after! treemacs
-  (add-hook 'treemacs-mode #'treemacs-follow-mode)
+  (add-hook! 'treemacs-mode-hook #'treemacs-follow-mode)
   (setq doom-themes-treemacs-enable-variable-pitch nil
         doom-themes-treemacs-theme "doom-colors"))
 

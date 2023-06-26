@@ -4,7 +4,7 @@
 ;; sync' after modifying this file!
 
 ;; Always start Emacs window maximized
-(add-hook 'window-setup-hook 'toggle-frame-maximized)
+(add-hook! 'window-setup-hook #'toggle-frame-maximized)
 
 (setq enable-local-variables :all)
 

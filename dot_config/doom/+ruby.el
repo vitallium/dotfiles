@@ -10,7 +10,7 @@
 (set-docsets! 'ruby-mode "Ruby_3" "Ruby_on_Rails_7")
 
 ;; Treat underscores as part of words
-(add-hook! ruby-mode #'(lambda() (modify-syntax-entry ?_ "w" ruby-mode-syntax-table)))
+(add-hook! 'ruby-mode-hook (modify-syntax-entry ?_ "w" ruby-mode-syntax-table))
 
 (after! haml-mode
   (after! flycheck

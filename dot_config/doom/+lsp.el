@@ -9,7 +9,7 @@
         lsp-idle-delay 1
         lsp-log-io nil
         read-process-output-max (* 1024 1024 4))
-  (add-hook 'lsp-mode-hook (lambda () (setq-local company-format-margin-function #'company-vscode-dark-icons-margin)))
+  (add-hook! 'lsp-mode-hook (setq-local company-format-margin-function #'company-vscode-dark-icons-margin))
 
   (when (modulep! :completion company)
     (setq +lsp-company-backends '(company-capf company-files company-yasnippet :separate company-tabnine)))
