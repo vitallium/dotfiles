@@ -1,8 +1,12 @@
+# vim:ft=gottexttmpl.yaml
 {{ $email := promptString "email" -}}
 
 data:
   email: {{ $email }}
-  asdf_version: v0.11.3
+  zed:
+    font:
+      name: "Berkeley Mono"
+      size: 14
   {{- if eq .chezmoi.os "linux" }}
   pinentry_bin: /usr/bin/pinentry-gnome3
   git:
