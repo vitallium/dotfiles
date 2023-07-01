@@ -39,13 +39,8 @@ local fonts_configurations = {
 		size = 18.0,
 		harfbuzz_features = {},
 	},
-	hermit = {
-		name = "Hermit",
-		size = 14.0,
-		harfbuzz_features = {},
-	},
 }
-local font = fonts_configurations["hermit"]
+local font = fonts_configurations["berkeley"]
 
 return {
 	-- Font
