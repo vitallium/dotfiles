@@ -48,7 +48,6 @@ return {
     event = "VeryLazy",
     keys = {
       { "<leader>gs", "<Esc>:Git<CR>", silent = true, desc = "Open Git" },
-      { "<leader>gg", "<Esc>:Git<CR>", silent = true, desc = "Open Git" },
       { "<leader>gb", "<Esc>:Git blame<CR>", silent = true, desc = "Open Git" },
     },
   },
@@ -94,4 +93,19 @@ return {
   },
   -- Git client in your neovim
   { "kdheepak/lazygit.nvim", cmd = "LazyGit" },
+  {
+    "NeogitOrg/neogit",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = "Neogit",
+    keys = {
+      { "<leader>gg", "<Esc>:Neogit<CR>", silent = true, desc = "Open Git" },
+    },
+    opts = {
+      disable_commit_confirmation = true,
+      disable_builtin_notifications = true,
+      integrations = {
+        diffview = true,
+      },
+    },
+  },
 }
