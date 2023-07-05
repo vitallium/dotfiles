@@ -4,4 +4,6 @@ fish_add_path --append \
     # https://github.com/GoogleChromeLabs/jsvu
     $HOME/.jsvu \
     # Rust
-    $HOME/.cargo/bin
+    $HOME/.cargo/bin \
+    # Go
+    $HOME/.local/go/bin
