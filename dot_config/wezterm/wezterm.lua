@@ -12,7 +12,7 @@ end)
 local fonts_configurations = {
 	monolisa = {
 		name = "Monolisa",
-		size = 14.0,
+		size = 12.0,
 		harfbuzz_features = {
 			"zero=1",
 			"ss01=1",
@@ -31,7 +31,7 @@ local fonts_configurations = {
 	},
 	berkeley = {
 		name = "Berkeley Mono",
-		size = 14.0,
+		size = 13.0,
 		harfbuzz_features = {},
 	},
 	mononoki = {
@@ -43,13 +43,13 @@ local fonts_configurations = {
 local font = fonts_configurations["berkeley"]
 
 return {
-  front_end = "WebGpu",
+    front_end = "WebGpu",
 	-- Font
-	font = wezterm.font_with_fallback({ font.name, "Symbols Nerd Font Mono" }),
+    font = wezterm.font_with_fallback({ font.name, "Symbols Nerd Font Mono" }),
 	harfbuzz_features = font.harfbuzz_features,
 	font_size = font.size,
 	use_cap_height_to_scale_fallback_fonts = true,
-  unicode_version = 14,
+    unicode_version = 14,
 	-- Colors
 	color_scheme = "tokyonight_night",
 	enable_scroll_bar = false,
