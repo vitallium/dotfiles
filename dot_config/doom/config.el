@@ -2,6 +2,9 @@
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
+(require 'exec-path-from-shell)
+(when (display-graphic-p)
+  (exec-path-from-shell-initialize))
 
 ;; Always start Emacs window maximized
 (add-hook! 'window-setup-hook #'toggle-frame-maximized)
@@ -38,6 +41,13 @@
 
 (when (modulep! :lang org)
   (load! "+org"))
+
+(when (modulep! :lang yaml)
+  (load! "+yaml"))
+
+(when (modulep! :lang json)
+  (after! (jsonian flycheck) (jsonian-enable-flycheck))
+  (after! (jsonian so-long) (jsonian-no-so-long-mode)))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.

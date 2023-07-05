@@ -38,10 +38,9 @@
 
 (after! doom-modeline
   (setq doom-modeline-bar-width 4
-        doom-modeline-mu4e t
         doom-modeline-major-mode-icon t
         doom-modeline-major-mode-color-icon t
-        doom-modeline-buffer-file-name-style 'truncate-upto-project))
+        doom-modeline-buffer-file-name-style 'relative-to-project))
 
 (when IS-MAC
   (setq frame-title-format nil)
