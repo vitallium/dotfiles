@@ -1,0 +1,3 @@
+[".cache/wezterm/terminfo"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo"

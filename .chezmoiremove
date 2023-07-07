@@ -1,0 +1,18 @@
+# vim:ft=gotmpl.gitignore
+
+.CFUserTextEncoding
+.bash_history
+.bash_logout
+.bash_profile
+.bash_sessions
+.fzf.bash
+.fzf.zsh
+.inputrc
+.lesshst
+.profile
+.subversion
+.viminfo
+.wget-hsts
+.zshenv
+
+.config/wezterm/terminfo

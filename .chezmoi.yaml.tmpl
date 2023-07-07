@@ -1,6 +1,13 @@
 # vim:ft=gottexttmpl.yaml
 {{ $email := promptString "email" -}}
 
+color: true
+progress: true
+format: yaml
+
+edit:
+  command: "nvim"
+
 data:
   email: {{ $email }}
   zed:
@@ -22,4 +29,3 @@ data:
       key: EA8703DF57BC7168
       bin: gpg
   {{- end }}
-format: yaml
