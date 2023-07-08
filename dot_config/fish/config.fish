@@ -17,6 +17,11 @@ set -gx HISTFILE $XDG_DATA_HOME/fish/fish_history
 # Set ripgrep configuration file path
 set -gx RIPGREP_CONFIG_PATH $XDG_CONFIG_HOME/ripgrep/config
 
+# rtx (https://github.com/jdxcode/rtx)
+if type -q rtx
+    command rtx activate fish | source
+end
+
 # Golang
 set -gx GOPATH $HOME/.local/go
 set -gx GO111MODULE on

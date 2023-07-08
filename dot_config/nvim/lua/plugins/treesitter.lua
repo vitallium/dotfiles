@@ -43,13 +43,27 @@ return {
       ts_update()
     end,
     config = function()
+      local parser = require("nvim-treesitter.parsers").get_parser_configs()
+      parser.gotmpl = {
+        install_info = {
+          url = "https://github.com/ngalaiko/tree-sitter-go-template",
+          files = { "src/parser.c" },
+          revision = "45acf03891557b80a45ac1897e2cca2e8b9cf0ff",
+        },
+        filetype = "gotmpl",
+        used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl" },
+      }
+
       require("nvim-treesitter.configs").setup({
         -- A list of parser names, or "all"
         ensure_installed = {
           "bash",
           "css",
+          "fish",
           "dockerfile",
           "go",
+          "gomod",
+          "gotmpl",
           "gitcommit",
           "gitignore",
           "html",
@@ -108,6 +122,11 @@ return {
         -- https://github.com/RRethy/nvim-treesitter-endwise
         endwise = {
           enable = true,
+        },
+        query_linter = {
+          enable = true,
+          use_virtual_text = true,
+          lint_events = { "BufWrite", "CursorHold" },
         },
       })
     end,
