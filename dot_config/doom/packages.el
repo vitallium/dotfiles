@@ -48,8 +48,6 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
-(package! exec-path-from-shell)
-
 (package! git-link)
 (package! jest-test-mode)
 
@@ -59,24 +57,10 @@
 (package! visual-fill-column)
 (package! string-inflection)
 
-(unpin! doom-themes)
-
-;; Pull latest tree-sitter packages
-(package! treesit-auto)
-(unpin! tree-sitter)
-(unpin! tree-sitter-langs)
-
 ;; Org mode goodies
 (package! org-modern)
 (package! org-pretty-table :recipe (:host github :repo "Fuco1/org-pretty-table"))
 (package! org-appear :recipe (:host github :repo "awth13/org-appear"))
-
-(unpin! lsp-mode)
-(unpin! lsp-ui)
-(unpin! lsp-treemacs)
-(unpin! consult-lsp)
-
-(unpin! magit)
 
 (package! ts-fold :recipe (:host github :repo "emacs-tree-sitter/ts-fold"))
 
@@ -88,3 +72,5 @@
 
 (package! multi-vterm)
 (package! jinx)
+
+(unpin! t)

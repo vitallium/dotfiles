@@ -2,9 +2,6 @@
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
-(require 'exec-path-from-shell)
-(when (display-graphic-p)
-  (exec-path-from-shell-initialize))
 
 ;; Always start Emacs window maximized
 (add-hook! 'window-setup-hook #'toggle-frame-maximized)
