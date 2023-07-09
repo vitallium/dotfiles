@@ -40,7 +40,7 @@ local fonts_configurations = {
         harfbuzz_features = {},
     },
 }
-local font = fonts_configurations["monolisa"]
+local font = fonts_configurations["berkeley"]
 
 return {
     front_end = "WebGpu",
