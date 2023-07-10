@@ -2,9 +2,6 @@ return {
   {
     "lewis6991/gitsigns.nvim", -- Git gutter
     event = "VeryLazy",
-    keys = {
-      { "<leader>gB", ":Gitsigns toggle_current_line_blame<CR>", desc = "Blame" },
-    },
     opts = {
       signs = {
         add = { text = "▎" },
@@ -48,7 +45,7 @@ return {
     event = "VeryLazy",
     keys = {
       { "<leader>gs", "<Esc>:Git<CR>", silent = true, desc = "Open Git" },
-      { "<leader>gb", "<Esc>:Git blame<CR>", silent = true, desc = "Open Git" },
+      { "<leader>gb", "<Esc>:Git blame<CR>", silent = true, desc = "Blame" },
     },
   },
   {

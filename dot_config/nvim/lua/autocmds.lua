@@ -23,6 +23,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = {
     "checkhealth",
     "fugitive",
+    "fugitiveblame",
     "help",
     "lspinfo",
     "man",
