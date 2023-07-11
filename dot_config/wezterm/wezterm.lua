@@ -39,8 +39,14 @@ local fonts_configurations = {
         size = 18.0,
         harfbuzz_features = {},
     },
+    pragmata = {
+        name = "PragmataPro Mono Liga",
+        size = 16.0,
+        harfbuzz_features = {},
+    },
+
 }
-local font = fonts_configurations["berkeley"]
+local font = fonts_configurations["pragmata"]
 
 return {
     front_end = "WebGpu",
