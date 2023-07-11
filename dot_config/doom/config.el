@@ -46,6 +46,11 @@
   (after! (jsonian flycheck) (jsonian-enable-flycheck))
   (after! (jsonian so-long) (jsonian-no-so-long-mode)))
 
+;; Use GNU grep on macOS for faster `consult-grep`
+;; `doom doctor` is still complaining, because of hard-coded `grep` command
+(after! consult
+  (when IS-MAC (setq consult-grep-args (append '("ggrep") (cdr consult-grep-args) ))))
+
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
