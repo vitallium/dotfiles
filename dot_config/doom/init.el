@@ -14,6 +14,16 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
+(after! doom-cli-env
+  (when noninteractive
+    (setq doom-env-deny '("^.*"))
+    (setq doom-env-allow '("^PATH$"
+                           "^GOPATH$"
+                           "^LANG$"
+                           "^LC_ALL$"
+                           "^SSH_AUTH_SOCK$"
+                           "^LSP_USE_PLISTS$"))))
+
 (defconst *is-emacs-28* (= emacs-major-version 28))
 (defconst *is-emacs-29* (>= emacs-major-version 29))
 
