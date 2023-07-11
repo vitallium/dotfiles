@@ -1,3 +1,4 @@
+# vim:ft=ruby
 Pry.editor = "nvim"
 
 if defined?(Pry::Prompt)
