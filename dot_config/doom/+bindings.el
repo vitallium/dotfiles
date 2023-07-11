@@ -15,3 +15,11 @@
 (after! avy
   (map! :nvm "s" #'avy-goto-char-timer)
   (setq avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
+
+(map!
+ (:when (modulep! :completion vertico)
+   (:after vertico
+    :map vertico-map
+    (:when (modulep! :editor evil +everywhere)
+      "C-h"  #'vertico-directory-up
+      "C-l"  #'vertico-directory-enter))))

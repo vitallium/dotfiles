@@ -54,6 +54,8 @@
 (package! company-quickhelp)
 (package! company-tabnine)
 
+(package! modus-themes)
+
 (package! visual-fill-column)
 (package! string-inflection)
 
@@ -72,5 +74,9 @@
 
 (package! multi-vterm)
 (package! jinx)
+
+;; Disable solaire-mode to make scrolling and cursor movement less painful on macOS
+;; see https://github.com/doomemacs/doomemacs/issues/2217 for the details
+(package! solaire-mode :disable t)
 
 (unpin! t)
