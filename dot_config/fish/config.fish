@@ -104,3 +104,10 @@ end
 gpgconf --launch gpg-agent
 set -x GPG_TTY (tty)
 set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+
+# Aliases
+alias t="tmux"
+alias ta="t a -t"
+alias tls="t ls"
+alias tn="t new -t"
+alias t="tmux"
