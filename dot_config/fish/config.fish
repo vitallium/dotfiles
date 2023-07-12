@@ -17,11 +17,6 @@ set -gx HISTFILE $XDG_DATA_HOME/fish/fish_history
 # Set ripgrep configuration file path
 set -gx RIPGREP_CONFIG_PATH $XDG_CONFIG_HOME/ripgrep/config
 
-# rtx (https://github.com/jdxcode/rtx)
-if type -q rtx
-    command rtx activate fish | source
-end
-
 # Homebrew
 if not set -q HOMEBREW_PREFIX
     if test -d /opt/homebrew
@@ -48,6 +43,11 @@ if set -q HOMEBREW_PREFIX
 
     fish_add_path --append -g --move $HOMEBREW_PREFIX/{,s}bin
     fish_add_path -g --move $HOMEBREW_PREFIX/opt/curl/bin
+end
+
+# rtx (https://github.com/jdxcode/rtx)
+if type -q rtx
+    command rtx activate fish | source
 end
 
 # Golang
