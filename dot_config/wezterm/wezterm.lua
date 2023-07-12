@@ -44,17 +44,14 @@ local fonts_configurations = {
         size = 16.0,
         harfbuzz_features = {},
     },
-
 }
 local font = fonts_configurations["pragmata"]
 
 return {
-    front_end = "WebGpu",
     -- Font
-    font = wezterm.font_with_fallback({ font.name, "Symbols Nerd Font Mono" }),
+    font = wezterm.font(font.name),
     harfbuzz_features = font.harfbuzz_features,
     font_size = font.size,
-    use_cap_height_to_scale_fallback_fonts = true,
     unicode_version = 14,
     -- Colors
     color_scheme = "tokyonight_night",
