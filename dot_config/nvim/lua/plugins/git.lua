@@ -104,5 +104,8 @@ return {
         diffview = true,
       },
     },
+    config = function()
+      require("neogit").setup({})
+    end,
   },
 }
