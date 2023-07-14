@@ -34,7 +34,6 @@ if set -q HOMEBREW_PREFIX
     set -gx HOMEBREW_CACHE $XDG_CACHE_HOME/brew
     set -gx HOMEBREW_CASK_OPTS --no-quarantine
     set -gx HOMEBREW_LOGS $XDG_CACHE_HOME/brew/logs
-    set -gx HOMEBREW_NO_ANALYTICS 1
     set -gx HOMEBREW_NO_COMPAT 1
     set -gx HOMEBREW_NO_ENV_HINTS 1
 
