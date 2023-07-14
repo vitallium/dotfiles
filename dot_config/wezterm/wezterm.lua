@@ -44,9 +44,8 @@ local fonts_configurations = {
         size = 16.0,
         harfbuzz_features = {},
     },
-
 }
-local font = fonts_configurations["pragmata"]
+local font = fonts_configurations["berkeley"]
 
 return {
     front_end = "WebGpu",

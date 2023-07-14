@@ -7,11 +7,9 @@
 (setq
  ;; Fonts
  ;; Primary font to use
- doom-font (font-spec :family "PragmataPro Mono Liga" :size 16 :weight 'normal)
- doom-variable-pitch-font (font-spec :family "PragmataPro Mono Liga" :size 16)
- ;; doom-font (font-spec :family "Berkeley Mono" :size 14.0)
+ doom-font (font-spec :family "Berkeley Mono" :size 14.0)
  ;; Non-monospace font
- ;; doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size 14.0)
+ doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size 14.0)
  ;; For big-font-mode
  doom-big-font (font-spec :family (if IS-MAC "Monaco" "mononoki") :size 20.0)
  ;; For unicode glyphs
