@@ -2,6 +2,10 @@
 local opt = vim.opt
 local g = vim.g
 
+--- Disable netrw[m
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+
 -- must be first to make mapping correct
 g.mapleader = " "
 g.maplocalleader = ","

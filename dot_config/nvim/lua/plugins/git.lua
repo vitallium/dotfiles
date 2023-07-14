@@ -3,14 +3,6 @@ return {
     "lewis6991/gitsigns.nvim", -- Git gutter
     event = "VeryLazy",
     opts = {
-      signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "" },
-        topdelete = { text = "" },
-        changedelete = { text = "▎" },
-        untracked = { text = "▎" },
-      },
       on_attach = function(buffer)
         local gs = package.loaded.gitsigns
 
@@ -98,6 +90,7 @@ return {
       { "<leader>gg", "<Esc>:Neogit<CR>", silent = true, desc = "Open Git" },
     },
     opts = {
+      use_telescope = false,
       disable_commit_confirmation = true,
       disable_builtin_notifications = true,
       integrations = {
