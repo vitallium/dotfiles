@@ -32,7 +32,6 @@
   excludesfile = ~/.config/git/ignore
   attributesfile = ~/.config/git/attributes
   pager = delta
-  editor = nvim
   # Make `git rebase` safer on macOS.
   # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
   trustctime = false
@@ -75,16 +74,6 @@
   noprefix = true
   # Detect copies as well as renames
   renames = copies
-  tool = nvimdiff
-
-[difftool "nvimdiff"]
-  cmd = nvim -d "$LOCAL" "$REMOTE"
-
-[merge]
-  tool = nvimmerge
-
-[mergetool "nvimmerge"]
-  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
 [rerere]
   enabled = true
