@@ -31,7 +31,7 @@ local fonts_configurations = {
     },
     berkeley = {
         name = "Berkeley Mono",
-        size = 13.0,
+        size = 14.0,
         harfbuzz_features = {},
     },
     mononoki = {
