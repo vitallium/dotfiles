@@ -5,9 +5,9 @@ alias vim='nvim'
 # Setup editor
 if not test -z EDITOR
     if type -q nvim
-        abbr --add vi nvim
-        abbr --add vim nvim
-        abbr --add view 'nvim -R'
+        alias vi='nvim'
+        alias vim='nvim'
+        alias view='nvim -R'
 
         set -f editor nvim
     else if type -q vim
