@@ -48,7 +48,6 @@ local fonts_configurations = {
 local font = fonts_configurations["berkeley"]
 
 return {
-    front_end = "WebGpu",
     -- Font
     font = wezterm.font_with_fallback({ font.name, "Symbols Nerd Font Mono" }),
     harfbuzz_features = font.harfbuzz_features,
