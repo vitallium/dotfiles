@@ -12,7 +12,6 @@ end
 if set -q HOMEBREW_PREFIX
     # https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md
     set -gx HOMEBREW_BAT 1
-    set -gx HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/Brewfile
     set -gx HOMEBREW_BUNDLE_NO_LOCK 1
     set -gx HOMEBREW_CACHE $XDG_CACHE_HOME/brew
     set -gx HOMEBREW_CASK_OPTS --no-quarantine
