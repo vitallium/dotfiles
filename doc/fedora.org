@@ -285,7 +285,8 @@ dnf install -y 1password-cli
 dnf install -y dconf-editor \
                webp-pixbuf-loader \
                avif-pixbuf-loader \
-               gthumb
+               gthumb \
+               kitty
 #+end_src
 
 Install ~gnome-shell~ with patches:
