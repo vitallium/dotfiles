@@ -79,7 +79,7 @@ M.on_attach = function(client, buffer)
 
   if client.server_capabilities.implementationProvider then
     vim.keymap.set("n", "gi", function()
-      vim.cmd.FzfLua.lsp_implementations()
+      require("fzf-lua").lsp_implementations()
     end, { desc = "Go To Implementations(s)" })
   end
 end

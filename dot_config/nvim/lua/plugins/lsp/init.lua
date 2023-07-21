@@ -56,34 +56,6 @@ return {
   },
   { "b0o/schemastore.nvim", version = false },
   {
-    "jose-elias-alvarez/typescript.nvim",
-    config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local handlers = require("plugins.lsp.handlers")
-
-      require("typescript").setup({
-        debug = false,
-        disable_commands = false,
-        disable_formatting = true,
-        go_to_source_definition = {
-          fallback = true, -- Fall back to standard LSP definition on failure.
-        },
-        server = {
-          capabilities = capabilities,
-          filetypes = { "javascript", "javascript.jsx", "typescript", "typescript.tsx" },
-          on_attach = handlers.on_attach,
-          settings = {
-            completions = {
-              completeFunctionCalls = true,
-            },
-          },
-        },
-      })
-
-      require("null-ls").register(require("typescript.extensions.null-ls.code-actions"))
-    end,
-  },
-  {
     "crispgm/nvim-go",
     cmd = {
       "GoFormat",

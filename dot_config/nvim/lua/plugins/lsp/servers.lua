@@ -10,6 +10,7 @@ M.setup = function()
   require("lspconfig-bundler").setup()
 
   lsp_defaults.capabilities = vim.tbl_deep_extend("force", lsp_defaults.capabilities, capabilities)
+  lsp_defaults.on_attach = handlers.on_attach
 
   lspconfig.solargraph.setup({})
   lspconfig.bashls.setup({})
@@ -21,6 +22,7 @@ M.setup = function()
   lspconfig.graphql.setup({})
   lspconfig.html.setup({})
   lspconfig.marksman.setup({})
+  lspconfig.tsserver.setup({})
   lspconfig.vuels.setup({})
 
   lspconfig.gopls.setup({
