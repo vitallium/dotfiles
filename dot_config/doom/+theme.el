@@ -33,8 +33,7 @@
 
 (after! treemacs
   (add-hook! 'treemacs-mode-hook #'treemacs-follow-mode)
-  (setq doom-themes-treemacs-enable-variable-pitch nil
-        doom-themes-treemacs-theme "doom-colors"))
+  (setq doom-themes-treemacs-enable-variable-pitch nil))
 
 (after! doom-modeline
   (setq doom-modeline-bar-width 4
