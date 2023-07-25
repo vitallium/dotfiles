@@ -13,9 +13,4 @@ return {
       require("tokyonight").setup(opts)
     end,
   },
-  {
-    "RRethy/nvim-base16",
-    priority = 1000,
-    lazy = false,
-  },
 }

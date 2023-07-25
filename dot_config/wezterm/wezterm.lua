@@ -78,7 +78,6 @@ return {
     clean_exit_codes = { 130 },
     automatically_reload_config = true,
     scrollback_lines = 10000,
-    term = "wezterm",
     -- Key bindings
     send_composed_key_when_left_alt_is_pressed = false,
     send_composed_key_when_right_alt_is_pressed = true,
