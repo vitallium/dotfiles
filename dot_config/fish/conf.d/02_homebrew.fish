@@ -1,5 +1,3 @@
-status is-interactive || exit
-
 # Homebrew
 if not set -q HOMEBREW_PREFIX
     if test -d /opt/homebrew

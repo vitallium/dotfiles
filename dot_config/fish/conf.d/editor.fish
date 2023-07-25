@@ -1,7 +1,5 @@
 status is-interactive || exit
 
-alias vim='nvim'
-
 # Setup editor
 if not test -z EDITOR
     if type -q nvim
