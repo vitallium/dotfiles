@@ -338,6 +338,7 @@ Temporary Items
 
 ### direnv ###
 .direnv
+.direnv/
 .envrc
 
 ### Rust ###
