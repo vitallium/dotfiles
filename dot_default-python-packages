@@ -2,6 +2,7 @@ docutils
 gitlint
 poetry
 ranger-fm
+pgcli
 pynvim
 qmk
 wheel
