@@ -5,6 +5,7 @@ bundler-audit
 byebug
 neovim
 pry
+pry-byebug
 pry-doc
 reek
 solargraph
