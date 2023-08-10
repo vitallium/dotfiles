@@ -35,6 +35,11 @@ return {
   },
   -- [[ Interface ]]
   {
+    -- Switch windows/panes vim/tmux
+    "christoomey/vim-tmux-navigator",
+    event = { "VeryLazy" },
+  },
+  {
     -- Alt-h/j/k/l to move line
     "booperlv/nvim-gomove",
     event = { "BufReadPost", "BufNewFile" },
