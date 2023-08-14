@@ -3,7 +3,7 @@ return {
   { "nvim-lua/plenary.nvim", lazy = true },
   {
     "direnv/direnv.vim",
-    event = "BufRead",
+    event = "BufReadPre",
   },
   {
     "nvchad/nvim-colorizer.lua",
