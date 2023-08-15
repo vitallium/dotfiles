@@ -337,7 +337,6 @@ Temporary Items
 .nfs*
 
 ### direnv ###
-.direnv
 .direnv/
 .envrc
 
