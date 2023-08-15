@@ -2,11 +2,10 @@
 
 ;; Configure TabNine
 (after! company
-  (setq company-idle-delay 1.5
+  (setq company-idle-delay 0.5
         company-minimum-prefix-length 3
         company-show-quick-access t
-        company-tooltip-align-annotations t
-        company-frontends '(company-pseudo-tooltip-frontend))
+        company-tooltip-align-annotations t)
   (set-company-backend! '(prog-mode)  '(
                                         company-capf
                                         company-files

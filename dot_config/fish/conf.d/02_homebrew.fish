@@ -22,4 +22,5 @@ if set -q HOMEBREW_PREFIX
 
     fish_add_path --append -g --move $HOMEBREW_PREFIX/{,s}bin
     fish_add_path -g --move $HOMEBREW_PREFIX/opt/curl/bin
+    fish_add_path -g --move $HOMEBREW_PREFIX/opt/gnupg@2.2/bin
 end

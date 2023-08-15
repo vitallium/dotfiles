@@ -11,13 +11,13 @@
  ;; Non-monospace font
  doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size 14.0)
  ;; For big-font-mode
- doom-big-font (font-spec :family (if IS-MAC "Monaco" "mononoki") :size 20.0)
+ doom-big-font (font-spec :family "mononoki" :size 20.0)
  ;; For unicode glyphs
  ;; (doom-unicode-font)
  ;; For `fixed-pitch-serif' face
  ;; (doom-serif-font)
  ;; Theme
- doom-theme 'doom-one
+ doom-theme 'ef-day
  ;; Disable line numbers
  display-line-numbers-type nil
  doom-font-increment 1.0
@@ -36,10 +36,9 @@
   (setq doom-themes-treemacs-enable-variable-pitch nil))
 
 (after! doom-modeline
-  (setq doom-modeline-bar-width 4
-        doom-modeline-major-mode-icon t
+  (setq doom-modeline-major-mode-icon t
         doom-modeline-major-mode-color-icon t
-        doom-modeline-buffer-file-name-style 'relative-to-project))
+        doom-modeline-buffer-file-name-style 'truncate-with-project))
 
 (when IS-MAC
   (setq frame-title-format nil)
