@@ -103,7 +103,7 @@ return {
               nvim_lua = "[api]",
               path = "[path]",
               luasnip = "[snip]",
-              tabnine = "[tabnine]",
+              cmp_tabnine = "[tabnine]",
             },
           }),
         },

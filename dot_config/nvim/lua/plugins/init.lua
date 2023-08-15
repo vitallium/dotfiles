@@ -52,4 +52,9 @@ return {
   },
   -- Python requirements.txt
   { "raimon49/requirements.txt.vim", event = { "BufReadPre" } },
+  -- Switch windows/panes vim/tmux
+  {
+    "christoomey/vim-tmux-navigator",
+    event = { "VeryLazy" },
+  },
 }
