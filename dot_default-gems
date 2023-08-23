@@ -3,6 +3,7 @@ binding_of_caller
 bundler
 bundler-audit
 byebug
+hookup
 neovim
 pry
 pry-byebug
