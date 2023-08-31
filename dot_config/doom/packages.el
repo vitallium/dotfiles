@@ -81,6 +81,16 @@
 ;; see https://github.com/doomemacs/doomemacs/issues/2217 for the details
 (package! solaire-mode :disable t)
 
+;; LSP
+(unpin! lsp-mode
+        lsp-ui)
+
+;; Fix cmake-mode
+(package! cmake-mode
+  :recipe (:host github :repo "emacsmirror/cmake-mode" :files (:defaults "*"))
+  :pin "f9c7a21254a82a8d44b623bdfded6d21b4ea33ef")
+
+;; Ruby
 (unpin! inf-ruby
         company-inf-ruby
         rubocop
