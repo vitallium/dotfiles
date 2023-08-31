@@ -1,4 +1,5 @@
 github.com/DarthSim/hivemind@latest
+github.com/DarthSim/overmind/v2@latest
 github.com/go-delve/delve/cmd/dlv@latest
 github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 github.com/nao1215/gup@latest
