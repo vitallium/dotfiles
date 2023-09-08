@@ -23,3 +23,7 @@
     (:when (modulep! :editor evil +everywhere)
       "C-h"  #'vertico-directory-up
       "C-l"  #'vertico-directory-enter))))
+
+(use-package reverse-im
+  :config
+  (reverse-im-activate "russian-computer"))

@@ -73,6 +73,7 @@
 ;; Replace json-moode with jsonian
 (package! json-mode :disable t)
 (package! jsonian :recipe (:host github :repo "iwahbe/jsonian"))
+(package! jsonnet-mode)
 
 (package! multi-vterm)
 (package! jinx)
@@ -80,10 +81,6 @@
 ;; Disable solaire-mode to make scrolling and cursor movement less painful on macOS
 ;; see https://github.com/doomemacs/doomemacs/issues/2217 for the details
 (package! solaire-mode :disable t)
-
-;; LSP
-(unpin! lsp-mode
-        lsp-ui)
 
 ;; Fix cmake-mode
 (package! cmake-mode
@@ -100,3 +97,4 @@
         rspec-mode
         projectile-rails)
 
+(package! reverse-im)
