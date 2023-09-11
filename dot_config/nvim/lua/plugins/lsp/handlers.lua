@@ -1,8 +1,6 @@
 local M = {}
 
 M.on_attach = function(client, buffer)
-  require("lsp-format").on_attach(client)
-
   -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#highlight-symbol-under-cursor
   if client.server_capabilities.documentHighlightProvider then
     local group = vim.api.nvim_create_augroup("LSPHighlightReferences", {})

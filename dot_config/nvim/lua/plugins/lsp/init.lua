@@ -3,15 +3,12 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       {
-        "lukas-reineke/lsp-format.nvim",
-        dependencies = {
-          "folke/neodev.nvim",
-          opts = {
-            library = {
-              plugins = false,
-            },
-            setup_jsonls = false,
+        "folke/neodev.nvim",
+        opts = {
+          library = {
+            plugins = false,
           },
+          setup_jsonls = false,
         },
       },
       "mihyaeru21/nvim-lspconfig-bundler",
