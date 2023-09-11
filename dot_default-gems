@@ -8,6 +8,7 @@ neovim
 pry
 pry-byebug
 pry-doc
+pry-reload
 reek
 solargraph
 solargraph-rails

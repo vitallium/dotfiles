@@ -44,6 +44,8 @@ if defined?(PryByebug)
    end
 end
 
+require 'pry-reload'
+
 # Use awesome_print (or amazing_print)
 begin
   require 'awesome_print'
