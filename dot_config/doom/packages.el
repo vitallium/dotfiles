@@ -96,5 +96,7 @@
         rake
         rspec-mode
         projectile-rails)
+(package! ruby-electric)
+(package! rbs-mode)
 
 (package! reverse-im)

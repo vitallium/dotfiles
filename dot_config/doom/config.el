@@ -23,6 +23,9 @@
 (when (modulep! :completion company)
   (load! "+company"))
 
+(when (modulep! :term eshell)
+  (load! "+eshell"))
+
 (when (modulep! :term vterm)
   (load! "+vterm"))
 

@@ -9,6 +9,7 @@
 
 ;; Treat underscores as part of words
 (add-hook! 'ruby-mode-hook (modify-syntax-entry ?_ "w" ruby-mode-syntax-table))
+(add-hook! 'ruby-mode-hook 'ruby-electric-mode)
 
 (after! haml-mode
   (after! flycheck

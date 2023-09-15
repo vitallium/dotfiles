@@ -4,12 +4,53 @@
 (when *is-emacs-29*
   (pixel-scroll-precision-mode))
 
+;; From https://github.com/gf3/dotfiles/
+(defun gf3/get-dpi (&optional frame)
+  "Get the DPI of FRAME (or current if nil)."
+  (cl-flet ((pyth (lambda (w h)
+                    (sqrt (+ (* w w)
+                             (* h h)))))
+            (mm2in (lambda (mm)
+                     (/ mm 25.4))))
+    (let* ((atts (frame-monitor-attributes frame))
+           (pix-w (cl-fourth (assoc 'geometry atts)))
+           (pix-h (cl-fifth (assoc 'geometry atts)))
+           (pix-d (pyth pix-w pix-h))
+           (mm-w (cl-second (assoc 'mm-size atts)))
+           (mm-h (cl-third (assoc 'mm-size atts)))
+           (mm-d (pyth mm-w mm-h)))
+      (/ pix-d (mm2in mm-d)))))
+
+(defun gf3/preferred-font-size ()
+  "Calculate the preferred font size based on the monitor DPI."
+  (let ((dpi (gf3/get-dpi)))
+    (cond
+     ((< dpi 110) 14.0)
+     ((< dpi 130) 16.0)
+     ((< dpi 160) 18.0)
+     (t 16.0))))
+
+(use-package! modus-themes
+  :custom
+  (modus-themes-mode-line '(accented))
+  (modus-themes-italic-constructs t))
+
+(after! doom-themes
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+
+(after! treemacs
+  (add-hook! 'treemacs-mode-hook #'treemacs-follow-mode)
+  (setq doom-themes-treemacs-enable-variable-pitch nil))
+
 (setq
  ;; Fonts
  ;; Primary font to use
- doom-font (font-spec :family "Berkeley Mono" :size 14.0)
+ doom-font (font-spec :family "Berkeley Mono" :size (gf3/preferred-font-size))
  ;; Non-monospace font
- doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size 14.0)
+ doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size (gf3/preferred-font-size))
  ;; For big-font-mode
  doom-big-font (font-spec :family "mononoki" :size 20.0)
  ;; For unicode glyphs
@@ -22,18 +63,6 @@
  display-line-numbers-type nil
  doom-font-increment 1.0
  window-resize-pixelwise t)
-
-(setq modus-themes-mode-line '(accented))
-
-(after! doom-themes
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
-
-(after! treemacs
-  (add-hook! 'treemacs-mode-hook #'treemacs-follow-mode)
-  (setq doom-themes-treemacs-enable-variable-pitch nil))
 
 (after! doom-modeline
   (setq doom-modeline-major-mode-icon t
