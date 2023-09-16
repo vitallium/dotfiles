@@ -1,6 +1,6 @@
 node 18.17.1
 ruby 3.2.2
-python 3.11.4
-golang 1.21.0
-chezmoi 2.37.0
-rust 1.71.1
+python 3.11.5
+golang 1.21.1
+chezmoi 2.39.1
+rust 1.72.0
