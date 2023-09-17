@@ -82,20 +82,11 @@
 ;; see https://github.com/doomemacs/doomemacs/issues/2217 for the details
 (package! solaire-mode :disable t)
 
-;; Fix cmake-mode
-(package! cmake-mode
-  :recipe (:host github :repo "emacsmirror/cmake-mode" :files (:defaults "*"))
-  :pin "f9c7a21254a82a8d44b623bdfded6d21b4ea33ef")
-
 ;; Ruby
-(unpin! inf-ruby
-        company-inf-ruby
-        rubocop
-        robe
-        bundler
-        rake
-        rspec-mode
-        projectile-rails)
+(package! yard-mode :pin "de1701753a64544c3376b015805f3661136d8038")
+(package! inf-ruby :pin "03475ac1cca410ee63a523f5c63f859cfafe1aeb")
+(package! robe :pin "912ae2ba1f467bd55b2da64bfec9db3f8a723916")
+(package! rspec-mode :pin "29df3d081c6a1cbdf840cd13d45ea1c100c5bbaa")
 (package! ruby-electric)
 (package! rbs-mode)
 
