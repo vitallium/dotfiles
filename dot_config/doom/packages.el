@@ -65,6 +65,7 @@
 (package! org-modern)
 (package! org-pretty-table :recipe (:host github :repo "Fuco1/org-pretty-table"))
 (package! org-appear :recipe (:host github :repo "awth13/org-appear"))
+(package! mixed-pitch)
 
 (package! ts-fold :recipe (:host github :repo "emacs-tree-sitter/ts-fold"))
 
@@ -91,3 +92,4 @@
 (package! rbs-mode)
 
 (package! reverse-im)
+(package! embark-vc)

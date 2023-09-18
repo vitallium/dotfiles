@@ -3,6 +3,8 @@
 ;; Set the org-mode folder location
 (setq org-directory "~/Documents/Org/")
 
+(setq org-use-property-inheritance t)
+
 (after! org
   (setq
    org-todo-keywords '((sequence "TODO(t)" "IN PROGRESS(p)" "|" "DONE(d)" ))))
@@ -16,10 +18,13 @@
   (setq org-journal-dir "~/Org/Journal"
         org-journal-date-prefix "#+TITLE: "
         org-journal-file-format "%Y-%m-%d.org"
-        org-journal-date-format "%A, %d %B %Y"))
+        org-journal-date-format "%A, %d %B %Y"
+        org-journal-find-file #'find-file-other-window))
+
+(map! :leader :desc "Open today's journal" "j" #'org-journal-open-current-journal-file)
 
 (use-package! org-appear
-  :defer t
+  :after org
   :hook (org-mode . org-appear-mode)
   :config
   (setq org-appear-autolinks t
@@ -31,5 +36,7 @@
            #'org-pretty-table-mode
            #'org-modern-mode)
 
-(add-hook! 'gfm-mode-hook #'mixed-pitch-mode)
-(add-hook! 'markdown-mode-hook #'mixed-pitch-mode)
+(setq +zen-mixed-pitch-modes '(org-mode markdown-mode gfm-mode Info-mode rst-mode adoc-mode))
+
+(dolist (hook +zen-mixed-pitch-modes)
+  (add-hook (intern (concat (symbol-name hook) "-hook")) #'mixed-pitch-mode))
