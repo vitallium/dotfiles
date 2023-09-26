@@ -16,7 +16,7 @@ opt.clipboard = "unnamedplus" -- str: Clipboard integration with macOS
 opt.updatetime = 1000 -- num: Faster update times.
 opt.hidden = true -- bool: This makes vim act like all other editors, buffers can exist in the background without being in a window.
 opt.splitkeep = "screen" -- string: Keep the text on the same screen line.
-opt.shortmess = "filnxtToOFWIcC"
+opt.shortmess:append({ W = true, I = true, c = true })
 
 -- [[ Context ]]
 opt.colorcolumn = "80" -- str: Show col for max line length

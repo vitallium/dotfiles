@@ -13,7 +13,6 @@ return {
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
       "onsails/lspkind.nvim",
-      "petertriho/cmp-git",
       "saadparwaiz1/cmp_luasnip",
       {
         "tzachar/cmp-tabnine",

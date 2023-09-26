@@ -2,6 +2,9 @@ return {
   "akinsho/toggleterm.nvim", -- Toggle terminals like Doom Emacs
   version = "*",
   cmd = { "ToggleTerm" },
+  keys = {
+    { "<leader>ot", ":ToggleTerm<CR>", desc = "Toggle Term" },
+  },
   opts = {
     direction = "horizontal",
     -- size can be a number or function which is passed the current terminal

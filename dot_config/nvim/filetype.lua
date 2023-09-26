@@ -18,7 +18,7 @@ vim.filetype.add({
     [".*%.theme"] = "conf",
     [".*ignore"] = "conf",
     ["default-*%-packages"] = "conf",
-    [".*%.env%..*"] = "env",
+    ["%.env%.[%w_.-]+"] = "sh",
     [".*%.prettierrc%..*"] = "jsonc",
     [".*%.eslintrc%..*"] = "jsonc",
   },
