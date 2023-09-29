@@ -38,6 +38,8 @@
 (after! doom-themes
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
+  (setq doom-themes-enable-italic t
+        doom-themes-enable-bold t)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
