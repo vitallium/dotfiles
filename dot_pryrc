@@ -44,7 +44,11 @@ if defined?(PryByebug)
    end
 end
 
-require 'pry-reload'
+begin
+  require 'pry-reload'
+rescue LoadError => err
+  puts 'pry-reload is not available. Did you forget to install it?'
+end
 
 # Use awesome_print (or amazing_print)
 begin
