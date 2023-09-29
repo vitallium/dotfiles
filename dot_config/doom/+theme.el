@@ -54,7 +54,7 @@
  ;; Non-monospace font
  doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size (gf3/preferred-font-size))
  ;; For big-font-mode
- doom-big-font (font-spec :family "mononoki" :size 20.0)
+ doom-big-font (font-spec :family "Berkeley Mono" :size (* 1.5 (gf3/preferred-font-size)))
  ;; For unicode glyphs
  ;; (doom-unicode-font)
  ;; For `fixed-pitch-serif' face
