@@ -23,12 +23,24 @@ return {
     event = "BufReadPost",
     opts = {
       highlight = {
-        pattern = [[.*<(KEYWORDS)\s*]], -- pattern or table of patterns, used for highlightng (vim regex)
+        pattern = [[(KEYWORDS)\s*(\([^\)]*\))?:]],
         keyword = "bg",
       },
-      search = {
-        pattern = [[\b(KEYWORDS)]], -- ripgrep regex
-        -- Was [[\b(KEYWORDS):]] including colon.
+    },
+    keys = {
+      {
+        "]t",
+        function()
+          require("todo-comments").jump_next()
+        end,
+        desc = "Next todo comment",
+      },
+      {
+        "[t",
+        function()
+          require("todo-comments").jump_prev()
+        end,
+        desc = "Previous todo comment",
       },
     },
     config = true,
