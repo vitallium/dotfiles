@@ -6,18 +6,20 @@
 ;; Always start Emacs window maximized
 (add-hook! 'window-setup-hook #'toggle-frame-maximized)
 
+;; Enable loading of local variables
 (setq enable-local-variables :all)
 
 (load! "+personal")
 (if (display-graphic-p)
-  (load! "+theme"))
+    (load! "+theme"))
 (load! "+bindings")
 (load! "+editor")
 
 (when (modulep! :editor evil)
   (load! "+evil"))
 
-(when (modulep! :tools lsp)
+(when (and (modulep! :checkers lsp)
+           (not (modulep! :checkers lsp +eglot)))
   (load! "+lsp"))
 
 (when (modulep! :completion company)
@@ -44,6 +46,9 @@
 
 (when (modulep! :lang yaml)
   (load! "+yaml"))
+
+(when (modulep! :lang markdown)
+  (load! "+markdown"))
 
 (when (modulep! :lang json)
   (after! (jsonian flycheck) (jsonian-enable-flycheck))

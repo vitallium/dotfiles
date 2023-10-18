@@ -34,6 +34,7 @@
   "lualine.nvim": { "branch": "master", "commit": "45e27ca739c7be6c49e5496d14fcf45a303c3a63" },
   "messages.nvim": { "branch": "main", "commit": "24dbb56829d1ed2d8d878e9f5547478441838567" },
   "mini.bufremove": { "branch": "main", "commit": "75be0b153b0cd2499c031e57d44cde8dad4766e4" },
+  "modus-theme-vim": { "branch": "master", "commit": "4d827fbf1aad55f4d62225f7b999efc5023864a3" },
   "neodev.nvim": { "branch": "main", "commit": "18093bdfb6ac1a6e5789894eb65f394aefff620f" },
   "neodim": { "branch": "v2", "commit": "11b59d9cd99c04e88257d34d7b27a58f256f9b22" },
   "neogit": { "branch": "master", "commit": "eac7a21561f56a55ddaabee513eec9a8e4ccc8a0" },

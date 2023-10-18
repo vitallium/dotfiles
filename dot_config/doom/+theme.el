@@ -60,7 +60,7 @@
  ;; For `fixed-pitch-serif' face
  ;; (doom-serif-font)
  ;; Theme
- doom-theme 'ef-day
+ doom-theme 'modus-operandi
  ;; Disable line numbers
  display-line-numbers-type nil
  doom-font-increment 1.0

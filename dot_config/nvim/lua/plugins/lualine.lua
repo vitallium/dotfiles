@@ -2,6 +2,10 @@ return {
   "nvim-lualine/lualine.nvim", -- Modeline
   event = "VeryLazy",
   config = function()
+    -- Performance: We don't need this lualine require madness.
+    local lualine_require = require("lualine_require")
+    lualine_require.require = require
+
     require("lualine").setup({
       options = {
         theme = "auto",

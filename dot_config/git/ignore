@@ -140,6 +140,7 @@ capybara-*.html
 *.orig
 rerun.txt
 pickle-email-*.html
+/.rspec-local
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -168,6 +169,9 @@ config/master.key
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore ruby-lsp
+/.ruby-lsp
 
 # Ignore node_modules
 
