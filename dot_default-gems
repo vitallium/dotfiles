@@ -3,13 +3,15 @@ binding_of_caller
 bundler
 bundler-audit
 byebug
+gitlab-development-kit
 hookup
+irb-power_assert
 neovim
 pry
 pry-byebug
 pry-doc
+pry-power_assert
 pry-reload
 reek
 solargraph
 solargraph-rails
-gitlab-development-kit
