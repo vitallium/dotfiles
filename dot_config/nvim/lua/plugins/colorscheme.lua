@@ -13,9 +13,4 @@ return {
       require("tokyonight").setup(opts)
     end,
   },
-  {
-    "ishan9299/modus-theme-vim",
-    priority = 1000,
-    lazy = false,
-  },
 }
