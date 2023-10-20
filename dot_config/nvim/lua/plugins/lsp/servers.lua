@@ -1,6 +1,9 @@
 local M = {}
 
 M.setup = function()
+  -- neodev must be set up before lspconfig
+  require("neodev").setup({})
+
   local handlers = require("plugins.lsp.handlers")
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -124,13 +127,15 @@ M.setup = function()
           paramName = "Disable",
         },
         runtime = {
-          version = "Lua 5.1",
+          version = "LuaJIT",
         },
         telemetry = {
           enable = false,
         },
         workspace = {
           checkThirdParty = false,
+          -- Make the server aware of neovim runtime files
+          library = vim.api.nvim_get_runtime_file("", true),
         },
       },
     },

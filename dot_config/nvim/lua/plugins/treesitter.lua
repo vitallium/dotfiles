@@ -118,6 +118,12 @@ return {
           -- For nvim-ts-context-commentstring plugin
           enable = true,
           enable_autocmd = false, -- Disabled when used with Comment.nvim
+          config = {
+            ruby = {
+              __default = "# %s",
+              __multiline = "=begin %s =end",
+            },
+          },
         },
         -- https://github.com/RRethy/nvim-treesitter-endwise
         endwise = {

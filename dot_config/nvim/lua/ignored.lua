@@ -27,11 +27,4 @@ return {
     "query",
     "vim",
   },
-
-  formatters = {
-    "eslint",
-    "lua_ls",
-    "jsonls",
-    "tsserver",
-  },
 }

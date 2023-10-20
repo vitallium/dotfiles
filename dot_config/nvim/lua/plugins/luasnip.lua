@@ -38,6 +38,12 @@ return {
     -- Snippets are stored in separate files.
     require("luasnip.loaders.from_lua").load({ paths = vim.api.nvim_get_runtime_file("lua/snippets", false)[1] })
 
+    -- Load Rails snippets for ruby filetype
+    luasnip.filetype_extend('ruby', { 'rails' })
+
+    -- Load Ruby snippets for haml filetype
+    luasnip.filetype_extend('haml', { 'ruby' })
+
     -- Create a command to edit the snippet file associated with the current
     vim.api.nvim_create_user_command("LuaSnipEdit", require("luasnip.loaders.from_lua").edit_snippet_files, {})
 

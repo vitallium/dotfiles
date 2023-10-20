@@ -54,7 +54,7 @@ return {
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
-            select = false, -- Selection required to complete on "Enter".
+            select = true,
           }),
           ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then

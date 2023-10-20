@@ -4,12 +4,9 @@ return {
   main = "ibl",
   config = function()
     require("ibl").setup({
-      indent = {
-        char = "┆", -- Examples: │ ┃ ┊ ┆ ┇ ┋ ╏
-      },
-      scope = {
-        enabled = false,
-      },
+      indent = { char = "│" },
+      exclude = { filetypes = { "help" } },
+      scope = { enabled = false },
     })
   end,
 }

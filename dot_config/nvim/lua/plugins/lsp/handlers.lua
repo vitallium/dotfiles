@@ -33,20 +33,6 @@ M.on_attach = function(client, buffer)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go To Declaration" })
   end
 
-  if client.server_capabilities.documentFormattingProvider then
-    local ignored = require("ignored")
-
-    vim.keymap.set("n", "<space>bf", function()
-      vim.lsp.buf.format({
-        async = true,
-        -- Let null-ls handle formatting instead of these language servers.
-        filter = function(c)
-          return not vim.tbl_contains(ignored.formatters, c.name)
-        end,
-      })
-    end, { desc = "Format" })
-  end
-
   if client.server_capabilities.codeActionProvider then
     vim.keymap.set({ "n", "x" }, "<leader>ca", require("actions-preview").code_actions, { desc = "Actions" })
   end

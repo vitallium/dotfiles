@@ -1,4 +1,3 @@
--- Help / hover.
 return {
   "lewis6991/hover.nvim",
   keys = {
