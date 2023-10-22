@@ -1,21 +1,20 @@
 ;;; $DOOMDIR/+lsp.el -*- lexical-binding: t; -*-
 
 (after! lsp-mode
-  ;; Do not ask to download and install LSP
-  (setq lsp-enable-suggest-server-download nil
-        lsp-headerline-breadcrumb-enable nil
-        lsp-semantic-tokens-enable t
-        ;; Improve LSP performance
-        lsp-idle-delay 1
-        lsp-log-io nil
-        read-process-output-max (* 1024 1024 4))
-  (add-hook! 'lsp-mode-hook (setq-local company-format-margin-function #'company-vscode-dark-icons-margin))
+  (setq
+    ;; Do not ask to download and install LSP
+    lsp-enable-suggest-server-download nil
+    lsp-semantic-tokens-enable t
+    ;; Improve LSP performance
+    lsp-idle-delay 1
+    lsp-log-io nil
+    read-process-output-max (* 1024 1024 4))
 
   (when (modulep! :completion company)
     (setq +lsp-company-backends '(company-capf company-files company-yasnippet :separate company-tabnine)))
 
   ;; Rust
-  (when (modulep! :lang rust)
+  (when (modulep! :lang rust +lsp)
     (setq lsp-rust-analyzer-server-display-inlay-hints t
           lsp-rust-analyzer-display-parameter-hints t
           lsp-rust-analyzer-display-chaining-hints t))
@@ -33,16 +32,12 @@
   (setq lsp-ui-doc-position 'top
         lsp-ui-doc-max-height 20
         lsp-ui-doc-delay 0.5
-        lsp-ui-doc-show-with-cursor nil
         lsp-ui-doc-show-with-mouse t
         lsp-ui-doc-header t
         lsp-ui-doc-use-childframe nil
         lsp-ui-doc-use-webkit t
         lsp-ui-sideline-enable t
         lsp-ui-sideline-diagnostics t
-        lsp-ui-sideline-hover nil
         lsp-ui-sideline-update-mode #'line
         lsp-ui-peek-enable t
         lsp-ui-imenu-kind-position 'left))
-;; lsp-ui-doc is redundant with and more invasive than `+lookup/documentation'
-;; lsp-ui-doc-enable nil))
