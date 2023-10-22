@@ -30,6 +30,15 @@
      ((< dpi 160) 18.0)
      (t 16.0))))
 
+(defun vitallium/reload-font-size ()
+  "Reload font size according to the DPI"
+  (interactive)
+  (setq
+   doom-font (font-spec :family "Berkeley Mono" :size (gf3/preferred-font-size))
+   doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size (gf3/preferred-font-size))
+   doom-big-font (font-spec :family "Berkeley Mono" :size (* 1.5 (gf3/preferred-font-size))))
+  (doom/reload-font))
+
 (use-package! modus-themes
   :custom
   (modus-themes-mode-line '(accented))
