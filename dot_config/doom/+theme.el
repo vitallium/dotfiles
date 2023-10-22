@@ -85,3 +85,10 @@
   (dolist (filter '((ns-transparent-titlebar . t)
                     (ns-appearance . unbound)))
     (cl-pushnew filter default-frame-alist :test #'equal)))
+
+(use-package! auto-dark
+  :custom
+  (auto-dark-dark-theme 'modus-vivendi)
+  (auto-dark-light-theme 'modus-operandi)
+  :config
+  (auto-dark-mode t))

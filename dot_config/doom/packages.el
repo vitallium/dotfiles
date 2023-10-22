@@ -88,3 +88,4 @@
 
 (package! reverse-im)
 (package! embark-vc)
+(package! auto-dark)
