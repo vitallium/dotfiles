@@ -136,7 +136,6 @@
        (lookup             ; navigate your code and its documentation
         +docsets)
        (lsp                ; M-x vscode
-        +eglot
         +peek)
        (magit              ; a git porcelain for Emacs
         +forge)
