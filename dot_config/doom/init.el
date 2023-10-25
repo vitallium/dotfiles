@@ -25,15 +25,15 @@
                            "^LANG$"
                            "^LC_ALL$"
                            "^SSH_AUTH_SOCK$"
-                           ; lsp-mode
+                           ;; lsp-mode
                            "^LSP_USE_PLISTS$"
-                           ; xdg
+                           ;; xdg
                            "^XDG_.*$"
-                           ; Rust
+                           ;; Rust
                            "^RUSTC_WRAPPER$"
                            "^RUSTUP_HOME$"
                            "^CARGO_HOME$"
-                           ; Go
+                           ;; Go
                            "^GOPATH$"
                            "^GO111MODULE$"
                            ))))

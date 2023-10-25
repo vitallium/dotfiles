@@ -79,7 +79,6 @@
         doom-modeline-buffer-file-name-style 'truncate-with-project))
 
 (when IS-MAC
-  (setq frame-title-format nil)
   (dolist (filter '((ns-transparent-titlebar . t)
                     (ns-appearance . unbound)))
     (cl-pushnew filter default-frame-alist :test #'equal)))
