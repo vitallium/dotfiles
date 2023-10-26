@@ -73,7 +73,6 @@ cask 'openinterminal-lite'
 cask 'protonvpn'
 cask 'qlmarkdown'
 cask 'quicklook-json'
-cask 'rapidapi'
 cask 'raycast'
 cask 'wezterm'
 mas '1Password for Safari', id: 1_569_813_296
