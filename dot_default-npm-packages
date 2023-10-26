@@ -1,9 +1,10 @@
+@microsoft/compose-language-service
 bash-language-server
 dockerfile-language-server-nodejs
 jsvu
+graphql-language-service-cli
 markdownlint-cli
 marked
-@microsoft/compose-language-service
 npm
 typescript
 typescript-language-server
