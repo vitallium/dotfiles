@@ -11,16 +11,12 @@
 (after! vterm
   ;; Start vterm in insert mode always
   (evil-set-initial-state 'vterm-mode 'insert)
-  ;; Aliases
-  (setf (alist-get "woman" vterm-eval-cmds nil nil #'equal)
-        '((lambda (topic)
-            (woman topic))))
-  (setf (alist-get "magit-status" vterm-eval-cmds nil nil #'equal)
-        '((lambda (path)
-            (magit-status path))))
-  (setf (alist-get "dired" vterm-eval-cmds nil nil #'equal)
-        '((lambda (dir)
-            (dired dir)))))
+  (setq vterm-eval-cmds '(("find-file" find-file)
+                          ("message" message)
+                          ("vterm-clear-scrollback" vterm-clear-scrollback)
+                          ("dired" dired)
+                          ("ediff-files" ediff-files))))
+
 
 (use-package! multi-vterm
   :after vterm)
