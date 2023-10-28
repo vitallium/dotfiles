@@ -86,6 +86,9 @@
 ;; Ruby
 (package! rbs-mode)
 
+;; rtx integration
+(package! rtx :recipe (:host github :repo "vitallium/rtx.el"))
+
 (package! reverse-im)
 (package! embark-vc)
 (package! auto-dark)
