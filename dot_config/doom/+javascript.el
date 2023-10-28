@@ -26,7 +26,7 @@
   (web-mode-dom-errors-show)
   (web-mode-toggle-current-element-highlight))
 
-;; Fix stylelint v14:
+;; Fix stylelint >= v14:
 (flycheck-define-checker general-stylelint
   "A checker for CSS and related languages using Stylelint"
   :command ("stylelint"
@@ -41,7 +41,3 @@
 (flycheck-def-config-file-var flycheck-general-stylelintrc
     (general-stylelint) nil)
 (add-to-list 'flycheck-checkers 'general-stylelint)
-;; (append flycheck--disabled-checkers '(scss-stylellitn))
-;; (add-hook 'scss-mode-hook
-;;           (lambda ()
-;;             (flycheck-disable-checker 'scss-stylelint)))

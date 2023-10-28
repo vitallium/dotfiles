@@ -1,6 +1,5 @@
 ;;; $DOOMDIR/+company.el -*- lexical-binding: t; -*-
 
-;; Configure TabNine
 (after! company
   (setq company-idle-delay 0.5
         company-minimum-prefix-length 3
