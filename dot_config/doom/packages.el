@@ -66,6 +66,7 @@
 (package! org-pretty-table :recipe (:host github :repo "Fuco1/org-pretty-table"))
 (package! org-appear :recipe (:host github :repo "awth13/org-appear"))
 (package! mixed-pitch)
+(package! mermaid-ts-mode :recipe (:host github :repo "JonathanHope/mermaid-ts-mode"))
 
 (package! ts-fold :recipe (:host github :repo "emacs-tree-sitter/ts-fold"))
 
