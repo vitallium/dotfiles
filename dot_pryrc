@@ -1,7 +1,10 @@
 # vim:ft=ruby
-Pry.editor = "nvim"
+Pry.editor = 'nvim'
 
-if defined?(Pry::Prompt)
+if ENV.fetch('INSIDE_EMACS', false)
+  Pry.config.correct_indent = false
+  Pry.config.pager = false
+else
   if Pry::Prompt[:rails]
     Pry.config.prompt = Pry::Prompt[:rails]
   else
@@ -9,7 +12,7 @@ if defined?(Pry::Prompt)
   end
 end
 
-Pry::Commands.command /^$/, "repeat last command" do
+Pry::Commands.command /^$/, 'repeat last command' do
   pry_instance.run_command Pry.history.to_a.last
 end
 
