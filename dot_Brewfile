@@ -110,7 +110,6 @@ if `hostname`.start_with?('vslobodin-')
   brew 'teleport'
   cask 'figma'
   cask 'mullvadvpn'
-  cask 'screenflow'
   cask 'slack'
   cask 'zoom'
 end
