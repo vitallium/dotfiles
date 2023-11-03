@@ -4,7 +4,6 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   opts = {
     filetypes_denylist = {
-      "dirvish",
       "fugitive",
       "NvimTree",
       "NeogitCommitMessage",
