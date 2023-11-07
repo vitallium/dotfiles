@@ -39,10 +39,18 @@
    doom-big-font (font-spec :family "Berkeley Mono" :size (* 1.5 (gf3/preferred-font-size))))
   (doom/reload-font))
 
-(use-package! modus-themes
-  :custom
-  (modus-themes-mode-line '(accented))
-  (modus-themes-italic-constructs t))
+(after! modus-themes
+  (setq modus-themes-org-blocks 'gray-background
+        modus-themes-slanted-constructs t
+        modus-themes-bold-constructs t
+        modus-themes-variable-pitch-ui t
+        modus-themes-mixed-fonts t
+        modus-themes-prompts '(italic semibold)))
+
+(after! ef-themes
+  (setq ef-themes-variable-pitch-ui t
+        ef-themes-mixed-fonts t
+        ef-themes-to-toggle '(ef-day ef-night)))
 
 (after! doom-themes
   ;; Enable flashing mode-line on errors
