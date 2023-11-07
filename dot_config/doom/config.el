@@ -18,8 +18,8 @@
 (when (modulep! :editor evil)
   (load! "+evil"))
 
-(when (and (modulep! :checkers lsp)
-           (not (modulep! :checkers lsp +eglot)))
+(when (and (modulep! :tools lsp)
+           (not (modulep! :tools lsp +eglot)))
   (load! "+lsp"))
 
 (when (modulep! :completion company)
