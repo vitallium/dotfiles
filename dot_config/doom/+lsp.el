@@ -5,6 +5,7 @@
     ;; Do not ask to download and install LSP
     lsp-enable-suggest-server-download nil
     lsp-semantic-tokens-enable t
+    lsp-enable-folding t
     ;; Improve LSP performance
     lsp-idle-delay 1
     lsp-log-io nil
