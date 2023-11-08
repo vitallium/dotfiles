@@ -1,6 +1,6 @@
 node 20.9.0
 ruby 3.2.2
 python 3.11.5
-golang 1.21.1
-chezmoi 2.39.1
-rust 1.72.0
+golang 1.21.3
+chezmoi 2.40.4
+rust 1.73.0
