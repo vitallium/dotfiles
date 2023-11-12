@@ -22,6 +22,9 @@ return {
   },
   opts = {
     winopts = {
+      hl = {
+        border = "FloatBorder",
+      },
       split = "belowright 15new",
       border = "single",
       preview = {
@@ -34,7 +37,11 @@ return {
       },
     },
     files = {
-      fzf_opts = { ["--ansi"] = false },
+      fzf_opts = {
+        ["--ansi"] = false,
+        ["--layout"] = "reverse-list",
+        ["--info"] = "default",
+      },
     },
     manpages = { previewer = "man_native" },
     helptags = { previewer = "help_native" },
