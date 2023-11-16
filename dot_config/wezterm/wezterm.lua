@@ -136,11 +136,13 @@ return {
         { mods = mod, key = "[", action = wezterm.action({ ActivateTabRelative = -1 }) },
         { key = "C", mods = "CTRL", action = wezterm.action.CopyTo("ClipboardAndPrimarySelection") },
         { mods = mod, key = "d", action = wezterm.action.ShowDebugOverlay },
-        -- move between split panes(-split_nav("move", "h")),
+        -- move between split panes
+        split_nav("move", "h"),
         split_nav("move", "j"),
         split_nav("move", "k"),
         split_nav("move", "l"),
-        -- resize panes(-split_nav("resize", "h")),
+        -- resize panes
+        split_nav("resize", "h"),
         split_nav("resize", "j"),
         split_nav("resize", "k"),
         split_nav("resize", "l"),
