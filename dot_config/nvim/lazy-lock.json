@@ -61,6 +61,7 @@
   "requirements.txt.vim": { "branch": "master", "commit": "f7abd4d5dd1fe1625108dbb4e9ad3f29213b80e3" },
   "rust-tools.nvim": { "branch": "master", "commit": "0cc8adab23117783a0292a0c8a2fbed1005dc645" },
   "schemastore.nvim": { "branch": "main", "commit": "357fe900baae09e1a3fcef913e49733d05d1f888" },
+  "smart-splits.nvim": { "branch": "master", "commit": "c8a9173d70cbbd1f6e4a414e49e31df2b32a1362" },
   "text-case.nvim": { "branch": "main", "commit": "acd6178ffcf728c82036c7064630ff40f4c9ae82" },
   "todo-comments.nvim": { "branch": "main", "commit": "4a6737a8d70fe1ac55c64dfa47fcb189ca431872" },
   "toggleterm.nvim": { "branch": "main", "commit": "faee9d60428afc7857e0927fdc18daa6c409fa64" },
@@ -73,6 +74,5 @@
   "vim-illuminate": { "branch": "master", "commit": "3bd2ab64b5d63b29e05691e624927e5ebbf0fb86" },
   "vim-ruby": { "branch": "master", "commit": "577bbe184fcc5075dded2b3813e6dd470516877e" },
   "vim-test": { "branch": "master", "commit": "6d054a713d601291c01c42197796644cf00ca9f2" },
-  "vim-tmux-navigator": { "branch": "master", "commit": "7db70e08ea03b3e4d91f63713d76134512e28d7e" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }
