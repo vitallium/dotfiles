@@ -17,7 +17,7 @@ return {
       formatters_by_ft = {
         css = { "prettier" },
         fish = { "fish_indent" },
-        go = { "golines", "gofumpt", "injected" },
+        go = { "gofumpt", "injected" },
         graphql = { "prettier" },
         html = { "prettier" },
         javascript = { { "prettierd", "prettier" } },
