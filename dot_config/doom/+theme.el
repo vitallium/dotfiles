@@ -44,12 +44,10 @@
         modus-themes-slanted-constructs t
         modus-themes-bold-constructs t
         modus-themes-variable-pitch-ui t
-        modus-themes-mixed-fonts t
         modus-themes-prompts '(italic semibold)))
 
 (after! ef-themes
   (setq ef-themes-variable-pitch-ui t
-        ef-themes-mixed-fonts t
         ef-themes-to-toggle '(ef-day ef-night)))
 
 (after! doom-themes

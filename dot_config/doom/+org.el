@@ -1,13 +1,16 @@
 ;;; $DOOMDIR/+org.el -*- lexical-binding: t; -*-
 
 ;; Set the org-mode folder location
-(setq org-directory "~/Documents/Org/")
-
-(setq org-use-property-inheritance t)
+(setq org-directory "~/Documents/Org/"
+      org-agenda-files (list
+                        "~/org/"
+                        "\.org$")
+      org-archive-location (concat org-directory ".archive/%s::")
+      org-use-property-inheritance t)
 
 (after! org
-  (setq
-   org-todo-keywords '((sequence "TODO(t)" "IN PROGRESS(p)" "|" "DONE(d)" ))))
+  (setq org-log-into-drawer 't
+        org-todo-keywords '((sequence "TODO(t)" "WAITING(w@)" "|" "DONE(d!)" "CANCELLED(c@)"))))
 
 (set-popup-rule! "^\\*Org Agenda\\*$" :side 'right :size 0.4 :select t)
 
@@ -33,6 +36,7 @@
 
 (add-hook! 'org-mode-hook
            #'+org-pretty-mode
+           #'mixed-pitch-mode
            #'org-pretty-table-mode
            #'org-modern-mode)
 
