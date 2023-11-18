@@ -80,7 +80,6 @@
         +diff-hl
         +pretty)
        vi-tilde-fringe     ; fringe tildes to mark beyond EOB
-       svg
        ;;window-select     ; visually switch windows
        workspaces          ; tab emulation, persistence & separate workspaces
        zen                 ; distraction-free coding or writing
