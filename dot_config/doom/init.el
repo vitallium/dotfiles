@@ -60,7 +60,7 @@
        doom-dashboard      ; a nifty splash screen for Emacs
        ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
        (:if *is-emacs-28*
-         (emoji +unicode)) ; 🙂
+           (emoji +unicode)) ; 🙂
        hl-todo             ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
        ;;indent-guides     ; highlighted indent columns
@@ -102,7 +102,7 @@
 
        :emacs
        (dired              ; making dired pretty [functional]
-        +ranger)
+        +icons)
        electric            ; smarter, keyword-based electric-indent
        ibuffer             ; interactive buffer management
        (undo +tree)        ; persistent, smarter undo for your inevitable mistakes
@@ -169,10 +169,11 @@
        data                ; config/data formats
        ;;(dart +flutter)   ; paint ui and not much else
        ;;dhall
-       ;;elixir            ; erlang done right
-       ;;elm               ; care for a cup of TEA?
-       (emacs-lisp         ; drown in parentheses
+       (elixir             ; erlang done right
+        +lsp
         +tree-sitter)
+       ;;elm               ; care for a cup of TEA?
+       emacs-lisp          ; drown in parentheses
        ;;erlang            ; an elegant language for a more civilized age
        ;;ess               ; emacs speaks statistics
        ;;factor
@@ -203,10 +204,7 @@
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
        ;;lua               ; one-based indices? one-based indices
-       (markdown           ; writing docs for people to ignore
-        +grip
-        +lsp
-        +tree-sitter)
+       markdown            ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        (nix                ; I hereby declare "nix geht mehr!"
         +lsp
@@ -214,7 +212,7 @@
        ;;ocaml             ; an objective camel
        (org                ; organize your plain life in plain text
         +journal
-        +pretty
+        +noter
         +present)
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
