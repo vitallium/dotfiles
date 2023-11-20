@@ -50,12 +50,14 @@
 ;;(unpin! t)
 
 (package! git-link)
-(package! jest-test-mode)
+(package! eredis)
 
+;; Auto-complete
 (package! company-quickhelp)
 (package! company-tabnine :recipe (:host github :repo "TommyX12/company-tabnine") :disable t)
 (package! tabnine)
 
+;; Themes
 (package! modus-themes)
 (package! ef-themes)
 
@@ -69,28 +71,40 @@
 (package! mixed-pitch)
 (package! mermaid-ts-mode :recipe (:host github :repo "JonathanHope/mermaid-ts-mode"))
 
+;; tree-sitter
 (package! treesit-auto :disable t)
 (package! ts-fold :recipe (:host github :repo "emacs-tree-sitter/ts-fold"))
 
+;; Improve YAML editing
 (package! yaml-pro)
 
-;; Replace json-moode with jsonian
+;; Replace json-mode with jsonian
 (package! json-mode :disable t)
 (package! jsonian :recipe (:host github :repo "iwahbe/jsonian"))
 (package! jsonnet-mode)
 
 (package! multi-vterm)
+
+;; Spell checker of the future
 (package! jinx)
 
 ;; Ruby
 (package! rbs-mode)
 
+;; Frontend stuff
+(package! jest-test-mode)
+
 ;; rtx integration
 (package! rtx :recipe (:host github :repo "vitallium/rtx.el"))
 
 (package! reverse-im)
+
+;; Embark integration for vc
 (package! embark-vc)
+
+;; Automatically toggle between light and dark theme
 (package! auto-dark)
 
 ;; Disable eglot completely
 (disable-packages! eglot)
+
