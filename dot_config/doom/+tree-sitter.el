@@ -1,9 +1,8 @@
 ;;; $DOOMDIR/tree-sitter.el -*- lexical-binding: t; -*-
 
-(require 'treesit)
-
 (use-package! treesit-auto
-  :after treesit
+  :if (and (require 'treesit)
+           (treesit-available-p))
   :config
   (setq treesit-auto-install 'prompt)
   (global-treesit-auto-mode))

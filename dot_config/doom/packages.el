@@ -43,9 +43,9 @@
 
 ;; Doom's packages are pinned to a specific commit and updated from release to
 ;; release. The `unpin!' macro allows you to unpin single packages...
-;(unpin! pinned-package)
+;;(unpin! pinned-package)
 ;; ...or multiple packages
-;(unpin! pinned-package another-pinned-package)
+;;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;;(unpin! t)
 
@@ -69,6 +69,7 @@
 (package! mixed-pitch)
 (package! mermaid-ts-mode :recipe (:host github :repo "JonathanHope/mermaid-ts-mode"))
 
+(package! treesit-auto :disable t)
 (package! ts-fold :recipe (:host github :repo "emacs-tree-sitter/ts-fold"))
 
 (package! yaml-pro)
