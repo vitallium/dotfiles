@@ -85,9 +85,6 @@
 
 (package! multi-vterm)
 
-;; Spell checker of the future
-(package! jinx)
-
 ;; Ruby
 (package! rbs-mode)
 
