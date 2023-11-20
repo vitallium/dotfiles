@@ -53,7 +53,8 @@
 (package! jest-test-mode)
 
 (package! company-quickhelp)
-(package! company-tabnine :recipe (:host github :repo "TommyX12/company-tabnine"))
+(package! company-tabnine :recipe (:host github :repo "TommyX12/company-tabnine") :disable t)
+(package! tabnine)
 
 (package! modus-themes)
 (package! ef-themes)
