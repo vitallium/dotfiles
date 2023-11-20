@@ -114,17 +114,6 @@ return {
         indent = { -- Indentation based on = operator (experimental)
           enable = true,
         },
-        context_commentstring = {
-          -- For nvim-ts-context-commentstring plugin
-          enable = true,
-          enable_autocmd = false, -- Disabled when used with Comment.nvim
-          config = {
-            ruby = {
-              __default = "# %s",
-              __multiline = "=begin %s =end",
-            },
-          },
-        },
         -- https://github.com/RRethy/nvim-treesitter-endwise
         endwise = {
           enable = true,
@@ -133,6 +122,17 @@ return {
           enable = true,
           use_virtual_text = true,
           lint_events = { "BufWrite", "CursorHold" },
+        },
+      })
+
+      require("ts_context_commentstring").setup({
+        enable_autocmd = true,
+        languages = {
+          typescript = "// %s",
+          ruby = {
+            __default = "# %s",
+            __multiline = "=begin %s =end",
+          },
         },
       })
     end,
