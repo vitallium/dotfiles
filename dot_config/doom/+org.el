@@ -18,7 +18,7 @@
   (setq org-fancy-priorities-list '("" "" "" "")))
 
 (after! org-journal
-  (setq org-journal-dir "~/Org/Journal"
+  (setq org-journal-dir "~/Documents/Org/Journal"
         org-journal-date-prefix "#+TITLE: "
         org-journal-file-format "%Y-%m-%d.org"
         org-journal-date-format "%A, %d %B %Y"

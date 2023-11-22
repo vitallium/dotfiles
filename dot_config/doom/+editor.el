@@ -12,8 +12,8 @@
 (add-hook! 'prog-mode-hook
            ;; Activate bug-reference-prog-mode
            #'bug-reference-prog-mode
-           #'rainbow-delimiters-mode
-           #'display-fill-column-indicator-mode)
+           #'rainbow-delimiters-mode)
+           ;;#'display-fill-column-indicator-mode)
 
 ;; Setup apheleia
 (after! apheleia

@@ -55,7 +55,8 @@
   (doom-themes-visual-bell-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config)
-  (doom-themes-treemacs-config))
+  (doom-themes-treemacs-config)
+  (setq doom-themes-treemacs-theme "all-the-icons"))
 
 (after! treemacs
   (add-hook! 'treemacs-mode-hook #'treemacs-follow-mode)

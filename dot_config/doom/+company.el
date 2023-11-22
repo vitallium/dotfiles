@@ -1,8 +1,9 @@
 ;;; $DOOMDIR/+company.el -*- lexical-binding: t; -*-
 
-(setq company-minimum-prefix-length 3
-      company-show-quick-access t
-      company-tooltip-align-annotations t)
+(use-package! company
+  :config
+  (setq company-tooltip-align-annotations t
+        company-frontends '(company-pseudo-tooltip-frontend)))
 
 ;; TabNine
 ;; (set-company-backend! '(prog-mode)  '(

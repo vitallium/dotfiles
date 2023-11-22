@@ -6,13 +6,12 @@
     lsp-enable-suggest-server-download nil
     lsp-semantic-tokens-enable t
     lsp-enable-folding t
+    lsp-signature-render-documentation nil
+    lsp-signature-function 'lsp-signature-posframe
     ;; Improve LSP performance
     lsp-idle-delay 1
     lsp-log-io nil
     read-process-output-max (* 1024 1024 4))
-
-  (when (modulep! :completion company)
-    (setq +lsp-company-backends '(company-capf company-files company-yasnippet :separate company-tabnine)))
 
   ;; Rust
   (when (modulep! :lang rust +lsp)
@@ -38,7 +37,6 @@
         lsp-ui-doc-use-childframe nil
         lsp-ui-doc-use-webkit t
         lsp-ui-sideline-enable t
-        lsp-ui-sideline-diagnostics t
         lsp-ui-sideline-update-mode #'line
         lsp-ui-peek-enable t
         lsp-ui-imenu-kind-position 'left))
