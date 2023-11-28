@@ -41,6 +41,9 @@
 (defconst *is-emacs-28* (= emacs-major-version 28))
 (defconst *is-emacs-29* (>= emacs-major-version 29))
 
+;; Evil mode settings that must be set before "evil" is loaded.
+(setq evil-respect-visual-line-mode t) ;; sane j and k behavior
+
 (doom! :input
        ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
        ;;chinese
