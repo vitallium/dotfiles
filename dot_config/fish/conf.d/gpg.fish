@@ -1,5 +1,7 @@
 status is-interactive || exit
 
+gpgconf --launch gpg-agent
+
 if test -e (gpgconf --list-dirs agent-ssh-socket)
     set -x GPG_TTY (tty)
     set -g -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
