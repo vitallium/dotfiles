@@ -64,6 +64,7 @@ only = [
   "brew_formula",
   "brew_cask",
   "cargo",
+  "go",
   "custom_commands",
   "node",
 ]
