@@ -5,6 +5,7 @@ jsvu
 graphql-language-service-cli
 markdownlint-cli
 marked
+neovim
 npm
 typescript
 typescript-language-server
