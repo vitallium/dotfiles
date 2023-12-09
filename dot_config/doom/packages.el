@@ -54,7 +54,6 @@
 
 ;; Auto-complete
 (package! company-quickhelp)
-(package! company-tabnine :recipe (:host github :repo "TommyX12/company-tabnine") :disable t)
 (package! tabnine)
 
 ;; Themes

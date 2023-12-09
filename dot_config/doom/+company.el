@@ -5,16 +5,9 @@
   (setq company-tooltip-align-annotations t
         company-frontends '(company-pseudo-tooltip-frontend)))
 
-;; TabNine
-;; (set-company-backend! '(prog-mode)  '(
-;;                                       company-capf
-;;                                       company-files
-;;                                       company-yasnippet
-;;                                       :separate
-;;                                       company-tabnine
-;;                                       ))
-
 (use-package! tabnine
+  :when (modulep! company +tabnine)
+  :after company
   :hook ((prog-mode . tabnine-mode)
          (markdown-mode . tabnine-mode)
          (kill-emacs . tabnine-kill-process))
