@@ -88,7 +88,7 @@
 ;; Ruby
 (package! rbs-mode)
 
-;; Frontend stuff
+;; Frontend
 (package! jest-test-mode)
 
 ;; rtx integration
