@@ -3,7 +3,8 @@
 (when (modulep! :tools lsp)
   (after! lsp-solargraph
     ;; Add asdf installations for Ruby
-    (add-to-list 'lsp-solargraph-library-directories "~/.local/share/rtx/installs/ruby")))
+    (add-to-list 'lsp-solargraph-library-directories "~/.local/share/rtx/installs/ruby")
+    (setq lsp-solargraph-use-bundler t)))
 
 (set-docsets! 'ruby-mode "Ruby_3" "Ruby_on_Rails_7")
 
@@ -32,3 +33,23 @@
                    "^\\([^:]+\\):\\([0-9]+\\) \\[\\(W\\|E\\)\\] "
                    1 2))
     (add-to-list 'compilation-error-regexp-alist 'haml-lint)))
+
+(use-package! ruby-refactor
+  :hook ((ruby-base-mode . ruby-refactor-mode-launch)))
+
+(transient-define-prefix vitallium/ruby-refactor-transient ()
+  "My custom Transient menu for Ruby refactoring."
+  [["Refactor"
+    ("e" "Extract Region to Method" ruby-refactor-extract-to-method)
+    ("v" "Extract Local Variable" ruby-refactor-extract-local-variable)
+    ("l" "Extract to let" ruby-refactor-extract-to-let)
+    ("c" "Extract Constant" ruby-refactor-extract-constant)
+    ;; ("r" "Rename Local Variable or Method (LSP)" eglot-rename)
+    ("{" "Toggle block style" ruby-toggle-block)
+    ("'" "Toggle string quotes" ruby-toggle-string-quotes)
+    ]
+   ["Actions"
+    ("d" "Documentation Buffer" eldoc-doc-buffer)
+    ("q" "Quit" transient-quit-one)
+    ("C" "Run a REPL" inf-ruby-console-auto)
+    ("TAB" "Switch to REPL" ruby-switch-to-inf)]])

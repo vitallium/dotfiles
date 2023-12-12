@@ -86,6 +86,8 @@
 
 ;; Ruby
 (package! rbs-mode)
+(package! ruby-refactor)
+(package! yari)
 
 ;; Frontend
 (package! jest-test-mode)
