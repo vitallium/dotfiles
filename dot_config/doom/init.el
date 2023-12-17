@@ -14,6 +14,7 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
+;; Tidy up env vars and load only the required.
 (after! doom-cli-env
   (when noninteractive
     (setq doom-env-deny '("^.*"))
@@ -66,7 +67,8 @@
        (:if *is-emacs-28*
            (emoji +unicode)) ; 🙂
        hl-todo             ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       ;;hydra
+       (hydra
+        +childframe)
        ;;indent-guides     ; highlighted indent columns
        ;;ligatures         ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
@@ -84,7 +86,8 @@
         +diff-hl
         +pretty)
        vi-tilde-fringe     ; fringe tildes to mark beyond EOB
-       ;;window-select     ; visually switch windows
+       (window-select      ; visually switch windows
+        +numbers)
        workspaces          ; tab emulation, persistence & separate workspaces
        zen                 ; distraction-free coding or writing
 
@@ -118,7 +121,8 @@
        vterm               ; the best terminal emulation in Emacs
 
        :checkers
-       syntax              ; tasing you for every semicolon you forget
+       (syntax             ; tasing you for every semicolon you forget
+        +childframe)
        ;;spell             ; tasing you for misspelling mispelling
        jinx                ; the spell checker of the future
        ;;grammar           ; tasing grammar mistake every you make
