@@ -102,7 +102,3 @@
 
 ;; Automatically toggle between light and dark theme
 (package! auto-dark)
-
-;; Disable eglot completely
-(disable-packages! eglot)
-
