@@ -8,6 +8,7 @@ gitlab-development-kit
 hookup
 irb
 irb-power_assert
+irb-theme-tokyonight
 neovim
 prism
 pry
@@ -17,5 +18,6 @@ pry-power_assert
 pry-reload
 rbs
 reek
+repl_type_completor
 solargraph
 solargraph-rails
