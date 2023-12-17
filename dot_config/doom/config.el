@@ -51,8 +51,7 @@
   (load! "+markdown"))
 
 (when (modulep! :lang json)
-  (after! (jsonian flycheck) (jsonian-enable-flycheck))
-  (after! (jsonian so-long) (jsonian-no-so-long-mode)))
+  (load! "+json"))
 
 ;; Use GNU grep on macOS for faster `consult-grep`
 ;; `doom doctor` is still complaining, because of hard-coded `grep` command
