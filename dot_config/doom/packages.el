@@ -91,6 +91,7 @@
 
 ;; Frontend
 (package! jest-test-mode)
+(package! js-doc)
 
 ;; rtx integration
 (package! rtx :recipe (:host github :repo "vitallium/rtx.el"))
