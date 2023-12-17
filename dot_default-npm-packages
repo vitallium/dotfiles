@@ -1,12 +1,14 @@
 @microsoft/compose-language-service
+@vue/language-server
 bash-language-server
 dockerfile-language-server-nodejs
-jsvu
 graphql-language-service-cli
+jsvu
 markdownlint-cli
 marked
 neovim
 npm
+pnpm
 typescript
 typescript-language-server
 vls
