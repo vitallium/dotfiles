@@ -9,8 +9,10 @@
 (setq-default vterm-shell (executable-find "fish"))
 
 (after! vterm
-  ;; Start vterm in insert mode always
-  (evil-set-initial-state 'vterm-mode 'insert)
+  (when (modulep! :editor evil)
+    ;; Start vterm in insert mode always
+    (evil-set-initial-state 'vterm-mode 'insert))
+
   (setq vterm-eval-cmds '(("find-file" find-file)
                           ("message" message)
                           ("vterm-clear-scrollback" vterm-clear-scrollback)

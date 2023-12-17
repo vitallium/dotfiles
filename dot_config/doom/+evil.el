@@ -21,3 +21,20 @@
   (progn
     (add-to-list 'evil-collection-mode-list 'smerge-mode)
     (+evil-collection-init 'smerge-mode)))
+
+;; From https://github.com/LemonBreezes/cyber-angel-emacs/
+(after! which-key
+  (setq which-key-ellipsis "..."
+        which-key-idle-delay 0.5
+        which-key-compute-remaps t
+        which-key-max-description-length 35
+        ;; I am testing this option out. Seems useful in principal since a
+        ;; transient map can be active without any UI indication.
+        which-key-show-transient-maps t)
+  (pushnew!
+   which-key-replacement-alist
+   '(("" . "\\`+?evil[-:/]?\\(?:a-\\)?\\(.*\\)") . (nil . "\\1"))
+   '(("" . "winum-\\(.*\\)") . (nil . "\\1"))
+   '(("" . "+workspace[-/]\\(.*\\)") . (nil . "\\1"))
+   '(("" . "doom[-/]\\(.*\\)") . (nil . "\\1"))
+   '(("\\`g s" . "\\`evilem--?motion-\\(.*\\)") . (nil . "\\1"))))
