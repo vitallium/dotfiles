@@ -8,12 +8,14 @@
 (set-docsets! 'ruby-base-mode "Ruby_3" "Ruby_on_Rails_7")
 
 ;; Treat underscores as part of words
-(add-hook! 'ruby-base-mode-hook (modify-syntax-entry ?_ "w" ruby-mode-syntax-table))
+(add-hook! 'ruby-base-mode-hook
+  (modify-syntax-entry ?_ "w" ruby-mode-syntax-table)
+  (when (modulep! :tools lsp) (setq-local lsp-disabled-clients '(vue-semantic-server))))
 
 (after! haml-mode
   (after! flycheck
     (flycheck-define-checker haml-lint
-      "A haml syntax checker using the haml-lint tool."
+      "A HAML syntax checker using the haml-lint tool."
       :command ("bundle"
                 "exec"
                 "haml-lint"
@@ -35,20 +37,3 @@
 
 (use-package! ruby-refactor
   :hook ((ruby-base-mode . ruby-refactor-mode-launch)))
-
-(transient-define-prefix vitallium/ruby-refactor-transient ()
-  "My custom Transient menu for Ruby refactoring."
-  [["Refactor"
-    ("e" "Extract Region to Method" ruby-refactor-extract-to-method)
-    ("v" "Extract Local Variable" ruby-refactor-extract-local-variable)
-    ("l" "Extract to let" ruby-refactor-extract-to-let)
-    ("c" "Extract Constant" ruby-refactor-extract-constant)
-    ;; ("r" "Rename Local Variable or Method (LSP)" eglot-rename)
-    ("{" "Toggle block style" ruby-toggle-block)
-    ("'" "Toggle string quotes" ruby-toggle-string-quotes)
-    ]
-   ["Actions"
-    ("d" "Documentation Buffer" eldoc-doc-buffer)
-    ("q" "Quit" transient-quit-one)
-    ("C" "Run a REPL" inf-ruby-console-auto)
-    ("TAB" "Switch to REPL" ruby-switch-to-inf)]])

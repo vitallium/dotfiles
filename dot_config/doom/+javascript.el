@@ -21,7 +21,7 @@
           '("\\.prettierrc\\'" . json-mode)
           '("\\.babelrc\\'" . json-mode))
 
-(set-docsets! 'js2-mode "JavaScript")
+(set-docsets! 'js-mode "JavaScript")
 
 (after! web-mode
   (web-mode-dom-errors-show)
