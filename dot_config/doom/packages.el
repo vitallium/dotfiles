@@ -59,7 +59,7 @@
 ;; Themes
 (package! modus-themes)
 (package! ef-themes)
-(package! standard-themes)
+(package! standard-themes)
 
 (package! visual-fill-column)
 (package! string-inflection)
