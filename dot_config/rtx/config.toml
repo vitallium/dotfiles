@@ -5,3 +5,6 @@ python = "3.11.5"
 golang = "1.21.5"
 chezmoi = "2.42.2"
 rust = "1.74.1"
+
+[settings]
+experimental = true
