@@ -13,4 +13,9 @@ return {
       require("tokyonight").setup(opts)
     end,
   },
+  {
+    "miikanissi/modus-themes.nvim",
+    priority = 1000,
+    lazy = false,
+  },
 }
