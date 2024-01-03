@@ -3,7 +3,7 @@
 (when (modulep! :tools lsp)
   (after! lsp-solargraph
     ;; Add asdf installations for Ruby
-    (add-to-list 'lsp-solargraph-library-directories "~/.local/share/rtx/installs/ruby")))
+    (add-to-list 'lsp-solargraph-library-directories "~/.local/share/mise/installs/ruby")))
 
 (set-docsets! 'ruby-base-mode "Ruby_3" "Ruby_on_Rails_7")
 

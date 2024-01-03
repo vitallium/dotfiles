@@ -94,8 +94,8 @@
 (package! jest-test-mode)
 (package! js-doc)
 
-;; rtx integration
-(package! rtx :recipe (:host github :repo "vitallium/rtx.el"))
+;; mise (ex-rtx) integration
+(package! mise :recipe (:host github :repo "vitallium/mise.el"))
 
 (package! reverse-im)
 
