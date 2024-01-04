@@ -37,7 +37,7 @@
   "modus-themes.nvim": { "branch": "master", "commit": "71fd92fb7b606af51b48b0cffceba8193e2e8713" },
   "neodev.nvim": { "branch": "main", "commit": "2a8630847dbb93455936156c0689678e4eaee319" },
   "neodim": { "branch": "v2", "commit": "11b59d9cd99c04e88257d34d7b27a58f256f9b22" },
-  "neogit": { "branch": "master", "commit": "18366c64b0997167a1832056c4c0e1ac30da6e62" },
+  "neogit": { "branch": "master", "commit": "93bf00cd5db1e88ea0ca9105e83f7e97896a7cd2" },
   "nui.nvim": { "branch": "main", "commit": "80445d015d2b5f9af0d9e8bce63d303bc86eda8a" },
   "nvim-cmp": { "branch": "main", "commit": "538e37ba87284942c1d76ed38dd497e54e65b891" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "85855b38011114929f4058efc97af1059ab3e41d" },
