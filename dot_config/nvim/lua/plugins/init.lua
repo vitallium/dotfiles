@@ -2,6 +2,10 @@ return {
   -- Plugin with util functions required by other plugins
   { "nvim-lua/plenary.nvim", lazy = true },
   {
+    "direnv/direnv.vim",
+    event = "BufReadPre",
+  },
+  {
     "nvchad/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup()
