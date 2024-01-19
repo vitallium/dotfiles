@@ -4,6 +4,8 @@ cargo-edit
 cargo-nextest
 cargo-sweep
 cargo-update
+git-branch-stash-cli
+git-stack
 stylua
 tokei
 topgrade
