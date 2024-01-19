@@ -1,7 +1,7 @@
 [tools]
 node = "lts"
-ruby = "3.2.2"
-python = "3.11.5"
-golang = "1.21.5"
-chezmoi = "2.42.2"
-rust = "1.74.1"
+ruby = "3.2.3"
+python = "3.12.1"
+golang = "1.21.6"
+chezmoi = "2.45.0"
+rust = "1.75.0"
