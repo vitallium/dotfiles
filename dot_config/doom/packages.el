@@ -89,6 +89,7 @@
 (package! rbs-mode)
 (package! ruby-refactor)
 (package! yari)
+(package! flycheck-haml-lint :recipe (:host github :repo "vitallium/flycheck-haml-lint"))
 
 ;; Frontend
 (package! jest-test-mode)
