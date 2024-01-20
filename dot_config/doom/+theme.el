@@ -55,8 +55,7 @@
   (doom-themes-visual-bell-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config)
-  (doom-themes-treemacs-config)
-  (setq doom-themes-treemacs-theme "all-the-icons"))
+  (doom-themes-treemacs-config))
 
 (after! treemacs
   (add-hook! 'treemacs-mode-hook #'treemacs-follow-mode)
@@ -75,7 +74,7 @@
  ;; For `fixed-pitch-serif' face
  ;; (doom-serif-font)
  ;; Theme
- doom-theme 'modus-operandi
+ ;; doom-theme 'modus-operandi
  ;; Disable line numbers
  display-line-numbers-type nil
  doom-font-increment 1.0
@@ -83,13 +82,7 @@
 
 (after! doom-modeline
   (setq doom-modeline-major-mode-icon t
-        doom-modeline-major-mode-color-icon t
         doom-modeline-buffer-file-name-style 'truncate-with-project))
-
-(when IS-MAC
-  (dolist (filter '((ns-transparent-titlebar . t)
-                    (ns-appearance . unbound)))
-    (cl-pushnew filter default-frame-alist :test #'equal)))
 
 (after! doom-ui
   (setq! auto-dark-dark-theme 'modus-vivendi-tinted
