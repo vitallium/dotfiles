@@ -97,8 +97,6 @@
 ;; mise (ex-rtx) integration
 (package! mise :recipe (:host github :repo "vitallium/mise.el"))
 
-(package! reverse-im)
-
 ;; Embark integration for vc
 (package! embark-vc)
 
