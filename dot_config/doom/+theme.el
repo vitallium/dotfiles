@@ -81,8 +81,10 @@
  window-resize-pixelwise t)
 
 (after! doom-modeline
-  (setq doom-modeline-major-mode-icon t
-        doom-modeline-buffer-file-name-style 'truncate-with-project))
+  (setq doom-modeline-major-mode-icon (display-graphic-p)
+        doom-modeline-major-mode-color-icon (display-graphic-p)
+        doom-modeline-buffer-file-name-style 'truncate-with-project
+        doom-modeline-vcs-max-length 60))
 
 (after! doom-ui
   (setq! auto-dark-dark-theme 'modus-vivendi-tinted
