@@ -13,15 +13,6 @@
    ;; By default while in insert all changes are one big blob. Be more granular
    evil-want-fine-undo t))
 
-;; Re-enable `smerge-mode` that was disabled in
-;; https://github.com/doomemacs/doomemacs/commit/fe3f8866d81f32ef4edb2cd5be7214ad86b65447
-;; due to the upstream bug
-;; https://github.com/emacs-evil/evil-collection/pull/705 which is now resolved
-(after! evil-collection
-  (progn
-    (add-to-list 'evil-collection-mode-list 'smerge-mode)
-    (+evil-collection-init 'smerge-mode)))
-
 ;; From https://github.com/LemonBreezes/cyber-angel-emacs/
 (after! which-key
   (setq which-key-ellipsis "..."
