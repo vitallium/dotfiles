@@ -2,16 +2,19 @@
 
 (after! lsp-mode
   (setq
-    ;; Do not ask to download and install LSP
-    lsp-enable-suggest-server-download nil
-    lsp-semantic-tokens-enable t
-    lsp-enable-folding t
-    lsp-signature-render-documentation nil
-    lsp-signature-function 'lsp-signature-posframe
-    ;; Improve LSP performance
-    lsp-idle-delay 1
-    lsp-log-io nil
-    read-process-output-max (* 1024 1024 4))
+   ;; Do not ask to download and install LSP
+   lsp-enable-suggest-server-download nil
+   lsp-semantic-tokens-enable t
+   lsp-enable-folding t
+   lsp-signature-render-documentation nil
+   lsp-signature-function 'lsp-signature-posframe
+   ;; Improve LSP performance
+   lsp-idle-delay 1
+   lsp-log-io nil
+   read-process-output-max (* 1024 1024 4)
+   ;; Add "tmp" and ".devbox" directories to ignored list of directories.
+   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]tmp")
+   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\].devbox"))
 
   ;; Rust
   (when (modulep! :lang rust +lsp)

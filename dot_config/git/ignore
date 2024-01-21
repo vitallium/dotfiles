@@ -362,3 +362,7 @@ Cargo.lock
 ### direnv ###
 .direnv/
 .envrc
+
+### devbox ###
+.devbox/
+.devbox.d/

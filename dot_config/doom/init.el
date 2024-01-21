@@ -18,25 +18,22 @@
 (after! doom-cli-env
   (when noninteractive
     (setq doom-env-deny '("^.*"))
-    (setq doom-env-allow '("^EDITOR$"
-                           "^VISUAL$"
-                           "^SHELL$"
-                           "^PATH$"
+    (setq doom-env-allow '("^PATH$"
                            "^MANPATH$"
                            "^LANG$"
                            "^LC_ALL$"
                            "^SSH_AUTH_SOCK$"
+                           "^TMPDIR$"
+                           "^MallocNanoZone$"
                            ;; lsp-mode
                            "^LSP_USE_PLISTS$"
                            ;; xdg
                            "^XDG_.*$"
                            ;; Rust
                            "^RUSTC_WRAPPER$"
-                           "^RUSTUP_HOME$"
-                           "^CARGO_HOME$"
+                           "^RUST_BACKTRACE$"
                            ;; Go
-                           "^GOPATH$"
-                           "^GO111MODULE$"
+                           "^GOPRIVATE$"
                            ))))
 
 (defconst *is-emacs-28* (= emacs-major-version 28))
