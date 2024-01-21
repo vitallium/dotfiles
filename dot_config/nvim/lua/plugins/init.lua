@@ -12,7 +12,6 @@ return {
     end,
     cmd = { "ColorizerAttachToBuffer", "ColorizerDetachFromBuffer" },
   },
-
   {
     "johmsalas/text-case.nvim",
     event = "BufRead",
