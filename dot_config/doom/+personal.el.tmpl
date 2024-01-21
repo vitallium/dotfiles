@@ -6,10 +6,6 @@
       user-mail-address "{{ .email }}"
       epg-gpg-program "gpg2")
 
-;; Pull the SSH_AUTH_SOCK for Yubikey
-(require 's)
-(setenv "SSH_AUTH_SOCK" (s-trim (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket")))
-
 (setq +lookup-provider-url-alist
       '(("Google" "https://google.com/search?q=%s")
         ("GitHub" "https://github.com/search?ref=simplesearch&q=%s")
