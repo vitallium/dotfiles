@@ -11,10 +11,12 @@
    ;; Improve LSP performance
    lsp-idle-delay 1
    lsp-log-io nil
-   read-process-output-max (* 1024 1024 4)
-   ;; Add "tmp" and ".devbox" directories to ignored list of directories.
-   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]tmp")
-   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\].devbox"))
+   read-process-output-max (* 1024 1024 4))
+  ;; Add "tmp" and ".devbox" directories to ignored list of directories.
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]tmp")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\].devbox")
+  ;; See https://github.com/emacs-lsp/lsp-mode/issues/3577
+  (delete 'lsp-terraform lsp-client-packages)
 
   ;; Rust
   (when (modulep! :lang rust +lsp)
@@ -32,14 +34,13 @@
   (setq lsp-treemacs-error-list-current-project-only t))
 
 (after! lsp-ui
-  (setq lsp-ui-doc-position 'top
-        lsp-ui-doc-max-height 20
-        lsp-ui-doc-delay 0.5
+  ;; Configure lsp-ui
+  (setq lsp-ui-doc-enable t
+        lsp-ui-doc-position 'at-point
         lsp-ui-doc-show-with-mouse t
-        lsp-ui-doc-header t
+        lsp-ui-doc-show-with-cursor t
         lsp-ui-doc-use-childframe nil
         lsp-ui-doc-use-webkit t
-        lsp-ui-sideline-enable t
-        lsp-ui-sideline-update-mode #'line
-        lsp-ui-peek-enable t
-        lsp-ui-imenu-kind-position 'left))
+        lsp-signature-render-documentation nil
+        lsp-eldoc-enable-hover nil
+        lsp-signature-auto-activate nil))
