@@ -103,5 +103,3 @@
 
 ;; Automatically toggle between light and dark theme
 (package! auto-dark)
-
-(package! fish-completion :pin "d34d0b96fde63feedf13c4288183d8d4d4d748cf")
