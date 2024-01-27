@@ -7,6 +7,11 @@
       :desc "Auto fill"
       :n "t a" 'auto-fill-mode)
 
+(when (modulep! :completion company +tabnine)
+  (map! :leader
+        :desc "Toggle TabNine"
+        :n "t t" 'tabnine-mode))
+
 (map! :leader :desc "Find file in other window" "fo" #'find-file-other-window)
 
 (map! :g [mouse-8] #'better-jumper-jump-backward

@@ -13,7 +13,7 @@
            ;; Activate bug-reference-prog-mode
            #'bug-reference-prog-mode
            #'rainbow-delimiters-mode)
-           ;;#'display-fill-column-indicator-mode)
+;;#'display-fill-column-indicator-mode)
 
 ;; Setup apheleia
 (after! apheleia
@@ -23,9 +23,7 @@
   (setf (alist-get 'rubocop apheleia-formatters)
         '("rubocop" "--stdin" filepath "--autocorrect"
           "--stderr" "--format" "quiet" "--fail-level" "fatal"))
-  (setf (alist-get 'ruby-mode apheleia-mode-alist)
-        '(rubocop))
-  (setf (alist-get 'ruby-ts-mode apheleia-mode-alist)
+  (setf (alist-get 'ruby-base-mode apheleia-mode-alist)
         '(rubocop)))
 
 (use-package! string-inflection

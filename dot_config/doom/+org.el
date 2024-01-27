@@ -3,7 +3,7 @@
 ;; Set the org-mode folder location
 (setq org-directory "~/Documents/Org/"
       org-agenda-files (list
-                        "~/org/"
+                        "~/Documents/Org/"
                         "\.org$")
       org-archive-location (concat org-directory ".archive/%s::")
       org-use-property-inheritance t)

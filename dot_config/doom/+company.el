@@ -6,7 +6,7 @@
         company-frontends '(company-pseudo-tooltip-frontend)))
 
 (use-package! tabnine
-  :when (modulep! company +tabnine)
+  :when (modulep! :completion company +tabnine)
   :after company
   :hook ((prog-mode . tabnine-mode)
          (markdown-mode . tabnine-mode)
