@@ -83,10 +83,9 @@
 (after! doom-modeline
   (setq doom-modeline-major-mode-icon (display-graphic-p)
         doom-modeline-major-mode-color-icon (display-graphic-p)
-        doom-modeline-buffer-file-name-style 'truncate-with-project
-        doom-modeline-vcs-max-length 60))
+        doom-modeline-buffer-file-name-style 'truncate-with-project))
 
 (after! doom-ui
-  (setq! auto-dark-dark-theme 'modus-vivendi-tinted
-         auto-dark-light-theme 'modus-operandi-tinted)
+  (setq! auto-dark-dark-theme 'modus-vivendi
+         auto-dark-light-theme 'modus-operandi)
   (auto-dark-mode 1))

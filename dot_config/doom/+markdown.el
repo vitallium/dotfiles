@@ -1,6 +1,4 @@
 ;;; $DOOMDIR/+markdown.el -*- lexical-binding: t; -*-
 
-(use-package! markdown-mode
-  :defer t
-  :config
+(after! markdown-mode
   (setq markdown-fontify-code-blocks-natively t))
