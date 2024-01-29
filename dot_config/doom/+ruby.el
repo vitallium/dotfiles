@@ -1,10 +1,5 @@
 ;;; $DOOMDIR/+ruby.el -*- lexical-binding: t; -*-
 
-(when (modulep! :tools lsp)
-  (after! lsp-solargraph
-    ;; Add mise installations for Ruby
-    (add-to-list 'lsp-solargraph-library-directories "~/.local/share/mise/installs/ruby")))
-
 (set-docsets! 'ruby-base-mode "Ruby_3" "Ruby_on_Rails_7")
 
 ;; Treat underscores as part of words

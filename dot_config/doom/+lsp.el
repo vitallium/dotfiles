@@ -11,7 +11,11 @@
    ;; Improve LSP performance
    lsp-idle-delay 1
    lsp-log-io nil
-   read-process-output-max (* 1024 1024 4))
+   read-process-output-max (* 1024 1024 4)
+   ;; Add mise installations for Ruby
+   ;; (add-to-list 'lsp-solargraph-library-directories "~/.local/share/mise/installs/ruby")
+   ;; Solargraph settings
+   lsp-solargraph-use-bundler t)
   ;; Add "tmp" and ".devbox" directories to ignored list of directories.
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]tmp")
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\].devbox")
