@@ -21,6 +21,7 @@
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\].devbox")
   ;; See https://github.com/emacs-lsp/lsp-mode/issues/3577
   (delete 'lsp-terraform lsp-client-packages)
+  (delete 'lsp-volar lsp-client-packages)
 
   ;; Rust
   (when (modulep! :lang rust +lsp)
