@@ -34,11 +34,11 @@
         org-appear-autosubmarkers t
         org-appear-delay 0.3))
 
-(add-hook! 'org-mode-hook
-           #'+org-pretty-mode
-           #'mixed-pitch-mode
-           #'org-pretty-table-mode
-           #'org-modern-mode)
+;; (add-hook! 'org-mode-hook
+;;            #'+org-pretty-mode
+;;            #'mixed-pitch-mode
+;;            #'org-pretty-table-mode
+;;            #'org-modern-mode)
 
 (setq +zen-mixed-pitch-modes '(org-mode markdown-mode gfm-mode Info-mode rst-mode adoc-mode))
 
