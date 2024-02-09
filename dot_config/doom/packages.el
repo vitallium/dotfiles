@@ -94,9 +94,6 @@
 (package! jest-test-mode)
 (package! js-doc)
 
-;; mise (ex-rtx) integration
-(package! mise :recipe (:host github :repo "vitallium/mise.el"))
-
 ;; Embark integration for vc
 (package! embark-vc)
 
