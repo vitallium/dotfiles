@@ -27,3 +27,6 @@ quote_style = double
 
 [*.fish]
 indent_size = 4
+
+[*.org]
+indent_size = 8
