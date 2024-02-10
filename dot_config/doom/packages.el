@@ -78,9 +78,6 @@
 ;; Improve YAML editing
 (package! yaml-pro)
 
-;; Replace json-mode with jsonian
-(package! json-mode :disable t)
-(package! jsonian :recipe (:host github :repo "iwahbe/jsonian"))
 (package! jsonnet-mode)
 
 (package! multi-vterm)

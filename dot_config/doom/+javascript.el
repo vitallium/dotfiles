@@ -15,12 +15,6 @@
         "a" #'jest-test-run-all-tests
         "s" #'jest-test-run-at-point))
 
-(pushnew! auto-mode-alist
-          '("\\manifest.webapp\\'" . json-mode)
-          '("\\.eslintrc\\'" . json-mode)
-          '("\\.prettierrc\\'" . json-mode)
-          '("\\.babelrc\\'" . json-mode))
-
 (set-docsets! 'js-mode "JavaScript")
 
 (after! web-mode
@@ -28,6 +22,7 @@
   (web-mode-toggle-current-element-highlight))
 
 ;; Fix stylelint >= v14:
+;; See https://github.com/flycheck/flycheck/pull/1944
 (flycheck-define-checker general-stylelint
   "A checker for CSS and related languages using Stylelint"
   :command ("stylelint"

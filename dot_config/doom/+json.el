@@ -1,4 +1,7 @@
 ;;; $DOOMDIR/+json.el -*- lexical-binding: t; -*-
 
-(after! (jsonian flycheck) (jsonian-enable-flycheck))
-(after! (jsonian so-long) (jsonian-no-so-long-mode))
+(pushnew! auto-mode-alist
+          '("\\manifest.webapp\\'" . json-mode)
+          '("\\.eslintrc\\'" . json-mode)
+          '("\\.prettierrc\\'" . json-mode)
+          '("\\.babelrc\\'" . json-mode))
