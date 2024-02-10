@@ -1,11 +1,8 @@
 ;;; $DOOMDIR/+flycheck.el -*- lexical-binding: t; -*-
 
-;; Configure flycheck
 (after! flycheck
   (flycheck-add-mode 'html-tidy 'web-mode)
-  (setq flycheck-javascript-eslint-executable "eslint_d"
-        flycheck-stylelintrc ".stylelintrc.json"
-        flycheck-global-modes '(not org-mode)))
+  (setq flycheck-global-modes '(not org-mode)))
 
 ;; Sometimes the posframe is not going away so we have
 ;; to install a monitor for hiding it.
