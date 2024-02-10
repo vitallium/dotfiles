@@ -1,11 +1,10 @@
 ;;; $DOOMDIR/+yaml.el -*- lexical-binding: t; -*-
 
 (use-package! yaml-pro
-  :after yaml-mode
   :hook (yaml-mode . yaml-pro-mode)
   :config
   (map! :map yaml-pro-mode-map
-       [remap imenu] #'yaml-pro-jump
+        [remap imenu] #'yaml-pro-jump
         :n "zc" #'yaml-pro-fold-at-point
         :n "zo" #'yaml-pro-unfold-at-point
         :n "gk" #'yaml-pro-prev-subtree
