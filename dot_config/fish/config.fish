@@ -55,6 +55,14 @@ status is-interactive || exit
 if command -qa direnv; direnv hook fish | source; end
 
 #
+# mise
+# Keep this after direnv to ensure direnv integration in mise configures properly.
+if command -qa mise
+    set -gx MISE_FISH_AUTO_ACTIVATE 0
+    mise activate fish | source
+end
+
+#
 # Editor
 #
 if not test -z EDITOR
