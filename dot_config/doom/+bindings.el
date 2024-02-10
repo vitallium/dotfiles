@@ -7,6 +7,10 @@
       :desc "Auto fill"
       :n "t a" 'auto-fill-mode)
 
+(map! :leader
+      :desc "Format buffer"
+      :n "b f" '+format/buffer)
+
 (when (modulep! :completion company +tabnine)
   (map! :leader
         :desc "Toggle TabNine"
