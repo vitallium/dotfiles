@@ -36,7 +36,6 @@
                            "^GOPRIVATE$"
                            ))))
 
-(defconst *is-emacs-28* (= emacs-major-version 28))
 (defconst *is-emacs-29* (>= emacs-major-version 29))
 
 ;; Evil mode settings that must be set before "evil" is loaded.
@@ -61,8 +60,7 @@
        doom                ; what makes DOOM look the way it does
        doom-dashboard      ; a nifty splash screen for Emacs
        ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       (:if *is-emacs-28*
-           (emoji +unicode)) ; 🙂
+       ;;emoji             ; 🙂
        hl-todo             ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
        ;;indent-guides     ; highlighted indent columns
