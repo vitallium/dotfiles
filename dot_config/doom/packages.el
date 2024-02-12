@@ -71,10 +71,6 @@
 (package! mixed-pitch)
 (package! mermaid-ts-mode :recipe (:host github :repo "JonathanHope/mermaid-ts-mode"))
 
-;; tree-sitter
-(package! treesit-auto :disable t)
-(package! ts-fold :recipe (:host github :repo "emacs-tree-sitter/ts-fold"))
-
 ;; Improve YAML editing
 (package! yaml-pro)
 
@@ -85,7 +81,6 @@
 ;; Ruby
 (package! rbs-mode)
 (package! yari)
-(package! flycheck-haml-lint :recipe (:host github :repo "vitallium/flycheck-haml-lint"))
 
 ;; Frontend
 (package! jest-test-mode)
