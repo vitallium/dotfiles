@@ -91,3 +91,6 @@
 
 ;; Automatically toggle between light and dark theme
 (package! auto-dark)
+
+;; Some packages still depend on it
+(package! all-the-icons)
