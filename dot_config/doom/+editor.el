@@ -23,7 +23,7 @@
   (setf (alist-get 'rubocop apheleia-formatters)
         '("rubocop" "--stdin" filepath "--autocorrect"
           "--stderr" "--format" "quiet" "--fail-level" "fatal"))
-  (setf (alist-get 'ruby-base-mode apheleia-mode-alist)
+  (setf (alist-get 'ruby-mode apheleia-mode-alist)
         '(rubocop)))
 
 (use-package! string-inflection
