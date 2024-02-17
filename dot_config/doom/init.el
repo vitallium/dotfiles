@@ -49,6 +49,7 @@
 
        :completion
        (company            ; the ultimate code completion backend
+        +childframe
         +tabnine)
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
@@ -213,7 +214,8 @@
        (org                ; organize your plain life in plain text
         +journal
         +noter
-        +present)
+        +present
+        +pretty)
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional

@@ -61,14 +61,11 @@
 (package! ef-themes)
 (package! standard-themes)
 
-(package! visual-fill-column)
 (package! string-inflection)
 
 ;; Org mode goodies
 (package! org-modern)
 (package! org-pretty-table :recipe (:host github :repo "Fuco1/org-pretty-table"))
-(package! org-appear :recipe (:host github :repo "awth13/org-appear"))
-(package! mixed-pitch)
 (package! mermaid-ts-mode :recipe (:host github :repo "JonathanHope/mermaid-ts-mode"))
 
 ;; Improve YAML editing

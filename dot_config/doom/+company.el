@@ -1,10 +1,5 @@
 ;;; $DOOMDIR/+company.el -*- lexical-binding: t; -*-
 
-(use-package! company
-  :config
-  (setq company-tooltip-align-annotations t
-        company-frontends '(company-pseudo-tooltip-frontend)))
-
 (use-package! tabnine
   :when (modulep! :completion company +tabnine)
   :after company
@@ -28,7 +23,9 @@
   :after company
   :init
   (company-quickhelp-mode)
+  :bind
+  (:map company-active-map
+        ("?" . company-quickhelp-manual-begin))
   :config
-  (setq company-quickhelp-delay nil
-        company-quickhelp-use-propertized-text t
+  (setq company-quickhelp-use-propertized-text t
         company-quickhelp-max-lines 10))
