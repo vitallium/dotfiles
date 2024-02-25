@@ -53,7 +53,6 @@
 (package! eredis)
 
 ;; Auto-complete
-(package! company-quickhelp)
 (package! tabnine)
 
 ;; Themes

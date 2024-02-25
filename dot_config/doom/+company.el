@@ -19,13 +19,3 @@
          ("M-[" . tabnine-previous-completion)
          ("M-]" . tabnine-next-completion)))
 
-(use-package! company-quickhelp
-  :after company
-  :init
-  (company-quickhelp-mode)
-  :bind
-  (:map company-active-map
-        ("?" . company-quickhelp-manual-begin))
-  :config
-  (setq company-quickhelp-use-propertized-text t
-        company-quickhelp-max-lines 10))
