@@ -47,21 +47,26 @@ if set -q HOMEBREW_PREFIX
     fish_add_path -g --move $HOMEBREW_PREFIX/opt/curl/bin
 end
 
-status is-interactive || exit
-
 #
 # direnv
 #
-if command -qa direnv; direnv hook fish | source; end
+if command -qa direnv
+    direnv hook fish | source
+end
 
 #
 # mise
-# Keep this after direnv to ensure direnv integration in mise configures properly.
+#
 if command -qa mise
     set -gx MISE_FISH_AUTO_ACTIVATE 0
-    mise activate fish | source
+    if status is-interactive
+        mise activate fish | source
+    else
+        mise activate fish --shims | source
+    end
 end
 
+status is-interactive || exit
 #
 # Editor
 #
