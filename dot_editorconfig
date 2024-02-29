@@ -30,3 +30,6 @@ indent_size = 4
 
 [*.org]
 indent_size = 8
+
+[*.kt]
+indent_size = 4
