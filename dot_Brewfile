@@ -47,7 +47,6 @@ brew 'zlib'
 # Casks
 cask '1password'
 cask '1password-cli'
-cask 'chromedriver'
 cask 'firefox'
 cask 'font-ia-writer-duo'
 cask 'font-mononoki'
