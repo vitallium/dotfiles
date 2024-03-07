@@ -53,19 +53,12 @@ rescue LoadError => e
   puts 'pry-reload is not available. Did you forget to install it?'
 end
 
-# Use awesome_print (or amazing_print)
+# Load amazing_print
 begin
-  require 'awesome_print'
-  AwesomePrint.pry!
+  require 'amazing_print'
+  AmazingPrint.pry!
 rescue LoadError => e
-  begin
-    puts "no awesome_print :( #{e}"
-    puts 'trying amazing_print'
-    require 'amazing_print'
-    AmazingPrint.pry!
-  rescue LoadError => err2
-    puts "no awesome_print :( #{err2}"
-  end
+  puts "no amazing_print :( #{e}"
 end
 
 # Hit Enter to repeat last command
