@@ -12,27 +12,6 @@ else
   Pry.config.prompt = Pry::Prompt[:nav]
 end
 
-Pry::Commands.command(/^$/, 'repeat last command') do
-  pry_instance.run_command Pry.history.to_a.last
-end
-
-# == Pry-Nav - Using pry as a debugger ==
-Pry.commands.alias_command 't', 'backtrace'
-Pry.commands.alias_command 's', 'step'
-Pry.commands.alias_command 'n', 'next'
-Pry.commands.alias_command 'c', 'continue'
-Pry.commands.alias_command 'f', 'finish'
-Pry.commands.alias_command 'ff', 'frame'
-Pry.commands.alias_command 'u', 'up'
-Pry.commands.alias_command 'd', 'down'
-Pry.commands.alias_command 'b', 'break'
-Pry.commands.alias_command 'w', 'whereami'
-
-Pry.config.commands.alias_command 'h', 'hist -T 20', desc: 'Last 20 commands'
-Pry.config.commands.alias_command 'hg', 'hist -T 20 -G', desc: 'Up to 20 commands matching expression'
-Pry.config.commands.alias_command 'hG', 'hist -G', desc: 'Commands matching expression ever used'
-Pry.config.commands.alias_command 'hr', 'hist -r', desc: 'hist -r <command number> to run a command'
-
 # Fix deprecation warning, so override default for now.
 # Remember to eventually remove this!
 # WARNING: the show-doc command is deprecated. It will be removed from future Pry versions.
@@ -47,22 +26,11 @@ if defined?(PryByebug)
   end
 end
 
-begin
-  require 'pry-reload'
-rescue LoadError => e
-  puts 'pry-reload is not available. Did you forget to install it?'
-end
-
 # Load amazing_print
 begin
   require 'amazing_print'
   AmazingPrint.pry!
 rescue LoadError => e
   puts "no amazing_print :( #{e}"
-end
-
-# Hit Enter to repeat last command
-Pry::Commands.command(/^$/, 'repeat last command') do
-  pry_instance.run_command Pry.history.to_a.last
 end
 
