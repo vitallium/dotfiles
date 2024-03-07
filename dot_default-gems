@@ -16,6 +16,7 @@ pry-byebug
 pry-doc
 pry-power_assert
 pry-reload
+rails
 rbs
 reek
 repl_type_completor
