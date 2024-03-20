@@ -63,34 +63,6 @@ return {
     lazy = false,
     build = "./kitty/install-kittens.bash",
     keys = {
-      {
-        "<A-h>",
-        function()
-          require("smart-splits").resize_left()
-        end,
-        desc = "Resize left",
-      },
-      {
-        "<A-j>",
-        function()
-          require("smart-splits").resize_down()
-        end,
-        desc = "Resize down",
-      },
-      {
-        "<A-k>",
-        function()
-          require("smart-splits").resize_up()
-        end,
-        desc = "Resize up",
-      },
-      {
-        "<A-l>",
-        function()
-          require("smart-splits").resize_right()
-        end,
-        desc = "Resize right",
-      },
       -- Moving between splits
       {
         "<C-h>",
