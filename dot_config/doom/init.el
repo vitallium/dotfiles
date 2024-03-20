@@ -48,9 +48,10 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       (company            ; the ultimate code completion backend
-        +childframe)
-       ;; +tabnine)
+       ;; (company            ; the ultimate code completion backend
+       ;;  +childframe
+       ;;  +tabnine)
+       (corfu +orderless) ; complete with cap(f), cape and a flying feather!
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
@@ -121,7 +122,7 @@
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
-       ;;ansible
+       ansible
        ;;biblio            ; Writes a PhD for you (citation needed)
        (debugger           ; FIXME stepping through code, to help you add bugs
         +lsp)
@@ -151,7 +152,7 @@
        just                ; When Makefile is not enough
 
        :os
-       (:if IS-MAC macos)  ; improve compatibility with macOS
+       (:if (featurep :system 'macos) macos)  ; improve compatibility with macOS
        tty                 ; improve the terminal Emacs experience
 
        :lang
