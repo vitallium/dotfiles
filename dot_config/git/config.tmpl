@@ -67,6 +67,9 @@
 
 [fetch]
   prune = true
+  fsckObjects = true
+  # Cache commit graph to speed up graph log / push operations on fetch.
+  writeCommitGraph = true
 
 [diff]
   # Use n and N to move between diff sections
