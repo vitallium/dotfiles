@@ -1,5 +1,8 @@
 ;;; $DOOMDIR/+lsp.el -*- lexical-binding: t; -*-
 
+;; Disable vue-semantic-server as it annoying by taking over all buffers.
+(setq lsp-disabled-clients '(vue-semantic-server))
+
 (after! lsp-mode
   (setq
    ;; Do not ask to download and install LSP
