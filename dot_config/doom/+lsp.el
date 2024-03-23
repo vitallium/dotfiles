@@ -23,8 +23,8 @@
   (add-hook 'lsp-after-open-hook #'lsp-enable-imenu)
 
   ;; Add "tmp" and ".devbox" directories to ignored list of directories.
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]tmp")
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\].devbox")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]tmp\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.devbox\\'")
 
   (setq lsp-json-schemas
         `[
