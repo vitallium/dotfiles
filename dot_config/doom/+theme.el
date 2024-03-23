@@ -1,8 +1,8 @@
 ;;; $DOOMDIR/+theme.el -*- lexical-binding: t; -*-
 
-;; In Emacs > 29, we can use Po Lu’s pixel-scroll-precision-mode to get a faster and better scrolling.
-(when *is-emacs-29*
-  (pixel-scroll-precision-mode))
+;; Use Po Lu’s pixel-scroll-precision-mode to get a faster and better scrolling.
+(if (fboundp 'pixel-scroll-precision-mode)
+    (pixel-scroll-precision-mode t))
 
 ;; From https://github.com/gf3/dotfiles/
 (defun gf3/get-dpi (&optional frame)
