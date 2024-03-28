@@ -3,7 +3,7 @@ require 'irb/theme/tokyonight/night'
 IRB.conf[:COMPLETOR] = :type
 
 if ENV['INSIDE_EMACS']
-  IRB.conf[:USE_MULTILINE] = nil
+  IRB.conf[:USE_MULTILINE] = false
   IRB.conf[:USE_SINGLELINE] = false
   IRB.conf[:PROMPT_MODE] = :INF_RUBY
 
