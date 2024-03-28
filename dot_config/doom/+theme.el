@@ -40,8 +40,7 @@
   (doom/reload-font))
 
 (after! modus-themes
-  (setq modus-themes-org-blocks 'gray-background
-        modus-themes-slanted-constructs t
+  (setq modus-themes-slanted-constructs t
         modus-themes-bold-constructs t
         modus-themes-prompts '(italic semibold)))
 
@@ -86,4 +85,4 @@
 (after! doom-ui
   (setq! auto-dark-dark-theme 'modus-vivendi
          auto-dark-light-theme 'modus-operandi)
-  (auto-dark-mode 1))
+  (auto-dark-mode (display-graphic-p)))

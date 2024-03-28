@@ -7,8 +7,7 @@
 (setq enable-local-variables :all)
 
 (load! "+personal")
-(if (display-graphic-p)
-    (load! "+theme"))
+(load! "+theme")
 (load! "+bindings")
 (load! "+editor")
 
