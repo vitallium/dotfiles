@@ -78,6 +78,10 @@
 ;; Ruby
 (package! rbs-mode)
 (package! yari)
+(package! rails-routes)
+(package! rails-i18n)
+(package! multi-line)
+(package! ruby-refactor)
 
 ;; Frontend
 (package! jest-test-mode)
