@@ -5,7 +5,7 @@ return {
   dependencies = { "kevinhwang91/promise-async" },
   priority = 1, -- Load after LSP, etc.
   opts = {
-    close_fold_kinds = { "imports" },
+    close_fold_kinds_for_ft = { "imports" },
     provider_selector = function()
       return { "treesitter", "indent" }
     end,
