@@ -39,19 +39,14 @@
   # https://git-scm.com/docs/git-update-index#_untracked_cache
   untrackedCache = true
 
-[pager]
-  diff = delta
-  log = delta
-  reflog = delta
-  show = delta
-
-[delta]
-  navigate = true
-  line-numbers = true
-  syntax-theme = ansi
-
 [interactive]
   diffFilter = delta --color-only
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
