@@ -54,7 +54,6 @@
   "promise-async": { "branch": "main", "commit": "93540c168c5ed2b030ec3e6c40ab8bbb85e36355" },
   "requirements.txt.vim": { "branch": "master", "commit": "f7abd4d5dd1fe1625108dbb4e9ad3f29213b80e3" },
   "schemastore.nvim": { "branch": "main", "commit": "20ceee9ede7cb68ce01dc45a7d5924cefc9aa671" },
-  "smart-splits.nvim": { "branch": "master", "commit": "50f52146e4504a3fc0f0d5830c8560a16a95dd08" },
   "text-case.nvim": { "branch": "main", "commit": "d62c63a4e9a996c7321885937ab89920fca2c1c8" },
   "todo-comments.nvim": { "branch": "main", "commit": "a7e39ae9e74f2c8c6dc4eea6d40c3971ae84752d" },
   "toggleterm.nvim": { "branch": "main", "commit": "193786e0371e3286d3bc9aa0079da1cd41beaa62" },
