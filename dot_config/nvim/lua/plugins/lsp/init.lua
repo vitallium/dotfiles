@@ -63,6 +63,6 @@ return {
     event = "VeryLazy",
   },
   { "ray-x/lsp_signature.nvim" },
-  { "VidocqH/lsp-lens.nvim", config = true, lazy = false },
+  { "VidocqH/lsp-lens.nvim", config = true },
   { "smjonas/inc-rename.nvim", config = true },
 }
