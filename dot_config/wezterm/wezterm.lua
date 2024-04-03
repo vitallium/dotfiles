@@ -59,7 +59,6 @@ return {
     bold_brightens_ansi_colors = true,
     -- Tab
     tab_max_width = 32,
-    use_fancy_tab_bar = true,
     hide_tab_bar_if_only_one_tab = true,
     -- Window
     window_close_confirmation = "NeverPrompt",
