@@ -48,17 +48,10 @@ if set -q HOMEBREW_PREFIX
 end
 
 #
-# direnv
-#
-if command -qa direnv
-    direnv hook fish | source
-end
-
-#
 # mise
 #
+set -gx MISE_FISH_AUTO_ACTIVATE 0
 if command -qa mise
-    set -gx MISE_FISH_AUTO_ACTIVATE 0
     if status is-interactive
         mise activate fish | source
     else
