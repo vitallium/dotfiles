@@ -60,6 +60,7 @@ return {
     -- Tab
     tab_max_width = 32,
     hide_tab_bar_if_only_one_tab = true,
+    use_fancy_tab_bar = false,
     -- Window
     window_close_confirmation = "NeverPrompt",
     window_decorations = "TITLE | RESIZE",
