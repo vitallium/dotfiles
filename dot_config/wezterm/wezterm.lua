@@ -48,7 +48,7 @@ local font = fonts_configurations["berkeley"]
 
 return {
     -- Font
-    font = wezterm.font_with_fallback({ font.name, "Symbols Nerd Font Mono" }),
+    font = wezterm.font_with_fallback({ font.name }),
     harfbuzz_features = font.harfbuzz_features,
     font_size = font.size,
     use_cap_height_to_scale_fallback_fonts = true,
