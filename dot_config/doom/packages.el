@@ -50,10 +50,6 @@
 ;;(unpin! t)
 
 (package! git-link)
-(package! eredis)
-
-;; Auto-complete
-(package! tabnine)
 
 ;; Themes
 (package! modus-themes)

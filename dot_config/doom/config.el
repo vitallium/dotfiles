@@ -18,9 +18,6 @@
            (not (modulep! :tools lsp +eglot)))
   (load! "+lsp"))
 
-(when (modulep! :completion company)
-  (load! "+company"))
-
 (when (modulep! :term eshell)
   (load! "+eshell"))
 
