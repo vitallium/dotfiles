@@ -17,8 +17,9 @@
     :documentation #'robe-doc))
 
 (use-package! ruby-refactor
+  :hook
+  (ruby-base-mode . ruby-refactor-mode)
   :config
-  (add-hook! 'ruby-mode-hook 'ruby-refactor-mode-launch)
   (map! :mode ruby-mode :localleader "v" :desc "Extract Local Variable" 'ruby-refactor-extract-local-variable)
   (map! :mode ruby-mode :localleader "V" :desc "Extract Constant" 'ruby-refactor-extract-constant)
   (map! :mode ruby-mode :localleader "m" :desc "Extract to Method" 'ruby-refactor-extract-to-method))
