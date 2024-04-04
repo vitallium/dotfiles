@@ -21,7 +21,7 @@
         '(lisp-indent))
   ;; Configure rubocop
   (setf (alist-get 'rubocop apheleia-formatters)
-        '("rubocop" "--stdin" filepath "--autocorrect"
+        '("bundle" "exec" "rubocop" "--stdin" filepath "--autocorrect"
           "--stderr" "--format" "quiet" "--fail-level" "fatal"))
   (setf (alist-get 'ruby-mode apheleia-mode-alist)
         '(rubocop)))
