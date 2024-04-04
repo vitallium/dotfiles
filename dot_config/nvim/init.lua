@@ -8,4 +8,4 @@ require("keymaps")
 
 require("lazyplug")
 
-vim.cmd.colorscheme("tokyonight-night")
+vim.cmd.colorscheme("catppuccin")
