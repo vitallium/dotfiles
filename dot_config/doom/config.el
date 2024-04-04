@@ -44,5 +44,5 @@
 
 ;; Use GNU grep on macOS for faster `consult-grep`
 ;; `doom doctor` is still complaining, because of hard-coded `grep` command
-;; (after! consult
-;;   (if (featurep :system 'macos) (setq consult-grep-args (append '("ggrep") (cdr consult-grep-args) ))))
+(after! consult
+  (if (featurep :system 'macos) (setq consult-grep-args (append '("ggrep") (cdr consult-grep-args) ))))

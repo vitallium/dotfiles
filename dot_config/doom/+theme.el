@@ -31,7 +31,7 @@
      (t 16.0))))
 
 (defun vitallium/reload-font-size ()
-  "Reload font size according to the DPI"
+  "Reload font size according to the DPI."
   (interactive)
   (setq
    doom-font (font-spec :family "Berkeley Mono" :size (gf3/preferred-font-size))
@@ -78,9 +78,7 @@
  window-resize-pixelwise t)
 
 (after! doom-modeline
-  (setq doom-modeline-major-mode-icon (display-graphic-p)
-        doom-modeline-major-mode-color-icon (display-graphic-p)
-        doom-modeline-buffer-file-name-style 'truncate-with-project))
+  (setq doom-modeline-buffer-file-name-style 'truncate-with-project))
 
 (after! doom-ui
   (setq! auto-dark-dark-theme 'modus-vivendi
