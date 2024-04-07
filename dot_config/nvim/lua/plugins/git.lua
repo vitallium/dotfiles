@@ -43,7 +43,7 @@ return {
   {
     "sindrets/diffview.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       local actions = require("diffview.actions")
 

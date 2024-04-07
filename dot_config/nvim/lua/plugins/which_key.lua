@@ -87,11 +87,6 @@ return {
       },
       c = {
         name = "Code",
-        d = { ":TroubleToggle document_diagnostics<CR>", "Show diagnostics" },
-        D = {
-          ":TroubleToggle workspace_diagnostics<CR>",
-          "Show workspace diagnostics",
-        },
         e = { vim.diagnostic.open_float, "Floating diagnostic" },
       },
       f = {
@@ -137,10 +132,6 @@ return {
         j = { ":wincmd j<CR>", "Go to window to the bottom" },
         k = { ":wincmd k<CR>", "Go to window to the top" },
         l = { ":wincmd l<CR>", "Go to window to the right" },
-      },
-      x = {
-        name = "Diagnostic",
-        s = { vim.diagnostic.open_float, "Show in float" },
       },
       q = { name = "Quit", q = { ":quitall<CR>", "Quit all" } },
     }, { prefix = "<leader>" })
