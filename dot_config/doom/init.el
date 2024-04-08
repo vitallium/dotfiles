@@ -77,7 +77,8 @@
        (treemacs +lsp)     ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
        (vc-gutter          ; vcs diff in the fringe
-        +diff-hl)
+        +diff-hl
+        +pretty)
        vi-tilde-fringe     ; fringe tildes to mark beyond EOB
        (window-select      ; visually switch windows
         +numbers)
@@ -117,7 +118,7 @@
        syntax              ; tasing you for every semicolon you forget
        ;;spell             ; tasing you for misspelling mispelling
        jinx                ; the spell checker of the future
-       ;;grammar           ; tasing grammar mistake every you make
+       grammar             ; tasing grammar mistake every you make
 
        :tools
        ansible
