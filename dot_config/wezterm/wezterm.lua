@@ -54,7 +54,7 @@ return {
     use_cap_height_to_scale_fallback_fonts = true,
     unicode_version = 15,
     -- Colors
-    color_scheme = "Catppuccin Mocha",
+    color_scheme = "tokyonight_night",
     enable_scroll_bar = false,
     bold_brightens_ansi_colors = true,
     -- Tab
