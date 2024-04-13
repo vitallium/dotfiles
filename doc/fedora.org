@@ -20,24 +20,16 @@
   - [[#install-packages-for-yubikey][Install packages for ~Yubikey~]]
   - [[#enable-adw3-copr-and-install-adwaita-theme-for-legacy-applications][Enable adw3 copr and install ~adwaita~ theme for legacy applications]]
   - [[#enable-and-install-vim-stuff][Enable and install ~vim~ stuff]]
-  - [[#configure-btrfs-snapshots][Configure BTRFS snapshots]]
 - [[#configure-user-environment][Configure user environment]]
   - [[#enable-flathub][Enable flathub]]
   - [[#install-flatpaks][Install ~flatpaks~]]
   - [[#clean-up-unused-directories-and-bookmarks][Clean up unused directories and bookmarks]]
-  - [[#install-fonts][Install fonts]]
   - [[#install-docker][Install docker]]
   - [[#install-protonvpn][Install ProtonVPN]]
   - [[#install-mullvadvpn][Install MullvadVPN]]
-  - [[#install-xanmod-kernel][Install XanMod Kernel]]
   - [[#install-sublime-text-and-sublime-merge][Install Sublime Text and Sublime Merge]]
   - [[#install-teleport][Install Teleport]]
   - [[#install-1password-cli][Install 1password CLI]]
-- [[#configure-rust-development-environment][Configure Rust development environment]]
-  - [[#install-fish-completions-for-rustup][Install ~fish~ completions for ~rustup~]]
-  - [[#install-rust-src][Install ~rust-src~.]]
-  - [[#install-rustfmt][Install ~rustfmt~]]
-  - [[#install-clippy][Install ~clippy~]]
 - [[#configure-gnome][Configure Gnome]]
   - [[#install-packages][Install packages]]
   - [[#theme-and-user-interface][Theme and user interface]]
@@ -102,7 +94,7 @@ usermod -s $(which fish) vslobodin
 
 ** Install Gnome extensions applications
 #+begin_src shell :dir /sudo::
-dnf install -y gnome-tweaks
+dnf install -y gnome-tweae
 #+end_src
 
 ** Enable RPM Fusion repositories
@@ -118,7 +110,7 @@ dnf install -y dnf-plugins-core
 ** Install drivers for Intel GPU
 #+begin_src shell :dir /sudo::
 dnf groupinstall -y multimedia
-dnf install -y intel-media-driver ffmpeg libva \
+dnf install -y intel-media-driver libva \
                libva-utils gstreamer1-vaapi \
                intel-gpu-tools mesa-dri-drivers
 #+end_src
@@ -182,7 +174,7 @@ systemctl enable --now pcscd
 ** Enable [[https://github.com/lassekongo83/adw-gtk3][adw3]] copr and install ~adwaita~ theme for legacy applications
 #+begin_src shell :dir /sudo::
 dnf copr enable -y nickavem/adw-gtk3
-dnf install -y adw-gtk3
+dnf install -y adw-gtk3-theme
 #+end_src
 
 ** Enable and install ~vim~ stuff
@@ -215,7 +207,6 @@ flatpak install -y flathub com.discordapp.Discord \
                            org.mozilla.firefox \
                            com.google.Chrome \
                            com.brave.Browser \
-                           us.zoom.Zoom \
                            com.github.maoschanz.drawing
 
 xdg-settings set default-web-browser re.sonny.Junction.desktop
@@ -247,8 +238,8 @@ systemctl enable --now containerd.service
 
 ** Install ProtonVPN
 #+begin_src shell :dir /sudo::
-rpm -i https://protonvpn.com/download/protonvpn-stable-release-1.0.1-1.noarch.rpm
-dnf install -y protonvpn
+rpm -i https://repo.protonvpn.com/fedora-39-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm
+dnf install -y protonvpn-cli proton-vpn-gnome-desktop
 #+end_src
 
 ** Install MullvadVPN

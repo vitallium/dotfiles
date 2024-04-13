@@ -16,7 +16,9 @@ data:
       name: "Berkeley Mono"
       size: 14
   {{- if eq .chezmoi.os "linux" }}
-  pinentry_bin: /usr/bin/pinentry-gnome3
+  pinentry_bin:
+    arm: /usr/bin/pinentry-gnome3
+    intel: /usr/bin/pinentry-gnome3
   git:
     gpg:
       key: EA8703DF57BC7168
