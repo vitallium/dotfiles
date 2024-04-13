@@ -4,7 +4,7 @@
 * Contents :TOC:
 - [[#post-installation-steps][Post installation steps]]
   - [[#install-updates][Install updates]]
-  - [[#change-the-hostname-to-serenity][Change the hostname to ~serenity~]]
+  - [[#change-the-hostname-to-firefly][Change the hostname to ~firefly~]]
   - [[#reboot-the-system-to-install-and-apply-updates][Reboot the system to install and apply updates]]
   - [[#open-settings-and-verify-the-following-settings][Open ~Settings~ and verify the following settings]]
   - [[#remove-redundant-stuff][Remove redundant stuff]]
@@ -28,7 +28,6 @@
   - [[#install-protonvpn][Install ProtonVPN]]
   - [[#install-mullvadvpn][Install MullvadVPN]]
   - [[#install-sublime-text-and-sublime-merge][Install Sublime Text and Sublime Merge]]
-  - [[#install-teleport][Install Teleport]]
   - [[#install-1password-cli][Install 1password CLI]]
 - [[#configure-gnome][Configure Gnome]]
   - [[#install-packages][Install packages]]
@@ -44,26 +43,20 @@
 
 * Post installation steps
 ** Install updates
-
 #+begin_src shell :dir /sudo::
 dnf upgrade --refresh
 #+end_src
-
-** Change the hostname to ~serenity~
-
+** Change the hostname to ~firefly~
 #+begin_src shell :dir /sudo::
-hostnamectl set-hostname serenity
+hostnamectl set-hostname firefly
 #+end_src
-
 ** Reboot the system to install and apply updates
 ** Open ~Settings~ and verify the following settings
-- Refresh rate is set to 144Hz for an external monitor.
-
+- Refresh rate set to 144Hz for an external monitor.
 #+begin_src shell
-gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.50
 gsettings set org.gnome.desktop.interface cursor-size 32
 #+end_src
-
 ** Remove redundant stuff
 #+begin_src shell :dir /sudo::
 dnf remove -y cheese rhythmbox totem orca \
@@ -74,29 +67,24 @@ dnf remove -y cheese rhythmbox totem orca \
               gnome-tour gnome-connections firefox
 dnf autoremove -y
 #+end_src
-
 ** Configure ~dnf~
 #+begin_src shell :dir /sudo::
 echo 'max_parallel_downloads=10' | tee -a /etc/dnf/dnf.conf
 echo 'deltarpm=true' | tee -a /etc/dnf/dnf.conf
 #+end_src
-
 ** Enable ~fstrim~
 #+begin_src shell :dir /sudo::
 systemctl enable fstrim.timer
 #+end_src
-
 ** Change default user shell to ~fish~
 #+begin_src shell :dir /sudo::
 dnf install -y fish
 usermod -s $(which fish) vslobodin
 #+end_src
-
 ** Install Gnome extensions applications
 #+begin_src shell :dir /sudo::
-dnf install -y gnome-tweae
+dnf install -y gnome-tweak
 #+end_src
-
 ** Enable RPM Fusion repositories
 #+begin_src shell :dir /sudo::
 dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
@@ -106,13 +94,16 @@ dnf groupupdate -y core
 dnf install -y rpmfusion-free-release-tainted
 dnf install -y dnf-plugins-core
 #+end_src
-
 ** Install drivers for Intel GPU
+See also https://github.com/ai/environment/blob/main/Install.md
+
 #+begin_src shell :dir /sudo::
-dnf groupinstall -y multimedia
+dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 dnf install -y intel-media-driver libva \
                libva-utils gstreamer1-vaapi \
                intel-gpu-tools mesa-dri-drivers
+dnf config-manager --set-enabled fedora-cisco-openh264
+dnf swap ffmpeg-free ffmpeg --allowerasing
 #+end_src
 
 Enable Intel GuC and HuC and Framebuffer compression.
@@ -136,7 +127,6 @@ echo 'fs.inotify.max_user_watches = 524288' >> /etc/sysctl.conf
 echo 'vm.swappiness = 10' >> /etc/sysctl.conf
 sysctl -p
 #+end_src
-
 ** Instal ~Development Tools~
 #+begin_src shell :dir /sudo::
 dnf install -y make gcc-c++ gcc make bzip2 openssl \
@@ -150,7 +140,6 @@ dnf install -y make gcc-c++ gcc make bzip2 openssl \
 
 dnf groupinstall -y "Development Tools"
 #+end_src
-
 ** Install other packages I use
 #+begin_src shell :dir /sudo::
 dnf install -y git git-lfs git-delta \
@@ -164,32 +153,27 @@ dnf install -y git git-lfs git-delta \
                perl-core git-extras htop \
                GraphicsMagick microdnf yamllint
 #+end_src
-
 ** Install packages for ~Yubikey~
 #+begin_src shell :dir /sudo::
 dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime pcsc-tools opensc pcsc-lite pgp-tools
 systemctl enable --now pcscd
 #+end_src
-
 ** Enable [[https://github.com/lassekongo83/adw-gtk3][adw3]] copr and install ~adwaita~ theme for legacy applications
 #+begin_src shell :dir /sudo::
 dnf copr enable -y nickavem/adw-gtk3
 dnf install -y adw-gtk3-theme
 #+end_src
-
 ** Enable and install ~vim~ stuff
 #+begin_src shell :dir /sudo::
 dnf copr enable -y vitallium/neovim-default-editor
 dnf install -y --allowerasing neovim-default-editor
 #+end_src
-
 * Configure user environment
 ** Enable [[https://flatpak.org/setup/Fedora][flathub]]
 #+begin_src shell :dir /sudo::
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-modify flathub --enable
 #+end_src
-
 ** Install ~flatpaks~
 #+begin_src shell
 flatpak install -y flathub com.discordapp.Discord \
@@ -211,13 +195,11 @@ flatpak install -y flathub com.discordapp.Discord \
 
 xdg-settings set default-web-browser re.sonny.Junction.desktop
 #+end_src
-
 ** Clean up unused directories and bookmarks
 #+begin_src shell
 rm -rf ~/Documents ~/Music ~/Public ~/Templates ~/Desktop
 echo "file:///home/vslobodin/Downloads" > ~/.config/gtk-3.0/bookmarks
 #+end_src
-
 ** Install docker
 #+begin_src shell :dir /sudo::
 dnf config-manager -y \
@@ -226,6 +208,8 @@ dnf config-manager -y \
 dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 #+end_src
 
+Add ~$USER~ to the ~docker~ group.
+TODO: switch to ~rootless~ configuration.
 #+begin_src shell :dir /sudo::
 usermod -aG docker $USER
 #+end_src
@@ -235,41 +219,28 @@ Enable and start ~systemd~ services.
 systemctl enable --now docker.service
 systemctl enable --now containerd.service
 #+end_src
-
 ** Install ProtonVPN
 #+begin_src shell :dir /sudo::
 rpm -i https://repo.protonvpn.com/fedora-39-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm
-dnf install -y protonvpn-cli proton-vpn-gnome-desktop
+dnf install -y protonvpn-cli
 #+end_src
-
 ** Install MullvadVPN
 #+begin_src shell :dir /sudo::
 dnf install -y https://mullvad.net/media/app/MullvadVPN-2022.5_x86_64.rpm
 #+end_src
-
 ** Install Sublime Text and Sublime Merge
 #+begin_src shell :dir /sudo::
 rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
 dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
 dnf install -y sublime-text sublime-merge
 #+end_src
-
-** Install Teleport
-
-#+begin_src shell :dir /sudo::
-dnf config-manager --add-repo https://rpm.releases.teleport.dev/teleport.repo
-dnf install -y teleport
-#+end_src
-
 ** Install 1password CLI
-
 #+begin_src shell :dir /sudo::
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
 sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
 dnf check-update -y 1password-cli
 dnf install -y 1password-cli
 #+end_src
-
 * Configure Gnome
 ** Install packages
 #+begin_src shell :dir /sudo::
@@ -285,7 +256,6 @@ Install ~gnome-shell~ with patches:
 dnf copr enable -y calcastor/gnome-patched
 dnf upgrade -y --refresh
 #+end_src
-
 ** Theme and user interface
 #+begin_src shell
 gsettings set org.gnome.desktop.interface clock-show-weekday true
