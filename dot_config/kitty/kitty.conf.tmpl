@@ -1,5 +1,5 @@
-font_family      Berkeley Mono
-font_size        14
+font_family      {{ .kitty.font.name }}
+font_size        {{ .kitty.font.size }}
 
 # See also https://sw.kovidgoyal.net/kitty/faq/#kitty-is-not-able-to-use-my-favorite-font
 # Nerd Fonts v3.1.1
@@ -21,7 +21,7 @@ macos_titlebar_color background
 inactive_text_alpha 0.7
 
 # Key Mappings
-kitty_mod cmd+shift
+kitty_mod super+shift
 map kitty_mod+t     new_tab_with_cwd
 map kitty_mod+m     toggle_layout stack
 map kitty_mod+enter launch --location=split  --cwd=current
