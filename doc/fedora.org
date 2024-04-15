@@ -266,7 +266,7 @@ wget -cO- https://github.com/phisch/phinger-cursors/releases/latest/download/phi
 #+end_src
 And enable them.
 #+begin_src shell
-gsettings set org.gnome.desktop.interface cursor-theme "phinger-cursors"
+gsettings set org.gnome.desktop.interface cursor-theme "phinger-cursors-dark"
 #+end_src
 ** Set Caps Lock as additional Ctrl
 #+begin_src shell
