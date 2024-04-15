@@ -95,12 +95,11 @@ dnf install -y dnf-plugins-core
 ** Install drivers for Intel GPU
 See also https://github.com/ai/environment/blob/main/Install.md
 #+begin_src shell :dir /sudo::
-dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+dnf config-manager --set-enabled fedora-cisco-openh264
+dnf groupupdate multimedia --allowerasing --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 dnf install -y intel-media-driver libva \
                libva-utils gstreamer1-vaapi \
                intel-gpu-tools mesa-dri-drivers
-dnf config-manager --set-enabled fedora-cisco-openh264
-dnf swap ffmpeg-free ffmpeg --allowerasing
 #+end_src
 ** Configure system settings
 #+begin_src shell :dir /sudo::
