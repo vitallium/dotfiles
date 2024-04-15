@@ -81,7 +81,7 @@ usermod -s $(which fish) vslobodin
 #+end_src
 ** Install Gnome extensions applications
 #+begin_src shell :dir /sudo::
-dnf install -y gnome-tweak
+dnf install -y gnome-tweaks
 #+end_src
 ** Enable RPM Fusion repositories
 #+begin_src shell :dir /sudo::
