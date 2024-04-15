@@ -198,12 +198,6 @@ dnf install -y protonvpn-cli
 #+begin_src shell :dir /sudo::
 dnf install -y https://mullvad.net/media/app/MullvadVPN-2022.5_x86_64.rpm
 #+end_src
-** Install Sublime Text and Sublime Merge
-#+begin_src shell :dir /sudo::
-rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
-dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
-dnf install -y sublime-text sublime-merge
-#+end_src
 ** Install 1password CLI
 #+begin_src shell :dir /sudo::
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
