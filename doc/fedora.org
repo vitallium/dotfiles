@@ -112,11 +112,10 @@ sysctl -p
 dnf install -y make gcc-c++ gcc make bzip2 openssl \
                openssl-devel libyaml-devel libffi-devel \
                readline-devel zlib-devel gdbm-devel ncurses-devel \
-               sqlite sqlite-devel tk-devel xz-devel \
                m4 ncurses-devel autoconf re2 re2-devel \
                libcurl-devel libuuid-devel \
                libvterm-devel gpgme-devel icu krb5-devel gtk4-devel \
-               libusb1-devel rpm-devel java-latest-openjdk
+               libusb1-devel rpm-devel
 
 dnf groupinstall -y "Development Tools"
 #+end_src
@@ -131,7 +130,7 @@ dnf install -y git git-lfs git-delta \
                celluloid transmission-gtk \
                ShellCheck ImageMagick \
                perl-core git-extras htop \
-               GraphicsMagick microdnf yamllint
+               GraphicsMagick yamllint
 #+end_src
 ** Install packages for ~Yubikey~
 #+begin_src shell :dir /sudo::
