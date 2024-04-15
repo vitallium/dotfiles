@@ -155,10 +155,8 @@ flatpak install -y flathub com.discordapp.Discord \
                            org.telegram.desktop \
                            com.slack.Slack \
                            com.github.tchx84.Flatseal \
-                           org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark \
                            re.sonny.Junction \
                            com.belmoussaoui.Obfuscate \
-                           com.getpostman.Postman \
                            com.obsproject.Studio \
                            com.usebottles.bottles \
                            com.mattjakeman.ExtensionManager \
