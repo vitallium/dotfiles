@@ -90,6 +90,3 @@
 
 ;; Some packages still depend on it
 (package! all-the-icons)
-
-;; Packages for testing
-(package! textsize :recipe (:host github :repo "WJCFerguson/textsize"))
