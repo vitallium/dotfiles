@@ -15,19 +15,10 @@ data:
     font:
       name: "Berkeley Mono"
       size: 14
-  {{- if eq .chezmoi.os "linux" }}
-  pinentry_bin:
-    arm: /usr/bin/pinentry-gnome3
-    intel: /usr/bin/pinentry-gnome3
-  git:
-    gpg:
-      key: EA8703DF57BC7168
-      bin: gpg2
   kitty:
     font:
       name: "Berkeley Mono"
-      size: 12
-  {{- else if eq .chezmoi.os "darwin" }}
+      size: 14
   pinentry_bin:
     arm: /opt/homebrew/bin/pinentry-mac
     intel: /usr/local/bin/pinentry-mac
@@ -35,8 +26,4 @@ data:
     gpg:
       key: EA8703DF57BC7168
       bin: gpg
-  kitty:
-    font:
-      name: "Berkeley Mono"
-      size: 14
-  {{- end }}
+
