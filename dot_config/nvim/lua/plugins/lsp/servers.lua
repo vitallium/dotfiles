@@ -159,6 +159,8 @@ M.setup = function()
       },
     },
   })
+
+  lspconfig.rust_analyzer.setup({})
 end
 
 return M
