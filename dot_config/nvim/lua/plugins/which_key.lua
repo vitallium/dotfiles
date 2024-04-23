@@ -136,13 +136,10 @@ return {
       q = { name = "Quit", q = { ":quitall<CR>", "Quit all" } },
     }, { prefix = "<leader>" })
 
-    -- With local predix:
+    -- With local prefix
     wk.register({
       t = {
         name = "Test",
-      },
-      p = {
-        name = "Packages",
       },
     }, { prefix = "<localleader>" })
   end,

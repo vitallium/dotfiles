@@ -64,7 +64,3 @@ lazy.setup("plugins", {
     border = vim.g.border,
   },
 })
-
-vim.keymap.set("n", "<leader>pi", lazy.show, { desc = "Plugin Info" })
-vim.keymap.set("n", "<leader>pp", lazy.profile, { desc = "Profile Plugins" })
-vim.keymap.set("n", "<leader>ps", lazy.sync, { desc = "Sync Plugins" })
