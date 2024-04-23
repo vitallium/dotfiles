@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
-local mod = "SHIFT|SUPER"
+local mod = "SUPER|SHIFT"
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
     return {
@@ -12,36 +12,18 @@ local fonts_configurations = {
     monolisa = {
         name = "Monolisa",
         size = 12.0,
-        harfbuzz_features = {
-            "zero=1",
-            "ss01=1",
-            "ss02=1",
-            "ss03=1",
-            "ss04=1",
-            "ss05=1",
-            "ss06=1",
-            "onum=0",
-            "frac=0",
-            "sups=0",
-            "subs=0",
-            "calt=1",
-            "liga=1",
-        },
     },
     berkeley = {
         name = "Berkeley Mono",
         size = 14.0,
-        harfbuzz_features = {},
     },
     mononoki = {
         name = "mononoki",
         size = 18.0,
-        harfbuzz_features = {},
     },
     pragmata = {
         name = "PragmataPro Mono Liga",
         size = 16.0,
-        harfbuzz_features = {},
     },
 }
 local font = fonts_configurations["berkeley"]
@@ -49,12 +31,11 @@ local font = fonts_configurations["berkeley"]
 return {
     -- Font
     font = wezterm.font_with_fallback({ font.name }),
-    harfbuzz_features = font.harfbuzz_features,
     font_size = font.size,
     use_cap_height_to_scale_fallback_fonts = true,
     unicode_version = 15,
     -- Colors
-    color_scheme = "tokyonight_night",
+    color_scheme = "Modus-Vivendi",
     enable_scroll_bar = false,
     bold_brightens_ansi_colors = true,
     -- Tab
