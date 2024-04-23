@@ -40,7 +40,6 @@ lazy.setup("plugins", {
         "gzip",
         "health",
         "logipat",
-        "man",
         "matchit",
         "matchparen",
         "rplugin",

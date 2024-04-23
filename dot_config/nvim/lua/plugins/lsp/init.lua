@@ -31,6 +31,7 @@ return {
   },
   {
     "aznhe21/actions-preview.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
     config = function()
       require("actions-preview").setup({
         diff = {
