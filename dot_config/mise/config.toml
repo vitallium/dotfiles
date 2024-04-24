@@ -1,7 +1,7 @@
 [tools]
 node = "lts"
 ruby = "3.2.4"
-python = "3.12.2"
+python = "3.12.3"
 golang = "1.22"
 chezmoi = "2"
 rust = "1.77.1"
