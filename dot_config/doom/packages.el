@@ -54,8 +54,6 @@
 ;; Themes
 (package! modus-themes)
 (package! ef-themes)
-(package! standard-themes)
-(package! catppuccin-theme)
 
 (package! string-inflection)
 

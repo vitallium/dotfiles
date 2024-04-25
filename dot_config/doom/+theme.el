@@ -36,7 +36,7 @@
  ;; For `fixed-pitch-serif' face
  ;; (doom-serif-font)
  ;; Theme
- ;; doom-theme 'modus-operandi
+ doom-theme 'modus-operandi
  ;; Disable line numbers
  display-line-numbers-type nil
  doom-font-increment 1.0
@@ -48,7 +48,7 @@
 (after! doom-ui
   (setq! auto-dark-dark-theme 'modus-vivendi
          auto-dark-light-theme 'modus-operandi)
-  (auto-dark-mode (display-graphic-p)))
+  (when (window-system) (auto-dark-mode t)))
 
 (use-package! textsize
   :init
