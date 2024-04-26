@@ -34,9 +34,9 @@
   "Reload font size according to the DPI."
   (interactive)
   (setq
-   doom-font (font-spec :family "Berkeley Mono" :size (gf3/preferred-font-size))
+   doom-font (font-spec :family "MonoLisa" :size (gf3/preferred-font-size))
    doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size (gf3/preferred-font-size))
-   doom-big-font (font-spec :family "Berkeley Mono" :size (* 1.5 (gf3/preferred-font-size))))
+   doom-big-font (font-spec :family "MonoLisa" :size (* 1.5 (gf3/preferred-font-size))))
   (doom/reload-font))
 
 (after! modus-themes
@@ -61,11 +61,11 @@
 (setq
  ;; Fonts
  ;; Primary font to use
- doom-font (font-spec :family "Berkeley Mono" :size (gf3/preferred-font-size))
+ doom-font (font-spec :family "MonoLisa" :size (gf3/preferred-font-size))
  ;; Non-monospace font
  doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size (gf3/preferred-font-size))
  ;; For big-font-mode
- doom-big-font (font-spec :family "Berkeley Mono" :size (* 1.5 (gf3/preferred-font-size)))
+ doom-big-font (font-spec :family "MonoLisa" :size (* 1.5 (gf3/preferred-font-size)))
  ;; For unicode glyphs
  ;; (doom-unicode-font)
  ;; For `fixed-pitch-serif' face
