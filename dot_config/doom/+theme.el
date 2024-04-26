@@ -4,6 +4,41 @@
 (if (fboundp 'pixel-scroll-precision-mode)
     (pixel-scroll-precision-mode t))
 
+;; From https://github.com/gf3/dotfiles/
+(defun gf3/get-dpi (&optional frame)
+  "Get the DPI of FRAME (or current if nil)."
+  (cl-flet ((pyth (lambda (w h)
+                    (sqrt (+ (* w w)
+                             (* h h)))))
+            (mm2in (lambda (mm)
+                     (/ mm 25.4))))
+    (let* ((atts (frame-monitor-attributes frame))
+           (pix-w (cl-fourth (assoc 'geometry atts)))
+           (pix-h (cl-fifth (assoc 'geometry atts)))
+           (pix-d (pyth pix-w pix-h))
+           (mm-w (cl-second (assoc 'mm-size atts)))
+           (mm-h (cl-third (assoc 'mm-size atts)))
+           (mm-d (pyth mm-w mm-h)))
+      (/ pix-d (mm2in mm-d)))))
+
+(defun gf3/preferred-font-size ()
+  "Calculate the preferred font size based on the monitor DPI."
+  (let ((dpi (gf3/get-dpi)))
+    (cond
+     ((< dpi 110) 14.0)
+     ((< dpi 130) 16.0)
+     ((< dpi 160) 18.0)
+     (t 16.0))))
+
+(defun vitallium/reload-font-size ()
+  "Reload font size according to the DPI."
+  (interactive)
+  (setq
+   doom-font (font-spec :family "Berkeley Mono" :size (gf3/preferred-font-size))
+   doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size (gf3/preferred-font-size))
+   doom-big-font (font-spec :family "Berkeley Mono" :size (* 1.5 (gf3/preferred-font-size))))
+  (doom/reload-font))
+
 (after! modus-themes
   (setq modus-themes-slanted-constructs t
         modus-themes-bold-constructs t
@@ -26,11 +61,11 @@
 (setq
  ;; Fonts
  ;; Primary font to use
- doom-font (font-spec :family "Berkeley Mono" :size 12)
+ doom-font (font-spec :family "Berkeley Mono" :size (gf3/preferred-font-size))
  ;; Non-monospace font
- doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size 12)
+ doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size (gf3/preferred-font-size))
  ;; For big-font-mode
- doom-big-font (font-spec :family "Berkeley Mono" :size 24)
+ doom-big-font (font-spec :family "Berkeley Mono" :size (* 1.5 (gf3/preferred-font-size)))
  ;; For unicode glyphs
  ;; (doom-unicode-font)
  ;; For `fixed-pitch-serif' face
@@ -50,6 +85,3 @@
          auto-dark-light-theme 'modus-operandi)
   (when (window-system) (auto-dark-mode t)))
 
-(use-package! textsize
-  :init
-  (textsize-mode))
