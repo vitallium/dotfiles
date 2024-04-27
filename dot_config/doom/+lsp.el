@@ -1,12 +1,10 @@
 ;;; $DOOMDIR/+lsp.el -*- lexical-binding: t; -*-
 
-;; Disable vue-semantic-server as it annoying by taking over all buffers.
-(setq lsp-disabled-clients '(vue-semantic-server))
-
 (after! lsp-mode
+  ;; https://github.com/emacs-lsp/lsp-mode/issues/3577#issuecomment-1709232622
+  (delete 'lsp-terraform lsp-client-packages)
+
   (setq
-   ;; Do not ask to download and install LSP
-   lsp-enable-suggest-server-download nil
    ;; lsp-signature-function 'lsp-signature-posframe
    lsp-ui-doc-enable t
    lsp-ui-doc-position 'at-point
