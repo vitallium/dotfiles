@@ -454,3 +454,6 @@ fabric.properties
 
 !.idea/codeStyles
 !.idea/runConfigurations
+
+### Ruby ###
+.solargraph.yml
