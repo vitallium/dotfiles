@@ -6,6 +6,8 @@
 ;; Enable loading of local variables
 (setq enable-local-variables :all)
 
+(add-hook! 'prog-mode-hook #'global-mise-mode)
+
 (load! "+personal")
 (load! "+theme")
 (load! "+bindings")
