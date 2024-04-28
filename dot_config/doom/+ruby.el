@@ -4,7 +4,8 @@
 
 (after! lsp-solargraph
   ;; Add mise installations for Ruby
-  (add-to-list 'lsp-solargraph-library-directories "~/.local/share/mise/installs/ruby"))
+  (add-to-list 'lsp-solargraph-library-directories "~/.local/share/mise/installs/ruby")
+  (setq lsp-solargraph-use-bundler t))
 
 ;; Treat underscores as part of words
 (add-hook! 'ruby-base-mode-hook
