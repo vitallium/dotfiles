@@ -11,7 +11,7 @@ end)
 local fonts_configurations = {
     monolisa = {
         name = "Monolisa",
-        size = 12.0,
+        size = 14.0,
     },
     berkeley = {
         name = "Berkeley Mono",

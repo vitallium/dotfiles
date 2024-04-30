@@ -8,3 +8,6 @@ rust = "1.77.2"
 usage = "latest"
 java = "openjdk-17.0.2"
 lua-language-server = "latest"
+
+[settings]
+experimental = true
