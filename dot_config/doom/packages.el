@@ -51,6 +51,9 @@
 
 (package! git-link)
 
+;; Auto-complete
+(package! tabnine)
+
 ;; Themes
 (package! modus-themes)
 (package! ef-themes)
