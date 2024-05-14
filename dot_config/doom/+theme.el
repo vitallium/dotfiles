@@ -26,11 +26,11 @@
 (setq
  ;; Fonts
  ;; Primary font to use
- doom-font (font-spec :family "MonoLisa" :size 14)
+ doom-font (font-spec :family "Berkeley Mono" :size 14)
  ;; Non-monospace font
  doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size 14)
  ;; For big-font-mode
- doom-big-font (font-spec :family "MonoLisa" :size 20)
+ doom-big-font (font-spec :family "Berkeley Mono" :size 20)
  ;; For unicode glyphs
  ;; (doom-unicode-font)
  ;; For `fixed-pitch-serif' face
