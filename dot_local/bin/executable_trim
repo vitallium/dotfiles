@@ -1,0 +1,5 @@
+#!/bin/bash
+
+x=$(eval "$1" | tr  -d '\n')
+
+echo "$x"
