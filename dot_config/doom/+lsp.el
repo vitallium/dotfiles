@@ -3,6 +3,8 @@
 (after! lsp-mode
   ;; https://github.com/emacs-lsp/lsp-mode/issues/3577#issuecomment-1709232622
   (delete 'lsp-terraform lsp-client-packages)
+  ;; Delete the stupid vue-semantic-server which takes over all buffers
+  (delete 'lsp-volar lsp-client-packages)
 
   (setq
    ;; lsp-signature-function 'lsp-signature-posframe
