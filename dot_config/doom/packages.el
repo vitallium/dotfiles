@@ -90,4 +90,4 @@
 (package! auto-dark)
 
 ;; Mise
-(package! mise :recipe (:host github :repo "liuyinz/mise.el"))
+(package! mise)

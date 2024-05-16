@@ -6,7 +6,9 @@
 ;; Enable loading of local variables
 (setq enable-local-variables :all)
 
-(add-hook! 'prog-mode-hook #'global-mise-mode)
+(use-package! mise
+  :hook
+  (doom-first-file . global-mise-mode))
 
 (load! "+personal")
 (load! "+theme")
