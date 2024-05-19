@@ -22,7 +22,7 @@ local fonts_configurations = {
         size = 16.0,
     },
 }
-local font = fonts_configurations["monolisa"]
+local font = fonts_configurations["berkeley"]
 
 return {
     -- Font
