@@ -108,9 +108,6 @@ return {
             "markdown",
           },
         },
-        autotag = {
-          enable = true, -- Through auto-tag plugin
-        },
         indent = { -- Indentation based on = operator (experimental)
           enable = true,
         },
@@ -135,6 +132,8 @@ return {
           },
         },
       })
+
+      require('nvim-ts-autotag').setup({})
     end,
   },
 }
