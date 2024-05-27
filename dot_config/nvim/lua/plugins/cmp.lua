@@ -84,7 +84,6 @@ return {
               nvim_lua = "[api]",
               path = "[path]",
               luasnip = "[snip]",
-              cmp_tabnine = "[tabnine]",
             },
           }),
         },
@@ -92,7 +91,6 @@ return {
           { name = "nvim_lua" },
           { name = "nvim_lsp" },
           { name = "nvim_lsp_signature_help" },
-          { name = "cmp_tabnine" },
           { name = "luasnip" },
           { name = "path" },
         }, {
