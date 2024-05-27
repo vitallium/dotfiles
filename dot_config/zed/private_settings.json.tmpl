@@ -11,5 +11,59 @@
   "journal": {
     "hour_format": "hour24",
     "path": "~/Documents/Journal"
+  },
+  "languages": {
+    "Ruby": {
+      "language_servers": ["solargraph", "!ruby-lsp", "..."]
+    }
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "inlayHints": {
+        "maxLength": null,
+        "lifetimeElisionHints": {
+          "useParameterNames": true,
+          "enable": "skip_trivial"
+        },
+        "closureReturnTypeHints": {
+          "enable": "always"
+        }
+      }
+    },
+    "solargraph": {
+      "initialization_options": {
+        "diagnostics": true,
+        "formatting": true
+      }
+    },
+    "ruby-lsp": {
+      "initialization_options": {
+        "enabledFeatures": [
+          "codeActions",
+          "diagnostics",
+          "documentHighlights",
+          "documentLink",
+          "documentSymbols",
+          "foldingRanges",
+          "formatting",
+          "hover",
+          "inlayHint",
+          "onTypeFormatting",
+          "selectionRanges",
+          "semanticHighlighting",
+          "completion",
+          "codeLens",
+          "definition",
+          "workspaceSymbol",
+          "signatureHelp"
+        ],
+        "experimentalFeaturesEnabled": true,
+        "featuresConfiguration": {
+          "inlayHint": {
+            "enableAll": true
+          }
+        }
+      }
+    }
   }
 }
