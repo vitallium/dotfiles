@@ -17,12 +17,8 @@ local fonts_configurations = {
         name = "Berkeley Mono",
         size = 14.0,
     },
-    pragmata = {
-        name = "PragmataPro Mono Liga",
-        size = 16.0,
-    },
 }
-local font = fonts_configurations["pragmata"]
+local font = fonts_configurations["berkeley"]
 
 local config = {}
 
