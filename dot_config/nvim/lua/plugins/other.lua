@@ -6,4 +6,7 @@ return {
       "golang",
     },
   },
+  config = function(opts)
+    require("other-nvim").setup(opts)
+  end
 }

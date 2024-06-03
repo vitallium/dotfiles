@@ -80,20 +80,6 @@ return {
     },
     config = true,
   },
-  -- Git client in your neovim
-  {
-    "kdheepak/lazygit.nvim",
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
   {
     "NeogitOrg/neogit",
     dependencies = { "nvim-lua/plenary.nvim" },
