@@ -1,8 +1,6 @@
 enable-ssh-support
 default-cache-ttl 60
 max-cache-ttl 28800
-# For Emacs
-allow-emacs-pinentry
 allow-loopback-pinentry
 
 {{- if eq .chezmoi.arch "arm64" }}
