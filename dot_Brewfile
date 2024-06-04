@@ -48,6 +48,8 @@ brew 'zlib'
 # Casks
 cask '1password'
 cask '1password-cli'
+cask 'appcleaner'
+cask 'cleanshot'
 cask 'firefox'
 cask 'font-ia-writer-duo'
 cask 'font-symbols-only-nerd-font'
@@ -55,6 +57,7 @@ cask 'google-chrome'
 cask 'handbrake'
 cask 'iina'
 cask 'imageoptim'
+cask 'jetbrains-toolbox'
 cask 'keka'
 cask 'keycastr'
 cask 'kitty'
@@ -68,6 +71,7 @@ cask 'qlmarkdown'
 cask 'quicklook-json'
 cask 'raycast'
 cask 'wezterm'
+
 mas '1Password for Safari', id: 1_569_813_296
 mas 'Amphetamine', id: 937_984_704
 mas 'Gapplin', id: 768_053_424
@@ -86,6 +90,7 @@ mas 'Wipr', id: 1_320_666_476
 if `hostname`.start_with?('firefly')
   cask 'acorn'
   cask 'discord'
+  cask 'karabiner-elements'
   cask 'little-snitch'
   cask 'nvidia-geforce-now'
   cask 'qbittorrent'
