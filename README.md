@@ -2,7 +2,7 @@
 
 - [kitty](https://sw.kovidgoyal.net/kitty/) as a terminal emulator.
 - [fish](https://fishshell.com/) as a shell.
-- [Doom Emacs](https://github.com/doomemacs/doomemacs).
+- [Zed](https://zed.dev/).
 - [neovim](https://neovim.io/).
 
 ## Credits
