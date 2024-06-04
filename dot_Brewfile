@@ -50,6 +50,8 @@ cask '1password'
 cask '1password-cli'
 cask 'appcleaner'
 cask 'cleanshot'
+cask 'dash'
+cask 'elgato-control-center'
 cask 'firefox'
 cask 'font-ia-writer-duo'
 cask 'font-symbols-only-nerd-font'
@@ -89,16 +91,18 @@ mas 'Wipr', id: 1_320_666_476
 # Personaly only
 if `hostname`.start_with?('firefly')
   cask 'acorn'
+  cask 'daisydisk'
   cask 'discord'
+  cask 'fsnotes'
   cask 'karabiner-elements'
   cask 'little-snitch'
   cask 'nvidia-geforce-now'
+  cask 'prismlauncher'
   cask 'qbittorrent'
   cask 'spotify'
   cask 'telegram'
+  cask 'todoist'
   cask 'whatsapp'
-
-  mas 'Monosnap', id: 540_348_655
 end
 
 # Work starts here
