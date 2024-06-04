@@ -81,17 +81,6 @@ if not test -z EDITOR
 end
 
 #
-# Emacs
-#
-# https://emacs-lsp.github.io/lsp-mode/page/performance/#use-plists-for-deserialization
-set -gx LSP_USE_PLISTS true
-
-if test -d "/Applications/Emacs.app/Contents/MacOS/bin"
-    set -x PATH "/Applications/Emacs.app/Contents/MacOS/bin" $PATH
-    alias emacs "emacs -nw" # Always launch "emacs" in terminal mode.
-end
-
-#
 # Golang
 #
 set -gx GOPATH $HOME/.local/go
@@ -108,19 +97,6 @@ if test -e (gpgconf --list-dirs agent-ssh-socket)
 else
     echo (gpgconf --list-dirs agent-ssh-socket) "doesn't exist. Is gpg-agent running?"
 end
-
-#
-# nix
-#
-# fish_add_path --append $HOME/.nix-profile/bin \
-#     /nix/var/nix/profiles/default/bin
-
-if test -f "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish"
-    source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
-end
-
-# Allow unfree packages for nix
-set -x NIXPKGS_ALLOW_UNFREE 1
 
 #
 # Rust
