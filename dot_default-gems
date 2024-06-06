@@ -19,5 +19,4 @@ rails
 rbs
 reek
 repl_type_completor
-solargraph
-solargraph-rails
+ruby-lsp

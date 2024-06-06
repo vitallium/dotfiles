@@ -15,7 +15,7 @@ M.setup = function()
   lsp_defaults.capabilities = vim.tbl_deep_extend("force", lsp_defaults.capabilities, capabilities)
   lsp_defaults.on_attach = handlers.on_attach
 
-  lspconfig.solargraph.setup({})
+  lspconfig.ruby_lsp.setup({})
   lspconfig.bashls.setup({})
   lspconfig.clangd.setup({})
   lspconfig.cmake.setup({})
