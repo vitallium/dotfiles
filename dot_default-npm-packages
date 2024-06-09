@@ -1,8 +1,3 @@
-@microsoft/compose-language-service
-@vue/language-server
-bash-language-server
-dockerfile-language-server-nodejs
-graphql-language-service-cli
 jsvu
 markdownlint-cli
 marked
@@ -10,9 +5,6 @@ neovim
 npm
 pnpm
 typescript
-typescript-language-server
-vscode-langservers-extracted
 yalc
-yaml-language-server
 yarn
 yarn-deduplicate

@@ -2,15 +2,15 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      {
-        "folke/neodev.nvim",
-        opts = {
-          library = {
-            plugins = false,
-          },
-          setup_jsonls = false,
-        },
-      },
+      { "williamboman/mason.nvim", config = true },
+      "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+      { "j-hui/fidget.nvim", opts = {} },
+      -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
+      -- used for completion, annotations and signatures of Neovim apis
+      { "folke/neodev.nvim", opts = {} },
+      -- Use "bundler" for Ruby stuff
       "mihyaeru21/nvim-lspconfig-bundler",
     },
     event = { "BufReadPre", "BufNewFile" },
