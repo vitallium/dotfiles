@@ -1,9 +1,12 @@
 {
-  "theme": "One Light",
-  "buffer_font_family": "{{ .zed.font.name }}",
-  "buffer_font_size": {{ .zed.font.size }},
-  "ui_font_family": "{{ .zed.font.name }}",
-  "ui_font_size": {{ .zed.font.size }},
+  "theme": {
+    "dark": "One Dark",
+    "light": "One Light"
+  },
+  "buffer_font_family": "{{ .zed.font.buffer.name }}",
+  "buffer_font_size": {{ .zed.font.ui.size }},
+  "ui_font_family": "{{ .zed.font.ui.name }}",
+  "ui_font_size": {{ .zed.font.ui.size }},
   "telemetry": {
     "diagnostics": false,
     "metrics": false
@@ -14,7 +17,12 @@
   },
   "languages": {
     "Ruby": {
-      "language_servers": ["ruby-lsp", "!solargraph", "..."]
+      "language_servers": [
+        "ruby-lsp",
+        "tailwindcss-language-server",
+        "!solargraph",
+        "..."
+      ]
     }
   },
   "lsp": {
@@ -64,6 +72,16 @@
           }
         }
       }
+    },
+    "tailwindcss-language-server": {
+      "includeLanguages": {
+        "erb": "html",
+        "ruby": "html"
+      },
+      "experimental": {
+        "classRegex": ["\\bclass:\\s*'([^']*)'"]
+      }
     }
+
   }
 }
