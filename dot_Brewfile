@@ -99,7 +99,6 @@ if `hostname`.start_with?('firefly')
   cask 'nvidia-geforce-now'
   cask 'prismlauncher'
   cask 'qbittorrent'
-  cask 'spotify'
   cask 'telegram'
   cask 'todoist'
   cask 'whatsapp'
