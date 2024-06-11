@@ -1,3 +1,7 @@
-require 'irb/theme/tokyonight/night'
+begin
+  require 'irb/theme/tokyonight/night'
+rescue LoadError => e
+  pp 'TokyoNight is not available :( Install it: irb-theme-tokyonight'
+end
 
 IRB.conf[:COMPLETOR] = :type
