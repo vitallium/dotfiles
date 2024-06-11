@@ -4,7 +4,6 @@ bundler
 bundler-audit
 byebug
 debug
-gitlab-development-kit
 hookup
 irb
 irb-power_assert
