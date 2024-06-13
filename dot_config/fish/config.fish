@@ -52,10 +52,15 @@ end
 #
 set -gx MISE_FISH_AUTO_ACTIVATE 0
 if command -qa mise
-    mise activate fish --shims | source
+    if status is-interactive
+        mise activate fish | source
+    else
+        mise activate fish --shims | source
+    end
 end
 
 status is-interactive || exit
+
 #
 # Editor
 #
