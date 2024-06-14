@@ -57,6 +57,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        fish = { 'fish_indent' },
       },
     },
   },
