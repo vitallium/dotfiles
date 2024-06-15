@@ -9,6 +9,8 @@ node = "lts"
 python = "3.12.3"
 ruby = "3.3.2"
 usage = "latest"
+# Go
+"go:github.com/DarthSim/hivemind" = "latest"
 
 [settings]
 experimental = true
