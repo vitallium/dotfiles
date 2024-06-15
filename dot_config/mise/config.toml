@@ -9,6 +9,16 @@ node = "lts"
 python = "3.12.3"
 ruby = "3.3.3"
 usage = "latest"
+# Rust
+"cargo:cargo-audit" = "latest"
+"cargo:cargo-binstall" = "latest"
+"cargo:cargo-cache" = "latest"
+"cargo:cargo-edit" = "latest"
+"cargo:cargo-info" = "latest"
+"cargo:cargo-update" = "latest"
+"cargo:sccache" = "latest"
+"cargo:tokei" = "latest"
+"cargo:topgrade" = "latest"
 # Go
 "go:github.com/DarthSim/hivemind" = "latest"
 
