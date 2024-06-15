@@ -7,7 +7,7 @@ golang = "1.22"
 java = "openjdk-17.0.2"
 node = "lts"
 python = "3.12.3"
-ruby = "3.3.2"
+ruby = "3.3.3"
 usage = "latest"
 # Go
 "go:github.com/DarthSim/hivemind" = "latest"
