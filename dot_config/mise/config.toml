@@ -13,4 +13,11 @@ usage = "latest"
 "go:github.com/DarthSim/hivemind" = "latest"
 
 [settings]
+cargo_binstall = true
 experimental = true
+legacy_version_file = true
+not_found_auto_install = false
+
+[settings.status]
+missing_tools = "never"
+show_tools = false
