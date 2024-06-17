@@ -6,7 +6,6 @@ return {
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
@@ -14,6 +13,7 @@ return {
       -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
       { 'folke/lazydev.nvim', ft = 'lua', opts = {} },
+      { 'b0o/schemastore.nvim' },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -107,6 +107,14 @@ return {
               completion = {
                 callSnippet = 'Replace',
               },
+            },
+          },
+        },
+        jsonls = {
+          settings = {
+            json = {
+              schemas = require('schemastore').json.schemas(),
+              validate = { enable = true },
             },
           },
         },

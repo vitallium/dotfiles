@@ -39,4 +39,14 @@ return {
       fzf_lua.register_ui_select()
     end,
   },
+  {
+    'stevearc/dressing.nvim',
+    config = function()
+      require('dressing').setup {
+        select = {
+          backend = { 'fzf_lua', 'nui', 'telescope', 'builtin' },
+        },
+      }
+    end,
+  },
 }
