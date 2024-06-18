@@ -21,6 +21,11 @@ usage = "latest"
 "cargo:topgrade" = "latest"
 # Go
 "go:github.com/DarthSim/hivemind" = "latest"
+# Node.js
+"npm:@devcontainers/cli" = "latest"
+"npm:neovim" = "latest"
+"npm:pnpm" = "latest"
+"npm:yarn" = "latest"
 
 [settings]
 cargo_binstall = true
