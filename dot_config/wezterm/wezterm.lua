@@ -15,7 +15,7 @@ local fonts_configurations = {
     },
     berkeley = {
         name = "Berkeley Mono",
-        size = 14.0,
+        size = 16.0,
     },
 }
 local font = fonts_configurations["berkeley"]
