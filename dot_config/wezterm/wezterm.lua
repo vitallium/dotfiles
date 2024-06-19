@@ -35,7 +35,7 @@ config.unicode_version = 15
 config.allow_square_glyphs_to_overflow_width = "Never"
 
 -- Colors
-config.color_scheme = "tokyonight_night"
+config.color_scheme = "Modus-Operandi"
 config.enable_scroll_bar = false
 config.bold_brightens_ansi_colors = true
 
