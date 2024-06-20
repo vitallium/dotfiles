@@ -65,7 +65,6 @@ only = [
   "brew_cask",
   "custom_commands",
   "mas",
-  "node",
 ]
 
 # Whether to self update
