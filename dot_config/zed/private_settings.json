@@ -3,10 +3,10 @@
     "dark": "One Dark",
     "light": "macOS Classic Light"
   },
-  "buffer_font_family": "{{ .zed.font.buffer.name }}",
-  "buffer_font_size": {{ .zed.font.ui.size }},
-  "ui_font_family": "{{ .zed.font.ui.name }}",
-  "ui_font_size": {{ .zed.font.ui.size }},
+  "buffer_font_family": "MonoLisa",
+  "buffer_font_size": 14,
+  "ui_font_family": "Zed Sans",
+  "ui_font_size": 14,
   "telemetry": {
     "diagnostics": false,
     "metrics": false
@@ -18,8 +18,9 @@
   "languages": {
     "Ruby": {
       "language_servers": [
-        "ruby-lsp",
-        "tailwindcss-language-server",
+        "rubocop",
+        "!ruby-lsp",
+        "!tailwindcss-language-server",
         "!solargraph",
         "..."
       ]
@@ -40,37 +41,25 @@
     },
     "solargraph": {
       "initialization_options": {
-        "diagnostics": true,
-        "formatting": true
+        "diagnostics": false,
+        "formatting": false
       }
     },
     "ruby-lsp": {
       "initialization_options": {
-        "enabledFeatures": [
-          "codeActions",
-          "diagnostics",
-          "documentHighlights",
-          "documentLink",
-          "documentSymbols",
-          "foldingRanges",
-          "formatting",
-          "hover",
-          "inlayHint",
-          "onTypeFormatting",
-          "selectionRanges",
-          "semanticHighlighting",
-          "completion",
-          "codeLens",
-          "definition",
-          "workspaceSymbol",
-          "signatureHelp"
-        ],
         "experimentalFeaturesEnabled": true,
         "featuresConfiguration": {
           "inlayHint": {
             "enableAll": true
           }
         }
+      }
+    },
+    "rubocop": {
+      "initialization_options": {
+        "safeAutocorrect": false,
+        "layoutMode": true,
+        "lintMode": true
       }
     },
     "tailwindcss-language-server": {
@@ -82,6 +71,5 @@
         "classRegex": ["\\bclass:\\s*'([^']*)'"]
       }
     }
-
   }
 }
