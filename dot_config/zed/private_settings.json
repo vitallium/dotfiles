@@ -3,7 +3,7 @@
     "dark": "One Dark",
     "light": "macOS Classic Light"
   },
-  "buffer_font_family": "MonoLisa",
+  "buffer_font_family": "MonoLisa Variable",
   "buffer_font_size": 14,
   "ui_font_family": "Zed Sans",
   "ui_font_size": 14,
