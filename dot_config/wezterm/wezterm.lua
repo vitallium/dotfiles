@@ -18,7 +18,7 @@ local fonts_configurations = {
         size = 16.0,
     },
 }
-local font = fonts_configurations["monolisa"]
+local font = fonts_configurations["berkeley"]
 
 local config = {}
 
@@ -35,7 +35,7 @@ config.unicode_version = 15
 config.allow_square_glyphs_to_overflow_width = "Never"
 
 -- Colors
-config.color_scheme = "Modus-Operandi"
+config.color_scheme = "Tokyo Night"
 config.enable_scroll_bar = false
 config.bold_brightens_ansi_colors = true
 

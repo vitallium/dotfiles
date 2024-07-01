@@ -1,10 +1,7 @@
 {
-  "theme": {
-    "dark": "One Dark",
-    "light": "macOS Classic Light"
-  },
-  "buffer_font_family": "MonoLisa Variable",
-  "buffer_font_size": 14,
+  "theme": "One Dark",
+  "buffer_font_family": "Berkeley Mono",
+  "buffer_font_size": 15,
   "ui_font_family": "Zed Sans",
   "ui_font_size": 14,
   "telemetry": {
