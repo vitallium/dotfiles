@@ -10,7 +10,7 @@ end)
 
 local fonts_configurations = {
     monolisa = {
-        name = "Monolisa",
+        name = "MonoLisa Variable",
         size = 14.0,
     },
     berkeley = {
@@ -18,7 +18,7 @@ local fonts_configurations = {
         size = 16.0,
     },
 }
-local font = fonts_configurations["berkeley"]
+local font = fonts_configurations["monolisa"]
 
 local config = {}
 
