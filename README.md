@@ -1,6 +1,6 @@
 # What's inside
 
-- [kitty](https://sw.kovidgoyal.net/kitty/) as a terminal emulator.
+- [WezTerm](https://wezfurlong.org/wezterm/index.html) as a terminal emulator.
 - [fish](https://fishshell.com/) as a shell.
 - [Zed](https://zed.dev/).
 - [neovim](https://neovim.io/).
