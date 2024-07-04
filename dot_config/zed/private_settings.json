@@ -15,8 +15,8 @@
   "languages": {
     "Ruby": {
       "language_servers": [
-        "rubocop",
-        "!ruby-lsp",
+        "!rubocop",
+        "ruby-lsp",
         "!tailwindcss-language-server",
         "!solargraph",
         "..."
@@ -65,7 +65,9 @@
         "ruby": "html"
       },
       "experimental": {
-        "classRegex": ["\\bclass:\\s*'([^']*)'"]
+        "classRegex": [
+          "\\bclass:\\s*'([^']*)'"
+        ]
       }
     }
   }
