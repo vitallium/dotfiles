@@ -2,7 +2,7 @@
   "theme": "One Dark",
   "buffer_font_family": "MonoLisa Variable",
   "buffer_font_size": 14,
-  "ui_font_family": "Zed Sans",
+  "ui_font_family": "Zed Plex Mono",
   "ui_font_size": 14,
   "telemetry": {
     "diagnostics": false,
@@ -65,9 +65,7 @@
         "ruby": "html"
       },
       "experimental": {
-        "classRegex": [
-          "\\bclass:\\s*'([^']*)'"
-        ]
+        "classRegex": ["\\bclass:\\s*'([^']*)'"]
       }
     }
   }
