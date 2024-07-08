@@ -44,10 +44,6 @@
 [interactive]
   diffFilter = delta --color-only
 
-[merge]
-  conflictstyle = diff3
-  tool = Kaleidoscope
-
 [diff]
   # Use n and N to move between diff sections
   navigate = true
@@ -55,7 +51,6 @@
   # Detect copies as well as renames
   renames = copies
   colorMoved = default
-  tool = Kaleidoscope
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
@@ -77,18 +72,3 @@
 
 [rerere]
   enabled = true
-
-# Testing the Kaleidoscope
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-
-[difftool]
-  prompt = false
-  trustExitCode = true
-
-[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-  trustExitCode = true
-
-[mergetool]
-  prompt = false
