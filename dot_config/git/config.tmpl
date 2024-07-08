@@ -23,6 +23,8 @@
   am = commit --amend
   changed = show --pretty="format:" --name-only
   commend = commit -s --amend --no-edit
+  # https://stackoverflow.com/a/48650112/81120
+  prune-branches = "!git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D"
 
 [core]
   autocrlf = false
