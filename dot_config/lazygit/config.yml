@@ -4,7 +4,6 @@ gui:
 git:
   paging:
     colorArg: always
-    pager: delta --dark --paging=never
     useConfig: false
 os:
   editPreset: "nvim"
