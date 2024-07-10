@@ -14,7 +14,7 @@ local fonts_configurations = {
         size = 14.0,
     },
     berkeley = {
-        name = "Berkeley Mono",
+        name = "Berkeley Mono Variable",
         size = 16.0,
     },
 }
@@ -33,6 +33,7 @@ config.font = wezterm.font_with_fallback({ font.name, "Symbols Nerd Font" })
 config.font_size = font.size
 config.unicode_version = 15
 config.allow_square_glyphs_to_overflow_width = "Never"
+config.adjust_window_size_when_changing_font_size = false
 
 -- Colors
 config.color_scheme = "Modus-Operandi"
