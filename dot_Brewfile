@@ -1,7 +1,4 @@
-# -*- mode: ruby -*-
-
 tap 'homebrew/bundle'
-tap 'homebrew/cask-fonts'
 brew 'bat'
 brew 'cmake'
 brew 'colima'
@@ -10,6 +7,7 @@ brew 'curl'
 brew 'dive'
 brew 'docker'
 brew 'docker-compose'
+brew 'docker-credential-helper'
 brew 'editorconfig'
 brew 'enchant'
 brew 'fd'
@@ -17,6 +15,7 @@ brew 'ffmpeg'
 brew 'fish'
 brew 'fontconfig'
 brew 'fzf'
+brew 'gh'
 brew 'git'
 brew 'git-delta'
 brew 'git-extras'
@@ -53,7 +52,6 @@ cask 'cleanshot'
 cask 'dash'
 cask 'elgato-control-center'
 cask 'firefox'
-cask 'font-ia-writer-duo'
 cask 'font-symbols-only-nerd-font'
 cask 'google-chrome'
 cask 'handbrake'
@@ -66,20 +64,19 @@ cask 'marta'
 cask 'monodraw'
 cask 'mos'
 cask 'obs'
-cask 'openinterminal-lite'
 cask 'protonvpn'
 cask 'qlmarkdown'
 cask 'quicklook-json'
 cask 'raycast'
+cask 'sanesidebuttons'
 cask 'wezterm'
+cask 'zed'
 
 mas '1Password for Safari', id: 1_569_813_296
-mas 'Amphetamine', id: 937_984_704
 mas 'Gapplin', id: 768_053_424
 mas 'JSON Helper', id: 453_114_608
 mas 'Keynote', id: 409_183_694
 mas 'LanguageTool', id: 1_534_275_760
-mas 'Location Helper', id: 488_536_386
 mas 'Magnet', id: 441_258_766
 mas 'Numbers', id: 409_203_825
 mas 'Pages', id: 409_201_541
