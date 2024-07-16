@@ -3,7 +3,7 @@
     "light": "One Light",
     "dark": "One Dark"
   },
-  "buffer_font_family": "Berkeley Mono",
+  "buffer_font_family": "Berkeley Mono Variable",
   "buffer_font_size": 15,
   "ui_font_family": "Zed Plex Mono",
   "ui_font_size": 14,
@@ -70,14 +70,6 @@
       "experimental": {
         "classRegex": ["\\bclass:\\s*'([^']*)'"]
       }
-    }
-  },
-  "assistant": {
-    "version": "1",
-    "provider": {
-      "api_url": "https://api.anthropic.com/",
-      "default_model": "claude-3-5-sonnet-20240620",
-      "name": "anthropic"
     }
   }
 }
