@@ -19,6 +19,7 @@ usage = "latest"
 "cargo:sccache" = "latest"
 "cargo:tokei" = "latest"
 "cargo:topgrade" = "latest"
+"cargo:just" = "latest"
 # Go
 "go:github.com/DarthSim/hivemind" = "latest"
 # Node.js
