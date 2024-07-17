@@ -89,8 +89,6 @@ if `hostname`.start_with?('firefly')
   cask 'acorn'
   cask 'daisydisk'
   cask 'discord'
-  cask 'fsnotes'
-  cask 'karabiner-elements'
   cask 'little-snitch'
   cask 'nvidia-geforce-now'
   cask 'prismlauncher'
