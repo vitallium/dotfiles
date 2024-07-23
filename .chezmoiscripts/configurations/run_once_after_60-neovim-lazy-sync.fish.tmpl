@@ -9,4 +9,4 @@ end
 # This script will run whenever I update .config/nvim/lazy-lock.json
 # .config/nvim/lazy-lock.json hash: {{ include "dot_config/nvim/lazy-lock.json" | sha256sum }}
 echo "Syncing neovim packages with Lazy..."
-nvim --headless "+Lazy! sync" +qa
+nvim --headless "+Lazy! restore" +qa
