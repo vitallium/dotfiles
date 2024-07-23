@@ -1,5 +1,4 @@
 tap 'homebrew/bundle'
-brew 'atuin'
 brew 'bat'
 brew 'cmake'
 brew 'colima'

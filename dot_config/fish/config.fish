@@ -1,4 +1,3 @@
-status is-interactive || exit
 #
 # Bootstrap
 #
@@ -60,10 +59,7 @@ if command -qa mise
     end
 end
 
-#
-# atuin
-#
-atuin init fish | source
+status is-interactive || exit
 
 #
 # Editor
