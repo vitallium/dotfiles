@@ -1,7 +1,0 @@
-[user]
-  name = Vitaly Slobodin
-  email = vslobodin@gitlab.com
-  signingkey = 2F7A635C12C751DE4D878683803CEB7CC44D15D0
-
-[commit]
-  gpgsign = true

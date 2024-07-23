@@ -1,19 +1,28 @@
 ---
 # vim:ft=gotmpl.yaml
 {{ $email := promptString "email" -}}
+{{ $workconf := promptBool "work config" -}}
 
-color: true
 progress: true
 format: yaml
 
 edit:
   command: "nvim"
 
+diff:
+  pager: delta
+  command: delta
+  args: ["--paging", "never"]
+
 data:
   email: {{ $email }}
-  pinentry_bin: /opt/homebrew/bin/pinentry-mac
+  name: Vitaly Slobodin
+{{- if not $workconf }}
   git:
-    gpg:
-      key: EA8703DF57BC7168
-      bin: gpg
-
+    email: vitaliy.slobodin@gmail.com
+    signing_key: EA8703DF57BC7168
+{{- else }}
+  git:
+    email: vslobodin@gitlab.com
+    signing_key: 2F7A635C12C751DE
+{{- end }}

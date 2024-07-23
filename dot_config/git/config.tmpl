@@ -1,7 +1,7 @@
 [user]
   name = Vitaly Slobodin
-  email = vitaliy.slobodin@gmail.com
-  signingkey = {{ .git.gpg.key }}
+  email = {{ .git.email }}
+  signingkey = {{ .git.signin_key }}
 
 [commit]
   gpgsign = true
@@ -57,9 +57,6 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
-
-[includeIf "gitdir:~/Development/gitlab/"]
-  path = ~/.config/git/gitlab
 
 [gpg]
   program = gpg
