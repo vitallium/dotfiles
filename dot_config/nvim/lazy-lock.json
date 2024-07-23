@@ -19,9 +19,9 @@
   "mason-lspconfig.nvim": { "branch": "main", "commit": "58bc9119ca273c0ce5a66fad1927ef0f617bd81b" },
   "mason-tool-installer.nvim": { "branch": "main", "commit": "c5e07b8ff54187716334d585db34282e46fa2932" },
   "mason.nvim": { "branch": "main", "commit": "e2f7f9044ec30067bc11800a9e266664b88cda22" },
-  "mini.nvim": { "branch": "main", "commit": "23669ab7abc2cd10f9a5166de07400bb34eaecda" },
+  "mini.nvim": { "branch": "main", "commit": "657ef75b52a548090fb7906735517b7ddbf39e88" },
   "modus-themes.nvim": { "branch": "master", "commit": "f978043c34f4e967a5496b4fa78c2ad092315b00" },
-  "neogit": { "branch": "master", "commit": "a232e38512a09107b10ae3ac11a5803897fbdfef" },
+  "neogit": { "branch": "master", "commit": "a86e673da36f8631385b36de42240bb37568b510" },
   "neotest": { "branch": "master", "commit": "32ff2ac21135a372a42b38ae131e531e64833bd3" },
   "neotest-jest": { "branch": "main", "commit": "514fd4eae7da15fd409133086bb8e029b65ac43f" },
   "neotest-rspec": { "branch": "main", "commit": "48573d5882cbe8d8bcd3b735d9ee7705168b1b87" },
@@ -33,6 +33,6 @@
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "schemastore.nvim": { "branch": "main", "commit": "4abc1ab13ad5031049864cba0bfaec06a908e7e5" },
   "todo-comments.nvim": { "branch": "main", "commit": "8f45f353dc3649cb9b44cecda96827ea88128584" },
-  "tokyonight.nvim": { "branch": "main", "commit": "a487cac3113adb1853e3a81060f51d7a391cdea9" },
+  "tokyonight.nvim": { "branch": "main", "commit": "6c30395146c246055ac3cea32d39d6b9876a1dcc" },
   "which-key.nvim": { "branch": "main", "commit": "af4ded85542d40e190014c732fa051bdbf88be3d" }
 }
