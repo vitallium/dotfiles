@@ -9,6 +9,7 @@ irb
 irb-power_assert
 irb-theme-tokyonight
 neovim
+nicetest
 prism
 pry
 pry-byebug
