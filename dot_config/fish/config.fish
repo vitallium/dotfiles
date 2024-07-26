@@ -1,3 +1,5 @@
+status is-interactive || exit
+
 #
 # Bootstrap
 #
@@ -58,8 +60,6 @@ if command -qa mise
         mise activate fish --shims | source
     end
 end
-
-status is-interactive || exit
 
 #
 # Editor
