@@ -47,7 +47,10 @@ if wezterm.config_builder then
 end
 
 -- Font
-config.font = wezterm.font_with_fallback({ font.name, "Symbols Nerd Font" })
+config.font = wezterm.font_with_fallback({
+    { family = font.name },
+    { family = "Symbols Nerd Font", scale = 1 },
+})
 config.font_size = font.size
 config.unicode_version = 15
 config.allow_square_glyphs_to_overflow_width = "Never"
@@ -59,12 +62,15 @@ config.enable_scroll_bar = false
 config.bold_brightens_ansi_colors = true
 
 -- Tab
-config.tab_max_width = 32
+config.tab_max_width = 60
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
 
 -- Window
 config.window_close_confirmation = "NeverPrompt"
+config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+config.window_padding = { left = 8, right = 8, top = 50, bottom = 0 }
 
 -- Bell
 config.audible_bell = "Disabled"
