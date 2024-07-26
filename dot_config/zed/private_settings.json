@@ -1,7 +1,4 @@
 {
-  "features": {
-    "inline_completion_provider": "none"
-  },
   "theme": {
     "light": "One Light",
     "dark": "One Dark"
@@ -15,20 +12,13 @@
     "hour_format": "hour24",
     "path": "~/Documents/Journal"
   },
-  "git": {
-    "inline_blame": {
-      "enabled": false
-    }
-  },
   "languages": {
     "Ruby": {
-      "language_servers": [
-        "ruby-lsp",
-        "rubocop",
-        "!tailwindcss-language-server",
-        "!solargraph"
-      ]
+      "language_servers": ["ruby-lsp"]
     }
+  },
+  "features": {
+    "inline_completion_provider": "none"
   },
   "lsp": {
     "rust-analyzer": {
