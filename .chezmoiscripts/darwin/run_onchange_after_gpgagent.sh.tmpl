@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+# configure gpg agent for yubikey
+gpgconf --kill gpg-agent
+launchctl unload $HOME/Library/LaunchAgents/gnupg.gpg-agent.plist
+launchctl load $HOME/Library/LaunchAgents/gnupg.gpg-agent.plist
+launchctl unload $HOME/Library/LaunchAgents/gnupg.gpg-agent-symlink.plist
+launchctl load $HOME/Library/LaunchAgents/gnupg.gpg-agent-symlink.plist
