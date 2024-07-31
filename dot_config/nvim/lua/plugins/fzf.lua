@@ -27,6 +27,7 @@ return {
       local fzf_lua = require 'fzf-lua'
       fzf_lua.setup {
         winopts = {
+          backdrop = 100,
           split = 'belowright new',
           preview = {
             hidden = 'hidden',
