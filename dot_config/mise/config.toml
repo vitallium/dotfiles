@@ -1,13 +1,11 @@
 [tools]
 chezmoi = "2"
-crystal = "1.12.1"
-elixir = "1.16.3-otp-26"
-erlang = "26.2.5"
-golang = "1.22"
+crystal = "1.13.1"
+golang = "1.22.5"
 java = "openjdk-17.0.2"
 kubectl = "latest"
 node = "lts"
-python = "3.12.3"
+python = "3.12.4"
 ruby = "3.3.4"
 usage = "latest"
 # Rust
