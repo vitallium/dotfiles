@@ -69,8 +69,6 @@ config.tab_bar_at_bottom = true
 
 -- Window
 config.window_close_confirmation = "NeverPrompt"
-config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
-config.window_padding = { left = 8, right = 8, top = 50, bottom = 0 }
 
 -- Bell
 config.audible_bell = "Disabled"
