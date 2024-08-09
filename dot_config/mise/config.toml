@@ -1,11 +1,10 @@
 [tools]
 chezmoi = "2"
-crystal = "1.13.1"
-golang = "1.22.5"
+golang = "latest"
 java = "openjdk-17.0.2"
 kubectl = "latest"
 node = "lts"
-python = "3.12.4"
+python = "latest"
 ruby = "3.3.4"
 usage = "latest"
 # Rust
