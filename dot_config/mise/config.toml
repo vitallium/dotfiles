@@ -26,6 +26,7 @@ usage = "latest"
 "npm:neovim" = "latest"
 "npm:pnpm" = "latest"
 "npm:yarn" = "latest"
+"cargo:jj-cli" = "latest"
 
 [settings]
 cargo_binstall = true
