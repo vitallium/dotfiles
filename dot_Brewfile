@@ -43,6 +43,7 @@ brew 'skopeo'
 brew 'sqlite'
 brew 'tree'
 brew 'wget'
+brew 'xcodes'
 brew 'zlib'
 
 # Casks
