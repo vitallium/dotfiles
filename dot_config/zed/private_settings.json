@@ -1,10 +1,15 @@
 {
   "assistant": {
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-3-5-sonnet-20240620"
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20240620-fast-edit"
     },
     "version": "2"
+  },
+  "slash_commands": {
+    "docs": {
+      "enabled": true
+    }
   },
   "theme": {
     "light": "One Light",
@@ -21,7 +26,7 @@
   },
   "languages": {
     "Ruby": {
-      "language_servers": ["ruby-lsp"]
+      "language_servers": ["ruby-lsp", "rubocop", "!solargraph"]
     }
   },
   "features": {
@@ -58,18 +63,7 @@
     },
     "rubocop": {
       "initialization_options": {
-        "safeAutocorrect": false,
-        "layoutMode": true,
-        "lintMode": true
-      }
-    },
-    "tailwindcss-language-server": {
-      "includeLanguages": {
-        "erb": "html",
-        "ruby": "html"
-      },
-      "experimental": {
-        "classRegex": ["\\bclass:\\s*'([^']*)'"]
+        "safeAutocorrect": false
       }
     }
   }
