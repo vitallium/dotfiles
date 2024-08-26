@@ -1,7 +1,7 @@
 [tools]
 chezmoi = "2"
 golang = "latest"
-java = "openjdk-17.0.2"
+java = "lts"
 kubectl = "latest"
 node = "lts"
 python = "latest"
