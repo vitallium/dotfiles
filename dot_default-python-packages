@@ -1,6 +1,7 @@
 docutils
 gitlint
 ranger-fm
+lsp-devtools
 pgcli
 pynvim
 qmk
