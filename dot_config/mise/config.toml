@@ -21,6 +21,7 @@ usage = "latest"
 "cargo:just" = "latest"
 # Go
 "go:github.com/DarthSim/hivemind" = "latest"
+"go:github.com/bufbuild/buf/cmd/buf" = "1.39.0"
 # Node.js
 "npm:@devcontainers/cli" = "latest"
 "npm:neovim" = "latest"
