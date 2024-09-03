@@ -36,8 +36,6 @@ return {
         { '<leader>wj', ':wincmd j<CR>', desc = 'Go to window to the bottom' },
         { '<leader>wk', ':wincmd k<CR>', desc = 'Go to window to the top' },
         { '<leader>wl', ':wincmd l<CR>', desc = 'Go to window to the right' },
-
-        -- { '<localleader>t', group = 'Test' },
       }
     end,
   },
