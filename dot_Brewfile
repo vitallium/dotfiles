@@ -102,7 +102,6 @@ end
 
 # Work starts here
 if `hostname`.start_with?('vslobodin-')
-  brew 'teleport'
   cask 'figma'
   cask 'slack'
   cask 'zoom'
