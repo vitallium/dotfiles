@@ -65,6 +65,7 @@ only = [
   "brew_cask",
   "custom_commands",
   "mas",
+  "mise",
 ]
 
 # Whether to self update
@@ -92,8 +93,6 @@ only = [
 
 # Custom commands
 [commands]
-"mise plugins" = "mise plugins update"
-"mise up" = "mise up"
 # "Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
 # "Custom command using interactive shell (unix)" = "-i vim_upgrade"
 
@@ -111,7 +110,7 @@ only = [
 
 [brew]
 greedy_cask = true
-# autoremove = true
+autoremove = true
 
 
 [linux]
