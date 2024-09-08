@@ -5,8 +5,10 @@ java = "lts"
 kubectl = "latest"
 node = "lts"
 python = "latest"
-ruby = "3.3.4"
+ruby = "3.3.5"
 usage = "latest"
+uv = "latest"
+
 # Rust
 "cargo:cargo-audit" = "latest"
 "cargo:cargo-binstall" = "latest"
@@ -19,6 +21,7 @@ usage = "latest"
 "cargo:tokei" = "latest"
 "cargo:topgrade" = "latest"
 "cargo:just" = "latest"
+"cargo:jj-cli" = "latest"
 # Go
 "go:github.com/DarthSim/hivemind" = "latest"
 "go:github.com/bufbuild/buf/cmd/buf" = "1.39.0"
@@ -27,13 +30,17 @@ usage = "latest"
 "npm:neovim" = "latest"
 "npm:pnpm" = "latest"
 "npm:yarn" = "latest"
-"cargo:jj-cli" = "latest"
+# Python
+"pipx:lsp-devtools" = "latest"
+"pipx:pgcli" = "latest"
+"pipx:yt-dlp" = "latest"
 
 [settings]
 cargo_binstall = true
 experimental = true
 legacy_version_file = true
 not_found_auto_install = false
+pipx_uvx = true
 
 [settings.status]
 missing_tools = "never"
