@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Just version: {{ output "just" "--version" | trim }}
+
+just --completions fish > "$HOME/.config/fish/completions/just.fish"
