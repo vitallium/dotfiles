@@ -34,6 +34,7 @@ uv = "latest"
 "pipx:lsp-devtools" = "latest"
 "pipx:pgcli" = "latest"
 "pipx:yt-dlp" = "latest"
+"cargo:cargo-expand" = "latest"
 
 [settings]
 cargo_binstall = true
