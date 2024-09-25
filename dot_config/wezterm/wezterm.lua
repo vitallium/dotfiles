@@ -22,7 +22,7 @@ local fonts_configurations = {
         size = 18.0,
     },
 }
-local font = fonts_configurations["pragmata"]
+local font = fonts_configurations["berkeley"]
 
 local function scheme_for_appearance(appearance)
     if appearance:find("Dark") then
@@ -53,7 +53,6 @@ end
 -- Font
 config.font = wezterm.font_with_fallback({
     { family = font.name },
-    { family = "Symbols Nerd Font", scale = 1 },
 })
 
 config.front_end = "WebGpu"
