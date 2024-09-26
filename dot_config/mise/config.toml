@@ -10,6 +10,7 @@ usage = "latest"
 uv = "latest"
 
 # Rust
+"cargo:git-absorb" = "latest"
 "cargo:cargo-audit" = "latest"
 "cargo:cargo-binstall" = "latest"
 "cargo:cargo-cache" = "latest"
