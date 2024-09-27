@@ -2,7 +2,7 @@
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620-fast-edit"
+      "model": "claude-3-5-sonnet-20240620"
     },
     "version": "2"
   },
@@ -24,13 +24,13 @@
     "hour_format": "hour24",
     "path": "~/Documents/Journal"
   },
+  "features": {
+    "inline_completion_provider": "supermaven"
+  },
   "languages": {
     "Ruby": {
       "language_servers": ["ruby-lsp", "rubocop", "!solargraph"]
     }
-  },
-  "features": {
-    "inline_completion_provider": "none"
   },
   "lsp": {
     "rust-analyzer": {
