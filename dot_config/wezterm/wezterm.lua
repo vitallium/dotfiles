@@ -19,7 +19,7 @@ local fonts_configurations = {
     },
     pragmata = {
         name = "PragmataPro Mono",
-        size = 16.0,
+        size = 18.0,
     },
 }
 local font = fonts_configurations["pragmata"]
