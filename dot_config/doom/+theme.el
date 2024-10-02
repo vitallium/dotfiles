@@ -46,6 +46,7 @@
   (setq doom-modeline-buffer-file-name-style 'truncate-with-project))
 
 (after! doom-ui
+  (setq custom-safe-themes t)
   (setq! auto-dark-dark-theme 'modus-vivendi
          auto-dark-light-theme 'modus-operandi)
   (when (window-system) (auto-dark-mode t)))
