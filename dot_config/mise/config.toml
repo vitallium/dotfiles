@@ -1,6 +1,9 @@
 [tools]
 chezmoi = "2"
+crystal = "latest"
 golang = "latest"
+elixir = "1.17.3"
+erlang = "27.1.1"
 java = "lts"
 kubectl = "latest"
 node = "lts"
@@ -10,19 +13,20 @@ usage = "latest"
 uv = "latest"
 
 # Rust
-"cargo:git-absorb" = "latest"
 "cargo:cargo-audit" = "latest"
 "cargo:cargo-binstall" = "latest"
 "cargo:cargo-cache" = "latest"
-"cargo:cargo-generate" = "latest"
 "cargo:cargo-edit" = "latest"
+"cargo:cargo-expand" = "latest"
+"cargo:cargo-generate" = "latest"
 "cargo:cargo-info" = "latest"
 "cargo:cargo-update" = "latest"
+"cargo:git-absorb" = "latest"
+"cargo:jj-cli" = "latest"
+"cargo:just" = "latest"
 "cargo:sccache" = "latest"
 "cargo:tokei" = "latest"
 "cargo:topgrade" = "latest"
-"cargo:just" = "latest"
-"cargo:jj-cli" = "latest"
 # Go
 "go:github.com/DarthSim/hivemind" = "latest"
 "go:github.com/bufbuild/buf/cmd/buf" = "1.39.0"
@@ -35,7 +39,6 @@ uv = "latest"
 "pipx:lsp-devtools" = "latest"
 "pipx:pgcli" = "latest"
 "pipx:yt-dlp" = "latest"
-"cargo:cargo-expand" = "latest"
 
 [settings]
 cargo_binstall = true
