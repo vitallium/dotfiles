@@ -60,7 +60,6 @@ config.font_size = font.size
 config.unicode_version = 15
 config.allow_square_glyphs_to_overflow_width = "Never"
 config.adjust_window_size_when_changing_font_size = false
--- config.freetype_load_flags = "NO_HINTING"
 
 -- Colors
 config.color_scheme = "Modus-Operandi"
