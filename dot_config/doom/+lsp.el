@@ -6,20 +6,6 @@
   ;; Delete the stupid vue-semantic-server which takes over all buffers
   (delete 'lsp-volar lsp-client-packages)
 
-  (setq
-   ;; lsp-signature-function 'lsp-signature-posframe
-   lsp-ui-doc-enable t
-   lsp-ui-doc-position 'at-point
-   lsp-ui-doc-show-with-mouse t
-   lsp-ui-doc-show-with-cursor t
-   lsp-ui-doc-use-childframe nil
-   lsp-ui-doc-use-webkit t
-   lsp-signature-render-documentation nil
-   lsp-eldoc-enable-hover nil
-   lsp-signature-auto-activate nil
-   ;; Improve LSP performance
-   read-process-output-max (* 1024 1024 4))
-
   (add-hook 'lsp-after-open-hook #'lsp-enable-imenu)
 
   ;; Add "tmp" and ".devbox" directories to ignored list of directories.
@@ -66,6 +52,13 @@
   (setq lsp-treemacs-error-list-current-project-only t))
 
 (after! lsp-ui
-  ;; for some reason doom sets these too small
-  (setq lsp-ui-doc-max-height 15
-        lsp-ui-doc-max-width 150))
+  (setq
+   lsp-ui-doc-enable t
+   lsp-ui-doc-position 'at-point
+   lsp-ui-doc-show-with-mouse t
+   lsp-ui-doc-show-with-cursor t
+   lsp-ui-doc-use-childframe nil
+   lsp-ui-doc-use-webkit t
+   ;; for some reason doom sets these too small
+   lsp-ui-doc-max-height 15
+   lsp-ui-doc-max-width 150))
