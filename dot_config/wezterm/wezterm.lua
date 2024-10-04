@@ -53,6 +53,7 @@ end
 -- Font
 config.font = wezterm.font_with_fallback({
     { family = font.name },
+    { family = "Symbols Nerd Font" },
 })
 
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
