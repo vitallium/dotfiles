@@ -21,7 +21,7 @@
   "mason.nvim": { "branch": "main", "commit": "e2f7f9044ec30067bc11800a9e266664b88cda22" },
   "mini.nvim": { "branch": "main", "commit": "e52ac74bd4e9c0ce6a182ee551eb099236b5a89d" },
   "modus-themes.nvim": { "branch": "master", "commit": "24b34562a71cb75769411ca3146d35c093e7f4e6" },
-  "neogit": { "branch": "master", "commit": "d55bf6114c6cfba013e4c0e817e29e7752554ab7" },
+  "neogit": { "branch": "master", "commit": "c3ff049446e0920d02a5828c4e3619243d3c6e15" },
   "neotest": { "branch": "master", "commit": "6d3d22cdad49999ef774ebe1bc250a4994038964" },
   "neotest-jest": { "branch": "main", "commit": "514fd4eae7da15fd409133086bb8e029b65ac43f" },
   "neotest-minitest": { "branch": "main", "commit": "5623b9a7b2b27314e5c336b385315d2ab7d4ccba" },
