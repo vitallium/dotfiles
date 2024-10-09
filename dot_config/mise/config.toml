@@ -34,6 +34,7 @@ uv = "latest"
 "npm:@devcontainers/cli" = "latest"
 "npm:neovim" = "latest"
 "npm:pnpm" = "latest"
+"npm:yalc" = "latest"
 "npm:yarn" = "latest"
 # Python
 "pipx:lsp-devtools" = "latest"
