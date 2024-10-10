@@ -22,7 +22,7 @@ local fonts_configurations = {
         size = 16.0,
     },
 }
-local font = fonts_configurations["berkeley"]
+local font = fonts_configurations["pragmata"]
 
 local function scheme_for_appearance(appearance)
     if appearance:find("Dark") then
@@ -56,7 +56,6 @@ config.font = wezterm.font_with_fallback({
     { family = "Symbols Nerd Font" },
 })
 
-config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.font_size = font.size
 config.unicode_version = 15
 config.allow_square_glyphs_to_overflow_width = "Never"
