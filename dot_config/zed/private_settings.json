@@ -15,7 +15,7 @@
     "light": "One Light",
     "dark": "One Dark"
   },
-  "buffer_font_family": "PragmataPro Mono Liga",
+  "buffer_font_family": "Berkeley Mono Variable",
   "telemetry": {
     "diagnostics": false,
     "metrics": false
