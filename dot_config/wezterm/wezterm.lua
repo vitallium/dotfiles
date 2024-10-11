@@ -23,32 +23,7 @@ local fonts_configurations = {
     },
 }
 local font = fonts_configurations["berkeley"]
-
-local function scheme_for_appearance(appearance)
-    if appearance:find("Dark") then
-        return "Modus Vivendi"
-    else
-        return "Modus Operandi"
-    end
-end
-
-wezterm.on("window-config-reloaded", function(window, pane)
-    local overrides = window:get_config_overrides() or {}
-    local appearance = window:get_appearance()
-    local scheme = scheme_for_appearance(appearance)
-    if overrides.color_scheme ~= scheme then
-        overrides.color_scheme = scheme
-        window:set_config_overrides(overrides)
-    end
-end)
-
-local config = {}
-
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
-if wezterm.config_builder then
-    config = wezterm.config_builder()
-end
+local config = wezterm.config_builder()
 
 -- Font
 config.font = wezterm.font_with_fallback({
@@ -62,7 +37,7 @@ config.allow_square_glyphs_to_overflow_width = "Never"
 config.adjust_window_size_when_changing_font_size = false
 
 -- Colors
-config.color_scheme = "Modus Operandi"
+config.color_scheme = "tokyonight_night"
 config.enable_scroll_bar = false
 config.bold_brightens_ansi_colors = true
 
