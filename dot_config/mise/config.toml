@@ -1,7 +1,7 @@
 [tools]
 chezmoi = "2"
 crystal = "latest"
-golang = "latest"
+golang = "1.23.2"
 elixir = "1.17.3-otp-27"
 erlang = "27.1.1"
 java = "lts"
