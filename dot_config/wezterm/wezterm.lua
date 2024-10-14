@@ -56,7 +56,7 @@ config.allow_square_glyphs_to_overflow_width = "Never"
 config.adjust_window_size_when_changing_font_size = false
 
 -- Colors
-config.color_scheme = "Modus-Operandi"
+
 config.enable_scroll_bar = false
 config.bold_brightens_ansi_colors = true
 
