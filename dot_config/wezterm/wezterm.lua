@@ -22,7 +22,7 @@ local fonts_configurations = {
         size = 16.0,
     },
 }
-local font = fonts_configurations["pragmata"]
+local font = fonts_configurations["berkeley"]
 
 local function scheme_for_appearance(appearance)
     if appearance:find("Dark") then
