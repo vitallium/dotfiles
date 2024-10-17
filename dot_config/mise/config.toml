@@ -27,6 +27,7 @@ uv = "latest"
 "cargo:sccache" = "latest"
 "cargo:tokei" = "latest"
 "cargo:topgrade" = "latest"
+"cargo:sqlx-cli" = "latest"
 # Go
 "go:github.com/DarthSim/hivemind" = "latest"
 "go:github.com/bufbuild/buf/cmd/buf" = "1.39.0"
@@ -41,6 +42,7 @@ uv = "latest"
 "pipx:lsp-devtools" = "latest"
 "pipx:pgcli" = "latest"
 "pipx:yt-dlp" = "latest"
+"pipx:yubikey-manager" = "latest"
 
 [settings]
 cargo_binstall = true
@@ -50,5 +52,5 @@ not_found_auto_install = false
 pipx_uvx = true
 
 [settings.status]
-missing_tools = "never"
+missing_tools = "always"
 show_tools = false
