@@ -65,14 +65,14 @@ require('lazy').setup({
     'folke/tokyonight.nvim',
     priority = 1000,
     init = function()
-      vim.cmd.colorscheme 'tokyonight-night'
+      -- vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
   {
     'miikanissi/modus-themes.nvim',
     priority = 1000,
     init = function()
-      -- vim.cmd.colorscheme 'modus'
+      vim.cmd.colorscheme 'modus'
     end,
   },
   { import = 'plugins' },
