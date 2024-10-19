@@ -22,7 +22,7 @@ local fonts_configurations = {
         size = 16.0,
     },
 }
-local font = fonts_configurations["berkeley"]
+local font = fonts_configurations["monolisa"]
 
 local function scheme_for_appearance(appearance)
     if appearance:find("Dark") then
@@ -103,6 +103,8 @@ config.keys = {
     { mods = mod, key = "[", action = wezterm.action({ ActivateTabRelative = -1 }) },
     { key = "C", mods = "CTRL", action = wezterm.action.CopyTo("ClipboardAndPrimarySelection") },
     { mods = mod, key = "d", action = wezterm.action.ShowDebugOverlay },
+    { key = "UpArrow", mods = "SHIFT", action = act.ScrollToPrompt(-1) },
+    { key = "DownArrow", mods = "SHIFT", action = act.ScrollToPrompt(1) },
 }
 
 return config
