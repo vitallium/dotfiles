@@ -96,7 +96,6 @@ if `hostname`.start_with?('firefly')
   cask 'prismlauncher'
   cask 'qbittorrent'
   cask 'telegram'
-  cask 'todoist'
   cask 'whatsapp'
 end
 
