@@ -82,5 +82,6 @@
         "safeAutocorrect": false
       }
     }
-  }
+  },
+  "vim_mode": true
 }
