@@ -30,7 +30,7 @@ uv = "latest"
 "cargo:sqlx-cli" = "latest"
 # Go
 "go:github.com/DarthSim/hivemind" = "latest"
-"go:github.com/bufbuild/buf/cmd/buf" = "1.39.0"
+"go:github.com/bufbuild/buf/cmd/buf" = "1.45.0"
 # "go:github.com/lasorda/protobuf-language-server" = "latest"
 # Node.js
 "npm:@devcontainers/cli" = "latest"
