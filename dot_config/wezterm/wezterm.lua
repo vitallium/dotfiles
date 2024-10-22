@@ -49,7 +49,7 @@ config.font = wezterm.font_with_fallback({
     { family = font.name },
     { family = "Symbols Nerd Font" },
 })
-
+config.freetype_load_target = "Light"
 config.font_size = font.size
 config.unicode_version = 15
 config.allow_square_glyphs_to_overflow_width = "Never"
