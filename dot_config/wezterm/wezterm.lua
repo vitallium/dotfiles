@@ -15,14 +15,14 @@ local fonts_configurations = {
     },
     berkeley = {
         name = "Berkeley Mono Variable",
-        size = 16.0,
+        size = 15.0,
     },
     pragmata = {
         name = "PragmataPro Mono",
         size = 16.0,
     },
 }
-local font = fonts_configurations["monolisa"]
+local font = fonts_configurations["berkeley"]
 
 local function scheme_for_appearance(appearance)
     if appearance:find("Dark") then
