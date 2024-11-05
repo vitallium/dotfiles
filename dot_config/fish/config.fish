@@ -37,6 +37,7 @@ if set -q HOMEBREW_PREFIX
     set -gx HOMEBREW_CACHE $XDG_CACHE_HOME/brew
     set -gx HOMEBREW_CASK_OPTS --no-quarantine
     set -gx HOMEBREW_LOGS $XDG_CACHE_HOME/brew/logs
+    set -gx HOMEBREW_NO_ANALYTICS 1
     set -gx HOMEBREW_NO_COMPAT 1
     set -gx HOMEBREW_NO_ENV_HINTS 1
 
@@ -45,6 +46,11 @@ if set -q HOMEBREW_PREFIX
 
     fish_add_path --append -g --move $HOMEBREW_PREFIX/{,s}bin
     fish_add_path -g --move $HOMEBREW_PREFIX/opt/curl/bin
+    fish_add_path -g --move $HOMEBREW_PREFIX/opt/icu4c/{,s}bin
+
+    if not contains $HOMEBREW_PREFIX/share/info $INFOPATH
+        set -gx INFOPATH $HOMEBREW_PREFIX/share/info $INFOPATH
+    end
 end
 
 #
