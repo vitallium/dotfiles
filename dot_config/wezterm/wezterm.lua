@@ -17,10 +17,6 @@ local fonts_configurations = {
         name = "Berkeley Mono Variable",
         size = 15.0,
     },
-    pragmata = {
-        name = "PragmataPro Mono",
-        size = 16.0,
-    },
 }
 local font = fonts_configurations["berkeley"]
 local config = wezterm.config_builder()
