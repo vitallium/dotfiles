@@ -8,7 +8,7 @@ java = "lts"
 kubectl = "latest"
 node = "lts"
 python = "3.12.7"
-ruby = "3.3.5"
+ruby = "3.3.6"
 usage = "latest"
 uv = "latest"
 
