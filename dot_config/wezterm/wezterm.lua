@@ -18,7 +18,7 @@ local fonts_configurations = {
         size = 15.0,
     },
 }
-local font = fonts_configurations["berkeley"]
+local font = fonts_configurations["monolisa"]
 local config = wezterm.config_builder()
 
 local function scheme_for_appearance(appearance)
