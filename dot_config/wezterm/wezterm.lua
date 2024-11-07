@@ -3,49 +3,38 @@ local act = wezterm.action
 local mod = "SUPER|SHIFT"
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-    return {
-        { Text = " " .. tab.active_pane.title .. " " },
-    }
+  return {
+    { Text = " " .. tab.active_pane.title .. " " },
+  }
 end)
 
-local fonts_configurations = {
-    monolisa = {
-        name = "MonoLisa Variable",
-        size = 14.0,
-    },
-    berkeley = {
-        name = "Berkeley Mono Variable",
-        size = 15.0,
-    },
-}
-local font = fonts_configurations["monolisa"]
 local config = wezterm.config_builder()
 
 local function scheme_for_appearance(appearance)
-    if appearance:find("Dark") then
-        return "Modus-Vivendi"
-    else
-        return "Modus-Operandi"
-    end
+  if appearance:find("Dark") then
+    return "Modus-Vivendi"
+  else
+    return "Modus-Operandi"
+  end
 end
 
 wezterm.on("window-config-reloaded", function(window, pane)
-    local overrides = window:get_config_overrides() or {}
-    local appearance = window:get_appearance()
-    local scheme = scheme_for_appearance(appearance)
-    if overrides.color_scheme ~= scheme then
-        overrides.color_scheme = scheme
-        window:set_config_overrides(overrides)
-    end
+  local overrides = window:get_config_overrides() or {}
+  local appearance = window:get_appearance()
+  local scheme = scheme_for_appearance(appearance)
+  if overrides.color_scheme ~= scheme then
+    overrides.color_scheme = scheme
+    window:set_config_overrides(overrides)
+  end
 end)
 
 -- Font
 config.font = wezterm.font_with_fallback({
-    { family = font.name },
-    { family = "Symbols Nerd Font" },
+  { family = "Berkeley Mono Variable" },
+  { family = "Symbols Nerd Font" },
 })
+config.font_size = 15.0
 config.freetype_load_target = "Light"
-config.font_size = font.size
 config.unicode_version = 15
 config.allow_square_glyphs_to_overflow_width = "Never"
 config.adjust_window_size_when_changing_font_size = false
@@ -67,10 +56,10 @@ config.window_close_confirmation = "NeverPrompt"
 -- Bell
 config.audible_bell = "Disabled"
 config.visual_bell = {
-    fade_in_function = "EaseIn",
-    fade_in_duration_ms = 100,
-    fade_out_function = "EaseOut",
-    fade_out_duration_ms = 100,
+  fade_in_function = "EaseIn",
+  fade_in_duration_ms = 100,
+  fade_out_function = "EaseOut",
+  fade_out_duration_ms = 100,
 }
 
 -- General
@@ -82,24 +71,24 @@ config.scrollback_lines = 10000
 config.send_composed_key_when_left_alt_is_pressed = false
 config.send_composed_key_when_right_alt_is_pressed = true
 config.keys = {
-    { mods = mod, key = "k", action = act.ActivatePaneDirection("Up") },
-    { mods = mod, key = "j", action = act.ActivatePaneDirection("Down") },
-    { mods = mod, key = "l", action = act.ActivatePaneDirection("Right") },
-    { mods = mod, key = "h", action = act.ActivatePaneDirection("Left") },
-    { mods = mod, key = "t", action = act.SpawnTab("CurrentPaneDomain") },
-    { mods = mod, key = "|", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { mods = mod, key = "_", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-    { mods = mod, key = ">", action = act.MoveTabRelative(1) },
-    { mods = mod, key = "<", action = act.MoveTabRelative(-1) },
-    { mods = mod, key = "M", action = act.TogglePaneZoomState },
-    { mods = mod, key = "p", action = act.PaneSelect({ alphabet = "", mode = "Activate" }) },
-    { mods = mod, key = "C", action = act.CopyTo("ClipboardAndPrimarySelection") },
-    { mods = mod, key = "]", action = wezterm.action({ ActivateTabRelative = 1 }) },
-    { mods = mod, key = "[", action = wezterm.action({ ActivateTabRelative = -1 }) },
-    { key = "C", mods = "CTRL", action = wezterm.action.CopyTo("ClipboardAndPrimarySelection") },
-    { mods = mod, key = "d", action = wezterm.action.ShowDebugOverlay },
-    { key = "UpArrow", mods = "SHIFT", action = act.ScrollToPrompt(-1) },
-    { key = "DownArrow", mods = "SHIFT", action = act.ScrollToPrompt(1) },
+  { mods = mod, key = "k", action = act.ActivatePaneDirection("Up") },
+  { mods = mod, key = "j", action = act.ActivatePaneDirection("Down") },
+  { mods = mod, key = "l", action = act.ActivatePaneDirection("Right") },
+  { mods = mod, key = "h", action = act.ActivatePaneDirection("Left") },
+  { mods = mod, key = "t", action = act.SpawnTab("CurrentPaneDomain") },
+  { mods = mod, key = "|", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+  { mods = mod, key = "_", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+  { mods = mod, key = ">", action = act.MoveTabRelative(1) },
+  { mods = mod, key = "<", action = act.MoveTabRelative(-1) },
+  { mods = mod, key = "M", action = act.TogglePaneZoomState },
+  { mods = mod, key = "p", action = act.PaneSelect({ alphabet = "", mode = "Activate" }) },
+  { mods = mod, key = "C", action = act.CopyTo("ClipboardAndPrimarySelection") },
+  { mods = mod, key = "]", action = wezterm.action({ ActivateTabRelative = 1 }) },
+  { mods = mod, key = "[", action = wezterm.action({ ActivateTabRelative = -1 }) },
+  { key = "C", mods = "CTRL", action = wezterm.action.CopyTo("ClipboardAndPrimarySelection") },
+  { mods = mod, key = "d", action = wezterm.action.ShowDebugOverlay },
+  { key = "UpArrow", mods = "SHIFT", action = act.ScrollToPrompt(-1) },
+  { key = "DownArrow", mods = "SHIFT", action = act.ScrollToPrompt(1) },
 }
 
 return config
