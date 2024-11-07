@@ -1,7 +1,7 @@
 [tools]
 chezmoi = "2"
 crystal = "latest"
-golang = "1.23.2"
+golang = "1.23.3"
 elixir = "1.17.3-otp-27"
 erlang = "27.1.2"
 java = "lts"
@@ -30,8 +30,8 @@ uv = "latest"
 "cargo:sqlx-cli" = "latest"
 # Go
 "go:github.com/DarthSim/hivemind" = "latest"
-"go:github.com/bufbuild/buf/cmd/buf" = "1.45.0"
-# "go:github.com/lasorda/protobuf-language-server" = "latest"
+"go:github.com/bufbuild/buf/cmd/buf" = "1.46.0"
+"go:github.com/lasorda/protobuf-language-server" = "latest"
 # Node.js
 "npm:@devcontainers/cli" = "latest"
 "npm:neovim" = "latest"
