@@ -75,6 +75,8 @@ require('lazy').setup({
       vim.cmd.colorscheme 'modus'
     end,
   },
+  -- Better QuickFix
+  { 'kevinhwang91/nvim-bqf' },
   { import = 'plugins' },
 }, {
   change_detection = {

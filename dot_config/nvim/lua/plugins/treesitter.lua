@@ -24,8 +24,11 @@ return {
       require('nvim-treesitter.configs').setup(opts)
 
       -- Use treesitter's folding module
-      vim.opt.foldlevel = 5
+      -- vim.opt.foldcolumn = '1'
       vim.opt.foldmethod = 'expr'
+      vim.opt.foldlevel = 99
+      vim.opt.foldlevelstart = 99
+      vim.opt.foldnestmax = 4
       vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
     end,
   },

@@ -127,7 +127,33 @@ return {
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
+        -- LSP
+        'docker_compose_language_service',
+        'dockerls',
+        'html',
+        'jsonls',
+        'lua_ls',
+        'marksman',
+        'ruby_lsp',
+        'sqlls',
+        'tailwindcss',
+        'taplo',
+        'terraformls',
+        'typst_lsp',
+        'vimls',
+
+        -- Linters
+        'markdownlint',
+        'selene',
+        'shellcheck',
+        'vale',
+        -- Formatters
+        'erb-formatter',
+        'prettierd',
+        'rubocop',
+        'shfmt',
+        'sql-formatter',
+        'stylua',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

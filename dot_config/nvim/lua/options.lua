@@ -54,7 +54,18 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', eol = '¬' }
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.fillchars = {
+  vert = '│',
+  fold = '⠀',
+  eob = ' ', -- suppress ~ at EndOfBuffer
+  --diff = "⣿", -- alternatives = ⣿ ░ ─ ╱
+  msgsep = '‾',
+  foldopen = '▾',
+  foldsep = '│',
+  foldclose = '▸',
+}
+-- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', eol = '¬' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -67,6 +78,18 @@ vim.opt.scrolloff = 10
 
 -- Do automatic indent when starting a new line
 vim.opt.smartindent = true
+
+-- Prefer ripgrep if it exists
+if vim.fn.executable 'rg' > 0 then
+  vim.o.grepprg = "rg --hidden --glob '!.git' --no-heading --smart-case --vimgrep --follow $*"
+  vim.opt.grepformat = vim.opt.grepformat ^ { '%f:%l:%c:%m' }
+end
+
+-- Sync buffers automatically
+vim.opt.autoread = true
+
+-- Disable neovim generating a swapfile and showing the error
+vim.opt.swapfile = false
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
