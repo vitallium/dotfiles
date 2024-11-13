@@ -26,7 +26,7 @@
     "path": "~/Documents/Journal"
   },
   "features": {
-    "inline_completion_provider": "supermaven"
+    "inline_completion_provider": "none"
   },
   "languages": {
     "Ruby": {
@@ -54,7 +54,7 @@
           "codeLens": true,
           "completion": true,
           "definition": true,
-          "diagnostics": false, // until Zed supports pull-type diagnostics
+          "diagnostics": true, // until Zed supports pull-type diagnostics
           "documentHighlights": true,
           "documentLink": true,
           "documentSymbols": true,
@@ -82,6 +82,5 @@
         "safeAutocorrect": false
       }
     }
-  },
-  "vim_mode": true
+  }
 }
