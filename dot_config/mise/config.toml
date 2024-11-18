@@ -9,6 +9,7 @@ kubectl = "latest"
 node = "lts"
 python = "3.12.7"
 ruby = "3.3.6"
+shellcheck = "latest"
 usage = "latest"
 uv = "latest"
 
