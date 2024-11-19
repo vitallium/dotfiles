@@ -33,6 +33,7 @@ brew 'lazygit'
 brew 'libiconv'
 brew 'marksman'
 brew 'mas'
+brew 'mise'
 brew 'neovim'
 brew 'pinentry-mac'
 brew 'pkg-config'
@@ -51,7 +52,6 @@ cask '1password'
 cask '1password-cli'
 cask 'appcleaner'
 cask 'cleanshot'
-cask 'dash'
 cask 'elgato-control-center'
 cask 'firefox'
 cask 'font-symbols-only-nerd-font'
@@ -72,7 +72,6 @@ cask 'quicklook-json'
 cask 'raycast'
 cask 'sanesidebuttons'
 cask 'wezterm'
-cask 'zed'
 
 mas '1Password for Safari', id: 1_569_813_296
 mas 'Gapplin', id: 768_053_424
@@ -84,7 +83,7 @@ mas 'Numbers', id: 409_203_825
 mas 'Pages', id: 409_201_541
 mas 'Velja', id: 1_607_635_845
 mas 'Vimari', id: 1_480_933_944
-mas 'Wipr', id: 1_320_666_476
+mas 'Wipr', id: 1_662_217_862
 
 # Personaly only
 if `hostname`.start_with?('firefly')
