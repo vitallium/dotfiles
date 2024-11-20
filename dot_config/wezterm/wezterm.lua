@@ -30,7 +30,7 @@ end)
 
 -- Font
 config.font = wezterm.font_with_fallback({
-    { family = "Berkeley Mono Variable" },
+    { family = "Berkeley Mono" },
     { family = "Symbols Nerd Font" },
 })
 config.font_size = 16.0
@@ -66,6 +66,7 @@ config.visual_bell = {
 config.clean_exit_codes = { 130 }
 config.automatically_reload_config = true
 config.scrollback_lines = 10000
+config.front_end = "OpenGL"
 
 -- Key bindings
 config.send_composed_key_when_left_alt_is_pressed = false
