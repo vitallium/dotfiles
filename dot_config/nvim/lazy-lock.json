@@ -38,5 +38,6 @@
   "schemastore.nvim": { "branch": "main", "commit": "44bc6bc398fa59738eaf9535000424457e3e1f6b" },
   "todo-comments.nvim": { "branch": "main", "commit": "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0" },
   "tokyonight.nvim": { "branch": "main", "commit": "c2725eb6d086c8c9624456d734bd365194660017" },
+  "vim-test": { "branch": "master", "commit": "8872ec0f788af934386b2aef0cd28a5c2b923146" },
   "which-key.nvim": { "branch": "main", "commit": "68e37e12913a66b60073906f5d3f14dee0de19f2" }
 }
