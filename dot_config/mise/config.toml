@@ -1,4 +1,5 @@
 [tools]
+bun = "latest"
 chezmoi = "2"
 crystal = "latest"
 golang = "1.23.3"
