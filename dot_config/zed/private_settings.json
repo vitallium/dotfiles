@@ -15,7 +15,7 @@
     "light": "One Light",
     "dark": "One Dark"
   },
-  "buffer_font_family": "Berkeley Mono",
+  "buffer_font_family": "MonoLisa",
   "ui_font_family": ".SystemUIFont",
   "telemetry": {
     "diagnostics": false,
@@ -26,7 +26,7 @@
     "path": "~/Documents/Journal"
   },
   "features": {
-    "inline_completion_provider": "none"
+    "inline_completion_provider": "supermaven"
   },
   "languages": {
     "Ruby": {
