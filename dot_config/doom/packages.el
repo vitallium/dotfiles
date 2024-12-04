@@ -89,5 +89,3 @@
 ;; Mise
 (package! mise)
 
-;; Still required
-(package! all-the-icons)
