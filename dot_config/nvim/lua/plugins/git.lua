@@ -4,12 +4,12 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'sindrets/diffview.nvim',
-      'ibhagwan/fzf-lua',
     },
     keys = {
       { '<leader>gg', '<Esc>:Neogit<CR>', silent = true, desc = 'Neogit' },
     },
     opts = {
+      graph_style = 'unicode',
       use_telescope = false,
     },
     config = true,

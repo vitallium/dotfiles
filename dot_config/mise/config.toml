@@ -35,6 +35,7 @@ uv = "latest"
 "go:github.com/lasorda/protobuf-language-server" = "latest"
 # Node.js
 "npm:@devcontainers/cli" = "latest"
+"npm:@fsouza/prettierd" = "latest"
 "npm:neovim" = "latest"
 "npm:pnpm" = "latest"
 "npm:vscode-css-languageserver-bin" = "latest"

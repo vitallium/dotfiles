@@ -29,8 +29,8 @@ wezterm.on("window-config-reloaded", function(window, pane)
 end)
 
 -- Font
-config.font = wezterm.font("MonoLisa")
-config.font_size = 14.0
+config.font = wezterm.font("Berkeley Mono")
+config.font_size = 15.0
 config.freetype_load_target = "Light"
 config.unicode_version = 15
 config.allow_square_glyphs_to_overflow_width = "Never"
