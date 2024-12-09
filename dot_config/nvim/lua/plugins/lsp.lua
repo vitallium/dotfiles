@@ -2,6 +2,10 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
+      -- Automatically install LSPs and related tools to stdpath for Neovim
+      { 'williamboman/mason.nvim', config = true },
+      'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
       'mihyaeru21/nvim-lspconfig-bundler',
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -117,53 +121,56 @@ return {
         },
       }
 
+      require('mason').setup()
+
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
-      -- local ensure_installed = vim.tbl_keys(servers or {})
-      -- vim.list_extend(ensure_installed, {
-      --   -- LSP
-      --   'docker_compose_language_service',
-      --   'dockerls',
-      --   'html',
-      --   'jsonls',
-      --   'lua_ls',
-      --   'marksman',
-      --   'ruby_lsp',
-      --   'sqlls',
-      --   'tailwindcss',
-      --   'taplo',
-      --   'terraformls',
-      --   'typst_lsp',
-      --   'vimls',
-      --
-      --   -- Linters
-      --   'markdownlint',
-      --   'selene',
-      --   'shellcheck',
-      --   'vale',
-      --   -- Formatters
-      --   'erb-formatter',
-      --   'prettierd',
-      --   'rubocop',
-      --   'shfmt',
-      --   'sql-formatter',
-      --   'stylua',
-      -- })
+      local ensure_installed = vim.tbl_keys(servers or {})
+      vim.list_extend(ensure_installed, {
+        -- LSP
+        'docker_compose_language_service',
+        'dockerls',
+        'html',
+        'jsonls',
+        'lua_ls',
+        'marksman',
+        'ruby_lsp',
+        'sqlls',
+        'tailwindcss',
+        'taplo',
+        'terraformls',
+        'typst_lsp',
+        'vimls',
+
+        -- Linters
+        'markdownlint',
+        'selene',
+        'shellcheck',
+        'vale',
+        -- Formatters
+        'erb-formatter',
+        'prettierd',
+        'rubocop',
+        'shfmt',
+        'sql-formatter',
+        'stylua',
+      })
+      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('lspconfig-bundler').setup()
 
-      -- require('mason-lspconfig').setup {
-      --   handlers = {
-      --     function(server_name)
-      --       local server = servers[server_name] or {}
-      --       -- This handles overriding only values explicitly passed
-      --       -- by the server configuration above. Useful when disabling
-      --       -- certain features of an LSP (for example, turning off formatting for tsserver)
-      --       server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-      --       require('lspconfig')[server_name].setup(server)
-      --     end,
-      --   },
-      -- }
+      require('mason-lspconfig').setup {
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for tsserver)
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('lspconfig')[server_name].setup(server)
+          end,
+        },
+      }
     end,
   },
 }
