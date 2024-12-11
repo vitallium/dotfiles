@@ -12,6 +12,9 @@
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]tmp\\'")
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.devbox\\'")
 
+  (after! lsp-ruby-lsp
+    (add-to-list 'lsp-ruby-lsp-library-directories "~/.local/share/mise/installs/ruby"))
+
   (setq lsp-json-schemas
         `[
           ;; From https://github.com/b0o/SchemaStore.nvim/blob/main/lua/schemastore/catalog.lua#L2796
