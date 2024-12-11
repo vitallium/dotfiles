@@ -1,0 +1,41 @@
+[user]
+name = "Vitaly Slobodin"
+email = "{{ .git.email }}"
+
+[signing]
+sign-all = true
+backend = "gpg"
+signingkey = "{{ .git.signing_key }}"
+
+[git]
+push-bookmark-prefix = "vs/push-"
+
+[ui]
+default-command = "log"
+pager = "delta"
+
+[ui.diff]
+format = "git"
+
+[aliases]
+wip = ["ci", "-m", "wip"]
+# If I want to just push directly to main
+# This just sets it to be the second-latest commit
+setmain = ["branch", "set", "main", "-r", "@-"]
+# Sync everything, mentioned above
+sync = ['git', 'fetch', '--all-remotes']
+# Put stuff back on top of main
+evolve = ['rebase', '--skip-empty', '-d', 'main']
+
+# Do a full log, rather than just the interesting stuff
+# Basically the same behaviour as the default git log
+xl = ['log', '-r', 'all()']
+# Progression log? Shows how the current change has evolved
+# A bit more on this later
+pl = ['obslog', '-p']
+
+# Pushing changes and auto-creating branches
+cl = ['git', 'push', '-c', '@-']
+push = ['git', 'push', '-b', 'glob:vs/push-*']
+upload = ['git', 'push', '--all']
+# vim:ft=toml.chezmoitmpl
