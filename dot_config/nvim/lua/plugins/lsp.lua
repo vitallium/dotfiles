@@ -139,7 +139,6 @@ return {
         'tailwindcss',
         'taplo',
         'terraformls',
-        'typst_lsp',
         'vimls',
 
         -- Linters
