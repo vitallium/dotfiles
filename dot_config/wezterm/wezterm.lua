@@ -12,7 +12,7 @@ local config = wezterm.config_builder()
 
 -- Font
 config.font = wezterm.font("Berkeley Mono")
-config.font_size = 15.0
+config.font_size = 16.0
 config.freetype_load_target = "Light"
 config.unicode_version = 15
 config.allow_square_glyphs_to_overflow_width = "Never"
