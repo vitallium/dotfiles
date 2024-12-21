@@ -193,13 +193,6 @@
       "ctrl-w j": ["workspace::ActivatePaneInDirection", "Down"]
     }
   },
-  {
-    "context": "Workspace",
-    "bindings": {
-      // Map VSCode like keybindings
-      "cmd-b": "workspace::ToggleRightDock"
-    }
-  },
   // Run nearest task
   {
     "context": "EmptyPane || SharedScreen || vim_mode == normal",
