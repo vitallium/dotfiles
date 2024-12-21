@@ -16,6 +16,7 @@
     "dark": "One Dark"
   },
   "buffer_font_family": "Berkeley Mono",
+  "buffer_line_height": "comfortable",
   "ui_font_family": ".SystemUIFont",
   "telemetry": {
     "diagnostics": false,
@@ -46,13 +47,25 @@
       "language_servers": ["pyright", "ruff"]
     }
   },
-  "inlay_hints": {
-    "enabled": true
-  },
   "terminal": {
-    "font_fallbacks": ["Monaco", "Symbols Nerd Font Mono"],
+    "font_family": "Berkeley Mono",
+    "line_height": "standard",
     "env": {
       "EDITOR": "zed --wait"
+    }
+  },
+  "project_panel": {
+    "auto_fold_dirs": false,
+    "indent_size": 16
+  },
+  "outline_panel": {
+    "indent_size": 16
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": true,
+      "delay_ms": 5000,
+      "show_commit_summary": true
     }
   },
   "file_types": {
@@ -69,6 +82,10 @@
         },
         "closureReturnTypeHints": {
           "enable": "always"
+        },
+        "check": {
+          "command": "clippy",
+          "workspace": true
         }
       }
     },
@@ -106,6 +123,20 @@
     "rubocop": {
       "initialization_options": {
         "safeAutocorrect": false
+      }
+    },
+    "gopls": {
+      "initialization_options": {
+        "usePlaceholders": true,
+        "buildFlags": ["-tags=debug"],
+        "completeUnimported": true,
+        "experimentalPostfixCompletions": true,
+        "hints": {
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true
+        }
       }
     }
   }
