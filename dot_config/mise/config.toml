@@ -12,6 +12,7 @@ node = "lts"
 python = "3.12.7"
 ruby = "3.3.6"
 shellcheck = "latest"
+watchexec = "latest"
 usage = "latest"
 uv = "latest"
 
