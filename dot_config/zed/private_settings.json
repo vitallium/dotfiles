@@ -2,7 +2,7 @@
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+      "model": "claude-3-5-sonnet-20240620-fast-edit"
     },
     "version": "2"
   },
@@ -48,7 +48,7 @@
     }
   },
   "terminal": {
-    "font_family": "Berkeley Mono",
+    "font_family": "TX-02",
     "line_height": "standard",
     "env": {
       "EDITOR": "zed --wait"
