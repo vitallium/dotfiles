@@ -15,7 +15,7 @@
     "light": "One Light",
     "dark": "One Dark"
   },
-  "buffer_font_family": "Berkeley Mono",
+  "buffer_font_family": "TX-02",
   "buffer_line_height": "comfortable",
   "ui_font_family": ".SystemUIFont",
   "telemetry": {

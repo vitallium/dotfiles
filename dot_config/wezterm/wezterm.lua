@@ -11,7 +11,7 @@ end)
 local config = wezterm.config_builder()
 
 -- Font
-config.font = wezterm.font("Berkeley Mono")
+config.font = wezterm.font("TX-02")
 config.font_size = 16.0
 config.freetype_load_target = "Light"
 config.unicode_version = 15
