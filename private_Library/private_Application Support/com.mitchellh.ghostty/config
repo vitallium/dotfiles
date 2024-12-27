@@ -2,4 +2,6 @@ font-family = "TX-02"
 font-size = 15.0
 theme = "tokyonight"
 shell-integration = fish
+shell-integration-features = no-cursor
+cursor-style = block
 
