@@ -12,8 +12,8 @@
     }
   },
   "theme": {
-    "light": "One Light",
-    "dark": "One Dark"
+    "light": "Modus Operandi",
+    "dark": "Modus Vivendi"
   },
   "buffer_font_family": "TX-02",
   "buffer_line_height": "comfortable",
