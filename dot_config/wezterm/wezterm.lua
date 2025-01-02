@@ -32,6 +32,7 @@ end)
 config.font = wezterm.font("TX-02")
 config.font_size = 16.0
 config.freetype_load_target = "Light"
+config.front_end = "OpenGL"
 config.unicode_version = 15
 config.allow_square_glyphs_to_overflow_width = "Never"
 config.adjust_window_size_when_changing_font_size = false
