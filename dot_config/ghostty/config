@@ -1,5 +1,5 @@
 font-family = "TX-02"
-font-size = 15.0
+font-size = 16.0
 theme = light:modus_operandi,dark:modus_vivendi
 shell-integration = fish
 shell-integration-features = no-cursor
