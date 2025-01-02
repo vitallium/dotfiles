@@ -1,7 +1,8 @@
 font-family = "TX-02"
 font-size = 15.0
-theme = "tokyonight"
+theme = light:modus_operandi,dark:modus_vivendi
 shell-integration = fish
 shell-integration-features = no-cursor
 cursor-style = block
+window-colorspace = "display-p3"
 
