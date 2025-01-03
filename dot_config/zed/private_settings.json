@@ -30,6 +30,9 @@
     "inline_completion_provider": "none"
   },
   "languages": {
+    "Markdown": {
+      "soft_wrap": "editor_width"
+    },
     "Ruby": {
       "language_servers": ["ruby-lsp", "rubocop", "!solargraph"]
     },
