@@ -14,6 +14,11 @@ fish_add_path --append \
     # Go
     $HOME/.local/go/bin
 
+# Load Fisher plugins
+for file in $fisher_path/conf.d/*.fish
+    builtin source $file 2>/dev/null
+end
+
 #
 # ripgrep
 #
@@ -66,37 +71,6 @@ if command -qa mise
 end
 
 #
-# Editor
-#
-if not test -z EDITOR
-    if type -q nvim
-        alias vi='nvim'
-        alias vim='nvim'
-        alias view='nvim -R'
-
-        set -f editor nvim
-    else if type -q vim
-        set -f editor vim
-    else
-        set -f editor vi
-    end
-
-    set -gx EDITOR $editor
-    set -gx VISUAL $editor
-end
-
-#
-# Emacs
-#
-# https://emacs-lsp.github.io/lsp-mode/page/performance/#use-plists-for-deserialization
-set -gx LSP_USE_PLISTS true
-
-if test -d "/Applications/Emacs.app/Contents/MacOS/bin"
-    set -x PATH "/Applications/Emacs.app/Contents/MacOS/bin" $PATH
-    alias emacs "emacs -nw" # Always launch "emacs" in terminal mode.
-end
-
-#
 # Golang
 #
 set -gx GOPATH $HOME/.local/go
@@ -110,4 +84,23 @@ set -gx CARGO_NET_GIT_FETCH_WITH_CLI true
 # Rust
 if type -q sccache
     set -gx RUSTC_WRAPPER sccache
+end
+
+if status is-interactive
+    if not test -z EDITOR
+        if type -q nvim
+            alias vi='nvim'
+            alias vim='nvim'
+            alias view='nvim -R'
+
+            set -f editor nvim
+        else if type -q vim
+            set -f editor vim
+        else
+            set -f editor vi
+        end
+
+        set -gx EDITOR $editor
+        set -gx VISUAL $editor
+    end
 end
