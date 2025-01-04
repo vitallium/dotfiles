@@ -5,4 +5,4 @@ shell-integration = fish
 shell-integration-features = no-cursor
 cursor-style = block
 window-colorspace = "display-p3"
-
+bold-is-bright = true
