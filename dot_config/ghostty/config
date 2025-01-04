@@ -8,6 +8,8 @@ cursor-style = block
 theme = light:modus_operandi,dark:modus_vivendi
 window-colorspace = "display-p3"
 bold-is-bright = true
+window-padding-x = 10
+window-padding-y = 10
 
 #
 # Shell shell integration
