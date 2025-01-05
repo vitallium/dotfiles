@@ -77,12 +77,23 @@ end
 set -gx GOPATH $HOME/.local/go
 set -gx GO111MODULE on
 
+#
+# Emacs
+#
+# https://emacs-lsp.github.io/lsp-mode/page/performance/#use-plists-for-deserialization
+set -gx LSP_USE_PLISTS true
+
+if test -d "/Applications/Emacs.app/Contents/MacOS/bin"
+    set -x PATH "/Applications/Emacs.app/Contents/MacOS/bin" $PATH
+    alias emacs "emacs -nw" # Always launch "emacs" in terminal mode.
+end
+
+#
 # Rust
 #
 # https://doc.rust-lang.org/cargo/reference/environment-variables.html
 set -gx CARGO_NET_GIT_FETCH_WITH_CLI true
 
-# Rust
 if type -q sccache
     set -gx RUSTC_WRAPPER sccache
 end
