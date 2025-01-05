@@ -30,6 +30,7 @@ brew 'hadolint'
 brew 'imagemagick'
 brew 'jq'
 brew 'lazygit'
+brew 'lnav'
 brew 'libiconv'
 brew 'marksman'
 brew 'mas'
@@ -73,7 +74,7 @@ cask 'qlmarkdown'
 cask 'quicklook-json'
 cask 'raycast'
 cask 'sanesidebuttons'
-cask 'wezterm'
+cask 'wezterm@nightly'
 
 mas '1Password for Safari', id: 1_569_813_296
 mas 'Gapplin', id: 768_053_424
