@@ -20,4 +20,5 @@ shell-integration-features = no-cursor
 #
 # Keybindings
 #
+macos-option-as-alt = true
 keybind = global:cmd+grave_accent=toggle_quick_terminal
