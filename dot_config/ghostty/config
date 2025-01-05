@@ -10,6 +10,7 @@ window-colorspace = "display-p3"
 bold-is-bright = true
 window-padding-x = 10
 window-padding-y = 10
+macos-titlebar-style = "native"
 
 #
 # Shell shell integration
