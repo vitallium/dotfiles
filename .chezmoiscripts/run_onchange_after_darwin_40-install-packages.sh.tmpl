@@ -1,11 +1,10 @@
 #!/usr/bin/env sh
 
-echo "Install/upgrade mise"
-
-if [[ ! $(command -v mise) ]]; then
-  curl https://mise.run | sh
-elif brew list --formula | grep -q '^mise$'; then
-  brew upgrade mise
-else
-  mise self-update -y
+# Check for Homebrew and install if we don't have it
+if test ! $(which brew); then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
+
+brew update
+
+brew bundle --mas --force --no-lock --file $HOME/.Brewfile
