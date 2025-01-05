@@ -1,4 +1,3 @@
-{{- if (eq .chezmoi.os "darwin") -}}
 #!/usr/bin/env sh
 
 # Ask for the administrator password upfront
@@ -40,4 +39,3 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 sudo sh -c 'echo $(which fish) >> /etc/shells'
 
 sudo chsh -s $(which fish) $USER
-{{- end -}}
