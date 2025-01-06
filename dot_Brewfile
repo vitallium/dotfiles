@@ -79,13 +79,10 @@ mas '1Password for Safari', id: 1_569_813_296
 mas 'Gapplin', id: 768_053_424
 mas 'JSON Helper', id: 453_114_608
 mas 'Keynote', id: 409_183_694
-mas 'LanguageTool', id: 1_534_275_760
-mas 'Magnet', id: 441_258_766
 mas 'Numbers', id: 409_203_825
 mas 'Pages', id: 409_201_541
 mas 'Velja', id: 1_607_635_845
 mas 'Vimari', id: 1_480_933_944
-mas 'Wipr', id: 1_662_217_862
 
 # Personaly only
 if `hostname`.start_with?('firefly')
@@ -98,6 +95,8 @@ if `hostname`.start_with?('firefly')
   cask 'qbittorrent'
   cask 'telegram'
   cask 'whatsapp'
+
+  mas 'Wipr', id: 1_662_217_862
 end
 
 # Work starts here
