@@ -3,11 +3,15 @@
 #
 font-family = "TX-02"
 # font-thicken = true
-font-size = 16.0
+font-size = 15.0
 cursor-style = block
 theme = light:modus_operandi,dark:modus_vivendi
 window-colorspace = "display-p3"
 bold-is-bright = true
+
+window-save-state = always
+window-new-tab-position = end
+window-decoration = true
 window-padding-x = 10
 window-padding-y = 10
 macos-titlebar-style = "native"
