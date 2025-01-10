@@ -15,7 +15,7 @@
     "light": "Modus Operandi",
     "dark": "Modus Vivendi"
   },
-  "buffer_font_family": "TX-02",
+  "buffer_font_family": "Berkeley Mono",
   "buffer_line_height": "comfortable",
   "ui_font_family": ".SystemUIFont",
   "telemetry": {

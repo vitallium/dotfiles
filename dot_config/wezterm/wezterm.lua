@@ -29,9 +29,9 @@ config.window_frame = {
 config.command_palette_font_size = 16
 config.command_palette_rows = 15
 config.font = wezterm.font_with_fallback({
-    { family = "TX-02", weight = "Regular" },
+    { family = "Berkeley Mono", weight = "Regular" },
 })
-config.font_size = 16.0
+config.font_size = 15.0
 config.freetype_load_target = "Light"
 config.front_end = "OpenGL"
 
