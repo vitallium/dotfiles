@@ -1,7 +1,17 @@
+IRB.conf[:COMPLETOR] = :type
+
 begin
   require 'irb/theme/tokyonight/night'
-rescue LoadError => e
+rescue LoadError
   pp 'TokyoNight is not available :( Install it: irb-theme-tokyonight'
 end
 
-IRB.conf[:COMPLETOR] = :type
+begin
+  require 'amazing_print'
+rescue LoadError
+  puts "amazing_print is not available"
+end
+
+if defined?(AmazingPrint)
+  AmazingPrint.irb!
+end
