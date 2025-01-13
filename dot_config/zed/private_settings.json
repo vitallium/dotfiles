@@ -51,7 +51,7 @@
     }
   },
   "terminal": {
-    "font_family": "TX-02",
+    "font_family": "Berkeley Mono",
     "line_height": "standard",
     "env": {
       "EDITOR": "zed --wait"
