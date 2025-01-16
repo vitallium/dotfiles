@@ -27,7 +27,7 @@
     "path": "~/Documents/Journal"
   },
   "features": {
-    "inline_completion_provider": "none"
+    "inline_completion_provider": "zed"
   },
   "languages": {
     "Markdown": {
