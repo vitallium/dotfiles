@@ -38,7 +38,6 @@ config.front_end = "OpenGL"
 -- Colors
 config.color_scheme = "Modus-Operandi"
 config.enable_scroll_bar = false
-config.bold_brightens_ansi_colors = true
 
 -- Tab
 config.tab_max_width = 60
