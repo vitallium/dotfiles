@@ -7,7 +7,6 @@ font-size = 16.0
 cursor-style = block
 theme = light:modus_operandi,dark:modus_vivendi
 window-colorspace = "display-p3"
-bold-is-bright = true
 
 window-save-state = always
 window-new-tab-position = end
