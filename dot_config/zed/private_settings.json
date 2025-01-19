@@ -2,7 +2,7 @@
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620-fast-edit"
+      "model": "claude-3-5-sonnet-latest"
     },
     "version": "2"
   },
@@ -12,8 +12,8 @@
     }
   },
   "theme": {
-    "light": "Modus Operandi",
-    "dark": "Modus Vivendi"
+    "light": "Modus Operandi Tinted",
+    "dark": "Modus Vivendi Tinted"
   },
   "buffer_font_family": "Berkeley Mono",
   "buffer_line_height": "comfortable",
@@ -85,11 +85,11 @@
         },
         "closureReturnTypeHints": {
           "enable": "always"
-        },
-        "check": {
-          "command": "clippy",
-          "workspace": true
         }
+      },
+      "check": {
+        "command": "clippy",
+        "workspace": true
       }
     },
     "ruby-lsp": {
