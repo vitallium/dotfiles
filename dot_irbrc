@@ -1,4 +1,9 @@
+# frozen_string_literal: true
+
+# vim: ft=ruby
+
 IRB.conf[:COMPLETOR] = :type
+IRB.conf[:HISTORY_FILE] = File.join(Dir.pwd, '.irb_history')
 
 begin
   require 'irb/theme/tokyonight/night'
@@ -9,9 +14,12 @@ end
 begin
   require 'amazing_print'
 rescue LoadError
-  puts "amazing_print is not available"
+  puts 'amazing_print is not available'
 end
 
-if defined?(AmazingPrint)
-  AmazingPrint.irb!
+AmazingPrint.irb! if defined?(AmazingPrint)
+
+if File.exist? File.join(Dir.pwd, '.irbrc')
+  puts "Loading .irbrc from #{Dir.pwd}"
+  load '.irbrc'
 end
