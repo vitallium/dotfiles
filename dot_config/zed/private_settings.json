@@ -12,8 +12,8 @@
     }
   },
   "theme": {
-    "light": "Modus Operandi Tinted",
-    "dark": "Modus Vivendi Tinted"
+    "light": "Modus Operandi",
+    "dark": "Modus Vivendi"
   },
   "buffer_font_family": "Berkeley Mono",
   "buffer_line_height": "comfortable",
@@ -75,6 +75,7 @@
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
     "JSON": ["json", "jsonc", "*.code-snippets"]
   },
+  "vim_mode": true,
   "lsp": {
     "rust-analyzer": {
       "inlayHints": {
@@ -86,10 +87,6 @@
         "closureReturnTypeHints": {
           "enable": "always"
         }
-      },
-      "check": {
-        "command": "clippy",
-        "workspace": true
       }
     },
     "ruby-lsp": {
