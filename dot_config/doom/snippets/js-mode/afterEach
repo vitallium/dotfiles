@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: afterEach
+# key: afterEach
+# --
+afterEach(() => {$0})
