@@ -23,7 +23,7 @@
       "space t i": "editor::ToggleInlayHints",
 
       // Toggle soft wrap
-      "space u w": "editor::ToggleSoftWrap",
+      "space t w": "editor::ToggleSoftWrap",
 
       // NOTE: Toggle Zen mode, not fully working yet
       "space c z": "workspace::ToggleCenteredLayout",
@@ -33,7 +33,7 @@
       "space m P": "markdown::OpenPreviewToTheSide",
 
       // Open recent project
-      "space f p": "projects::OpenRecent",
+      "space p o": "projects::OpenRecent",
       // Search word under cursor
       "space s w": "pane::DeploySearch",
 
@@ -68,8 +68,8 @@
       "] d": "editor::GoToDiagnostic",
       "[ d": "editor::GoToPrevDiagnostic",
       // TODO: Go to next/prev error
-      "] e": "editor::GoToDiagnostic",
-      "[ e": "editor::GoToPrevDiagnostic",
+      "g ]": "editor::GoToDiagnostic",
+      "g [": "editor::GoToPrevDiagnostic",
       // Symbol search
       "s s": "outline::Toggle",
       "s S": "project_symbols::Toggle",
