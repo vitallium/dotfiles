@@ -10,8 +10,6 @@ fish_add_path --append \
     $HOME/.local/bin \
     # https://github.com/GoogleChromeLabs/jsvu
     $HOME/.jsvu \
-    # Rust
-    $HOME/.cargo/bin \
     # Go
     $HOME/.local/go/bin
 
@@ -72,6 +70,15 @@ if command -qa mise
 end
 
 #
+# Eza
+#
+if command -qa eza
+    alias l="eza --git"
+    alias ll="eza --long --header --group --created --modified --git -a"
+    alias ls="eza --git"
+end
+
+#
 # Golang
 #
 set -gx GOPATH $HOME/.local/go
@@ -93,6 +100,9 @@ end
 #
 # https://doc.rust-lang.org/cargo/reference/environment-variables.html
 set -gx CARGO_NET_GIT_FETCH_WITH_CLI true
+if type -q cargo
+    source "$HOME/.cargo/env.fish"
+end
 
 if type -q sccache
     set -gx RUSTC_WRAPPER sccache
