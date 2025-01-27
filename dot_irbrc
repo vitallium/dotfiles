@@ -19,7 +19,9 @@ end
 
 AmazingPrint.irb! if defined?(AmazingPrint)
 
-if File.exist? File.join(Dir.pwd, '.irbrc')
-  puts "Loading .irbrc from #{Dir.pwd}"
+return if Dir.pwd == ENV["HOME"]
+
+if File.exist?(File.join(Dir.pwd, '.irbrc'))
+  puts "Loading local .irbrc from #{Dir.pwd}"
   load '.irbrc'
 end
