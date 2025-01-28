@@ -59,6 +59,7 @@ uv = "latest"
 "npm:yarn" = "latest"
 # Python
 # "pipx:lsp-devtools" = "latest"
+"pipx:llm" = "latest"
 "pipx:pgcli" = "latest"
 "pipx:yt-dlp" = "latest"
 "pipx:yubikey-manager" = "latest"
