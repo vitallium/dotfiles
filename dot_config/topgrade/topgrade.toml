@@ -60,13 +60,7 @@ skip_notify = true
 # bashit_branch = "stable"
 
 # Run specific steps - same options as the command line flag
-only = [
-  "brew_formula",
-  "brew_cask",
-  "custom_commands",
-  "mas",
-  "mise",
-]
+only = ["brew_formula", "brew_cask", "custom_commands", "mas"]
 
 # Whether to self update
 #
@@ -95,6 +89,7 @@ only = [
 [commands]
 # "Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
 # "Custom command using interactive shell (unix)" = "-i vim_upgrade"
+"mise" = "mise self-update -y"
 
 
 [python]
