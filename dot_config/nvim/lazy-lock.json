@@ -24,15 +24,15 @@
   "neogit": { "branch": "master", "commit": "63124cf520ff24d09deb3b850e053908ab0fc66a" },
   "nvim-bqf": { "branch": "main", "commit": "ebb6d2689e4427452180f17c53f29f7e460236f1" },
   "nvim-cmp": { "branch": "main", "commit": "12509903a5723a876abd65953109f926f4634c30" },
-  "nvim-lspconfig": { "branch": "master", "commit": "1f941b3668151963fca3e1230922c433ea4b7b64" },
+  "nvim-lspconfig": { "branch": "master", "commit": "9962e25a23f0e992116b99a9a6400947d5a7177b" },
   "nvim-lspconfig-bundler": { "branch": "main", "commit": "9e18273e222773374f084c2b2837a97916c18eeb" },
-  "nvim-treesitter": { "branch": "master", "commit": "043d5fb1505ca4bc0f48b42666ae7ebc4bb1a671" },
+  "nvim-treesitter": { "branch": "master", "commit": "80c7af6d0408411ff1f502fbac8ca94b738b8762" },
   "nvim-web-devicons": { "branch": "master", "commit": "1c9136332840edee0c593f2f4f89598c8ed97f5f" },
   "other.nvim": { "branch": "main", "commit": "933aa489ad02f8f973269a565bfea16cc784cbbf" },
   "plenary.nvim": { "branch": "master", "commit": "3707cdb1e43f5cea73afb6037e6494e7ce847a66" },
-  "schemastore.nvim": { "branch": "main", "commit": "ea3734ae26308d23a504f94870daf48f832da9a8" },
+  "schemastore.nvim": { "branch": "main", "commit": "e6ccd0c81e3454777c35a64314a997b6d1bfe543" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
-  "tokyonight.nvim": { "branch": "main", "commit": "c3ab53c3f544e4a04f2a05d43451fd9bedff51b4" },
+  "tokyonight.nvim": { "branch": "main", "commit": "8cb8b1aded4087712030ef3e840ad6468fbc7b0f" },
   "vim-test": { "branch": "master", "commit": "d317336c4022c272e74cfe11e277483183dd0b5f" },
-  "which-key.nvim": { "branch": "main", "commit": "6cebd86917df559a88de0f806b2989799c6e6423" }
+  "which-key.nvim": { "branch": "main", "commit": "0e76a87ac51772569aec678dc74baa8e2a86100c" }
 }
