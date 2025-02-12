@@ -1,4 +1,5 @@
 {
+  "icon_theme": "Zed (Default)",
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
@@ -28,7 +29,7 @@
   },
   "features": {
     "copilot": false,
-    "inline_completion_provider": "zed"
+    "edit_prediction_provider": "zed"
   },
   "languages": {
     "Markdown": {
