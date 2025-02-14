@@ -13,8 +13,8 @@
     }
   },
   "theme": {
-    "light": "Modus Operandi",
-    "dark": "Modus Vivendi"
+    "light": "Modus Operandi Tinted",
+    "dark": "Modus Vivendi Tinted"
   },
   "buffer_font_family": "Berkeley Mono",
   "buffer_line_height": "comfortable",
@@ -99,7 +99,7 @@
           "codeLens": true,
           "completion": true,
           "definition": true,
-          "diagnostics": true, // until Zed supports pull-type diagnostics
+          "diagnostics": false, // until Zed supports pull-type diagnostics
           "documentHighlights": true,
           "documentLink": true,
           "documentSymbols": true,
