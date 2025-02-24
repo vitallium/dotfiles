@@ -77,7 +77,6 @@
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
     "JSON": ["json", "jsonc", "*.code-snippets"]
   },
-  "vim_mode": true,
   "lsp": {
     "rust-analyzer": {
       "inlayHints": {
