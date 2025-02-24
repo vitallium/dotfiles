@@ -21,6 +21,7 @@ uv = "latest"
 
 # Rust
 "aqua:AlexanderGrooff/mermaid-ascii" = "latest"
+"aqua:golangci/golangci-lint" = "latest"
 "aqua:sharkdp/hexyl" = "latest"
 "aqua:tldr-pages/tlrc" = "latest"
 "cargo:bacon" = "latest"
