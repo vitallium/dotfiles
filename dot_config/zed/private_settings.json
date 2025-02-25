@@ -13,12 +13,13 @@
     }
   },
   "theme": {
-    "light": "Modus Operandi Tinted",
+    "light": "Modus Operandi",
     "dark": "Modus Vivendi Tinted"
   },
   "buffer_font_family": "Berkeley Mono",
-  "buffer_line_height": "comfortable",
-  "ui_font_family": ".SystemUIFont",
+  "buffer_line_height": {
+    "custom": 1.25
+  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
@@ -30,6 +31,24 @@
   "features": {
     "copilot": false,
     "edit_prediction_provider": "zed"
+  },
+  "project_panel": {
+    "auto_fold_dirs": false,
+    "indent_size": 16
+  },
+  "outline_panel": {
+    "indent_size": 16
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": true,
+      "delay_ms": 5000,
+      "show_commit_summary": true
+    }
+  },
+  "file_types": {
+    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+    "JSON": ["json", "jsonc", "*.code-snippets"]
   },
   "languages": {
     "Markdown": {
@@ -58,24 +77,6 @@
     "env": {
       "EDITOR": "zed --wait"
     }
-  },
-  "project_panel": {
-    "auto_fold_dirs": false,
-    "indent_size": 16
-  },
-  "outline_panel": {
-    "indent_size": 16
-  },
-  "git": {
-    "inline_blame": {
-      "enabled": true,
-      "delay_ms": 5000,
-      "show_commit_summary": true
-    }
-  },
-  "file_types": {
-    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-    "JSON": ["json", "jsonc", "*.code-snippets"]
   },
   "lsp": {
     "rust-analyzer": {
