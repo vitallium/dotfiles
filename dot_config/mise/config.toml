@@ -75,3 +75,6 @@ pipx_uvx = true
 [settings.status]
 missing_tools = "always"
 show_tools = false
+
+[settings.npm]
+bun = true
