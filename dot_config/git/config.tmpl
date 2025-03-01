@@ -3,8 +3,24 @@
   email = {{ .git.email }}
   signingkey = {{ .git.signing_key }}
 
+[help]
+  autocorrect = prompt
+
+[init]
+  defaultBranch = main
+
+[column]
+  ui = auto
+
 [commit]
   gpgsign = true
+  verbose = true
+
+[branch]
+  sort = -committerdate
+
+[tag]
+  sort = version:refname
 
 [color]
   ui = true
@@ -44,11 +60,16 @@
 [interactive]
   diffFilter = delta --color-only
 
+[merge]
+  conflictstyle = zdiff3
+
 [diff]
+  algorithm = histogram
   # Use n and N to move between diff sections
   navigate = true
   # Detect copies as well as renames
-  renames = copies
+  renames = true
+  mnemonicPrefix = true
   colorMoved = default
 
 [filter "lfs"]
@@ -62,9 +83,22 @@
 
 [fetch]
   prune = true
+  pruneTags = true
+  all = true
   fsckObjects = true
   # Cache commit graph to speed up graph log / push operations on fetch.
   writeCommitGraph = true
 
+[push]
+  default = simple
+  autoSetupRemote = true
+  followTags = true
+
 [rerere]
   enabled = true
+  autoupdate = true
+
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
