@@ -163,6 +163,7 @@ config/master.key
 /.bundle
 vendor/ruby
 vendor/bundle
+/vendor/bundle
 
 # Ignore pow environment settings
 .powenv
