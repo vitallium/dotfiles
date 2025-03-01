@@ -129,11 +129,10 @@
     },
     "gopls": {
       "initialization_options": {
-        "usePlaceholders": true,
-        "buildFlags": ["-tags=debug"],
-        "completeUnimported": true,
-        "experimentalPostfixCompletions": true,
         "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
           "constantValues": true,
           "functionTypeParameters": true,
           "parameterNames": true,
