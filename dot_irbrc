@@ -16,12 +16,6 @@ if ENV['INSIDE_EMACS']
 end
 
 begin
-  require 'irb/theme/tokyonight/night'
-rescue LoadError
-  pp 'TokyoNight is not available :( Install it: irb-theme-tokyonight'
-end
-
-begin
   require 'amazing_print'
 rescue LoadError
   puts 'amazing_print is not available'
