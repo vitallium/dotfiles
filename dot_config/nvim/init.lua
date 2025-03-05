@@ -43,6 +43,10 @@ require('lazy').setup({
       vim.cmd.colorscheme 'modus'
     end,
   },
+  {
+    'olimorris/onedarkpro.nvim',
+    priority = 1000, -- Ensure it loads first
+  },
   -- Better QuickFix
   { 'kevinhwang91/nvim-bqf' },
   { import = 'plugins' },
