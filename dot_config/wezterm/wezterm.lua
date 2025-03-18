@@ -43,7 +43,6 @@ config.enable_scroll_bar = false
 config.tab_max_width = 60
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = true
 
 -- Window
 config.window_close_confirmation = "NeverPrompt"
