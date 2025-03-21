@@ -73,9 +73,9 @@ end
 # Eza
 #
 if command -qa eza
-    alias l="eza --git"
-    alias ll="eza --long --header --group --created --modified --git -a"
-    alias ls="eza --git"
+    alias l="eza"
+    alias ll="eza --long --header --group --created --modified -a"
+    alias ls="eza"
 end
 
 #
