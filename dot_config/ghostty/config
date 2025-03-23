@@ -3,7 +3,7 @@
 #
 font-family = "Berkeley Mono"
 # font-thicken = true
-font-size = 15.0
+font-size = 16.0
 cursor-style = block
 theme = light:modus_operandi,dark:modus_vivendi
 

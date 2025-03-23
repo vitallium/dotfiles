@@ -17,6 +17,7 @@
     "dark": "Modus Vivendi Tinted"
   },
   "buffer_font_family": "Berkeley Mono",
+  "buffer_font_size": 16,
   "buffer_line_height": {
     "custom": 1.25
   },
