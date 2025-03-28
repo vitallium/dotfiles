@@ -126,3 +126,8 @@ if status is-interactive
         set -gx VISUAL $editor
     end
 end
+
+#
+# Bat
+#
+alias cat='bat --theme="$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo modus_vivendi || echo modus_operandi)"'
