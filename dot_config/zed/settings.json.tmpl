@@ -1,0 +1,5 @@
+{{- if not .workconf }}
+  {{- include "dot_config/zed/work_settings.json" }}
+{{- else }}
+  {{- include "dot_config/zed/personal_settings.json" }}
+{{- end }}
