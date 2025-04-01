@@ -146,6 +146,11 @@ return {
         'selene',
         'shellcheck',
         'vale',
+        'eslint_d',
+        'flake8',
+        'yamllint',
+        'hadolint',
+        
         -- Formatters
         'erb-formatter',
         'prettierd',
@@ -153,6 +158,10 @@ return {
         'shfmt',
         'sql-formatter',
         'stylua',
+        'black',
+        'isort',
+        'gofumpt',
+        'goimports',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
