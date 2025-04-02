@@ -8,10 +8,12 @@
   "buffer_line_height": {
     "custom": 1.25
   },
+{{- if .workconf }}
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
+{{- end }}
   "features": {
     "copilot": false,
 {{- if .workconf }}
