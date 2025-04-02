@@ -3,8 +3,8 @@
 		"light": "Modus Operandi",
 		"dark": "Modus Vivendi Tinted"
 	},
-	"buffer_font_family": "Berkeley Mono",
-	"buffer_font_size": 16,
+	"buffer_font_family": "JetBrains Mono",
+	"buffer_font_size": 15,
 	"buffer_line_height": {
 		"custom": 1.25
 	},
@@ -56,7 +56,7 @@
 		}
 	},
 	"terminal": {
-		"font_family": "Berkeley Mono",
+		"font_family": "JetBrains Mono",
 		"line_height": "standard",
 		"env": {
 			"EDITOR": "zed --wait"
