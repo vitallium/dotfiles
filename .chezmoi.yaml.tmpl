@@ -1,7 +1,7 @@
 ---
 # vim:ft=gotmpl.yaml
-{{ $email := promptString "email" -}}
-{{ $workconf := hasSuffix $email "gitlab.com" -}}
+{{- $email := promptString "email" -}}
+{{- $workconf := promptBool "work" -}}
 
 progress: true
 format: yaml
@@ -30,6 +30,13 @@ data:
     font:
       name: Berkeley Mono
       size: 16
+  zed:
+    terminal:
+      font:
+        name: Berkeley Mono
+    font:
+      name: Berkeley Mono
+      size: 16
 {{- else }}
   git:
     email: vslobodin@gitlab.com
@@ -39,6 +46,13 @@ data:
       name: JetBrains Mono
       size: 15.0
   emacs:
+    font:
+      name: JetBrains Mono
+      size: 15
+  zed:
+    terminal:
+      font:
+        name: JetBrains Mono
     font:
       name: JetBrains Mono
       size: 15
