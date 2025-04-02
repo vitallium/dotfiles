@@ -42,9 +42,6 @@ watchexec = "latest"
 "cargo:topgrade" = "latest"
 # Go
 "go:github.com/DarthSim/hivemind" = "latest"
-"go:github.com/bufbuild/buf/cmd/buf" = "1.50.0"
-"go:github.com/go-delve/delve/cmd/dlv" = "latest"
-"go:github.com/lasorda/protobuf-language-server" = "latest"
 # Node.js
 "npm:@devcontainers/cli" = "latest"
 "npm:@fsouza/prettierd" = "latest"
