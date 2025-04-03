@@ -141,16 +141,6 @@ return {
         'terraformls',
         'vimls',
 
-        -- Linters
-        'markdownlint',
-        'selene',
-        'shellcheck',
-        'vale',
-        'eslint_d',
-        'flake8',
-        'yamllint',
-        'hadolint',
-        
         -- Formatters
         'erb-formatter',
         'prettierd',
