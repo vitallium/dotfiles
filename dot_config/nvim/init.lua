@@ -43,18 +43,9 @@ require('lazy').setup({
       vim.cmd.colorscheme 'modus'
     end,
   },
-  {
-    'olimorris/onedarkpro.nvim',
-    priority = 1000, -- Ensure it loads first
-  },
-  -- Better QuickFix
-  { 'kevinhwang91/nvim-bqf' },
   { import = 'plugins' },
 }, {
   change_detection = {
     enabled = false,
   },
 })
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et

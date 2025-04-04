@@ -26,27 +26,11 @@ return {
 
       require('lint').linters_by_ft = {
         markdown = {
-          require('lint').linters.vale,
-          require('lint').linters.markdownlint,
+          'vale',
+          'markdownlint-cli2',
         },
-        sh = {
-          require('lint').linters.shellcheck,
-        },
-        javascript = {
-          require('lint').linters.eslint_d,
-        },
-        typescript = {
-          require('lint').linters.eslint_d,
-        },
-        ruby = {
-          require('lint').linters.rubocop,
-        },
-        yaml = {
-          require('lint').linters.yamllint,
-        },
-        dockerfile = {
-          require('lint').linters.hadolint,
-        },
+        sh = { 'shellcheck' },
+        dockerfile = { 'hadolint' },
       }
 
       -- Lint on save
