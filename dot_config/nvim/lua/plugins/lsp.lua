@@ -148,7 +148,6 @@ return {
         'shfmt',
         'sql-formatter',
         'stylua',
-        'black',
         'isort',
         'gofumpt',
         'goimports',
