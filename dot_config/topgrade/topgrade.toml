@@ -90,7 +90,7 @@ only = ["brew_formula", "brew_cask", "custom_commands", "mas"]
 # "Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
 # "Custom command using interactive shell (unix)" = "-i vim_upgrade"
 "mise" = "mise self-update -y"
-
+"fisher" = "fisher update"
 
 [python]
 # enable_pip_review = true                         ###disabled by default
