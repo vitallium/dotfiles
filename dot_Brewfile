@@ -99,9 +99,16 @@ end
 
 # Work starts here
 if `hostname`.start_with?('vslobodin-')
+  tap 'gitlab/fonts', 'https://gitlab.com/vitallium/homebrew-gitlab-fonts'
+
   cask 'figma'
   cask 'slack'
   cask 'zoom'
+
+  cask 'font-gitlab-sans-regular'
+  cask 'font-gitlab-sans-italic'
+  cask 'font-gitlab-mono-regular'
+  cask 'font-gitlab-mono-italic'
 end
 
 # vi: ft=ruby
