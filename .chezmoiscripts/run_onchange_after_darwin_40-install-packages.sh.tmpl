@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # This script will run whenever I update .config/nvim/lazy-lock.json
-# .Brewfile hash: {{ include "dot_Brewfile" | sha256sum }}
+# .Brewfile hash: {{ include "dot_Brewfile.tmpl" | sha256sum }}
 # Check for Homebrew and install if we don't have it
 if test ! $(which brew); then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
