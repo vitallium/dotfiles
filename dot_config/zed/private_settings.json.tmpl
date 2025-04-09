@@ -1,4 +1,14 @@
 {
+{{- if not .workconf }}
+  "assistant": {
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
+    },
+    "version": "2"
+  },
+{{- end}}
   "theme": {
     "light": "Modus Operandi",
     "dark": "Modus Vivendi Tinted"
