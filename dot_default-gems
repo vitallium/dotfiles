@@ -8,7 +8,6 @@ debug
 irb
 irb-power_assert
 irb-theme-tokyonight
-neovim
 nicetest
 rbs
 reek

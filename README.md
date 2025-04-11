@@ -4,7 +4,6 @@
 - [fish](https://fishshell.com/) as a shell.
 - [Zed](https://zed.dev)
 - [Doom Emacs](https://github.com/doomemacs/doomemacs).
-- [neovim](https://neovim.io/).
 
 ## Credits
 

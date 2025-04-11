@@ -1,5 +1,3 @@
-# vim:ft=gotmpl.gitignore
-
 .CFUserTextEncoding
 .bash_history
 .bash_logout

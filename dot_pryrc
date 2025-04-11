@@ -1,7 +1,6 @@
 # frozen_string_literal: true
-# vim:ft=ruby
 
-Pry.editor = 'nvim'
+Pry.editor = 'zed --wait'
 
 if ENV.fetch('INSIDE_EMACS', false)
   Pry.config.correct_indent = false
@@ -33,4 +32,3 @@ begin
 rescue LoadError => e
   puts "no amazing_print :( #{e}"
 end
-

@@ -40,5 +40,3 @@ railsmigrations:*/migrate/*
 --glob=!*.cache
 --glob=!.Trash
 --glob=!.licenses
-
-# vim:ft=conf
