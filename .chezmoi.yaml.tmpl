@@ -6,7 +6,8 @@ progress: true
 format: yaml
 
 edit:
-  command: "nvim"
+  command: "zed"
+  args: ["--wait"]
 
 diff:
   pager: delta
@@ -27,8 +28,12 @@ data:
       size: 15.0
   emacs:
     font:
-      name: Berkeley Mono
-      size: 16
+      mono:
+        name: Berkeley Mono
+        size: 16
+      sans:
+        name: iA Writer Duo S
+        size: 15
   zed:
     terminal:
       font:
@@ -50,8 +55,12 @@ data:
       size: 15.0
   emacs:
     font:
-      name: GitLab Mono
-      size: 15
+      mono:
+        name: GitLab Mono
+        size: 15
+      sans:
+        name: GitLab Sans
+        size: 15
   zed:
     terminal:
       font:

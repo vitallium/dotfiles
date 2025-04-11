@@ -26,11 +26,11 @@
 (setq
  ;; Fonts
  ;; Primary font to use
- doom-font (font-spec :family "{{ .emacs.font.name }}" :size {{ .emacs.font.size }})
+ doom-font (font-spec :family "{{ .emacs.font.mono.name }}" :size {{ .emacs.font.mono.size }})
  ;; Non-monospace font
- doom-variable-pitch-font (font-spec :family "iA Writer Duo S" :size 15)
+ doom-variable-pitch-font (font-spec :family "{{ .emacs.font.sans.name }}" :size {{ .emacs.font.mono.size }})
  ;; For big-font-mode
- doom-big-font (font-spec :family "{{ .emacs.font.name }}" :size {{ mul .emacs.font.size 2 }})
+ doom-big-font (font-spec :family "{{ .emacs.font.mono.name }}" :size {{ mul .emacs.font.mono.size 2 }})
  ;; For unicode glyphs
  ;; (doom-unicode-font)
  ;; For `fixed-pitch-serif' face
