@@ -3,6 +3,10 @@
 # run `bat --help` to get a list of all possible configuration options.
 --style=plain
 
+--theme=auto
+--theme-dark=modus_vivendi
+--theme-light=modus_operandi
+
 # Enable this to use italic text on the terminal. This is not supported on all
 # terminal emulators (like tmux, by default):
 #--italic-text=always

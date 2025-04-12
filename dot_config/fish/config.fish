@@ -107,8 +107,3 @@ end
 if type -q sccache
     set -gx RUSTC_WRAPPER sccache
 end
-
-#
-# Bat
-#
-alias cat='bat --theme="$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo modus_vivendi || echo modus_operandi)"'
