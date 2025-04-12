@@ -1,9 +1,8 @@
 # What's inside
 
+- [Zed](https://zed.dev)
 - [WezTerm](https://wezfurlong.org/wezterm/index.html) as a terminal emulator.
 - [fish](https://fishshell.com/) as a shell.
-- [Zed](https://zed.dev)
-- [Doom Emacs](https://github.com/doomemacs/doomemacs).
 
 ## Credits
 
