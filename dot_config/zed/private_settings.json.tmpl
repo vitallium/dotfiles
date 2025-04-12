@@ -1,10 +1,12 @@
 {
 {{- if not .workconf }}
   "assistant": {
+    "default_profile": "write",
     "always_allow_tool_actions": true,
+    "enable_experimental_live_diffs": true,
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
+      "model": "claude-3-5-sonnet-latest"
     },
     "version": "2"
   },
@@ -38,6 +40,10 @@
   },
   "outline_panel": {
     "indent_size": 16
+  },
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
   },
   "git": {
     "inline_blame": {
