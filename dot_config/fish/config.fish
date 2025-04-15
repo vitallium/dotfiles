@@ -107,3 +107,11 @@ end
 if type -q sccache
     set -gx RUSTC_WRAPPER sccache
 end
+
+#
+# EDITOR
+#
+if not test -z EDITOR
+    set -gx EDITOR zed --wait
+    set -gx VISUAL zed --wait
+end
