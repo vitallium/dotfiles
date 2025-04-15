@@ -21,12 +21,13 @@ indent_size = 2
 indent_size = 2
 
 [*.lua]
-indent_size = 4
+indent_size = 2
 max_line_length = 160
 quote_style = double
 
 [*.fish]
 indent_size = 4
+indent_style = space
 
 [*.org]
 indent_size = 8
