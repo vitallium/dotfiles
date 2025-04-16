@@ -12,5 +12,6 @@
 .viminfo
 .wget-hsts
 .zshenv
+.zsh_history
 
 .config/wezterm/terminfo
