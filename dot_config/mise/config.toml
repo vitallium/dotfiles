@@ -61,6 +61,7 @@ watchexec = "latest"
 # "pipx:lsp-devtools" = "latest"
 "pipx:llm" = "latest"
 "pipx:pgcli" = "latest"
+"pipx:ruff" = "latest"
 "pipx:yt-dlp" = "latest"
 "pipx:yubikey-manager" = "latest"
 
