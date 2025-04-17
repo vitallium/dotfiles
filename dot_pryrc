@@ -2,10 +2,7 @@
 
 Pry.editor = 'zed --wait'
 
-if ENV.fetch('INSIDE_EMACS', false)
-  Pry.config.correct_indent = false
-  Pry.config.pager = false
-elsif Pry::Prompt[:rails]
+if Pry::Prompt[:rails]
   Pry.config.prompt = Pry::Prompt[:rails]
 else
   Pry.config.prompt = Pry::Prompt[:nav]

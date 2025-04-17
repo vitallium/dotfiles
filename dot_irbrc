@@ -5,15 +5,6 @@ require 'irb/completion'
 IRB.conf[:COMPLETOR] = :type
 IRB.conf[:HISTORY_FILE] = File.join(Dir.pwd, '.irb_history')
 
-if ENV['INSIDE_EMACS']
-  IRB.conf[:USE_MULTILINE] = false
-  IRB.conf[:USE_SINGLELINE] = false
-  IRB.conf[:PROMPT_MODE] = :INF_RUBY
-
-  IRB.conf[:USE_READLINE] = false
-  IRB.conf[:USE_COLORIZE] = true
-end
-
 begin
   require 'amazing_print'
 rescue LoadError
