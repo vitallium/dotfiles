@@ -2,7 +2,6 @@
 # Bootstrap
 #
 set fish_greeting ''
-set -g hydro_multiline true
 
 # Paths
 fish_add_path --append \
