@@ -70,6 +70,7 @@ experimental = true
 legacy_version_file = true
 not_found_auto_install = false
 pipx_uvx = true
+idiomatic_version_file_enable_tools = ["rust"]
 
 [settings.status]
 missing_tools = "always"
