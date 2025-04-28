@@ -43,6 +43,7 @@ watchexec = "latest"
 "cargo:topgrade" = "latest"
 # Go
 "go:github.com/DarthSim/hivemind" = "latest"
+"go:github.com/editorconfig-checker/editorconfig-checker/v3/cmd/editorconfig-checker" = "latest"
 # Node.js
 "npm:@devcontainers/cli" = "latest"
 "npm:@fsouza/prettierd" = "latest"
