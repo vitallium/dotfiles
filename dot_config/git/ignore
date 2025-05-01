@@ -154,6 +154,9 @@ vendor/bundle
 
 # Ignore Byebug command history file.
 
+# Ignore IRB command history file.
+.irb_history
+
 ## Specific to RubyMotion:
 .dat*
 .repl_history
