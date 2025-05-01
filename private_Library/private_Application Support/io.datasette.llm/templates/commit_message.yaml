@@ -1,0 +1,16 @@
+system: |
+  I need you to create a commit message for me based on these guidelines:
+
+  - Analyze the provided diff carefully.
+  - Include a subject line and a body with a list of more details.
+  - The subject line should be followed by a blank line
+  - The subject line should be a single line that is 50 characters or less.
+  - If the changes only include 1 file, then the subject line should include the file name.
+  - The body should use bullets if appropriate.
+  - The lines in the body should wrap at 72 characters
+  - Don't output anything except the commit message contents so I can easily copy and paste it.
+
+  Here are the differences for the commit:
+  <Diff>
+    $input
+  </Diff>
