@@ -31,6 +31,7 @@ config.font = wezterm.font_with_fallback({
     { family = "{{ .wezterm.font.name }}", weight = "Regular" },
 })
 config.font_size = {{ .wezterm.font.size }}
+config.bold_brightens_ansi_colors = "BrightAndBold"
 
 -- Colors
 config.color_scheme = "Modus-Operandi"
@@ -65,16 +66,16 @@ config.send_composed_key_when_right_alt_is_pressed = true
 config.keys = {
     { mods = "OPT", key = "Enter", action = act.DisableDefaultAssignment },
     { mods = "OPT", key = "LeftArrow", action = act.SendKey({ mods = "ALT", key = "b" }) },
-	{ mods = "OPT", key = "RightArrow", action = act.SendKey({ mods = "ALT", key = "f" }) },
-	{ mods = "CMD", key = "LeftArrow", action = act.SendKey({ mods = "CTRL", key = "a" }) },
-	{ mods = "CMD", key = "RightArrow", action = act.SendKey({ mods = "CTRL", key = "e" }) },
-	{ mods = "CMD", key = "Backspace", action = act.SendKey({ mods = "CTRL", key = "u" }) },
+    { mods = "OPT", key = "RightArrow", action = act.SendKey({ mods = "ALT", key = "f" }) },
+    { mods = "CMD", key = "LeftArrow", action = act.SendKey({ mods = "CTRL", key = "a" }) },
+    { mods = "CMD", key = "RightArrow", action = act.SendKey({ mods = "CTRL", key = "e" }) },
+    { mods = "CMD", key = "Backspace", action = act.SendKey({ mods = "CTRL", key = "u" }) },
     { mods = "CMD|OPT", key = "LeftArrow", action = act.ActivatePaneDirection("Left") },
-	{ mods = "CMD|OPT", key = "RightArrow", action = act.ActivatePaneDirection("Right") },
-	{ mods = "CMD|OPT", key = "UpArrow", action = act.ActivatePaneDirection("Up") },
-	{ mods = "CMD|OPT", key = "DownArrow", action = act.ActivatePaneDirection("Down") },
-	{ mods = "CMD", key = "d", action = act.SplitPane({ direction = "Right" }) },
-	{ mods = "CMD|SHIFT", key = "d", action = act.SplitPane({ direction = "Down" }) },
+    { mods = "CMD|OPT", key = "RightArrow", action = act.ActivatePaneDirection("Right") },
+    { mods = "CMD|OPT", key = "UpArrow", action = act.ActivatePaneDirection("Up") },
+    { mods = "CMD|OPT", key = "DownArrow", action = act.ActivatePaneDirection("Down") },
+    { mods = "CMD", key = "d", action = act.SplitPane({ direction = "Right" }) },
+    { mods = "CMD|SHIFT", key = "d", action = act.SplitPane({ direction = "Down" }) },
     { mods = "SHIFT|SUPER", key = "p", action = act.ActivateCommandPalette },
     { mods = "CMD|SHIFT", key = "UpArrow", action = act.ScrollToPrompt(-1) },
     { mods = "CMD|SHIFT", key = "DownArrow", action = act.ScrollToPrompt(1) },
