@@ -2,10 +2,10 @@
 # User interface
 #
 font-family = "{{ .ghostty.font.name }}"
-# font-thicken = true
 font-size = {{ .ghostty.font.size }}
 cursor-style = block
 theme = light:modus_operandi,dark:modus_vivendi
+bold-is-bright = true
 
 window-colorspace = "display-p3"
 window-save-state = always
@@ -14,6 +14,9 @@ window-decoration = true
 window-padding-x = 8
 window-padding-y = 8
 
+#
+# macOS specific settings
+#
 macos-non-native-fullscreen = true
 macos-option-as-alt = true
 
