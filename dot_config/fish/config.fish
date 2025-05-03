@@ -1,3 +1,5 @@
+status is-interactive || exit
+
 #
 # Bootstrap
 #
@@ -67,6 +69,15 @@ if command -qa mise
         mise activate fish --shims | source
     end
 end
+
+#
+# atuin
+#
+
+atuin init fish | source
+
+bind \cr _atuin_search
+bind -M insert \cr _atuin_search
 
 #
 # Eza
