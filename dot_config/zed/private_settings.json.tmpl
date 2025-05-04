@@ -17,6 +17,13 @@
   },
   "buffer_font_family": "{{ .zed.font.name }}",
   "buffer_font_size": {{ .zed.font.size }},
+  "terminal": {
+    "font_family": "{{ .zed.terminal.font.name }}",
+    "line_height": "standard",
+    "env": {
+      "EDITOR": "zed --wait"
+    }
+  },
 {{- if .workconf }}
   "telemetry": {
     "diagnostics": false,
@@ -79,13 +86,6 @@
           "arguments": ["--stdin-filename", "{buffer_path}"]
         }
       }
-    }
-  },
-  "terminal": {
-    "font_family": "{{ .zed.terminal.font.name }}",
-    "line_height": "standard",
-    "env": {
-      "EDITOR": "zed --wait"
     }
   },
   "lsp": {
