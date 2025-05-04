@@ -71,15 +71,6 @@ if command -qa mise
 end
 
 #
-# atuin
-#
-
-atuin init fish | source
-
-bind \cr _atuin_search
-bind -M insert \cr _atuin_search
-
-#
 # Eza
 #
 if command -qa eza
