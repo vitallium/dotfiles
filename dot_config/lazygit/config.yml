@@ -12,4 +12,4 @@ git:
     colorArg: always
     useConfig: false
 os:
-  editPreset: "zed"
+  editPreset: "nvim"

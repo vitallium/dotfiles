@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Pry.editor = 'zed --wait'
+Pry.editor = 'nvim'
 
 if Pry::Prompt[:rails]
   Pry.config.prompt = Pry::Prompt[:rails]
