@@ -14,8 +14,3 @@
 /.zshenv
 /.zsh_history
 
-# neovim stuff
-/.local/share/nvim
-/.local/state/nvim
-/.cache/nvim
-/.config/nvim

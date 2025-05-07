@@ -10,4 +10,4 @@ git:
   pagers:
     - pager: delta --paging=never
 os:
-  editPreset: "zed"
+  editPreset: "nvim"
