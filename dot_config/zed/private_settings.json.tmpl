@@ -15,10 +15,11 @@
     "light": "Modus Operandi",
     "dark": "Modus Vivendi Tinted"
   },
-  "buffer_font_family": "{{ .zed.font.name }}",
-  "buffer_font_size": {{ .zed.font.size }},
+  "buffer_font_family": "{{ .zed.buffer_font.name }}",
+  "buffer_font_size": {{ .zed.buffer_font.size }},
+  "ui_font_family": "{{ .zed.ui_font.name }}",
   "terminal": {
-    "font_family": "{{ .zed.terminal.font.name }}",
+    "font_family": "{{ .zed.terminal_font.name }}",
     "line_height": "standard",
     "env": {
       "EDITOR": "zed --wait"
