@@ -25,10 +25,15 @@
       "EDITOR": "zed --wait"
     }
   },
+  "auto_signature_help": true,
+  "inlay_hints": { "enabled": true },
 {{- if .workconf }}
   "telemetry": {
     "diagnostics": false,
     "metrics": false
+  },
+  "collaboration_panel": {
+    "button": false
   },
 {{- end }}
   "features": {
@@ -48,6 +53,15 @@
   },
   "indent_guides": {
     "enabled": true
+  },
+  "tabs": {
+    "git_status": true,
+    "file_icons": true,
+    "show_close_button": "hover"
+  },
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false
   },
   "git": {
     "inline_blame": {
