@@ -1,3 +1,33 @@
+[settings]
+cargo_binstall = true
+experimental = true
+legacy_version_file = true
+not_found_auto_install = false
+pipx_uvx = true
+idiomatic_version_file_enable_tools = [
+  "ruby",
+  "rust",
+  "python",
+  "node",
+  "go",
+  "terraform",
+  "yarn",
+]
+
+[settings.status]
+show_env = true
+show_tools = false
+
+[settings.npm]
+bun = false
+
+[settings.pipx]
+# Allow mise to install pipx packages without manual installation of pipx.
+uvx = true
+
+[settings.ruby]
+ruby_install = true
+
 [tools]
 bun = "latest"
 cargo-binstall = "latest"
@@ -5,12 +35,13 @@ chezmoi = "2"
 crystal = "latest"
 go = "latest"
 hadolint = "latest"
+hivemind = "latest"
 java = "lts"
 kubectl = "latest"
 node = "lts"
 python = "3.13.2"
 ruby = "3.4.3"
-rust = "latest"
+rust = { version = "latest", components = "rust-analyzer,rust-src" }
 shellcheck = "latest"
 shfmt = "latest"
 usage = "latest"
@@ -43,7 +74,6 @@ watchexec = "latest"
 "cargo:topgrade" = "latest"
 
 # Go
-"go:github.com/DarthSim/hivemind" = "latest"
 "go:github.com/editorconfig-checker/editorconfig-checker/v3/cmd/editorconfig-checker" = "latest"
 
 # Node.js
@@ -67,18 +97,3 @@ watchexec = "latest"
 "pipx:ruff" = "latest"
 "pipx:yt-dlp" = "latest"
 "pipx:yubikey-manager" = "latest"
-
-[settings]
-cargo_binstall = true
-experimental = true
-legacy_version_file = true
-not_found_auto_install = false
-pipx_uvx = true
-idiomatic_version_file_enable_tools = ["rust"]
-
-[settings.status]
-missing_tools = "always"
-show_tools = false
-
-[settings.npm]
-bun = true
