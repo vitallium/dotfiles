@@ -69,10 +69,17 @@ end
 #
 # Eza
 #
-if command -qa eza
+if type -q eza
     alias l="eza"
     alias ll="eza --long --header --group --created --modified -a"
     alias ls="eza"
+end
+
+#
+# bat
+#
+if type -q bat
+    alias cat="bat --paging=never"
 end
 
 #
