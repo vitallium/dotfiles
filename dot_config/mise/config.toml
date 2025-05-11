@@ -46,6 +46,7 @@ shellcheck = "latest"
 shfmt = "latest"
 usage = "latest"
 uv = "latest"
+vale = "latest"
 watchexec = "latest"
 
 # Rust
