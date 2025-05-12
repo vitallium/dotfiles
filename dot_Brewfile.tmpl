@@ -44,6 +44,7 @@ brew 'zlib'
 cask '1password'
 cask '1password-cli'
 cask 'appcleaner'
+cask 'claude'
 cask 'elgato-control-center'
 cask 'firefox'
 cask 'font-inter'
@@ -79,7 +80,6 @@ mas 'Velja', id: 1_607_635_845
 
 {{- if not .workconf }}
 cask 'acorn'
-cask 'claude'
 cask 'cleanshot'
 cask 'daisydisk'
 cask 'discord'
@@ -99,6 +99,8 @@ mas 'Wipr', id: 1_662_217_862
 {{- else }}
 tap 'gitlab/fonts', 'https://gitlab.com/vitallium/homebrew-gitlab-fonts'
 
+cask 'bruno'
+cask 'chromium'
 cask 'figma'
 cask 'zoom'
 
