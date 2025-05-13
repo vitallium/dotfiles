@@ -4,8 +4,8 @@
 --style=plain
 
 --theme=auto
---theme-dark=modus_vivendi
---theme-light=modus_operandi
+--theme-dark=modus_vivendi_tinted
+--theme-light=modus_operandi_tinted
 
 # Enable this to use italic text on the terminal. This is not supported on all
 # terminal emulators (like tmux, by default):
