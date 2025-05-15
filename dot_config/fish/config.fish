@@ -1,5 +1,3 @@
-status is-interactive || exit
-
 #
 # Bootstrap
 #
