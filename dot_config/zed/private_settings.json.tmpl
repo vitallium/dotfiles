@@ -3,14 +3,13 @@
   "agent": {
     "default_profile": "ask",
     "always_allow_tool_actions": true,
-    "enable_experimental_live_diffs": true,
     "default_model": {
       "provider": "anthropic",
       "model": "claude-3-5-sonnet-latest"
     },
     "version": "2"
   },
-{{- end}}
+{{- end }}
   "theme": {
     "light": "Modus Operandi",
     "dark": "Modus Vivendi Tinted"
@@ -51,6 +50,11 @@
   },
   "indent_guides": {
     "enabled": true
+  },
+  "diagnostics": {
+    "cargo": {
+      "fetch_cargo_diagnostics": true
+    }
   },
   "tabs": {
     "git_status": true,
