@@ -28,6 +28,9 @@ uvx = true
 [settings.ruby]
 ruby_install = true
 
+[settings.python]
+uv_venv_auto = true
+
 [tools]
 bun = "latest"
 cargo-binstall = "latest"
