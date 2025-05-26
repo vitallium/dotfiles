@@ -19,7 +19,7 @@ show_env = true
 show_tools = false
 
 [settings.npm]
-bun = false
+bun = true
 
 [settings.pipx]
 # Allow mise to install pipx packages without manual installation of pipx.
