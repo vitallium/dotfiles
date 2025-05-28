@@ -1,0 +1,6 @@
+[language-server.ruby-lsp]
+command = "ruby-lsp"
+
+[[language]]
+name = "ruby"
+language-servers = ["ruby-lsp", "solargraph"]
