@@ -77,11 +77,16 @@ watchexec = "latest"
 # Node.js
 "npm:@devcontainers/cli" = "latest"
 "npm:@fsouza/prettierd" = "latest"
+"npm:dockerfile-language-server-nodejs" = "latest"
 "npm:jsvu" = "latest"
 "npm:knip" = "latest"
 "npm:markdownlint-cli2" = "latest"
 "npm:pnpm" = "latest"
-# "npm:yalc" = "latest"
+"npm:typescript-language-server" = "latest"
+"npm:vscode-css-languageserver-bin" = "latest"
+"npm:vscode-json-languageserver" = "latest"
+"npm:yalc" = "latest"
+"npm:yaml-language-server" = "latest"
 "npm:yarn" = "latest"
 
 # Python
