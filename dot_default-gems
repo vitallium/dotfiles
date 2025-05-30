@@ -5,6 +5,8 @@ bundler
 bundler-audit
 byebug
 debug
+erb-formatter
+erb_lint
 irb
 irb-power_assert
 irb-theme-tokyonight
@@ -12,4 +14,11 @@ nicetest
 rbs
 reek
 repl_type_completor
+rubocop
 ruby-lsp
+ruby-lsp-rails
+ruby-lsp-rspec
+solargraph
+solargraph-rails
+steep
+yard
