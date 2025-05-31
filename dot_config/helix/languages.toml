@@ -3,4 +3,7 @@ command = "ruby-lsp"
 
 [[language]]
 name = "ruby"
+scope = "source.rb"
+injection-regex = "ruby"
+roots = ["Gemfile", ".git"]
 language-servers = ["ruby-lsp", "solargraph"]
