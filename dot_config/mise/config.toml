@@ -93,6 +93,7 @@ watchexec = "latest"
 # Python
 # "pipx:lsp-devtools" = "latest"
 "pipx:llm" = "latest"
+"pipx:pdm" = "latest"
 "pipx:pgcli" = "latest"
 "pipx:ruff" = "latest"
 "pipx:yt-dlp" = "latest"
