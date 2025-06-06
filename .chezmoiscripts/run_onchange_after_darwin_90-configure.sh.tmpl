@@ -27,6 +27,12 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock showhidden -bool true
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
+# Set the icon size of Dock items to 36 pixels
+defaults write com.apple.dock tilesize -int 36
+# Set the large icon size of Dock items to 72 pixels
+defaults write com.apple.dock largesize -int 72
+# Enable magnification
+defaults write com.apple.dock magnification -bool true
 
 # Finder: allow quitting via CMD + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
