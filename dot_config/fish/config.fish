@@ -74,6 +74,5 @@ end
 # EDITOR
 #
 if not test -z EDITOR
-    set -gx EDITOR zed --wait
-    set -gx VISUAL zed --wait
+    set -x EDITOR hx
 end
