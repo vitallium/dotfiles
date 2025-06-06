@@ -17,11 +17,6 @@ fish_add_path --append \
     # Go
     $HOME/.local/go/bin
 
-# Load Fisher plugins
-for file in $fisher_path/conf.d/*.fish
-    builtin source $file 2>/dev/null
-end
-
 #
 # ripgrep
 #
