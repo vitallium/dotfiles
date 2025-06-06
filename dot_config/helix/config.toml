@@ -2,7 +2,6 @@ theme = "base16_transparent"
 
 [editor]
 line-number = "relative"
-cursorline = true
 rulers = [80]
 end-of-line-diagnostics = "hint"
 
