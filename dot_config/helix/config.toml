@@ -5,6 +5,11 @@ line-number = "relative"
 rulers = [80]
 end-of-line-diagnostics = "hint"
 
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
 [editor.whitespace]
 render = "all"
 
@@ -20,3 +25,7 @@ C-g = [
     ":redraw",
     ":reload-all"
 ]
+D = "extend_to_line_end"
+
+[keys.select]
+D = "extend_to_line_end"
