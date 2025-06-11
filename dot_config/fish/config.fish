@@ -71,4 +71,5 @@ end
 #
 if not test -z EDITOR
     set -x EDITOR hx
+    alias x="hx"
 end
