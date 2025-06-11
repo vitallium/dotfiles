@@ -46,8 +46,6 @@ if type -q sccache
     set -gx RUSTC_WRAPPER sccache
 end
 
-status is-interactive || exit
-
 #
 # Eza
 #
@@ -61,7 +59,11 @@ end
 # bat
 #
 if type -q bat
-    alias cat="bat --paging=never"
+	set -x MANPAGER "bat --plain"
+	set -x PAGER "bat --plain"
+
+    alias cat="bat --paging=never --plain"
+    alias less="bat --plain"
 end
 
 #
