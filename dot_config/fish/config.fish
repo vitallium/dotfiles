@@ -59,8 +59,8 @@ end
 # bat
 #
 if type -q bat
-	set -x MANPAGER "bat --plain"
-	set -x PAGER "bat --plain"
+    set -x MANPAGER "bat --plain"
+    set -x PAGER "bat --plain"
 
     alias cat="bat --paging=never --plain"
     alias less="bat --plain"
