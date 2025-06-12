@@ -67,6 +67,11 @@ if type -q bat
 end
 
 #
+# fzf
+#
+fzf --fish | source
+
+#
 # EDITOR
 #
 if not test -z EDITOR
