@@ -1,4 +1,6 @@
-#!/usr/bin/env fish
+#!{{ lookPath "fish" }}
+
+{{ $hash := include "dot_config/fish/fish_plugins.tmpl" | sha256sum }}
 
 ## Install fisher
 if not type -q fisher
@@ -6,7 +8,6 @@ if not type -q fisher
   curl -sL https://git.io/fisher | source
 end
 
-# This script will run whenever I added something to .config/fish/fish_plugins
-# .config/fish/fish_plugins hash: {{ include "dot_config/fish/fish_plugins.tmpl" | sha256sum }}
 fisher update
 
+set -U fish_plugins_hash {{ $hash }}
