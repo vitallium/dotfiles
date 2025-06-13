@@ -7,7 +7,7 @@ local function scheme_for_appearance(appearance)
     if appearance:find("Dark") then
         return "Modus-Vivendi-Tinted"
     else
-        return "Modus-Operandi-Tinted"
+        return "Modus-Operandi"
     end
 end
 
@@ -33,7 +33,7 @@ config.font = wezterm.font_with_fallback({
 config.font_size = {{ .wezterm.font.size }}
 
 -- Colors
-config.color_scheme = "Modus-Operandi-Tinted"
+config.color_scheme = "Modus-Operandi"
 config.enable_scroll_bar = false
 
 -- Tab
