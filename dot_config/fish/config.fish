@@ -75,6 +75,16 @@ fzf --fish | source
 # EDITOR
 #
 if not test -z EDITOR
-    set -x EDITOR hx
-    alias x="hx"
+    if type -q nvim
+        alias vi='nvim'
+        alias vim='nvim'
+        alias view='nvim -R'
+
+        set -x EDITOR nvim
+    else if type -q vim
+        set -x EDITOR vim
+    else
+        set -x EDITOR hx
+        alias x="hx"
+    end
 end
