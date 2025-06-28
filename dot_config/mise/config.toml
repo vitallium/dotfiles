@@ -75,6 +75,7 @@ watchexec = "latest"
 "cargo:topgrade" = "latest"
 
 # Node.js
+"npm:@anthropic-ai/claude-code" = "latest"
 "npm:@devcontainers/cli" = "latest"
 "npm:@fsouza/prettierd" = "latest"
 "npm:@openai/codex" = "latest"
