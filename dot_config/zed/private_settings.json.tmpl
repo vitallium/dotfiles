@@ -6,8 +6,7 @@
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-3-7-sonnet"
-    },
-    "version": "2"
+    }
   },
 {{- end }}
   "theme": {
@@ -34,7 +33,6 @@
   },
 {{- end }}
   "features": {
-    "copilot": false,
 {{- if .workconf }}
     "edit_prediction_provider": "none"
 {{- else }}
@@ -48,9 +46,6 @@
   "outline_panel": {
     "indent_size": 16
   },
-  "indent_guides": {
-    "enabled": true
-  },
   "diagnostics": {
     "cargo": {
       "fetch_cargo_diagnostics": true
@@ -60,9 +55,6 @@
     "git_status": true,
     "file_icons": true,
     "show_close_button": "hover"
-  },
-  "tab_bar": {
-    "show": true
   },
   "git": {
     "inline_blame": {
@@ -78,7 +70,6 @@
   "languages": {
     "Markdown": {
       "preferred_line_length": 100,
-      "show_wrap_guides": true,
       "soft_wrap": "preferred_line_length"
     },
     "Ruby": {
@@ -97,7 +88,7 @@
       "formatter": { "language_server": { "name": "ruff" } },
       "language_servers": ["pyright", "ruff"]
     },
-    "ERB": {
+    "HTML/ERB": {
       "formatter": {
         "external": {
           "command": "erb-formatter",
@@ -107,18 +98,6 @@
     }
   },
   "lsp": {
-    "rust-analyzer": {
-      "inlayHints": {
-        "maxLength": null,
-        "lifetimeElisionHints": {
-          "useParameterNames": true,
-          "enable": "skip_trivial"
-        },
-        "closureReturnTypeHints": {
-          "enable": "always"
-        }
-      }
-    },
     "ruby-lsp": {
       "initialization_options": {
         "experimentalFeaturesEnabled": true,
