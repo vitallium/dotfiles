@@ -79,7 +79,11 @@
   required = true
 
 [gpg]
+  {{- if eq .chezmoi.os "darwin" }}
+  program = {{ expandenv "$HOMEBREW_PREFIX/bin/gpg" }}
+  {{- else }}
   program = gpg
+  {{- end }}
 
 [fetch]
   prune = true
