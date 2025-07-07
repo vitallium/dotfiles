@@ -63,6 +63,10 @@
 [merge]
   conflictstyle = zdiff3
 
+[merge "mergiraf"]
+  name = mergiraf
+  driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+
 [diff]
   algorithm = histogram
   # Use n and N to move between diff sections

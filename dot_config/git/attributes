@@ -1,3 +1,4 @@
+* merge=mergiraf
 *.lisp  diff=lisp
 *.el    diff=lisp
 *.org   diff=org
