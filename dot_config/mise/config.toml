@@ -41,7 +41,7 @@ just = "latest"
 kubectl = "latest"
 node = "lts"
 python = "3.13.4"
-ruby = "3.4.4"
+ruby = "3.4.5"
 rust = { version = "latest", components = "rust-analyzer,rust-src" }
 shellcheck = "latest"
 shfmt = "latest"
