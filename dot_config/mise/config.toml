@@ -29,6 +29,7 @@ uvx = true
 ruby_install = true
 
 [tools]
+biome = "latest"
 bun = "latest"
 cargo-binstall = "latest"
 chezmoi = "2"
