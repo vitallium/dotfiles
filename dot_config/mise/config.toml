@@ -50,6 +50,7 @@ usage = "latest"
 uv = "latest"
 vale = "latest"
 watchexec = "latest"
+zig = "latest"
 
 # Rust
 "aqua:AlexanderGrooff/mermaid-ascii" = "latest"
