@@ -1,5 +1,7 @@
+{{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
 # 1Password CLI version: {{ output "op" "--version" | trim }}
 
 op completion fish > ~/.config/fish/completions/op.fish
+{{ end -}}

@@ -1,5 +1,7 @@
+{{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
 # colima version: {{ output "colima" "--version" | trim }}
 
 colima completion fish > "$HOME/.config/fish/completions/colima.fish"
+{{ end -}}
