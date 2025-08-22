@@ -1,3 +1,4 @@
+{{- if (eq .chezmoi.os "darwin") -}}
 #!/usr/bin/env sh
 
 # configure gpg agent for yubikey
@@ -6,3 +7,4 @@ launchctl unload $HOME/Library/LaunchAgents/gnupg.gpg-agent.plist
 launchctl load $HOME/Library/LaunchAgents/gnupg.gpg-agent.plist
 launchctl unload $HOME/Library/LaunchAgents/gnupg.gpg-agent-symlink.plist
 launchctl load $HOME/Library/LaunchAgents/gnupg.gpg-agent-symlink.plist
+{{- end -}}

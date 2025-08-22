@@ -1,3 +1,4 @@
+{{- if (eq .chezmoi.os "darwin") -}}
 #!/usr/bin/env sh
 
 echo "Install/upgrade mise"
@@ -9,3 +10,4 @@ elif brew list --formula | grep -q '^mise$'; then
 else
   mise self-update -y
 fi
+{{- end -}}

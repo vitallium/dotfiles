@@ -1,0 +1,280 @@
+#+TITLE: Fedora installation guide
+#+PROPERTY: header-args :comments no :mkdirp yes :tangle no :results output
+
+* Contents :TOC:
+- [[#post-installation-steps][Post installation steps]]
+  - [[#install-updates][Install updates]]
+  - [[#change-the-hostname-to-firefly][Change the hostname to ~firefly~]]
+  - [[#reboot-the-system-to-install-and-apply-updates][Reboot the system to install and apply updates]]
+  - [[#open-settings-and-verify-the-following-settings][Open ~Settings~ and verify the following settings]]
+  - [[#remove-redundant-stuff][Remove redundant stuff]]
+  - [[#configure-dnf][Configure ~dnf~]]
+  - [[#enable-fstrim][Enable ~fstrim~]]
+  - [[#change-default-user-shell-to-fish][Change default user shell to ~fish~]]
+  - [[#install-gnome-extensions-applications][Install Gnome extensions applications]]
+  - [[#enable-rpm-fusion-repositories][Enable RPM Fusion repositories]]
+  - [[#install-drivers-for-intel-gpu][Install drivers for Intel GPU]]
+  - [[#configure-system-settings][Configure system settings]]
+  - [[#instal-development-tools][Instal ~Development Tools~]]
+  - [[#install-other-packages-i-use][Install other packages I use]]
+  - [[#install-packages-for-yubikey][Install packages for ~Yubikey~]]
+  - [[#enable-and-install-vim-stuff][Enable and install ~vim~ stuff]]
+- [[#configure-user-environment][Configure user environment]]
+  - [[#enable-flathub][Enable flathub]]
+  - [[#install-flatpaks][Install ~flatpaks~]]
+  - [[#clean-up-unused-directories-and-bookmarks][Clean up unused directories and bookmarks]]
+  - [[#install-docker][Install docker]]
+  - [[#install-protonvpn][Install ProtonVPN]]
+  - [[#install-mullvadvpn][Install MullvadVPN]]
+  - [[#install-sublime-text-and-sublime-merge][Install Sublime Text and Sublime Merge]]
+  - [[#install-1password-cli][Install 1password CLI]]
+- [[#configure-gnome][Configure Gnome]]
+  - [[#install-packages][Install packages]]
+  - [[#user-interface][User interface]]
+  - [[#peripherals][Peripherals]]
+  - [[#key-bindings][Key bindings]]
+  - [[#enable-minimizemaximize-buttons][Enable minimize,maximize buttons]]
+  - [[#install-phinger-cursors][Install phinger-cursors]]
+  - [[#set-caps-lock-as-additional-ctrl][Set Caps Lock as additional Ctrl]]
+- [[#framework-laptop-specific-configuration][Framework Laptop specific configuration]]
+  - [[#configure-power-saving][Configure power saving]]
+
+* Post installation steps
+** Install updates
+#+begin_src shell :dir /sudo::
+dnf upgrade --refresh
+#+end_src
+** Change the hostname to ~firefly~
+#+begin_src shell :dir /sudo::
+hostnamectl set-hostname firefly
+#+end_src
+** Reboot the system to install and apply updates
+** Open ~Settings~ and verify the following settings
+- Refresh rate set to 144Hz for an external monitor.
+#+begin_src shell
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.50
+gsettings set org.gnome.desktop.interface cursor-size 32
+#+end_src
+** Remove redundant stuff
+#+begin_src shell :dir /sudo::
+dnf remove -y cheese rhythmbox totem orca \
+              gnome-contacts \
+              gnome-shell-extension-* \
+              libreoffice-* gnome-characters \
+              gnome-photos simple-scan virtualbox-guest-additions \
+              gnome-tour gnome-connections firefox
+dnf autoremove -y
+#+end_src
+** Configure ~dnf~
+#+begin_src shell :dir /sudo::
+echo 'max_parallel_downloads=10' | tee -a /etc/dnf/dnf.conf
+echo 'deltarpm=true' | tee -a /etc/dnf/dnf.conf
+#+end_src
+** Enable ~fstrim~
+#+begin_src shell :dir /sudo::
+systemctl enable fstrim.timer
+#+end_src
+** Change default user shell to ~fish~
+#+begin_src shell :dir /sudo::
+dnf install -y fish
+usermod -s $(which fish) vslobodin
+#+end_src
+** Install Gnome extensions applications
+#+begin_src shell :dir /sudo::
+dnf install -y gnome-tweaks
+#+end_src
+** Enable RPM Fusion repositories
+#+begin_src shell :dir /sudo::
+dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+dnf upgrade --refresh
+dnf groupupdate -y core
+dnf install -y rpmfusion-free-release-tainted
+dnf install -y dnf-plugins-core
+#+end_src
+** Install drivers for Intel GPU
+See also https://github.com/ai/environment/blob/main/Install.md
+#+begin_src shell :dir /sudo::
+dnf config-manager --set-enabled fedora-cisco-openh264
+dnf groupupdate multimedia --allowerasing --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+dnf install -y intel-media-driver libva \
+               libva-utils gstreamer1-vaapi \
+               intel-gpu-tools mesa-dri-drivers
+#+end_src
+** Configure system settings
+#+begin_src shell :dir /sudo::
+echo 'fs.inotify.max_user_watches = 524288' >> /etc/sysctl.conf
+echo 'vm.swappiness = 10' >> /etc/sysctl.conf
+sysctl -p
+#+end_src
+** Instal ~Development Tools~
+#+begin_src shell :dir /sudo::
+dnf install -y make gcc-c++ gcc make bzip2 openssl \
+               openssl-devel libyaml-devel libffi-devel \
+               readline-devel zlib-devel gdbm-devel ncurses-devel \
+               m4 ncurses-devel autoconf re2 re2-devel \
+               libcurl-devel libuuid-devel \
+               libvterm-devel gpgme-devel icu krb5-devel gtk4-devel \
+               libusb1-devel rpm-devel
+
+dnf groupinstall -y "Development Tools"
+#+end_src
+** Install other packages I use
+#+begin_src shell :dir /sudo::
+dnf install -y git git-lfs git-delta \
+               bat fzf ripgrep \
+               profile-sync-daemon \
+               editorconfig maildir-utils \
+               kernel-tools wl-clipboard \
+               cmake ninja-build jq \
+               celluloid transmission-gtk \
+               ShellCheck ImageMagick \
+               perl-core git-extras htop \
+               GraphicsMagick yamllint
+#+end_src
+** Install packages for ~Yubikey~
+#+begin_src shell :dir /sudo::
+dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime pcsc-tools opensc pcsc-lite pgp-tools
+systemctl enable --now pcscd
+#+end_src
+** Enable and install ~vim~ stuff
+#+begin_src shell :dir /sudo::
+dnf copr enable -y vitallium/neovim-default-editor
+dnf install -y --allowerasing neovim-default-editor
+#+end_src
+* Configure user environment
+** Enable [[https://flatpak.org/setup/Fedora][flathub]]
+#+begin_src shell :dir /sudo::
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-modify flathub --enable
+#+end_src
+** Install ~flatpaks~
+#+begin_src shell
+flatpak install -y flathub com.discordapp.Discord \
+                           com.spotify.Client \
+                           org.telegram.desktop \
+                           com.slack.Slack \
+                           com.github.tchx84.Flatseal \
+                           re.sonny.Junction \
+                           com.belmoussaoui.Obfuscate \
+                           com.obsproject.Studio \
+                           com.usebottles.bottles \
+                           com.mattjakeman.ExtensionManager \
+                           org.mozilla.firefox \
+                           com.google.Chrome \
+                           com.brave.Browser \
+                           com.github.maoschanz.drawing
+
+xdg-settings set default-web-browser re.sonny.Junction.desktop
+#+end_src
+** Clean up unused directories and bookmarks
+#+begin_src shell
+rm -rf ~/Documents ~/Music ~/Public ~/Templates ~/Desktop
+echo "file:///home/vslobodin/Downloads" > ~/.config/gtk-3.0/bookmarks
+#+end_src
+** Install docker
+#+begin_src shell :dir /sudo::
+dnf config-manager -y \
+    --add-repo \
+    https://download.docker.com/linux/fedora/docker-ce.repo
+dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+#+end_src
+Add ~$USER~ to the ~docker~ group.
+TODO: switch to ~rootless~ configuration.
+#+begin_src shell :dir /sudo::
+usermod -aG docker $USER
+#+end_src
+Enable and start ~systemd~ services.
+#+begin_src shell :dir /sudo::
+systemctl enable --now docker.service
+systemctl enable --now containerd.service
+#+end_src
+** Install ProtonVPN
+#+begin_src shell :dir /sudo::
+rpm -i https://repo.protonvpn.com/fedora-39-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm
+dnf install -y protonvpn-cli
+#+end_src
+** Install MullvadVPN
+#+begin_src shell :dir /sudo::
+dnf install -y https://mullvad.net/media/app/MullvadVPN-2022.5_x86_64.rpm
+#+end_src
+** Install 1password CLI
+#+begin_src shell :dir /sudo::
+rpm --import https://downloads.1password.com/linux/keys/1password.asc
+sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
+dnf check-update -y 1password-cli
+dnf install -y 1password-cli
+#+end_src
+* Configure Gnome
+** Install packages
+#+begin_src shell :dir /sudo::
+dnf install -y dconf-editor \
+               webp-pixbuf-loader \
+               avif-pixbuf-loader \
+               gthumb \
+               kitty
+#+end_src
+Install ~gnome-shell~ with patches:
+#+begin_src shell :dir /sudo::
+dnf copr enable -y calcastor/gnome-patched
+dnf upgrade -y --refresh
+#+end_src
+** User interface
+Set the application on the dash.
+#+begin_src shell
+gsettings set org.gnome.shell favorite-apps "['org.mozilla.firefox.desktop', 'emacs.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'org.telegram.desktop.desktop']"
+#+end_src
+*** Adjust search locations
+#+begin_src shell
+gsettings set org.gnome.desktop.search-providers disabled "['org.gnome.clocks.desktop']"
+#+end_src
+*** Nautilus
+Sort directories first.
+#+begin_src shell
+gsettings set org.gtk.Settings.FileChooser sort-directories-first true
+#+end_src
+** Peripherals
+Enable blazingly fast keyboard repeat.
+#+begin_src shell
+gsettings set org.gnome.desktop.peripherals.keyboard delay 150
+#+end_src
+** Key bindings
+#+begin_src shell :shebang "#!/bin/bash"
+gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Super>h']"
+gsettings set org.gnome.mutter.keybindings toggle-tiled-right "['<Super>l']"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>Return']"
+
+gsettings set org.gnome.desktop.wm.keybindings minimize "['<Super>apostrophe']"
+gsettings set org.gnome.desktop.wm.keybindings maximize "['<Super>k']"
+gsettings set org.gnome.desktop.wm.keybindings unmaximize "['<Super>j']"
+gsettings set org.gnome.desktop.wm.keybindings close "['<Super><Shift>q']"
+
+END=9; for num in $(seq 1 $END); do
+  gsettings set org.gnome.shell.keybindings switch-to-application-$num "[]";
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$num "['<Super>$num']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$num "['<Super><Shift>$num']"
+done
+#+end_src
+** Enable minimize,maximize buttons
+#+begin_src shell
+gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
+#+end_src
+** Install [[https://github.com/phisch/phinger-cursors][phinger-cursors]]
+#+begin_src shell :dir /sudo::
+wget -cO- https://github.com/phisch/phinger-cursors/releases/latest/download/phinger-cursors-variants.tar.bz2 | tar xfj - -C /usr/share/icons
+#+end_src
+And enable them.
+#+begin_src shell
+gsettings set org.gnome.desktop.interface cursor-theme "phinger-cursors-dark"
+#+end_src
+** Set Caps Lock as additional Ctrl
+#+begin_src shell
+gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier']"
+#+end_src
+* Framework Laptop specific configuration
+** Configure power saving
+#+begin_src shell :dir /sudo::
+grubby --update-kernel=ALL --args="nvme.noacpi=1"
+grubby --update-kernel=ALL --args='acpi_osi="!Windows 2020"'
+#+end_src
