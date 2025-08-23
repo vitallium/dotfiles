@@ -93,4 +93,11 @@ if test -e (gpgconf --list-dirs agent-ssh-socket)
 else
     echo (gpgconf --list-dirs agent-ssh-socket) "doesn't exist. Is gpg-agent running?"
 end
-{{- end -}}
+
+#
+# Zed
+#
+
+alias zed="flatpak run dev.zed.Zed-Preview"
+
+{{ end -}}
