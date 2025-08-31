@@ -24,7 +24,11 @@ data:
   ghostty:
     font:
       name: Berkeley Mono
+{{- if (eq .chezmoi.os "darwin") }}
       size: 16.0
+{{- else }}
+      size: 14.0
+{{- end }}
   zed:
     terminal_font:
       name: Berkeley Mono
