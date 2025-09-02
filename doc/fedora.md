@@ -331,5 +331,4 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier'
 
 ```bash
 sudo grubby --update-kernel=ALL --args="nvme.noacpi=1"
-sudo grubby --update-kernel=ALL --args="acpi_osi='!Windows 2020'"
 ```
