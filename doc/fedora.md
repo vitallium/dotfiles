@@ -12,6 +12,7 @@
   - [Install Gnome extensions applications](#install-gnome-extensions-applications)
   - [Enable RPM Fusion repositories](#enable-rpm-fusion-repositories)
   - [Enable Terra repository](#enable-terra-repository)
+  - [Install Ghostty terminal emulator](#install-ghostty-terminal-emulator)
   - [Install drivers for Intel GPU](#install-drivers-for-intel-gpu)
   - [Configure system settings](#configure-system-settings)
   - [Install Development Tools](#install-development-tools)
@@ -99,6 +100,12 @@ sudo dnf install -y dnf-plugins-core
 sudo dnf config-manager addrepo \
     --from-repofile \
     https://terra.fyralabs.com/terra.repo
+```
+
+### Install Ghostty terminal emulator
+
+```bash
+sudo dnf install -y ghostty
 ```
 
 ### Install drivers for Intel GPU
@@ -240,8 +247,7 @@ sudo dnf install -y 1password-cli
 sudo dnf install -y dconf-editor \
                webp-pixbuf-loader \
                avif-pixbuf-loader \
-               gthumb \
-               kitty
+               gthumb
 ```
 
 ### User interface
