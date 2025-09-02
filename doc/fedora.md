@@ -89,7 +89,7 @@ sudo dnf install -y gnome-tweaks
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf upgrade --refresh
-sudo dnf groupupdate -y core
+sudo dnf group upgrade -y core
 sudo dnf install -y rpmfusion-free-release-tainted
 sudo dnf install -y dnf-plugins-core
 ```
@@ -97,7 +97,7 @@ sudo dnf install -y dnf-plugins-core
 ### Enable Terra repository
 
 ```bash
-sudo dnf config-manager addrepo \
+sudo dnf config-manager --add-repo \
     --from-repofile \
     https://terra.fyralabs.com/terra.repo
 ```
@@ -113,8 +113,8 @@ sudo dnf install -y ghostty
 See also https://github.com/ai/environment/blob/main/Install.md
 
 ```bash
-sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
-sudo dnf groupupdate multimedia --allowerasing --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+sudo dnf config-manager --set-enabled fedora-cisco-openh264
+sudo dnf group upgrade multimedia --allowerasing --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 sudo dnf install -y intel-media-driver libva \
                libva-utils gstreamer1-vaapi \
                intel-gpu-tools mesa-dri-drivers
@@ -206,7 +206,7 @@ echo "file:///home/vslobodin/Downloads" > ~/.config/gtk-3.0/bookmarks
 ### Install docker
 
 ```bash
-sudo dnf config-manager addrepo \
+sudo dnf config-manager --add-repo \
     --from-repofile \
     https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
