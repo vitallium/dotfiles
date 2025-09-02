@@ -11,6 +11,7 @@
   - [Change default user shell to fish](#change-default-user-shell-to-fish)
   - [Install Gnome extensions applications](#install-gnome-extensions-applications)
   - [Enable RPM Fusion repositories](#enable-rpm-fusion-repositories)
+  - [Enable Terra repository](#enable-terra-repository)
   - [Install drivers for Intel GPU](#install-drivers-for-intel-gpu)
   - [Configure system settings](#configure-system-settings)
   - [Install Development Tools](#install-development-tools)
@@ -90,6 +91,14 @@ sudo dnf upgrade --refresh
 sudo dnf groupupdate -y core
 sudo dnf install -y rpmfusion-free-release-tainted
 sudo dnf install -y dnf-plugins-core
+```
+
+### Enable Terra repository
+
+```bash
+sudo dnf config-manager addrepo \
+    --from-repofile \
+    https://terra.fyralabs.com/terra.repo
 ```
 
 ### Install drivers for Intel GPU
