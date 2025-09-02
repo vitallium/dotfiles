@@ -184,11 +184,9 @@ sudo flatpak remote-modify flathub --enable
 
 ```bash
 flatpak install -y flathub com.discordapp.Discord \
-                           com.spotify.Client \
                            org.telegram.desktop \
                            com.slack.Slack \
                            com.github.tchx84.Flatseal \
-                           re.sonny.Junction \
                            com.belmoussaoui.Obfuscate \
                            com.obsproject.Studio \
                            com.mattjakeman.ExtensionManager \
@@ -196,8 +194,6 @@ flatpak install -y flathub com.discordapp.Discord \
                            com.google.Chrome \
                            com.brave.Browser \
                            com.github.maoschanz.drawing
-
-xdg-settings set default-web-browser re.sonny.Junction.desktop
 ```
 
 ### Clean up unused directories and bookmarks
