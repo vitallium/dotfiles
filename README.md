@@ -1,7 +1,7 @@
 # What's inside
 
 - [Zed](https://zed.dev)
-- [WezTerm](https://wezfurlong.org/wezterm/index.html) as a terminal emulator.
+- [Ghostty](http://ghostty.org) as a terminal emulator.
 - [fish](https://fishshell.com/) as a shell.
 
 ## Credits
