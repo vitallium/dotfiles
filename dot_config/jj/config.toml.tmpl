@@ -7,15 +7,13 @@ behavior = "own"
 backend = "gpg"
 signingkey = "{{ .git.signing_key }}"
 
-[git]
-push-bookmark-prefix = "vs/push-"
+[templates]
+git.git_push_bookmark = '"vs/push-" ++ change_id.short()'
 
 [ui]
 default-command = "log"
 pager = "delta"
-
-[ui.diff]
-format = "git"
+diff-formatter= ":git"
 
 [aliases]
 wip = ["ci", "-m", "wip"]
