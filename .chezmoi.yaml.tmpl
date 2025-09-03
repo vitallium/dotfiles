@@ -23,7 +23,7 @@ data:
     signing_key: EA8703DF57BC7168
   ghostty:
     font:
-      name: Berkeley Mono
+      name: Maple Mono
 {{- if (eq .chezmoi.os "darwin") }}
       size: 16.0
 {{- else }}
@@ -31,16 +31,12 @@ data:
 {{- end }}
   zed:
     terminal_font:
-      name: Berkeley Mono
+      name: Maple Mono
     buffer_font:
-      name: Berkeley Mono
+      name: Maple Mono
       size: 16
     ui_font:
       name: Inter
-  wezterm:
-    font:
-      name: Berkeley Mono
-      size: 16.0
 {{- else }}
   git:
     email: vslobodin@gitlab.com
@@ -57,8 +53,4 @@ data:
       size: 16.0
     ui_font:
       name: Inter
-  wezterm:
-    font:
-      name: Maple Mono
-      size: 16.0
 {{- end }}
