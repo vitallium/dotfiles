@@ -1,6 +1,24 @@
 {
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.1",
-  "schemes" : [
-
-  ]
+	"$schema": "https:\/\/schema.linearmouse.app\/0.10.1",
+	"schemes": [
+		{
+			"buttons": {
+				"universalBackForward": true
+			},
+			"if": {
+				"device": {
+					"category": "mouse",
+					"productID": "0xb01d",
+					"productName": "MX Ergo",
+					"serialNumber": "F29AE56E1843D9D2",
+					"vendorID": "0x46d"
+				}
+			},
+			"scrolling": {
+				"reverse": {
+					"vertical": true
+				}
+			}
+		}
+	]
 }
