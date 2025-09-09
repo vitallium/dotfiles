@@ -1,4 +1,4 @@
-theme = "base16_terminal"
+theme = "modus_operandi"
 
 [editor]
 cursorline = true
