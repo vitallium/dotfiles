@@ -5,9 +5,19 @@
     "always_allow_tool_actions": true,
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "model": "claude-opus-4"
     }
   },
+{{- else }}
+  "agent": {
+    "default_profile": "ask",
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-opus-4-latest"
+    }
+  },
+{{- end }}
   "context_servers": {
     "mcp-server-context7": {
       "source": "extension",
@@ -17,7 +27,6 @@
       }
     }
   },
-{{- end }}
   "theme": {
     "light": "Modus Operandi",
     "dark": "Modus Vivendi Tinted"
