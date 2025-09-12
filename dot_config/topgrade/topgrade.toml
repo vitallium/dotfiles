@@ -60,7 +60,7 @@ skip_notify = true
 # bashit_branch = "stable"
 
 # Run specific steps - same options as the command line flag
-only = ["brew_formula", "brew_cask", "custom_commands", "mas"]
+only = ["brew_formula", "brew_cask", "custom_commands", "flatpak", "mas", "system"]
 
 # Whether to self update
 #
@@ -118,7 +118,7 @@ autoremove = true
 # yay_arguments = "--nodevel"
 
 # Arguments to pass dnf when updating packages
-# dnf_arguments = "--refresh"
+dnf_arguments = "--refresh"
 
 # aura_aur_arguments = "-kx"
 
