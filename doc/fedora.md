@@ -160,7 +160,7 @@ sudo dnf install -y git git-lfs git-delta \
 ### Install packages for `Yubikey`
 
 ```bash
-sudo dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime pcsc-tools opensc pcsc-lite pgp-tools
+sudo dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime pcsc-tools pcsc-lite pgp-tools
 sudo systemctl enable --now pcscd
 ```
 
