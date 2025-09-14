@@ -6,4 +6,5 @@ name = "ruby"
 scope = "source.rb"
 injection-regex = "ruby"
 roots = ["Gemfile", ".git"]
+auto-format = true
 language-servers = ["ruby-lsp", "solargraph"]
