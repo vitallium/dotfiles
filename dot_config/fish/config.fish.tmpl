@@ -74,9 +74,12 @@ end
 #
 # EDITOR
 #
-if test -z "$EDITOR"
-    set -x EDITOR hx
-    alias x="hx"
+if type -q zed
+    set -gx EDITOR zed --wait
+    set -gx VISUAL $EDITOR
+else if type -q hx
+    set -gx EDITOR hx
+    set -gx VISUAL $EDITOR
 end
 
 {{ if eq .chezmoi.os "linux" }}
