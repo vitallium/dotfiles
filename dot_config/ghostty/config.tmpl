@@ -1,3 +1,10 @@
 font-family = "{{ .ghostty.font.name }}"
 font-size = {{ .ghostty.font.size }}
-theme = light:modus_operandi,dark:modus_vivendi_tinted
+theme = "Gruvbox Dark Hard"
+
+## macOS
+window-colorspace = display-p3
+quit-after-last-window-closed = true
+
+# Quick Terminal (macOS)
+keybind = global:option+grave_accent=toggle_quick_terminal
