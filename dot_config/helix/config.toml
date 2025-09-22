@@ -1,4 +1,4 @@
-theme = "modus_operandi"
+theme = "gruvbox_dark_hard"
 
 [editor]
 cursorline = true
