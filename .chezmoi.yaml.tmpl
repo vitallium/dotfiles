@@ -14,10 +14,6 @@ data:
   email: {{ $email }}
   name: Vitaly Slobodin
   workconf: {{ $workconf }}
-{{- if not $workconf }}
-  git:
-    email: vitaliy.slobodin@gmail.com
-    signing_key: EA8703DF57BC7168
   ghostty:
     font:
       name: Berkeley Mono
@@ -34,20 +30,12 @@ data:
       size: 16
     ui_font:
       name: Inter
+{{- if not $workconf }}
+  git:
+    email: vitaliy.slobodin@gmail.com
+    signing_key: EA8703DF57BC7168
 {{- else }}
   git:
     email: vslobodin@gitlab.com
     signing_key: BA3C1F8C810C4D05
-  ghostty:
-    font:
-      name: GitLab Mono
-      size: 16.0
-  zed:
-    terminal_font:
-      name: GitLab Mono
-    buffer_font:
-      name: GitLab Mono
-      size: 16.0
-    ui_font:
-      name: GitLab Sans
 {{- end }}
