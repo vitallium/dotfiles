@@ -1,10 +1,90 @@
 [language-server.ruby-lsp]
 command = "ruby-lsp"
 
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+
+[language-server.volar]
+command = "vue-language-server"
+args = ["--stdio"]
+
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
 [[language]]
 name = "ruby"
 scope = "source.rb"
 injection-regex = "ruby"
-roots = ["Gemfile", ".git"]
+roots = ["Gemfile", ".git", "Rakefile"]
 auto-format = true
-language-servers = ["ruby-lsp", "solargraph"]
+language-servers = ["ruby-lsp"]
+formatter = { command = "rubocop", args = ["--stdin", "FILE", "-a", "--stderr", "--format", "quiet", "--fail-level", "fatal"] }
+
+[[language]]
+name = "erb"
+scope = "text.html.erb"
+injection-regex = "erb"
+file-types = ["erb"]
+roots = ["Gemfile", ".git"]
+language-servers = ["ruby-lsp"]
+
+[[language]]
+name = "rust"
+scope = "source.rust"
+injection-regex = "rust"
+file-types = ["rs"]
+roots = ["Cargo.toml", "Cargo.lock"]
+auto-format = true
+language-servers = ["rust-analyzer"]
+
+[[language]]
+name = "python"
+scope = "source.python"
+injection-regex = "python"
+file-types = ["py", "pyi"]
+shebangs = ["python", "python3"]
+roots = ["pyproject.toml", "setup.py", "requirements.txt", ".git"]
+auto-format = true
+language-servers = ["pyright"]
+formatter = { command = "ruff", args = ["format", "--stdin-filename", "file.py", "-"] }
+
+[[language]]
+name = "typescript"
+scope = "source.ts"
+injection-regex = "(ts|typescript)"
+file-types = ["ts"]
+shebangs = []
+roots = ["package.json", "tsconfig.json", ".git"]
+auto-format = true
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+
+[[language]]
+name = "javascript"
+scope = "source.js"
+injection-regex = "(js|javascript)"
+file-types = ["js", "jsx", "mjs"]
+shebangs = ["node"]
+roots = ["package.json", ".git"]
+auto-format = true
+language-servers = ["typescript-language-server"]
+formatter = { command = "prettier", args = ["--parser", "javascript"] }
+
+[[language]]
+name = "vue"
+scope = "source.vue"
+injection-regex = "vue"
+file-types = ["vue"]
+roots = ["package.json", ".git"]
+auto-format = true
+language-servers = ["volar"]
+formatter = { command = "prettier", args = ["--parser", "vue"] }
