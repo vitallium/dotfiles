@@ -54,7 +54,7 @@ file-types = ["py", "pyi"]
 shebangs = ["python", "python3"]
 roots = ["pyproject.toml", "setup.py", "requirements.txt", ".git"]
 auto-format = true
-language-servers = ["pyright"]
+language-servers = ["basedpyright"]
 formatter = { command = "ruff", args = ["format", "--stdin-filename", "file.py", "-"] }
 
 [[language]]
