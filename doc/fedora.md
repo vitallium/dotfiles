@@ -97,7 +97,7 @@ sudo dnf install -y dnf-plugins-core
 ### Enable Terra repository
 
 ```bash
-sudo dnf config-manager --add-repo \
+sudo dnf config-manager addrepo \
     --from-repofile \
     https://terra.fyralabs.com/terra.repo
 ```
@@ -139,7 +139,7 @@ sudo dnf install -y make gcc-c++ gcc make bzip2 openssl \
                libvterm-devel gpgme-devel icu krb5-devel gtk4-devel \
                libusb1-devel rpm-devel
 
-sudo dnf group install -y "Development Tools"
+sudo dnf group install -y "development-tools"
 ```
 
 ### Install other packages I use
@@ -148,13 +148,13 @@ sudo dnf group install -y "Development Tools"
 sudo dnf install -y git git-lfs git-delta \
                bat fzf ripgrep \
                profile-sync-daemon \
-               editorconfig maildir-utils \
+               editorconfig \
                kernel-tools wl-clipboard \
                cmake ninja-build jq \
-               celluloid transmission-gtk \
-               ImageMagick \
+               celluloid ImageMagick \
                perl-core git-extras htop \
-               GraphicsMagick yamllint
+               GraphicsMagick pipewire-codec-aptx \
+               helix
 ```
 
 ### Install packages for `Yubikey`
@@ -164,11 +164,17 @@ sudo dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime pcsc-tools pcsc-lite 
 sudo systemctl enable --now pcscd
 ```
 
-### Enable and install `vim` stuff
+### Install GitHub CLI
 
 ```bash
-sudo dnf copr enable -y --assumeyes vitallium/neovim-default-editor
-sudo dnf install -y --allowerasing neovim-default-editor
+sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
+sudo dnf install gh --repo gh-cli
+```
+
+### Enable and install `micro` stuff
+
+```bash
+sudo dnf install -y --allowerasing micro-default-editor
 ```
 
 ## Configure user environment
@@ -193,14 +199,8 @@ flatpak install -y flathub com.discordapp.Discord \
                            org.mozilla.firefox \
                            com.google.Chrome \
                            com.brave.Browser \
-                           com.github.maoschanz.drawing
-```
+                           com.github.maoschanz.drawing \
 
-### Clean up unused directories and bookmarks
-
-```bash
-rm -rf ~/Documents ~/Music ~/Public ~/Templates ~/Desktop
-echo "file:///home/vslobodin/Downloads" > ~/.config/gtk-3.0/bookmarks
 ```
 
 ### Install docker
@@ -243,6 +243,7 @@ sudo dnf install -y 1password-cli
 sudo dnf install -y dconf-editor \
                webp-pixbuf-loader \
                avif-pixbuf-loader \
+               heif-pixbuf-loader \
                gthumb
 ```
 
@@ -251,7 +252,7 @@ sudo dnf install -y dconf-editor \
 Set the application on the dash.
 
 ```bash
-gsettings set org.gnome.shell favorite-apps "['org.mozilla.firefox.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'org.telegram.desktop.desktop']"
+gsettings set org.gnome.shell favorite-apps "['org.mozilla.firefox.desktop', 'com.mitchellh.ghostty.desktop', 'org.gnome.Nautilus.desktop', 'org.telegram.desktop.desktop']"
 ```
 
 #### Adjust search locations
@@ -295,12 +296,6 @@ END=9; for num in $(seq 1 $END); do
   gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$num "['<Super>$num']"
   gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$num "['<Super><Shift>$num']"
 done
-```
-
-### Enable minimize,maximize buttons
-
-```bash
-gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
 ```
 
 ### Install [phinger-cursors](https://github.com/phisch/phinger-cursors)
