@@ -2,4 +2,6 @@
 
 # git-absorb version: {{ output "trim" "git-absorb" "--version" | trim }}
 
-git-absorb --gen-completions fish > ~/.config/fish/completions/git-absorb.fish
+if command -v git-absorb &> /dev/null; then
+    git-absorb --gen-completions fish > ~/.config/fish/completions/git-absorb.fish
+fi

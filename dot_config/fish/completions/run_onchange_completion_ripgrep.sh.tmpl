@@ -2,4 +2,6 @@
 
 # ripgrep version: {{ output "rg" "-V" | trim }}
 
-rg --generate complete-fish > ~/.config/fish/completions/rg.fish
+if command -v rg &> /dev/null; then
+    rg --generate complete-fish > ~/.config/fish/completions/rg.fish
+fi

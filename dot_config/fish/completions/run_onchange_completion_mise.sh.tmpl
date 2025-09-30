@@ -2,4 +2,6 @@
 
 # Mise version: {{ output "mise" "version" | trim }}
 
-mise completions fish > "$HOME/.config/fish/completions/mise.fish"
+if command -v mise &> /dev/null; then
+    mise completions fish > "$HOME/.config/fish/completions/mise.fish"
+fi

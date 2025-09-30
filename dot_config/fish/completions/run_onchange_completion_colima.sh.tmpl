@@ -3,5 +3,7 @@
 
 # colima version: {{ output "colima" "--version" | trim }}
 
-colima completion fish > "$HOME/.config/fish/completions/colima.fish"
+if command -v colima &> /dev/null; then
+    colima completion fish > "$HOME/.config/fish/completions/colima.fish"
+fi
 {{ end -}}

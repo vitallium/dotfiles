@@ -3,5 +3,7 @@
 
 # 1Password CLI version: {{ output "op" "--version" | trim }}
 
-op completion fish > ~/.config/fish/completions/op.fish
+if command -v op &> /dev/null; then
+    op completion fish > ~/.config/fish/completions/op.fish
+fi
 {{ end -}}

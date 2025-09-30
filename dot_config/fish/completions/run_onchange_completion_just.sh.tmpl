@@ -2,4 +2,6 @@
 
 # Just version: {{ output "just" "--version" | trim }}
 
-just --completions fish > "$HOME/.config/fish/completions/just.fish"
+if command -v just &> /dev/null; then
+    just --completions fish > "$HOME/.config/fish/completions/just.fish"
+fi

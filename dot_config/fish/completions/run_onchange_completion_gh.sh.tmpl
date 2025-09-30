@@ -2,4 +2,6 @@
 
 # GitHub CLI version: {{ output "trim" "gh" "--version" | trim }}
 
-gh completion -s fish > ~/.config/fish/completions/gh.fish
+if command -v gh &> /dev/null; then
+    gh completion -s fish > ~/.config/fish/completions/gh.fish
+fi
