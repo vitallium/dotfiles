@@ -77,8 +77,8 @@ fzf --fish | source
 # EDITOR
 #
 if not test -z EDITOR
-    set -x EDITOR hx
-    alias x="hx"
+    set -x EDITOR micro
+    set -x MICRO_TRUECOLOR 1
 end
 
 {{ if eq .chezmoi.os "linux" }}
