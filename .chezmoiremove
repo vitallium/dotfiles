@@ -1,16 +1,21 @@
-.CFUserTextEncoding
-.bash_history
-.bash_logout
-.bash_profile
-.bash_sessions
-.fzf.bash
-.fzf.zsh
-.inputrc
-.lesshst
-.profile
-.subversion
-.viminfo
-.wget-hsts
-.zshenv
-.zsh_history
+/.CFUserTextEncoding
+/.bash_history
+/.bash_logout
+/.bash_profile
+/.bash_sessions
+/.fzf.bash
+/.fzf.zsh
+/.inputrc
+/.lesshst
+/.profile
+/.subversion
+/.viminfo
+/.wget-hsts
+/.zshenv
+/.zsh_history
 
+# neovim stuff
+/.local/share/nvim
+/.local/state/nvim
+/.cache/nvim
+/.config/nvim
