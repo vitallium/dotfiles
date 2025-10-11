@@ -7,6 +7,7 @@ byebug
 debug
 erb-formatter
 erb_lint
+gem-why
 irb
 irb-power_assert
 irb-theme-tokyonight
