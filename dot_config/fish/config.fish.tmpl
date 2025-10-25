@@ -44,10 +44,6 @@ if type -q cargo
     source "$HOME/.cargo/env.fish"
 end
 
-if type -q sccache
-    set -gx RUSTC_WRAPPER sccache
-end
-
 #
 # Eza
 #
