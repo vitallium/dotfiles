@@ -1,11 +1,11 @@
 {
 {{- if not .workconf }}
   "agent": {
-    "default_profile": "ask",
+    "default_profile": "write",
     "always_allow_tool_actions": true,
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-7-sonnet"
+      "model": "claude-haiku-4-5"
     }
   },
 {{- else }}
