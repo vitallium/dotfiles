@@ -1,0 +1,6 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/DavidAnson/markdownlint/main/schema/markdownlint-config-schema.json
+line-length: # MD013
+    # Allow lines up to 120 characters.
+    line_length: 80
+    tables: false
