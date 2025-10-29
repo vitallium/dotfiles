@@ -19,14 +19,18 @@ data:
 {{- if (eq .chezmoi.os "darwin") }}
       size: 16.0
 {{- else }}
-      size: 14.0
+      size: 12.0
 {{- end }}
   zed:
     terminal_font:
       name: Berkeley Mono
     buffer_font:
       name: Berkeley Mono
+{{- if (eq .chezmoi.os "darwin") }}
       size: 16
+{{- else }}
+      size: 15
+{{- end }}
     ui_font:
       name: Inter
 {{- else }}
