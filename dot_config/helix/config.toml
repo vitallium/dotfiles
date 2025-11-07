@@ -1,4 +1,4 @@
-theme = "gruvbox_dark_hard"
+theme = "catppuccin_mocha"
 
 [editor]
 cursorline = true
