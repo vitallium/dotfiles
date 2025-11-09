@@ -1,3 +1,4 @@
+{{- if (lookPath "fish") -}}
 #!{{ lookPath "fish" }}
 
 {{ $hash := include "dot_config/fish/fish_plugins.tmpl" | sha256sum }}
@@ -11,3 +12,4 @@ end
 fisher update
 
 set -U fish_plugins_hash {{ $hash }}
+{{- end -}}
