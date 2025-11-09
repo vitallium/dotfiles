@@ -1,7 +1,6 @@
+{{- if (lookPath "rg") -}}
 #!/bin/bash
 
 # ripgrep version: {{ output "rg" "-V" | trim }}
-
-if command -v rg &> /dev/null; then
-    rg --generate complete-fish > ~/.config/fish/completions/rg.fish
-fi
+rg --generate complete-fish > ~/.config/fish/completions/rg.fish
+{{- end -}}

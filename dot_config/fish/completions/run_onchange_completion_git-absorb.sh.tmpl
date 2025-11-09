@@ -1,7 +1,6 @@
+{{- if (lookPath "git-absorb") -}}
 #!/bin/bash
 
 # git-absorb version: {{ output "git-absorb" "--version" | trim }}
-
-if command -v git-absorb &> /dev/null; then
-    git-absorb --gen-completions fish > ~/.config/fish/completions/git-absorb.fish
-fi
+git-absorb --gen-completions fish > ~/.config/fish/completions/git-absorb.fish
+{{- end -}}

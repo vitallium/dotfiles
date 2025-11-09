@@ -1,7 +1,6 @@
+{{- if (lookPath "gh") -}}
 #!/bin/bash
 
 # GitHub CLI version: {{ output "sh" "-c" "gh --version | head -n1" | trim }}
-
-if command -v gh &> /dev/null; then
-    gh completion -s fish > ~/.config/fish/completions/gh.fish
-fi
+gh completion -s fish > ~/.config/fish/completions/gh.fish
+{{- end -}}

@@ -1,9 +1,6 @@
-{{- if eq .chezmoi.os "darwin" -}}
+{{- if (lookPath "op") -}}
 #!/bin/bash
 
 # 1Password CLI version: {{ output "op" "--version" | trim }}
-
-if command -v op &> /dev/null; then
-    op completion fish > ~/.config/fish/completions/op.fish
-fi
-{{ end -}}
+op completion fish > ~/.config/fish/completions/op.fish
+{{- end -}}
