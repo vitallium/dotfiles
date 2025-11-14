@@ -55,8 +55,12 @@ defaults write com.apple.universalaccess increaseContrast -bool false
 
 # Setup fish
 sudo sh -c 'echo $(which fish) >> /etc/shells'
-
 sudo chsh -s $(which fish) $USER
+
+# Configure hostname
+sudo scutil --set HostName serenity.local
+sudo scutil --set LocalHostName serenity
+sudo scutil --set ComputerName serenity.local
 
 killall Dock
 {{- end -}}
