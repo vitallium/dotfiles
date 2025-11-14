@@ -1,59 +1,21 @@
 {
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.1",
-  "schemes" : [
+  "$schema": "https:\/\/schema.linearmouse.app\/0.10.2",
+  "schemes": [
     {
-      "buttons" : {
-        "universalBackForward" : true
+      "buttons": {
+        "universalBackForward": true
       },
-      "if" : {
-        "device" : {
-          "category" : "mouse",
-          "productID" : "0xb01d",
-          "productName" : "MX Ergo",
-          "serialNumber" : "F29AE56E1843D9D2",
-          "vendorID" : "0x46d"
+      "if": {
+        "device": {
+          "category": "mouse",
+          "productID": "0xc52b",
+          "productName": "USB Receiver",
+          "vendorID": "0x46d"
         }
       },
-      "scrolling" : {
-        "reverse" : {
-          "vertical" : true
-        }
-      }
-    },
-    {
-      "buttons" : {
-        "universalBackForward" : true
-      },
-      "if" : {
-        "device" : {
-          "category" : "mouse",
-          "productID" : "0xc53f",
-          "productName" : "USB Receiver",
-          "vendorID" : "0x46d"
-        }
-      },
-      "pointer" : {
-        "disableAcceleration" : true
-      },
-      "scrolling" : {
-        "acceleration" : {
-          "vertical" : 1
-        },
-        "distance" : {
-          "vertical" : "auto"
-        },
-        "modifiers" : {
-          "vertical" : {
-            "command" : {
-              "type" : "pinchZoom"
-            }
-          }
-        },
-        "reverse" : {
-          "vertical" : true
-        },
-        "speed" : {
-          "vertical" : 0
+      "scrolling": {
+        "reverse": {
+          "vertical": true
         }
       }
     }
