@@ -207,24 +207,21 @@ flatpak install -y flathub com.discordapp.Discord \
 ### Install docker
 
 ```bash
-sudo dnf config-manager --add-repo \
-    --from-repofile \
-    https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo dnf -y install dnf-plugins-core
+sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-Add `$USER` to the `docker` group.
-TODO: switch to `rootless` configuration.
+Configure rootless.
 
 ```bash
-sudo usermod -aG docker $USER
+dockerd-rootless-setuptool.sh install
 ```
 
 Enable and start `systemd` services.
 
 ```bash
-sudo systemctl enable --now docker.service
-sudo systemctl enable --now containerd.service
+systemctl enable --now docker.service
 ```
 
 ### Install 1password CLI
