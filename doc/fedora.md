@@ -147,12 +147,11 @@ sudo dnf group install -y "development-tools"
 ```bash
 sudo dnf install -y git git-lfs git-delta \
                bat fzf ripgrep \
-               profile-sync-daemon \
                editorconfig \
                kernel-tools wl-clipboard \
                cmake ninja-build jq \
                celluloid ImageMagick \
-               perl-core git-extras htop \
+               git-extras htop \
                GraphicsMagick pipewire-codec-aptx \
                helix
 ```
@@ -160,7 +159,7 @@ sudo dnf install -y git git-lfs git-delta \
 ### Install packages for `Yubikey`
 
 ```bash
-sudo dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime pcsc-tools pcsc-lite pgp-tools
+sudo dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime gnupg2-scdaemon pcsc-tools pcsc-lite pgp-tools
 sudo systemctl enable --now pcscd
 ```
 
@@ -198,9 +197,11 @@ flatpak install -y flathub com.discordapp.Discord \
                            com.mattjakeman.ExtensionManager \
                            org.mozilla.firefox \
                            com.google.Chrome \
-                           com.brave.Browser \
                            com.github.maoschanz.drawing \
-
+                           org.localsend.localsend_app \
+                           com.github.PintaProject.Pinta \
+                           md.obsidian.Obsidian \
+                           com.fastmail.Fastmail
 ```
 
 ### Install docker
@@ -231,8 +232,7 @@ sudo systemctl enable --now containerd.service
 ```bash
 sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
 sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
-sudo dnf check-update 1password-cli
-sudo dnf install -y 1password-cli
+sudo dnf install -y 1password 1password-cli
 ```
 
 ## Configure Gnome
