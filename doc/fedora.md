@@ -44,10 +44,10 @@
 sudo dnf upgrade --refresh
 ```
 
-### Change the hostname to `firefly`
+### Change the hostname to `serenity`
 
 ```bash
-sudo hostnamectl set-hostname firefly
+sudo hostnamectl set-hostname serenity
 ```
 
 ### Reboot the system to install and apply updates
