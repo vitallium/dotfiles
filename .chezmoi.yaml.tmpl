@@ -13,11 +13,16 @@ data:
   git:
     email: vitaliy.slobodin@gmail.com
     signing_key: EA8703DF57BC7168
+{{- else }}
+  git:
+    email: vslobodin@gitlab.com
+    signing_key: BA3C1F8C810C4D05
+{{- end }}
   ghostty:
     font:
       name: Berkeley Mono
 {{- if (eq .chezmoi.os "darwin") }}
-      size: 16.0
+      size: 15.0
 {{- else }}
       size: 12.0
 {{- end }}
@@ -26,27 +31,6 @@ data:
       name: Berkeley Mono
     buffer_font:
       name: Berkeley Mono
-{{- if (eq .chezmoi.os "darwin") }}
-      size: 16
-{{- else }}
       size: 15
-{{- end }}
     ui_font:
       name: Inter
-{{- else }}
-  git:
-    email: vslobodin@gitlab.com
-    signing_key: BA3C1F8C810C4D05
-  ghostty:
-    font:
-      name: Lilex
-      size: 15.0
-  zed:
-    terminal_font:
-      name: Lilex
-    buffer_font:
-      name: Lilex
-      size: 15.0
-    ui_font:
-      name: GitLab Sans
-{{- end }}
