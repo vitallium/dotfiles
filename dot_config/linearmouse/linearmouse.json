@@ -1,21 +1,39 @@
 {
-  "$schema": "https:\/\/schema.linearmouse.app\/0.10.2",
-  "schemes": [
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.2",
+  "schemes" : [
     {
-      "buttons": {
-        "universalBackForward": true
+      "buttons" : {
+        "universalBackForward" : true
       },
-      "if": {
-        "device": {
-          "category": "mouse",
-          "productID": "0xc52b",
-          "productName": "USB Receiver",
-          "vendorID": "0x46d"
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "productID" : "0xc52b",
+          "productName" : "USB Receiver",
+          "vendorID" : "0x46d"
         }
       },
-      "scrolling": {
-        "reverse": {
-          "vertical": true
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      }
+    },
+    {
+      "buttons" : {
+        "universalBackForward" : true
+      },
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "productID" : "0xc53f",
+          "productName" : "USB Receiver",
+          "vendorID" : "0x46d"
+        }
+      },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
         }
       }
     }
