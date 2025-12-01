@@ -43,7 +43,7 @@ just = "latest"
 kubectl = "latest"
 lazygit = "latest"
 node = "lts"
-python = "3.13.7"
+python = "3.13.9"
 ruby = "3.4.7"
 rust = { version = "latest", components = "rust-analyzer,rust-src" }
 shellcheck = "latest"
