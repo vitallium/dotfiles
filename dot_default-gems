@@ -3,7 +3,6 @@ binding_of_caller
 bundle_update_interactive
 bundler-audit
 gem-why
-irb
 irb-power_assert
 irb-theme-tokyonight
 nicetest
