@@ -2,8 +2,6 @@ amazing_print
 binding_of_caller
 bundle_update_interactive
 bundler-audit
-byebug
-debug
 gem-why
 irb
 irb-power_assert
