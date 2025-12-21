@@ -5,7 +5,6 @@ bundler-audit
 gem-why
 irb-power_assert
 nicetest
-rbs
 reek
 repl_type_completor
 rubocop
