@@ -27,6 +27,7 @@ uvx = true
 
 [settings.ruby]
 ruby_install = true
+compile = true
 
 [tools]
 biome = "latest"
