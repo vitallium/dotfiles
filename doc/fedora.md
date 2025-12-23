@@ -83,15 +83,16 @@ sudo usermod -s $(which fish) vslobodin
 sudo dnf install -y gnome-tweaks
 ```
 
-### Enable RPM Fusion repositories
+### Enable RPM Fusion and other repositories
 
 ```bash
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf upgrade --refresh
 sudo dnf group upgrade -y core
-sudo dnf install -y rpmfusion-free-release-tainted
-sudo dnf install -y dnf-plugins-core
+sudo dnf install -y rpmfusion-free-release-tainted dnf-plugins-core
+sudo dnf copr enable dusansimic/themes
+sudo dnf swap ffmpeg-free ffmpeg --allowerasing
 ```
 
 ### Enable Terra repository
@@ -113,7 +114,7 @@ sudo dnf install -y ghostty
 See also https://github.com/ai/environment/blob/main/Install.md
 
 ```bash
-sudo dnf config-manager --set-enabled fedora-cisco-openh264
+sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
 sudo dnf group upgrade multimedia --allowerasing --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 sudo dnf install -y intel-media-driver libva \
                libva-utils gstreamer1-vaapi \
@@ -150,10 +151,10 @@ sudo dnf install -y git git-lfs git-delta \
                editorconfig \
                kernel-tools wl-clipboard \
                cmake ninja-build jq \
-               celluloid ImageMagick \
+               ImageMagick \
                git-extras htop \
                GraphicsMagick pipewire-codec-aptx \
-               helix
+               helix morewaita-icon-theme
 ```
 
 ### Install packages for `Yubikey`
@@ -201,7 +202,9 @@ flatpak install -y flathub com.discordapp.Discord \
                            org.localsend.localsend_app \
                            com.github.PintaProject.Pinta \
                            md.obsidian.Obsidian \
-                           com.fastmail.Fastmail
+                           com.fastmail.Fastmail \
+                           io.github.celluloid_player.Celluloid \
+                           io.github.realmazharhussain.GdmSettings
 ```
 
 ### Install docker
@@ -319,4 +322,10 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier'
 
 ```bash
 sudo grubby --update-kernel=ALL --args="nvme.noacpi=1"
+```
+
+### Enable GuC
+
+```bash
+sudo grubby --update-kernel=ALL --args="i915.enable_guc=3"
 ```
