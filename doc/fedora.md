@@ -134,7 +134,7 @@ sudo sysctl -p
 ```bash
 sudo dnf install -y make gcc-c++ gcc make bzip2 openssl \
                openssl-devel libyaml-devel libffi-devel \
-               readline-devel zlib-devel gdbm-devel ncurses-devel \
+               readline-devel zlib-ng-devel gdbm-devel ncurses-devel \
                m4 ncurses-devel autoconf re2 re2-devel \
                libcurl-devel libuuid-devel \
                libvterm-devel gpgme-devel icu krb5-devel gtk4-devel \
