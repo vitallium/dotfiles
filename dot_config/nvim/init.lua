@@ -289,6 +289,7 @@ require("lazy").setup({
         { "mason-org/mason.nvim", opts = {} },
         "mason-org/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
+        "mihyaeru21/nvim-lspconfig-bundler",
         { "j-hui/fidget.nvim", opts = {} },
         "saghen/blink.cmp",
       },
@@ -391,6 +392,7 @@ require("lazy").setup({
           "ruby-lsp",
           "rubocop",
         })
+        require("lspconfig-bundler").setup()
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
         require("mason-lspconfig").setup({
