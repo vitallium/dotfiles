@@ -11,7 +11,11 @@
         <false/>
         <key>ProgramArguments</key>
         <array>
+{{- if eq .chezmoi.arch "arm64" }}
             <string>/opt/homebrew/bin/gpg-connect-agent</string>
+{{- else }}
+            <string>/usr/local/bin/gpg-connect-agent</string>
+{{- end }}
             <string>/bye</string>
         </array>
     </dict>
