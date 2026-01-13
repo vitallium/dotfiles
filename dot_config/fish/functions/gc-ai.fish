@@ -16,6 +16,10 @@ function gc-ai
     set context ""
     if set -q _flag_context
         set context (gum write --placeholder "What motivated this change? Is there context a future reader will need to know? What problem did you solve?")
+        or begin
+            echo "Failed to collect context"
+            return 1
+        end
     end
 
     # Start with default temperature (no -o flag)
@@ -41,8 +45,18 @@ $context"
         set temp_file (mktemp)
         if test (count $temp_options) -eq 0
             echo "$diff" | llm -s "$prompt" > $temp_file
+            or begin
+                echo "Failed to generate commit message"
+                rm -f $temp_file
+                return 1
+            end
         else
             echo "$diff" | llm -s "$prompt" $temp_options > $temp_file
+            or begin
+                echo "Failed to generate commit message"
+                rm -f $temp_file
+                return 1
+            end
         end
 
         # Read first line to check length
@@ -64,16 +78,31 @@ $context"
         # Show the generated message
         echo "Generated commit message:"
         gum style --foreground 212 < $temp_file
+        or begin
+            echo "Failed to display message"
+            rm -f $temp_file
+            return 1
+        end
         echo ""
 
         # Let user choose what to do
         set action (gum choose "Commit" "Reroll" "Cancel")
+        or begin
+            echo "Selection cancelled"
+            rm -f $temp_file
+            return 1
+        end
 
         switch $action
             case "Commit"
-                git commit -F $temp_file
-                rm $temp_file
-                return 0
+                if git commit -F $temp_file
+                    rm -f $temp_file
+                    return 0
+                else
+                    echo "Git commit failed"
+                    rm -f $temp_file
+                    return 1
+                end
             case "Reroll"
                 set reroll_count (math $reroll_count + 1)
                 set temp (math "0.5 + $reroll_count * 0.3")
@@ -83,6 +112,11 @@ $context"
                 continue
             case "Cancel"
                 echo "Commit cancelled"
+                rm -f $temp_file
+                return 1
+            case '*'
+                echo "Unknown action"
+                rm -f $temp_file
                 return 1
         end
     end
