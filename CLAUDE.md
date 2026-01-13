@@ -64,7 +64,6 @@ Files and directories use special prefixes that control how chezmoi processes th
 - `.chezmoiscripts/` → Automation scripts
   - `darwin/` → macOS-specific setup scripts
   - `run_onchange_after_*` → Scripts that run after apply when changed
-- `.chezmoitemplates/` → Reusable template snippets
 - `doc/` → Documentation (e.g., Fedora setup guide)
 
 ### Configuration Profiles
@@ -90,7 +89,7 @@ mise is configured in `dot_config/mise/config.toml` and manages:
 
 Neovim uses lazy.nvim for plugin management:
 
-- Configuration: `dot_config/nvim/init.lua`
+- Configuration: Single-file setup in `dot_config/nvim/init.lua` (no lua/ subdirectories)
 - LSP servers installed via Mason
 - Ruby LSP configured with `nvim-lspconfig-bundler` for proper gem resolution
 - Key plugins: fzf-lua, treesitter, conform (formatting), nvim-lint, blink.cmp
