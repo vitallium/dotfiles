@@ -4,7 +4,7 @@
 
 - [Post installation steps](#post-installation-steps)
   - [Install updates](#install-updates)
-  - [Change the hostname to firefly](#change-the-hostname-to-firefly)
+  - [Change the hostname to serenity](#change-the-hostname-to-serenity)
   - [Reboot the system to install and apply updates](#reboot-the-system-to-install-and-apply-updates)
   - [Remove redundant stuff](#remove-redundant-stuff)
   - [Enable fstrim](#enable-fstrim)
@@ -210,7 +210,7 @@ flatpak install -y flathub com.discordapp.Discord \
 
 ```bash
 sudo dnf -y install dnf-plugins-core
-sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
