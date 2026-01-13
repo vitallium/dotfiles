@@ -74,7 +74,7 @@ end
 #
 # EDITOR
 #
-if not test -z EDITOR
+if not set -q EDITOR
     if type -q nvim
         alias vi='nvim'
         alias vim='nvim'
