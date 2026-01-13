@@ -81,7 +81,7 @@ require("lazy").setup({
           line_nr_column_background = false,
           sign_column_background = false,
         })
-        -- vim.cmd.colorscheme("modus")
+        vim.cmd.colorscheme("modus")
       end,
     },
 
@@ -91,7 +91,7 @@ require("lazy").setup({
       priority = 1000,
       opts = {},
       config = function()
-        vim.cmd.colorscheme("tokyonight-night")
+        -- vim.cmd.colorscheme("tokyonight-night")
       end,
     },
 
