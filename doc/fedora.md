@@ -151,7 +151,7 @@ sudo dnf install -y git git-lfs git-delta \
                ImageMagick \
                git-extras htop \
                GraphicsMagick pipewire-codec-aptx \
-               helix morewaita-icon-theme
+               morewaita-icon-theme
 ```
 
 ### Install packages for `Yubikey`
