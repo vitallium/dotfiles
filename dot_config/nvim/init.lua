@@ -140,8 +140,29 @@ require("lazy").setup({
     {
       "ibhagwan/fzf-lua", -- Fuzzy finder / search
       event = "VimEnter",
+      keys = {
+        { "<leader><leader>", "<cmd>FzfLua files<CR>", desc = "Fzf: [F]iles" },
+        { "<leader>pf", "<cmd>FzfLua files<CR>", desc = "Fzf: [F]iles" },
+        { "<leader>bb", "<cmd>FzfLua buffers<CR>", desc = "Fzf: [B]uffers" },
+        { "<leader>,", "<cmd>FzfLua buffers<CR>", desc = "Fzf: [B]uffers" },
+        { "<leader>br", "<cmd>e!<CR>", desc = "Reload buffer" },
+        { "<leader>bp", "<cmd>bprevious<CR>", desc = "Previous buffer" },
+        { "<leader>bn", "<cmd>bnext<CR>", desc = "Next buffer" },
+        {
+          "<leader>ff",
+          function()
+            require("fzf-lua").files({ cwd = vim.fn.expand("%:p:h") })
+          end,
+          desc = "Fzf: F[i]nf file in current dir",
+        },
+        { "<leader>'", "<cmd>FzfLua resume<CR>", desc = "Fzf: Resume" },
+        { "<leader>fr", "<cmd>FzfLua oldfiles<CR>", desc = "Fzf: [O]ld Files" },
+        { "<leader>sp", "<cmd>FzfLua live_grep<CR>", desc = "Fzf: [L]ive Grep" },
+      },
       config = function()
-        require("fzf-lua").setup({
+        local fzf_lua = require("fzf-lua")
+
+        fzf_lua.setup({
           fzf_colors = {
             ["fg"] = { "fg", "CursorLine" },
             ["bg"] = { "bg", "Normal" },
@@ -157,20 +178,18 @@ require("lazy").setup({
             ["header"] = { "fg", "Comment" },
             ["gutter"] = "-1",
           },
+          winopts = {
+            backdrop = 100,
+            split = "belowright new",
+            preview = {
+              hidden = "hidden",
+            },
+          },
+          fzf_opts = {
+            ["--layout"] = "default",
+          },
         })
-        -- Files and buffers
-        vim.keymap.set("n", "<leader>,", require("fzf-lua").buffers, { desc = "Fzf: [B]uffers" })
-        vim.keymap.set("n", "<leader>bb", require("fzf-lua").buffers, { desc = "Fzf: [B]uffers" })
-        vim.keymap.set("n", "<leader>pf", require("fzf-lua").files, { desc = "Fzf: [F]iles" })
-        vim.keymap.set("n", "<leader><leader>", require("fzf-lua").files, { desc = "Fzf: [F]iles" })
-        vim.keymap.set("n", "<leader>ff", function()
-          require("fzf-lua").files({ cwd = vim.fn.expand("%:p:h") })
-        end, { desc = "Fzf: F[i]nf file in current dir" })
-        vim.keymap.set("n", "<leader>fr", require("fzf-lua").oldfiles, { desc = "Fzf: [O]ld Files" })
-
-        -- Search
-        vim.keymap.set("n", "<leader>sp", require("fzf-lua").live_grep, { desc = "Fzf: [L]ive Grep" })
-        vim.keymap.set("n", "<leader>'", require("fzf-lua").resume, { desc = "Fzf: Resume" })
+        fzf_lua.register_ui_select()
       end,
     },
     {
