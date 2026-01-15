@@ -18,7 +18,6 @@
   - [Install Development Tools](#install-development-tools)
   - [Install other packages I use](#install-other-packages-i-use)
   - [Install packages for Yubikey](#install-packages-for-yubikey)
-  - [Enable and install vim stuff](#enable-and-install-vim-stuff)
 - [Configure user environment](#configure-user-environment)
   - [Enable flathub](#enable-flathub)
   - [Install flatpaks](#install-flatpaks)
@@ -167,12 +166,6 @@ sudo systemctl enable --now pcscd
 ```bash
 sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
 sudo dnf install gh --repo gh-cli
-```
-
-### Enable and install `micro` stuff
-
-```bash
-sudo dnf install -y --allowerasing micro-default-editor
 ```
 
 ## Configure user environment
