@@ -77,6 +77,7 @@ require("lazy").setup({
       priority = 1000,
       config = function()
         require("modus-themes").setup({
+          variant = "tinted",
           hide_inactive_statusline = true,
           line_nr_column_background = false,
           sign_column_background = false,
@@ -332,7 +333,9 @@ require("lazy").setup({
             map("grt", require("fzf-lua").lsp_typedefs, "[G]oto [T]ype Definition")
 
             local client = vim.lsp.get_client_by_id(event.data.client_id)
-            if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
+            if
+              client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+            then
               local highlight_augroup = vim.api.nvim_create_augroup("vs-lsp-highlight", { clear = false })
               vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
                 buffer = event.buf,
