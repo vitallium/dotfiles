@@ -185,6 +185,15 @@ git push
 exit                           # Return to previous directory
 ```
 
+**Commit Message Format**: Use [Conventional Commits](https://www.conventionalcommits.org/) format:
+
+- `feat:` - New features
+- `fix:` - Bug fixes
+- `docs:` - Documentation changes
+- `chore:` - Maintenance tasks (package updates, config changes)
+- `refactor:` - Code refactoring without behavior changes
+- `style:` - Formatting changes
+
 ## Editor-Specific Notes
 
 ### Zed
