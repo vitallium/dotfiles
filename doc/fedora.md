@@ -18,6 +18,7 @@
   - [Install Development Tools](#install-development-tools)
   - [Install other packages I use](#install-other-packages-i-use)
   - [Install packages for Yubikey](#install-packages-for-yubikey)
+  - [Set neovim as default editor](#set-neovim-as-default-editor)
 - [Configure user environment](#configure-user-environment)
   - [Enable flathub](#enable-flathub)
   - [Install flatpaks](#install-flatpaks)
@@ -166,6 +167,12 @@ sudo systemctl enable --now pcscd
 ```bash
 sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
 sudo dnf install gh --repo gh-cli
+```
+
+### Set neovim as default editor
+
+```bash
+sudo dnf install -y --allowerasing neovim-default-editor
 ```
 
 ## Configure user environment
