@@ -44,7 +44,7 @@ kubectl = "latest"
 lazygit = "latest"
 node = "lts"
 python = "3.13.9"
-ruby = "4.0.0"
+ruby = "4.0.1"
 rust = { version = "latest", components = "rust-analyzer,rust-src" }
 shellcheck = "latest"
 shfmt = "latest"
