@@ -3,7 +3,7 @@ function commit_msg
     git diff --no-color --staged >$temp_file
 
     if test -s $temp_file
-        llm -m claude-sonnet-4 -t commit_message < $temp_file
+        llm -m claude-4-sonnet -t commit_message <$temp_file
     else
         echo "No changes to commit."
     end
