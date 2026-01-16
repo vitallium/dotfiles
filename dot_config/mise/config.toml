@@ -27,6 +27,8 @@ uvx = true
 
 [settings.ruby]
 ruby_install = true
+# Precompiled binaries causes issues with Ruby LSP.
+compile = true
 
 [tools]
 biome = "latest"
