@@ -77,7 +77,6 @@ require("lazy").setup({
       priority = 1000,
       config = function()
         require("modus-themes").setup({
-          variant = "tinted",
           hide_inactive_statusline = true,
           line_nr_column_background = false,
           sign_column_background = false,
