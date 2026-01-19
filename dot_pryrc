@@ -8,10 +8,9 @@ else
   Pry.config.prompt = Pry::Prompt[:nav]
 end
 
-# Fix deprecation warning, so override default for now.
-# Remember to eventually remove this!
-# WARNING: the show-doc command is deprecated. It will be removed from future Pry versions.
-# Please use 'show-source' with the -d (or --doc) switch instead
+# The '?' command defaults to 'show-doc', which is deprecated in Pry.
+# Remap it to use the recommended 'show-source -d' instead.
+# This can be removed once Pry defaults to this behavior or removes show-doc.
 Pry.commands.alias_command '?', 'show-source -d'
 
 require 'pry-byebug'
