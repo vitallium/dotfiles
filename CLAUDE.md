@@ -158,7 +158,7 @@ Example template conditional:
 
 ## macOS Package Management
 
-Packages defined in `dot_brewfile.tmpl`:
+Packages defined in `dot_Brewfile.tmpl`:
 
 - Core CLI tools (bat, ripgrep, fzf, gh, etc.)
 - GUI applications (casks)
