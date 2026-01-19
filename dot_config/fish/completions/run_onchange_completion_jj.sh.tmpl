@@ -1,0 +1,6 @@
+{{- if (lookPath "jj") -}}
+#!/bin/bash
+
+# Jujutsu version: {{ output "jj" "--version" | trim }}
+jj util completion fish > "$HOME/.config/fish/completions/jj.fish"
+{{- end -}}

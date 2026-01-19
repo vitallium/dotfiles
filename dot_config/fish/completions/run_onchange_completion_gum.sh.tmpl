@@ -1,0 +1,6 @@
+{{- if (lookPath "gum") -}}
+#!/bin/bash
+
+# Gum version: {{ output "gum" "--version" | trim }}
+gum completion fish > "$HOME/.config/fish/completions/gum.fish"
+{{- end -}}
