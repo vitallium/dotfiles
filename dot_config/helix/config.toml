@@ -24,7 +24,8 @@ select = "underline"
 hidden = false
 
 [editor.inline-diagnostics]
-cursor-line = "error"
+cursor-line = "warning"
+other-lines = "hint"
 
 [keys.normal]
 C-g = [
