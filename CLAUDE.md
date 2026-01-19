@@ -10,8 +10,8 @@ This is a [chezmoi](https://chezmoi.io) dotfiles repository that manages system 
 
 - **Shell**: fish (with fisher plugin manager)
 - **Terminal**: Ghostty
-- **Editors**: Zed (primary), Neovim (configured with lazy.nvim)
-- **Version Control**: git with git-delta, lazygit, Neogit (in nvim)
+- **Editors**: Zed (primary), Helix
+- **Version Control**: git with git-delta, jj (Jujutsu), lazygit
 - **Package Management**: mise (version management for runtimes), Homebrew (macOS), dnf (Fedora)
 - **Languages**: Ruby (primary), Go, Python, Node.js, Rust
 
@@ -82,33 +82,54 @@ Profile is set during initial `chezmoi init` via the `.chezmoi.yaml.tmpl` prompt
 mise is configured in `dot_config/mise/config.toml` and manages:
 
 - Runtime versions (Ruby, Node, Python, Go, Rust)
-- CLI tools (via cargo, npm, pipx, aqua backends)
+- CLI tools via multiple backends:
+  - **cargo**: ast-grep, jj-cli, topgrade, eza, git-absorb, gitu, and more
+  - **npm**: Claude Code CLI, LSPs (typescript, dockerfile, yaml, etc.), prettierd, eslint_d
+  - **pipx**: llm, ruff, pgcli, yt-dlp, yubikey-manager
+  - **aqua**: hexyl, tlrc, golangci-lint
+- Core tools: lazygit, gum, chezmoi, just, kubectl, hadolint, shellcheck, shfmt
 - Tools are installed automatically when entering directories with `.tool-versions` or `.mise.toml`
 
-### Neovim
+### Helix
 
-Neovim uses lazy.nvim for plugin management:
+Helix is configured in `dot_config/helix/config.toml`:
 
-- Configuration: Single-file setup in `dot_config/nvim/init.lua` (no lua/ subdirectories)
-- LSP servers installed via Mason
-- Ruby LSP configured with `nvim-lspconfig-bundler` for proper gem resolution
-- Key plugins: fzf-lua, treesitter, conform (formatting), nvim-lint, blink.cmp
+- Theme: tokyonight
+- Relative line numbers with cursorline highlighting
+- LSP with inlay hints enabled
+- Inline diagnostics for better error visibility
+- Git diff integration
 
-Sync plugins:
+### Jujutsu (jj)
 
-```fish
-nvim --headless "+Lazy! sync" +qa
-```
+Jujutsu is a Git-compatible VCS configured in `dot_config/jj/config.toml.tmpl`:
+
+- Uses delta as the pager and diff formatter
+- GPG signing configured
+- Custom aliases: `wip`, `setmain`, `sync`, `evolve`, `xl`
+- Installed via mise (cargo backend)
+
+### Additional Tools
+
+Other configured tools in `dot_config/`:
+
+- **bat**: cat replacement with syntax highlighting (`dot_config/bat/`)
+- **btop**: Resource monitor (`dot_config/btop/`)
+- **lazygit**: Terminal UI for git (`dot_config/lazygit/config.yml`)
+- **linearmouse**: Mouse customization for macOS (`dot_config/linearmouse/`)
+- **ripgrep**: Fast grep alternative (`dot_config/ripgrep/`)
+- **topgrade**: System-wide package updater (`dot_config/topgrade/`)
+- **yamllint**: YAML linter configuration (`dot_config/yamllint.yaml`)
 
 ### Fish Shell
 
 Fish configuration lives in `dot_config/fish/`:
 
 - Plugins managed by fisher (defined in `fish_plugins.tmpl`)
-- Custom functions in `functions/` directory
-- Notable functions:
+- Custom functions in `functions/` directory:
   - `gc-ai.fish` → Git commit message generation
   - `commit_msg.fish` / `commit_review.fish` → Commit helpers
+  - `benchmark_launch.fish` → Launch benchmarking utility
 
 Update fisher plugins:
 
@@ -137,7 +158,7 @@ Example template conditional:
 
 ## macOS Package Management
 
-Packages defined in `dot_Brewfile.tmpl`:
+Packages defined in `dot_brewfile.tmpl`:
 
 - Core CLI tools (bat, ripgrep, fzf, gh, etc.)
 - GUI applications (casks)
@@ -194,6 +215,24 @@ exit                           # Return to previous directory
 - `refactor:` - Code refactoring without behavior changes
 - `style:` - Formatting changes
 
+### Jujutsu (jj) Workflows
+
+Jujutsu is available as an alternative to git with improved UX:
+
+```fish
+jj wip                         # Quick commit with "wip" message
+jj sync                        # Fetch from all remotes
+jj evolve                      # Rebase on top of main branch
+jj setmain                     # Set main branch reference
+jj xl                          # Full log of all commits
+```
+
+Common operations:
+- Changes are auto-committed in jj (no staging area)
+- Use `jj describe` to edit commit messages
+- Delta is configured as the pager for better diffs
+- GPG signing is enabled by default
+
 ## Editor-Specific Notes
 
 ### Zed
@@ -201,14 +240,15 @@ exit                           # Return to previous directory
 - Settings are in `dot_config/zed/private_settings.json.tmpl` (templated for fonts)
 - Keybindings in `dot_config/zed/private_keymap.json`
 - Ruby snippets in `dot_config/zed/snippets/ruby.json`
+- Uses `zed@preview` for personal profile, `zed` for work profile
 
-### Neovim
+### Helix
 
-- Leader key: Space
-- Main fuzzy finder: fzf-lua (mapped to `<leader><leader>`, `<leader>pf`, etc.)
-- LSP keybindings: `gr*` prefix (e.g., `grn` rename, `grd` definition, `grr` references)
-- File browser: oil.nvim (mapped to `-`)
-- Git interface: Neogit (mapped to `<leader>gg`)
+- Configuration in `dot_config/helix/config.toml`
+- Theme: tokyonight with relative line numbers
+- LSP features: inlay hints, inline diagnostics, message display
+- Ruler at column 80 for line length guidance
+- Git integration with diff support
 
 ## Notes
 
