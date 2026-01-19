@@ -28,9 +28,6 @@
   diff = auto
   status = auto
 
-[push]
-  default = current
-
 [alias]
   up = pull --rebase
   st = status
@@ -99,7 +96,7 @@
 [push]
   default = simple
   autoSetupRemote = true
-  # followTags = true
+  # followTags = true  # Automatically push tags with commits (disabled by default)
 
 [rerere]
   enabled = true
