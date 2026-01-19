@@ -1,5 +1,8 @@
 # CLAUDE.md
 
+Be concise. Always optimize for concise responses. Remove any fluff from your response whatsoever. Only include what is
+absolutely necessary in your response. Be ruthlessly concise.
+
 ## Shell
 
 I use fish shell.
@@ -30,15 +33,7 @@ Whenever you open a pull request with `gh pr`, leave the description blank.
 
 `ast-grep` is available. Use it when searching/refactoring code.
 
-## Ruby
+## Plan Mode
 
-### Testing Principles
-
-- Never test the type or shape of return values. Tests should verify behavior, not implementation details or data structures.
-- Each public method should have a test for its default return value with no setup.
-- When testing that a method returns the same value as its default, first establish setup that would make it return the opposite without your intervention. Otherwise the test is meaningless.
-- Keep variables as close as possible to where they're used. Don't put them in setup or as constants at the top of the test class.
-
-### Code Style
-
-- Use boolean expressions with implicit return for predicate methods, not guard clauses or case statements with literal true/false.
+- Make the plan extremely concise. Sacrifice grammar for the sake of concision.
+- At the end of each plan, give me a list of unresolved questions to answer, if any.
