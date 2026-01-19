@@ -4,10 +4,6 @@ command = "ruby-lsp"
 [language-server.rust-analyzer]
 command = "rust-analyzer"
 
-[language-server.pyright]
-command = "pyright-langserver"
-args = ["--stdio"]
-
 [language-server.typescript-language-server]
 command = "typescript-language-server"
 args = ["--stdio"]
@@ -52,9 +48,9 @@ scope = "source.python"
 injection-regex = "python"
 file-types = ["py", "pyi"]
 shebangs = ["python", "python3"]
-roots = ["pyproject.toml", "setup.py", "requirements.txt", ".git"]
+roots = ["pyproject.toml", "setup.py", "poetry.lock", "requirements.txt", ".git"]
 auto-format = true
-language-servers = ["basedpyright"]
+language-servers = ["basedpyright", "ty"]
 formatter = { command = "ruff", args = ["format", "--stdin-filename", "file.py", "-"] }
 
 [[language]]
