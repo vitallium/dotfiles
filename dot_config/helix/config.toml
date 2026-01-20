@@ -39,6 +39,10 @@ C-g = [
 ]
 D = "extend_to_line_end"
 
+[keys.normal."C-t"]
+l = ":theme modus_operandi"
+d = ":theme modus_vivendi"
+
 [keys.select]
 D = "extend_to_line_end"
 
