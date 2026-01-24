@@ -34,6 +34,7 @@ compile = true
 biome = "latest"
 bun = "latest"
 cargo-binstall = "latest"
+claude-code = "latest"
 cosign = "3"
 chezmoi = "2"
 go = "latest"
@@ -81,7 +82,6 @@ watchexec = "latest"
 "cargo:topgrade" = "latest"
 
 # Node.js
-"npm:@anthropic-ai/claude-code" = "latest"
 "npm:@devcontainers/cli" = "latest"
 "npm:@fsouza/prettierd" = "latest"
 "npm:@google/gemini-cli" = "latest"
