@@ -56,11 +56,13 @@ uv = "latest"
 vale = "latest"
 watchexec = "latest"
 
-# Rust
+"aqua:anthropics/claude-code" = "latest"
 "aqua:AlexanderGrooff/mermaid-ascii" = "latest"
 "aqua:golangci/golangci-lint" = "latest"
 "aqua:sharkdp/hexyl" = "latest"
 "aqua:tldr-pages/tlrc" = "latest"
+
+# Rust
 "cargo:ast-grep" = "latest"
 "cargo:bacon" = "latest"
 "cargo:cargo-about" = "latest"
