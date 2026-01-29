@@ -74,12 +74,12 @@ end
 #
 # EDITOR
 #
-if not set -q EDITOR
-    if type -q nvim
-        alias vi='nvim'
-        alias vim='nvim'
-        alias view='nvim -R'
+if type -q nvim
+    alias vi='nvim'
+    alias vim='nvim'
+    alias view='nvim -R'
 
+    if not set -q EDITOR
         set -x EDITOR nvim
     end
 end
