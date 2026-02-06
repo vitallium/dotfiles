@@ -8,6 +8,9 @@
       "model": "claude-opus-4-5"
     }
   },
+  "edit_predictions": {
+    "provider": "zed",
+  },
 {{- else }}
   "agent": {
     "default_profile": "ask",
@@ -16,6 +19,16 @@
       "provider": "anthropic",
       "model": "claude-sonnet-4-5"
     }
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "edit_predictions": {
+    "provider": "none",
   },
 {{- end }}
   "theme": {
@@ -33,22 +46,6 @@
   },
   "project_panel": {
     "auto_fold_dirs": false
-  },
-{{- if .workconf }}
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
-  },
-  "collaboration_panel": {
-    "button": false
-  },
-{{- end }}
-  "features": {
-{{- if .workconf }}
-    "edit_prediction_provider": "none"
-{{- else }}
-    "edit_prediction_provider": "zed"
-{{- end }}
   },
   "file_types": {
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
