@@ -1,7 +1,7 @@
 # https://gist.github.com/nateberkopec/eb00665c213fff30ca3894814d3975f6
 function gc-ai
     # Parse arguments
-    argparse 'c/context' -- $argv
+    argparse c/context -- $argv
     or return
 
     # Get the git diff
@@ -44,14 +44,14 @@ $context"
         # Generate commit message and save to temp file to preserve newlines
         set temp_file (mktemp)
         if test (count $temp_options) -eq 0
-            echo "$diff" | llm -s "$prompt" > $temp_file
+            echo "$diff" | llm -m claude-4-sonnet -s "$prompt" >$temp_file
             or begin
                 echo "Failed to generate commit message"
                 rm -f $temp_file
                 return 1
             end
         else
-            echo "$diff" | llm -s "$prompt" $temp_options > $temp_file
+            echo "$diff" | llm -m claude-4-sonnet -s "$prompt" $temp_options >$temp_file
             or begin
                 echo "Failed to generate commit message"
                 rm -f $temp_file
@@ -71,13 +71,13 @@ $context"
 
         # Clean up excessive blank lines (condense 2+ blank lines into 1)
         set cleaned_file (mktemp)
-        cat $temp_file | sed '/^$/N;/^\n$/D' > $cleaned_file
+        cat $temp_file | sed '/^$/N;/^\n$/D' >$cleaned_file
         rm $temp_file
         set temp_file $cleaned_file
 
         # Show the generated message
         echo "Generated commit message:"
-        gum style --foreground 212 < $temp_file
+        gum style --foreground 212 <$temp_file
         or begin
             echo "Failed to display message"
             rm -f $temp_file
@@ -94,7 +94,7 @@ $context"
         end
 
         switch $action
-            case "Commit"
+            case Commit
                 if git commit -F $temp_file
                     rm -f $temp_file
                     return 0
@@ -103,14 +103,14 @@ $context"
                     rm -f $temp_file
                     return 1
                 end
-            case "Reroll"
+            case Reroll
                 set reroll_count (math $reroll_count + 1)
                 set temp (math "0.5 + $reroll_count * 0.3")
                 set temp_options -o temperature $temp
                 echo "Generating new message (temperature: $temp)..."
                 rm $temp_file
                 continue
-            case "Cancel"
+            case Cancel
                 echo "Commit cancelled"
                 rm -f $temp_file
                 return 1
