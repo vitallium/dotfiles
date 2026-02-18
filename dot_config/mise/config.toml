@@ -34,7 +34,6 @@ compile = true
 biome = "latest"
 bun = "latest"
 cargo-binstall = "latest"
-claude-code = "latest"
 codex = "latest"
 cosign = "3"
 chezmoi = "2"
