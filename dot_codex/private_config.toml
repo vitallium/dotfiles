@@ -15,3 +15,15 @@ shell_snapshot = true
 
 [projects."/Users/vslobodin/Development"]
 trust_level = "trusted"
+
+[mcp_servers.playwright]
+args = ["@playwright/mcp@latest"]
+command = "npx"
+
+[mcp_servers.shadcn]
+command = "npx"
+args = ["shadcn@latest", "mcp"]
+
+[mcp_servers.railway]
+command = "npx"
+args = ["@railway/mcp-server"]
