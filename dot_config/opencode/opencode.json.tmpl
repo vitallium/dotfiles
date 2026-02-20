@@ -8,6 +8,17 @@
       "url": "https://gitlab.com/api/v4/mcp",
     }
   },
+  {{- else }}
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "command": [
+        "npx",
+        "@playwright/mcp@latest"
+      ],
+      "enabled": true
+    }
+  },
   {{- end }}
   "plugin": [
   {{- if .workconf }}
