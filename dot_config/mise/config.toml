@@ -26,7 +26,6 @@ bun = true
 uvx = true
 
 [settings.ruby]
-ruby_install = true
 # Precompiled binaries causes issues with Ruby LSP.
 compile = true
 
@@ -46,6 +45,7 @@ just = "latest"
 kubectl = "latest"
 lazygit = "latest"
 node = "lts"
+opencode = "latest"
 pnpm = "latest"
 prettier = "latest"
 python = "3.13.9"
@@ -95,7 +95,8 @@ watchexec = "latest"
 "npm:jsvu" = "latest"
 "npm:knip" = "latest"
 "npm:markdownlint-cli2" = "latest"
-"npm:opencode-ai" = "latest"
+"npm:oxfmt" = "latest"
+"npm:oxlint" = "latest"
 "npm:tree-sitter-cli" = "latest"
 "npm:typescript-language-server" = "latest"
 "npm:vscode-css-languageserver-bin" = "latest"
