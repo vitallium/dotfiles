@@ -1,0 +1,46 @@
+{
+  "mode": "multi-server",
+  "servers": [
+{{- if .workconf }}
+    {
+      "name": "glean",
+      "description": "GitLab enterprise search and knowledge discovery via Glean",
+      "url": "https://gitlab-be.glean.com/mcp/default"
+    },
+
+    {
+      "name": "gitlab",
+      "description": "GitLab MCP server",
+      "url": "https://gitlab.com/api/v4/mcp"
+    },
+    {
+      "name": "gitlab-knowledge-graph",
+      "description": "GitLab repository knowledge graph and code analysis",
+      "type": "remote",
+      "url": "http://localhost:27495/mcp"
+    },
+{{- end }}
+    {
+      "name": "chrome-devtools",
+      "description": "Chrome DevTools automation and debugging",
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest"]
+    },
+    {
+      "name": "context7",
+      "description": "Library documentation and code examples",
+      "type": "local",
+      "command": ["npx", "-y", "@upstash/context7-mcp"]
+    },
+    {
+      "name": "excalidraw",
+      "description": "Excalidraw",
+      "type": "remote",
+      "url": "https://mcp.excalidraw.com"
+    }
+  ],
+  "discovery": {
+    "cache_strategy": "session",
+    "cache_ttl": 3600
+  }
+}

@@ -1,31 +1,23 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  {{- if .workconf }}
   "mcp": {
-    "GitLab": {
-      "type": "remote",
-      "enabled": true,
-      "url": "https://gitlab.com/api/v4/mcp",
-    }
-  },
-  {{- else }}
-  "mcp": {
-    "playwright": {
+    "lazy-mcp": {
       "type": "local",
       "command": [
-        "npx",
-        "@playwright/mcp@latest"
+        "lazy-mcp",
+        "--config",
+        "~/.config/lazy-mcp/servers.json"
       ],
-      "enabled": true
+      "enabled": true,
     }
   },
-  {{- end }}
   "plugin": [
   {{- if .workconf }}
-    "@gitlab/opencode-gitlab-plugin",
+    "@gitlab/opencode-gitlab-auth",
   {{- end }}
     "opencode-anthropic-auth",
     "opencode-openai-codex-auth@latest",
-    "opencode-devcontainers@latest"
+    "opencode-devcontainers@latest",
+    "opencode-gitbutler@latest"
   ],
 }
