@@ -19,6 +19,13 @@
       "type": "remote",
       "url": "http://localhost:27495/mcp"
     },
+{{- else }}
+    {
+     "name": "railway",
+     "description": "Interact with Railway projects and infrastructure",
+     "type": "local",
+     "command": ["npx", "-y", "@railway/mcp-server"]
+    },
 {{- end }}
     {
       "name": "chrome-devtools",
