@@ -24,26 +24,30 @@
      "name": "railway",
      "description": "Interact with Railway projects and infrastructure",
      "type": "local",
-     "command": ["npx", "-y", "@railway/mcp-server"]
+     "command": ["@railway/mcp-server"]
     },
 {{- end }}
     {
       "name": "chrome-devtools",
       "description": "Chrome DevTools automation and debugging",
       "type": "local",
-      "command": ["npx", "-y", "chrome-devtools-mcp@latest"]
+      "command": ["chrome-devtools-mcp"]
     },
     {
       "name": "context7",
       "description": "Library documentation and code examples",
       "type": "local",
-      "command": ["npx", "-y", "@upstash/context7-mcp"]
+      "command": ["@upstash/context7-mcp"]
     },
     {
       "name": "excalidraw",
       "description": "Excalidraw",
       "type": "remote",
       "url": "https://mcp.excalidraw.com"
+    },
+    "obsidian": {
+      "type": "local",
+      "command": ["@bitbonsai/mcpvault", "/Users/vslobodin/Documents/Obsidian\ Vault"]
     }
   ],
   "discovery": {
