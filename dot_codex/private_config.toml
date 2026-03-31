@@ -16,3 +16,6 @@ shell_snapshot = true
 [mcp_servers.lazy]
 command = "lazy-mcp"
 args = ["--config", "~/.config/lazy-mcp/servers.json"]
+
+[mcp_servers.lazy.tools.list_servers]
+approval_mode = "approve"
