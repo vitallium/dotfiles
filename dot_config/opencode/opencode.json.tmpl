@@ -14,9 +14,9 @@
   "plugin": [
   {{- if .workconf }}
     "@gitlab/opencode-gitlab-auth",
-  {{- end }}
-    "opencode-anthropic-auth",
+  {{- else }}
     "opencode-openai-codex-auth@latest",
+  {{- end }}
     "opencode-devcontainers@latest",
     "opencode-gitbutler@latest"
   ],
