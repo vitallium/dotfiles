@@ -1,9 +1,7 @@
 [settings]
-cargo_binstall = true
 experimental = true
 legacy_version_file = true
 not_found_auto_install = false
-pipx_uvx = true
 idiomatic_version_file_enable_tools = [
   "ruby",
   "rust",
@@ -29,6 +27,9 @@ uvx = true
 # Precompiled binaries causes issues with Ruby LSP.
 compile = true
 
+[settings.cargo]
+binstall = true
+
 [tools]
 biome = "latest"
 bun = "latest"
@@ -49,7 +50,7 @@ opencode = "latest"
 pnpm = "latest"
 prettier = "latest"
 python = "3.13.9"
-ruby = "4.0.1"
+ruby = { version = "4.0.2", depends = ["rust"] }
 rust = { version = "latest", components = "rust-analyzer,rust-src" }
 shellcheck = "latest"
 shfmt = "latest"
