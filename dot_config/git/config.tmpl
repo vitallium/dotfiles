@@ -53,6 +53,11 @@
   # Speed up commands involving untracked files such as `git status`.
   # https://git-scm.com/docs/git-update-index#_untracked_cache
   untrackedCache = true
+  # Cache commit graph for faster graph operations.
+  commitGraph = true
+
+[gc]
+  writeCommitGraph = true
 
 [interactive]
   diffFilter = delta --color-only
@@ -66,8 +71,6 @@
 
 [diff]
   algorithm = histogram
-  # Use n and N to move between diff sections
-  navigate = true
   # Detect copies as well as renames
   renames = true
   mnemonicPrefix = true
@@ -109,3 +112,13 @@
 
 [absorb]
   autoStageIfNothingStaged = true
+
+[feature]
+  manyFiles = true
+
+[index]
+  version = 4
+
+[delta]
+  # Use n and N to move between diff sections
+  navigate = true
