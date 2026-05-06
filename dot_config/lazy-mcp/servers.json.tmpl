@@ -21,10 +21,16 @@
     },
 {{- else }}
     {
-     "name": "railway",
-     "description": "Interact with Railway projects and infrastructure",
-     "type": "local",
-     "command": ["npx", "-y", "@railway/mcp-server"]
+      "name": "railway",
+      "description": "Interact with Railway projects and infrastructure",
+      "type": "local",
+      "command": ["npx", "-y", "@railway/mcp-server"]
+    },
+    {
+      "name": "cloudflare",
+      "description": "Interact with Cloudflare",
+      "type": "remote",
+      "url": "https://mcp.cloudflare.com/mcp"
     },
 {{- end }}
     {
