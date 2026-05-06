@@ -1,12 +1,14 @@
 {
   "cli_default_open_behavior": "new_window",
-  "git_panel": {
-    "dock": "left"
-  },
-  "outline_panel": {
-    "dock": "left"
-  },
 {{- if not .workconf }}
+  "agent_servers": {
+    "opencode": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
   "agent": {
     "default_profile": "write",
     "default_model": {
@@ -20,6 +22,14 @@
     "provider": "zed",
   },
 {{- else }}
+  "agent_servers": {
+    "opencode": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
   "agent": {
     "default_profile": "ask",
     "default_model": {
@@ -53,7 +63,17 @@
   },
   "use_system_window_tabs": true,
   "project_panel": {
+    "dock": "left",
     "auto_fold_dirs": false
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
   },
   "file_types": {
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
