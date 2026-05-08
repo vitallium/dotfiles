@@ -86,13 +86,10 @@ end
 #
 # Gnupg
 #
-gpgconf --launch gpg-agent
+set -l gpg_ssh_socket (gpgconf --list-dirs agent-ssh-socket)
 
-if test -e (gpgconf --list-dirs agent-ssh-socket)
-    set -x GPG_TTY (tty)
-    set -g -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-else
-    echo (gpgconf --list-dirs agent-ssh-socket) "doesn't exist. Is gpg-agent running?"
+if test -e "$gpg_ssh_socket"
+    set -gx GPG_TTY (tty)
+    set -gx SSH_AUTH_SOCK "$gpg_ssh_socket"
 end
-
 {{ end -}}
