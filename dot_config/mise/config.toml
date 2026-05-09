@@ -23,10 +23,6 @@ bun = true
 # Allow mise to install pipx packages without manual installation of pipx.
 uvx = true
 
-[settings.ruby]
-# Precompiled binaries causes issues with Ruby LSP.
-compile = true
-
 [settings.cargo]
 binstall = true
 
