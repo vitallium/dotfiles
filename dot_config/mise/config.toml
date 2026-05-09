@@ -62,25 +62,25 @@ watchexec = "latest"
 "aqua:tldr-pages/tlrc" = "latest"
 
 # Rust
-"cargo:ast-grep" = "latest"
-"cargo:bacon" = "latest"
-"cargo:cargo-about" = "latest"
-"cargo:cargo-audit" = "latest"
-"cargo:cargo-cache" = "latest"
-"cargo:cargo-edit" = "latest"
-"cargo:cargo-expand" = "latest"
-"cargo:cargo-generate" = "latest"
-"cargo:cargo-info" = "latest"
-"cargo:cargo-outdated" = "latest"
-"cargo:cargo-update" = "latest"
-"cargo:eza" = "latest"
-"cargo:git-absorb" = "latest"
-"cargo:git-cliff" = "latest"
-"cargo:gitu" = "latest"
-"cargo:jj-cli" = "latest"
-"cargo:sqlx-cli" = "latest"
-"cargo:tokei" = "latest"
-"cargo:topgrade" = "latest"
+"cargo:ast-grep" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:bacon" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:cargo-about" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:cargo-audit" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:cargo-cache" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:cargo-edit" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:cargo-expand" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:cargo-generate" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:cargo-info" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:cargo-outdated" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:cargo-update" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:eza" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:git-absorb" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:git-cliff" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:gitu" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:jj-cli" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:sqlx-cli" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:tokei" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:topgrade" = { version = "latest", depends = ["cargo-binstall"] }
 
 # Node.js
 "npm:@bitbonsai/mcpvault" = "latest"
