@@ -112,10 +112,10 @@ watchexec = "latest"
 
 # Python
 # "pipx:lsp-devtools" = "latest"
-"pipx:llm" = "latest"
-"pipx:pdm" = "latest"
-"pipx:pgcli" = "latest"
-"pipx:ruff" = "latest"
-"pipx:yt-dlp" = "latest"
-"pipx:yubikey-manager" = "latest"
-"pipx:mistral-vibe" = "latest"
+"pipx:llm" = { version = "latest", depends = ["python", "uv"] }
+"pipx:pdm" = { version = "latest", depends = ["python", "uv"] }
+"pipx:pgcli" = { version = "latest", depends = ["python", "uv"] }
+"pipx:ruff" = { version = "latest", depends = ["python", "uv"] }
+"pipx:yt-dlp" = { version = "latest", depends = ["python", "uv"] }
+"pipx:yubikey-manager" = { version = "latest", depends = ["python", "uv"] }
+"pipx:mistral-vibe" = { version = "latest", depends = ["python", "uv"] }
