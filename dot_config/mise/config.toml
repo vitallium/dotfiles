@@ -27,6 +27,8 @@ uvx = true
 binstall = true
 
 [tools]
+# Keep Rust on top to satisfy dependencies
+rust = { version = "latest", components = "rust-analyzer,rust-src" }
 biome = "latest"
 bun = "latest"
 cargo-binstall = "latest"
@@ -47,7 +49,6 @@ pnpm = "latest"
 prettier = "latest"
 python = "3.13.9"
 ruby = { version = "4.0.2", depends = ["rust"] }
-rust = { version = "latest", components = "rust-analyzer,rust-src" }
 shellcheck = "latest"
 shfmt = "latest"
 usage = "latest"
