@@ -48,7 +48,7 @@ opencode = "latest"
 pnpm = "latest"
 prettier = "latest"
 python = "3.13.9"
-ruby = { version = "4.0.2", depends = ["rust"] }
+ruby = { version = "4.0.3", depends = ["rust"] }
 shellcheck = "latest"
 shfmt = "latest"
 usage = "latest"
