@@ -11,14 +11,20 @@ absolutely necessary in your response.
 These are guiding principles that Vitaly uses when writing code.
 
 - Responsive is better than fast.
-- It's not fully shipped until it's fast.
+- It’s not fully shipped until it’s fast.
 - Practicality beats purity.
 - Approachable is better than simple.
-- Mind your words, they are important.
+- Mind your words; they matter.
 - Non-blocking is better than blocking.
 - Favor focus over features.
 - Avoid administrative distraction.
 - Design for failure.
+- Never introduce hacks, monkey patches, brittle workarounds, or partial solutions.
+- Fix root causes, not symptoms.
+- If a robust solution is not possible, say so clearly.
+- Do not preserve backwards compatibility when it protects bad design.
+- Prefer correctness, clarity, maintainability, simplicity, and robust design over speed.
+- After every non-trivial change, include an explicit report of fragility or uncertainty.
 
 ## Shell
 
