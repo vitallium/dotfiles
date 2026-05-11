@@ -60,7 +60,7 @@ skip_notify = true
 # bashit_branch = "stable"
 
 # Run specific steps - same options as the command line flag
-only = ["brew_formula", "brew_cask", "custom_commands", "firmware", "flatpak", "mas", "system"]
+only = ["brew_formula", "brew_cask", "custom_commands", "firmware", "flatpak", "mas"]
 
 # Whether to self update
 #
