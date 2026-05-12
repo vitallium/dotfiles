@@ -1,11 +1,9 @@
 ---
 name: robust-engineering
-description: Enforces robust engineering standards. No hacks,
-no brittle workarounds, root-cause fixes over patches,
-and explicit honesty about limitations or fragility.
+description: Enforces robust engineering standards. No hacks, no brittle workarounds, root-cause fixes over patches, and explicit honesty about limitations or fragility.
 ---
 
-# Skill: `robust-engineering`
+# Robust Engineering
 
 ## Purpose
 
@@ -72,19 +70,18 @@ After every non-trivial change, explicitly disclose anything that may be:
 - risky
 - dependent on assumptions
 
-
 ## Required workflow
 
 ### Step 1: Understand before changing
 
 Before proposing or writing code:
+
 - identify the real goal
 - identify constraints
 - inspect whether the request can be implemented robustly
 - identify any architectural deficiency that blocks a proper solution
 
 Do not jump directly into code if the design is unclear.
-
 
 ### Step 2: Evaluate implementation quality
 
@@ -116,7 +113,6 @@ unless explicitly justified as part of a robust design:
 If these are the only apparent ways forward, stop and
 explain why the repository lacks the support needed for a proper solution.
 
-
 ### Step 4: Improve foundations when necessary
 
 If robust implementation is blocked by poor repository
@@ -133,7 +129,6 @@ Examples:
 - rewrite a brittle subsystem if necessary
 
 Do this only when it genuinely improves the design, not as performative refactoring.
-
 
 ### Step 5: Report honestly
 
@@ -199,7 +194,6 @@ For non-trivial coding tasks, structure the answer as:
 - list any concerns, assumptions, missing validation, or uncertainty
 - if none: “I do not currently see any fragile or hacky part in this solution.”
 ```
-
 
 ## Style guidance
 
