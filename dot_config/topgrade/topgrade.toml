@@ -92,7 +92,6 @@ only = ["brew_formula", "brew_cask", "custom_commands", "firmware", "flatpak", "
 "Fish Update Completions" = "fish_update_completions"
 "Update mise" = "mise self-update -y"
 "Update mise runtimes" = "mise up"
-"Clean up mise" = "mise prune --yes"
 "Update fish plugins" = "fisher update"
 
 [python]
