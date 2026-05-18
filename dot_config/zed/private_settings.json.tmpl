@@ -1,31 +1,6 @@
 {
   "cli_default_open_behavior": "new_window",
-{{- if not .workconf }}
-  "agent_servers": {
-    "opencode": {
-      "type": "registry"
-    },
-    "claude-acp": {
-      "type": "registry"
-    }
-  },
-  "agent": {
-    "dock": "right",
-    "default_profile": "write",
-    "default_model": {
-      "effort": "medium",
-      "provider": "zed.dev",
-      "model": "gpt-5.3-codex",
-    },
-  },
-  "edit_predictions": {
-    "mode": "subtle",
-    "provider": "zed",
-  },
-  "collaboration_panel": {
-    "dock": "left"
-  },
-{{- else }}
+{{- if .workconf }}
   "agent_servers": {
     "opencode": {
       "type": "registry"
@@ -50,7 +25,32 @@
     "button": false
   },
   "edit_predictions": {
-    "provider": "none",
+    "provider": "none"
+  },
+{{- else }}
+  "agent_servers": {
+    "opencode": {
+      "type": "registry"
+    },
+    "codex-acp": {
+      "type": "registry"
+    }
+  },
+  "agent": {
+    "dock": "right",
+    "default_profile": "write",
+    "default_model": {
+      "effort": "medium",
+      "provider": "zed.dev",
+      "model": "gpt-5.3-codex"
+    }
+  },
+  "edit_predictions": {
+    "mode": "subtle",
+    "provider": "zed"
+  },
+  "collaboration_panel": {
+    "dock": "left"
   },
 {{- end }}
   "theme": {
@@ -84,7 +84,7 @@
   "languages": {
     "Ruby": {
       "semantic_tokens": "combined",
-      "language_servers": ["ruby-lsp"],
-    },
-  },
+      "language_servers": ["ruby-lsp"]
+    }
+  }
 }
