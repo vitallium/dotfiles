@@ -6,7 +6,6 @@ gem-why
 irb-power_assert
 nicetest
 reek
-repl_type_completor
 retest
 rubocop
 yard
