@@ -86,10 +86,7 @@ end
 #
 # Gnupg
 #
-set -l gpg_ssh_socket (gpgconf --list-dirs agent-ssh-socket)
-
-if test -e "$gpg_ssh_socket"
-    set -gx GPG_TTY (tty)
-    set -gx SSH_AUTH_SOCK "$gpg_ssh_socket"
-end
+set -gx GPG_TTY (tty)
+set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+gpg-connect-agent /bye >/dev/null 2>&1
 {{ end -}}
