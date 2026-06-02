@@ -122,4 +122,6 @@ watchexec = "latest"
 "pipx:ruff" = { version = "latest", depends = ["python", "uv"] }
 "pipx:yt-dlp" = { version = "latest", depends = ["python", "uv"] }
 "pipx:yubikey-manager" = { version = "latest", depends = ["python", "uv"] }
+{{- if .personal }}
 "pipx:mistral-vibe" = { version = "latest", depends = ["python", "uv"] }
+{{- end }}
