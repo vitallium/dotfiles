@@ -202,8 +202,7 @@ flatpak install -y flathub com.discordapp.Discord \
                            md.obsidian.Obsidian \
                            com.fastmail.Fastmail \
                            io.github.celluloid_player.Celluloid \
-                           io.github.realmazharhussain.GdmSettings \
-                           app.zen_browser.zen
+                           io.github.realmazharhussain.GdmSettings
 ```
 
 ### Install docker
