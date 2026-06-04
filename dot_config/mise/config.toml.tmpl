@@ -33,7 +33,9 @@ rust = { version = "latest", components = "rust-analyzer,rust-src" }
 biome = "latest"
 bun = "latest"
 cargo-binstall = "latest"
+{{- if .personal }}
 codex = "latest"
+{{- end }}
 cosign = "3"
 chezmoi = "2"
 go = "latest"
