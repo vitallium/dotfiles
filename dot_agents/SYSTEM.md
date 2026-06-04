@@ -26,6 +26,10 @@ These are guiding principles that Vitaly uses when writing code.
 - Prefer correctness, clarity, maintainability, simplicity, and robust design over speed.
 - After every non-trivial change, include an explicit report of fragility or uncertainty.
 
+## Agent overrides
+
+See AGENTS.override.md for per-agent behavioral overrides. Agents must read and apply it.
+
 ## Shell
 
 I use `fish` shell.
