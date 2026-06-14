@@ -91,26 +91,7 @@ This file contains the shipping workflow (Phase 3-4). It is loaded when all Phas
 
    Note whether the completed work has observable behavior (UI rendering, CLI output, API/library behavior with a runnable example, generated artifacts, or workflow output). The `ce-commit-push-pr` skill will ask whether to capture evidence only when evidence is possible.
 
-2. **Update Plan Status**
-
-   Update the plan's `status` field from `active` to `completed`. The
-   mechanic depends on the plan's format:
-
-   - **Markdown plan (`.md`).** YAML frontmatter at the top of the file
-     carries the status. Edit the YAML directly:
-     ```
-     status: active  ->  status: completed
-     ```
-   - **HTML plan (`.html`).** Status lives as visible text in the rendered
-     header (typically `<span class="status">active</span>` or similar).
-     Edit the visible element's text content directly. There is no hidden
-     JSON-frontmatter copy to keep in sync — HTML metadata is a single
-     source of truth in visible text per the html-rendering invariants.
-
-   If no status field exists in either format, skip this step — some
-   plans omit frontmatter entirely.
-
-3. **Commit and Create Pull Request**
+2. **Commit and Create Pull Request**
 
    Load the `ce-commit-push-pr` skill to handle committing, pushing, and PR creation. The skill handles convention detection, branch safety, logical commit splitting, adaptive PR descriptions, and attribution badges.
 
@@ -124,7 +105,7 @@ This file contains the shipping workflow (Phase 3-4). It is loaded when all Phas
 
    If the user prefers to commit without creating a PR, load the `ce-commit` skill instead.
 
-4. **Notify User**
+3. **Notify User**
    - Summarize what was completed
    - Link to PR (if one was created)
    - Note any follow-up work needed

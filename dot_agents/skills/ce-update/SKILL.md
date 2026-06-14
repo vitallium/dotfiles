@@ -37,6 +37,11 @@ bash "${CLAUDE_SKILL_DIR}/scripts/currently-loaded-version.sh"
 bash "${CLAUDE_SKILL_DIR}/scripts/marketplace-name.sh"
 ```
 
+If `${CLAUDE_SKILL_DIR}` is unset or unresolved (the commands above fail with
+`No such file or directory`), the harness does not expose the skill directory —
+this is not a standard Claude Code session. Treat it the same as the
+`__CE_UPDATE_NOT_MARKETPLACE__` case in Step 2: explain and stop.
+
 `scripts/upstream-version.sh` reads `plugin.json` on `main` via `gh api`. It
 prints the version string, or the sentinel `__CE_UPDATE_VERSION_FAILED__` if
 `gh` is unavailable or rate-limited.
