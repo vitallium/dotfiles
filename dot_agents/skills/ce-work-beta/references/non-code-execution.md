@@ -9,7 +9,7 @@ Do **not** run any of the code-shipping machinery — it does not fit knowledge 
 - No branch/worktree setup (Phase 1 Step 2).
 - No task-list-from-implementation-units, no execution-strategy/subagent dispatch keyed on `Files:`.
 - No Test Discovery, no test-scenario completeness, no system-wide test check.
-- No incremental code commits, and none of `references/shipping-workflow.md` (no PR, no CI, no `active → completed` flip on a code plan).
+- No incremental code commits, and none of `references/shipping-workflow.md` (no PR, no CI).
 
 ## Execute the production plan
 

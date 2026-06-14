@@ -27,28 +27,18 @@ These hold regardless of which skill produced the artifact.
   Bunny Fonts, etc.), paired with an offline-readable fallback font stack
   so the doc remains readable if the CDN is unreachable.
 - **All metadata appears as visible text — single source of truth.**
-  The artifact's metadata (title, type, status, date, etc. — exact
+  The artifact's metadata (title, type, date, etc. — exact
   fields per-skill, defined in the section contract) renders as visible
   HTML elements that downstream agents and humans read. No hidden
   machine-readable copy in any form: no `<script type="application/json">`
   frontmatter block, no `data-*` attribute mirror, and no
-  `<meta name="status">` / `<meta name="created">` / `<meta name="origin">`
+  `<meta name="created">` / `<meta name="origin">`
   in `<head>` duplicating the same values that appear in the visible
   header. One representation for each value — drift across two copies is
   the failure this rule prevents.
 
   The text-and-attribute redundancy in `<time datetime="2026-05-12">2026-05-12</time>`
   is acceptable because the attribute is a parser hint, not a hidden copy.
-- **Editable status renders as `<span class="status">{value}</span>`.**
-  Downstream tooling (`ce-work` shipping flip, future HTML-aware
-  consumers) finds and rewrites status by selector. Embedding the
-  status value inside a header `<dl>` cell (`<dt>Status</dt><dd>active</dd>`),
-  inside a `<meta>` tag, or as visible text without the `class="status"`
-  hook all break the flip mechanic — the consumer either can't locate
-  the value or can't disambiguate it from prose. The status span may
-  sit anywhere in the doc (inside the header metadata, in a stats
-  strip, in a hero banner); placement is a visual choice, the selector
-  shape is the contract.
 - **Stable IDs as anchor IDs AND visible text.** Every ID-bearing item
   (R-IDs, U-IDs, A-IDs, F-IDs, AE-IDs, KTDs) gets `id="r1"` on its
   element AND appears as visible text inside the element (e.g., the
@@ -112,45 +102,66 @@ Worktree-root only — do not fall through to a main checkout. Users
 working from a worktree who want HTML defaults can add DESIGN.md to the
 worktree.
 
-**DESIGN.md is a partial override, not all-or-nothing.** Real
-DESIGN.md files vary widely: some are token tables, some are CSS
-variables, some are prose; most cover a subset of what HTML composition
-needs. Apply the tokens that fit a long-form text doc — typography roles,
-text colors, contrast targets, border-radius scale, elevation primitives,
-muted-vs-accent split. Skip the rest. Three specific failure modes to
-defend against:
+**DESIGN.md is a partial override, not all-or-nothing.** Real DESIGN.md
+files vary widely: some are token tables, some are CSS variables, some are
+prose; most are authored for a *product or marketing surface*, not a
+long-form doc. The governing split: **take the brand's scale-independent
+identity literally, own the scale-dependent layout values yourself, and
+skip decoration.**
 
-- **Scope mismatch (product UI vs doc surface).** A DESIGN.md aimed at
-  product marketing or app UI may name page-surface colors, button
-  states, input borders, or hero backgrounds that are tied to *that*
-  surface, not to a generic doc. Page-surface colors are the canonical
-  trap — `--surface: #c0f0fb` belongs on the product's marketing page,
-  not on every plan or requirements doc the team writes. Extract the
-  principle (the design language uses a tinted surface) rather than the
-  literal value when the token is product-UI-scoped. Apply literal
-  values only when the token is generic enough to transfer (text color,
-  type scale ratio, radius scale, contrast ratio).
-- **Partial coverage.** When DESIGN.md defines some categories but not
-  others (e.g., colors but no spacing scale, typography but no
-  elevation), use DESIGN.md for what it covers and the fallback default
-  for what it doesn't. Do not require DESIGN.md to be complete before
-  honoring it.
-- **Named font without a fetchable source.** When DESIGN.md names a
-  font (e.g., "Signifier", "Every") without a CDN URL or local
-  `@font-face` source the agent can inline, treat the name as a hint
-  about the design intent, not a literal directive. Emit a system-font
-  stack in the same family (serif vs sans vs mono) and pick a weight
-  that matches the intent. The single-file invariant still holds; do
-  not link to an external stylesheet to fetch the named font.
-- **Typography-scale mismatch.** DESIGN.md typography tokens are often
+- **Take literally (scale-independent identity):** the color palette
+  (under the contrast rule), font *weight* and *style*, OpenType features,
+  and radius *character* (sharp vs rounded). These carry the brand and are
+  safe at any size.
+- **Own it yourself (scale-dependent layout):** the **type size scale**
+  and **spacing magnitudes**. DESIGN.md values are almost always
+  product/marketing-scaled (display headings at 48-80px, airy ~96px
+  section gaps); read them only as *hierarchy*, then set doc-appropriate
+  values (body ~14-16px, headings ~1.2-1.6× body, comfortable paragraph
+  spacing).
+- **Skip decoration:** decorative or atmospheric brand voltage with no
+  content to attach to in a doc — gradient orbs, full-bleed hero
+  photography, motion. Take the palette and feel; do not reproduce the
+  decoration.
+
+Specific cases:
+
+- **Fonts: load only open webfonts; never attempt a proprietary brand
+  face.** A self-contained doc can only load an open webfont (Google Fonts
+  or an open CDN) via the permitted webfont `<link>` plus an offline
+  fallback stack. **Assume a bespoke brand face is proprietary and do not
+  attempt to load it** — Airbnb Cereal, Coinbase Display/Sans, BMW Type,
+  Waldenburg, Circular and the like will not render in a single file;
+  trying just produces a broken fallback. Use the DESIGN.md's own fallback
+  chain, or a family-matched system stack (serif↔serif, sans↔sans,
+  mono↔mono). Load a named face *only* when it is a known open webfont
+  (Inter, Geist, Cal Sans, Roboto…); when unsure whether a face is open,
+  do not try. Honor the DESIGN.md's declared roles (`body` / `display` /
+  `mono`) and never promote a display/decorative face into a body or
+  small-text role. Net: reproduce the brand's serif-vs-sans structure and
+  weight voice, not necessarily its exact faces.
+- **Typography-scale mismatch.** DESIGN.md typography tokens are usually
   sized for product UI — marketing pages, app screens, hero sections —
-  with body text at 18-20px and headings at 32-52px. A long-form doc
-  surface needs body at ~14-16px and headings at ~1.2-1.6× body. When
-  the DESIGN.md size scale looks product-scaled, use the **family**,
-  **weight**, and **OpenType feature** assignments (these carry the
-  design language) and pick the agent's own **size scale** for the doc
-  surface. Apply DESIGN.md sizes literally only when the tokens are
-  clearly doc-scaled — body tokens at 14-16px, headings under ~32px.
+  with display headings at 48-80px. A long-form doc needs body at ~14-16px
+  and headings at ~1.2-1.6× body. When the size scale looks
+  product-scaled (the common case), use the **family**, **weight**, and
+  **OpenType feature** assignments (these carry the design language) and
+  pick the agent's own size scale for the doc surface. Apply DESIGN.md
+  sizes literally only when they are clearly doc-scaled — body 14-16px,
+  headings under ~32px.
+- **Scope mismatch (product UI vs doc surface).** A DESIGN.md aimed at
+  product marketing or app UI may name button states, input borders, or
+  hero backgrounds tied to *that* surface, not a generic doc. The page
+  surface is the case to judge: a **reading canvas** — white, off-white,
+  or a legible dark — transfers **literally** and should be the doc
+  background; a bright product/marketing-hero surface
+  (`--surface: #c0f0fb`) does not — extract the principle (the design
+  language uses a tinted surface) rather than the literal value when the
+  token is product-UI-scoped.
+- **Partial coverage.** When DESIGN.md defines some categories but not
+  others (colors but no spacing scale, typography but no elevation), use
+  it for what it covers and the fallback default for the rest. Do not
+  require DESIGN.md to be complete before honoring it.
 
 ## Format principles
 
@@ -256,6 +267,19 @@ long list overwhelms the eye, especially in dark mode. CSS should leave
 `strong` at `color: inherit` unless a specific surface (status pill, ID
 chip) is being styled.
 
+### Chips and pills: uniform shape, no one-sided accent
+
+Status chips, ID chips, and metric pills in the same row share one shape
+— same border-radius, border weight, and fill treatment. Differentiate
+categories only by the chip's overall fill/text color (applied to the
+whole pill, like a soft-tint badge), never by an accent on one edge. A
+colored stripe or arc on a single side of a pill reads as broken and
+asymmetric — as if a border half-failed to render — so avoid it. The same
+holds for any element, not just chips: differentiate by a full tint, not
+a colored stripe on one edge. If an ID chip should stand out from metric
+chips, vary its fill/text color uniformly, not its edge treatment, and
+keep every chip in the row a visual set.
+
 ### No JS framework runtimes
 
 A small inline `<script>` for active-section TOC tracking or anchor-
@@ -304,11 +328,13 @@ contracts — the agent picks shapes that fit the content.
   bold decision title (often with inline code for technical
   identifiers), and prose rationale. Flat cards (not collapsibles) —
   these are reference material readers scan, not drill into.
-- **Risks** — color-coded cards with status eyebrow (e.g., "RISK ·
-  MITIGATED" / "OPEN · DEFERRED FOLLOW-UP") and prose body. Color of
-  the left-border or accent communicates status at a glance.
-- **Scope Boundaries** — callout cards with color-coded left borders
-  (in-scope vs deferred vs outside) when the distinction is meaningful.
+- **Risks** — cards with a color-coded status eyebrow (e.g., "RISK ·
+  MITIGATED" / "OPEN · DEFERRED FOLLOW-UP") and prose body. Communicate
+  status through the eyebrow's color plus an optional subtle full-card
+  tint — not a colored stripe on one edge (see "Chips and pills").
+- **Scope Boundaries** — callout cards distinguished (in-scope vs deferred
+  vs outside) by a colored eyebrow/label plus a subtle full-card tint when
+  the distinction is meaningful — not a one-edge colored stripe.
 
 The agent picks more elaborate or simpler shapes based on what each
 specific artifact's content needs.
@@ -345,20 +371,33 @@ adding a diagram is not license to thin the prose it depicts.
 
 The agent designs SVG coordinates without rendering — layouts that look
 fine in source can collide in practice. Before emitting, trace each
-labeled arrow and each text label:
+labeled arrow, each shape edge, and each text label:
 
-- **No arrow path passes through a text label.** If an arrow line or
-  curve crosses a label's bounding box, the text reads as struck-through
-  and the arrow reads as terminating at the wrong element. Fix by
-  re-routing the arrow, moving the label, or applying
-  `paint-order: stroke fill` with a stroke color matching the diagram
-  background to halo the label. The halo width is a judgment call:
+- **No stroke — arrow *or* shape edge/border — passes through a text
+  label.** If an arrow line/curve, or the border of a box, parallelogram,
+  or other shape, crosses a label's bounding box, the text reads as
+  struck-through and the stroke reads as terminating at the wrong element.
+  Fix by re-routing the arrow, moving the label clear of every edge, or
+  applying `paint-order: stroke fill` with a stroke color matching the
+  diagram background to halo the label. The halo width is a judgment call:
   narrow enough not to bleed into glyph strokes (a halo whose width
   approaches the glyph's own stroke width muddies the text color), wide
-  enough to mask underlying arrows (at least the arrow's stroke width
+  enough to mask the underlying stroke (at least its stroke width
   plus a hairline). Verify by inspecting rendered text at the target
   font size — if glyphs look thicker or more colored-toward-halo than
   the same text outside the diagram, the halo is too wide.
+- **Labels inside skewed or rotated shapes sit in the shape's true
+  interior, not its bounding box.** A parallelogram, isometric face, or
+  rotated rect has an interior offset from its bounding box, so a
+  box-aligned (e.g. left-aligned) label spills past the slanted edge.
+  Inset the label to fall inside the actual shape — account for the
+  skew/rotation offset at the label's vertical position — or place it
+  outside the shape with a short leader. This is the usual failure in the
+  **stacked-layers idiom** (offset parallelograms implying z-order), where
+  per-layer labels left-aligned to the container both overflow the lower
+  layers and get crossed by the neighbouring layer's edge. Prefer
+  labelling each layer in its own un-overlapped region, or to the side of
+  the stack.
 - **Arrow labels sit adjacent to the arrow's midpoint** (typically
   within ~10-15px above or beside the line they describe). A label
   floating at the diagram's edge that readers have to trace back to an
@@ -460,14 +499,28 @@ fine when the content suggests them.
   Before / After, Two alternatives).
 - **Tinted callout cards** for content that is "different in kind"
   (Deferred, Open Questions, advisory notes, unit-level execution notes)
-  — color-coded left borders communicate kind at a glance.
+  — a subtle full-card background tint plus a colored eyebrow/label
+  communicates kind at a glance. Avoid a colored stripe on one edge; tint
+  the whole card instead.
 
 ## Agent-consumability rules
 
-Downstream agents that read HTML today (`ce-work`, future consumers) read
-the HTML file as text linearly, not via DOM extraction. `ce-doc-review` is
-not a current HTML consumer (see opening note). Compose so semantic
-understanding is reachable in source:
+Downstream agents that read HTML today (`ce-work`, a skill re-reading its
+own prior artifact on a resume run, future consumers) reason over the HTML
+as text — the way they reason over markdown, not via DOM extraction or a
+script-style parse. `ce-doc-review` is not a current HTML consumer (see
+opening note).
+
+These rules are why such a consumer can locate one item (a single
+requirement, unit, idea, or other ID-bearing entry) and reason over it from
+source alone — its title, every labeled field, and any diagram's meaning —
+with no hidden machine-readable copy to fall back on. The semantic structure
+*is* the extraction contract: it is what makes the single-source-of-truth
+invariant (no `data-*` or JSON metadata mirror) safe rather than lossy.
+Weakening it — `<article>` item boundaries collapsed into `<div>` soup, a
+field label demoted to an attribute, one item's content scattered across
+distant parts of the doc — breaks that reasoning even when the rendered page
+looks identical. Compose so semantic understanding is reachable in source:
 
 - **Use semantic HTML over `<div>` soup.** `<article>` per unit card,
   `<dl>` for metadata pairs, `<table>` for tabular content, `<details>`
@@ -502,12 +555,10 @@ Before returning the artifact, scan it for common slips:
 - **Single self-contained file.** No companion `.css` / `.js` / `.svg`.
 - **No hidden machine-readable metadata copy.** No
   `<script type="application/json">` frontmatter block, no `data-*`
-  attributes mirroring visible values, **no `<meta name="status">` /
-  `<meta name="created">` / `<meta name="origin">` etc. in `<head>`
+  attributes mirroring visible values, **no `<meta name="created">` /
+  `<meta name="origin">` etc. in `<head>`
   duplicating the visible header**. Metadata lives in visible text;
   one source of truth per value.
-- **Status renders as `<span class="status">{value}</span>`** so
-  downstream tooling can flip `active → completed` by selector.
 - **All stable IDs** appear as both `id=""` and visible text.
 - **Section heading vocabulary** matches the section contract names
   (downstream agents grep these).
@@ -522,6 +573,10 @@ Before returning the artifact, scan it for common slips:
 - **Within-section sub-nav** is present for sections with 6+ repeating
   cards.
 - **Body `<strong>`** is not colored with accent palette.
+- **No one-edge colored accent** (a colored stripe/arc on a single side)
+  on chips, pills, or callout cards — differentiate by uniform fill +
+  colored eyebrow/label instead. A one-sided stripe reads as
+  broken/unintentional; chips in a row must be a uniform visual set.
 - **`<details>`** inside repeating cards have no `open` attribute.
 - **Diagram labels** are legible — no arrow paths crossing text,
   halo width appropriate for font size.

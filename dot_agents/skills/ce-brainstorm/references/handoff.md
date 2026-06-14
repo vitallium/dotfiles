@@ -61,7 +61,7 @@ Selections may be the literal option label (when the user types the label or a c
 
 **If user selects "Plan implementation with `ce-plan` (Recommended)":**
 
-Immediately load the `ce-plan` skill in the current session. Pass the requirements document path when one exists; otherwise pass a concise summary of the finalized brainstorm decisions. Do not print the closing summary first.
+Immediately load the `ce-plan` skill in the current session. Pass the requirements document path when one exists; otherwise pass a concise summary of the finalized brainstorm decisions. When the Phase 1.1 grounding scout produced a dossier and the file still exists, also pass its path (`/tmp/compound-engineering/ce-brainstorm/<run-id>/grounding.md`) — it gives planning verified quotes with `file:line` pointers to start from instead of re-scanning the repo. Do not print the closing summary first.
 
 **If user selects "Agent review of requirements doc with `ce-doc-review`":**
 
@@ -82,7 +82,7 @@ Load the `ce-proof` skill in HITL-review mode with:
 - **identity:** `ai:compound-engineering` / `Compound Engineering`
 - **recommended next step:** `ce-plan` (shown in the ce-proof skill's final terminal output)
 
-Follow `references/hitl-review.md` in the ce-proof skill. It uploads the doc, prompts the user for review in Proof's web UI, ingests filtered comment threads, applies agreed edits through the current Proof edit APIs, replies/resolves in-thread, and syncs the final markdown back to the source file atomically on proceed.
+Follow the HITL-review workflow in the ce-proof skill (the ce-proof skill loads its own hitl-review reference). It uploads the doc, prompts the user for review in Proof's web UI, ingests filtered comment threads, applies agreed edits through the current Proof edit APIs, replies/resolves in-thread, and syncs the final markdown back to the source file atomically on proceed.
 
 When the ce-proof skill returns control:
 

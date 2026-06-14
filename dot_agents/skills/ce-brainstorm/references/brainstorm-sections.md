@@ -233,14 +233,13 @@ the brainstorm.
   alongside `date` and as the resume-detection key when `ce-brainstorm`'s
   Phase 0.1 scans `docs/brainstorms/` for an existing artifact to continue.
 
-### Status flip does not apply to brainstorm
+### No status field
 
-Unlike plans, brainstorm artifacts have no `status` field — there is no
-`active → completed` lifecycle. A brainstorm is a one-time output that
-downstream consumers (`ce-plan`, `ce-doc-review`) reference via the plan's
-`origin:` field. The `<span class="status">` HTML hook described in
-`html-rendering.md` is a plan-side mechanic and does not render on
-brainstorm artifacts.
+Brainstorm artifacts have no `status` field and no `active → completed`
+lifecycle — a brainstorm is a one-time output that downstream consumers
+(`ce-plan`, `ce-doc-review`) reference via the plan's `origin:` field. No
+CE artifact carries a mutable status; whether work shipped is derived from
+git, not stored in the doc. Do not introduce one.
 
 ### Field-name stability
 

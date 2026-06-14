@@ -212,12 +212,12 @@ plan.
 - **`type`** — conventional-commit-prefix-aligned classification (`feat`,
   `fix`, `refactor`, `chore`, `docs`, `perf`, `test`, etc.). Carries the
   intent the eventual commit message should reflect.
-- **`status`** — `active` on creation; `ce-work` flips to `completed` on
-  ship. `ce-plan`'s Phase 0.1 resume fast path keys on `active`. In HTML,
-  status MUST render as `<span class="status">{value}</span>` so the flip
-  mechanic can locate and rewrite it by selector (see
-  `references/html-rendering.md`).
 - **`date`** — creation date in ISO 8601 (`YYYY-MM-DD`), ASCII digits only.
+
+Plans carry **no `status` field** — a plan is a decision artifact, not a
+tracked work item. `ce-work` does not mutate the plan at ship time;
+whether a plan shipped is derived from git, not stored in the doc. Do not
+add a `status` field or an `active → completed` lifecycle.
 
 ### Optional but well-known
 
@@ -243,8 +243,8 @@ semantics so downstream tooling can rely on them:
 
 Field names are stable across plan revisions — never rename a field or
 repurpose its semantics. Agents composing new plans MUST use these exact
-names; adding new fields is fine, but renaming `status` to `state` or
-`origin` to `source` breaks the downstream consumers above.
+names; adding new fields is fine, but renaming `origin` to `source` or
+`date` to `created` breaks the downstream consumers above.
 
 ## ID and content rules
 
