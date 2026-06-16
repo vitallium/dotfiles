@@ -1,0 +1,13 @@
+# Humanizer - Remove AI-generated traces
+[".claude/skills/humanizer"]
+type = "archive"
+url = "https://github.com/blader/humanizer/archive/main.tar.gz"
+stripComponents = 1
+refreshPeriod = "168h"
+
+# Humanizer - Remove AI-generated traces
+[".agents/skills/humanizer"]
+type = "archive"
+url = "https://github.com/blader/humanizer/archive/main.tar.gz"
+stripComponents = 1
+refreshPeriod = "168h"
