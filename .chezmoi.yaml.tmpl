@@ -29,17 +29,19 @@ data:
 {{- end }}
   ghostty:
     font:
-      name: Berkeley Mono
+      name: MonoLisaCode
 {{- if (eq .chezmoi.os "darwin") }}
-      size: 15.0
+      size: 14.0
 {{- else }}
-      size: 12.0
+      size: 11.0
 {{- end }}
   zed:
     terminal_font:
-      name: Berkeley Mono
+      name: MonoLisaCode
+    markdown_font:
+      name: MonoLisaText
     buffer_font:
-      name: Berkeley Mono
-      size: 15
+      name: MonoLisaCode
+      size: 14
     ui_font:
       name: Inter
