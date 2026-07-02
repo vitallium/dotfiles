@@ -1,5 +1,9 @@
 {
   "cli_default_open_behavior": "new_window",
+  "code_lens": "menu",
+  "toolbar": {
+    "code_actions": true
+  },
 {{- if .workconf }}
   "agent_servers": {
     "opencode": {
@@ -11,7 +15,7 @@
   },
   "agent": {
     "dock": "right",
-    "default_profile": "ask",
+    "default_profile": "write",
     "default_model": {
       "provider": "anthropic",
       "model": "claude-sonnet-4-6"
@@ -89,6 +93,30 @@
     "Ruby": {
       "semantic_tokens": "combined",
       "language_servers": ["ruby-lsp"]
+    }
+  },
+  "profiles": {
+    "Classic": {
+      "settings": {
+        "project_panel": {
+          "dock": "left",
+        },
+        "agent": {
+          "dock": "right",
+          "sidebar_side": "right"
+        },
+      }
+    },
+    "Agentic": {
+      "settings": {
+        "project_panel": {
+          "dock": "right",
+        },
+        "agent": {
+          "dock": "left",
+          "sidebar_side": "left"
+        },
+      }
     }
   }
 }
