@@ -96,9 +96,18 @@
   },
   "file_types": {
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-    "JSON": ["json", "jsonc", "*.code-snippets"]
+    "JSON": ["json", "jsonc", "*.code-snippets"],
+    "Git Attributes": ["**/{git,.git,.git/info}/attributes"],
+    "Git Config": ["*.gitconfig", "**/{git,.git/modules,.git/modules/*}/config"],
+    "Git Commit": ["**/git-revise-todo", "**/{git,.git}/COMMIT_EDITMSG"],
+    "Git Ignore": ["**/{git,.git}/ignore", "**/.git/info/exclude"],
+    "JSONC": ["devcontainer.json"]
   },
   "languages": {
+    "Git Commit": {
+      "wrap_guides": [50, 72],
+      "preferred_line_length": 72
+    },
     "Ruby": {
       "semantic_tokens": "combined",
       "language_servers": ["ruby-lsp"]
