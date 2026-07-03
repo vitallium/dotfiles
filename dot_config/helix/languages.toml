@@ -1,3 +1,6 @@
+#
+# Ruby
+#
 [[language]]
 name = "erb"
 scope = "text.html.erb"
@@ -5,3 +8,24 @@ injection-regex = "erb"
 file-types = ["erb"]
 roots = ["Gemfile", ".git"]
 language-servers = ["ruby-lsp", "herb"]
+
+#
+# Python
+#
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[language-server.ty]
+command = "ty"
+args = ["server"]
+
+[language-server.basedpyright]
+command = "basedpyright-langserver"
+args = ["--stdio"]
+
+[[language]]
+name = "python"
+language-servers = ["ruff", "ty", "basedpyright"]
+auto-format = true
+formatter = { command = "ruff", args = ["format", "-"] }
