@@ -1,5 +1,79 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  {{- if .workconf }}
+  "share": "disabled",
+  "model": "gitlab/duo-workflow-gpt-5-5",
+  "small_model": "gitlab/duo-workflow-gpt-5-4-mini",
+  "enabled_providers": ["gitlab", "anthropic", "google"],
+  "server": {
+    "hostname": "127.0.0.1",
+    "mdns": false
+  },
+  "permission": {
+    "*": "ask",
+    "external_directory": {
+      "/private/tmp/**/*": "allow",
+      "/private/tmp/*": "allow",
+      "/private/tmp": "allow"
+    },
+    "skill": {
+      "*": "ask",
+      "glab": "allow",
+      "write-large-file": "allow",
+      "playwright": "allow",
+      "playwright-cli": "allow",
+    },
+    "bash": {
+      "*": "ask",
+      "git status*": "allow",
+      "git log*": "allow",
+      "git diff*": "allow",
+      "git show*": "allow",
+      "git branch*": "allow",
+      "grep *": "allow",
+      "cat *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "wc *": "allow",
+      "ls *": "allow",
+      "find *": "ask",
+      "echo *": "allow",
+      "which *": "allow",
+      "pwd": "allow",
+      "date": "allow",
+      "git commit*": "ask",
+      "git commit *": "ask",
+      "git push*": "ask",
+      "git push *": "ask",
+      "rm -rf *": "deny",
+      "curl *": "deny",
+      "wget *": "deny"
+    },
+    "webfetch": "ask",
+    "websearch": "ask",
+    "doom_loop": "ask",
+    "~/.aws/*": "deny",
+    "~/.config/opencode/*": "deny",
+    "~/.gnupg/*": "deny",
+    "~/.netrc": "deny",
+    "~/.ssh/*": "deny",
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow"
+    },
+    "grep": "allow",
+    "glob": "allow",
+    "list": "allow",
+    "todoread": "allow",
+    "todowrite": "allow",
+    // lazy-mcp
+    "lazy-mcp_list_servers": "allow",
+    "lazy-mcp_list_commands": "allow",
+    "lazy-mcp_describe_commands": "allow"
+  },
+  {{- end }}
   "mcp": {
     "lazy-mcp": {
       "type": "local",
@@ -19,6 +93,7 @@
   {{- end }}
     "opencode-devcontainers@latest",
     "opencode-gitbutler@latest",
-    "compound-engineering@git+https://github.com/EveryInc/compound-engineering-plugin.git"
+    "compound-engineering@git+https://github.com/EveryInc/compound-engineering-plugin.git",
+    "@plannotator/opencode@latest"
   ]
 }
