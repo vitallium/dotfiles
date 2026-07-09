@@ -65,7 +65,7 @@
 {{- end }}
   "theme": {
     "light": "Modus Operandi",
-    "dark": "Modus Vivendi Tinted"
+    "dark": "Modus Vivendi"
   },
   "buffer_font_family": "{{ .zed.buffer_font.name }}",
   "buffer_font_size": {{ .zed.buffer_font.size }},
@@ -74,7 +74,7 @@
   "terminal": {
     "font_family": "{{ .zed.terminal_font.name }}",
     "env": {
-      "EDITOR": "zed --wait"
+      "GIT_EDITOR": "zed --wait"
     }
   },
   "use_system_window_tabs": true,
