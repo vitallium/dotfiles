@@ -52,10 +52,48 @@
   "agent": {
     "dock": "right",
     "default_profile": "write",
+    "container-use": {
+      "name": "Container Use",
+      "tools": {
+        "fetch": true,
+        "thinking": true,
+        "copy_path": false,
+        "find_path": false,
+        "delete_path": false,
+        "create_directory": false,
+        "list_directory": false,
+        "diagnostics": false,
+        "read_file": false,
+        "open": false,
+        "move_path": false,
+        "grep": false,
+        "edit_file": false,
+        "terminal": false
+      },
+      "enable_all_context_servers": false,
+      "context_servers": {
+        "container-use": {
+          "tools": {
+            "environment_add_service": true,
+            "environment_checkpoint": true,
+            "environment_config": true,
+            "environment_create": true,
+            "environment_file_delete": true,
+            "environment_file_edit": true,
+            "environment_file_list": true,
+            "environment_file_read": true,
+            "environment_file_write": true,
+            "environment_open": true,
+            "environment_run_cmd": true,
+            "environment_update_metadata": true
+          }
+        }
+      }
+    },
     "default_model": {
       "effort": "medium",
       "provider": "zed.dev",
-      "model": "gpt-5.3-codex"
+      "model": "gpt-5.5-codex"
     }
   },
   "edit_predictions": {
@@ -95,6 +133,14 @@
     "lazy-mcp": {
       "command": "lazy-mcp",
       "args": ["--config", "~/.config/lazy-mcp/servers.json"]
+    },
+    "container-use": {
+      "enabled": true,
+      "remote": false,
+      "command": "container-use",
+      "args": ["stdio"],
+      "env": {},
+      "timeout": 300
     }
   },
   "file_types": {

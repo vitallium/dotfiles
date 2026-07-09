@@ -8,7 +8,6 @@
       "type": "remote",
       "url": "https://gitlab-be.glean.com/mcp/default"
     },
-
     {
       "name": "gitlab",
       "description": "GitLab MCP server",
@@ -58,6 +57,15 @@
       "description": "Obsidian",
       "type": "local",
       "command": ["npx", "-y", "@bitbonsai/mcpvault", "{{ .obsidian.vault_path }}"]
+    },
+    {
+      "name": "container-use",
+      "description": "Sandboxed dev environments for coding agents",
+      "type": "local",
+      "command": ["container-use", "stdio"],
+      "env": {
+        "DOCKER_HOST": "unix://${HOME}/.config/colima/default/docker.sock"
+      }
     }
   ],
   "discovery": {

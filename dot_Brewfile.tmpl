@@ -1,5 +1,3 @@
-tap 'homebrew/bundle'
-
 brew 'agg'
 brew 'asciinema'
 brew 'atuin'
@@ -101,8 +99,11 @@ mas 'Pages', id: 361_309_726
 mas 'Velja', id: 1_607_635_845
 mas 'Xcode', id: 497799835
 
-tap 'tw93/tap', 'https://github.com/tw93/homebrew-tap'
+tap 'tw93/tap', 'https://github.com/tw93/homebrew-tap', trusted: true
 brew 'mole'
+
+tap 'dagger/tap', 'https://github.com/dagger/homebrew-tap', trusted: true
+cask 'container-use'
 
 {{- if not .workconf }}
 brew 'railway'
