@@ -7,13 +7,21 @@ behavior = "own"
 backend = "gpg"
 signingkey = "{{ .git.signing_key }}"
 
+[git]
+sign-on-push = true
+write-change-id-header = true
+fetch = "glob:*"
+private-commits = "denylist()"
+
 [templates]
-git.git_push_bookmark = '"vs/push-" ++ change_id.short()'
+git_push_bookmark = '"vs/push-" ++ change_id.short()'
 
 [ui]
-default-command = "log"
+default-command = ["log", "-r", "stack()"]
 pager = "delta"
 diff-formatter= ":git"
+diff-editor = ":builtin"
+bookmark-list-sort-keys = ["committer-date-", "author-date-", "name"]
 
 [aliases]
 wip = ["ci", "-m", "wip"]
