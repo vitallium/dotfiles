@@ -67,23 +67,27 @@
     "glob": "allow",
     "list": "allow",
     "todoread": "allow",
-    "todowrite": "allow",
-    // lazy-mcp
-    "lazy-mcp_list_servers": "allow",
-    "lazy-mcp_list_commands": "allow",
-    "lazy-mcp_describe_commands": "allow"
+    "todowrite": "allow"
   },
   {{- end }}
   "mcp": {
-    "lazy-mcp": {
-      "type": "local",
-      "command": [
-        "lazy-mcp",
-        "--config",
-        "~/.config/lazy-mcp/servers.json"
-      ],
-      "enabled": true
-    }
+{{- $profile := ternary "work" "personal" .workconf }}
+{{- $mcpServers := get (get .mcp_servers .chezmoi.os) $profile }}
+{{- range $index, $server := $mcpServers }}
+    "{{ $server.name }}": {
+      "type": "{{ $server.type }}",
+      "enabled": true,
+{{- if eq $server.type "remote" }}
+      "url": "{{ $server.url }}",
+{{- else if eq $server.type "local" }}
+      "command": {{ toJson $server.command }},
+{{- if $server.env }}
+      "environment": {{ toJson $server.env }},
+{{- end }}
+{{- end }}
+      "description": "{{ $server.description }}"
+    }{{ if lt $index (sub (len $mcpServers) 1) }},{{ end }}
+{{- end }}
   },
   "plugin": [
   {{- if .workconf }}

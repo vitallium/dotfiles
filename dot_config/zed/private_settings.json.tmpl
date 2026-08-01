@@ -113,10 +113,23 @@
     }
   },
   "context_servers": {
-    "lazy-mcp": {
-      "command": "lazy-mcp",
-      "args": ["--config", "~/.config/lazy-mcp/servers.json"]
-    }
+{{- $profile := ternary "work" "personal" .workconf }}
+{{- $mcpServers := get (get .mcp_servers .chezmoi.os) $profile }}
+{{- range $index, $server := $mcpServers }}
+    "{{ $server.name }}": {
+{{- if eq $server.type "remote" }}
+      "url": "{{ $server.url }}"
+{{- else if eq $server.type "local" }}
+      "command": {{ index $server.command 0 | toJson }}{{ if or (gt (len $server.command) 1) $server.env }},{{ end }}
+{{- if gt (len $server.command) 1 }}
+      "args": {{ toJson (slice $server.command 1) }}{{ if $server.env }},{{ end }}
+{{- end }}
+{{- if $server.env }}
+      "env": {{ toJson $server.env }}
+{{- end }}
+{{- end }}
+    }{{ if lt $index (sub (len $mcpServers) 1) }},{{ end }}
+{{- end }}
   },
   "languages": {
     "Ruby": {

@@ -8,6 +8,11 @@ set fish_greeting ''
 # Homebrew
 #
 /opt/homebrew/bin/brew shellenv | source
+
+# Colima
+if type -q colima
+    set -gx DOCKER_HOST "unix://$HOME/.config/colima/default/docker.sock"
+end
 {{- end }}
 
 # Paths
