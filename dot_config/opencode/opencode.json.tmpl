@@ -85,7 +85,6 @@
       "environment": {{ toJson $server.env }},
 {{- end }}
 {{- end }}
-      "description": "{{ $server.description }}"
     }{{ if lt $index (sub (len $mcpServers) 1) }},{{ end }}
 {{- end }}
   },
