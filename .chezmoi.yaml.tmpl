@@ -14,6 +14,29 @@ data:
   git:
     email: vitaliy.slobodin@gmail.com
     signing_key: EA8703DF57BC7168
+  ghostty:
+    font:
+      name: MonoLisaCode
+{{- if (eq .chezmoi.os "darwin") }}
+      size: 14.0
+{{- else }}
+      size: 11.0
+{{- end }}
+  zed:
+    terminal_font:
+      name: MonoLisaCode
+    buffer_font:
+      name: MonoLisaCode
+{{- if (eq .chezmoi.os "darwin") }}
+      size: 14
+{{- else }}
+      size: 11
+{{- end }}
+    ui_font:
+      name: MonoLisaText
+      size: 15
+    markdown_font:
+      name: MonoLisaText
   obsidian:
 {{- if (eq .chezmoi.os "darwin")}}
     vault_path: /Users/vslobodin/Documents/Obsidian/Personal
@@ -26,23 +49,19 @@ data:
     signing_key: BA3C1F8C810C4D05
   obsidian:
     vault_path: /Users/vslobodin/Documents/Obsidian/GitLab
-{{- end }}
   ghostty:
     font:
-      name: MonoLisaCode
-{{- if (eq .chezmoi.os "darwin") }}
+      name: Maple Mono
       size: 14.0
-{{- else }}
-      size: 11.0
-{{- end }}
   zed:
-    ui_font:
-      name: MonoLisaText
-      size: 15
     terminal_font:
-      name: MonoLisaCode
+      name: Maple Mono
     buffer_font:
-      name: MonoLisaCode
-      size: 14
+      name: Maple Mono
+      size: 14.0
+    ui_font:
+      name: GitLab Sans
+      size: 15
     markdown_font:
-      name: MonoLisaText
+      name: GitLab Sans
+{{- end }}
