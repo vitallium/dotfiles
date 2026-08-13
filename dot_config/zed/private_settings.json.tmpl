@@ -130,7 +130,29 @@
       "effort": "medium",
       "provider": "zed.dev",
       "model": "gpt-5.5-codex"
-    }
+    },
+    "tool_permissions": {
+      "tools": {
+        "mcp:container-use:environment_file_edit": {
+          "default": "allow"
+        },
+        "mcp:container-use:environment_config": {
+          "default": "allow"
+        },
+        "mcp:container-use:environment_file_read": {
+          "default": "allow"
+        },
+        "mcp:container-use:environment_run_cmd": {
+          "default": "allow"
+        },
+        "mcp:container-use:environment_file_list": {
+          "default": "allow"
+        },
+        "mcp:container-use:environment_create": {
+          "default": "allow"
+        }
+      }
+    },
   },
   "edit_predictions": {
     "mode": "subtle",
