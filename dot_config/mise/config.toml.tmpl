@@ -39,6 +39,9 @@ cosign = "3"
 container-use = "latest"
 chezmoi = "2"
 go = "latest"
+{{- if .personal }}
+grok = "latest"
+{{- end }}
 gum = "latest"
 hadolint = "latest"
 hivemind = "latest"
