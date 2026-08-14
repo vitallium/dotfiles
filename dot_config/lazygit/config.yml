@@ -1,4 +1,3 @@
----
 gui:
   sidePanelWidth: 0.25
   expandFocusedSidePanel: true
@@ -7,7 +6,7 @@ git:
   commit:
     autoWrapCommitMessage: true
     autoWrapWidth: 72
-  pagers:
-    - pager: delta --paging=never
+  diffRenderers:
+    - command: delta --paging=never
 os:
   editPreset: "zed"
