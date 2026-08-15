@@ -1,0 +1,258 @@
+active_model = "mistral-medium-3.5"
+vim_keybindings = false
+theme = "auto"
+disable_welcome_banner_animation = false
+autocopy_to_clipboard = true
+file_watcher_for_autocomplete = false
+displayed_workdir = ""
+context_warnings = false
+voice_mode_enabled = false
+narrator_enabled = false
+active_transcribe_model = "voxtral-realtime"
+active_tts_model = "voxtral-tts"
+bypass_tool_permissions = false
+raise_on_compaction_failure = false
+enable_telemetry = true
+system_prompt_id = "cli"
+compaction_prompt_id = "compact"
+include_commit_signature = false
+include_model_info = true
+include_project_context = true
+include_prompt_detail = true
+enable_update_checks = true
+enable_notifications = true
+enable_system_trust_store = false
+api_timeout = 720.0
+api_retry_max_elapsed_time = 300.0
+auto_compact_threshold = 200000
+tool_paths = []
+
+# MCP Servers - populated from .chezmoidata/mcp_servers.yml
+{{- $profile := ternary "work" "personal" .workconf }}
+{{- $mcpServers := get (get .mcp_servers .chezmoi.os) $profile }}
+{{- range $server := $mcpServers }}
+[[mcp_servers]]
+name = "{{ $server.name }}"
+{{- if eq $server.type "remote" }}
+transport = "http"
+url = "{{ $server.url }}"
+{{- else if eq $server.type "local" }}
+transport = "stdio"
+command = {{ toJson $server.command }}
+{{- if $server.env }}
+  env = {{ toJson $server.env }}
+{{- end }}
+{{- end }}
+{{- if $server.description }}
+description = "{{ $server.description }}"
+{{- end }}
+
+{{- end }}
+
+enable_connectors = true
+connectors = []
+enabled_tools = []
+disabled_tools = []
+agent_paths = []
+enabled_agents = []
+disabled_agents = []
+installed_agents = []
+default_agent = "ask"
+skill_paths = []
+enabled_skills = []
+disabled_skills = []
+experimental_enable_registry_skills = false
+applied_migrations = []
+
+[experiment_overrides]
+
+[[providers]]
+name = "mistral"
+api_base = "https://api.mistral.ai/v1"
+api_key_env_var = "MISTRAL_API_KEY"
+browser_auth_base_url = "https://console.mistral.ai"
+browser_auth_api_base_url = "https://console.mistral.ai/api"
+api_style = "openai"
+backend = "mistral"
+reasoning_field_name = "reasoning_content"
+project_id = ""
+region = ""
+
+[providers.extra_headers]
+
+[[providers]]
+name = "llamacpp"
+api_base = "http://127.0.0.1:8080/v1"
+api_key_env_var = ""
+api_style = "openai"
+backend = "generic"
+reasoning_field_name = "reasoning_content"
+project_id = ""
+region = ""
+
+[providers.extra_headers]
+
+[[models]]
+name = "mistral-vibe-cli-latest"
+provider = "mistral"
+alias = "mistral-medium-3.5"
+temperature = 1.0
+input_price = 1.5
+output_price = 7.5
+thinking = "high"
+supports_images = true
+auto_compact_threshold = 200000
+
+[[models]]
+name = "devstral-small-latest"
+provider = "mistral"
+alias = "devstral-small"
+temperature = 0.2
+input_price = 0.1
+output_price = 0.3
+thinking = "off"
+supports_images = false
+auto_compact_threshold = 200000
+
+[[models]]
+name = "devstral"
+provider = "llamacpp"
+alias = "local"
+temperature = 0.2
+input_price = 0.0
+output_price = 0.0
+thinking = "off"
+supports_images = false
+auto_compact_threshold = 200000
+
+[[transcribe_providers]]
+name = "mistral"
+api_base = "wss://api.mistral.ai"
+api_key_env_var = "MISTRAL_API_KEY"
+client = "mistral"
+
+[[transcribe_models]]
+name = "voxtral-mini-transcribe-realtime-2602"
+provider = "mistral"
+alias = "voxtral-realtime"
+sample_rate = 16000
+encoding = "pcm_s16le"
+language = "en"
+target_streaming_delay_ms = 500
+
+[[tts_providers]]
+name = "mistral"
+api_base = "https://api.mistral.ai"
+api_key_env_var = "MISTRAL_API_KEY"
+client = "mistral"
+
+[[tts_models]]
+name = "voxtral-mini-tts-latest"
+provider = "mistral"
+alias = "voxtral-tts"
+voice = "gb_jane_neutral"
+response_format = "wav"
+
+[project_context]
+default_commit_count = 5
+timeout_seconds = 2.0
+
+[experiments]
+enable = true
+api_host = "https://experiments.mistral.services/"
+client_key = ""
+
+[session_logging]
+save_dir = "~/.vibe/logs/session"
+session_prefix = "session"
+enabled = true
+
+[tools.skill]
+permission = "always"
+allowlist = []
+denylist = []
+sensitive_patterns = []
+
+[tools.exit_plan_mode]
+permission = "always"
+allowlist = []
+denylist = []
+sensitive_patterns = []
+
+[tools.task]
+permission = "ask"
+allowlist = ["explore"]
+denylist = []
+sensitive_patterns = []
+
+[tools.bash]
+permission = "ask"
+allowlist = []
+denylist = []
+sensitive_patterns = []
+max_output_bytes = 16000
+default_timeout = 300
+denylist_standalone = []
+
+[tools.edit]
+permission = "always"
+allowlist = []
+denylist = []
+sensitive_patterns = []
+
+[tools.grep]
+permission = "always"
+allowlist = []
+denylist = []
+sensitive_patterns = []
+max_output_bytes = 64000
+default_max_matches = 100
+default_timeout = 60
+exclude_patterns = []
+codeignore_file = ".vibeignore"
+
+[tools.ask_user_question]
+permission = "always"
+allowlist = []
+denylist = []
+sensitive_patterns = []
+
+[tools.web_search]
+permission = "ask"
+allowlist = []
+denylist = []
+sensitive_patterns = []
+timeout = 120
+model = "mistral-vibe-cli-with-tools"
+
+[tools.web_fetch]
+permission = "ask"
+allowlist = []
+denylist = []
+sensitive_patterns = []
+default_timeout = 30
+max_timeout = 120
+max_content_bytes = 120000
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+
+[tools.todo]
+permission = "always"
+allowlist = []
+denylist = []
+sensitive_patterns = []
+max_todos = 100
+
+[tools.write_file]
+permission = "always"
+allowlist = []
+denylist = []
+sensitive_patterns = []
+max_write_bytes = 64000
+create_parent_dirs = true
+
+[tools.read_file]
+permission = "always"
+allowlist = []
+denylist = []
+sensitive_patterns = []
+max_read_bytes = 51200
