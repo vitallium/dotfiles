@@ -14,8 +14,7 @@ apply_patch_freeform = true
 skills = true
 shell_snapshot = true
 
-{{- $profile := ternary "work" "personal" .workconf }}
-{{- $mcpServers := get (get .mcp_servers .chezmoi.os) $profile }}
+{{- $mcpServers := get .mcp_servers .chezmoi.os }}
 {{- range $server := $mcpServers }}
 [mcp_servers.{{ $server.name }}]
 {{- if eq $server.type "remote" }}

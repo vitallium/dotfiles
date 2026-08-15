@@ -66,13 +66,6 @@ Files and directories use special prefixes that control how chezmoi processes th
   - `run_onchange_after_*` → Scripts that run after apply when changed
 - `doc/` → Documentation (e.g., Fedora setup guide)
 
-### Configuration Profiles
-
-The repository supports two configuration profiles controlled by the `.workconf` template variable:
-
-- **Personal** (`workconf: false`): Includes personal apps (Discord, Steam, etc.)
-- **Work** (`workconf: true`): Includes GitLab-specific tools and fonts
-
 Profile is set during initial `chezmoi init` via the `.chezmoi.yaml.tmpl` prompt.
 
 ## Development Tools Setup
@@ -142,7 +135,6 @@ fisher update
 Many files use Go templating for cross-platform/profile support. Common template variables:
 
 - `.chezmoi.os` → Operating system ("darwin" or "linux")
-- `.workconf` → Boolean for work profile
 - `.email` / `.name` → User identity
 - `.git.email` / `.git.signing_key` → Git configuration
 
@@ -163,7 +155,6 @@ Packages defined in `dot_Brewfile.tmpl`:
 - Core CLI tools (bat, ripgrep, fzf, gh, etc.)
 - GUI applications (casks)
 - Mac App Store apps (via `mas`)
-- Profile-specific packages (personal vs work)
 
 Install/update packages:
 
@@ -240,7 +231,6 @@ Common operations:
 - Settings are in `dot_config/zed/private_settings.json.tmpl` (templated for fonts)
 - Keybindings in `dot_config/zed/private_keymap.json`
 - Ruby snippets in `dot_config/zed/snippets/ruby.json`
-- Uses `zed@preview` for personal profile, `zed` for work profile
 
 ### Helix
 

@@ -34,74 +34,33 @@ mcp_servers:
       description: Interact with Cloudflare
       type: remote
       url: https://mcp.cloudflare.com/mcp
-    glean: &glean
-      name: glean
-      description: GitLab enterprise search and knowledge discovery via Glean
-      type: remote
-      url: https://gitlab-be.glean.com/mcp/default
-    gitlab: &gitlab
-      name: gitlab
-      description: GitLab MCP server
-      type: remote
-      url: https://gitlab.com/api/v4/mcp
-    gitlab-orbit: &gitlab-orbit
-      name: gitlab-orbit
-      description: Query the GitLab Knowledge Graph via glab orbit remote CLI subcommands
-      type: remote
-      url: https://gitlab.com/api/v4/orbit/mcp
-    obsidian-personal-darwin: &obsidian-personal-darwin
+    obsidian-darwin: &obsidian-darwin
       name: obsidian
       description: Obsidian
       type: local
       command: [mcpvault, /Users/vslobodin/Documents/Obsidian/Personal]
       env: {}
-    obsidian-personal-linux: &obsidian-personal-linux
+    obsidian-linux: &obsidian-linux
       name: obsidian
       description: Obsidian
       type: local
       command: [mcpvault, /home/vslobodin/Documents/Obsidian/Personal]
       env: {}
-    obsidian-work: &obsidian-work
-      name: obsidian
-      description: Obsidian
-      type: local
-      command: [mcpvault, /Users/vslobodin/Documents/Obsidian/GitLab]
-      env: {}
 
   darwin:
-    personal:
-      - *chrome-devtools
-      - *context7
-      - *excalidraw
-      - *container-use
-      - *railway
-      - *cloudflare
-      - *obsidian-personal-darwin
-    work:
-      - *chrome-devtools
-      - *context7
-      - *excalidraw
-      - *container-use
-      - *glean
-      - *gitlab
-      - *gitlab-orbit
-      - *obsidian-work
+    - *chrome-devtools
+    - *context7
+    - *excalidraw
+    - *container-use
+    - *railway
+    - *cloudflare
+    - *obsidian-darwin
 
   linux:
-    personal:
-      - *chrome-devtools
-      - *context7
-      - *excalidraw
-      - *container-use
-      - *railway
-      - *cloudflare
-      - *obsidian-personal-linux
-    work:
-      - *chrome-devtools
-      - *context7
-      - *excalidraw
-      - *container-use
-      - *glean
-      - *gitlab
-      - *gitlab-orbit
-      - *obsidian-work
+    - *chrome-devtools
+    - *context7
+    - *excalidraw
+    - *container-use
+    - *railway
+    - *cloudflare
+    - *obsidian-linux
