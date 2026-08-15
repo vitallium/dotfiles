@@ -136,10 +136,6 @@ Use `gum` to make your shell scripts pretty and fun!
 
 Use `gh` cli for all GitHub interactions.
 
-## GitLab
-
-Use `glab` cli for all GitLab interactions.
-
 ## ast-grep
 
 `ast-grep` is available. Use it when searching/refactoring code.

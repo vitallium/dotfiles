@@ -32,16 +32,13 @@ rust = { version = "latest", components = "rust-analyzer,rust-src" }
 biome = "latest"
 bun = "latest"
 cargo-binstall = "latest"
-{{- if .personal }}
 codex = "latest"
-{{- end }}
 cosign = "3"
 container-use = "latest"
 chezmoi = "2"
 go = "latest"
-{{- if .personal }}
 grok = "latest"
-{{- end }}
+
 gum = "latest"
 hadolint = "latest"
 hivemind = "latest"
@@ -89,15 +86,11 @@ watchexec = "latest"
 "npm:@bitbonsai/mcpvault" = "latest"
 "npm:@devcontainers/cli" = "latest"
 "npm:@fsouza/prettierd" = "latest"
-{{- if .personal }}
 "npm:@google/gemini-cli" = "latest"
-{{- end }}
 "npm:@herb-tools/language-server" = "latest"
 "npm:@playwright/mcp" = "latest"
-{{- if .personal }}
 "npm:@railway/cli" = "latest"
 "npm:@railway/mcp-server" = "latest"
-{{- end }}
 "npm:@upstash/context7-mcp" = "latest"
 "npm:agent-browser" = "latest"
 "npm:chrome-devtools-mcp" = "latest"
@@ -118,13 +111,10 @@ watchexec = "latest"
 
 # Python
 # "pipx:lsp-devtools" = "latest"
-"pipx:llm" = { version = "latest", depends = ["python", "uv"] }
 "pipx:pdm" = { version = "latest", depends = ["python", "uv"] }
 "pipx:pgcli" = { version = "latest", depends = ["python", "uv"] }
 "pipx:ruff" = { version = "latest", depends = ["python", "uv"] }
 "pipx:yt-dlp" = { version = "latest", depends = ["python", "uv"] }
 "pipx:yubikey-manager" = { version = "latest", depends = ["python", "uv"] }
 "pipx:ty" = { version = "latest", depends = ["python", "uv"] }
-{{- if .personal }}
 "pipx:mistral-vibe" = { version = "latest", depends = ["python", "uv"] }
-{{- end }}

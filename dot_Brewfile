@@ -47,6 +47,7 @@ brew 'nss'
 brew 'nushell'
 brew 'pinentry-mac'
 brew 'pkg-config'
+brew 'railway'
 brew 'ripgrep'
 brew 'sccache'
 brew 'silicon'
@@ -61,13 +62,19 @@ brew 'zlib'
 # Casks
 cask '1password'
 cask '1password-cli'
+cask 'acorn'
 cask 'appcleaner'
 cask 'balenaetcher'
+cask 'chatgpt'
+cask 'cleanshot'
+cask 'daisydisk'
+cask 'discord'
 cask 'elgato-control-center'
 cask 'firefox'
 cask 'firefox@developer-edition'
 cask 'font-inter'
 cask 'font-symbols-only-nerd-font'
+cask 'fork'
 cask 'ghostty'
 cask 'gitbutler'
 cask 'google-chrome'
@@ -75,106 +82,60 @@ cask 'handbrake-app'
 cask 'httpie-desktop'
 cask 'iina'
 cask 'imageoptim'
+cask 'jetbrains-toolbox'
 cask 'keka'
 cask 'keycastr'
 cask 'linearmouse'
+cask 'little-snitch'
 cask 'lm-studio'
 cask 'localsend'
-cask 'obsidian'
-cask 'opencode-desktop'
-cask 'pika'
-cask 'qlmarkdown'
-cask 'raycast'
-cask 'sanesidebuttons'
-cask 'slack'
-cask 'virtualbuddy'
-cask 'visual-studio-code'
-cask 'zoom'
-
-mas 'Amphetamine', id: 937984704
-mas '1Password for Safari', id: 1_569_813_296
-mas 'Gapplin', id: 768_053_424
-mas 'JSON Helper', id: 453_114_608
-mas 'Keynote', id: 361_285_480
-mas 'Numbers', id: 361_304_891
-mas 'Pages', id: 361_309_726
-mas 'Velja', id: 1_607_635_845
-mas 'Xcode', id: 497799835
-
-tap 'tw93/tap', 'https://github.com/tw93/homebrew-tap', trusted: true
-brew 'mole'
-
-{{- if not .workconf }}
-brew 'railway'
-
-cask 'acorn'
-cask 'chatgpt'
-cask 'cleanshot'
-cask 'daisydisk'
-cask 'discord'
-cask 'fork'
-cask 'jetbrains-toolbox'
-cask 'little-snitch'
 cask 'monodraw'
 cask 'netnewswire'
 cask 'nvidia-geforce-now'
 cask 'obs'
+cask 'obsidian'
+cask 'opencode-desktop'
+cask 'pika'
 cask 'prismlauncher'
 cask 'protonvpn'
+cask 'qlmarkdown'
+cask 'raycast'
+cask 'sanesidebuttons'
 cask 'signal'
+cask 'slack'
 cask 'spotify'
 cask 'sublime-merge'
 cask 'telegram'
 cask 'todoist-app'
+cask 'virtualbuddy'
+cask 'visual-studio-code'
 cask 'zed@preview'
+cask 'zoom'
 
+mas '1Password for Safari', id: 1_569_813_296
 mas 'Agenda', id: 1287445660
+mas 'Amphetamine', id: 937984704
 mas 'Consent-O-Matic', id: 1606897889
 mas 'Dynamo', id: 1445910651
 mas 'Flighty', id: 1358823008
+mas 'Gapplin', id: 768_053_424
 mas 'HP', id: 1474276998
 mas 'Hush', id: 1544743900
 mas 'Ivory', id: 6444602274
+mas 'JSON Helper', id: 453_114_608
 mas 'Kagi for Safari', id: 1622835804
 mas 'Keepa - Price Tracker', id: 1533805339
+mas 'Keynote', id: 361_285_480
 mas 'Noir', id: 1592917505
+mas 'Numbers', id: 361_304_891
+mas 'Pages', id: 361_309_726
 mas 'Parcel', id: 375589283
 mas 'PiPifier', id: 1160374471
 mas 'TestFlight', id: 899247664
+mas 'Velja', id: 1_607_635_845
 mas 'WhatsApp', id: 310633997
 mas 'Wipr', id: 1662217862
+mas 'Xcode', id: 497799835
 
-{{- else }}
-tap 'fforster/gitlab-mcp', 'https://gitlab.com/fforster/homebrew-gitlab-mcp.git'
-tap 'gitlab/fonts', 'https://gitlab.com/vitallium/homebrew-gitlab-fonts'
-
-brew 'bash' # for runbooks repo
-brew 'exiftool'
-brew 'gitlab-mcp'
-brew 'glab'
-brew 'graphviz'
-brew 'librsvg'
-brew 'meson'
-brew 'nginx'
-brew 'ninja'
-brew 'runit'
-brew 'teleport'
-
-cask 'bruno'
-cask 'cap'
-cask 'claude'
-cask 'figma'
-cask 'font-gitlab-mono-italic'
-cask 'font-gitlab-mono-regular'
-cask 'font-gitlab-sans-italic'
-cask 'font-gitlab-sans-regular'
-cask 'gcloud-cli'
-cask 'goland'
-cask 'handy'
-cask 'pycharm'
-cask 'rubymine'
-cask 'shottr'
-cask 'vagrant'
-cask 'zed'
-
-{{- end }}
+tap 'tw93/tap', 'https://github.com/tw93/homebrew-tap', trusted: true
+brew 'mole'

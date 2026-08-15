@@ -28,8 +28,7 @@ auto_compact_threshold = 200000
 tool_paths = []
 
 # MCP Servers - populated from .chezmoidata/mcp_servers.yml
-{{- $profile := ternary "work" "personal" .workconf }}
-{{- $mcpServers := get (get .mcp_servers .chezmoi.os) $profile }}
+{{- $mcpServers := get .mcp_servers .chezmoi.os }}
 {{- range $server := $mcpServers }}
 [[mcp_servers]]
 name = "{{ $server.name }}"

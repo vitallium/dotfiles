@@ -10,8 +10,3 @@ doc/
 {{ if ne .chezmoi.os "darwin" }}
 .Brewfile
 {{- end }}
-
-{{ if .workconf }}
-dot_codex/private_config.toml.tmpl
-dot_vibe/
-{{ end }}

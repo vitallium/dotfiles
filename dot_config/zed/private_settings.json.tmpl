@@ -1,72 +1,5 @@
 {
   "use_system_window_tabs": true,
-{{- if .workconf }}
-  "agent_servers": {
-    "opencode": {
-      "type": "registry"
-    },
-    "claude-acp": {
-      "type": "registry"
-    }
-  },
-  "agent": {
-    "default_profile": "container-use",
-    "profiles": {
-      "container-use": {
-        "name": "Container Use",
-        "tools": {
-          "fetch": true,
-          "thinking": true,
-          "copy_path": false,
-          "find_path": false,
-          "delete_path": false,
-          "create_directory": false,
-          "list_directory": false,
-          "diagnostics": false,
-          "read_file": false,
-          "open": false,
-          "move_path": false,
-          "grep": false,
-          "edit_file": false,
-          "terminal": false
-        },
-        "enable_all_context_servers": false,
-        "context_servers": {
-          "container-use": {
-            "tools": {
-              "environment_add_service": true,
-              "environment_checkpoint": true,
-              "environment_config": true,
-              "environment_create": true,
-              "environment_file_delete": true,
-              "environment_file_edit": true,
-              "environment_file_list": true,
-              "environment_file_read": true,
-              "environment_file_write": true,
-              "environment_open": true,
-              "environment_run_cmd": true,
-              "environment_update_metadata": true
-            }
-          }
-        }
-      }
-    },
-    "default_model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-5"
-    }
-  },
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
-  },
-  "collaboration_panel": {
-    "button": false
-  },
-  "edit_predictions": {
-    "provider": "none"
-  },
-{{- else }}
   "agent_servers": {
     "opencode": {
       "type": "registry"
@@ -158,7 +91,6 @@
     "mode": "subtle",
     "provider": "zed"
   },
-{{- end }}
   "theme": {
     "light": "Modus Operandi",
     "dark": "Modus Vivendi"
@@ -172,8 +104,7 @@
     }
   },
   "context_servers": {
-{{- $profile := ternary "work" "personal" .workconf }}
-{{- $mcpServers := get (get .mcp_servers .chezmoi.os) $profile }}
+{{- $mcpServers := get .mcp_servers .chezmoi.os }}
 {{- range $index, $server := $mcpServers }}
     "{{ $server.name }}": {
 {{- if eq $server.type "remote" }}
