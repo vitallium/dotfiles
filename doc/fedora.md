@@ -35,7 +35,7 @@
   - [Set Caps Lock as additional Ctrl](#set-caps-lock-as-additional-ctrl)
 - [Framework Laptop specific configuration](#framework-laptop-specific-configuration)
   - [Configure power saving](#configure-power-saving)
-  - [Enable GuC](#enable-guc)
+  - [Enable Intel GPU features](#enable-intel-gpu-features)
 
 ## Post installation steps
 
@@ -337,13 +337,15 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier'
 sudo grubby --update-kernel=ALL --args="nvme.noacpi=1"
 ```
 
-### Enable GuC
+### Enable Intel GPU features
 
-Enable Intel Graphics firmware for better performance and power management.
+Enable GuC firmware and comprehensive power saving for 11th Gen Intel Tiger Lake. `nvme.noacpi=1` above already handles the suspend battery drain, so stay on the default `s2idle` sleep mode rather than forcing S3 (`mem_sleep_default=deep` is unreliable on Tiger Lake).
 
 ```bash
-sudo grubby --update-kernel=ALL --args="i915.enable_guc=3"
+sudo grubby --update-kernel=ALL --args="i915.enable_guc=3 i915.enable_psr=2 i915.enable_rc6=1 i915.enable_fbc=1"
 ```
+
+Note: `i915.enable_psr=2` forces PSR2. If the panel flickers during normal use, change it to `i915.enable_psr=1` or `0`.
 
 Reboot for kernel changes to take effect.
 
