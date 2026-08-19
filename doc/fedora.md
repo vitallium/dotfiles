@@ -24,7 +24,7 @@
   - [Enable flathub](#enable-flathub)
   - [Install flatpaks](#install-flatpaks)
   - [Clean up unused directories and bookmarks](#clean-up-unused-directories-and-bookmarks)
-  - [Install docker](#install-docker)
+  - [Install podman](#install-podman)
   - [Install 1password CLI](#install-1password-cli)
 - [Configure Gnome](#configure-gnome)
   - [Install packages](#install-packages)
@@ -212,22 +212,21 @@ flatpak install -y flathub com.discordapp.Discord \
 flatpak update
 ```
 
-### Install docker (rootless)
+### Install podman
+
+Podman is Fedora's default container runtime, rootless by design.
 
 ```bash
-sudo dnf -y install dnf-plugins-core
-sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin uidmap dbus-user-session
-
-curl -fsSL https://get.docker.com/rootless | sh
+sudo dnf install -y podman podman-docker podman-compose
 ```
 
 Enable and start user service.
 
 ```bash
-systemctl --user enable --now docker.service
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+systemctl --user enable --now podman.socket
 ```
+
+The `podman-docker` package provides Docker CLI compatibility—`docker` commands map to Podman automatically.
 
 ### Install 1password CLI
 
