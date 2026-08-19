@@ -53,6 +53,10 @@ sudo hostnamectl set-hostname serenity
 
 ### Reboot the system to install and apply updates
 
+```bash
+sudo reboot
+```
+
 ### Remove redundant stuff
 
 ```bash
@@ -99,7 +103,8 @@ sudo dnf swap ffmpeg-free ffmpeg --allowerasing
 ### Enable Terra repository
 
 ```bash
-sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+sudo rpm --import https://repos.fyralabs.com/terra/RPM-GPG-KEY-terra
+sudo dnf install --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 ```
 
 ### Install Ghostty terminal emulator
@@ -204,33 +209,40 @@ flatpak install -y flathub com.discordapp.Discord \
                            com.fastmail.Fastmail \
                            io.github.celluloid_player.Celluloid \
                            io.github.realmazharhussain.GdmSettings
+flatpak update
 ```
 
-### Install docker
+### Install docker (rootless)
 
 ```bash
 sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin uidmap dbus-user-session
+
+curl -fsSL https://get.docker.com/rootless | sh
 ```
 
-Configure rootless.
+Enable and start user service.
 
 ```bash
-dockerd-rootless-setuptool.sh install
-```
-
-Enable and start `systemd` services.
-
-```bash
-systemctl enable --now docker.service
+systemctl --user enable --now docker.service
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 ```
 
 ### Install 1password CLI
 
 ```bash
 sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
-sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
+cat > /tmp/1password.repo <<'EOF'
+[1password]
+name=1Password Stable Channel
+baseurl=https://downloads.1password.com/linux/rpm/stable/$basearch
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://downloads.1password.com/linux/keys/1password.asc
+EOF
+sudo mv /tmp/1password.repo /etc/yum.repos.d/
 sudo dnf install -y 1password 1password-cli
 ```
 
@@ -274,6 +286,7 @@ Enable blazingly fast keyboard repeat.
 
 ```bash
 gsettings set org.gnome.desktop.peripherals.keyboard delay 150
+gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 25
 ```
 
 ### Key bindings
@@ -300,7 +313,9 @@ done
 ### Install [phinger-cursors](https://github.com/phisch/phinger-cursors)
 
 ```bash
-sudo wget -cO- https://github.com/phisch/phinger-cursors/releases/latest/download/phinger-cursors-variants.tar.bz2 | sudo tar xfj - -C /usr/share/icons
+wget https://github.com/phisch/phinger-cursors/releases/latest/download/phinger-cursors-variants.tar.bz2
+sudo tar xfj phinger-cursors-variants.tar.bz2 -C /usr/share/icons
+rm phinger-cursors-variants.tar.bz2
 ```
 
 And enable them.
@@ -325,6 +340,14 @@ sudo grubby --update-kernel=ALL --args="nvme.noacpi=1"
 
 ### Enable GuC
 
+Enable Intel Graphics firmware for better performance and power management.
+
 ```bash
 sudo grubby --update-kernel=ALL --args="i915.enable_guc=3"
+```
+
+Reboot for kernel changes to take effect.
+
+```bash
+sudo reboot
 ```
