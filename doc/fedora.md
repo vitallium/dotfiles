@@ -18,7 +18,8 @@
   - [Install Development Tools](#install-development-tools)
   - [Install other packages I use](#install-other-packages-i-use)
   - [Install packages for Yubikey](#install-packages-for-yubikey)
-  - [Enable and install vim stuff](#enable-and-install-vim-stuff)
+  - [Install GitHub CLI](#install-github-cli)
+  - [Enable and install micro stuff](#enable-and-install-micro-stuff)
 - [Configure user environment](#configure-user-environment)
   - [Enable flathub](#enable-flathub)
   - [Install flatpaks](#install-flatpaks)
@@ -30,11 +31,11 @@
   - [User interface](#user-interface)
   - [Peripherals](#peripherals)
   - [Key bindings](#key-bindings)
-  - [Enable minimize,maximize buttons](#enable-minimizemaximize-buttons)
   - [Install phinger-cursors](#install-phinger-cursors)
   - [Set Caps Lock as additional Ctrl](#set-caps-lock-as-additional-ctrl)
 - [Framework Laptop specific configuration](#framework-laptop-specific-configuration)
   - [Configure power saving](#configure-power-saving)
+  - [Enable GuC](#enable-guc)
 
 ## Post installation steps
 
