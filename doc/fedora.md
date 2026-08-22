@@ -65,7 +65,7 @@ sudo dnf remove -y cheese rhythmbox totem orca \
               gnome-shell-extension-* \
               libreoffice-* gnome-characters \
               gnome-photos simple-scan virtualbox-guest-additions \
-              gnome-tour gnome-connections firefox
+              gnome-tour gnome-connections firefox || true
 sudo dnf autoremove -y
 ```
 
@@ -91,8 +91,8 @@ sudo dnf install -y gnome-tweaks
 ### Enable RPM Fusion and other repositories
 
 ```bash
-sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf upgrade --refresh
 sudo dnf group upgrade -y core
 sudo dnf install -y rpmfusion-free-release-tainted dnf-plugins-core
@@ -115,8 +115,6 @@ sudo dnf install -y ghostty
 
 ### Install drivers for Intel GPU
 
-See also https://github.com/ai/environment/blob/main/Install.md
-
 ```bash
 sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
 sudo dnf group upgrade multimedia --allowerasing --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
@@ -136,12 +134,12 @@ sudo sysctl -p
 ### Install `Development Tools`
 
 ```bash
-sudo dnf install -y make gcc-c++ gcc make bzip2 openssl \
+sudo dnf install -y make gcc-c++ gcc bzip2 openssl \
                openssl-devel libyaml-devel libffi-devel \
                readline-devel zlib-ng-devel gdbm-devel ncurses-devel \
-               m4 ncurses-devel autoconf re2 re2-devel \
+               m4 autoconf re2 re2-devel \
                libcurl-devel libuuid-devel \
-               libvterm-devel gpgme-devel icu krb5-devel gtk4-devel \
+               libvterm-devel gpgme-devel icu-devel krb5-devel gtk4-devel \
                libusb1-devel rpm-devel
 
 sudo dnf group install -y "development-tools"
