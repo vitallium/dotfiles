@@ -1,0 +1,6 @@
+{{- if (lookPath "container-use") -}}
+#!/bin/bash
+
+# container-use version: {{ output "container-use" "--version" | trim }}
+container-use completion fish > "$HOME/.config/fish/completions/container-use.fish"
+{{- end -}}
