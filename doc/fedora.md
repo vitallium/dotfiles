@@ -140,7 +140,7 @@ sudo dnf install -y make gcc-c++ gcc bzip2 openssl \
                m4 autoconf re2 re2-devel \
                libcurl-devel libuuid-devel \
                libvterm-devel gpgme-devel icu-devel krb5-devel gtk4-devel \
-               libusb1-devel rpm-devel
+               libusb1-devel rpm-devel zed-preview
 
 sudo dnf group install -y "development-tools"
 ```
