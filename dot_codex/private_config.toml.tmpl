@@ -13,6 +13,7 @@ unified_exec = true
 apply_patch_freeform = true
 skills = true
 shell_snapshot = true
+hooks = true
 
 {{- $mcpServers := get .mcp_servers .chezmoi.os }}
 {{- range $server := $mcpServers }}
@@ -34,3 +35,24 @@ args = {{ toJson (slice $server.command 1) }}
 [mcp_servers.{{ $server.name }}.tools.list_servers]
 approval_mode = "approve"
 {{- end }}
+
+[marketplaces.compound-engineering-plugin]
+source_type = "git"
+source = "https://github.com/EveryInc/compound-engineering-plugin.git"
+
+[marketplaces.ponytail]
+source_type = "git"
+source = "https://github.com/DietrichGebert/ponytail.git"
+
+[marketplaces.illo-skill]
+source_type = "git"
+source = "https://github.com/tmchow/illo-skill.git"
+
+[plugins."ponytail@ponytail"]
+enabled = true
+
+[plugins."illo@illo-skill"]
+enabled = true
+
+[plugins."compound-engineering@compound-engineering-plugin"]
+enabled = true
