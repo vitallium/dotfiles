@@ -28,6 +28,7 @@ auto_compact_threshold = 200000
 tool_paths = []
 
 # MCP Servers - populated from .chezmoidata/mcp_servers.yml
+{{- $obsidianVault := .obsidian.vault_path }}
 {{- $mcpServers := get .mcp_servers .chezmoi.os }}
 {{- range $server := $mcpServers }}
 [[mcp_servers]]
@@ -37,7 +38,11 @@ transport = "http"
 url = "{{ $server.url }}"
 {{- else if eq $server.type "local" }}
 transport = "stdio"
+{{- if eq $server.name "obsidian" }}
+command = ["mcpvault", "{{ $obsidianVault }}"]
+{{- else }}
 command = {{ toJson $server.command }}
+{{- end }}
 {{- if $server.env }}
   env = {{ toJson $server.env }}
 {{- end }}

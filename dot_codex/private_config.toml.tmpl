@@ -20,6 +20,7 @@ skills = true
 shell_snapshot = true
 hooks = true
 
+{{- $obsidianVault := .obsidian.vault_path }}
 {{- $mcpServers := get .mcp_servers .chezmoi.os }}
 {{- range $server := $mcpServers }}
 [mcp_servers.{{ $server.name }}]
@@ -27,7 +28,11 @@ hooks = true
 url = "{{ $server.url }}"
 {{- else if eq $server.type "local" }}
 command = {{ index $server.command 0 | quote }}
+{{- if eq $server.name "obsidian" }}
+args = [{{ $obsidianVault | quote }}]
+{{- else }}
 args = {{ toJson (slice $server.command 1) }}
+{{- end }}
 {{- with $server.env }}
 
 [mcp_servers.{{ $server.name }}.env]
@@ -73,7 +78,7 @@ trusted_hash = "sha256:6a6f42bc3b58d6262db38bfd74d7f340fcca2b09cdb134aad365063f0
 [hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:subagent_start:0:0"]
 trusted_hash = "sha256:1423b56c1322f96c8f74c51c1e7ae9a047b904c1fa43ee9165d462fd7a6e70ef"
 
-[hooks.state."/Users/vslobodin/.codex/hooks.json:stop:0:0"]
+[hooks.state."{{ .chezmoi.homeDir }}/.codex/hooks.json:stop:0:0"]
 trusted_hash = "sha256:6078c145089ef0335dc5f6630e245fa647f942006518fac4c05190aa0d32fa8e"
 
 {{- $preservedProjects := "" -}}

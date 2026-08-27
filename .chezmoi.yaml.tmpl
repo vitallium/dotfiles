@@ -8,11 +8,7 @@ data:
     email: vitaliy.slobodin@gmail.com
     signing_key: EA8703DF57BC7168
   obsidian:
-{{- if (eq .chezmoi.os "darwin")}}
-    vault_path: /Users/vslobodin/Documents/Obsidian/Personal
-{{- else }}
-    vault_path: /home/vslobodin/Documents/Obsidian/Personal
-{{- end }}
+    vault_path: {{ .chezmoi.homeDir }}/Documents/Obsidian/Personal
   ghostty:
     font:
       name: MonoLisaCode

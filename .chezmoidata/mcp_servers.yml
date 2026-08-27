@@ -34,17 +34,11 @@ mcp_servers:
       description: Interact with Cloudflare
       type: remote
       url: https://mcp.cloudflare.com/mcp
-    obsidian-darwin: &obsidian-darwin
+    obsidian: &obsidian
       name: obsidian
       description: Obsidian
       type: local
-      command: [mcpvault, /Users/vslobodin/Documents/Obsidian/Personal]
-      env: {}
-    obsidian-linux: &obsidian-linux
-      name: obsidian
-      description: Obsidian
-      type: local
-      command: [mcpvault, /home/vslobodin/Documents/Obsidian/Personal]
+      command: [mcpvault]
       env: {}
 
   darwin:
@@ -54,7 +48,7 @@ mcp_servers:
     - *container-use
     - *railway
     - *cloudflare
-    - *obsidian-darwin
+    - *obsidian
 
   linux:
     - *chrome-devtools
@@ -63,4 +57,4 @@ mcp_servers:
     - *container-use
     - *railway
     - *cloudflare
-    - *obsidian-linux
+    - *obsidian

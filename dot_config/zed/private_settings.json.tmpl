@@ -106,14 +106,17 @@
     }
   },
   "context_servers": {
+{{- $obsidianVault := .obsidian.vault_path }}
 {{- $mcpServers := get .mcp_servers .chezmoi.os }}
 {{- range $index, $server := $mcpServers }}
     "{{ $server.name }}": {
 {{- if eq $server.type "remote" }}
       "url": "{{ $server.url }}"
 {{- else if eq $server.type "local" }}
-      "command": {{ index $server.command 0 | toJson }}{{ if or (gt (len $server.command) 1) $server.env }},{{ end }}
-{{- if gt (len $server.command) 1 }}
+      "command": {{ index $server.command 0 | toJson }}{{ if or (gt (len $server.command) 1) (eq $server.name "obsidian") $server.env }},{{ end }}
+{{- if eq $server.name "obsidian" }}
+      "args": [{{ $obsidianVault | toJson }}]{{ if $server.env }},{{ end }}
+{{- else if gt (len $server.command) 1 }}
       "args": {{ toJson (slice $server.command 1) }}{{ if $server.env }},{{ end }}
 {{- end }}
 {{- if $server.env }}
