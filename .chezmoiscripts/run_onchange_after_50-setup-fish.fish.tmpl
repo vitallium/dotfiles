@@ -6,7 +6,7 @@
 ## Install fisher
 if not type -q fisher
   echo "installing fisher"
-  curl -sL https://git.io/fisher | source
+  curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 end
 
 fisher update
