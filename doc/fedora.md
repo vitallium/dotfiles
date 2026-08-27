@@ -23,7 +23,7 @@
 - [Configure user environment](#configure-user-environment)
   - [Enable flathub](#enable-flathub)
   - [Install flatpaks](#install-flatpaks)
-  - [Clean up unused directories and bookmarks](#clean-up-unused-directories-and-bookmarks)
+  - [Install Orion browser](#install-orion-browser)
   - [Install podman](#install-podman)
   - [Install 1password CLI](#install-1password-cli)
 - [Configure Gnome](#configure-gnome)
@@ -34,8 +34,8 @@
   - [Install phinger-cursors](#install-phinger-cursors)
   - [Set Caps Lock as additional Ctrl](#set-caps-lock-as-additional-ctrl)
 - [Framework Laptop specific configuration](#framework-laptop-specific-configuration)
-  - [Configure power saving](#configure-power-saving)
-  - [Enable Intel GPU features](#enable-intel-gpu-features)
+  - [Update firmware](#update-firmware)
+  - [Configure fingerprint reader](#configure-fingerprint-reader)
 
 ## Post installation steps
 
@@ -79,7 +79,7 @@ sudo systemctl enable fstrim.timer
 
 ```bash
 sudo dnf install -y fish
-sudo usermod -s $(which fish) vslobodin
+sudo usermod -s $(which fish) $USER
 ```
 
 ### Install Gnome extensions applications
@@ -95,7 +95,7 @@ sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-rel
 sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf upgrade --refresh
 sudo dnf group upgrade -y core
-sudo dnf install -y rpmfusion-free-release-tainted dnf-plugins-core
+sudo dnf install -y rpmfusion-free-release-tainted rpmfusion-nonfree-release-tainted dnf-plugins-core
 sudo dnf copr enable dusansimic/themes
 sudo dnf swap ffmpeg-free ffmpeg --allowerasing
 ```
@@ -126,9 +126,11 @@ sudo dnf install -y intel-media-driver libva \
 ### Configure system settings
 
 ```bash
-echo 'fs.inotify.max_user_watches = 524288' | sudo tee -a /etc/sysctl.conf
-echo 'vm.swappiness = 10' | sudo tee -a /etc/sysctl.conf
-sudo sysctl -p
+sudo tee /etc/sysctl.d/99-custom.conf <<'EOF'
+fs.inotify.max_user_watches = 524288
+vm.swappiness = 10
+EOF
+sudo sysctl --system
 ```
 
 ### Install `Development Tools`
@@ -162,7 +164,7 @@ sudo dnf install -y git git-lfs git-delta \
 ### Install packages for `Yubikey`
 
 ```bash
-sudo dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime gnupg2-scdaemon pcsc-tools pcsc-lite pgp-tools
+sudo dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime gnupg2-scdaemon pcsc-tools pcsc-lite yubikey-manager
 sudo systemctl enable --now pcscd
 ```
 
@@ -210,6 +212,13 @@ flatpak install -y flathub com.discordapp.Discord \
 flatpak update
 ```
 
+### Install [Orion browser](https://orionbrowser.com/platforms/linux/install)
+
+```bash
+flatpak remote-add --if-not-exists orion-beta https://flatpak.orionbrowser.com/orion-beta.flatpakrepo
+flatpak install -y orion-beta com.kagi.Orion
+```
+
 ### Install podman
 
 Podman is Fedora's default container runtime, rootless by design.
@@ -230,7 +239,7 @@ The `podman-docker` package provides Docker CLI compatibility—`docker` command
 
 ```bash
 sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
-cat > /tmp/1password.repo <<'EOF'
+sudo tee /etc/yum.repos.d/1password.repo <<'EOF'
 [1password]
 name=1Password Stable Channel
 baseurl=https://downloads.1password.com/linux/rpm/stable/$basearch
@@ -239,7 +248,6 @@ gpgcheck=1
 repo_gpgcheck=1
 gpgkey=https://downloads.1password.com/linux/keys/1password.asc
 EOF
-sudo mv /tmp/1password.repo /etc/yum.repos.d/
 sudo dnf install -y 1password 1password-cli
 ```
 
@@ -329,24 +337,18 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier'
 
 ## Framework Laptop specific configuration
 
-### Configure power saving
+### Update firmware
+
+Framework laptops deliver firmware updates (BIOS, retimer, and component controllers) via LVFS:
 
 ```bash
-sudo grubby --update-kernel=ALL --args="nvme.noacpi=1"
+fwupdmgr refresh && fwupdmgr update
 ```
 
-### Enable Intel GPU features
+### Configure fingerprint reader
 
-Enable GuC firmware and comprehensive power saving for 11th Gen Intel Tiger Lake. `nvme.noacpi=1` above already handles the suspend battery drain, so stay on the default `s2idle` sleep mode rather than forcing S3 (`mem_sleep_default=deep` is unreliable on Tiger Lake).
-
-```bash
-sudo grubby --update-kernel=ALL --args="i915.enable_guc=3 i915.enable_psr=2 i915.enable_rc6=1 i915.enable_fbc=1"
-```
-
-Note: `i915.enable_psr=2` forces PSR2. If the panel flickers during normal use, change it to `i915.enable_psr=1` or `0`.
-
-Reboot for kernel changes to take effect.
+The Goodix fingerprint sensor on the power button works natively:
 
 ```bash
-sudo reboot
+fprintd-enroll
 ```
