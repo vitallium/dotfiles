@@ -29,6 +29,7 @@ binstall = true
 [tools]
 # Keep Rust on top to satisfy dependencies
 rust = { version = "latest", components = "rust-analyzer,rust-src" }
+antigravity-cli = "latest"
 biome = "latest"
 bun = "latest"
 cargo-binstall = "latest"
@@ -86,7 +87,6 @@ watchexec = "latest"
 "npm:@bitbonsai/mcpvault" = "latest"
 "npm:@devcontainers/cli" = "latest"
 "npm:@fsouza/prettierd" = "latest"
-"npm:@google/gemini-cli" = "latest"
 "npm:@herb-tools/language-server" = "latest"
 "npm:@playwright/mcp" = "latest"
 "npm:@railway/cli" = "latest"
