@@ -12,19 +12,21 @@ idiomatic_version_file_enable_tools = [
   "yarn",
 ]
 
+[settings.cargo]
+binstall = true
+binstall_quickinstall = true
+
 [settings.status]
 show_env = true
 show_tools = false
 
 [settings.npm]
 bun = true
+package_manager = "pnpm"
 
 [settings.pipx]
 # Allow mise to install pipx packages without manual installation of pipx.
 uvx = true
-
-[settings.cargo]
-binstall = true
 
 [tools]
 # Keep Rust on top to satisfy dependencies
