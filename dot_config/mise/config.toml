@@ -44,6 +44,7 @@ grok = "latest"
 
 gum = "latest"
 hadolint = "latest"
+helix = "latest"
 hivemind = "latest"
 java = "lts"
 just = "latest"
