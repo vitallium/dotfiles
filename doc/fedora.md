@@ -151,14 +151,14 @@ sudo dnf group install -y "development-tools"
 
 ```bash
 sudo dnf install -y git git-lfs git-delta \
-               bat fzf ripgrep \
+               bat ripgrep \
                editorconfig \
                kernel-tools wl-clipboard \
                cmake ninja-build jq \
                ImageMagick \
                git-extras htop \
                GraphicsMagick pipewire-codec-aptx \
-               helix morewaita-icon-theme
+               morewaita-icon-theme
 ```
 
 ### Install packages for `Yubikey`
