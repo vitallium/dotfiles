@@ -108,7 +108,6 @@ watchexec = "latest"
 "npm:typescript-language-server" = "latest"
 "npm:vscode-css-languageserver-bin" = "latest"
 "npm:vscode-json-languageserver" = "latest"
-"npm:yalc" = "latest"
 "npm:yaml-language-server" = "latest"
 "npm:yarn" = "latest"
 
