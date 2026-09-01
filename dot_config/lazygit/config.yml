@@ -7,6 +7,11 @@ git:
     autoWrapCommitMessage: true
     autoWrapWidth: 72
   diffRenderers:
-    - command: delta --paging=never
+    - type: extDiff
+      name: difftastic
+      command: difft --color=always --display=side-by-side --context={{diffContext}}
+    - type: stdinFilter
+      name: delta
+      command: delta --paging=never
 os:
   editPreset: "zed"
