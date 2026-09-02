@@ -1,5 +1,6 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 [settings]
+lockfile = true
 experimental = true
 legacy_version_file = true
 not_found_auto_install = false
