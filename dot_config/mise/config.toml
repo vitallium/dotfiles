@@ -44,7 +44,6 @@ uvx = true
 rust = { version = "latest", components = "rust-analyzer,rust-src" }
 antigravity-cli = "latest"
 biome = "latest"
-bun = "latest"
 cargo-binstall = "latest"
 codex = "latest"
 cosign = "3"
@@ -63,9 +62,7 @@ java = "lts"
 just = "latest"
 kubectl = "latest"
 lazygit = "latest"
-node = "lts"
 opencode = "latest"
-pnpm = "latest"
 prettier = "latest"
 python = "3.14.7"
 ruby = { version = "4.0.6", depends = ["rust"] }
@@ -99,29 +96,25 @@ watchexec = "latest"
 "cargo:tokei" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:topgrade" = { version = "latest", depends = ["cargo-binstall"] }
 
+#
 # Node.js
+#
+node = "lts"
+pnpm = "latest"
+bun = "latest"
 "npm:@bitbonsai/mcpvault" = "latest"
 "npm:@devcontainers/cli" = "latest"
-"npm:@fsouza/prettierd" = "latest"
-"npm:@herb-tools/language-server" = "latest"
 "npm:@playwright/mcp" = "latest"
 "npm:@railway/cli" = "latest"
 "npm:@railway/mcp-server" = "latest"
 "npm:@upstash/context7-mcp" = "latest"
 "npm:agent-browser" = "latest"
 "npm:chrome-devtools-mcp" = "latest"
-"npm:dockerfile-language-server-nodejs" = "latest"
-"npm:eslint_d" = "latest"
-"npm:jsvu" = "latest"
 "npm:knip" = "latest"
 "npm:markdownlint-cli2" = "latest"
 "npm:oxfmt" = "latest"
 "npm:oxlint" = "latest"
 "npm:tree-sitter-cli" = "latest"
-"npm:typescript-language-server" = "latest"
-"npm:vscode-css-languageserver-bin" = "latest"
-"npm:vscode-json-languageserver" = "latest"
-"npm:yaml-language-server" = "latest"
 "npm:yarn" = "latest"
 
 # Python
