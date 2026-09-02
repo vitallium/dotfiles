@@ -74,7 +74,6 @@ uv = "latest"
 watchexec = "latest"
 
 "aqua:AlexanderGrooff/mermaid-ascii" = "latest"
-"aqua:golangci/golangci-lint" = "latest"
 "aqua:sharkdp/hexyl" = "latest"
 
 # Rust
