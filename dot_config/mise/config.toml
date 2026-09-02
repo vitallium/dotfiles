@@ -4,12 +4,23 @@ experimental = true
 legacy_version_file = true
 not_found_auto_install = false
 idiomatic_version_file_enable_tools = [
-  "rust",
-  "python",
-  "node",
   "go",
+  "node",
+  "python",
+  "rust",
   "terraform",
-  "yarn",
+  "yarn"
+]
+
+minimum_release_age = "3d"
+minimum_release_age_excludes = [
+  "codex",
+  "usage",
+  "pipx:mistral-vibe"
+]
+
+trusted_config_paths = [
+  "~/Development"
 ]
 
 [settings.cargo]
@@ -41,8 +52,8 @@ container-use = { version = "latest", depends = ["dagger"] }
 dagger = "latest"
 difftastic = "latest"
 chezmoi = "2"
+editorconfig-checker = "latest"
 fzf = "latest"
-go = "latest"
 grok = "latest"
 gum = "latest"
 hadolint = "latest"
@@ -122,3 +133,24 @@ watchexec = "latest"
 "pipx:yubikey-manager" = { version = "latest", depends = ["python", "uv"] }
 "pipx:ty" = { version = "latest", depends = ["python", "uv"] }
 "pipx:mistral-vibe" = { version = "latest", depends = ["python", "uv"] }
+
+#
+# Go
+#
+go = "latest"
+gofumpt = "latest"
+golangci-lint = "latest"
+golangci-lint-langserver = "latest"
+golines = "latest"
+goreleaser = "latest"
+"go:github.com/fatih/gomodifytags" = "latest"
+"go:github.com/go-delve/delve/cmd/dlv" = "latest"
+"go:github.com/josharian/impl" = "latest"
+"go:github.com/lasorda/protobuf-language-server" = "latest"
+"go:go.uber.org/mock/mockgen" = "latest"
+"go:golang.org/x/tools/cmd/godoc" = "latest"
+"go:golang.org/x/tools/cmd/goimports" = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
+"go:golang.org/x/vuln/cmd/govulncheck" = "latest"
+"go:google.golang.org/grpc/cmd/protoc-gen-go-grpc" = "latest"
+"go:google.golang.org/protobuf/cmd/protoc-gen-go" = "latest"
