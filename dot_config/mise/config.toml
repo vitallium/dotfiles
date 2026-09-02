@@ -15,6 +15,7 @@ idiomatic_version_file_enable_tools = [
 minimum_release_age = "3d"
 minimum_release_age_excludes = [
   "codex",
+  "opencode",
   "usage",
   "pipx:mistral-vibe"
 ]
