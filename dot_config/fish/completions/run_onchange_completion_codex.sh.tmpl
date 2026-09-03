@@ -1,0 +1,6 @@
+{{- if (lookPath "codex") -}}
+#!/bin/bash
+
+# codex version: {{ output "codex" "--version" | trim }}
+codex completion fish > "$HOME/.config/fish/completions/codex.fish"
+{{- end -}}
