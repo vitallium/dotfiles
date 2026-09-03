@@ -369,7 +369,7 @@ url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/asset
 provenance = "github-attestations"
 
 [[tools."cargo:ast-grep"]]
-version = "0.45.2"
+version = "0.45.3"
 backend = "cargo:ast-grep"
 specifiers = ["latest"]
 
@@ -530,64 +530,64 @@ url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/53665369
 provenance = "cosign"
 
 [[tools.codex]]
-version = "0.152.1"
+version = "0.153.0"
 backend = "aqua:openai/codex"
 specifiers = ["latest"]
 
 [tools.codex."platforms.linux-arm64"]
-checksum = "sha256:f93fc7015af13ac2a2486af23629946d9aade5f88b40c2cc7e1aa1fca2c93ef8"
-url = "https://github.com/openai/codex/releases/download/rust-v0.152.1/codex-package-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/540234394"
+checksum = "sha256:076b2b7512bad8b96e24370c031d2d1311f983e98650af9824639a619fa99be4"
+url = "https://github.com/openai/codex/releases/download/rust-v0.153.0/codex-package-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/542030628"
 
 [tools.codex."platforms.linux-arm64-musl"]
-checksum = "sha256:f93fc7015af13ac2a2486af23629946d9aade5f88b40c2cc7e1aa1fca2c93ef8"
-url = "https://github.com/openai/codex/releases/download/rust-v0.152.1/codex-package-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/540234394"
+checksum = "sha256:076b2b7512bad8b96e24370c031d2d1311f983e98650af9824639a619fa99be4"
+url = "https://github.com/openai/codex/releases/download/rust-v0.153.0/codex-package-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/542030628"
 
 [tools.codex."platforms.linux-x64"]
-checksum = "sha256:2aeea68239b4d96081b3e7fe91d0d64e4875b224668c381985d22bb31d7566b9"
-url = "https://github.com/openai/codex/releases/download/rust-v0.152.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/540234347"
+checksum = "sha256:27b0d7a753ac190c343918541a42067be307cc88a32b1a9feaf6f93648a0e9ea"
+url = "https://github.com/openai/codex/releases/download/rust-v0.153.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/542030620"
 
 [tools.codex."platforms.linux-x64-baseline"]
-checksum = "sha256:2aeea68239b4d96081b3e7fe91d0d64e4875b224668c381985d22bb31d7566b9"
-url = "https://github.com/openai/codex/releases/download/rust-v0.152.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/540234347"
+checksum = "sha256:27b0d7a753ac190c343918541a42067be307cc88a32b1a9feaf6f93648a0e9ea"
+url = "https://github.com/openai/codex/releases/download/rust-v0.153.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/542030620"
 
 [tools.codex."platforms.linux-x64-musl"]
-checksum = "sha256:2aeea68239b4d96081b3e7fe91d0d64e4875b224668c381985d22bb31d7566b9"
-url = "https://github.com/openai/codex/releases/download/rust-v0.152.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/540234347"
+checksum = "sha256:27b0d7a753ac190c343918541a42067be307cc88a32b1a9feaf6f93648a0e9ea"
+url = "https://github.com/openai/codex/releases/download/rust-v0.153.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/542030620"
 
 [tools.codex."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:2aeea68239b4d96081b3e7fe91d0d64e4875b224668c381985d22bb31d7566b9"
-url = "https://github.com/openai/codex/releases/download/rust-v0.152.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/540234347"
+checksum = "sha256:27b0d7a753ac190c343918541a42067be307cc88a32b1a9feaf6f93648a0e9ea"
+url = "https://github.com/openai/codex/releases/download/rust-v0.153.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/542030620"
 
 [tools.codex."platforms.macos-arm64"]
-checksum = "sha256:0a5dffe5a4ab6769e70d962708d2a195b2adcf8cb96e7b9d969a2c95d2238575"
-url = "https://github.com/openai/codex/releases/download/rust-v0.152.1/codex-package-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/540234419"
+checksum = "sha256:136dcb640e7ccdb018a354b9c1ef269f88b3137a5c84b1416a3b7d3d6b904299"
+url = "https://github.com/openai/codex/releases/download/rust-v0.153.0/codex-package-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/542030742"
 
 [tools.codex."platforms.macos-x64"]
-checksum = "sha256:a36dc3f5b93f8726eb3be874796f423d6f0287980a10db770bf289046d72d924"
-url = "https://github.com/openai/codex/releases/download/rust-v0.152.1/codex-package-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/540234315"
+checksum = "sha256:ff23ca96a16ae9981eb437b702ed1e66a1a2927e5c33698b05fa3e27537b75d2"
+url = "https://github.com/openai/codex/releases/download/rust-v0.153.0/codex-package-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/542030644"
 
 [tools.codex."platforms.macos-x64-baseline"]
-checksum = "sha256:a36dc3f5b93f8726eb3be874796f423d6f0287980a10db770bf289046d72d924"
-url = "https://github.com/openai/codex/releases/download/rust-v0.152.1/codex-package-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/540234315"
+checksum = "sha256:ff23ca96a16ae9981eb437b702ed1e66a1a2927e5c33698b05fa3e27537b75d2"
+url = "https://github.com/openai/codex/releases/download/rust-v0.153.0/codex-package-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/542030644"
 
 [tools.codex."platforms.windows-x64"]
-checksum = "sha256:44fc7869dddc9abd3508b46d92f7a2cebf95b58595963f92a6dd734cca6db25b"
-url = "https://github.com/openai/codex/releases/download/rust-v0.152.1/codex-package-x86_64-pc-windows-msvc.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/540234359"
+checksum = "sha256:dba6a113d7ab279b30772fcdc5d7f352c3a28556a49a1ea311b4ac8603dec807"
+url = "https://github.com/openai/codex/releases/download/rust-v0.153.0/codex-package-x86_64-pc-windows-msvc.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/542030675"
 
 [tools.codex."platforms.windows-x64-baseline"]
-checksum = "sha256:44fc7869dddc9abd3508b46d92f7a2cebf95b58595963f92a6dd734cca6db25b"
-url = "https://github.com/openai/codex/releases/download/rust-v0.152.1/codex-package-x86_64-pc-windows-msvc.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/540234359"
+checksum = "sha256:dba6a113d7ab279b30772fcdc5d7f352c3a28556a49a1ea311b4ac8603dec807"
+url = "https://github.com/openai/codex/releases/download/rust-v0.153.0/codex-package-x86_64-pc-windows-msvc.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/542030675"
 
 [[tools.container-use]]
 version = "0.4.2"
@@ -1913,7 +1913,7 @@ backend = "npm:@bitbonsai/mcpvault"
 specifiers = ["latest"]
 
 [[tools."npm:@devcontainers/cli"]]
-version = "0.88.0"
+version = "0.89.0"
 backend = "npm:@devcontainers/cli"
 specifiers = ["latest"]
 
@@ -1938,7 +1938,7 @@ backend = "npm:@upstash/context7-mcp"
 specifiers = ["latest"]
 
 [[tools."npm:agent-browser"]]
-version = "0.35.1"
+version = "0.35.2"
 backend = "npm:agent-browser"
 specifiers = ["latest"]
 
@@ -1978,64 +1978,64 @@ backend = "npm:yarn"
 specifiers = ["latest"]
 
 [[tools.opencode]]
-version = "1.18.26"
+version = "1.18.27"
 backend = "aqua:anomalyco/opencode"
 specifiers = ["latest"]
 
 [tools.opencode."platforms.linux-arm64"]
-checksum = "sha256:90b99cc2356fea188d67352418ad7223559841178142f719848ca2c88a689c3e"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.26/opencode-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/540146312"
+checksum = "sha256:8cbc134eb5e100baf61ee7196150f503e352056e703276e2d8637c38bafd2c39"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.27/opencode-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/541770448"
 
 [tools.opencode."platforms.linux-arm64-musl"]
-checksum = "sha256:531d16c8d3a8a1a11d96bcd045640b43c84073625ce0d5ba794095cccea7cfb7"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.26/opencode-linux-arm64-musl.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/540146302"
+checksum = "sha256:bb366ea2311f0f1e74ea709317a2347a32a9e6ca6fb90cc7d333c67e53ddabf7"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.27/opencode-linux-arm64-musl.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/541770463"
 
 [tools.opencode."platforms.linux-x64"]
-checksum = "sha256:7c20c1ffa91bcca0ac903752260bcc36307dff656833baead2f5ef3b224b16c6"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.26/opencode-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/540146333"
+checksum = "sha256:4af5494f9433f59db8c1e344198f0ee72a50c06ec009fb4a8aeab4c2d4abd702"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.27/opencode-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/541770555"
 
 [tools.opencode."platforms.linux-x64-baseline"]
-checksum = "sha256:7c20c1ffa91bcca0ac903752260bcc36307dff656833baead2f5ef3b224b16c6"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.26/opencode-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/540146333"
+checksum = "sha256:4af5494f9433f59db8c1e344198f0ee72a50c06ec009fb4a8aeab4c2d4abd702"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.27/opencode-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/541770555"
 
 [tools.opencode."platforms.linux-x64-musl"]
-checksum = "sha256:c68b16b907a128974b4677fec9ed4266809995353a79324271c6f5977b3ff4b6"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.26/opencode-linux-x64-musl.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/540146397"
+checksum = "sha256:ca720427cc220d0e75dca6b263345fedb9e92fcaf7263fe75cc81bfdbf7c9f9d"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.27/opencode-linux-x64-musl.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/541770435"
 
 [tools.opencode."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:c68b16b907a128974b4677fec9ed4266809995353a79324271c6f5977b3ff4b6"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.26/opencode-linux-x64-musl.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/540146397"
+checksum = "sha256:ca720427cc220d0e75dca6b263345fedb9e92fcaf7263fe75cc81bfdbf7c9f9d"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.27/opencode-linux-x64-musl.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/541770435"
 
 [tools.opencode."platforms.macos-arm64"]
-checksum = "sha256:b05d383149a5a417140e8edebd83064142fa36e74fdfcd5f791919dcb12fd33a"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.26/opencode-darwin-arm64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/540146149"
+checksum = "sha256:149b0c6d272d0059b8b5ffcd18c84b24f1d6cbf585942b10e60c601211992eb1"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.27/opencode-darwin-arm64.zip"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/541770165"
 
 [tools.opencode."platforms.macos-x64"]
-checksum = "sha256:dc1c641bc391f28370c30e5ca95d51b0bb355ab5deb387f2d2adc3d5ad56c68b"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.26/opencode-darwin-x64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/540146155"
+checksum = "sha256:e182eab3a6bf095ff773d303bbc7938d3551a636eab00625b599ad6383fabd88"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.27/opencode-darwin-x64.zip"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/541770161"
 
 [tools.opencode."platforms.macos-x64-baseline"]
-checksum = "sha256:dc1c641bc391f28370c30e5ca95d51b0bb355ab5deb387f2d2adc3d5ad56c68b"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.26/opencode-darwin-x64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/540146155"
+checksum = "sha256:e182eab3a6bf095ff773d303bbc7938d3551a636eab00625b599ad6383fabd88"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.27/opencode-darwin-x64.zip"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/541770161"
 
 [tools.opencode."platforms.windows-x64"]
-checksum = "sha256:c7af81e288dff3cf4378c9f3509208ef8bf060d7109589fee2cd943845d87786"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.26/opencode-windows-x64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/540150402"
+checksum = "sha256:ac26bb6f0309e9a6de279b64dc7bec5e69ab9b79c1a4e2d947d68d213b7eb575"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.27/opencode-windows-x64.zip"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/541773273"
 
 [tools.opencode."platforms.windows-x64-baseline"]
-checksum = "sha256:c7af81e288dff3cf4378c9f3509208ef8bf060d7109589fee2cd943845d87786"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.26/opencode-windows-x64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/540150402"
+checksum = "sha256:ac26bb6f0309e9a6de279b64dc7bec5e69ab9b79c1a4e2d947d68d213b7eb575"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.27/opencode-windows-x64.zip"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/541773273"
 
 [[tools."pipx:mistral-vibe"]]
 version = "2.24.5"
@@ -2058,7 +2058,7 @@ backend = "pipx:ruff"
 specifiers = ["latest"]
 
 [[tools."pipx:ty"]]
-version = "0.0.75"
+version = "0.0.76"
 backend = "pipx:ty"
 specifiers = ["latest"]
 
