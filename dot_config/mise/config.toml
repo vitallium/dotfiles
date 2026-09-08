@@ -53,7 +53,6 @@ container-use = { version = "latest", depends = ["dagger"] }
 dagger = "latest"
 difftastic = "latest"
 chezmoi = "2"
-editorconfig-checker = "latest"
 fzf = "latest"
 grok = "latest"
 gum = "latest"
