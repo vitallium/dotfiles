@@ -1323,6 +1323,7 @@ url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.2
 url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.24-linux-aarch64"
 
 [tools.grok."platforms.linux-x64"]
+checksum = "blake3:62d1207f125950635966540c629c00812cc86ef18048d4735785c5aa096c4fd4"
 url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.24-linux-x86_64"
 
 [tools.grok."platforms.linux-x64-baseline"]
@@ -2170,6 +2171,7 @@ checksum = "sha256:509ca52a43324e95ccfac917ff6b1d3bdeae7e7ba324893f94bb081ccd865
 url = "https://github.com/railwayapp/cli/releases/download/v5.49.2/railway-v5.49.2-x86_64-unknown-linux-gnu.tar.gz"
 url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/544879011"
 provenance = "github-attestations"
+provenance_verified = true
 
 [tools.railway."platforms.linux-x64-baseline"]
 checksum = "sha256:509ca52a43324e95ccfac917ff6b1d3bdeae7e7ba324893f94bb081ccd865718"
