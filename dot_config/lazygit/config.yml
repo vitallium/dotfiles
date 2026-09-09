@@ -3,6 +3,7 @@ gui:
   expandFocusedSidePanel: true
 git:
   parseEmoji: true
+  overrideGpg: true
   commit:
     autoWrapCommitMessage: true
     autoWrapWidth: 72
