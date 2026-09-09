@@ -408,6 +408,11 @@ version = "0.24.0"
 backend = "cargo:cargo-generate"
 specifiers = ["latest"]
 
+[[tools."cargo:cargo-nextest"]]
+version = "0.9.143"
+backend = "cargo:cargo-nextest"
+specifiers = ["latest"]
+
 [[tools."cargo:cargo-outdated"]]
 version = "0.19.0"
 backend = "cargo:cargo-outdated"

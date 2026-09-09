@@ -86,6 +86,7 @@ watchexec = "latest"
 "cargo:cargo-crap" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:cargo-expand" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:cargo-generate" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:cargo-nextest" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:cargo-outdated" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:cargo-update" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:eza" = { version = "latest", depends = ["cargo-binstall"] }
