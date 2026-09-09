@@ -106,6 +106,16 @@ These are guiding principles that Vitaly uses when writing code.
    functions move, code you "know" has changed. Re-read before reasoning or
    editing.
 
+### Naming
+
+Every name you choose, for files, scripts, directories, functions, variables,
+classes, commits, branches, anything, must use precise professional vocabulary.
+Choose the word a 1972 IBM engineer would write in a specification. No slang, no
+casual shorthand, no cute or clever names, no words borrowed from chat culture.
+This applies universally, not only to the one example that follows: a script
+that deploys dashboards is `deploy_dashboards.sh`, not `push_dashboards.sh`.
+That is one illustration of the principle, not the extent of it.
+
 ## Agent overrides
 
 See `AGENTS.override.md` for per-agent behavioral overrides. Agents must read and
@@ -135,6 +145,6 @@ Use `gum` to make your shell scripts pretty and fun!
 
 Use `gh` cli for all GitHub interactions.
 
-## ast-grep
+## Tools
 
-`ast-grep` is available. Use it when searching/refactoring code.
+- `ast-grep` is available. Use it when searching or refactoring code.
