@@ -1312,44 +1312,43 @@ url_api = "https://api.github.com/repos/goreleaser/goreleaser/releases/assets/54
 provenance = "github-attestations"
 
 [[tools.grok]]
-version = "1.0.24"
+version = "1.0.25"
 backend = "http:grok"
 specifiers = ["latest"]
 
 [tools.grok."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.24-linux-aarch64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-linux-aarch64"
 
 [tools.grok."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.24-linux-aarch64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-linux-aarch64"
 
 [tools.grok."platforms.linux-x64"]
-checksum = "blake3:62d1207f125950635966540c629c00812cc86ef18048d4735785c5aa096c4fd4"
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.24-linux-x86_64"
+checksum = "blake3:948376806cc95ec95b92e57fa6c5b8df01f219c0aa3a066dd73fdbece5c2fb84"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-linux-x86_64"
 
 [tools.grok."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.24-linux-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-linux-x86_64"
 
 [tools.grok."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.24-linux-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-linux-x86_64"
 
 [tools.grok."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.24-linux-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-linux-x86_64"
 
 [tools.grok."platforms.macos-arm64"]
-checksum = "blake3:782557211e4427a184df68dc2da4339247a2d4eddbd5bf04b82da015cdebc147"
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.24-macos-aarch64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-macos-aarch64"
 
 [tools.grok."platforms.macos-x64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.24-macos-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-macos-x86_64"
 
 [tools.grok."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.24-macos-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-macos-x86_64"
 
 [tools.grok."platforms.windows-x64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.24-windows-x86_64.exe"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-windows-x86_64.exe"
 
 [tools.grok."platforms.windows-x64-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.24-windows-x86_64.exe"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-windows-x86_64.exe"
 
 [[tools.gum]]
 version = "2.0.0"
