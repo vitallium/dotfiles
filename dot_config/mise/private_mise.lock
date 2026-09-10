@@ -594,66 +594,6 @@ checksum = "sha256:94cc5b3632769504c809f6c0364b693c0dfddc5c30c8361095d2263a07ac4
 url = "https://github.com/openai/codex/releases/download/rust-v0.154.0/codex-package-x86_64-pc-windows-msvc.tar.gz"
 url_api = "https://api.github.com/repos/openai/codex/releases/assets/553706571"
 
-[[tools.container-use]]
-version = "0.4.2"
-backend = "aqua:dagger/container-use"
-specifiers = ["latest"]
-
-[tools.container-use."platforms.linux-arm64"]
-checksum = "sha256:96db6bc01111c573df83065bd02802a36a09864f45373169ffa227a9b3cdca14"
-url = "https://github.com/dagger/container-use/releases/download/v0.4.2/container-use_v0.4.2_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/container-use/releases/assets/284187379"
-
-[tools.container-use."platforms.linux-arm64-musl"]
-checksum = "sha256:96db6bc01111c573df83065bd02802a36a09864f45373169ffa227a9b3cdca14"
-url = "https://github.com/dagger/container-use/releases/download/v0.4.2/container-use_v0.4.2_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/container-use/releases/assets/284187379"
-
-[tools.container-use."platforms.linux-x64"]
-checksum = "sha256:3fa52b5833ae4aed2be4b86f7cf42671fdf4bca8c211fe5fff08cc19553d409b"
-url = "https://github.com/dagger/container-use/releases/download/v0.4.2/container-use_v0.4.2_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/container-use/releases/assets/284187376"
-
-[tools.container-use."platforms.linux-x64-baseline"]
-checksum = "sha256:3fa52b5833ae4aed2be4b86f7cf42671fdf4bca8c211fe5fff08cc19553d409b"
-url = "https://github.com/dagger/container-use/releases/download/v0.4.2/container-use_v0.4.2_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/container-use/releases/assets/284187376"
-
-[tools.container-use."platforms.linux-x64-musl"]
-checksum = "sha256:3fa52b5833ae4aed2be4b86f7cf42671fdf4bca8c211fe5fff08cc19553d409b"
-url = "https://github.com/dagger/container-use/releases/download/v0.4.2/container-use_v0.4.2_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/container-use/releases/assets/284187376"
-
-[tools.container-use."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:3fa52b5833ae4aed2be4b86f7cf42671fdf4bca8c211fe5fff08cc19553d409b"
-url = "https://github.com/dagger/container-use/releases/download/v0.4.2/container-use_v0.4.2_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/container-use/releases/assets/284187376"
-
-[tools.container-use."platforms.macos-arm64"]
-checksum = "sha256:9ae2ca3ead64e9d9780e5a017704d4d053d1b9af7dadfb19b84eec5e968deffb"
-url = "https://github.com/dagger/container-use/releases/download/v0.4.2/container-use_v0.4.2_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/container-use/releases/assets/284187378"
-
-[tools.container-use."platforms.macos-x64"]
-checksum = "sha256:7bdfef614c1d3dad6675efb894d854f0c1f7d56fbac2a1662e96fd9a5177821b"
-url = "https://github.com/dagger/container-use/releases/download/v0.4.2/container-use_v0.4.2_darwin_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/container-use/releases/assets/284187377"
-
-[tools.container-use."platforms.macos-x64-baseline"]
-checksum = "sha256:7bdfef614c1d3dad6675efb894d854f0c1f7d56fbac2a1662e96fd9a5177821b"
-url = "https://github.com/dagger/container-use/releases/download/v0.4.2/container-use_v0.4.2_darwin_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/container-use/releases/assets/284187377"
-
-[tools.container-use."platforms.windows-x64"]
-checksum = "sha256:a5fe8bb0022cce8e65c28a0c8dff6aba3b8edcce5d0f1e955de3c24fffd5e438"
-url = "https://github.com/dagger/container-use/releases/download/v0.4.2/container-use_v0.4.2_windows_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/container-use/releases/assets/284187383"
-
-[tools.container-use."platforms.windows-x64-baseline"]
-checksum = "sha256:a5fe8bb0022cce8e65c28a0c8dff6aba3b8edcce5d0f1e955de3c24fffd5e438"
-url = "https://github.com/dagger/container-use/releases/download/v0.4.2/container-use_v0.4.2_windows_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/container-use/releases/assets/284187383"
-
 [[tools.cosign]]
 version = "3.1.3"
 backend = "aqua:sigstore/cosign"
@@ -724,66 +664,6 @@ checksum = "sha256:9fe59be0eca1271873ce019061335eb1ac419b7059202e797828467ddabe3
 url = "https://github.com/sigstore/cosign/releases/download/v3.1.3/cosign-windows-amd64.exe"
 url_api = "https://api.github.com/repos/sigstore/cosign/releases/assets/503286236"
 provenance = "cosign"
-
-[[tools.dagger]]
-version = "0.21.9"
-backend = "aqua:dagger/dagger"
-specifiers = ["latest"]
-
-[tools.dagger."platforms.linux-arm64"]
-checksum = "sha256:3bc8334ccde404f66f0a8e29807e4327c7893990c3211691680c5f07f8273f3a"
-url = "https://github.com/dagger/dagger/releases/download/v0.21.9/dagger_v0.21.9_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/dagger/releases/assets/530870098"
-
-[tools.dagger."platforms.linux-arm64-musl"]
-checksum = "sha256:3bc8334ccde404f66f0a8e29807e4327c7893990c3211691680c5f07f8273f3a"
-url = "https://github.com/dagger/dagger/releases/download/v0.21.9/dagger_v0.21.9_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/dagger/releases/assets/530870098"
-
-[tools.dagger."platforms.linux-x64"]
-checksum = "sha256:33eea0b08d6be444bada18e64b2216459100d6070abcb4b5345cee40c9fff982"
-url = "https://github.com/dagger/dagger/releases/download/v0.21.9/dagger_v0.21.9_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/dagger/releases/assets/530870096"
-
-[tools.dagger."platforms.linux-x64-baseline"]
-checksum = "sha256:33eea0b08d6be444bada18e64b2216459100d6070abcb4b5345cee40c9fff982"
-url = "https://github.com/dagger/dagger/releases/download/v0.21.9/dagger_v0.21.9_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/dagger/releases/assets/530870096"
-
-[tools.dagger."platforms.linux-x64-musl"]
-checksum = "sha256:33eea0b08d6be444bada18e64b2216459100d6070abcb4b5345cee40c9fff982"
-url = "https://github.com/dagger/dagger/releases/download/v0.21.9/dagger_v0.21.9_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/dagger/releases/assets/530870096"
-
-[tools.dagger."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:33eea0b08d6be444bada18e64b2216459100d6070abcb4b5345cee40c9fff982"
-url = "https://github.com/dagger/dagger/releases/download/v0.21.9/dagger_v0.21.9_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/dagger/releases/assets/530870096"
-
-[tools.dagger."platforms.macos-arm64"]
-checksum = "sha256:551a4d5432860547bf4f088181cbd0902668289171959de97568ea0f0ecb35ee"
-url = "https://github.com/dagger/dagger/releases/download/v0.21.9/dagger_v0.21.9_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/dagger/releases/assets/530870101"
-
-[tools.dagger."platforms.macos-x64"]
-checksum = "sha256:2ed6e998d820bfb4800ed5644e1b9586f03078b14243c7fdf3bdd9e0eb0d5bfe"
-url = "https://github.com/dagger/dagger/releases/download/v0.21.9/dagger_v0.21.9_darwin_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/dagger/releases/assets/530870097"
-
-[tools.dagger."platforms.macos-x64-baseline"]
-checksum = "sha256:2ed6e998d820bfb4800ed5644e1b9586f03078b14243c7fdf3bdd9e0eb0d5bfe"
-url = "https://github.com/dagger/dagger/releases/download/v0.21.9/dagger_v0.21.9_darwin_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dagger/dagger/releases/assets/530870097"
-
-[tools.dagger."platforms.windows-x64"]
-checksum = "sha256:4ade22eac31f1d6ea364e1e594e1b67c01a62640249b716ccc172407eecc5a01"
-url = "https://github.com/dagger/dagger/releases/download/v0.21.9/dagger_v0.21.9_windows_amd64.zip"
-url_api = "https://api.github.com/repos/dagger/dagger/releases/assets/530870102"
-
-[tools.dagger."platforms.windows-x64-baseline"]
-checksum = "sha256:4ade22eac31f1d6ea364e1e594e1b67c01a62640249b716ccc172407eecc5a01"
-url = "https://github.com/dagger/dagger/releases/download/v0.21.9/dagger_v0.21.9_windows_amd64.zip"
-url_api = "https://api.github.com/repos/dagger/dagger/releases/assets/530870102"
 
 [[tools.difftastic]]
 version = "0.70.0"

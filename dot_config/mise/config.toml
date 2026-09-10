@@ -49,8 +49,6 @@ biome = "latest"
 cargo-binstall = "latest"
 codex = "latest"
 cosign = "3"
-container-use = { version = "latest", depends = ["dagger"] }
-dagger = "latest"
 difftastic = "latest"
 chezmoi = "2"
 fzf = "latest"

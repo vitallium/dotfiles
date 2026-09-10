@@ -17,12 +17,6 @@ mcp_servers:
       description: Excalidraw
       type: remote
       url: https://mcp.excalidraw.com
-    container-use: &container-use
-      name: container-use
-      description: Sandboxed dev environments for coding agents
-      type: local
-      command: [container-use, stdio]
-      env: {}
     railway: &railway
       name: railway
       description: Interact with Railway projects and infrastructure
@@ -45,7 +39,6 @@ mcp_servers:
     - *chrome-devtools
     - *context7
     - *excalidraw
-    - *container-use
     - *railway
     - *cloudflare
     - *obsidian
@@ -54,7 +47,6 @@ mcp_servers:
     - *chrome-devtools
     - *context7
     - *excalidraw
-    - *container-use
     - *railway
     - *cloudflare
     - *obsidian

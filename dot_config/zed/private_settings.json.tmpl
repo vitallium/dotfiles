@@ -19,74 +19,11 @@
     }
   },
   "agent": {
-    "default_profile": "container-use",
-    "profiles": {
-      "container-use": {
-        "name": "Container Use",
-        "tools": {
-          "fetch": true,
-          "thinking": true,
-          "copy_path": false,
-          "find_path": false,
-          "delete_path": false,
-          "create_directory": false,
-          "list_directory": false,
-          "diagnostics": false,
-          "read_file": false,
-          "open": false,
-          "move_path": false,
-          "grep": false,
-          "edit_file": false,
-          "terminal": false
-        },
-        "enable_all_context_servers": false,
-        "context_servers": {
-          "container-use": {
-            "tools": {
-              "environment_add_service": true,
-              "environment_checkpoint": true,
-              "environment_config": true,
-              "environment_create": true,
-              "environment_file_delete": true,
-              "environment_file_edit": true,
-              "environment_file_list": true,
-              "environment_file_read": true,
-              "environment_file_write": true,
-              "environment_open": true,
-              "environment_run_cmd": true,
-              "environment_update_metadata": true
-            }
-          }
-        }
-      }
-    },
     "default_model": {
       "enable_thinking": true,
       "effort": "high",
       "provider": "zed.dev",
       "model": "gpt-5.6-luna"
-    },
-    "tool_permissions": {
-      "tools": {
-        "mcp:container-use:environment_file_edit": {
-          "default": "allow"
-        },
-        "mcp:container-use:environment_config": {
-          "default": "allow"
-        },
-        "mcp:container-use:environment_file_read": {
-          "default": "allow"
-        },
-        "mcp:container-use:environment_run_cmd": {
-          "default": "allow"
-        },
-        "mcp:container-use:environment_file_list": {
-          "default": "allow"
-        },
-        "mcp:container-use:environment_create": {
-          "default": "allow"
-        }
-      }
     },
   },
   "edit_predictions": {
