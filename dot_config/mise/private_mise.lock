@@ -63,64 +63,64 @@ url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1
 url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/545349561"
 
 [[tools."aqua:AlexanderGrooff/mermaid-ascii"]]
-version = "1.5.0"
+version = "1.6.0"
 backend = "aqua:AlexanderGrooff/mermaid-ascii"
 specifiers = ["latest"]
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.linux-arm64"]
-checksum = "sha256:517c560dbeee2042e67748b618fce75c77f5a502d82f436c0642224d9f65f507"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.5.0/mermaid-ascii_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/509877551"
+checksum = "sha256:fca54cb35e8d5392be494f84bfe599ef484473b67cbbd79f2964b177bdd5115b"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350856"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.linux-arm64-musl"]
-checksum = "sha256:517c560dbeee2042e67748b618fce75c77f5a502d82f436c0642224d9f65f507"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.5.0/mermaid-ascii_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/509877551"
+checksum = "sha256:fca54cb35e8d5392be494f84bfe599ef484473b67cbbd79f2964b177bdd5115b"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350856"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.linux-x64"]
-checksum = "sha256:386a9311d04cbba6acdeda78ebf51d87fdc849dcbca86481ce3af9d2241ce203"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.5.0/mermaid-ascii_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/509877553"
+checksum = "sha256:23a5d3b4275f7a15e41b2e84226c5efa957927bd99527d64d6bc9d3824ccf89a"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350851"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.linux-x64-baseline"]
-checksum = "sha256:386a9311d04cbba6acdeda78ebf51d87fdc849dcbca86481ce3af9d2241ce203"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.5.0/mermaid-ascii_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/509877553"
+checksum = "sha256:23a5d3b4275f7a15e41b2e84226c5efa957927bd99527d64d6bc9d3824ccf89a"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350851"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.linux-x64-musl"]
-checksum = "sha256:386a9311d04cbba6acdeda78ebf51d87fdc849dcbca86481ce3af9d2241ce203"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.5.0/mermaid-ascii_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/509877553"
+checksum = "sha256:23a5d3b4275f7a15e41b2e84226c5efa957927bd99527d64d6bc9d3824ccf89a"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350851"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:386a9311d04cbba6acdeda78ebf51d87fdc849dcbca86481ce3af9d2241ce203"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.5.0/mermaid-ascii_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/509877553"
+checksum = "sha256:23a5d3b4275f7a15e41b2e84226c5efa957927bd99527d64d6bc9d3824ccf89a"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350851"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.macos-arm64"]
-checksum = "sha256:2e0ba0d7c2b91d36a09d033a3e24e002c7ef0291e51063b8c8c0852739a10712"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.5.0/mermaid-ascii_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/509877519"
+checksum = "sha256:813cd45e601da03586b2a2010babcb959de603a5b2bf34ae4f6ee78673e38d24"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350815"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.macos-x64"]
-checksum = "sha256:388b02f0cf467c0eeba8bfe9809186eca76c4e9a39f64c74b38747f311a1277d"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.5.0/mermaid-ascii_Darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/509877517"
+checksum = "sha256:1a4833380d6a46723d88151e0382c63fa94ce6052f2113a6291fb47db48cdbe7"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350828"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.macos-x64-baseline"]
-checksum = "sha256:388b02f0cf467c0eeba8bfe9809186eca76c4e9a39f64c74b38747f311a1277d"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.5.0/mermaid-ascii_Darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/509877517"
+checksum = "sha256:1a4833380d6a46723d88151e0382c63fa94ce6052f2113a6291fb47db48cdbe7"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350828"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.windows-x64"]
-checksum = "sha256:c2e52424550d7c443d0e847b4dbde87122baa53e209e05d2d0169d40b85cc4bd"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.5.0/mermaid-ascii_Windows_x86_64.zip"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/509877552"
+checksum = "sha256:60f3fafc16955ed47bc3ed036da70eab150c85e4be412ba8b2f29896c5126d7a"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350821"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.windows-x64-baseline"]
-checksum = "sha256:c2e52424550d7c443d0e847b4dbde87122baa53e209e05d2d0169d40b85cc4bd"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.5.0/mermaid-ascii_Windows_x86_64.zip"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/509877552"
+checksum = "sha256:60f3fafc16955ed47bc3ed036da70eab150c85e4be412ba8b2f29896c5126d7a"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350821"
 
 [[tools."aqua:sharkdp/hexyl"]]
 version = "0.17.0"
@@ -1881,7 +1881,7 @@ backend = "npm:@playwright/mcp"
 specifiers = ["latest"]
 
 [[tools."npm:@railway/cli"]]
-version = "5.49.2"
+version = "5.49.3"
 backend = "npm:@railway/cli"
 specifiers = ["latest"]
 
@@ -2155,76 +2155,75 @@ url = "https://github.com/astral-sh/python-build-standalone/releases/download/20
 provenance = "github-attestations"
 
 [[tools.railway]]
-version = "5.49.2"
+version = "5.49.3"
 backend = "github:railwayapp/cli"
 specifiers = ["latest"]
 
 [tools.railway."platforms.linux-arm64"]
-checksum = "sha256:71f9e52e96c61b7ee7851151b5cfedb5fe999057f0c17cad2c82ffd3bd60b8fa"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.2/railway-v5.49.2-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/544878853"
+checksum = "sha256:7b2cad10c5884a9a64a861516a2fa0b57f2f6bf05bb2323f859a658b987b5698"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548253588"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-arm64-musl"]
-checksum = "sha256:71f9e52e96c61b7ee7851151b5cfedb5fe999057f0c17cad2c82ffd3bd60b8fa"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.2/railway-v5.49.2-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/544878853"
+checksum = "sha256:7b2cad10c5884a9a64a861516a2fa0b57f2f6bf05bb2323f859a658b987b5698"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548253588"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-x64"]
-checksum = "sha256:509ca52a43324e95ccfac917ff6b1d3bdeae7e7ba324893f94bb081ccd865718"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.2/railway-v5.49.2-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/544879011"
+checksum = "sha256:8ab7c995db59cbffda7e61f4e6e438389e2238081e1974fd923eed8f339b572e"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548253867"
 provenance = "github-attestations"
-provenance_verified = true
 
 [tools.railway."platforms.linux-x64-baseline"]
-checksum = "sha256:509ca52a43324e95ccfac917ff6b1d3bdeae7e7ba324893f94bb081ccd865718"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.2/railway-v5.49.2-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/544879011"
+checksum = "sha256:8ab7c995db59cbffda7e61f4e6e438389e2238081e1974fd923eed8f339b572e"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548253867"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-x64-musl"]
-checksum = "sha256:86d73cc0ff1abc90e6695e290708440e951f7b328e4be79767c74dce22f4fcf6"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.2/railway-v5.49.2-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/544880203"
+checksum = "sha256:2fd157d82efeb876999854ce452b5d15b7523d92c4b0765cb810dfe28112c875"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548254631"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:86d73cc0ff1abc90e6695e290708440e951f7b328e4be79767c74dce22f4fcf6"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.2/railway-v5.49.2-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/544880203"
+checksum = "sha256:2fd157d82efeb876999854ce452b5d15b7523d92c4b0765cb810dfe28112c875"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548254631"
 provenance = "github-attestations"
 
 [tools.railway."platforms.macos-arm64"]
-checksum = "sha256:4faecfac5211cf07f7b2017a7bff649c8ba9906f6bed62cdccc5abdfa2a80b14"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.2/railway-v5.49.2-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/544880327"
+checksum = "sha256:a53cab6a859207699fadda385ee3fc0279023da486c3000b184cff20f4e3595d"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548255776"
 provenance = "github-attestations"
 provenance_verified = true
 
 [tools.railway."platforms.macos-x64"]
-checksum = "sha256:136f553461a6e4c7fccd1ec4991887ac0451ac029f8e18f928c27160c221cfcb"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.2/railway-v5.49.2-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/544878325"
+checksum = "sha256:a9aa95ebee2cf479b4a39a0992a6eac0b68016304e27582a5d045c61e8916383"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548252727"
 provenance = "github-attestations"
 
 [tools.railway."platforms.macos-x64-baseline"]
-checksum = "sha256:136f553461a6e4c7fccd1ec4991887ac0451ac029f8e18f928c27160c221cfcb"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.2/railway-v5.49.2-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/544878325"
+checksum = "sha256:a9aa95ebee2cf479b4a39a0992a6eac0b68016304e27582a5d045c61e8916383"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548252727"
 provenance = "github-attestations"
 
 [tools.railway."platforms.windows-x64"]
-checksum = "sha256:0988c3819a9bb0074826bc77f585e65ad203d7a790054d38bc872d687cc890ee"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.2/railway-v5.49.2-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/544882259"
+checksum = "sha256:d996491f992a482a6a5aa75b7868eeec2a80bfe1c1ed6e1786eedaec53b0a428"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548258256"
 provenance = "github-attestations"
 
 [tools.railway."platforms.windows-x64-baseline"]
-checksum = "sha256:a3da16d1d9c5a0f33eb53039c4eb616d61daebdffc0281ba25040ac55ec0115c"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.2/railway-v5.49.2-x86_64-pc-windows-gnu.zip"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/544884634"
+checksum = "sha256:938e69cfa04fad511cc4e80e476927e3a1744e35e0040fd0bead44c7dbd313b0"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-pc-windows-gnu.zip"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548258881"
 provenance = "github-attestations"
 
 [[tools.ruby]]
