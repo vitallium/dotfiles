@@ -1341,6 +1341,7 @@ url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.2
 url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-linux-x86_64"
 
 [tools.grok."platforms.macos-arm64"]
+checksum = "blake3:a81ce93d9e384ef861007c30fc0427144bba4d8e73e82c07b21c5b9b176cc8da"
 url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-macos-aarch64"
 
 [tools.grok."platforms.macos-x64"]
