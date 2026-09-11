@@ -885,64 +885,64 @@ backend = "go:google.golang.org/protobuf/cmd/protoc-gen-go"
 specifiers = ["latest"]
 
 [[tools.gofumpt]]
-version = "0.11.0"
+version = "0.12.0"
 backend = "aqua:mvdan/gofumpt"
 specifiers = ["latest"]
 
 [tools.gofumpt."platforms.linux-arm64"]
-checksum = "sha256:9272c2d1738acc1acae33793419e74c69653e70fe56bec4ad9044b12b54715e5"
-url = "https://github.com/mvdan/gofumpt/releases/download/v0.11.0/gofumpt_v0.11.0_linux_arm64"
-url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/491232873"
+checksum = "sha256:4322f081241ab0618356aa5921a8c110e4c7acfc17175cc15dc57b2f4a4b652d"
+url = "https://github.com/mvdan/gofumpt/releases/download/v0.12.0/gofumpt_v0.12.0_linux_arm64"
+url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473501"
 
 [tools.gofumpt."platforms.linux-arm64-musl"]
-checksum = "sha256:9272c2d1738acc1acae33793419e74c69653e70fe56bec4ad9044b12b54715e5"
-url = "https://github.com/mvdan/gofumpt/releases/download/v0.11.0/gofumpt_v0.11.0_linux_arm64"
-url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/491232873"
+checksum = "sha256:4322f081241ab0618356aa5921a8c110e4c7acfc17175cc15dc57b2f4a4b652d"
+url = "https://github.com/mvdan/gofumpt/releases/download/v0.12.0/gofumpt_v0.12.0_linux_arm64"
+url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473501"
 
 [tools.gofumpt."platforms.linux-x64"]
-checksum = "sha256:9f247ec294f5082375c7b062f3ddf48c8212a8711f65a6d75f5129f7fda0d7da"
-url = "https://github.com/mvdan/gofumpt/releases/download/v0.11.0/gofumpt_v0.11.0_linux_amd64"
-url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/491232932"
+checksum = "sha256:3bc4fcad497439918f5f56d4987de4709a99da0a355e6bec13a7278532b01d38"
+url = "https://github.com/mvdan/gofumpt/releases/download/v0.12.0/gofumpt_v0.12.0_linux_amd64"
+url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473521"
 
 [tools.gofumpt."platforms.linux-x64-baseline"]
-checksum = "sha256:9f247ec294f5082375c7b062f3ddf48c8212a8711f65a6d75f5129f7fda0d7da"
-url = "https://github.com/mvdan/gofumpt/releases/download/v0.11.0/gofumpt_v0.11.0_linux_amd64"
-url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/491232932"
+checksum = "sha256:3bc4fcad497439918f5f56d4987de4709a99da0a355e6bec13a7278532b01d38"
+url = "https://github.com/mvdan/gofumpt/releases/download/v0.12.0/gofumpt_v0.12.0_linux_amd64"
+url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473521"
 
 [tools.gofumpt."platforms.linux-x64-musl"]
-checksum = "sha256:9f247ec294f5082375c7b062f3ddf48c8212a8711f65a6d75f5129f7fda0d7da"
-url = "https://github.com/mvdan/gofumpt/releases/download/v0.11.0/gofumpt_v0.11.0_linux_amd64"
-url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/491232932"
+checksum = "sha256:3bc4fcad497439918f5f56d4987de4709a99da0a355e6bec13a7278532b01d38"
+url = "https://github.com/mvdan/gofumpt/releases/download/v0.12.0/gofumpt_v0.12.0_linux_amd64"
+url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473521"
 
 [tools.gofumpt."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:9f247ec294f5082375c7b062f3ddf48c8212a8711f65a6d75f5129f7fda0d7da"
-url = "https://github.com/mvdan/gofumpt/releases/download/v0.11.0/gofumpt_v0.11.0_linux_amd64"
-url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/491232932"
+checksum = "sha256:3bc4fcad497439918f5f56d4987de4709a99da0a355e6bec13a7278532b01d38"
+url = "https://github.com/mvdan/gofumpt/releases/download/v0.12.0/gofumpt_v0.12.0_linux_amd64"
+url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473521"
 
 [tools.gofumpt."platforms.macos-arm64"]
-checksum = "sha256:18936628f195369a80a129c73ee33d23e39086286dab538781ba826effc7e10b"
-url = "https://github.com/mvdan/gofumpt/releases/download/v0.11.0/gofumpt_v0.11.0_darwin_arm64"
-url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/491232979"
+checksum = "sha256:1a3e325b956ed12c21031d9e13382bd51a4fabb57de8d40428819b9583c3cfb9"
+url = "https://github.com/mvdan/gofumpt/releases/download/v0.12.0/gofumpt_v0.12.0_darwin_arm64"
+url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473536"
 
 [tools.gofumpt."platforms.macos-x64"]
-checksum = "sha256:b93b3d2c326196af9fb1ce34a5436a18e7b9a73a795bf42e5b6a542eea88d322"
-url = "https://github.com/mvdan/gofumpt/releases/download/v0.11.0/gofumpt_v0.11.0_darwin_amd64"
-url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/491232997"
+checksum = "sha256:1d3626892a321aca96a891696eaecb8f68e69e90582c2b55672d5ca210fd5fa8"
+url = "https://github.com/mvdan/gofumpt/releases/download/v0.12.0/gofumpt_v0.12.0_darwin_amd64"
+url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473545"
 
 [tools.gofumpt."platforms.macos-x64-baseline"]
-checksum = "sha256:b93b3d2c326196af9fb1ce34a5436a18e7b9a73a795bf42e5b6a542eea88d322"
-url = "https://github.com/mvdan/gofumpt/releases/download/v0.11.0/gofumpt_v0.11.0_darwin_amd64"
-url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/491232997"
+checksum = "sha256:1d3626892a321aca96a891696eaecb8f68e69e90582c2b55672d5ca210fd5fa8"
+url = "https://github.com/mvdan/gofumpt/releases/download/v0.12.0/gofumpt_v0.12.0_darwin_amd64"
+url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473545"
 
 [tools.gofumpt."platforms.windows-x64"]
-checksum = "sha256:e7ae4253344a600f1116e4b5c7d0d0fcc108abbbf383c3d786a530077b4d4622"
-url = "https://github.com/mvdan/gofumpt/releases/download/v0.11.0/gofumpt_v0.11.0_windows_amd64.exe"
-url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/491232806"
+checksum = "sha256:66bd679908b64864fc85417e7ea01148774b477364b9a02ab1c194333a55c997"
+url = "https://github.com/mvdan/gofumpt/releases/download/v0.12.0/gofumpt_v0.12.0_windows_amd64.exe"
+url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473475"
 
 [tools.gofumpt."platforms.windows-x64-baseline"]
-checksum = "sha256:e7ae4253344a600f1116e4b5c7d0d0fcc108abbbf383c3d786a530077b4d4622"
-url = "https://github.com/mvdan/gofumpt/releases/download/v0.11.0/gofumpt_v0.11.0_windows_amd64.exe"
-url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/491232806"
+checksum = "sha256:66bd679908b64864fc85417e7ea01148774b477364b9a02ab1c194333a55c997"
+url = "https://github.com/mvdan/gofumpt/releases/download/v0.12.0/gofumpt_v0.12.0_windows_amd64.exe"
+url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473475"
 
 [[tools.golangci-lint]]
 version = "2.13.2"
@@ -1761,7 +1761,7 @@ backend = "npm:@playwright/mcp"
 specifiers = ["latest"]
 
 [[tools."npm:@railway/cli"]]
-version = "5.49.3"
+version = "5.49.6"
 backend = "npm:@railway/cli"
 specifiers = ["latest"]
 
@@ -1776,12 +1776,12 @@ backend = "npm:@upstash/context7-mcp"
 specifiers = ["latest"]
 
 [[tools."npm:agent-browser"]]
-version = "0.36.0"
+version = "0.37.1"
 backend = "npm:agent-browser"
 specifiers = ["latest"]
 
 [[tools."npm:chrome-devtools-mcp"]]
-version = "1.8.0"
+version = "1.9.0"
 backend = "npm:chrome-devtools-mcp"
 specifiers = ["latest"]
 
@@ -1876,7 +1876,7 @@ url = "https://github.com/anomalyco/opencode/releases/download/v1.18.30/opencode
 url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/551879073"
 
 [[tools."pipx:mistral-vibe"]]
-version = "2.25.2"
+version = "2.25.3"
 backend = "pipx:mistral-vibe"
 specifiers = ["latest"]
 
@@ -1896,7 +1896,7 @@ backend = "pipx:ruff"
 specifiers = ["latest"]
 
 [[tools."pipx:ty"]]
-version = "0.0.78"
+version = "0.0.79"
 backend = "pipx:ty"
 specifiers = ["latest"]
 
@@ -1955,6 +1955,18 @@ provenance = "github-attestations"
 checksum = "sha256:9560243d4e92780c4466bac2ee6aac4166c8bb601ad3c63f070cdd701b28f360"
 url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-darwin-arm64.tar.gz"
 url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431956"
+provenance = "github-attestations"
+
+[tools.pnpm."platforms.macos-x64"]
+checksum = "sha256:b1d4e02cd2f9a37c42dbb82d2f93e80675f417bd4d5f3be8b999a84db673040e"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431958"
+provenance = "github-attestations"
+
+[tools.pnpm."platforms.macos-x64-baseline"]
+checksum = "sha256:b1d4e02cd2f9a37c42dbb82d2f93e80675f417bd4d5f3be8b999a84db673040e"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431958"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.windows-x64"]
@@ -2035,76 +2047,74 @@ url = "https://github.com/astral-sh/python-build-standalone/releases/download/20
 provenance = "github-attestations"
 
 [[tools.railway]]
-version = "5.49.3"
+version = "5.49.6"
 backend = "github:railwayapp/cli"
 specifiers = ["latest"]
 
 [tools.railway."platforms.linux-arm64"]
-checksum = "sha256:7b2cad10c5884a9a64a861516a2fa0b57f2f6bf05bb2323f859a658b987b5698"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548253588"
+checksum = "sha256:3941ac626f2f24cb72d7a9b275b7718b467a4c5bdf9c50e832dfb13697d0f22c"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.6/railway-v5.49.6-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/550554012"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-arm64-musl"]
-checksum = "sha256:7b2cad10c5884a9a64a861516a2fa0b57f2f6bf05bb2323f859a658b987b5698"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548253588"
+checksum = "sha256:3941ac626f2f24cb72d7a9b275b7718b467a4c5bdf9c50e832dfb13697d0f22c"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.6/railway-v5.49.6-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/550554012"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-x64"]
-checksum = "sha256:8ab7c995db59cbffda7e61f4e6e438389e2238081e1974fd923eed8f339b572e"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548253867"
+checksum = "sha256:8d0af9b93ed6b1ced932b96064582d409dcd99243dd1985bf17ebb292ddf638d"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.6/railway-v5.49.6-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/550552551"
 provenance = "github-attestations"
-provenance_verified = true
 
 [tools.railway."platforms.linux-x64-baseline"]
-checksum = "sha256:8ab7c995db59cbffda7e61f4e6e438389e2238081e1974fd923eed8f339b572e"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548253867"
+checksum = "sha256:8d0af9b93ed6b1ced932b96064582d409dcd99243dd1985bf17ebb292ddf638d"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.6/railway-v5.49.6-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/550552551"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-x64-musl"]
-checksum = "sha256:2fd157d82efeb876999854ce452b5d15b7523d92c4b0765cb810dfe28112c875"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548254631"
+checksum = "sha256:39c89cc07203331392ae5d65f3a21bc49a7219cefdb69948245aca638a33856e"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.6/railway-v5.49.6-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/550554782"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:2fd157d82efeb876999854ce452b5d15b7523d92c4b0765cb810dfe28112c875"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548254631"
+checksum = "sha256:39c89cc07203331392ae5d65f3a21bc49a7219cefdb69948245aca638a33856e"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.6/railway-v5.49.6-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/550554782"
 provenance = "github-attestations"
 
 [tools.railway."platforms.macos-arm64"]
-checksum = "sha256:a53cab6a859207699fadda385ee3fc0279023da486c3000b184cff20f4e3595d"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548255776"
+checksum = "sha256:750d5d8b6fcf56941a75adfb97c2b030d6ac4169672f29f9a65605d4a1130b16"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.6/railway-v5.49.6-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/550561935"
 provenance = "github-attestations"
-provenance_verified = true
 
 [tools.railway."platforms.macos-x64"]
-checksum = "sha256:a9aa95ebee2cf479b4a39a0992a6eac0b68016304e27582a5d045c61e8916383"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548252727"
+checksum = "sha256:8a093de6c1ef78aa74fab170d39eb460b67693b18ff7382cb0a4e1ec46cdcbd1"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.6/railway-v5.49.6-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/550554399"
 provenance = "github-attestations"
 
 [tools.railway."platforms.macos-x64-baseline"]
-checksum = "sha256:a9aa95ebee2cf479b4a39a0992a6eac0b68016304e27582a5d045c61e8916383"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548252727"
+checksum = "sha256:8a093de6c1ef78aa74fab170d39eb460b67693b18ff7382cb0a4e1ec46cdcbd1"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.6/railway-v5.49.6-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/550554399"
 provenance = "github-attestations"
 
 [tools.railway."platforms.windows-x64"]
-checksum = "sha256:d996491f992a482a6a5aa75b7868eeec2a80bfe1c1ed6e1786eedaec53b0a428"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548258256"
+checksum = "sha256:f152fb61d0ad74b6e08058e12b8ef810b6c92a6c3a47b7cd51dd0b0e756770b1"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.6/railway-v5.49.6-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/550562757"
 provenance = "github-attestations"
 
 [tools.railway."platforms.windows-x64-baseline"]
-checksum = "sha256:938e69cfa04fad511cc4e80e476927e3a1744e35e0040fd0bead44c7dbd313b0"
-url = "https://github.com/railwayapp/cli/releases/download/v5.49.3/railway-v5.49.3-x86_64-pc-windows-gnu.zip"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/548258881"
+checksum = "sha256:ad26cb1e91a8d73a33c36f2f4a4c07b3652ad2da806190e105486d9659e1aa9d"
+url = "https://github.com/railwayapp/cli/releases/download/v5.49.6/railway-v5.49.6-x86_64-pc-windows-gnu.zip"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/550563422"
 provenance = "github-attestations"
 
 [[tools.ruby]]
