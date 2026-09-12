@@ -95,6 +95,7 @@ watchexec = "latest"
 "cargo:sqlx-cli" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:tokei" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:topgrade" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:tree-sitter-cli" = { version = "latest", depends = ["cargo-binstall"] }
 
 #
 # Node.js
@@ -114,7 +115,6 @@ bun = "latest"
 "npm:markdownlint-cli2" = "latest"
 "npm:oxfmt" = "latest"
 "npm:oxlint" = "latest"
-"npm:tree-sitter-cli" = "latest"
 "npm:yarn" = "latest"
 
 # Python

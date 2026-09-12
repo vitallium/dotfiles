@@ -463,6 +463,11 @@ version = "17.9.0"
 backend = "cargo:topgrade"
 specifiers = ["latest"]
 
+[[tools."cargo:tree-sitter-cli"]]
+version = "0.27.0"
+backend = "cargo:tree-sitter-cli"
+specifiers = ["latest"]
+
 [[tools.chezmoi]]
 version = "2.72.1"
 backend = "aqua:twpayne/chezmoi"
