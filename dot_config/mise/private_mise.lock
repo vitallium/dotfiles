@@ -3,124 +3,124 @@
 lockfile_version = 1
 
 [[tools.antigravity-cli]]
-version = "1.1.27"
+version = "1.1.28"
 backend = "aqua:google-antigravity/antigravity-cli"
 specifiers = ["latest"]
 
 [tools.antigravity-cli."platforms.linux-arm64"]
-checksum = "sha256:97fc9fe5a6067406cd02cbe4ae6e362c9623a24d33bec486911246c17ceb6a94"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.27/agy_cli_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/545349564"
+checksum = "sha256:789420d2937393498eb158c4af8321d78c387e31c861db0c79627879509aa8a8"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.28/agy_cli_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/551653599"
 
 [tools.antigravity-cli."platforms.linux-arm64-musl"]
-checksum = "sha256:97fc9fe5a6067406cd02cbe4ae6e362c9623a24d33bec486911246c17ceb6a94"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.27/agy_cli_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/545349564"
+checksum = "sha256:789420d2937393498eb158c4af8321d78c387e31c861db0c79627879509aa8a8"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.28/agy_cli_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/551653599"
 
 [tools.antigravity-cli."platforms.linux-x64"]
-checksum = "sha256:f874d4f6b8a73c2df660f580f25fb656fcb6e64adbfd746e6692e837fd9a20be"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.27/agy_cli_linux_x64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/545349566"
+checksum = "sha256:074ff4f732a750ad727aeed5fc82ed34b1fb72fda2a6ceba6c8e652ffd0a94b0"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.28/agy_cli_linux_x64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/551653598"
 
 [tools.antigravity-cli."platforms.linux-x64-baseline"]
-checksum = "sha256:f874d4f6b8a73c2df660f580f25fb656fcb6e64adbfd746e6692e837fd9a20be"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.27/agy_cli_linux_x64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/545349566"
+checksum = "sha256:074ff4f732a750ad727aeed5fc82ed34b1fb72fda2a6ceba6c8e652ffd0a94b0"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.28/agy_cli_linux_x64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/551653598"
 
 [tools.antigravity-cli."platforms.linux-x64-musl"]
-checksum = "sha256:f874d4f6b8a73c2df660f580f25fb656fcb6e64adbfd746e6692e837fd9a20be"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.27/agy_cli_linux_x64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/545349566"
+checksum = "sha256:074ff4f732a750ad727aeed5fc82ed34b1fb72fda2a6ceba6c8e652ffd0a94b0"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.28/agy_cli_linux_x64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/551653598"
 
 [tools.antigravity-cli."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:f874d4f6b8a73c2df660f580f25fb656fcb6e64adbfd746e6692e837fd9a20be"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.27/agy_cli_linux_x64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/545349566"
+checksum = "sha256:074ff4f732a750ad727aeed5fc82ed34b1fb72fda2a6ceba6c8e652ffd0a94b0"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.28/agy_cli_linux_x64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/551653598"
 
 [tools.antigravity-cli."platforms.macos-arm64"]
-checksum = "sha256:e901e5c8fd20ab4c21c01df306030079286d08e6d372cdb535d5ccc7a3f565f4"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.27/agy_cli_mac_arm64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/545349563"
+checksum = "sha256:8f642cffce8bc14aa3e49d1a75780bb2bd99fe7a3016389627476d9e3ec911eb"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.28/agy_cli_mac_arm64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/551653597"
 
 [tools.antigravity-cli."platforms.macos-x64"]
-checksum = "sha256:fe5f102bf65be5d478c68fc2f9c3f5b3c5cb2cc788105310b35698fd1af10192"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.27/agy_cli_mac_x64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/545349565"
+checksum = "sha256:629887c5baf30c9c1c130a5d3d9fdfebdf0b67ffd45f822d771c0abfb69e405b"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.28/agy_cli_mac_x64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/551653603"
 
 [tools.antigravity-cli."platforms.macos-x64-baseline"]
-checksum = "sha256:fe5f102bf65be5d478c68fc2f9c3f5b3c5cb2cc788105310b35698fd1af10192"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.27/agy_cli_mac_x64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/545349565"
+checksum = "sha256:629887c5baf30c9c1c130a5d3d9fdfebdf0b67ffd45f822d771c0abfb69e405b"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.28/agy_cli_mac_x64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/551653603"
 
 [tools.antigravity-cli."platforms.windows-x64"]
-checksum = "sha256:94e3f09357159fd9ea10061c3c7749145070ff5794cc33efd43b73d53fe38559"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.27/agy_cli_windows_x64.zip"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/545349561"
+checksum = "sha256:4eb8784538bc25ee597006aacdbc8e83819e4c1799330b678d0a1d73d7c6745d"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.28/agy_cli_windows_x64.zip"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/551653600"
 
 [tools.antigravity-cli."platforms.windows-x64-baseline"]
-checksum = "sha256:94e3f09357159fd9ea10061c3c7749145070ff5794cc33efd43b73d53fe38559"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.27/agy_cli_windows_x64.zip"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/545349561"
+checksum = "sha256:4eb8784538bc25ee597006aacdbc8e83819e4c1799330b678d0a1d73d7c6745d"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.1.28/agy_cli_windows_x64.zip"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/551653600"
 
 [[tools."aqua:AlexanderGrooff/mermaid-ascii"]]
-version = "1.6.0"
+version = "1.6.1"
 backend = "aqua:AlexanderGrooff/mermaid-ascii"
 specifiers = ["latest"]
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.linux-arm64"]
-checksum = "sha256:fca54cb35e8d5392be494f84bfe599ef484473b67cbbd79f2964b177bdd5115b"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350856"
+checksum = "sha256:b166e0b4a0c34e31068c7629333e887742af714bb42966db08adf861eb352139"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.1/mermaid-ascii_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/551371474"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.linux-arm64-musl"]
-checksum = "sha256:fca54cb35e8d5392be494f84bfe599ef484473b67cbbd79f2964b177bdd5115b"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350856"
+checksum = "sha256:b166e0b4a0c34e31068c7629333e887742af714bb42966db08adf861eb352139"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.1/mermaid-ascii_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/551371474"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.linux-x64"]
-checksum = "sha256:23a5d3b4275f7a15e41b2e84226c5efa957927bd99527d64d6bc9d3824ccf89a"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350851"
+checksum = "sha256:9c2844824635415982a8d34be301a0abb1f64599f019892f7d844c4620ce8d41"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.1/mermaid-ascii_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/551371446"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.linux-x64-baseline"]
-checksum = "sha256:23a5d3b4275f7a15e41b2e84226c5efa957927bd99527d64d6bc9d3824ccf89a"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350851"
+checksum = "sha256:9c2844824635415982a8d34be301a0abb1f64599f019892f7d844c4620ce8d41"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.1/mermaid-ascii_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/551371446"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.linux-x64-musl"]
-checksum = "sha256:23a5d3b4275f7a15e41b2e84226c5efa957927bd99527d64d6bc9d3824ccf89a"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350851"
+checksum = "sha256:9c2844824635415982a8d34be301a0abb1f64599f019892f7d844c4620ce8d41"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.1/mermaid-ascii_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/551371446"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:23a5d3b4275f7a15e41b2e84226c5efa957927bd99527d64d6bc9d3824ccf89a"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350851"
+checksum = "sha256:9c2844824635415982a8d34be301a0abb1f64599f019892f7d844c4620ce8d41"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.1/mermaid-ascii_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/551371446"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.macos-arm64"]
-checksum = "sha256:813cd45e601da03586b2a2010babcb959de603a5b2bf34ae4f6ee78673e38d24"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350815"
+checksum = "sha256:9b7f7788bd2596437d92856e9a60b7b05ecb5f6f786c8c0b1cb369f742bf8063"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.1/mermaid-ascii_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/551371459"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.macos-x64"]
-checksum = "sha256:1a4833380d6a46723d88151e0382c63fa94ce6052f2113a6291fb47db48cdbe7"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350828"
+checksum = "sha256:a0fc7b8dc4f01d0ad0afff16590d63b8a85d157cc957b2a659ffeca617360bdc"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.1/mermaid-ascii_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/551371445"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.macos-x64-baseline"]
-checksum = "sha256:1a4833380d6a46723d88151e0382c63fa94ce6052f2113a6291fb47db48cdbe7"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350828"
+checksum = "sha256:a0fc7b8dc4f01d0ad0afff16590d63b8a85d157cc957b2a659ffeca617360bdc"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.1/mermaid-ascii_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/551371445"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.windows-x64"]
-checksum = "sha256:60f3fafc16955ed47bc3ed036da70eab150c85e4be412ba8b2f29896c5126d7a"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Windows_x86_64.zip"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350821"
+checksum = "sha256:c895af7bfd7625ff7386bb8fbbceb48646ae908798f863d949ed27b042346a94"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.1/mermaid-ascii_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/551371466"
 
 [tools."aqua:AlexanderGrooff/mermaid-ascii"."platforms.windows-x64-baseline"]
-checksum = "sha256:60f3fafc16955ed47bc3ed036da70eab150c85e4be412ba8b2f29896c5126d7a"
-url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.0/mermaid-ascii_Windows_x86_64.zip"
-url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/548350821"
+checksum = "sha256:c895af7bfd7625ff7386bb8fbbceb48646ae908798f863d949ed27b042346a94"
+url = "https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/1.6.1/mermaid-ascii_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/AlexanderGrooff/mermaid-ascii/releases/assets/551371466"
 
 [[tools."aqua:sharkdp/hexyl"]]
 version = "0.17.0"
@@ -860,7 +860,7 @@ backend = "go:golang.org/x/tools/cmd/godoc"
 specifiers = ["latest"]
 
 [[tools."go:golang.org/x/tools/cmd/goimports"]]
-version = "0.49.0"
+version = "0.50.0"
 backend = "go:golang.org/x/tools/cmd/goimports"
 specifiers = ["latest"]
 
@@ -870,7 +870,7 @@ backend = "go:golang.org/x/tools/gopls"
 specifiers = ["latest"]
 
 [[tools."go:golang.org/x/vuln/cmd/govulncheck"]]
-version = "1.7.0"
+version = "1.8.0"
 backend = "go:golang.org/x/vuln/cmd/govulncheck"
 specifiers = ["latest"]
 
@@ -1197,44 +1197,43 @@ url_api = "https://api.github.com/repos/goreleaser/goreleaser/releases/assets/54
 provenance = "github-attestations"
 
 [[tools.grok]]
-version = "1.0.25"
+version = "1.0.30"
 backend = "http:grok"
 specifiers = ["latest"]
 
 [tools.grok."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-linux-aarch64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.30-linux-aarch64"
 
 [tools.grok."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-linux-aarch64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.30-linux-aarch64"
 
 [tools.grok."platforms.linux-x64"]
-checksum = "blake3:948376806cc95ec95b92e57fa6c5b8df01f219c0aa3a066dd73fdbece5c2fb84"
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-linux-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.30-linux-x86_64"
 
 [tools.grok."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-linux-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.30-linux-x86_64"
 
 [tools.grok."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-linux-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.30-linux-x86_64"
 
 [tools.grok."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-linux-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.30-linux-x86_64"
 
 [tools.grok."platforms.macos-arm64"]
-checksum = "blake3:a81ce93d9e384ef861007c30fc0427144bba4d8e73e82c07b21c5b9b176cc8da"
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-macos-aarch64"
+checksum = "blake3:f56ddeb510bf6c701a6bb505cf91e791c0e0a024b0c079583b2b91c252d95f3a"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.30-macos-aarch64"
 
 [tools.grok."platforms.macos-x64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-macos-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.30-macos-x86_64"
 
 [tools.grok."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-macos-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.30-macos-x86_64"
 
 [tools.grok."platforms.windows-x64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-windows-x86_64.exe"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.30-windows-x86_64.exe"
 
 [tools.grok."platforms.windows-x64-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.25-windows-x86_64.exe"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.30-windows-x86_64.exe"
 
 [[tools.gum]]
 version = "2.0.0"
@@ -1771,7 +1770,7 @@ backend = "npm:@railway/mcp-server"
 specifiers = ["latest"]
 
 [[tools."npm:@upstash/context7-mcp"]]
-version = "4.0.5"
+version = "4.0.6"
 backend = "npm:@upstash/context7-mcp"
 specifiers = ["latest"]
 
@@ -1786,7 +1785,7 @@ backend = "npm:chrome-devtools-mcp"
 specifiers = ["latest"]
 
 [[tools."npm:knip"]]
-version = "6.34.0"
+version = "6.35.0"
 backend = "npm:knip"
 specifiers = ["latest"]
 
@@ -1911,74 +1910,74 @@ backend = "pipx:yubikey-manager"
 specifiers = ["latest"]
 
 [[tools.pnpm]]
-version = "12.3.4"
+version = "12.4.0"
 backend = "aqua:pnpm/pnpm"
 specifiers = ["latest"]
 
 [tools.pnpm."platforms.linux-arm64"]
-checksum = "sha256:95e71a2a30bbc0b77511f95cf096779068dcad6ffcbbfdf0cd4dde9de2b2b97c"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431953"
+checksum = "sha256:74fc88eacd2975df4ec5bae517482986ce824bc35a7ac5965c1baf1c854fe933"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.4.0/pnpm-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/550351855"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.linux-arm64-musl"]
-checksum = "sha256:75c0b268cedbf9b57b69dcef576b9b307dd5b7650c1f967ac1b8f8d6afc1ca25"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-linux-arm64-musl.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431955"
+checksum = "sha256:e2e9ec97dbf6165e0936883c078850af967fd7842cfabbb130c24f594bba589f"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.4.0/pnpm-linux-arm64-musl.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/550351859"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.linux-x64"]
-checksum = "sha256:9705e5704b4679fb503c963a18d1ac4f105e39aafafca8a2ed346facdf820cd0"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431952"
+checksum = "sha256:fcff7ecad46365d356718a40a88a72b4c02eae9d075d567e032697d769f3d999"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.4.0/pnpm-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/550351861"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.linux-x64-baseline"]
-checksum = "sha256:9705e5704b4679fb503c963a18d1ac4f105e39aafafca8a2ed346facdf820cd0"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431952"
+checksum = "sha256:fcff7ecad46365d356718a40a88a72b4c02eae9d075d567e032697d769f3d999"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.4.0/pnpm-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/550351861"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.linux-x64-musl"]
-checksum = "sha256:e4c4f54599627cc0646fbb2ea8103bd6c88634533fbd6c6f5ca0f6fe7d6f5d9c"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-linux-x64-musl.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431957"
+checksum = "sha256:cb90483341f8601d7d62c93dbd3f17f057e1d95f8cc8720cfe6df4411a616bde"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.4.0/pnpm-linux-x64-musl.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/550351865"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:e4c4f54599627cc0646fbb2ea8103bd6c88634533fbd6c6f5ca0f6fe7d6f5d9c"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-linux-x64-musl.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431957"
+checksum = "sha256:cb90483341f8601d7d62c93dbd3f17f057e1d95f8cc8720cfe6df4411a616bde"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.4.0/pnpm-linux-x64-musl.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/550351865"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.macos-arm64"]
-checksum = "sha256:9560243d4e92780c4466bac2ee6aac4166c8bb601ad3c63f070cdd701b28f360"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431956"
+checksum = "sha256:dae611f18e7acc416fac9134ac86fcb1cc8670868ea2e5a51e82e184aec01d63"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.4.0/pnpm-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/550351864"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.macos-x64"]
-checksum = "sha256:b1d4e02cd2f9a37c42dbb82d2f93e80675f417bd4d5f3be8b999a84db673040e"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-darwin-x64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431958"
+checksum = "sha256:6baf32b1706fefad6a5021d55670a9b306b109f5e1fe6542f4b82351fdc328e4"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.4.0/pnpm-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/550351854"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.macos-x64-baseline"]
-checksum = "sha256:b1d4e02cd2f9a37c42dbb82d2f93e80675f417bd4d5f3be8b999a84db673040e"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-darwin-x64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431958"
+checksum = "sha256:6baf32b1706fefad6a5021d55670a9b306b109f5e1fe6542f4b82351fdc328e4"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.4.0/pnpm-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/550351854"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.windows-x64"]
-checksum = "sha256:ada0d8b62adff9884686d473e27d0f57ef2ca4a044d23a7c6782af86b9a8a6cf"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-win32-x64.zip"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431954"
+checksum = "sha256:0c25c9921d61171c1551ed38cf6bc5240bcd3acaff81431a4edb5fe33c720674"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.4.0/pnpm-win32-x64.zip"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/550351858"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.windows-x64-baseline"]
-checksum = "sha256:ada0d8b62adff9884686d473e27d0f57ef2ca4a044d23a7c6782af86b9a8a6cf"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.3.4/pnpm-win32-x64.zip"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/544431954"
+checksum = "sha256:0c25c9921d61171c1551ed38cf6bc5240bcd3acaff81431a4edb5fe33c720674"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.4.0/pnpm-win32-x64.zip"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/550351858"
 provenance = "github-attestations"
 
 [[tools.prettier]]
@@ -2381,74 +2380,74 @@ url_api = "https://api.github.com/repos/jdx/usage/releases/assets/547482883"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [[tools.uv]]
-version = "0.12.10"
+version = "0.12.11"
 backend = "aqua:astral-sh/uv"
 specifiers = ["latest"]
 
 [tools.uv."platforms.linux-arm64"]
-checksum = "sha256:9ff6b9d4665edcdd3a88dcc73cd1eb641754deb927f14e8c62ebfde6bf4f5f5e"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.10/uv-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/545034356"
+checksum = "sha256:e9933d907fb9cd27d606d819bbded419f2844c0e2efc98225ecfa409288eb28d"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.11/uv-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/551278504"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-arm64-musl"]
-checksum = "sha256:3983cb642fae84eab33756109bb266f126eb61763d8d220dd662af589c5b3da5"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.10/uv-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/545034364"
+checksum = "sha256:de99cafdeb5ee6f61ac3acd6d9dc6a1ef166f9398fa5623c436246ee1ecea099"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.11/uv-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/551278510"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:173d95a0c32d18c896c46ba6fafbf3cf9c14ab74b033f81b76c883ef492a976b"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.10/uv-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/545034465"
+checksum = "sha256:4ae93e0f148a18434cc094072547cec88912fc4a72b984183c7d0d0e9586cb5e"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.11/uv-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/551278642"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-baseline"]
-checksum = "sha256:173d95a0c32d18c896c46ba6fafbf3cf9c14ab74b033f81b76c883ef492a976b"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.10/uv-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/545034465"
+checksum = "sha256:4ae93e0f148a18434cc094072547cec88912fc4a72b984183c7d0d0e9586cb5e"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.11/uv-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/551278642"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-musl"]
-checksum = "sha256:848d0e261119e5b8f35db10164635e46a48bec29ceb1f8ec14a6fc76004973ee"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.10/uv-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/545034473"
+checksum = "sha256:3343303ad6b4f9537ae0abfb36f1926a90c0445ba8f23d0e0a840a66a124cffd"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.11/uv-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/551278646"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:848d0e261119e5b8f35db10164635e46a48bec29ceb1f8ec14a6fc76004973ee"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.10/uv-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/545034473"
+checksum = "sha256:3343303ad6b4f9537ae0abfb36f1926a90c0445ba8f23d0e0a840a66a124cffd"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.11/uv-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/551278646"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-arm64"]
-checksum = "sha256:51c6170e8e3a01cef9f33b94f582b7b81ac65046f55d40afb35f9cff5a68c179"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.10/uv-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/545034336"
+checksum = "sha256:e01b69ee15e81918d5e8fc9cf39b3db7f59c5576e5e306cd9b7aeb2c7b7321c3"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.11/uv-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/551278468"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-x64"]
-checksum = "sha256:5296d5aa2b9143360405eea866f8ef4d5dc8986b164eb0dc35e8f876a9304d30"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.10/uv-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/545034436"
+checksum = "sha256:96d773bf5fda4f9b08c4444847f9183d1c14bc8a28ff9c0490e261a8fc6e5309"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.11/uv-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/551278628"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-x64-baseline"]
-checksum = "sha256:5296d5aa2b9143360405eea866f8ef4d5dc8986b164eb0dc35e8f876a9304d30"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.10/uv-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/545034436"
+checksum = "sha256:96d773bf5fda4f9b08c4444847f9183d1c14bc8a28ff9c0490e261a8fc6e5309"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.11/uv-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/551278628"
 provenance = "github-attestations"
 
 [tools.uv."platforms.windows-x64"]
-checksum = "sha256:f65744f94072152b1f86ba2aace4d01f1124d9a8ecb235805039e3718c36cac2"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.10/uv-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/545034461"
+checksum = "sha256:e94225dea91e051472847bd6d146d7d66c4f54ffcd1f106678866a99580845f9"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.11/uv-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/551278631"
 provenance = "github-attestations"
 
 [tools.uv."platforms.windows-x64-baseline"]
-checksum = "sha256:f65744f94072152b1f86ba2aace4d01f1124d9a8ecb235805039e3718c36cac2"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.10/uv-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/545034461"
+checksum = "sha256:e94225dea91e051472847bd6d146d7d66c4f54ffcd1f106678866a99580845f9"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.11/uv-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/551278631"
 provenance = "github-attestations"
 
 [[tools.watchexec]]
