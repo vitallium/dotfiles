@@ -123,7 +123,7 @@ bun = "latest"
 "pipx:pgcli" = { version = "latest", depends = ["python", "uv"] }
 "pipx:ruff" = { version = "latest", depends = ["python", "uv"] }
 "pipx:yt-dlp" = { version = "latest", depends = ["python", "uv"] }
-"pipx:yubikey-manager" = { version = "latest", depends = ["python", "uv"] }
+# "pipx:yubikey-manager" = { version = "latest", depends = ["python", "uv"] }
 "pipx:ty" = { version = "latest", depends = ["python", "uv"] }
 "pipx:mistral-vibe" = { version = "latest", depends = ["python", "uv"] }
 
