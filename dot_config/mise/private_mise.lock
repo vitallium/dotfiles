@@ -540,64 +540,64 @@ url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/56170635
 provenance = "cosign"
 
 [[tools.codex]]
-version = "0.155.1"
+version = "0.156.1"
 backend = "aqua:openai/codex"
 specifiers = ["latest"]
 
 [tools.codex."platforms.linux-arm64"]
-checksum = "sha256:71857dbc9bea3613410e8a69cfb46b07c0402d6d20fec18843dbaffd757634bd"
-url = "https://github.com/openai/codex/releases/download/rust-v0.155.1/codex-package-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/573353562"
+checksum = "sha256:fdd47ed6aade0360796fd3f6f95a45096f327c15e19e8c7339f9dc5633041786"
+url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/582791754"
 
 [tools.codex."platforms.linux-arm64-musl"]
-checksum = "sha256:71857dbc9bea3613410e8a69cfb46b07c0402d6d20fec18843dbaffd757634bd"
-url = "https://github.com/openai/codex/releases/download/rust-v0.155.1/codex-package-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/573353562"
+checksum = "sha256:fdd47ed6aade0360796fd3f6f95a45096f327c15e19e8c7339f9dc5633041786"
+url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/582791754"
 
 [tools.codex."platforms.linux-x64"]
-checksum = "sha256:a65b895c6ac1a73629bbe4b864640c86133e94a43b4d67b3103044e1a306d5a2"
-url = "https://github.com/openai/codex/releases/download/rust-v0.155.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/573353456"
+checksum = "sha256:8b711520beddf385467b8da4d2c93736637c6ba1e46811cf0d8606b7c490b6f6"
+url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/582785983"
 
 [tools.codex."platforms.linux-x64-baseline"]
-checksum = "sha256:a65b895c6ac1a73629bbe4b864640c86133e94a43b4d67b3103044e1a306d5a2"
-url = "https://github.com/openai/codex/releases/download/rust-v0.155.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/573353456"
+checksum = "sha256:8b711520beddf385467b8da4d2c93736637c6ba1e46811cf0d8606b7c490b6f6"
+url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/582785983"
 
 [tools.codex."platforms.linux-x64-musl"]
-checksum = "sha256:a65b895c6ac1a73629bbe4b864640c86133e94a43b4d67b3103044e1a306d5a2"
-url = "https://github.com/openai/codex/releases/download/rust-v0.155.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/573353456"
+checksum = "sha256:8b711520beddf385467b8da4d2c93736637c6ba1e46811cf0d8606b7c490b6f6"
+url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/582785983"
 
 [tools.codex."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:a65b895c6ac1a73629bbe4b864640c86133e94a43b4d67b3103044e1a306d5a2"
-url = "https://github.com/openai/codex/releases/download/rust-v0.155.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/573353456"
+checksum = "sha256:8b711520beddf385467b8da4d2c93736637c6ba1e46811cf0d8606b7c490b6f6"
+url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/582785983"
 
 [tools.codex."platforms.macos-arm64"]
-checksum = "sha256:e6e08717da9e35b72332eff753527fe79a9ae876081033c5c6820a8e5f58b943"
-url = "https://github.com/openai/codex/releases/download/rust-v0.155.1/codex-package-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/573353582"
+checksum = "sha256:fea42f9625091f011e38f059da974d52e57ba31831648bb1c7f0b1a385fde547"
+url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/582795411"
 
 [tools.codex."platforms.macos-x64"]
-checksum = "sha256:be752aebb2ac022c5bfed3fa14f46943d11ddb36a950b553b058794aba22496a"
-url = "https://github.com/openai/codex/releases/download/rust-v0.155.1/codex-package-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/573353601"
+checksum = "sha256:618dbcd55419fa041871f777a14b107ceb3fe2d339ef81e21e6ab5374420dc71"
+url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/582789045"
 
 [tools.codex."platforms.macos-x64-baseline"]
-checksum = "sha256:be752aebb2ac022c5bfed3fa14f46943d11ddb36a950b553b058794aba22496a"
-url = "https://github.com/openai/codex/releases/download/rust-v0.155.1/codex-package-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/573353601"
+checksum = "sha256:618dbcd55419fa041871f777a14b107ceb3fe2d339ef81e21e6ab5374420dc71"
+url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/582789045"
 
 [tools.codex."platforms.windows-x64"]
-checksum = "sha256:f45c273b7835c192aaa9cef5b93aa9528966ac7301444632de80a565a9bf14e8"
-url = "https://github.com/openai/codex/releases/download/rust-v0.155.1/codex-package-x86_64-pc-windows-msvc.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/573353476"
+checksum = "sha256:a2e017db9807e6a2269a26fea0e1d9546469cef4d472a33016bc9f3ad7d3b733"
+url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-pc-windows-msvc.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/582787444"
 
 [tools.codex."platforms.windows-x64-baseline"]
-checksum = "sha256:f45c273b7835c192aaa9cef5b93aa9528966ac7301444632de80a565a9bf14e8"
-url = "https://github.com/openai/codex/releases/download/rust-v0.155.1/codex-package-x86_64-pc-windows-msvc.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/573353476"
+checksum = "sha256:a2e017db9807e6a2269a26fea0e1d9546469cef4d472a33016bc9f3ad7d3b733"
+url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-pc-windows-msvc.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/582787444"
 
 [[tools.cosign]]
 version = "3.1.3"
@@ -1202,43 +1202,43 @@ url_api = "https://api.github.com/repos/goreleaser/goreleaser/releases/assets/56
 provenance = "github-attestations"
 
 [[tools.grok]]
-version = "1.0.40"
+version = "1.0.41"
 backend = "http:grok"
 specifiers = ["latest"]
 
 [tools.grok."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.40-linux-aarch64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-linux-aarch64"
 
 [tools.grok."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.40-linux-aarch64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-linux-aarch64"
 
 [tools.grok."platforms.linux-x64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.40-linux-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-linux-x86_64"
 
 [tools.grok."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.40-linux-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-linux-x86_64"
 
 [tools.grok."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.40-linux-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-linux-x86_64"
 
 [tools.grok."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.40-linux-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-linux-x86_64"
 
 [tools.grok."platforms.macos-arm64"]
-checksum = "blake3:e4db5e665afc54bb244e3fc153e43eb62299aecc516dac81a97d94ca98347ee9"
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.40-macos-aarch64"
+checksum = "blake3:5adbb600ba0fe0b5018d538712db4990e326b1cf3136afdca4699b11ae53af6f"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-macos-aarch64"
 
 [tools.grok."platforms.macos-x64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.40-macos-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-macos-x86_64"
 
 [tools.grok."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.40-macos-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-macos-x86_64"
 
 [tools.grok."platforms.windows-x64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.40-windows-x86_64.exe"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-windows-x86_64.exe"
 
 [tools.grok."platforms.windows-x64-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.40-windows-x86_64.exe"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-windows-x86_64.exe"
 
 [[tools.gum]]
 version = "2.0.1"
@@ -1721,7 +1721,7 @@ backend = "npm:@playwright/mcp"
 specifiers = ["latest"]
 
 [[tools."npm:@railway/cli"]]
-version = "5.57.12"
+version = "5.58.0"
 backend = "npm:@railway/cli"
 specifiers = ["latest"]
 
@@ -1751,7 +1751,7 @@ backend = "npm:knip"
 specifiers = ["latest"]
 
 [[tools."npm:markdownlint-cli2"]]
-version = "0.23.2"
+version = "0.23.3"
 backend = "npm:markdownlint-cli2"
 specifiers = ["latest"]
 
@@ -2009,74 +2009,74 @@ url = "https://github.com/astral-sh/python-build-standalone/releases/download/20
 provenance = "github-attestations"
 
 [[tools.railway]]
-version = "5.57.12"
+version = "5.58.0"
 backend = "github:railwayapp/cli"
 specifiers = ["latest"]
 
 [tools.railway."platforms.linux-arm64"]
-checksum = "sha256:f70dd91b753434fa69a6f9a97ef7e16eb3a6815a703ec2cad0af04260a450ead"
-url = "https://github.com/railwayapp/cli/releases/download/v5.57.12/railway-v5.57.12-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/575043781"
+checksum = "sha256:a6ac94b7555fb19d7d10c15939340a09e183c7c8850770424bffd2c7a87d538f"
+url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576058625"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-arm64-musl"]
-checksum = "sha256:f70dd91b753434fa69a6f9a97ef7e16eb3a6815a703ec2cad0af04260a450ead"
-url = "https://github.com/railwayapp/cli/releases/download/v5.57.12/railway-v5.57.12-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/575043781"
+checksum = "sha256:a6ac94b7555fb19d7d10c15939340a09e183c7c8850770424bffd2c7a87d538f"
+url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576058625"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-x64"]
-checksum = "sha256:1721746bbd691a4cf7f90080d342dcdb7263e31030cf9ffebff590a33b6bd6da"
-url = "https://github.com/railwayapp/cli/releases/download/v5.57.12/railway-v5.57.12-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/575044920"
+checksum = "sha256:696ed4f0a029e15729c14af67ce4655dc188ecb77f06b7497473107d2ccfa173"
+url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576056252"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-x64-baseline"]
-checksum = "sha256:1721746bbd691a4cf7f90080d342dcdb7263e31030cf9ffebff590a33b6bd6da"
-url = "https://github.com/railwayapp/cli/releases/download/v5.57.12/railway-v5.57.12-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/575044920"
+checksum = "sha256:696ed4f0a029e15729c14af67ce4655dc188ecb77f06b7497473107d2ccfa173"
+url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576056252"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-x64-musl"]
-checksum = "sha256:96bec99fd813d18ef5b538654b9bcf0a51ddcb9036446267cc2a47ef0933fa39"
-url = "https://github.com/railwayapp/cli/releases/download/v5.57.12/railway-v5.57.12-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/575046153"
+checksum = "sha256:9b054087fc70e2c02e5aa6a178156908ef105d4fb91939dbe349791319542593"
+url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576057537"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:96bec99fd813d18ef5b538654b9bcf0a51ddcb9036446267cc2a47ef0933fa39"
-url = "https://github.com/railwayapp/cli/releases/download/v5.57.12/railway-v5.57.12-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/575046153"
+checksum = "sha256:9b054087fc70e2c02e5aa6a178156908ef105d4fb91939dbe349791319542593"
+url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576057537"
 provenance = "github-attestations"
 
 [tools.railway."platforms.macos-arm64"]
-checksum = "sha256:5ede9206eb8e6f741d848f75013aa4ace36bfd7443baa28ae8795d2ae1628387"
-url = "https://github.com/railwayapp/cli/releases/download/v5.57.12/railway-v5.57.12-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/575052232"
+checksum = "sha256:7980f48e40a1f835fc83bda95a53614b1c69b506626f92efe50102b87694ac7f"
+url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576064980"
 provenance = "github-attestations"
 
 [tools.railway."platforms.macos-x64"]
-checksum = "sha256:7ae04cc5a6dd80d5c999f3f30ea36a2f6303868bf2d0a2d1f7892442d64fca4c"
-url = "https://github.com/railwayapp/cli/releases/download/v5.57.12/railway-v5.57.12-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/575046851"
+checksum = "sha256:47930e66f0391b9db89b8d342062c1aa5e4a2a05faca2234c1736f1261da5069"
+url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576060887"
 provenance = "github-attestations"
 
 [tools.railway."platforms.macos-x64-baseline"]
-checksum = "sha256:7ae04cc5a6dd80d5c999f3f30ea36a2f6303868bf2d0a2d1f7892442d64fca4c"
-url = "https://github.com/railwayapp/cli/releases/download/v5.57.12/railway-v5.57.12-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/575046851"
+checksum = "sha256:47930e66f0391b9db89b8d342062c1aa5e4a2a05faca2234c1736f1261da5069"
+url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576060887"
 provenance = "github-attestations"
 
 [tools.railway."platforms.windows-x64"]
-checksum = "sha256:26dd4ddf7ca457f8f75876f51a328e130be358a56c595f11496205c972e4204b"
-url = "https://github.com/railwayapp/cli/releases/download/v5.57.12/railway-v5.57.12-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/575050468"
+checksum = "sha256:2f3ffc4eed88817ba7f5065e38838c27e59b946900356240c36effff64f8e2a7"
+url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576065333"
 provenance = "github-attestations"
 
 [tools.railway."platforms.windows-x64-baseline"]
-checksum = "sha256:0cc71b796c45660ab6890a2bba31ae3b9f9c5c0d3bc696de84a89c62bf9402f7"
-url = "https://github.com/railwayapp/cli/releases/download/v5.57.12/railway-v5.57.12-x86_64-pc-windows-gnu.zip"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/575051499"
+checksum = "sha256:d3b2d55960b71d40bb53bbf449a04db920ffd0173c8af5de5b89f190a8517e06"
+url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-pc-windows-gnu.zip"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576062066"
 provenance = "github-attestations"
 
 [[tools.ruby]]
