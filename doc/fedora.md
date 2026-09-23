@@ -102,8 +102,7 @@ sudo dnf swap ffmpeg-free ffmpeg --allowerasing
 ### Enable Terra repository
 
 ```bash
-sudo rpm --import https://repos.fyralabs.com/terra/RPM-GPG-KEY-terra
-sudo dnf install --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 ```
 
 ### Install Ghostty terminal emulator
