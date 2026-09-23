@@ -18,7 +18,6 @@
   - [Install Development Tools](#install-development-tools)
   - [Install other packages I use](#install-other-packages-i-use)
   - [Install packages for Yubikey](#install-packages-for-yubikey)
-  - [Install GitHub CLI](#install-github-cli)
   - [Enable and install micro stuff](#enable-and-install-micro-stuff)
 - [Configure user environment](#configure-user-environment)
   - [Enable flathub](#enable-flathub)
@@ -166,13 +165,6 @@ sudo dnf install -y git git-lfs git-delta \
 ```bash
 sudo dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime gnupg2-scdaemon pcsc-tools pcsc-lite yubikey-manager
 sudo systemctl enable --now pcscd
-```
-
-### Install GitHub CLI
-
-```bash
-sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
-sudo dnf install gh --repo gh-cli
 ```
 
 ### Enable and install `micro` stuff
