@@ -1913,31 +1913,31 @@ uv = { path = "locks/pipx-mistral-vibe/2.25.8", digest = "sha256:a8f33a078d2ef5b
 version = "2.29.2"
 backend = "pipx:pdm"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-pdm/2.29.2", digest = "sha256:f4a761243d45af2ca2814077879a57864db83ba60a0f3766d2d97590b9a114ad" }
+uv = { path = "locks/pipx-pdm/2.29.2", digest = "sha256:7dde3f629f9fd24a992fb352aa9f426dd265145970488d1a04aab3ea679e4585" }
 
 [[tools."pipx:pgcli"]]
 version = "4.7.1"
 backend = "pipx:pgcli"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-pgcli/4.7.1", digest = "sha256:123a1b2342b735b07dafdfb5374639d2ff88a4f1a70a6f18b46207e0cbdc2cb2" }
+uv = { path = "locks/pipx-pgcli/4.7.1", digest = "sha256:c07a9c499b959bea1f7ac31483857f4fbb22aae2733f48dfc099ae5075a65e0f" }
 
 [[tools."pipx:ruff"]]
 version = "0.16.8"
 backend = "pipx:ruff"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ruff/0.16.8", digest = "sha256:1c39c0d5365fedabf6b3f62e60fdc0c2e860a3a957ed6f67fee43664a4b8a9ae" }
+uv = { path = "locks/pipx-ruff/0.16.8", digest = "sha256:a5930d5687764c4a2c1073cb1b9fd045245690f4a4b17518e166bd29a8bb74eb" }
 
 [[tools."pipx:ty"]]
 version = "0.0.82"
 backend = "pipx:ty"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ty/0.0.82", digest = "sha256:e83acf2d80e240a9042e021e2999e1d2e26fa30866a9a69b6d87f47bdd67367c" }
+uv = { path = "locks/pipx-ty/0.0.82", digest = "sha256:a2836c41620a6d678bc9fb3209671d36883695229025ff33aeb16130d95f38d7" }
 
 [[tools."pipx:yt-dlp"]]
 version = "2026.8.19"
 backend = "pipx:yt-dlp"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-yt-dlp/2026.8.19", digest = "sha256:e7fef3558119992f629a8d06df9b0d0b593ec897d183f0a4a9918e0e4fcf4d0b" }
+uv = { path = "locks/pipx-yt-dlp/2026.8.19", digest = "sha256:92b681b65190ff9653a2c874f2704ff68d092e482e10ad26d564a73336d22fe8" }
 
 [[tools.pnpm]]
 version = "12.5.1"
