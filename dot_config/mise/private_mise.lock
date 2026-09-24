@@ -1666,7 +1666,7 @@ url_api = "https://api.github.com/repos/casey/just/releases/assets/500511374"
 
 [[tools.kubectl]]
 version = "1.37.1"
-backend = "asdf:kubectl"
+backend = "aqua:kubernetes/kubernetes/kubectl"
 specifiers = ["latest"]
 
 [[tools.lazygit]]
@@ -2080,10 +2080,22 @@ version = "5.59.0"
 backend = "github:railwayapp/cli"
 specifiers = ["latest"]
 
+[tools.railway."platforms.linux-arm64"]
+checksum = "sha256:ad3306f546eb83557cbdc584cfbd3b90206a49a26b0c4ad77a99139505d1c0f1"
+url = "https://github.com/railwayapp/cli/releases/download/v5.59.0/railway-v5.59.0-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/579504722"
+provenance = "github-attestations"
+
 [tools.railway."platforms.linux-x64"]
 checksum = "sha256:7b4c60e1dd1b21f76ff5bd5de4beab397b8e23b95362f2c2efc824b3fa1d2248"
 url = "https://github.com/railwayapp/cli/releases/download/v5.59.0/railway-v5.59.0-x86_64-unknown-linux-gnu.tar.gz"
 url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/579502525"
+provenance = "github-attestations"
+
+[tools.railway."platforms.macos-arm64"]
+checksum = "sha256:54b0799b0a8248bc1d913ddf216b451f157b2a88a58336916cfcc1cdd1b41bf0"
+url = "https://github.com/railwayapp/cli/releases/download/v5.59.0/railway-v5.59.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/579509579"
 provenance = "github-attestations"
 
 [[tools.ruby]]
@@ -2160,7 +2172,7 @@ components = "rust-analyzer,rust-src"
 
 [[tools.shellcheck]]
 version = "0.11.0"
-backend = "asdf:shellcheck"
+backend = "aqua:koalaman/shellcheck"
 specifiers = ["latest"]
 
 [[tools.shfmt]]
@@ -2225,73 +2237,22 @@ url_api = "https://api.github.com/repos/mvdan/sh/releases/assets/547320827"
 
 [[tools.usage]]
 version = "6.11.1"
-backend = "aqua:jdx/usage"
+backend = "packslip:github.com/jdx/usage"
 specifiers = ["latest"]
 
 [tools.usage."platforms.linux-arm64"]
 checksum = "sha256:90622145566409da24d282190ad17cc786c85d498d751543824ab62931705018"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584024322"
-signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
-
-[tools.usage."platforms.linux-arm64-musl"]
-checksum = "sha256:b8903edb0accb76576a9a454900388d629dff9a35186e653c4e5b48e622e62c0"
-url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584023288"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.linux-x64"]
 checksum = "sha256:afa6cb0e76f88cc6392aeecf21bbcd869747d4eeb60ab84c98d6e6178edc359a"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584024165"
-signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
-
-[tools.usage."platforms.linux-x64-baseline"]
-checksum = "sha256:afa6cb0e76f88cc6392aeecf21bbcd869747d4eeb60ab84c98d6e6178edc359a"
-url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584024165"
-signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
-
-[tools.usage."platforms.linux-x64-musl"]
-checksum = "sha256:7b37d1d36b310857908e508802db6c6b670555cf25cd0b990f09ee40cb11247b"
-url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584024113"
-signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
-
-[tools.usage."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:7b37d1d36b310857908e508802db6c6b670555cf25cd0b990f09ee40cb11247b"
-url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584024113"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.macos-arm64"]
 checksum = "sha256:e3a20b948f2665862dcbaddfc50d62ac741654e3cdd815130a6fae00b3d088ff"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-universal-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584026303"
-signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
-
-[tools.usage."platforms.macos-x64"]
-checksum = "sha256:e3a20b948f2665862dcbaddfc50d62ac741654e3cdd815130a6fae00b3d088ff"
-url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-universal-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584026303"
-signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
-
-[tools.usage."platforms.macos-x64-baseline"]
-checksum = "sha256:e3a20b948f2665862dcbaddfc50d62ac741654e3cdd815130a6fae00b3d088ff"
-url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-universal-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584026303"
-signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
-
-[tools.usage."platforms.windows-x64"]
-checksum = "sha256:783ce7539b1145f1860054352067e5da70bfac1ceeba3c9f3cb912477068f99d"
-url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584027860"
-signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
-
-[tools.usage."platforms.windows-x64-baseline"]
-checksum = "sha256:783ce7539b1145f1860054352067e5da70bfac1ceeba3c9f3cb912477068f99d"
-url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584027860"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [[tools.uv]]

@@ -1,6 +1,7 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 [settings]
 lockfile = true
+lockfile_platforms = ["linux-x64", "linux-arm64", "macos-arm64"]
 experimental = true
 legacy_version_file = true
 not_found_auto_install = false
