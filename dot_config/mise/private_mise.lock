@@ -1913,31 +1913,31 @@ uv = { path = "locks/pipx-mistral-vibe/2.25.8", digest = "sha256:a8f33a078d2ef5b
 version = "2.29.2"
 backend = "pipx:pdm"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-pdm/2.29.2", digest = "sha256:7dde3f629f9fd24a992fb352aa9f426dd265145970488d1a04aab3ea679e4585" }
+uv = { path = "locks/pipx-pdm/2.29.2", digest = "sha256:f4a761243d45af2ca2814077879a57864db83ba60a0f3766d2d97590b9a114ad" }
 
 [[tools."pipx:pgcli"]]
 version = "4.7.1"
 backend = "pipx:pgcli"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-pgcli/4.7.1", digest = "sha256:c07a9c499b959bea1f7ac31483857f4fbb22aae2733f48dfc099ae5075a65e0f" }
+uv = { path = "locks/pipx-pgcli/4.7.1", digest = "sha256:123a1b2342b735b07dafdfb5374639d2ff88a4f1a70a6f18b46207e0cbdc2cb2" }
 
 [[tools."pipx:ruff"]]
 version = "0.16.8"
 backend = "pipx:ruff"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ruff/0.16.8", digest = "sha256:a5930d5687764c4a2c1073cb1b9fd045245690f4a4b17518e166bd29a8bb74eb" }
+uv = { path = "locks/pipx-ruff/0.16.8", digest = "sha256:1c39c0d5365fedabf6b3f62e60fdc0c2e860a3a957ed6f67fee43664a4b8a9ae" }
 
 [[tools."pipx:ty"]]
 version = "0.0.82"
 backend = "pipx:ty"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ty/0.0.82", digest = "sha256:a2836c41620a6d678bc9fb3209671d36883695229025ff33aeb16130d95f38d7" }
+uv = { path = "locks/pipx-ty/0.0.82", digest = "sha256:e83acf2d80e240a9042e021e2999e1d2e26fa30866a9a69b6d87f47bdd67367c" }
 
 [[tools."pipx:yt-dlp"]]
 version = "2026.8.19"
 backend = "pipx:yt-dlp"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-yt-dlp/2026.8.19", digest = "sha256:92b681b65190ff9653a2c874f2704ff68d092e482e10ad26d564a73336d22fe8" }
+uv = { path = "locks/pipx-yt-dlp/2026.8.19", digest = "sha256:e7fef3558119992f629a8d06df9b0d0b593ec897d183f0a4a9918e0e4fcf4d0b" }
 
 [[tools.pnpm]]
 version = "12.5.1"
@@ -2292,56 +2292,67 @@ specifiers = ["latest"]
 checksum = "sha256:90622145566409da24d282190ad17cc786c85d498d751543824ab62931705018"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-aarch64-unknown-linux-gnu.tar.gz"
 url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584024322"
+signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.linux-arm64-musl"]
 checksum = "sha256:b8903edb0accb76576a9a454900388d629dff9a35186e653c4e5b48e622e62c0"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-aarch64-unknown-linux-musl.tar.gz"
 url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584023288"
+signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.linux-x64"]
 checksum = "sha256:afa6cb0e76f88cc6392aeecf21bbcd869747d4eeb60ab84c98d6e6178edc359a"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-unknown-linux-gnu.tar.gz"
 url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584024165"
+signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.linux-x64-baseline"]
 checksum = "sha256:afa6cb0e76f88cc6392aeecf21bbcd869747d4eeb60ab84c98d6e6178edc359a"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-unknown-linux-gnu.tar.gz"
 url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584024165"
+signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.linux-x64-musl"]
 checksum = "sha256:7b37d1d36b310857908e508802db6c6b670555cf25cd0b990f09ee40cb11247b"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-unknown-linux-musl.tar.gz"
 url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584024113"
+signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.linux-x64-musl-baseline"]
 checksum = "sha256:7b37d1d36b310857908e508802db6c6b670555cf25cd0b990f09ee40cb11247b"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-unknown-linux-musl.tar.gz"
 url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584024113"
+signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.macos-arm64"]
 checksum = "sha256:e3a20b948f2665862dcbaddfc50d62ac741654e3cdd815130a6fae00b3d088ff"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-universal-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584026303"
+signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.macos-x64"]
 checksum = "sha256:e3a20b948f2665862dcbaddfc50d62ac741654e3cdd815130a6fae00b3d088ff"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-universal-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584026303"
+signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.macos-x64-baseline"]
 checksum = "sha256:e3a20b948f2665862dcbaddfc50d62ac741654e3cdd815130a6fae00b3d088ff"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-universal-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584026303"
+signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.windows-x64"]
 checksum = "sha256:783ce7539b1145f1860054352067e5da70bfac1ceeba3c9f3cb912477068f99d"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-pc-windows-msvc.zip"
 url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584027860"
+signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.windows-x64-baseline"]
 checksum = "sha256:783ce7539b1145f1860054352067e5da70bfac1ceeba3c9f3cb912477068f99d"
 url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-pc-windows-msvc.zip"
 url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584027860"
+signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [[tools.uv]]
 version = "0.12.17"
