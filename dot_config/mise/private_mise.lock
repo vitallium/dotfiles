@@ -409,7 +409,7 @@ backend = "cargo:cargo-generate"
 specifiers = ["latest"]
 
 [[tools."cargo:cargo-nextest"]]
-version = "0.9.145"
+version = "0.9.146"
 backend = "cargo:cargo-nextest"
 specifiers = ["latest"]
 
@@ -459,7 +459,7 @@ backend = "cargo:tokei"
 specifiers = ["latest"]
 
 [[tools."cargo:topgrade"]]
-version = "17.12.0"
+version = "17.12.1"
 backend = "cargo:topgrade"
 specifiers = ["latest"]
 
@@ -1665,7 +1665,7 @@ url = "https://github.com/casey/just/releases/download/1.58.0/just-1.58.0-x86_64
 url_api = "https://api.github.com/repos/casey/just/releases/assets/500511374"
 
 [[tools.kubectl]]
-version = "1.37.0"
+version = "1.37.1"
 backend = "asdf:kubectl"
 specifiers = ["latest"]
 
@@ -1794,7 +1794,7 @@ backend = "npm:@playwright/mcp"
 specifiers = ["latest"]
 
 [[tools."npm:@railway/cli"]]
-version = "5.58.0"
+version = "5.59.0"
 backend = "npm:@railway/cli"
 specifiers = ["latest"]
 
@@ -1829,12 +1829,12 @@ backend = "npm:markdownlint-cli2"
 specifiers = ["latest"]
 
 [[tools."npm:oxfmt"]]
-version = "0.68.0"
+version = "0.70.0"
 backend = "npm:oxfmt"
 specifiers = ["latest"]
 
 [[tools."npm:oxlint"]]
-version = "1.83.0"
+version = "1.85.0"
 backend = "npm:oxlint"
 specifiers = ["latest"]
 
@@ -2076,74 +2076,14 @@ url = "https://github.com/astral-sh/python-build-standalone/releases/download/20
 provenance = "github-attestations"
 
 [[tools.railway]]
-version = "5.58.0"
+version = "5.59.0"
 backend = "github:railwayapp/cli"
 specifiers = ["latest"]
 
-[tools.railway."platforms.linux-arm64"]
-checksum = "sha256:a6ac94b7555fb19d7d10c15939340a09e183c7c8850770424bffd2c7a87d538f"
-url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576058625"
-provenance = "github-attestations"
-
-[tools.railway."platforms.linux-arm64-musl"]
-checksum = "sha256:a6ac94b7555fb19d7d10c15939340a09e183c7c8850770424bffd2c7a87d538f"
-url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576058625"
-provenance = "github-attestations"
-
 [tools.railway."platforms.linux-x64"]
-checksum = "sha256:696ed4f0a029e15729c14af67ce4655dc188ecb77f06b7497473107d2ccfa173"
-url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576056252"
-provenance = "github-attestations"
-
-[tools.railway."platforms.linux-x64-baseline"]
-checksum = "sha256:696ed4f0a029e15729c14af67ce4655dc188ecb77f06b7497473107d2ccfa173"
-url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576056252"
-provenance = "github-attestations"
-
-[tools.railway."platforms.linux-x64-musl"]
-checksum = "sha256:9b054087fc70e2c02e5aa6a178156908ef105d4fb91939dbe349791319542593"
-url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576057537"
-provenance = "github-attestations"
-
-[tools.railway."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:9b054087fc70e2c02e5aa6a178156908ef105d4fb91939dbe349791319542593"
-url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576057537"
-provenance = "github-attestations"
-
-[tools.railway."platforms.macos-arm64"]
-checksum = "sha256:7980f48e40a1f835fc83bda95a53614b1c69b506626f92efe50102b87694ac7f"
-url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576064980"
-provenance = "github-attestations"
-
-[tools.railway."platforms.macos-x64"]
-checksum = "sha256:47930e66f0391b9db89b8d342062c1aa5e4a2a05faca2234c1736f1261da5069"
-url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576060887"
-provenance = "github-attestations"
-
-[tools.railway."platforms.macos-x64-baseline"]
-checksum = "sha256:47930e66f0391b9db89b8d342062c1aa5e4a2a05faca2234c1736f1261da5069"
-url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576060887"
-provenance = "github-attestations"
-
-[tools.railway."platforms.windows-x64"]
-checksum = "sha256:2f3ffc4eed88817ba7f5065e38838c27e59b946900356240c36effff64f8e2a7"
-url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576065333"
-provenance = "github-attestations"
-
-[tools.railway."platforms.windows-x64-baseline"]
-checksum = "sha256:d3b2d55960b71d40bb53bbf449a04db920ffd0173c8af5de5b89f190a8517e06"
-url = "https://github.com/railwayapp/cli/releases/download/v5.58.0/railway-v5.58.0-x86_64-pc-windows-gnu.zip"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/576062066"
+checksum = "sha256:7b4c60e1dd1b21f76ff5bd5de4beab397b8e23b95362f2c2efc824b3fa1d2248"
+url = "https://github.com/railwayapp/cli/releases/download/v5.59.0/railway-v5.59.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/579502525"
 provenance = "github-attestations"
 
 [[tools.ruby]]
