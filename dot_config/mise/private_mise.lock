@@ -3,64 +3,24 @@
 lockfile_version = 2
 
 [[tools.antigravity-cli]]
-version = "1.2.7"
+version = "1.2.8"
 backend = "aqua:google-antigravity/antigravity-cli"
 specifiers = ["latest"]
 
 [tools.antigravity-cli."platforms.linux-arm64"]
-checksum = "sha256:8ddbb669158de1d1bc4c1fe5c130dca8f51da80d62569a54a4133f06768a723b"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.7/agy_cli_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/573795006"
-
-[tools.antigravity-cli."platforms.linux-arm64-musl"]
-checksum = "sha256:8ddbb669158de1d1bc4c1fe5c130dca8f51da80d62569a54a4133f06768a723b"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.7/agy_cli_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/573795006"
+checksum = "sha256:85ea71929436711e4b0332026508ee4e7ddb05192f24f1774dfbed879255fc6e"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.8/agy_cli_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/580514993"
 
 [tools.antigravity-cli."platforms.linux-x64"]
-checksum = "sha256:e410dd56d8c213ef12643d3ff5eaaab57a17e05bbf72e9415322f23879fc4a18"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.7/agy_cli_linux_x64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/573795008"
-
-[tools.antigravity-cli."platforms.linux-x64-baseline"]
-checksum = "sha256:e410dd56d8c213ef12643d3ff5eaaab57a17e05bbf72e9415322f23879fc4a18"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.7/agy_cli_linux_x64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/573795008"
-
-[tools.antigravity-cli."platforms.linux-x64-musl"]
-checksum = "sha256:e410dd56d8c213ef12643d3ff5eaaab57a17e05bbf72e9415322f23879fc4a18"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.7/agy_cli_linux_x64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/573795008"
-
-[tools.antigravity-cli."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:e410dd56d8c213ef12643d3ff5eaaab57a17e05bbf72e9415322f23879fc4a18"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.7/agy_cli_linux_x64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/573795008"
+checksum = "sha256:244752206d1f65c01aff489628f1df51f1a3fddacaa8ed74984661ebb6d09136"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.8/agy_cli_linux_x64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/580514986"
 
 [tools.antigravity-cli."platforms.macos-arm64"]
-checksum = "sha256:ce9fe3f4d6f44a2b1c83b334fc5c8f2975079959e24dd805e10eb49ab8c76a7e"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.7/agy_cli_mac_arm64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/573795003"
-
-[tools.antigravity-cli."platforms.macos-x64"]
-checksum = "sha256:2f1a82f55201fc47987b448e34d90608bb0eec48e4c45f0a27ba49625d984cd5"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.7/agy_cli_mac_x64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/573795007"
-
-[tools.antigravity-cli."platforms.macos-x64-baseline"]
-checksum = "sha256:2f1a82f55201fc47987b448e34d90608bb0eec48e4c45f0a27ba49625d984cd5"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.7/agy_cli_mac_x64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/573795007"
-
-[tools.antigravity-cli."platforms.windows-x64"]
-checksum = "sha256:5f162fbf103c33044063f137c3bf75bc2938b7c3c300dad7f189076ff5bc8037"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.7/agy_cli_windows_x64.zip"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/573795004"
-
-[tools.antigravity-cli."platforms.windows-x64-baseline"]
-checksum = "sha256:5f162fbf103c33044063f137c3bf75bc2938b7c3c300dad7f189076ff5bc8037"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.7/agy_cli_windows_x64.zip"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/573795004"
+checksum = "sha256:f77d57d99ca83e50a3a767d70621c99962ce4242e5470220f3adbf1c50844538"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.8/agy_cli_mac_arm64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/580514992"
 
 [[tools."aqua:AlexanderGrooff/mermaid-ascii"]]
 version = "1.6.1"
@@ -540,64 +500,24 @@ url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/56170635
 provenance = "cosign"
 
 [[tools.codex]]
-version = "0.156.1"
+version = "0.157.0"
 backend = "aqua:openai/codex"
 specifiers = ["latest"]
 
 [tools.codex."platforms.linux-arm64"]
-checksum = "sha256:fdd47ed6aade0360796fd3f6f95a45096f327c15e19e8c7339f9dc5633041786"
-url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/582791754"
-
-[tools.codex."platforms.linux-arm64-musl"]
-checksum = "sha256:fdd47ed6aade0360796fd3f6f95a45096f327c15e19e8c7339f9dc5633041786"
-url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/582791754"
+checksum = "sha256:c1c36beab0b4f72779adf53ba9e9e494bf7cbfbe4f3506a08ff67a24f5f00d08"
+url = "https://github.com/openai/codex/releases/download/rust-v0.157.0/codex-package-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/587340226"
 
 [tools.codex."platforms.linux-x64"]
-checksum = "sha256:8b711520beddf385467b8da4d2c93736637c6ba1e46811cf0d8606b7c490b6f6"
-url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/582785983"
-
-[tools.codex."platforms.linux-x64-baseline"]
-checksum = "sha256:8b711520beddf385467b8da4d2c93736637c6ba1e46811cf0d8606b7c490b6f6"
-url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/582785983"
-
-[tools.codex."platforms.linux-x64-musl"]
-checksum = "sha256:8b711520beddf385467b8da4d2c93736637c6ba1e46811cf0d8606b7c490b6f6"
-url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/582785983"
-
-[tools.codex."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:8b711520beddf385467b8da4d2c93736637c6ba1e46811cf0d8606b7c490b6f6"
-url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/582785983"
+checksum = "sha256:042f851ea3fc1083c45157520520944fc790632b53ebc580fc98eaca55862a25"
+url = "https://github.com/openai/codex/releases/download/rust-v0.157.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/587334214"
 
 [tools.codex."platforms.macos-arm64"]
-checksum = "sha256:fea42f9625091f011e38f059da974d52e57ba31831648bb1c7f0b1a385fde547"
-url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/582795411"
-
-[tools.codex."platforms.macos-x64"]
-checksum = "sha256:618dbcd55419fa041871f777a14b107ceb3fe2d339ef81e21e6ab5374420dc71"
-url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/582789045"
-
-[tools.codex."platforms.macos-x64-baseline"]
-checksum = "sha256:618dbcd55419fa041871f777a14b107ceb3fe2d339ef81e21e6ab5374420dc71"
-url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/582789045"
-
-[tools.codex."platforms.windows-x64"]
-checksum = "sha256:a2e017db9807e6a2269a26fea0e1d9546469cef4d472a33016bc9f3ad7d3b733"
-url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-pc-windows-msvc.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/582787444"
-
-[tools.codex."platforms.windows-x64-baseline"]
-checksum = "sha256:a2e017db9807e6a2269a26fea0e1d9546469cef4d472a33016bc9f3ad7d3b733"
-url = "https://github.com/openai/codex/releases/download/rust-v0.156.1/codex-package-x86_64-pc-windows-msvc.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/582787444"
+checksum = "sha256:97809f91cb355e55480cd7a126f9ad24bb7b162222515e30286bcac6fba94acd"
+url = "https://github.com/openai/codex/releases/download/rust-v0.157.0/codex-package-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/587343110"
 
 [[tools.cosign]]
 version = "3.1.3"
@@ -1940,10 +1860,10 @@ specifiers = ["latest"]
 uv = { path = "locks/pipx-ruff/0.16.8", digest = "sha256:a5930d5687764c4a2c1073cb1b9fd045245690f4a4b17518e166bd29a8bb74eb" }
 
 [[tools."pipx:ty"]]
-version = "0.0.82"
+version = "0.0.83"
 backend = "pipx:ty"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ty/0.0.82", digest = "sha256:a2836c41620a6d678bc9fb3209671d36883695229025ff33aeb16130d95f38d7" }
+uv = { path = "locks/pipx-ty/0.0.83", digest = "sha256:852095baaab30cd240bf1d1da758d9579dca4a9c88960018157a262fd72a921b" }
 
 [[tools."pipx:yt-dlp"]]
 version = "2026.8.19"
