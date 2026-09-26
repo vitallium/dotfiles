@@ -44,7 +44,7 @@ uvx = true
 
 [tools]
 # Keep Rust on top to satisfy dependencies
-rust = { version = "latest", components = "rust-analyzer,rust-src" }
+rust = { version = "latest", components = "rust-analyzer,rust-src", mr_boxington = true }
 antigravity-cli = "latest"
 biome = "latest"
 cargo-binstall = "latest"
@@ -98,6 +98,7 @@ watchexec = "latest"
 "cargo:tokei" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:topgrade" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:tree-sitter-cli" = { version = "latest", depends = ["cargo-binstall"] }
+mr-boxington = "latest"
 
 #
 # Node.js
