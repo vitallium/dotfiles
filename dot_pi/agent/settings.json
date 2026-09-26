@@ -2,5 +2,14 @@
   "lastChangelogVersion": "0.87.1",
   "theme": "light",
   "defaultProvider": "mistral",
-  "defaultModel": "devstral-medium-latest"
+  "defaultModel": "devstral-medium-latest",
+  "packages": [
+    "npm:pi-subagents",
+    "npm:pi-mcp-adapter",
+    "npm:pi-web-access",
+    "npm:pi-lens",
+    "npm:@plannotator/pi-extension",
+    "npm:@dietrichgebert/ponytail",
+    "npm:@ff-labs/pi-fff"
+  ]
 }
