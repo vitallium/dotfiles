@@ -19,7 +19,8 @@ minimum_release_age_excludes = [
   "codex",
   "opencode",
   "usage",
-  "pipx:mistral-vibe"
+  "pipx:mistral-vibe",
+  "@earendil-works/pi-coding-agent"
 ]
 
 trusted_config_paths = [
@@ -119,6 +120,7 @@ bun = "latest"
 "npm:oxfmt" = "latest"
 "npm:oxlint" = "latest"
 "npm:yarn" = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
 
 # Python
 # "pipx:lsp-devtools" = "latest"

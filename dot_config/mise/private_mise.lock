@@ -1740,6 +1740,11 @@ version = "0.89.0"
 backend = "npm:@devcontainers/cli"
 specifiers = ["latest"]
 
+[[tools."npm:@earendil-works/pi-coding-agent"]]
+version = "0.87.1"
+backend = "npm:@earendil-works/pi-coding-agent"
+specifiers = ["latest"]
+
 [[tools."npm:@playwright/mcp"]]
 version = "0.0.82"
 backend = "npm:@playwright/mcp"

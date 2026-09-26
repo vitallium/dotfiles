@@ -1,0 +1,6 @@
+{
+  "lastChangelogVersion": "0.87.1",
+  "theme": "light",
+  "defaultProvider": "mistral",
+  "defaultModel": "devstral-medium-latest"
+}
