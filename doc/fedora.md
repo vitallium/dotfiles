@@ -14,6 +14,7 @@
   - [Enable Terra repository](#enable-terra-repository)
   - [Install Ghostty terminal emulator](#install-ghostty-terminal-emulator)
   - [Install drivers for Intel GPU](#install-drivers-for-intel-gpu)
+  - [Optimize performance on Intel Panther Lake and newer laptops](#optimize-performance-on-intel-panther-lake-and-newer-laptops)
   - [Configure system settings](#configure-system-settings)
   - [Install Development Tools](#install-development-tools)
   - [Install other packages I use](#install-other-packages-i-use)
@@ -119,6 +120,17 @@ sudo dnf group upgrade multimedia --allowerasing --setopt="install_weak_deps=Fal
 sudo dnf install -y intel-media-driver libva \
                libva-utils gstreamer1-vaapi \
                intel-gpu-tools mesa-dri-drivers
+```
+
+### Optimize performance on Intel Panther Lake and newer laptops
+
+Fedora 44 switched from `power-profiles-daemon` to `tuned-ppd` (Tuned), which can result in
+suboptimal performance on newer Intel laptops (Panther Lake / Core Ultra series). For
+better performance on frameworks like the Framework Laptop 13 Pro:
+
+```bash
+sudo dnf swap tuned-ppd power-profiles-daemon
+sudo systemctl enable --now power-profiles-daemon
 ```
 
 ### Configure system settings
