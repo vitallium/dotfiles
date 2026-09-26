@@ -166,6 +166,23 @@ sudo dnf install -y gnupg2 dirmngr cryptsetup gnupg2-smime gnupg2-scdaemon pcsc-
 sudo systemctl enable --now pcscd
 ```
 
+Disable the OpenSC PKCS#11 module for the current user. GPG and SSH access the
+YubiKey through `scdaemon`; this override prevents desktop PKCS#11 clients from
+taking shared access to the card.
+
+```bash
+install -d -m 700 ~/.config/pkcs11/modules
+printf 'module:\n' > ~/.config/pkcs11/modules/opensc.module
+```
+
+Log out and back in, then confirm that `p11-kit list-modules` does not list
+OpenSC and that GPG detects the card.
+
+```bash
+p11-kit list-modules
+gpg --card-status
+```
+
 ### Enable and install `micro` stuff
 
 ```bash
