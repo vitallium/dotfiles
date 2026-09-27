@@ -19,7 +19,8 @@ minimum_release_age_excludes = [
   "codex",
   "opencode",
   "usage",
-  "pipx:mistral-vibe"
+  "pipx:mistral-vibe",
+  "mr-boxington"
 ]
 
 trusted_config_paths = [

@@ -1746,7 +1746,7 @@ backend = "npm:@playwright/mcp"
 specifiers = ["latest"]
 
 [[tools."npm:@railway/cli"]]
-version = "5.61.0"
+version = "5.62.1"
 backend = "npm:@railway/cli"
 specifiers = ["latest"]
 
@@ -1980,26 +1980,26 @@ url = "https://github.com/astral-sh/python-build-standalone/releases/download/20
 provenance = "github-attestations"
 
 [[tools.railway]]
-version = "5.61.0"
+version = "5.62.1"
 backend = "github:railwayapp/cli"
 specifiers = ["latest"]
 
 [tools.railway."platforms.linux-arm64"]
-checksum = "sha256:612d3499396781043098e3443699a6dcbfbeb7ee99fa972a7d1da8008acaf7d5"
-url = "https://github.com/railwayapp/cli/releases/download/v5.61.0/railway-v5.61.0-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/584043997"
+checksum = "sha256:37f38f11fc1e4d78adbc45858123b39c8b637fa44b96c3f6d0e6bfb1a4510efd"
+url = "https://github.com/railwayapp/cli/releases/download/v5.62.1/railway-v5.62.1-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/584828446"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-x64"]
-checksum = "sha256:a4023929b18a80342e978e906f7dd14218a23c5b2542f83d3bfa3a212204800c"
-url = "https://github.com/railwayapp/cli/releases/download/v5.61.0/railway-v5.61.0-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/584045907"
+checksum = "sha256:80fedf59bea027031e18affe1e646255a79839b9b8675f2513aa678d2b6afb06"
+url = "https://github.com/railwayapp/cli/releases/download/v5.62.1/railway-v5.62.1-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/584827771"
 provenance = "github-attestations"
 
 [tools.railway."platforms.macos-arm64"]
-checksum = "sha256:bb55592329e50bcfb823aab336c02386f28b9d2d8096e27b22dd7275934e7dd8"
-url = "https://github.com/railwayapp/cli/releases/download/v5.61.0/railway-v5.61.0-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/584050693"
+checksum = "sha256:0971dc73d19b86dd0522641445cedcbb20bb0746a774f2bc98338555a37b1e65"
+url = "https://github.com/railwayapp/cli/releases/download/v5.62.1/railway-v5.62.1-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/584832061"
 provenance = "github-attestations"
 
 [[tools.ruby]]
