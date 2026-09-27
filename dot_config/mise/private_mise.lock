@@ -2003,22 +2003,9 @@ url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/584832061
 provenance = "github-attestations"
 
 [[tools.ruby]]
-version = "4.0.6"
+version = "4.0.7"
 backend = "core:ruby"
-specifiers = ["4.0.6"]
-
-[tools.ruby."platforms.windows-x64"]
-checksum = "sha256:328d7a86bea2f4c432783025050c9ffa1c36fcfc54ebccc466b63450ec3af223"
-url = "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-4.0.6-1/rubyinstaller-4.0.6-1-x64.7z"
-
-[tools.ruby."platforms.windows-x64-baseline"]
-checksum = "sha256:328d7a86bea2f4c432783025050c9ffa1c36fcfc54ebccc466b63450ec3af223"
-url = "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-4.0.6-1/rubyinstaller-4.0.6-1-x64.7z"
-
-[[tools.ruby]]
-version = "4.0.6"
-backend = "core:ruby"
-specifiers = ["4.0.6"]
+specifiers = ["4.0.7"]
 
 [tools.ruby.options]
 compile = "false"
@@ -2027,44 +2014,19 @@ ruby_build_repo = "https://github.com/rbenv/ruby-build.git"
 ruby_install = "false"
 
 [tools.ruby."platforms.linux-arm64"]
-checksum = "sha256:6144c26cd5a1ff85358beb7e68e592ada6d0319aa8093cf353465d60f10aa970"
-url = "https://github.com/jdx/ruby/releases/download/4.0.6-1/ruby-4.0.6.arm64_linux.tar.gz"
+checksum = "sha256:453bf09d3991ada482dbcdae5af697ce59aaa5586f3f906a7ff46af5de9afed8"
+url = "https://github.com/jdx/ruby/releases/download/4.0.7-1/ruby-4.0.7.arm64_linux.tar.gz"
 provenance = "github-attestations"
-
-[tools.ruby."platforms.linux-arm64-musl"]
-checksum = "sha256:837d299e8f7ddf2be31a229a7a7e019d354979825117989acb3b32b1a9be262a"
-url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.6.tar.gz"
 
 [tools.ruby."platforms.linux-x64"]
-checksum = "sha256:aefa111873bac3b15c5c416bfaaca84e793d5312d4496d651ad79c44521b200a"
-url = "https://github.com/jdx/ruby/releases/download/4.0.6-1/ruby-4.0.6.x86_64_linux.tar.gz"
+checksum = "sha256:32cd7e6ac93126e0f91dc40a0d2e6213f24a38be77937671e6cb82f82ea4ffe2"
+url = "https://github.com/jdx/ruby/releases/download/4.0.7-1/ruby-4.0.7.x86_64_linux.tar.gz"
 provenance = "github-attestations"
-
-[tools.ruby."platforms.linux-x64-baseline"]
-checksum = "sha256:aefa111873bac3b15c5c416bfaaca84e793d5312d4496d651ad79c44521b200a"
-url = "https://github.com/jdx/ruby/releases/download/4.0.6-1/ruby-4.0.6.x86_64_linux.tar.gz"
-provenance = "github-attestations"
-
-[tools.ruby."platforms.linux-x64-musl"]
-checksum = "sha256:837d299e8f7ddf2be31a229a7a7e019d354979825117989acb3b32b1a9be262a"
-url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.6.tar.gz"
-
-[tools.ruby."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:837d299e8f7ddf2be31a229a7a7e019d354979825117989acb3b32b1a9be262a"
-url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.6.tar.gz"
 
 [tools.ruby."platforms.macos-arm64"]
-checksum = "sha256:518c5849d7ab337790943963ded4f0b402d2d4ededea265288a5a19d4c8fee18"
-url = "https://github.com/jdx/ruby/releases/download/4.0.6-1/ruby-4.0.6.macos.tar.gz"
+checksum = "sha256:1b239cb6e4f8ba27e890e025c723c00ba781b993ac12aab2029618f347c2206d"
+url = "https://github.com/jdx/ruby/releases/download/4.0.7-1/ruby-4.0.7.macos.tar.gz"
 provenance = "github-attestations"
-
-[tools.ruby."platforms.macos-x64"]
-checksum = "sha256:837d299e8f7ddf2be31a229a7a7e019d354979825117989acb3b32b1a9be262a"
-url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.6.tar.gz"
-
-[tools.ruby."platforms.macos-x64-baseline"]
-checksum = "sha256:837d299e8f7ddf2be31a229a7a7e019d354979825117989acb3b32b1a9be262a"
-url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.6.tar.gz"
 
 [[tools.rust]]
 version = "1.98.1"
