@@ -3,24 +3,24 @@
 lockfile_version = 2
 
 [[tools.antigravity-cli]]
-version = "1.2.10"
+version = "1.2.11"
 backend = "aqua:google-antigravity/antigravity-cli"
 specifiers = ["latest"]
 
 [tools.antigravity-cli."platforms.linux-arm64"]
-checksum = "sha256:b85fd6d22f763dd331bf86fde5fd33fc79ecf6ac1cb254b9c2b6519537f5694f"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.10/agy_cli_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/585308429"
+checksum = "sha256:01513bc61f9592353045ba801ebb407fbccb8984fcbfde591bc6b681b24e92bc"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.11/agy_cli_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/587505246"
 
 [tools.antigravity-cli."platforms.linux-x64"]
-checksum = "sha256:77cb69251292aa35b0b662f91f704f06dd787b72f7902a62db8c6d692989203e"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.10/agy_cli_linux_x64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/585308426"
+checksum = "sha256:c91c62c5e6fa954f5a7e1d7b9ad417d749db4aa60a4ba0b3d604dec1b645d190"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.11/agy_cli_linux_x64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/587505244"
 
 [tools.antigravity-cli."platforms.macos-arm64"]
-checksum = "sha256:95d5d8ab8870b849a157f647bb4d9953184f97855cbfbedebdedcc421ca5b435"
-url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.10/agy_cli_mac_arm64.tar.gz"
-url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/585308432"
+checksum = "sha256:437a813cd7c606ccbb3180886887fc69361c28fe8e880327b3b82201afa900cc"
+url = "https://github.com/google-antigravity/antigravity-cli/releases/download/1.2.11/agy_cli_mac_arm64.tar.gz"
+url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/releases/assets/587505248"
 
 [[tools."aqua:AlexanderGrooff/mermaid-ascii"]]
 version = "1.6.1"
@@ -500,24 +500,24 @@ url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/56170635
 provenance = "cosign"
 
 [[tools.codex]]
-version = "0.157.1"
+version = "0.158.0"
 backend = "aqua:openai/codex"
 specifiers = ["latest"]
 
 [tools.codex."platforms.linux-arm64"]
-checksum = "sha256:499fe70d70f4e4904b6a5a4ec1b1edf6c4a1a47a075ea7e2ec2b5262ba47b471"
-url = "https://github.com/openai/codex/releases/download/rust-v0.157.1/codex-package-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/589602711"
+checksum = "sha256:bc55b988c2e0c54ac6a6d437c4e63781e671b269752ac26592675bb9e9f99902"
+url = "https://github.com/openai/codex/releases/download/rust-v0.158.0/codex-package-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/594549699"
 
 [tools.codex."platforms.linux-x64"]
-checksum = "sha256:0e211868c9fd73cb49ad35ac675b5eafdf6b9f453df8a493df980c59a590fe5f"
-url = "https://github.com/openai/codex/releases/download/rust-v0.157.1/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/589593045"
+checksum = "sha256:b33cd426c9acab9b34c5a93200ba4fe83c8e614c18ce5ef52b2bf36408b8e18c"
+url = "https://github.com/openai/codex/releases/download/rust-v0.158.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/594540051"
 
 [tools.codex."platforms.macos-arm64"]
-checksum = "sha256:6cda538d19c2f4d9dce965369aa22011afa9dce8c7a73c234b66eb3611ea4aab"
-url = "https://github.com/openai/codex/releases/download/rust-v0.157.1/codex-package-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/589607687"
+checksum = "sha256:09f2a9fde318fbcd384f15b4850c1b90930678f4805647b6bded196ccf32f590"
+url = "https://github.com/openai/codex/releases/download/rust-v0.158.0/codex-package-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/594553803"
 
 [[tools.cosign]]
 version = "3.1.3"
@@ -941,74 +941,26 @@ url = "https://github.com/mvdan/gofumpt/releases/download/v0.12.0/gofumpt_v0.12.
 url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473475"
 
 [[tools.golangci-lint]]
-version = "2.13.2"
+version = "2.14.0"
 backend = "aqua:golangci/golangci-lint"
 specifiers = ["latest"]
 
 [tools.golangci-lint."platforms.linux-arm64"]
-checksum = "sha256:a2a4e0065aa41be71f7c5ac90f271b61751331e5d04314e62afe4027855f0893"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.13.2/golangci-lint-2.13.2-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/532995442"
-provenance = "github-attestations"
-
-[tools.golangci-lint."platforms.linux-arm64-musl"]
-checksum = "sha256:a2a4e0065aa41be71f7c5ac90f271b61751331e5d04314e62afe4027855f0893"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.13.2/golangci-lint-2.13.2-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/532995442"
+checksum = "sha256:ee7ec5f3453d15ddf106fae5a4d6c71737712348a979d1fe9cd52ec7ea299bae"
+url = "https://github.com/golangci/golangci-lint/releases/download/v2.14.0/golangci-lint-2.14.0-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/585813674"
 provenance = "github-attestations"
 
 [tools.golangci-lint."platforms.linux-x64"]
-checksum = "sha256:2277d43b98ec0054280f2ac26b53268bae97682444678a59a657dd565da021d6"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.13.2/golangci-lint-2.13.2-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/532995333"
-provenance = "github-attestations"
-
-[tools.golangci-lint."platforms.linux-x64-baseline"]
-checksum = "sha256:2277d43b98ec0054280f2ac26b53268bae97682444678a59a657dd565da021d6"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.13.2/golangci-lint-2.13.2-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/532995333"
-provenance = "github-attestations"
-
-[tools.golangci-lint."platforms.linux-x64-musl"]
-checksum = "sha256:2277d43b98ec0054280f2ac26b53268bae97682444678a59a657dd565da021d6"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.13.2/golangci-lint-2.13.2-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/532995333"
-provenance = "github-attestations"
-
-[tools.golangci-lint."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:2277d43b98ec0054280f2ac26b53268bae97682444678a59a657dd565da021d6"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.13.2/golangci-lint-2.13.2-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/532995333"
+checksum = "sha256:ab90aeb7b066f92a33415b638a50fe5344bbb75a0d32ad30cc248d88f81032ab"
+url = "https://github.com/golangci/golangci-lint/releases/download/v2.14.0/golangci-lint-2.14.0-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/585813815"
 provenance = "github-attestations"
 
 [tools.golangci-lint."platforms.macos-arm64"]
-checksum = "sha256:f4bf83f0b64f055c42b28fc9a38861839f69c096e61c788e72dfaae412011789"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.13.2/golangci-lint-2.13.2-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/532995398"
-provenance = "github-attestations"
-
-[tools.golangci-lint."platforms.macos-x64"]
-checksum = "sha256:8a13aaf9cbbb1dee52824e862cf0d0720e5bb97c1f4260d1e51623a09492b57b"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.13.2/golangci-lint-2.13.2-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/532995222"
-provenance = "github-attestations"
-
-[tools.golangci-lint."platforms.macos-x64-baseline"]
-checksum = "sha256:8a13aaf9cbbb1dee52824e862cf0d0720e5bb97c1f4260d1e51623a09492b57b"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.13.2/golangci-lint-2.13.2-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/532995222"
-provenance = "github-attestations"
-
-[tools.golangci-lint."platforms.windows-x64"]
-checksum = "sha256:4735fdc8e84a0cfb7a15a1c364a650942f88215e0d36c674ebc4024f7b554524"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.13.2/golangci-lint-2.13.2-windows-amd64.zip"
-url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/532995335"
-provenance = "github-attestations"
-
-[tools.golangci-lint."platforms.windows-x64-baseline"]
-checksum = "sha256:4735fdc8e84a0cfb7a15a1c364a650942f88215e0d36c674ebc4024f7b554524"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.13.2/golangci-lint-2.13.2-windows-amd64.zip"
-url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/532995335"
+checksum = "sha256:5ef5f36a7147e91dc58ef9ef4d11bb7bad5ead0c76eb6c01327a73c641d1dcc3"
+url = "https://github.com/golangci/golangci-lint/releases/download/v2.14.0/golangci-lint-2.14.0-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/585813591"
 provenance = "github-attestations"
 
 [[tools.golangci-lint-langserver]]
@@ -1614,23 +1566,23 @@ url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygi
 url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658241"
 
 [[tools.mr-boxington]]
-version = "1.18.0"
+version = "1.19.0"
 backend = "packslip:github.com/jdx/mr-boxington"
 specifiers = ["latest"]
 
 [tools.mr-boxington."platforms.linux-arm64"]
-checksum = "sha256:ab0f4af3e98295bc35f448d453cfe15931bb02342d48163b2ede94583f937cdc"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.18.0/mbx-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:6f75b5351cc0489b93033611d5fd2cf863b9d70ab53adfcb8d33fefd8e5e870f"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.19.0/mbx-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 
 [tools.mr-boxington."platforms.linux-x64"]
-checksum = "sha256:92833c87261ea0c65fee52898ea67605b152b516fc0a3d8dee5a276601a8924c"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.18.0/mbx-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:c41238298b30d7c7da53dfe850f06036dd103b65865cc9dc986077eaf3e565d2"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.19.0/mbx-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 
 [tools.mr-boxington."platforms.macos-arm64"]
-checksum = "sha256:70ab23933b3745205125174120bd930c0116c1ef3ac38786122e5651636b9aea"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.18.0/mbx-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:dbaad252f9a483be80f6d00ad315f4957d8f9b9d19213ca05171b25a8dba6748"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.19.0/mbx-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 
 [[tools.node]]
@@ -1748,64 +1700,24 @@ backend = "npm:yarn"
 specifiers = ["latest"]
 
 [[tools.opencode]]
-version = "1.18.32"
+version = "1.18.33"
 backend = "aqua:anomalyco/opencode"
 specifiers = ["latest"]
 
 [tools.opencode."platforms.linux-arm64"]
-checksum = "sha256:568461b7d4d8c19865c97e9a1102e613049c6039d01fe772154de873c1865840"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.32/opencode-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/580000055"
-
-[tools.opencode."platforms.linux-arm64-musl"]
-checksum = "sha256:abf302edbc996548e28417dcdf7f67109fd95c7344f813a312633a818986204d"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.32/opencode-linux-arm64-musl.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/580000150"
+checksum = "sha256:c63486624621924bf43be5c01abd252885661a734814224f6d70188a33aea858"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.33/opencode-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/594449121"
 
 [tools.opencode."platforms.linux-x64"]
-checksum = "sha256:3046e0404fdc60fb80307e7a47824ba07477364178a4d09baa8548496dd6d43b"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.32/opencode-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/580000044"
-
-[tools.opencode."platforms.linux-x64-baseline"]
-checksum = "sha256:3046e0404fdc60fb80307e7a47824ba07477364178a4d09baa8548496dd6d43b"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.32/opencode-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/580000044"
-
-[tools.opencode."platforms.linux-x64-musl"]
-checksum = "sha256:1ce4699c8a9470ad806fa824112cd30b5d51b4038c29231189486302ef394d94"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.32/opencode-linux-x64-musl.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/580000043"
-
-[tools.opencode."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:1ce4699c8a9470ad806fa824112cd30b5d51b4038c29231189486302ef394d94"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.32/opencode-linux-x64-musl.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/580000043"
+checksum = "sha256:e546123213ae47909a4268692aa4b94950d011afe9cac9938753a2194f1c16d5"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.33/opencode-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/594449176"
 
 [tools.opencode."platforms.macos-arm64"]
-checksum = "sha256:fa643f93401c13508d8d513780e54ce9cc01203d501114be9b88d62408b8101f"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.32/opencode-darwin-arm64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/579999982"
-
-[tools.opencode."platforms.macos-x64"]
-checksum = "sha256:a24bf10499382f8855e19d2a081b8683e4ab99c7c2affb32dc89b17c8a00ccd6"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.32/opencode-darwin-x64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/579999983"
-
-[tools.opencode."platforms.macos-x64-baseline"]
-checksum = "sha256:a24bf10499382f8855e19d2a081b8683e4ab99c7c2affb32dc89b17c8a00ccd6"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.32/opencode-darwin-x64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/579999983"
-
-[tools.opencode."platforms.windows-x64"]
-checksum = "sha256:1483c72d5adced825590a0ecf8cc18b3e87e535960a125dbf539d33bce135d0f"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.32/opencode-windows-x64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/580003748"
-
-[tools.opencode."platforms.windows-x64-baseline"]
-checksum = "sha256:1483c72d5adced825590a0ecf8cc18b3e87e535960a125dbf539d33bce135d0f"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.32/opencode-windows-x64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/580003748"
+checksum = "sha256:24b12873e605b3db3387cb355f43ba7451cd6065c180d8c188663337d2eeb553"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.33/opencode-darwin-arm64.zip"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/594449070"
 
 [[tools."pipx:mistral-vibe"]]
 version = "2.25.8"
@@ -1826,16 +1738,16 @@ specifiers = ["latest"]
 uv = { path = "locks/pipx-pgcli/4.7.1", digest = "sha256:c07a9c499b959bea1f7ac31483857f4fbb22aae2733f48dfc099ae5075a65e0f" }
 
 [[tools."pipx:ruff"]]
-version = "0.16.8"
+version = "0.16.9"
 backend = "pipx:ruff"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ruff/0.16.8", digest = "sha256:a5930d5687764c4a2c1073cb1b9fd045245690f4a4b17518e166bd29a8bb74eb" }
+uv = { path = "locks/pipx-ruff/0.16.9", digest = "sha256:2c3f3ac2d8351ebcf9442fcb2265ae5d7a018d84c72ccc4eb68ad4aec37e0f6a" }
 
 [[tools."pipx:ty"]]
-version = "0.0.83"
+version = "0.0.84"
 backend = "pipx:ty"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ty/0.0.83", digest = "sha256:852095baaab30cd240bf1d1da758d9579dca4a9c88960018157a262fd72a921b" }
+uv = { path = "locks/pipx-ty/0.0.84", digest = "sha256:62c53c8253a2af9a3931381ceda30f5aa8cc9a1b6afa3b93a7127f7107e5258d" }
 
 [[tools."pipx:yt-dlp"]]
 version = "2026.8.19"
@@ -2089,26 +2001,26 @@ url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-universal-ap
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [[tools.uv]]
-version = "0.12.18"
+version = "0.12.19"
 backend = "aqua:astral-sh/uv"
 specifiers = ["latest"]
 
 [tools.uv."platforms.linux-arm64"]
-checksum = "sha256:afb6291f3f0a6b4521fc67b947822506c41dde5b60d2189dd8f3695b2ac8c9e7"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.18/uv-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/582430569"
+checksum = "sha256:0804e9b164c64b6914182d5920c08551958a095986f10a3731056df701126436"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.19/uv-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/587158851"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:89eadd7c76fc063887959510d5ba0ab1264dfd5f1143b925ddb73021a40acf16"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.18/uv-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/582430671"
+checksum = "sha256:23bf5552d220e0842b65c862097b2ebaeba0064b74eda5e565e77fd25969d8c8"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.19/uv-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/587159011"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-arm64"]
-checksum = "sha256:cf40e0c6a202190ccd9e0406dcfdd5b2d6668a9a5c779b17948963df32aafe5b"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.18/uv-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/582430554"
+checksum = "sha256:a9a8df1eedeb192f2e47e40e2faabfb387db4b850209118786d42f89dde3e0ba"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.19/uv-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/587158826"
 provenance = "github-attestations"
 
 [[tools.watchexec]]
