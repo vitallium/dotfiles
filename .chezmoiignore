@@ -10,6 +10,7 @@ doc/
 {{- if ne .chezmoi.os "darwin" }}
 .Brewfile
 Library/
+.config/linearmouse
 {{- end }}
 
 {{- if eq .chezmoi.hostname "vmi3067147" }}
