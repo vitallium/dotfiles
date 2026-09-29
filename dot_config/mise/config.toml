@@ -108,6 +108,7 @@ pnpm = "latest"
 bun = "latest"
 "npm:@bitbonsai/mcpvault" = "latest"
 "npm:@devcontainers/cli" = "latest"
+"npm:@openchamber/web" = "latest"
 "npm:@opencode/cli" = { version = "latest", allow_builds = ["@opencode/cli"] }
 "npm:@playwright/mcp" = "latest"
 "npm:@railway/cli" = "latest"
