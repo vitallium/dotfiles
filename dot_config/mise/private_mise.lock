@@ -1105,6 +1105,7 @@ specifiers = ["latest"]
 url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.44-linux-aarch64"
 
 [tools.grok."platforms.linux-x64"]
+checksum = "blake3:1f98def987d6aca93834d65e9cc8e52720507915f0dca5a3c0c35fb6a331bc4f"
 url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.44-linux-x86_64"
 
 [tools.grok."platforms.macos-arm64"]
@@ -1655,31 +1656,31 @@ uv = { path = "locks/pipx-mistral-vibe/2.25.8", digest = "sha256:a8f33a078d2ef5b
 version = "2.29.2"
 backend = "pipx:pdm"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-pdm/2.29.2", digest = "sha256:7dde3f629f9fd24a992fb352aa9f426dd265145970488d1a04aab3ea679e4585" }
+uv = { path = "locks/pipx-pdm/2.29.2", digest = "sha256:f4a761243d45af2ca2814077879a57864db83ba60a0f3766d2d97590b9a114ad" }
 
 [[tools."pipx:pgcli"]]
 version = "4.7.1"
 backend = "pipx:pgcli"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-pgcli/4.7.1", digest = "sha256:c07a9c499b959bea1f7ac31483857f4fbb22aae2733f48dfc099ae5075a65e0f" }
+uv = { path = "locks/pipx-pgcli/4.7.1", digest = "sha256:123a1b2342b735b07dafdfb5374639d2ff88a4f1a70a6f18b46207e0cbdc2cb2" }
 
 [[tools."pipx:ruff"]]
 version = "0.16.9"
 backend = "pipx:ruff"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ruff/0.16.9", digest = "sha256:2c3f3ac2d8351ebcf9442fcb2265ae5d7a018d84c72ccc4eb68ad4aec37e0f6a" }
+uv = { path = "locks/pipx-ruff/0.16.9", digest = "sha256:a51cb1e1fb71c81b929a06accd53f71a263ef4f6d73be904fd339fb0d6c398c4" }
 
 [[tools."pipx:ty"]]
 version = "0.0.84"
 backend = "pipx:ty"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ty/0.0.84", digest = "sha256:62c53c8253a2af9a3931381ceda30f5aa8cc9a1b6afa3b93a7127f7107e5258d" }
+uv = { path = "locks/pipx-ty/0.0.84", digest = "sha256:3df875a9f7cdb9a59ddeabcb32710aa9a756cdda966196429d2b59e18ed6963b" }
 
 [[tools."pipx:yt-dlp"]]
 version = "2026.8.19"
 backend = "pipx:yt-dlp"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-yt-dlp/2026.8.19", digest = "sha256:92b681b65190ff9653a2c874f2704ff68d092e482e10ad26d564a73336d22fe8" }
+uv = { path = "locks/pipx-yt-dlp/2026.8.19", digest = "sha256:e7fef3558119992f629a8d06df9b0d0b593ec897d183f0a4a9918e0e4fcf4d0b" }
 
 [[tools.pnpm]]
 version = "12.7.0"
