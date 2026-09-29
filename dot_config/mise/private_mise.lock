@@ -258,74 +258,26 @@ checksum = "sha256:78c221c2376f79731ccf4e4af0b3bb46d81fefa3296c5abee09ad8a1b21e6
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.2/bun-windows-x64-baseline.zip"
 
 [[tools.cargo-binstall]]
-version = "1.23.0"
+version = "1.24.0"
 backend = "aqua:cargo-bins/cargo-binstall"
 specifiers = ["latest"]
 
 [tools.cargo-binstall."platforms.linux-arm64"]
-checksum = "sha256:c458cfe9534d1958f159fc17b5f50e839297b4ee752b23ffdd80c5e15a734c42"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.23.0/cargo-binstall-aarch64-unknown-linux-gnu.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/546062641"
-provenance = "github-attestations"
-
-[tools.cargo-binstall."platforms.linux-arm64-musl"]
-checksum = "sha256:ba9b7bf426c7b7375825cd3fa367c3f8a632ca7c6c546fdcb738114b167f4103"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.23.0/cargo-binstall-aarch64-unknown-linux-musl.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/546062597"
+checksum = "sha256:fa5d4362758d13c38c6630260528c895b535e96afeed08ed7003caf722524ab9"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.24.0/cargo-binstall-aarch64-unknown-linux-gnu.tgz"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/590639427"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-x64"]
-checksum = "sha256:cdada45ad6bb501185ab309f5eef3f628b6bc44460746565cb3e0c7538815bf3"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.23.0/cargo-binstall-x86_64-unknown-linux-gnu.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/546062151"
-provenance = "github-attestations"
-
-[tools.cargo-binstall."platforms.linux-x64-baseline"]
-checksum = "sha256:cdada45ad6bb501185ab309f5eef3f628b6bc44460746565cb3e0c7538815bf3"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.23.0/cargo-binstall-x86_64-unknown-linux-gnu.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/546062151"
-provenance = "github-attestations"
-
-[tools.cargo-binstall."platforms.linux-x64-musl"]
-checksum = "sha256:64bf954c68bb558431deeabecaec7687edd5541c2189ee263bb8bc18bc4fdf55"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.23.0/cargo-binstall-x86_64-unknown-linux-musl.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/546062088"
-provenance = "github-attestations"
-
-[tools.cargo-binstall."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:64bf954c68bb558431deeabecaec7687edd5541c2189ee263bb8bc18bc4fdf55"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.23.0/cargo-binstall-x86_64-unknown-linux-musl.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/546062088"
+checksum = "sha256:ab139b59b86ce14baf9a8da0592dd4c73fdc8b8a7d74a9746881bd68d411f4d8"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.24.0/cargo-binstall-x86_64-unknown-linux-gnu.tgz"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/590638764"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.macos-arm64"]
-checksum = "sha256:0f679c0bc992c6b84fdcbb0f65492588447d26596ef387cb6cb1ba41ad8ceb33"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.23.0/cargo-binstall-aarch64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/546062768"
-provenance = "github-attestations"
-
-[tools.cargo-binstall."platforms.macos-x64"]
-checksum = "sha256:5b4d6cd99651318e17a26ed9bab7505de0f496d88793a7735a0fc6e2079efe83"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.23.0/cargo-binstall-x86_64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/546062270"
-provenance = "github-attestations"
-
-[tools.cargo-binstall."platforms.macos-x64-baseline"]
-checksum = "sha256:5b4d6cd99651318e17a26ed9bab7505de0f496d88793a7735a0fc6e2079efe83"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.23.0/cargo-binstall-x86_64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/546062270"
-provenance = "github-attestations"
-
-[tools.cargo-binstall."platforms.windows-x64"]
-checksum = "sha256:f4641479477aca40387e88297e3813fab8e44a8d21f25faa44e0ff33e2bc1726"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.23.0/cargo-binstall-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/546062212"
-provenance = "github-attestations"
-
-[tools.cargo-binstall."platforms.windows-x64-baseline"]
-checksum = "sha256:f4641479477aca40387e88297e3813fab8e44a8d21f25faa44e0ff33e2bc1726"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.23.0/cargo-binstall-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/546062212"
+checksum = "sha256:aa3ad3ba751c6fad85d83bf4aa7a114e4e04372de439a62cd7cad3c4025bdbbe"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.24.0/cargo-binstall-aarch64-apple-darwin.zip"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/590639619"
 provenance = "github-attestations"
 
 [[tools."cargo:ast-grep"]]
@@ -334,7 +286,7 @@ backend = "cargo:ast-grep"
 specifiers = ["latest"]
 
 [[tools."cargo:bacon"]]
-version = "3.25.0"
+version = "3.26.0"
 backend = "cargo:bacon"
 specifiers = ["latest"]
 
@@ -419,7 +371,7 @@ backend = "cargo:tokei"
 specifiers = ["latest"]
 
 [[tools."cargo:topgrade"]]
-version = "17.12.1"
+version = "17.12.2"
 backend = "cargo:topgrade"
 specifiers = ["latest"]
 
@@ -500,24 +452,24 @@ url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/56170635
 provenance = "cosign"
 
 [[tools.codex]]
-version = "0.158.0"
+version = "0.159.0"
 backend = "aqua:openai/codex"
 specifiers = ["latest"]
 
 [tools.codex."platforms.linux-arm64"]
-checksum = "sha256:bc55b988c2e0c54ac6a6d437c4e63781e671b269752ac26592675bb9e9f99902"
-url = "https://github.com/openai/codex/releases/download/rust-v0.158.0/codex-package-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/594549699"
+checksum = "sha256:7399d2bf7618cc8d6845a8acdb2078106332861f7f30d36527e8f53208df89da"
+url = "https://github.com/openai/codex/releases/download/rust-v0.159.0/codex-package-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/597639655"
 
 [tools.codex."platforms.linux-x64"]
-checksum = "sha256:b33cd426c9acab9b34c5a93200ba4fe83c8e614c18ce5ef52b2bf36408b8e18c"
-url = "https://github.com/openai/codex/releases/download/rust-v0.158.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/594540051"
+checksum = "sha256:35da65d7e8644e28ea0a4d4e3d8c15b40c6b492356d4cf21986c7e341f83a24e"
+url = "https://github.com/openai/codex/releases/download/rust-v0.159.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/597628463"
 
 [tools.codex."platforms.macos-arm64"]
-checksum = "sha256:09f2a9fde318fbcd384f15b4850c1b90930678f4805647b6bded196ccf32f590"
-url = "https://github.com/openai/codex/releases/download/rust-v0.158.0/codex-package-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/594553803"
+checksum = "sha256:7748d07d7921a67b91d015e9d0f43177c675977e67f955b2f8fb96dc880dd5d7"
+url = "https://github.com/openai/codex/releases/download/rust-v0.159.0/codex-package-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/597646117"
 
 [[tools.cosign]]
 version = "3.1.3"
@@ -1145,44 +1097,18 @@ url_api = "https://api.github.com/repos/goreleaser/goreleaser/releases/assets/56
 provenance = "github-attestations"
 
 [[tools.grok]]
-version = "1.0.41"
+version = "1.0.44"
 backend = "http:grok"
 specifiers = ["latest"]
 
 [tools.grok."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-linux-aarch64"
-
-[tools.grok."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-linux-aarch64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.44-linux-aarch64"
 
 [tools.grok."platforms.linux-x64"]
-checksum = "blake3:78d5dc3a5dd8c2046daf1b16254de56be41f6e9894cdc9fe92c57a45b3e409b2"
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-linux-x86_64"
-
-[tools.grok."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-linux-x86_64"
-
-[tools.grok."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-linux-x86_64"
-
-[tools.grok."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-linux-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.44-linux-x86_64"
 
 [tools.grok."platforms.macos-arm64"]
-checksum = "blake3:5adbb600ba0fe0b5018d538712db4990e326b1cf3136afdca4699b11ae53af6f"
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-macos-aarch64"
-
-[tools.grok."platforms.macos-x64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-macos-x86_64"
-
-[tools.grok."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-macos-x86_64"
-
-[tools.grok."platforms.windows-x64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-windows-x86_64.exe"
-
-[tools.grok."platforms.windows-x64-baseline"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.41-windows-x86_64.exe"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.44-macos-aarch64"
 
 [[tools.gum]]
 version = "2.0.2"
@@ -1566,23 +1492,23 @@ url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygi
 url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658241"
 
 [[tools.mr-boxington]]
-version = "1.19.0"
+version = "1.21.0"
 backend = "packslip:github.com/jdx/mr-boxington"
 specifiers = ["latest"]
 
 [tools.mr-boxington."platforms.linux-arm64"]
-checksum = "sha256:6f75b5351cc0489b93033611d5fd2cf863b9d70ab53adfcb8d33fefd8e5e870f"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.19.0/mbx-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:8a29bf0682d31767405cd606e7153385d8d3ec8b498bf089e554375a8842de3c"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.21.0/mbx-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 
 [tools.mr-boxington."platforms.linux-x64"]
-checksum = "sha256:c41238298b30d7c7da53dfe850f06036dd103b65865cc9dc986077eaf3e565d2"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.19.0/mbx-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:1ed3fd18da0decc106a6242d1b724e6a4b8d0f6173b8abe4d4d68c929ed47120"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.21.0/mbx-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 
 [tools.mr-boxington."platforms.macos-arm64"]
-checksum = "sha256:dbaad252f9a483be80f6d00ad315f4957d8f9b9d19213ca05171b25a8dba6748"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.19.0/mbx-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:4aa9da108e90c6c269819fed8e822a42f5101260961cd511999facd5726cf9d9"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.21.0/mbx-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 
 [[tools.node]]
@@ -1756,26 +1682,26 @@ specifiers = ["latest"]
 uv = { path = "locks/pipx-yt-dlp/2026.8.19", digest = "sha256:92b681b65190ff9653a2c874f2704ff68d092e482e10ad26d564a73336d22fe8" }
 
 [[tools.pnpm]]
-version = "12.6.0"
+version = "12.7.0"
 backend = "aqua:pnpm/pnpm"
 specifiers = ["latest"]
 
 [tools.pnpm."platforms.linux-arm64"]
-checksum = "sha256:973af2b3eb9509416cf889a7336705062c936407d5fda07298814e7532f5dea1"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.6.0/pnpm-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/581813240"
+checksum = "sha256:db39a3fc7969dcf3398ebf2f2090c62ba732e5a9887b96147a97134a1a779088"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.7.0/pnpm-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/588119310"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.linux-x64"]
-checksum = "sha256:3f4c66f668d0e84219679982d095b30da68325e1fac9284e7f5dc1584bd3d13e"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.6.0/pnpm-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/581813243"
+checksum = "sha256:68190c7d289efecd66ff088c93b9c5ec361989e8194239e004bd905403d3d3e5"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.7.0/pnpm-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/588119302"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.macos-arm64"]
-checksum = "sha256:1030f38e14fa2e6c87fe6ab0313a3bf3b794a961504f4439bad2ca2110d3583e"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.6.0/pnpm-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/581813250"
+checksum = "sha256:82de6e7037fcfaab6a1ee9b6360e887723ad68389780810fa3e3a3540d6088ab"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.7.0/pnpm-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/588119307"
 provenance = "github-attestations"
 
 [[tools.prettier]]
@@ -1981,23 +1907,23 @@ url = "https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_windo
 url_api = "https://api.github.com/repos/mvdan/sh/releases/assets/547320827"
 
 [[tools.usage]]
-version = "6.11.1"
+version = "6.12.0"
 backend = "packslip:github.com/jdx/usage"
 specifiers = ["latest"]
 
 [tools.usage."platforms.linux-arm64"]
-checksum = "sha256:90622145566409da24d282190ad17cc786c85d498d751543824ab62931705018"
-url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:6e9be5caa7dc8a484fc488cf5ed6fcde5d2b3271943ccc039e0c08041a8f8bf8"
+url = "https://github.com/jdx/usage/releases/download/v6.12.0/usage-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.linux-x64"]
-checksum = "sha256:afa6cb0e76f88cc6392aeecf21bbcd869747d4eeb60ab84c98d6e6178edc359a"
-url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:c82b39ca9c64e3256284667ca8ddd4c27b7141d842ba054a645ee73d6ab99b17"
+url = "https://github.com/jdx/usage/releases/download/v6.12.0/usage-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.macos-arm64"]
-checksum = "sha256:e3a20b948f2665862dcbaddfc50d62ac741654e3cdd815130a6fae00b3d088ff"
-url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-universal-apple-darwin.tar.gz"
+checksum = "sha256:1e43be745db2fd81259e2b0e68d689d7f55b93da815f452c2154710f6de6ec52"
+url = "https://github.com/jdx/usage/releases/download/v6.12.0/usage-universal-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [[tools.uv]]
