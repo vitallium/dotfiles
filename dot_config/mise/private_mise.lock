@@ -1571,6 +1571,14 @@ version = "0.89.0"
 backend = "npm:@devcontainers/cli"
 specifiers = ["latest"]
 
+[[tools."npm:@opencode/cli"]]
+version = "2.0.18"
+backend = "npm:@opencode/cli"
+specifiers = ["latest"]
+
+[tools."npm:@opencode/cli".options]
+allow_builds = '["@opencode/cli"]'
+
 [[tools."npm:@playwright/mcp"]]
 version = "0.0.82"
 backend = "npm:@playwright/mcp"
