@@ -20,7 +20,8 @@ minimum_release_age_excludes = [
   "opencode",
   "usage",
   "pipx:mistral-vibe",
-  "mr-boxington"
+  "mr-boxington",
+  "@earendil-works/pi-coding-agent"
 ]
 
 trusted_config_paths = [
@@ -108,6 +109,7 @@ pnpm = "latest"
 bun = "latest"
 "npm:@bitbonsai/mcpvault" = "latest"
 "npm:@devcontainers/cli" = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
 "npm:@openchamber/web" = "latest"
 "npm:@opencode/cli" = { version = "latest", allow_builds = ["@opencode/cli"] }
 "npm:@playwright/mcp" = "latest"
