@@ -21,7 +21,7 @@ minimum_release_age_excludes = [
   "usage",
   "pipx:mistral-vibe",
   "mr-boxington",
-  "@earendil-works/pi-coding-agent"
+  "npm:@earendil-works/pi-coding-agent"
 ]
 
 trusted_config_paths = [
@@ -47,7 +47,6 @@ uvx = true
 [tools]
 # Keep Rust on top to satisfy dependencies
 rust = { version = "latest", components = "rust-analyzer,rust-src", mr_boxington = true }
-antigravity-cli = "latest"
 biome = "latest"
 cargo-binstall = "latest"
 codex = "latest"
@@ -65,6 +64,7 @@ java = "lts"
 just = "latest"
 kubectl = "latest"
 lazygit = "latest"
+opencode = "latest"
 prettier = "latest"
 python = "3.14.7"
 railway = "latest"
@@ -111,7 +111,6 @@ bun = "latest"
 "npm:@devcontainers/cli" = "latest"
 "npm:@earendil-works/pi-coding-agent" = "latest"
 "npm:@openchamber/web" = "latest"
-"npm:@opencode/cli" = { version = "latest", allow_builds = ["@opencode/cli"] }
 "npm:@playwright/mcp" = "latest"
 "npm:@railway/cli" = "latest"
 "npm:@railway/mcp-server" = "latest"
