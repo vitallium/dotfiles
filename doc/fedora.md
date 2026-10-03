@@ -23,7 +23,6 @@
 - [Configure user environment](#configure-user-environment)
   - [Enable flathub](#enable-flathub)
   - [Install flatpaks](#install-flatpaks)
-  - [Install Orion browser](#install-orion-browser)
   - [Install podman](#install-podman)
   - [Install 1password CLI](#install-1password-cli)
 - [Configure Gnome](#configure-gnome)
@@ -232,13 +231,6 @@ flatpak install -y flathub com.discordapp.Discord \
                            org.signal.Signal \
                            com.gitbutler.gitbutler
 flatpak update
-```
-
-### Install [Orion browser](https://orionbrowser.com/platforms/linux/install)
-
-```bash
-flatpak remote-add --if-not-exists orion-beta https://flatpak.orionbrowser.com/orion-beta.flatpakrepo
-flatpak install -y orion-beta com.kagi.Orion
 ```
 
 ### Install podman
