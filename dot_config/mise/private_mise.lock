@@ -336,24 +336,24 @@ url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/59627097
 provenance = "cosign"
 
 [[tools.codex]]
-version = "0.161.0"
+version = "0.162.0"
 backend = "aqua:openai/codex"
 specifiers = ["latest"]
 
 [tools.codex."platforms.linux-arm64"]
-checksum = "sha256:3c02e2ae34be0d06e62557e98fc5c0a783bec5a2fed406fe00e565803bf84ee8"
-url = "https://github.com/openai/codex/releases/download/rust-v0.161.0/codex-package-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/619125995"
+checksum = "sha256:d47a5fa21e037a1b85729b88c238ff3da8a956fc9fb5ad3976714428e7fb2bda"
+url = "https://github.com/openai/codex/releases/download/rust-v0.162.0/codex-package-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/622702887"
 
 [tools.codex."platforms.linux-x64"]
-checksum = "sha256:04d8ab9dbcb9df0edf3c67dca5072a374babfdf762a9bc4ae649ae140b8e2cf0"
-url = "https://github.com/openai/codex/releases/download/rust-v0.161.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/619114673"
+checksum = "sha256:4f573944c1d2059109d75a2f4d0cc9c03697288224a5e407717a9de98fc010c5"
+url = "https://github.com/openai/codex/releases/download/rust-v0.162.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/622683980"
 
 [tools.codex."platforms.macos-arm64"]
-checksum = "sha256:f0feee8537daf8dd6b4e0a36e764549ad14afdbb419d8775aeab9feb20182313"
-url = "https://github.com/openai/codex/releases/download/rust-v0.161.0/codex-package-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/openai/codex/releases/assets/619133667"
+checksum = "sha256:5809ee90a9c3b59d438bb2663aefa0b43d86f825438b65d4504b31f82343628b"
+url = "https://github.com/openai/codex/releases/download/rust-v0.162.0/codex-package-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/openai/codex/releases/assets/622712254"
 
 [[tools.cosign]]
 version = "3.1.3"
@@ -933,20 +933,19 @@ url_api = "https://api.github.com/repos/goreleaser/goreleaser/releases/assets/56
 provenance = "github-attestations"
 
 [[tools.grok]]
-version = "1.0.46"
+version = "1.0.50"
 backend = "http:grok"
 specifiers = ["latest"]
 
 [tools.grok."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.46-linux-aarch64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.50-linux-aarch64"
 
 [tools.grok."platforms.linux-x64"]
-checksum = "blake3:88e0aa7ccc05f3fb9d0812e1c7ab22af2d6d988758e8b561ff1dc370d035d2a2"
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.46-linux-x86_64"
+checksum = "blake3:936ecfe3ed030d46e1840643a4fb2afb249619a08106424fa47cce4d36689aa0"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.50-linux-x86_64"
 
 [tools.grok."platforms.macos-arm64"]
-checksum = "blake3:783c036f92f5713ad62dcd125ea9cbd6168bd5913a6f5b967d8b1fef0b581daf"
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.46-macos-aarch64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.50-macos-aarch64"
 
 [[tools.gum]]
 version = "2.0.2"
@@ -1270,64 +1269,24 @@ checksum = "sha256:fd65982c97ddad3106754b69ffa196d0e543aa591930ae52aed1adfb92f8c
 url = "https://dl.k8s.io/v1.37.1/bin/darwin/arm64/kubectl"
 
 [[tools.lazygit]]
-version = "0.65.1"
+version = "0.66.0"
 backend = "aqua:jesseduffield/lazygit"
 specifiers = ["latest"]
 
 [tools.lazygit."platforms.linux-arm64"]
-checksum = "sha256:49abecdf6adf4f2dfdb11bf7b9bfada267ea523612ed809d1c6d87f6c04000a7"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658270"
-
-[tools.lazygit."platforms.linux-arm64-musl"]
-checksum = "sha256:49abecdf6adf4f2dfdb11bf7b9bfada267ea523612ed809d1c6d87f6c04000a7"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658270"
+checksum = "sha256:9a4fc4656897ac9f7877b835473ce1a75620cc267f554c57fc4ff266407f3257"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.66.0/lazygit_0.66.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/613198511"
 
 [tools.lazygit."platforms.linux-x64"]
-checksum = "sha256:02beacbcda0fa342e50ae3480ba8147307353af3fb28e1d5f790e02329c201a6"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658266"
-
-[tools.lazygit."platforms.linux-x64-baseline"]
-checksum = "sha256:02beacbcda0fa342e50ae3480ba8147307353af3fb28e1d5f790e02329c201a6"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658266"
-
-[tools.lazygit."platforms.linux-x64-musl"]
-checksum = "sha256:02beacbcda0fa342e50ae3480ba8147307353af3fb28e1d5f790e02329c201a6"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658266"
-
-[tools.lazygit."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:02beacbcda0fa342e50ae3480ba8147307353af3fb28e1d5f790e02329c201a6"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658266"
+checksum = "sha256:5b45541155d20bd32bf2cc5ab5b7e3d91c2eebf0fb1242281350edc27d59d2b7"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.66.0/lazygit_0.66.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/613198391"
 
 [tools.lazygit."platforms.macos-arm64"]
-checksum = "sha256:65a367c6ea9a88efebaaf7998a6835eedb987e04916cef677264ff9b31b1b13e"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658243"
-
-[tools.lazygit."platforms.macos-x64"]
-checksum = "sha256:fde13daf583511aa24c42ca154911643231a5af784c7cdd8117264b2fc035b33"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658244"
-
-[tools.lazygit."platforms.macos-x64-baseline"]
-checksum = "sha256:fde13daf583511aa24c42ca154911643231a5af784c7cdd8117264b2fc035b33"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658244"
-
-[tools.lazygit."platforms.windows-x64"]
-checksum = "sha256:bed669be29204932560836a58dc6519ba43c10ea7dc7df63af8a1d96424e191d"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_windows_x86_64.zip"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658241"
-
-[tools.lazygit."platforms.windows-x64-baseline"]
-checksum = "sha256:bed669be29204932560836a58dc6519ba43c10ea7dc7df63af8a1d96424e191d"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_windows_x86_64.zip"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658241"
+checksum = "sha256:e9fe2fe1f1bbc1b4c3214b33e8e0d57a4d6e3c2276aa9aa713f9bcbdc223e65c"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.66.0/lazygit_0.66.0_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/613198499"
 
 [[tools.mr-boxington]]
 version = "1.22.0"
