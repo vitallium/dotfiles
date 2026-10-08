@@ -1412,12 +1412,12 @@ backend = "npm:@devcontainers/cli"
 specifiers = ["latest"]
 
 [[tools."npm:@earendil-works/pi-coding-agent"]]
-version = "1.0.4"
+version = "1.1.0"
 backend = "npm:@earendil-works/pi-coding-agent"
 specifiers = ["latest"]
 
 [[tools."npm:@openchamber/web"]]
-version = "2.1.0"
+version = "2.1.1"
 backend = "npm:@openchamber/web"
 specifiers = ["latest"]
 
