@@ -1462,12 +1462,12 @@ backend = "npm:markdownlint-cli2"
 specifiers = ["latest"]
 
 [[tools."npm:oxfmt"]]
-version = "0.71.0"
+version = "0.72.0"
 backend = "npm:oxfmt"
 specifiers = ["latest"]
 
 [[tools."npm:oxlint"]]
-version = "1.86.0"
+version = "1.87.0"
 backend = "npm:oxlint"
 specifiers = ["latest"]
 
