@@ -1249,10 +1249,10 @@ specifiers = ["latest"]
 uv = { path = "locks/pipx-ruff/0.17.0", digest = "sha256:5ee431a14a6363eb04baac00d7838287ead0cfd17e4d9b220d3171c7be3d338c" }
 
 [[tools."pipx:ty"]]
-version = "0.0.87"
+version = "0.0.88"
 backend = "pipx:ty"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ty/0.0.87", digest = "sha256:679652b2104f38ff5ff87399564ff114fc1cd9abfe5672101b26a6c63a5d2b08" }
+uv = { path = "locks/pipx-ty/0.0.88", digest = "sha256:63b09f8ed65a5123d3cbcd021709595022d3b5d3b3f74016e1d069bcd67ef60a" }
 
 [[tools."pipx:yt-dlp"]]
 version = "2026.8.19"
@@ -1261,27 +1261,24 @@ specifiers = ["latest"]
 uv = { path = "locks/pipx-yt-dlp/2026.8.19", digest = "sha256:e7fef3558119992f629a8d06df9b0d0b593ec897d183f0a4a9918e0e4fcf4d0b" }
 
 [[tools.pitchfork]]
-version = "2.30.1"
+version = "2.31.0"
 backend = "packslip:github.com/jdx/pitchfork"
 specifiers = ["latest"]
 
 [tools.pitchfork."platforms.linux-arm64"]
-checksum = "sha256:b20bdf5bf3e1f5d7ec227e67a493f1966a6f8967e78bbff702c331f77739b2a3"
-url = "https://github.com/jdx/pitchfork/releases/download/v2.30.1/pitchfork-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:03a9f3e636a95c4cc98bee05c1540b05f58359441a10f348f624ba613333520e"
+url = "https://github.com/jdx/pitchfork/releases/download/v2.31.0/pitchfork-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/pitchfork/.github/workflows/release.yml"
-repository_ids = { repository = "899500793" }
 
 [tools.pitchfork."platforms.linux-x64"]
-checksum = "sha256:cc2aa26c9d3c0833bfa16d79f8ae167bd7d88a708b489322296286517643a1c4"
-url = "https://github.com/jdx/pitchfork/releases/download/v2.30.1/pitchfork-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:8d7a0c361f6055086f886f19c1462a2feae2d5ad0689184c51b4eaf36209f169"
+url = "https://github.com/jdx/pitchfork/releases/download/v2.31.0/pitchfork-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/pitchfork/.github/workflows/release.yml"
-repository_ids = { repository = "899500793" }
 
 [tools.pitchfork."platforms.macos-arm64"]
-checksum = "sha256:148d3fc64a71245f3752d57e9b8b5e656c4723bc72b2ab4fc61fa883abb46ae7"
-url = "https://github.com/jdx/pitchfork/releases/download/v2.30.1/pitchfork-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:1be8f1b7df6e08542ecc7e1e1604c48ee4c5c6d90169eda2a31c112d59642baa"
+url = "https://github.com/jdx/pitchfork/releases/download/v2.31.0/pitchfork-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/pitchfork/.github/workflows/release.yml"
-repository_ids = { repository = "899500793" }
 
 [[tools.pnpm]]
 version = "12.13.0"
