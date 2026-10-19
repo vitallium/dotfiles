@@ -174,26 +174,26 @@ checksum = "sha256:80afd4c069b46a6fa8f3ec520bebc750a7843e4a8d5b9583d29ad436c00a3
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.3/bun-darwin-aarch64.zip"
 
 [[tools.cargo-binstall]]
-version = "1.25.3"
+version = "1.26.0"
 backend = "aqua:cargo-bins/cargo-binstall"
 specifiers = ["latest"]
 
 [tools.cargo-binstall."platforms.linux-arm64"]
-checksum = "sha256:6beb20bdaa19033d51e296a3610e812e0b41f43bd6646287e4d510b3256bcda0"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.3/cargo-binstall-aarch64-unknown-linux-gnu.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/628281059"
+checksum = "sha256:255fd8d52e3a977ddb5e74fee58e7ef14b31c09d4eab5ad678e9967baedefced"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.26.0/cargo-binstall-aarch64-unknown-linux-gnu.tgz"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/650344745"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-x64"]
-checksum = "sha256:a974ce4e525edfb78f953869cbe7c1b57d00ae04358adc1ae47462120d80bb6c"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.3/cargo-binstall-x86_64-unknown-linux-gnu.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/628280029"
+checksum = "sha256:e59aec44d811ab53b1bb4c5e0b57e433b017999c37e24ca577a3afbefd49dabd"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.26.0/cargo-binstall-x86_64-unknown-linux-gnu.tgz"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/650343654"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.macos-arm64"]
-checksum = "sha256:b027e09e54431e56a75ce63858a798e1bfd9cd5fa62894186d46808d50b31335"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.3/cargo-binstall-aarch64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/628281302"
+checksum = "sha256:8cb681294876c8fdc1750bf79cd24aa0fa810cb91ecbd869d9e540a00dd08624"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.26.0/cargo-binstall-aarch64-apple-darwin.zip"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/650345034"
 provenance = "github-attestations"
 
 [[tools."cargo:ast-grep"]]
@@ -222,7 +222,7 @@ backend = "cargo:cargo-cache"
 specifiers = ["latest"]
 
 [[tools."cargo:cargo-crap"]]
-version = "0.8.0"
+version = "0.9.0"
 backend = "cargo:cargo-crap"
 specifiers = ["latest"]
 
@@ -287,7 +287,7 @@ backend = "cargo:tokei"
 specifiers = ["latest"]
 
 [[tools."cargo:topgrade"]]
-version = "17.12.3"
+version = "17.13.1"
 backend = "cargo:topgrade"
 specifiers = ["latest"]
 
@@ -1145,7 +1145,7 @@ backend = "npm:@earendil-works/pi-coding-agent"
 specifiers = ["latest"]
 
 [[tools."npm:@openchamber/web"]]
-version = "2.3.3"
+version = "2.4.0"
 backend = "npm:@openchamber/web"
 specifiers = ["latest"]
 
@@ -1155,7 +1155,7 @@ backend = "npm:@playwright/mcp"
 specifiers = ["latest"]
 
 [[tools."npm:@railway/cli"]]
-version = "5.69.0"
+version = "5.70.0"
 backend = "npm:@railway/cli"
 specifiers = ["latest"]
 
@@ -1225,10 +1225,10 @@ url = "https://github.com/anomalyco/opencode/releases/download/v1.19.3/opencode-
 url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/647222664"
 
 [[tools."pipx:mistral-vibe"]]
-version = "2.26.1"
+version = "3.0.0"
 backend = "pipx:mistral-vibe"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-mistral-vibe/2.26.1", digest = "sha256:ce57ceb253bbc398448caa953a2e4b663332150dd24c784f492c01fab44a9fab" }
+uv = { path = "locks/pipx-mistral-vibe/3.0.0", digest = "sha256:b18a9bfa659e07c4a9e45bc399263f8d0d2c12f6fbe41a23ad283205a9953884" }
 
 [[tools."pipx:pdm"]]
 version = "2.29.2"
@@ -1369,26 +1369,26 @@ url = "https://github.com/astral-sh/python-build-standalone/releases/download/20
 provenance = "github-attestations"
 
 [[tools.railway]]
-version = "5.69.0"
+version = "5.70.0"
 backend = "github:railwayapp/cli"
 specifiers = ["latest"]
 
 [tools.railway."platforms.linux-arm64"]
-checksum = "sha256:6fce6fca318beb81c712998087667374877283428ced9c133f031b821d774589"
-url = "https://github.com/railwayapp/cli/releases/download/v5.69.0/railway-v5.69.0-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/645469587"
+checksum = "sha256:b13f1945844ebdefd26e79d7bdf22ca4a70c8a95bdeba05f04afa5808c5cc076"
+url = "https://github.com/railwayapp/cli/releases/download/v5.70.0/railway-v5.70.0-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/648286872"
 provenance = "github-attestations"
 
 [tools.railway."platforms.linux-x64"]
-checksum = "sha256:578a567cbed1857b768fb1cf29dcc255bf57c3432f6711744dac87c78e15d95d"
-url = "https://github.com/railwayapp/cli/releases/download/v5.69.0/railway-v5.69.0-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/645465138"
+checksum = "sha256:9225eb5144e4174d1a88ac47c7bf8caf9d566679414086606322e586d64ee0f5"
+url = "https://github.com/railwayapp/cli/releases/download/v5.70.0/railway-v5.70.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/648288992"
 provenance = "github-attestations"
 
 [tools.railway."platforms.macos-arm64"]
-checksum = "sha256:4376c4989259a7c665b119118d52dc37b3508afcff044cb22ba80c8239b9696c"
-url = "https://github.com/railwayapp/cli/releases/download/v5.69.0/railway-v5.69.0-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/645471706"
+checksum = "sha256:d1a862595a4021a2463fa4f8a699c5b378514cafa2bb7674ffb7ae5a791cc78d"
+url = "https://github.com/railwayapp/cli/releases/download/v5.70.0/railway-v5.70.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/648292587"
 provenance = "github-attestations"
 
 [[tools.ruby]]
