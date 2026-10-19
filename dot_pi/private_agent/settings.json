@@ -6,12 +6,6 @@
   "defaultThinkingLevel": "medium",
   "packages": [
     "npm:pi-subagents",
-    {
-      "source": "npm:pi-mcp-adapter",
-      "extensions": [
-        "-index.ts"
-      ]
-    },
     "npm:pi-mcp-adapter",
     "npm:pi-web-access",
     "npm:pi-lens",
@@ -19,7 +13,8 @@
     "npm:@dietrichgebert/ponytail",
     "npm:@ff-labs/pi-fff",
     "npm:pi-intercom",
-    "npm:pi-context-view"
+    "npm:pi-context-view",
+    "npm:pi-rules"
   ],
   "deviceId": "a856887f-a875-4738-acd5-cfc16ec9e0ac",
   "extensions": [
@@ -28,7 +23,10 @@
   "enabledModels": [
     "openai/gpt-6.1-sol:medium",
     "openai/gpt-6-astra:low",
-    "openai/gpt-6-luna:xhigh"
+    "openai/gpt-6-luna:xhigh",
+    "mistral/mistral-medium-latest",
+    "mistral/mistral-large-latest",
+    "xai/grok-4.7"
   ],
   "subagents": {
     "agentOverrides": {
