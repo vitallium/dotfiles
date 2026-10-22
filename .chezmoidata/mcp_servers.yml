@@ -17,12 +17,6 @@ mcp_servers:
       description: Excalidraw
       type: remote
       url: https://mcp.excalidraw.com
-    railway: &railway
-      name: railway
-      description: Interact with Railway projects and infrastructure
-      type: local
-      command: [railway-mcp-server]
-      env: {}
     cloudflare: &cloudflare
       name: cloudflare
       description: Interact with Cloudflare
@@ -39,7 +33,6 @@ mcp_servers:
     - *chrome-devtools
     - *context7
     - *excalidraw
-    - *railway
     - *cloudflare
     - *obsidian
 
@@ -47,6 +40,5 @@ mcp_servers:
     - *chrome-devtools
     - *context7
     - *excalidraw
-    - *railway
     - *cloudflare
     - *obsidian

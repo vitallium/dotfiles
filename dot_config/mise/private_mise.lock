@@ -297,26 +297,26 @@ backend = "cargo:tree-sitter-cli"
 specifiers = ["latest"]
 
 [[tools.chezmoi]]
-version = "2.73.1"
+version = "2.73.2"
 backend = "aqua:twpayne/chezmoi"
 specifiers = ["2"]
 
 [tools.chezmoi."platforms.linux-arm64"]
-checksum = "sha256:e60275b27f505ae2086bfb87b144eacf7377a89803120f6bd933d1852a93b0c6"
-url = "https://github.com/twpayne/chezmoi/releases/download/v2.73.1/chezmoi_2.73.1_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/631270910"
+checksum = "sha256:db92b343a32cade0b1d4ff5e30da54c5156f7a580349281e583a5402c57c7bcf"
+url = "https://github.com/twpayne/chezmoi/releases/download/v2.73.2/chezmoi_2.73.2_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/650772286"
 provenance = "cosign"
 
 [tools.chezmoi."platforms.linux-x64"]
-checksum = "sha256:a3f958acb7d0e5d53fa43c2eec9bc8ae3b4fba8bcbfdce29a8881ca3ffc20a53"
-url = "https://github.com/twpayne/chezmoi/releases/download/v2.73.1/chezmoi_2.73.1_linux-glibc_amd64.tar.gz"
-url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/631271272"
+checksum = "sha256:4d7bd8072f15373d5f5c801209bac218527452c8e54f9ae46ba6c5bd4a6eca41"
+url = "https://github.com/twpayne/chezmoi/releases/download/v2.73.2/chezmoi_2.73.2_linux-glibc_amd64.tar.gz"
+url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/650772334"
 provenance = "cosign"
 
 [tools.chezmoi."platforms.macos-arm64"]
-checksum = "sha256:19a8d9778d90476cc2f0463be69e9d82e2b91ba7b2361dbfc5348f243b1ba731"
-url = "https://github.com/twpayne/chezmoi/releases/download/v2.73.1/chezmoi_2.73.1_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/631271215"
+checksum = "sha256:b41f5a51700a7dc0b7c2ae02652d42824ee112d3d97cb2f3c725d53e8d9f6b32"
+url = "https://github.com/twpayne/chezmoi/releases/download/v2.73.2/chezmoi_2.73.2_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/650772106"
 provenance = "cosign"
 
 [[tools.codex]]
@@ -1093,23 +1093,23 @@ url = "https://github.com/jesseduffield/lazygit/releases/download/v0.66.2/lazygi
 url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/646837816"
 
 [[tools.mr-boxington]]
-version = "1.25.0"
+version = "1.26.0"
 backend = "packslip:github.com/jdx/mr-boxington"
 specifiers = ["latest"]
 
 [tools.mr-boxington."platforms.linux-arm64"]
-checksum = "sha256:26adcf79262395e7fb355203afa7deda0f18fd790585f6e49e51994b9d32b55c"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.25.0/mbx-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:30dad5b98974a37447249572c2d4f1dc065b3b774fa74f20f8a37bb73fb26767"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.26.0/mbx-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 
 [tools.mr-boxington."platforms.linux-x64"]
-checksum = "sha256:2b4efb2ef340d38ed2d840d32b5535e45be7541224378ff353c7a83f85744195"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.25.0/mbx-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:decb2c1233d194d9d8f98fa926d86a5f726e9091e92fcff75f44a53ed9cab2b9"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.26.0/mbx-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 
 [tools.mr-boxington."platforms.macos-arm64"]
-checksum = "sha256:47630813d15a001cfceceeeb1f35008421fb22b8ba132106067d217e000b1b68"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.25.0/mbx-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:5927803d54f313600f7c6792369867eb26f9dfaa909b04fb5727efcf0d17b0b7"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.26.0/mbx-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 
 [[tools.node]]
@@ -1180,7 +1180,7 @@ backend = "npm:chrome-devtools-mcp"
 specifiers = ["latest"]
 
 [[tools."npm:knip"]]
-version = "6.41.0"
+version = "6.42.0"
 backend = "npm:knip"
 specifiers = ["latest"]
 
@@ -1225,10 +1225,10 @@ url = "https://github.com/anomalyco/opencode/releases/download/v1.19.3/opencode-
 url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/647222664"
 
 [[tools."pipx:mistral-vibe"]]
-version = "3.0.0"
+version = "3.0.1"
 backend = "pipx:mistral-vibe"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-mistral-vibe/3.0.0", digest = "sha256:b18a9bfa659e07c4a9e45bc399263f8d0d2c12f6fbe41a23ad283205a9953884" }
+uv = { path = "locks/pipx-mistral-vibe/3.0.1", digest = "sha256:fa035c4ed12c53e736059146aee3a1ecef93f028cff51426c727df8dc8068344" }
 
 [[tools."pipx:pdm"]]
 version = "2.29.2"
@@ -1261,23 +1261,23 @@ specifiers = ["latest"]
 uv = { path = "locks/pipx-yt-dlp/2026.8.19", digest = "sha256:e7fef3558119992f629a8d06df9b0d0b593ec897d183f0a4a9918e0e4fcf4d0b" }
 
 [[tools.pitchfork]]
-version = "2.31.0"
+version = "2.32.0"
 backend = "packslip:github.com/jdx/pitchfork"
 specifiers = ["latest"]
 
 [tools.pitchfork."platforms.linux-arm64"]
-checksum = "sha256:03a9f3e636a95c4cc98bee05c1540b05f58359441a10f348f624ba613333520e"
-url = "https://github.com/jdx/pitchfork/releases/download/v2.31.0/pitchfork-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:78a5c0fc15714d8f8df59a6da8fda11c9132bb36d5d58d260644882409e84a37"
+url = "https://github.com/jdx/pitchfork/releases/download/v2.32.0/pitchfork-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/pitchfork/.github/workflows/release.yml"
 
 [tools.pitchfork."platforms.linux-x64"]
-checksum = "sha256:8d7a0c361f6055086f886f19c1462a2feae2d5ad0689184c51b4eaf36209f169"
-url = "https://github.com/jdx/pitchfork/releases/download/v2.31.0/pitchfork-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:683b18efcbd67a66ff8189f35fdbc4824af4ee3e7ace827c8f8a5be21dc816c1"
+url = "https://github.com/jdx/pitchfork/releases/download/v2.32.0/pitchfork-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/pitchfork/.github/workflows/release.yml"
 
 [tools.pitchfork."platforms.macos-arm64"]
-checksum = "sha256:1be8f1b7df6e08542ecc7e1e1604c48ee4c5c6d90169eda2a31c112d59642baa"
-url = "https://github.com/jdx/pitchfork/releases/download/v2.31.0/pitchfork-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:4c8426576c5ef4b7c8bcf19f2316ffd8e7a4c514a49007e213d7298109671166"
+url = "https://github.com/jdx/pitchfork/releases/download/v2.32.0/pitchfork-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/pitchfork/.github/workflows/release.yml"
 
 [[tools.pnpm]]
