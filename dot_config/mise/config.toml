@@ -95,6 +95,7 @@ watchexec = "latest"
 "cargo:git-cliff" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:gitu" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:jj-cli" = { version = "latest", depends = ["cargo-binstall"] }
+"cargo:samply" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:sqlx-cli" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:tokei" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:topgrade" = { version = "latest", depends = ["cargo-binstall"] }

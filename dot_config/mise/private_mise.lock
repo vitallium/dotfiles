@@ -276,6 +276,11 @@ version = "0.46.0"
 backend = "cargo:jj-cli"
 specifiers = ["latest"]
 
+[[tools."cargo:samply"]]
+version = "0.13.1"
+backend = "cargo:samply"
+specifiers = ["latest"]
+
 [[tools."cargo:sqlx-cli"]]
 version = "0.9.0"
 backend = "cargo:sqlx-cli"
@@ -287,7 +292,7 @@ backend = "cargo:tokei"
 specifiers = ["latest"]
 
 [[tools."cargo:topgrade"]]
-version = "17.13.1"
+version = "17.14.0"
 backend = "cargo:topgrade"
 specifiers = ["latest"]
 
@@ -797,19 +802,19 @@ url_api = "https://api.github.com/repos/goreleaser/goreleaser/releases/assets/62
 provenance = "github-attestations"
 
 [[tools.grok]]
-version = "1.0.62"
+version = "1.0.67"
 backend = "http:grok"
 specifiers = ["latest"]
 
 [tools.grok."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.62-linux-aarch64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.67-linux-aarch64"
 
 [tools.grok."platforms.linux-x64"]
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.62-linux-x86_64"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.67-linux-x86_64"
 
 [tools.grok."platforms.macos-arm64"]
-checksum = "blake3:97771f596f8f3a849334f90aea75b68f9e6e1e1a8dec94fc76dde66d341a3079"
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.62-macos-aarch64"
+checksum = "blake3:7a2701d7d182d02362aa7d80db081c386adf37786aec6f358a367b389983796f"
+url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.67-macos-aarch64"
 
 [[tools.gum]]
 version = "2.0.2"
@@ -1140,7 +1145,7 @@ backend = "npm:@devcontainers/cli"
 specifiers = ["latest"]
 
 [[tools."npm:@earendil-works/pi-coding-agent"]]
-version = "1.3.0"
+version = "1.4.0"
 backend = "npm:@earendil-works/pi-coding-agent"
 specifiers = ["latest"]
 
@@ -1165,7 +1170,7 @@ backend = "npm:@railway/mcp-server"
 specifiers = ["latest"]
 
 [[tools."npm:@upstash/context7-mcp"]]
-version = "4.4.2"
+version = "4.4.4"
 backend = "npm:@upstash/context7-mcp"
 specifiers = ["latest"]
 
@@ -1225,16 +1230,16 @@ url = "https://github.com/anomalyco/opencode/releases/download/v1.19.3/opencode-
 url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/647222664"
 
 [[tools."pipx:mistral-vibe"]]
-version = "3.0.1"
+version = "3.0.2"
 backend = "pipx:mistral-vibe"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-mistral-vibe/3.0.1", digest = "sha256:fa035c4ed12c53e736059146aee3a1ecef93f028cff51426c727df8dc8068344" }
+uv = { path = "locks/pipx-mistral-vibe/3.0.2", digest = "sha256:abb72a455293c5a24216dcd9d33975c0fb2ed8ba6ddb81f9c040827ad907bfd0" }
 
 [[tools."pipx:pdm"]]
-version = "2.29.2"
+version = "2.29.3"
 backend = "pipx:pdm"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-pdm/2.29.2", digest = "sha256:f4a761243d45af2ca2814077879a57864db83ba60a0f3766d2d97590b9a114ad" }
+uv = { path = "locks/pipx-pdm/2.29.3", digest = "sha256:5e3548be4ebb3f431b190bc0ec811203eb16a569f4293c5c92623369b4bf6443" }
 
 [[tools."pipx:pgcli"]]
 version = "4.7.1"
@@ -1506,23 +1511,23 @@ url = "https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_windo
 url_api = "https://api.github.com/repos/mvdan/sh/releases/assets/547320827"
 
 [[tools.usage]]
-version = "7.1.0"
+version = "7.1.1"
 backend = "packslip:github.com/jdx/usage"
 specifiers = ["latest"]
 
 [tools.usage."platforms.linux-arm64"]
-checksum = "sha256:00335000c3eece62d29d92f81ab549082b9fe16e9857dcfbaea53f67bdc3fea5"
-url = "https://github.com/jdx/usage/releases/download/v7.1.0/usage-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:596a2a7a2d460d6a80ef4328ffb7c56e4577fe2e4dba942d036f90d14354534d"
+url = "https://github.com/jdx/usage/releases/download/v7.1.1/usage-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.linux-x64"]
-checksum = "sha256:27dc4019d9a2954c4e6423f9fa39d1fed2b5273c3036ed52bad4d6e52af2ca89"
-url = "https://github.com/jdx/usage/releases/download/v7.1.0/usage-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:dcc37cb5fb59088bab82e6f5f752c002a526dd9b35909be76d8459f46b4c30ca"
+url = "https://github.com/jdx/usage/releases/download/v7.1.1/usage-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [tools.usage."platforms.macos-arm64"]
-checksum = "sha256:3e221dde416fd4909c8963c1ed9973b63633e89ce8b016d0f63af187cbaa875a"
-url = "https://github.com/jdx/usage/releases/download/v7.1.0/usage-universal-apple-darwin.tar.gz"
+checksum = "sha256:50234db60947885bf87cda5ce28ee9c13924b6694528737bf6a7327e980f3bcd"
+url = "https://github.com/jdx/usage/releases/download/v7.1.1/usage-universal-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
 [[tools.uv]]
