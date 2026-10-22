@@ -810,6 +810,7 @@ specifiers = ["latest"]
 url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.67-linux-aarch64"
 
 [tools.grok."platforms.linux-x64"]
+checksum = "blake3:939d45daa8fffb183a57131cc755b5bf2584bde465281273971be39947d8c2a7"
 url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.67-linux-x86_64"
 
 [tools.grok."platforms.macos-arm64"]
@@ -1150,23 +1151,13 @@ backend = "npm:@earendil-works/pi-coding-agent"
 specifiers = ["latest"]
 
 [[tools."npm:@openchamber/web"]]
-version = "2.4.0"
+version = "2.5.0"
 backend = "npm:@openchamber/web"
 specifiers = ["latest"]
 
 [[tools."npm:@playwright/mcp"]]
 version = "0.0.83"
 backend = "npm:@playwright/mcp"
-specifiers = ["latest"]
-
-[[tools."npm:@railway/cli"]]
-version = "5.70.0"
-backend = "npm:@railway/cli"
-specifiers = ["latest"]
-
-[[tools."npm:@railway/mcp-server"]]
-version = "0.1.12"
-backend = "npm:@railway/mcp-server"
 specifiers = ["latest"]
 
 [[tools."npm:@upstash/context7-mcp"]]
@@ -1185,7 +1176,7 @@ backend = "npm:chrome-devtools-mcp"
 specifiers = ["latest"]
 
 [[tools."npm:knip"]]
-version = "6.42.0"
+version = "6.42.1"
 backend = "npm:knip"
 specifiers = ["latest"]
 
@@ -1195,12 +1186,12 @@ backend = "npm:markdownlint-cli2"
 specifiers = ["latest"]
 
 [[tools."npm:oxfmt"]]
-version = "0.73.0"
+version = "0.74.0"
 backend = "npm:oxfmt"
 specifiers = ["latest"]
 
 [[tools."npm:oxlint"]]
-version = "1.88.0"
+version = "1.89.0"
 backend = "npm:oxlint"
 specifiers = ["latest"]
 
@@ -1210,24 +1201,24 @@ backend = "npm:yarn"
 specifiers = ["latest"]
 
 [[tools.opencode]]
-version = "1.19.3"
+version = "1.19.4"
 backend = "aqua:anomalyco/opencode"
 specifiers = ["latest"]
 
 [tools.opencode."platforms.linux-arm64"]
-checksum = "sha256:7900818a6a98881edbbadab4b7525940eff3b9750040c200481f9f56cacee405"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.19.3/opencode-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/647209228"
+checksum = "sha256:8568230ccd847dc93e95b9f6894379077d3e014a16b48040743573e77c23e85f"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.19.4/opencode-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/665821079"
 
 [tools.opencode."platforms.linux-x64"]
-checksum = "sha256:13a8fb2978302071b86f9d7e00da9c8895f9cd846978379c3bdc6a5333536c9b"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.19.3/opencode-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/647209173"
+checksum = "sha256:849bd6b3d959a1d2ef200ed1634a51c79a45ca236aa26665d75debd694805cce"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.19.4/opencode-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/665821750"
 
 [tools.opencode."platforms.macos-arm64"]
-checksum = "sha256:c2d0fecd27acf6e08be02c1f5d384614d07495587766bcc4a6bff3971749bb64"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.19.3/opencode-darwin-arm64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/647222664"
+checksum = "sha256:c400a2f8c8ab7e99478a7f4dd1a466b57bf33888e520d85c55780a5464c4b689"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.19.4/opencode-darwin-arm64.zip"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/665836811"
 
 [[tools."pipx:mistral-vibe"]]
 version = "3.0.2"
@@ -1239,7 +1230,7 @@ uv = { path = "locks/pipx-mistral-vibe/3.0.2", digest = "sha256:abb72a455293c5a2
 version = "2.29.3"
 backend = "pipx:pdm"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-pdm/2.29.3", digest = "sha256:5e3548be4ebb3f431b190bc0ec811203eb16a569f4293c5c92623369b4bf6443" }
+uv = { path = "locks/pipx-pdm/2.29.3", digest = "sha256:cdb5e037df36cb174b7805d47523cb91a0242a888d172d14cd27c1a3b44cbf46" }
 
 [[tools."pipx:pgcli"]]
 version = "4.7.1"
@@ -1251,13 +1242,13 @@ uv = { path = "locks/pipx-pgcli/4.7.1", digest = "sha256:123a1b2342b735b07dafdfb
 version = "0.17.1"
 backend = "pipx:ruff"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ruff/0.17.1", digest = "sha256:c83774efc4aef2f43989fbe8ff00c25245022267f8a681e48566e7220dce1519" }
+uv = { path = "locks/pipx-ruff/0.17.1", digest = "sha256:4c581e208e27d8671ec52351e47510f8ecdc7116f632c8f8a92afe0e27da6b8d" }
 
 [[tools."pipx:ty"]]
 version = "0.0.89"
 backend = "pipx:ty"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ty/0.0.89", digest = "sha256:f33a80df33f8a2d455c51863d29aaf3e1f9e16d489cdb3b57704f545d148cbcb" }
+uv = { path = "locks/pipx-ty/0.0.89", digest = "sha256:f5cd5bc27a6d923f1f47e359228fd622dbc81bffa3c2bf032888c013801861ce" }
 
 [[tools."pipx:yt-dlp"]]
 version = "2026.8.19"
@@ -1371,29 +1362,6 @@ provenance = "github-attestations"
 [tools.python."platforms.windows-x64-baseline"]
 checksum = "sha256:ca3c33ca924dfcab3b74205a7a58a88b0255135c53f95497b26b5e60700fd66d"
 url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260901/cpython-3.14.7+20260901-x86_64-pc-windows-msvc-install_only_stripped.tar.gz"
-provenance = "github-attestations"
-
-[[tools.railway]]
-version = "5.70.0"
-backend = "github:railwayapp/cli"
-specifiers = ["latest"]
-
-[tools.railway."platforms.linux-arm64"]
-checksum = "sha256:b13f1945844ebdefd26e79d7bdf22ca4a70c8a95bdeba05f04afa5808c5cc076"
-url = "https://github.com/railwayapp/cli/releases/download/v5.70.0/railway-v5.70.0-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/648286872"
-provenance = "github-attestations"
-
-[tools.railway."platforms.linux-x64"]
-checksum = "sha256:9225eb5144e4174d1a88ac47c7bf8caf9d566679414086606322e586d64ee0f5"
-url = "https://github.com/railwayapp/cli/releases/download/v5.70.0/railway-v5.70.0-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/648288992"
-provenance = "github-attestations"
-
-[tools.railway."platforms.macos-arm64"]
-checksum = "sha256:d1a862595a4021a2463fa4f8a699c5b378514cafa2bb7674ffb7ae5a791cc78d"
-url = "https://github.com/railwayapp/cli/releases/download/v5.70.0/railway-v5.70.0-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/railwayapp/cli/releases/assets/648292587"
 provenance = "github-attestations"
 
 [[tools.ruby]]
