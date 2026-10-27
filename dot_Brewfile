@@ -97,13 +97,13 @@ cask 'pika'
 cask 'prismlauncher'
 cask 'protonvpn'
 cask 'qlmarkdown'
-cask 'raycast'
 cask 'sanesidebuttons'
 cask 'signal'
 cask 'slack'
 cask 'spotify'
 cask 'sublime-merge'
 cask 'telegram'
+cask 'abue-ammar/tinycast/tinycast'
 cask 'todoist-app'
 cask 'virtualbuddy'
 cask 'visual-studio-code'
@@ -134,6 +134,8 @@ mas 'Velja', id: 1_607_635_845
 mas 'WhatsApp', id: 310633997
 mas 'Wipr', id: 1662217862
 mas 'Xcode', id: 497799835
+
+tap 'abue-ammar/tinycast', 'https://github.com/abue-ammar/homebrew-tinycast', trusted: true
 
 tap 'tw93/tap', 'https://github.com/tw93/homebrew-tap', trusted: true
 brew 'mole'
