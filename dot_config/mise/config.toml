@@ -18,6 +18,7 @@ minimum_release_age = "3d"
 minimum_release_age_excludes = [
   "codex",
   "opencode",
+  "pitchfork",
   "usage",
   "pipx:mistral-vibe",
   "mr-boxington",
