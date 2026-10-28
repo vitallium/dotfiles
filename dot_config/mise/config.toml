@@ -76,7 +76,6 @@ usage = "latest"
 uv = "latest"
 watchexec = "latest"
 
-"aqua:AlexanderGrooff/mermaid-ascii" = "latest"
 "aqua:sharkdp/hexyl" = "latest"
 
 # Rust
