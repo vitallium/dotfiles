@@ -16,6 +16,7 @@ idiomatic_version_file_enable_tools = [
 
 minimum_release_age = "3d"
 minimum_release_age_excludes = [
+  "amp",
   "codex",
   "opencode",
   "pitchfork",
@@ -48,6 +49,7 @@ uvx = true
 [tools]
 # Keep Rust on top to satisfy dependencies
 rust = { version = "latest", components = "rust-analyzer,rust-src", mr_boxington = true }
+amp = { version = "latest", allow_builds = ["@ampcode/cli"] }
 biome = "latest"
 cargo-binstall = "latest"
 codex = "latest"

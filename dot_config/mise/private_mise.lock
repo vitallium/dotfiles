@@ -2,6 +2,14 @@
 
 lockfile_version = 3
 
+[[tools.amp]]
+version = "0.0.1793203246-g5eab6d"
+backend = "npm:@ampcode/cli"
+specifiers = ["latest"]
+
+[tools.amp.options]
+allow_builds = '["@ampcode/cli"]'
+
 [[tools."aqua:AlexanderGrooff/mermaid-ascii"]]
 version = "1.6.1"
 backend = "aqua:AlexanderGrooff/mermaid-ascii"
