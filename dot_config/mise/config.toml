@@ -21,7 +21,6 @@ minimum_release_age_excludes = [
   "opencode",
   "pitchfork",
   "usage",
-  "pipx:mistral-vibe",
   "mr-boxington",
   "npm:@earendil-works/pi-coding-agent"
 ]
@@ -132,7 +131,6 @@ bun = "latest"
 "pipx:yt-dlp" = { version = "latest", depends = ["python", "uv"] }
 # "pipx:yubikey-manager" = { version = "latest", depends = ["python", "uv"] }
 "pipx:ty" = { version = "latest", depends = ["python", "uv"] }
-"pipx:mistral-vibe" = { version = "latest", depends = ["python", "uv"] }
 
 #
 # Go

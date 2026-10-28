@@ -833,12 +833,6 @@ url = "https://opencode.ai/files/bin/2.2.0/opencode-linux-x64.tar.gz"
 checksum = "blake3:f2b8649bd35f28671feae29905b4955e85bad83c745736d06473536bea706247"
 url = "https://opencode.ai/files/bin/2.2.0/opencode-darwin-arm64.zip"
 
-[[tools."pipx:mistral-vibe"]]
-version = "3.0.3"
-backend = "pipx:mistral-vibe"
-specifiers = ["latest"]
-uv = { path = "locks/pipx-mistral-vibe/3.0.3", digest = "sha256:7cd2dc475e41a8fdf20f430207841537a8e8272d7d9ee253d2b9b8b256b336e5" }
-
 [[tools."pipx:pgcli"]]
 version = "4.7.1"
 backend = "pipx:pgcli"
