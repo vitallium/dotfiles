@@ -224,13 +224,11 @@ specifiers = ["latest"]
 
 [tools.codex."platforms.linux-arm64"]
 checksum = "sha256:c8b2844fdef57498572db960344aee8c836ce9f75c203379da0a9c3a334fc3b7"
-checksum_source = "mise-versions"
 url = "https://github.com/openai/codex/releases/download/rust-v0.165.0/codex-package-aarch64-unknown-linux-musl.tar.gz"
 url_api = "https://api.github.com/repos/openai/codex/releases/assets/682726582"
 
 [tools.codex."platforms.linux-x64"]
 checksum = "sha256:e97c4463d7f146692a955d7b0e1c8cf48f97cd4d616cd45c5dcab2e8d9743316"
-checksum_source = "mise-versions"
 url = "https://github.com/openai/codex/releases/download/rust-v0.165.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
 url_api = "https://api.github.com/repos/openai/codex/releases/assets/682734800"
 
@@ -783,25 +781,25 @@ allow_builds = '["@opencode/cli"]'
 version = "4.7.1"
 backend = "pipx:pgcli"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-pgcli/4.7.1", digest = "sha256:890cd1629fff90fc5de58f22981c28d77ee58dffced097d677ea639b446f1015" }
+uv = { path = "locks/pipx-pgcli/4.7.1", digest = "sha256:123a1b2342b735b07dafdfb5374639d2ff88a4f1a70a6f18b46207e0cbdc2cb2" }
 
 [[tools."pipx:ruff"]]
 version = "0.17.2"
 backend = "pipx:ruff"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ruff/0.17.2", digest = "sha256:bb7e244e5effebb9779ccdfeddf3bbc77d63f94c8f9d1fd21602831a5e6b3fdc" }
+uv = { path = "locks/pipx-ruff/0.17.2", digest = "sha256:ca1f1be8627c5ea1686a88e6a1f35c3f2ffd18246e400d8c714fe80844ffc8e6" }
 
 [[tools."pipx:ty"]]
 version = "0.0.91"
 backend = "pipx:ty"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ty/0.0.91", digest = "sha256:253a71b6dd6e040e771dd6656d2977c2276b83e76f256e72379b5ca7d52dd0d6" }
+uv = { path = "locks/pipx-ty/0.0.91", digest = "sha256:4e147eaf6e615fd1ddafbe5a76b1c6d10db48d6ddd442001e0dd6f9362ffea21" }
 
 [[tools."pipx:yt-dlp"]]
 version = "2026.10.21"
 backend = "pipx:yt-dlp"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-yt-dlp/2026.10.21", digest = "sha256:d7d41ef568cbd9d43d098fdfed566fb4b77ff1acfc497b95e7caeda2877528ff" }
+uv = { path = "locks/pipx-yt-dlp/2026.10.21", digest = "sha256:c9c26e3c616a83ab5d8250ac6318abb9dd03ff8df8ecafd9a536ad3368f707be" }
 
 [[tools.pitchfork]]
 version = "2.32.3"
@@ -915,19 +913,16 @@ specifiers = ["latest"]
 
 [tools.shellcheck."platforms.linux-arm64"]
 checksum = "sha256:12b331c1d2db6b9eb13cfca64306b1b157a86eb69db83023e261eaa7e7c14588"
-checksum_source = "mise-versions"
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.aarch64.tar.xz"
 url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056934"
 
 [tools.shellcheck."platforms.linux-x64"]
 checksum = "sha256:8c3be12b05d5c177a04c29e3c78ce89ac86f1595681cab149b65b97c4e227198"
-checksum_source = "mise-versions"
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.x86_64.tar.xz"
 url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056942"
 
 [tools.shellcheck."platforms.macos-arm64"]
 checksum = "sha256:56affdd8de5527894dca6dc3d7e0a99a873b0f004d7aabc30ae407d3f48b0a79"
-checksum_source = "mise-versions"
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.darwin.aarch64.tar.xz"
 url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056932"
 
