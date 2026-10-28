@@ -17,7 +17,6 @@ idiomatic_version_file_enable_tools = [
 minimum_release_age = "3d"
 minimum_release_age_excludes = [
   "amp",
-  "codex",
   "opencode",
   "pitchfork",
   "usage",
@@ -51,7 +50,6 @@ rust = { version = "latest", components = "rust-analyzer,rust-src", mr_boxington
 amp = { version = "latest", allow_builds = ["@ampcode/cli"] }
 biome = "latest"
 cargo-binstall = "latest"
-codex = "latest"
 cosign = "3"
 difftastic = "latest"
 chezmoi = "2"
