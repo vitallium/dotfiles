@@ -543,23 +543,6 @@ url = "https://github.com/goreleaser/goreleaser/releases/download/v2.19.0/gorele
 url_api = "https://api.github.com/repos/goreleaser/goreleaser/releases/assets/667102941"
 provenance = "github-attestations"
 
-[[tools.grok]]
-version = "1.0.70"
-backend = "http:grok"
-specifiers = ["latest"]
-
-[tools.grok."platforms.linux-arm64"]
-checksum = "sha256:3aa36883574b263088e5addffe241f55430e8daaee1a0c4934b02180007a9761"
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.70-linux-aarch64"
-
-[tools.grok."platforms.linux-x64"]
-checksum = "sha256:22d281c5964c5444147328096ba2a221f3f0874c6858e27c825656a80f6e58e9"
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.70-linux-x86_64"
-
-[tools.grok."platforms.macos-arm64"]
-checksum = "blake3:9a18e0f3fd0fa95b3e4c9d1d76ac94223f9f1f1ec7114821627b816e5fb15d07"
-url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-1.0.70-macos-aarch64"
-
 [[tools.gum]]
 version = "2.0.2"
 backend = "aqua:charmbracelet/gum"
