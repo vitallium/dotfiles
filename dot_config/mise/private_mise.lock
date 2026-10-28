@@ -761,20 +761,11 @@ specifiers = ["latest"]
 
 [[tools.opencode]]
 version = "2.2.0"
-backend = "aqua:anomalyco/opencode"
+backend = "npm:@opencode/cli"
 specifiers = ["latest"]
 
-[tools.opencode."platforms.linux-arm64"]
-checksum = "sha256:1f1ce0fc07b9245a815ffa9d652dbb80e6b0f07e5bf74ea87d2b1c0339fbac52"
-url = "https://opencode.ai/files/bin/2.2.0/opencode-linux-arm64.tar.gz"
-
-[tools.opencode."platforms.linux-x64"]
-checksum = "sha256:6d597970a8cc448f1b9a9f645532584b339dd3ab9583bb5f063f13d83e54768f"
-url = "https://opencode.ai/files/bin/2.2.0/opencode-linux-x64.tar.gz"
-
-[tools.opencode."platforms.macos-arm64"]
-checksum = "blake3:f2b8649bd35f28671feae29905b4955e85bad83c745736d06473536bea706247"
-url = "https://opencode.ai/files/bin/2.2.0/opencode-darwin-arm64.zip"
+[tools.opencode.options]
+allow_builds = '["@opencode/cli"]'
 
 [[tools."pipx:pgcli"]]
 version = "4.7.1"
