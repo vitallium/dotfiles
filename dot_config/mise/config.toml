@@ -76,8 +76,6 @@ usage = "latest"
 uv = "latest"
 watchexec = "latest"
 
-"aqua:sharkdp/hexyl" = "latest"
-
 # Rust
 "cargo:ast-grep" = { version = "latest", depends = ["cargo-binstall"] }
 "cargo:bacon" = { version = "latest", depends = ["cargo-binstall"] }
