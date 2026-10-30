@@ -116,6 +116,7 @@ bun = "latest"
 "npm:markdownlint-cli2" = "latest"
 "npm:oxfmt" = "latest"
 "npm:oxlint" = "latest"
+"npm:@getpaseo/cli" = { version = "latest", allow_builds = ["@getpaseo/cli"] }
 "npm:yarn" = "latest"
 
 # Python

@@ -699,6 +699,14 @@ version = "1.4.0"
 backend = "npm:@earendil-works/pi-coding-agent"
 specifiers = ["latest"]
 
+[[tools."npm:@getpaseo/cli"]]
+version = "0.13.2"
+backend = "npm:@getpaseo/cli"
+specifiers = ["latest"]
+
+[tools."npm:@getpaseo/cli".options]
+allow_builds = '["@getpaseo/cli"]'
+
 [[tools."npm:@openchamber/web"]]
 version = "2.5.2"
 backend = "npm:@openchamber/web"
