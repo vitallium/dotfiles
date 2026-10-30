@@ -1,0 +1,3 @@
+[providers.1password]
+type = "1password"
+account = "pelmeshki.1password.com"

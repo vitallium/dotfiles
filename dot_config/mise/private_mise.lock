@@ -3,7 +3,7 @@
 lockfile_version = 3
 
 [[tools.amp]]
-version = "0.0.1793363705-g5c9ae5"
+version = "0.0.1793376030-g45d45f"
 backend = "npm:@ampcode/cli"
 specifiers = ["latest"]
 
@@ -259,6 +259,29 @@ url_api = "https://api.github.com/repos/Wilfred/difftastic/releases/assets/57353
 checksum = "sha256:92acf8890543b6d6f436a87a7a5ec64f82a4b8dbe3a7e564c1e5cbfe60823bc7"
 url = "https://github.com/Wilfred/difftastic/releases/download/0.71.0/difft-0.71.0-aarch64-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/Wilfred/difftastic/releases/assets/573540714"
+
+[[tools.fnox]]
+version = "1.45.0"
+backend = "packslip:github.com/jdx/fnox"
+specifiers = ["1.45.0"]
+
+[tools.fnox."platforms.linux-arm64"]
+checksum = "sha256:dd7c2ec8b7478b210b31000ec47073953ed5137716fe3d759f559de2ce3cb6e5"
+url = "https://github.com/jdx/fnox/releases/download/v1.45.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
+signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
+repository_ids = { repository = "1078762196" }
+
+[tools.fnox."platforms.linux-x64"]
+checksum = "sha256:e57ec74dad34ef5413c839c0c48ad5be1ff01cc5a6d5312ddabf95927790a43e"
+url = "https://github.com/jdx/fnox/releases/download/v1.45.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
+repository_ids = { repository = "1078762196" }
+
+[tools.fnox."platforms.macos-arm64"]
+checksum = "sha256:e851212b2f7319ab88ab7784e008bfb091ccee91f2696a328684fc8ce80e4263"
+url = "https://github.com/jdx/fnox/releases/download/v1.45.0/fnox-aarch64-apple-darwin.tar.gz"
+signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
+repository_ids = { repository = "1078762196" }
 
 [[tools.fzf]]
 version = "0.74.5"
@@ -813,26 +836,26 @@ signer = "sigstore-oidc:https://github.com/jdx/pitchfork/.github/workflows/relea
 repository_ids = { repository = "899500793" }
 
 [[tools.pnpm]]
-version = "12.16.0"
+version = "12.16.1"
 backend = "aqua:pnpm/pnpm"
 specifiers = ["latest"]
 
 [tools.pnpm."platforms.linux-arm64"]
-checksum = "sha256:be414eee035c3cc4f0a8fe20cbfc44b7fae9e4545aec6f45565a24789aebca93"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.16.0/pnpm-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/679856233"
+checksum = "sha256:f5847699e5d528f8f8e9bcfb385e58cb9fba7482af1b1aa7b70737be42277f81"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.16.1/pnpm-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/681916052"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.linux-x64"]
-checksum = "sha256:4492070f381f5cc42b977b968d8d72b970ffd17bef2523c229170b2cd4ece44a"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.16.0/pnpm-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/679856237"
+checksum = "sha256:565ff81174a14f6f7bd5d84c1b17e51031a80230d370a1fe24be5d16bd02a825"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.16.1/pnpm-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/681916059"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.macos-arm64"]
-checksum = "sha256:a4e2b1dbe3ae5985fb5530b0c521be56cc160361f3fa6a869f3ea6f77e88fb4c"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.16.0/pnpm-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/679856235"
+checksum = "sha256:6661212a6ec725634b0d3268e5bc9408e3152506dab5997891e38fa1ef22bf9c"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.16.1/pnpm-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/681916062"
 provenance = "github-attestations"
 
 [[tools.prettier]]
