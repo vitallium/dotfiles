@@ -3,7 +3,7 @@
 lockfile_version = 3
 
 [[tools.amp]]
-version = "0.0.1793275344-g17bf52"
+version = "0.0.1793363705-g5c9ae5"
 backend = "npm:@ampcode/cli"
 specifiers = ["latest"]
 
@@ -130,7 +130,7 @@ backend = "cargo:cargo-generate"
 specifiers = ["latest"]
 
 [[tools."cargo:cargo-nextest"]]
-version = "0.9.149"
+version = "0.9.150"
 backend = "cargo:cargo-nextest"
 specifiers = ["latest"]
 
@@ -281,26 +281,26 @@ url = "https://github.com/junegunn/fzf/releases/download/v0.74.5/fzf-0.74.5-darw
 url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/629581702"
 
 [[tools.gh]]
-version = "2.103.2"
+version = "2.103.3"
 backend = "aqua:cli/cli"
 specifiers = ["latest"]
 
 [tools.gh."platforms.linux-arm64"]
-checksum = "sha256:4c3e99a50bd8b181a3fe9d69b25dd978bac768148d88f01507c6b4d1ef61a443"
-url = "https://github.com/cli/cli/releases/download/v2.103.2/gh_2.103.2_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/670305069"
+checksum = "sha256:ee32df2323c8847f5fac6cb6b4b69ca75828e9329a8f22f677021f7b3306ce63"
+url = "https://github.com/cli/cli/releases/download/v2.103.3/gh_2.103.3_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/679195636"
 provenance = "github-attestations"
 
 [tools.gh."platforms.linux-x64"]
-checksum = "sha256:62ccf747115ddc61237efffdde66a3c8f70ba249433dc64f70801089b59c59c8"
-url = "https://github.com/cli/cli/releases/download/v2.103.2/gh_2.103.2_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/670305062"
+checksum = "sha256:4c806978ffce1cec70853302a56d70ac6da4f19bae7adca4e1a8ab00633dd91d"
+url = "https://github.com/cli/cli/releases/download/v2.103.3/gh_2.103.3_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/679195621"
 provenance = "github-attestations"
 
 [tools.gh."platforms.macos-arm64"]
-checksum = "sha256:5416000f5d17580a187339e0c4068a01ca5c87f7d4fe6ca64933696f967bc418"
-url = "https://github.com/cli/cli/releases/download/v2.103.2/gh_2.103.2_macOS_arm64.zip"
-url_api = "https://api.github.com/repos/cli/cli/releases/assets/670305145"
+checksum = "sha256:d700207eae9ae98fe2b89535c2c087c07823d4628c56364695a5a07ef311c062"
+url = "https://github.com/cli/cli/releases/download/v2.103.3/gh_2.103.3_macOS_arm64.zip"
+url_api = "https://api.github.com/repos/cli/cli/releases/assets/679195704"
 provenance = "github-attestations"
 
 [[tools.go]]
@@ -668,21 +668,21 @@ signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/re
 repository_ids = { repository = "1340721957" }
 
 [[tools.node]]
-version = "24.22.1"
+version = "24.22.2"
 backend = "core:node"
 specifiers = ["lts"]
 
 [tools.node."platforms.linux-arm64"]
-checksum = "sha256:33c37be234ba8bee041961047b19160f4d7d0f164e8e246f78bdd10feff148b3"
-url = "https://nodejs.org/dist/v24.22.1/node-v24.22.1-linux-arm64.tar.gz"
+checksum = "sha256:95c264150aceb7f3437a29fd6984924f5f8d1511ea3cbd6c508b83f6c555dae2"
+url = "https://nodejs.org/dist/v24.22.2/node-v24.22.2-linux-arm64.tar.gz"
 
 [tools.node."platforms.linux-x64"]
-checksum = "sha256:eb6728e77c576a35162c122c45ccadf224d89ff00abc8dae46cc2897c6002d7c"
-url = "https://nodejs.org/dist/v24.22.1/node-v24.22.1-linux-x64.tar.gz"
+checksum = "sha256:361718c444e49af2ca5a110c83ba6a8901143f23ab285ebbef0341f391f482a9"
+url = "https://nodejs.org/dist/v24.22.2/node-v24.22.2-linux-x64.tar.gz"
 
 [tools.node."platforms.macos-arm64"]
-checksum = "sha256:89c682593d76cd44233fa53b1563264e7de9cbb189cad169135c5b4fadfbc0a7"
-url = "https://nodejs.org/dist/v24.22.1/node-v24.22.1-darwin-arm64.tar.gz"
+checksum = "sha256:aa9549349e47dffaa42dcf95d6e06ade8c4bdafc980979883b88767670df385a"
+url = "https://nodejs.org/dist/v24.22.2/node-v24.22.2-darwin-arm64.tar.gz"
 
 [[tools."npm:@bitbonsai/mcpvault"]]
 version = "0.17.1"
@@ -743,12 +743,12 @@ backend = "npm:markdownlint-cli2"
 specifiers = ["latest"]
 
 [[tools."npm:oxfmt"]]
-version = "0.74.0"
+version = "0.75.0"
 backend = "npm:oxfmt"
 specifiers = ["latest"]
 
 [[tools."npm:oxlint"]]
-version = "1.89.0"
+version = "1.90.0"
 backend = "npm:oxlint"
 specifiers = ["latest"]
 
@@ -758,7 +758,7 @@ backend = "npm:yarn"
 specifiers = ["latest"]
 
 [[tools.opencode]]
-version = "2.2.1"
+version = "2.2.3"
 backend = "npm:@opencode/cli"
 specifiers = ["latest"]
 
@@ -772,10 +772,10 @@ specifiers = ["latest"]
 uv = { path = "locks/pipx-pgcli/4.7.1", digest = "sha256:890cd1629fff90fc5de58f22981c28d77ee58dffced097d677ea639b446f1015" }
 
 [[tools."pipx:ruff"]]
-version = "0.17.2"
+version = "0.17.3"
 backend = "pipx:ruff"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ruff/0.17.2", digest = "sha256:bb7e244e5effebb9779ccdfeddf3bbc77d63f94c8f9d1fd21602831a5e6b3fdc" }
+uv = { path = "locks/pipx-ruff/0.17.3", digest = "sha256:9bd17c692b99c39580bada8dcd398b08e3a3af3be76e2cda923aca93857b2a63" }
 
 [[tools."pipx:ty"]]
 version = "0.0.92"
@@ -784,10 +784,10 @@ specifiers = ["latest"]
 uv = { path = "locks/pipx-ty/0.0.92", digest = "sha256:8c0e4e4036e1d8bedfdabd3faca64d99ba1e5f2d9879c5f70b4de2d9bacf5916" }
 
 [[tools."pipx:yt-dlp"]]
-version = "2026.10.21"
+version = "2026.10.26"
 backend = "pipx:yt-dlp"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-yt-dlp/2026.10.21", digest = "sha256:d7d41ef568cbd9d43d098fdfed566fb4b77ff1acfc497b95e7caeda2877528ff" }
+uv = { path = "locks/pipx-yt-dlp/2026.10.26", digest = "sha256:646571f678bb23f29d0e7a959e49d64d7507da647a0a0a1c8c97c3d8930bf003" }
 
 [[tools.pitchfork]]
 version = "2.32.4"
@@ -813,26 +813,26 @@ signer = "sigstore-oidc:https://github.com/jdx/pitchfork/.github/workflows/relea
 repository_ids = { repository = "899500793" }
 
 [[tools.pnpm]]
-version = "12.15.0"
+version = "12.16.0"
 backend = "aqua:pnpm/pnpm"
 specifiers = ["latest"]
 
 [tools.pnpm."platforms.linux-arm64"]
-checksum = "sha256:d7ce93a2c7d847d3a34bd3f559b60c14f578b1320c17cc352a2c5c5fdf956117"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.15.0/pnpm-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/662173352"
+checksum = "sha256:be414eee035c3cc4f0a8fe20cbfc44b7fae9e4545aec6f45565a24789aebca93"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.16.0/pnpm-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/679856233"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.linux-x64"]
-checksum = "sha256:55b5ed0092bd11176c1669598e231ae52e7cedac59de6efd0d415730f37d0598"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.15.0/pnpm-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/662173360"
+checksum = "sha256:4492070f381f5cc42b977b968d8d72b970ffd17bef2523c229170b2cd4ece44a"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.16.0/pnpm-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/679856237"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.macos-arm64"]
-checksum = "sha256:6a41a2877773e97f19832067187cc6fc82e186d8a2cf91fec4b4c1a5fbd6ef27"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.15.0/pnpm-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/662173343"
+checksum = "sha256:a4e2b1dbe3ae5985fb5530b0c521be56cc160361f3fa6a869f3ea6f77e88fb4c"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.16.0/pnpm-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/679856235"
 provenance = "github-attestations"
 
 [[tools.prettier]]
@@ -935,49 +935,49 @@ url = "https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_darwi
 url_api = "https://api.github.com/repos/mvdan/sh/releases/assets/547320930"
 
 [[tools.usage]]
-version = "7.1.3"
+version = "7.1.4"
 backend = "packslip:github.com/jdx/usage"
 specifiers = ["latest"]
 
 [tools.usage."platforms.linux-arm64"]
-checksum = "sha256:f5e8cb2d9fea663e0b17472ce30ccc398c5dae4ddd7c6fb60f6b0f1d59386677"
-url = "https://github.com/jdx/usage/releases/download/v7.1.3/usage-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:2f25a923192210891b19d2ea4b4dbf6fe6c851ba8067b5ffd646517026e1f656"
+url = "https://github.com/jdx/usage/releases/download/v7.1.4/usage-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 repository_ids = { repository = "677629099" }
 
 [tools.usage."platforms.linux-x64"]
-checksum = "sha256:8862647112681941439df958ea8240a96e14319adc7f28497f09bd2ba10c0344"
-url = "https://github.com/jdx/usage/releases/download/v7.1.3/usage-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:eb213eb6c1cbc6896d7f8b627af984a9c1734d67bdf703788038bc50c326c676"
+url = "https://github.com/jdx/usage/releases/download/v7.1.4/usage-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 repository_ids = { repository = "677629099" }
 
 [tools.usage."platforms.macos-arm64"]
-checksum = "sha256:4878938599894c051baaf601cb5c7ee351f4276c9da0acbf959e868884f2b99b"
-url = "https://github.com/jdx/usage/releases/download/v7.1.3/usage-universal-apple-darwin.tar.gz"
+checksum = "sha256:cae1865b2bb4eb8c22087381d4fbc29344837960c71dbf865dc55296c19d535d"
+url = "https://github.com/jdx/usage/releases/download/v7.1.4/usage-universal-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 repository_ids = { repository = "677629099" }
 
 [[tools.uv]]
-version = "0.13.5"
+version = "0.13.6"
 backend = "aqua:astral-sh/uv"
 specifiers = ["latest"]
 
 [tools.uv."platforms.linux-arm64"]
-checksum = "sha256:4bb69cf95ed13f23713bb7bc09f241896ea0c75b7c557e615a20604b82f9c403"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.5/uv-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/664335837"
+checksum = "sha256:229e194255c7958d86d56e8790d969a6f74736592133f0dfd0076f754c642c1d"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980412"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:f68d291c75783122dad58ab77def0e13f3233f358731db5d6d7e8715603b928f"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.5/uv-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/664336023"
+checksum = "sha256:f29c3e94ffabd7e6f3ba521dba169a9b7ec12100bf3257087f0f24f6123f3645"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980644"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-arm64"]
-checksum = "sha256:743f85035a1996ecb350659e01cd9faea9709829be09b1b4b03c73eaf3c9cd73"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.5/uv-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/664335803"
+checksum = "sha256:60fbd5c8a1ed681845eea28d9d622fcde03c51e91a43465b64a1e17db1ed3472"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980393"
 provenance = "github-attestations"
 
 [[tools.watchexec]]
