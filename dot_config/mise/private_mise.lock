@@ -3,7 +3,7 @@
 lockfile_version = 3
 
 [[tools.amp]]
-version = "0.0.1793376030-g45d45f"
+version = "0.0.1793462430-g2650be"
 backend = "npm:@ampcode/cli"
 specifiers = ["latest"]
 
@@ -713,7 +713,7 @@ backend = "npm:@bitbonsai/mcpvault"
 specifiers = ["latest"]
 
 [[tools."npm:@devcontainers/cli"]]
-version = "0.89.0"
+version = "0.90.0"
 backend = "npm:@devcontainers/cli"
 specifiers = ["latest"]
 
@@ -731,7 +731,7 @@ specifiers = ["latest"]
 allow_builds = '["@getpaseo/cli"]'
 
 [[tools."npm:@openchamber/web"]]
-version = "2.5.2"
+version = "2.5.3"
 backend = "npm:@openchamber/web"
 specifiers = ["latest"]
 
@@ -746,7 +746,7 @@ backend = "npm:@upstash/context7-mcp"
 specifiers = ["latest"]
 
 [[tools."npm:agent-browser"]]
-version = "0.39.4"
+version = "0.40.0"
 backend = "npm:agent-browser"
 specifiers = ["latest"]
 
@@ -781,7 +781,7 @@ backend = "npm:yarn"
 specifiers = ["latest"]
 
 [[tools.opencode]]
-version = "2.2.3"
+version = "2.2.5"
 backend = "npm:@opencode/cli"
 specifiers = ["latest"]
 
@@ -801,10 +801,10 @@ specifiers = ["latest"]
 uv = { path = "locks/pipx-ruff/0.17.3", digest = "sha256:9bd17c692b99c39580bada8dcd398b08e3a3af3be76e2cda923aca93857b2a63" }
 
 [[tools."pipx:ty"]]
-version = "0.0.92"
+version = "0.0.93"
 backend = "pipx:ty"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ty/0.0.92", digest = "sha256:8c0e4e4036e1d8bedfdabd3faca64d99ba1e5f2d9879c5f70b4de2d9bacf5916" }
+uv = { path = "locks/pipx-ty/0.0.93", digest = "sha256:6485cf4b6a09c9ff5a85a94b0734ee7582b9a5dd83081f5e57a8711ab63b13c6" }
 
 [[tools."pipx:yt-dlp"]]
 version = "2026.10.26"
