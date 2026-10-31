@@ -16,7 +16,8 @@
     "npm:pi-context-view",
     "npm:pi-rules",
     "git:github.com/EveryInc/compound-engineering-plugin",
-    "npm:pi-ask-user"
+    "npm:pi-ask-user",
+    "git:github.com/obra/superpowers"
   ],
   "deviceId": "a856887f-a875-4738-acd5-cfc16ec9e0ac",
   "extensions": [
