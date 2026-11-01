@@ -17,11 +17,11 @@ idiomatic_version_file_enable_tools = [
 minimum_release_age = "3d"
 minimum_release_age_excludes = [
   "amp",
+  "mr-boxington",
+  "npm:@earendil-works/pi-coding-agent",
   "opencode",
   "pitchfork",
-  "usage",
-  "mr-boxington",
-  "npm:@earendil-works/pi-coding-agent"
+  "usage"
 ]
 
 trusted_config_paths = [
