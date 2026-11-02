@@ -3,7 +3,7 @@
 lockfile_version = 3
 
 [[tools.amp]]
-version = "0.0.1793548828-ge47c64"
+version = "0.0.1793606440-g4c7784"
 backend = "npm:@ampcode/cli"
 specifiers = ["latest"]
 
@@ -241,24 +241,26 @@ url_api = "https://api.github.com/repos/sigstore/cosign/releases/assets/66006925
 provenance = "cosign"
 
 [[tools.difftastic]]
-version = "0.71.0"
+version = "0.72.0"
 backend = "aqua:Wilfred/difftastic"
 specifiers = ["latest"]
 
 [tools.difftastic."platforms.linux-arm64"]
-checksum = "sha256:5f046098b36ff985d0f99fec6f22cf74961db60386ff9d40df39fd99660aae2c"
-url = "https://github.com/Wilfred/difftastic/releases/download/0.71.0/difft-0.71.0-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Wilfred/difftastic/releases/assets/573540796"
+checksum = "sha256:0993a82a6708a24adc6c6b8de366924728ed08f537a5b488940082c8edc79353"
+checksum_source = "mise-versions"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.72.0/difft-0.72.0-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Wilfred/difftastic/releases/assets/689925869"
 
 [tools.difftastic."platforms.linux-x64"]
-checksum = "sha256:61aea5394a53c56f144637cf39b3a0c0dafa27769731745e5851ff276e6478da"
-url = "https://github.com/Wilfred/difftastic/releases/download/0.71.0/difft-0.71.0-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Wilfred/difftastic/releases/assets/573539079"
+checksum = "sha256:33ea1f003081e9f2422299a434e6040c89085bd9f102b08f3fe30393720d5d4a"
+checksum_source = "mise-versions"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.72.0/difft-0.72.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Wilfred/difftastic/releases/assets/689921979"
 
 [tools.difftastic."platforms.macos-arm64"]
-checksum = "sha256:92acf8890543b6d6f436a87a7a5ec64f82a4b8dbe3a7e564c1e5cbfe60823bc7"
-url = "https://github.com/Wilfred/difftastic/releases/download/0.71.0/difft-0.71.0-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/Wilfred/difftastic/releases/assets/573540714"
+checksum = "sha256:959ce3e4b661663a6bb0b79de5e03051897e521e99c1b85f3c810b54f025ec93"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.72.0/difft-0.72.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/Wilfred/difftastic/releases/assets/689921777"
 
 [[tools.fnox]]
 version = "1.45.0"
@@ -708,7 +710,7 @@ checksum = "sha256:d38bd5e5a2ddce6bbb5ce45e46e208337da4d51fffe611e567fd32073d643
 url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-darwin-arm64.tar.gz"
 
 [[tools."npm:@bitbonsai/mcpvault"]]
-version = "0.17.1"
+version = "0.17.3"
 backend = "npm:@bitbonsai/mcpvault"
 specifiers = ["latest"]
 
@@ -718,7 +720,7 @@ backend = "npm:@devcontainers/cli"
 specifiers = ["latest"]
 
 [[tools."npm:@earendil-works/pi-coding-agent"]]
-version = "1.4.0"
+version = "1.5.0"
 backend = "npm:@earendil-works/pi-coding-agent"
 specifiers = ["latest"]
 
@@ -756,7 +758,7 @@ backend = "npm:chrome-devtools-mcp"
 specifiers = ["latest"]
 
 [[tools."npm:knip"]]
-version = "6.43.0"
+version = "6.44.0"
 backend = "npm:knip"
 specifiers = ["latest"]
 
@@ -801,10 +803,10 @@ specifiers = ["latest"]
 uv = { path = "locks/pipx-ruff/0.17.3", digest = "sha256:1c65f28eb5e4bef06082251843de57c3ef2a53002f6243e4b441b91e9e2f201f" }
 
 [[tools."pipx:ty"]]
-version = "0.0.94"
+version = "0.0.95"
 backend = "pipx:ty"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-ty/0.0.94", digest = "sha256:75e80079746f195ab6c97754d6e50c3b251e70aad5de428c70941d60a341e089" }
+uv = { path = "locks/pipx-ty/0.0.95", digest = "sha256:f52b1e05edc690e0254daa99264aab165c1a849d6f3a9229509eecda792a326c" }
 
 [[tools."pipx:yt-dlp"]]
 version = "2026.10.26"
