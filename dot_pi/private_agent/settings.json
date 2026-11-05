@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.4.0",
+  "lastChangelogVersion": "1.5.0",
   "theme": "system",
   "defaultProvider": "openai",
   "defaultModel": "gpt-6.1-sol",
@@ -72,5 +72,12 @@
       "maxRetryDelayMs": 30000
     }
   },
-  "enableInstallTelemetry": false
+  "enableInstallTelemetry": false,
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.84.0",
+    "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.0",
+    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.46.0",
+    "{\"source\":\"npm:pi-lens\",\"scope\":\"user\"}": "4.4.8",
+    "{\"source\":\"git:github.com/EveryInc/compound-engineering-plugin\",\"scope\":\"user\"}": "3.34.0"
+  }
 }
