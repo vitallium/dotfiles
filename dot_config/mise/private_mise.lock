@@ -3,7 +3,7 @@
 lockfile_version = 3
 
 [[tools.amp]]
-version = "0.0.1793812608-g4510d4"
+version = "0.0.1793857728-g655a2c"
 backend = "npm:@ampcode/cli"
 specifiers = ["latest"]
 
@@ -90,7 +90,7 @@ url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/asset
 provenance = "github-attestations"
 
 [[tools."cargo:ast-grep"]]
-version = "0.51.0"
+version = "0.51.1"
 backend = "cargo:ast-grep"
 specifiers = ["latest"]
 
@@ -733,7 +733,7 @@ specifiers = ["latest"]
 allow_builds = '["@getpaseo/cli"]'
 
 [[tools."npm:@openchamber/web"]]
-version = "2.5.3"
+version = "2.6.0"
 backend = "npm:@openchamber/web"
 specifiers = ["latest"]
 
