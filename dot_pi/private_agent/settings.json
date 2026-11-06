@@ -2,68 +2,36 @@
   "lastChangelogVersion": "1.5.0",
   "theme": "system",
   "defaultProvider": "openai",
-  "defaultModel": "gpt-6.1-sol",
+  "defaultModel": "gpt-6-luna",
   "defaultThinkingLevel": "medium",
   "packages": [
-    "npm:pi-subagents",
-    "npm:pi-mcp-adapter",
-    "npm:pi-web-access",
-    "npm:pi-lens",
-    "npm:@plannotator/pi-extension",
-    "npm:@dietrichgebert/ponytail",
-    "npm:@ff-labs/pi-fff",
-    "npm:pi-intercom",
-    "npm:pi-context-view",
-    "npm:pi-rules",
-    "git:github.com/EveryInc/compound-engineering-plugin",
-    "npm:pi-ask-user",
-    "git:github.com/obra/superpowers"
+    "npm:pi-mcp-adapter@7.0.1",
+    "npm:pi-web-access@0.47.0",
+    "npm:pi-lens@4.4.9",
+    "npm:@plannotator/pi-extension@0.28.51",
+    "npm:@dietrichgebert/ponytail@5.3.3",
+    "npm:@ff-labs/pi-fff@0.11.0",
+    "npm:pi-intercom@0.18.1",
+    "npm:pi-context-view@0.8.3",
+    "npm:pi-ask-user@0.17.2",
+    "npm:pi-posthorse@0.10.10",
+    "git:github.com/EveryInc/compound-engineering-plugin#173bd337fa639aac19ce7363d288836a074231a5",
+    "git:github.com/obra/superpowers#22f0b463e7a5e579904dd6211a520321035526f7"
   ],
   "deviceId": "a856887f-a875-4738-acd5-cfc16ec9e0ac",
   "extensions": [
     "-builtin:mcp"
   ],
   "enabledModels": [
-    "openai/gpt-6.1-sol:medium",
     "openai/gpt-6-astra:low",
-    "openai/gpt-6-luna:xhigh",
+    "openai/gpt-6.1-sol:medium",
+    "openai/gpt-6.1-terra:medium",
+    "openai/gpt-6-luna:high",
     "mistral/mistral-medium-latest",
     "mistral/mistral-large-latest",
     "mistral/zai-glm-5-3",
     "xai/grok-4.7"
   ],
-  "subagents": {
-    "agentOverrides": {
-      "delegate": {
-        "model": "openai/gpt-6.1-sol",
-        "thinking": "medium"
-      },
-      "reviewer": {
-        "model": "openai/gpt-6-astra",
-        "thinking": "xhigh"
-      },
-      "oracle": {
-        "model": "openai/gpt-6-astra",
-        "thinking": "xhigh"
-      },
-      "advisor": {
-        "model": "openai/gpt-6-astra",
-        "thinking": "xhigh"
-      },
-      "scout": {
-        "model": "openai/gpt-6.1-sol",
-        "thinking": "low"
-      },
-      "worker": {
-        "model": "openai/gpt-6.1-sol",
-        "thinking": "medium"
-      },
-      "researcher": {
-        "model": "openai/gpt-6.1-sol",
-        "thinking": "low"
-      }
-    }
-  },
   "retry": {
     "enabled": true,
     "maxRetries": 5,
@@ -73,11 +41,9 @@
     }
   },
   "enableInstallTelemetry": false,
-  "extensionChangelogVersions": {
-    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.84.0",
-    "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.0",
-    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.46.0",
-    "{\"source\":\"npm:pi-lens\",\"scope\":\"user\"}": "4.4.8",
-    "{\"source\":\"git:github.com/EveryInc/compound-engineering-plugin\",\"scope\":\"user\"}": "3.34.0"
+  "compaction": {
+    "enabled": true,
+    "reserveTokens": 64000,
+    "keepRecentTokens": 40000
   }
 }
