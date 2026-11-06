@@ -732,11 +732,6 @@ specifiers = ["latest"]
 [tools."npm:@getpaseo/cli".options]
 allow_builds = '["@getpaseo/cli"]'
 
-[[tools."npm:@openchamber/web"]]
-version = "2.6.0"
-backend = "npm:@openchamber/web"
-specifiers = ["latest"]
-
 [[tools."npm:@playwright/mcp"]]
 version = "0.0.84"
 backend = "npm:@playwright/mcp"
@@ -781,14 +776,6 @@ specifiers = ["latest"]
 version = "1.22.22"
 backend = "npm:yarn"
 specifiers = ["latest"]
-
-[[tools.opencode]]
-version = "2.2.5"
-backend = "npm:@opencode/cli"
-specifiers = ["latest"]
-
-[tools.opencode.options]
-allow_builds = '["@opencode/cli"]'
 
 [[tools."pipx:pgcli"]]
 version = "4.7.1"

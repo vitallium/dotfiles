@@ -19,7 +19,6 @@ minimum_release_age_excludes = [
   "amp",
   "mr-boxington",
   "npm:@earendil-works/pi-coding-agent",
-  "opencode",
   "pitchfork",
   "usage"
 ]
@@ -64,7 +63,6 @@ java = "lts"
 just = "latest"
 kubectl = "latest"
 lazygit = "latest"
-opencode = "latest"
 pitchfork = "latest"
 prettier = "latest"
 python = { version = "3.15.2", postinstall = "python -m pip install --upgrade pip==26.2.2" }
@@ -108,7 +106,6 @@ bun = "latest"
 "npm:@bitbonsai/mcpvault" = "latest"
 "npm:@devcontainers/cli" = "latest"
 "npm:@earendil-works/pi-coding-agent" = "latest"
-"npm:@openchamber/web" = "latest"
 "npm:@playwright/mcp" = "latest"
 "npm:@upstash/context7-mcp" = "latest"
 "npm:agent-browser" = "latest"
