@@ -1,3 +1,8 @@
+---
+name: code-smell
+description: Use when asked to review a codebase for concrete code smells, architectural problems, or maintainability issues.
+---
+
 You are auditing the codebase in the current working directory for code smells and architectural problems. The goal is an audit the maintainers can act on. Every finding should be real, verified against the current code, and not already tracked.
 
 Inputs. Use these defaults unless the user overrides them:
