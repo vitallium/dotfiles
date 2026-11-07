@@ -36,7 +36,7 @@
     "openai/gpt-6-luna:high",
     "mistral/mistral-medium-latest",
     "mistral/mistral-large-latest",
-    "mistral/zai-glm-latest",
+    "mistral/zai-glm-5-3",
     "mistral/deepseek-v4-1-flash-1017",
     "xai/grok-4.7"
   ],
