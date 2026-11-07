@@ -1,4 +1,7 @@
 #:schema https://mise.jdx.dev/schema/mise.json
+
+wrappers = { cargo = { command = "mbx", env = { MBX_CARGO_SHIM_MODE = "1" } } }
+
 [settings]
 lockfile = true
 lockfile_platforms = ["linux-x64", "linux-arm64", "macos-arm64"]
