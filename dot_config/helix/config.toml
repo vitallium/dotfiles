@@ -1,4 +1,4 @@
-theme = "modus_operandi"
+theme = "tokyonight"
 
 [editor]
 cursorline = true
