@@ -7,6 +7,110 @@
     }
   },
   "agent": {
+    "enable_feedback": false,
+    "tool_permissions": {
+      "tools": {
+        "skill": {
+          "default": "allow"
+        },
+        "mcp:mcp-server-context7:query-docs": {
+          "default": "allow"
+        },
+        "mcp:mcp-server-context7:resolve-library-id": {
+          "default": "allow"
+        },
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^(cargo|npm|bun|pnpm|yarn|deno)\\s+(build|test|check|run|format|lint|fix)"
+            },
+            {
+              "pattern": "^git\\s+(--no-pager\\s+|--no-optional-locks\\s+)*(add|commit|diff|log|status|push|pull|rev-parse|branch\\s+-[Dd])"
+            },
+            {
+              "pattern": "^(ls|cat|head|tail|wc|echo|pwd|which|type|file)"
+            },
+            {
+              "pattern": "^but\\s+(commit|reword)(\\s|$)"
+            },
+            {
+              "pattern": "^(rg|fd|ast-grep)\\s"
+            },
+            {
+              "pattern": "^jj\\s+(log|st|status|diff|show|obslog)"
+            },
+            {
+              "pattern": "^glab\\s+(mr|issue)\\s+(list|view)"
+            },
+            {
+              "pattern": "^mise\\s+(ls|list|current|which)"
+            },
+            {
+              "pattern": "^bundle\\s+exec(\\s|$)"
+            }
+          ],
+          "always_deny": [
+            {
+              "pattern": "^(sudo|su|doas)\\s"
+            },
+            {
+              "pattern": "^rm\\s+-[rf]\\s+/"
+            }
+          ]
+        },
+        "fetch": {
+          "always_allow": [
+            {
+              "pattern": "^https://(api\\.)?github\\.com"
+            },
+            {
+              "pattern": "^https://raw\\.githubusercontent\\.com"
+            }
+          ]
+        }
+      }
+    },
+    "sandbox_permissions": {
+      "network_hosts": [
+        "zed.dev",
+        "github.com",
+        "raw.githubusercontent.com",
+        "api.github.com"
+      ]
+    },
+    "default_profile": "direct",
+    "profiles": {
+      "direct": {
+        "name": "Direct",
+        "enable_all_context_servers": true,
+        "tools": {
+          "apply_code_action": true,
+          "ask_user": true,
+          "copy_path": true,
+          "create_directory": true,
+          "create_thread": false,
+          "delete_path": true,
+          "diagnostics": true,
+          "edit_file": true,
+          "fetch": true,
+          "find_path": true,
+          "find_references": true,
+          "get_code_actions": true,
+          "go_to_definition": true,
+          "grep": true,
+          "list_agents_and_models": true,
+          "list_directory": true,
+          "move_path": true,
+          "read_file": true,
+          "rename_symbol": true,
+          "search_web": true,
+          "skill": true,
+          "spawn_agent": true,
+          "terminal": true,
+          "write_file": true
+        }
+      }
+    },
     "default_model": {
       "enable_thinking": true,
       "effort": "high",
@@ -31,25 +135,22 @@
     }
   },
   "context_servers": {
-{{- $obsidianVault := .obsidian.vault_path }}
-{{- $mcpServers := get .mcp_servers .chezmoi.os }}
-{{- range $index, $server := $mcpServers }}
-    "{{ $server.name }}": {
-{{- if eq $server.type "remote" }}
-      "url": "{{ $server.url }}"
-{{- else if eq $server.type "local" }}
-      "command": {{ index $server.command 0 | toJson }}{{ if or (gt (len $server.command) 1) (eq $server.name "obsidian") $server.env }},{{ end }}
-{{- if eq $server.name "obsidian" }}
-      "args": [{{ $obsidianVault | toJson }}]{{ if $server.env }},{{ end }}
-{{- else if gt (len $server.command) 1 }}
-      "args": {{ toJson (slice $server.command 1) }}{{ if $server.env }},{{ end }}
-{{- end }}
-{{- if $server.env }}
-      "env": {{ toJson $server.env }}
-{{- end }}
-{{- end }}
-    }{{ if lt $index (sub (len $mcpServers) 1) }},{{ end }}
-{{- end }}
+    "chrome-devtools": {
+      "command": "chrome-devtools-mcp"
+    },
+    "context7": {
+      "command": "context7-mcp"
+    },
+    "obsidian": {
+      "command": "mcpvault",
+      "args": ["/Users/vslobodin/Documents/Obsidian/Personal"]
+    },
+    "excalidraw": {
+      "url": "https://mcp.excalidraw.com"
+    },
+    "playwright": {
+      "command": "playwright-mcp"
+    }
   },
   "languages": {
     "Ruby": {
