@@ -22,3 +22,5 @@ mise.*local.toml
 **/.claude/plans/
 **/.claude/reviews/
 **/.claude/settings.local.json
+**/.pi/notes/
+**/.pi/package-notes/
