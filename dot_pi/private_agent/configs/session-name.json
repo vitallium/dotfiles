@@ -1,0 +1,9 @@
+{
+  "autoName": "llm",
+  "heuristicMaxLength": 60,
+  "llmMaxWords": 6,
+  "llmModel": "openai/gpt-6-luna",
+  "notifyOnAutoName": true,
+  "setTitle": true,
+  "titleFormat": "{summary}"
+}

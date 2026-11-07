@@ -4,6 +4,9 @@
   "defaultProvider": "openai",
   "defaultModel": "gpt-6-luna",
   "defaultThinkingLevel": "medium",
+  "defaultTools": [
+    "+codemode"
+  ],
   "packages": [
     "npm:pi-mcp-adapter@7.0.1",
     "npm:pi-web-access@0.47.0",
@@ -15,6 +18,10 @@
     "npm:pi-context-view@0.8.3",
     "npm:pi-ask-user@0.17.2",
     "npm:pi-posthorse@0.10.10",
+    "npm:@nicknisi/pi-session-name@0.2.0",
+    "npm:@nicknisi/pi-composer@0.4.1",
+    "npm:@nicknisi/pi-statusline@0.3.4",
+    "npm:@ff-labs/pi-fff@0.11.0",
     "git:github.com/EveryInc/compound-engineering-plugin#173bd337fa639aac19ce7363d288836a074231a5",
     "git:github.com/obra/superpowers#22f0b463e7a5e579904dd6211a520321035526f7"
   ],
