@@ -117,10 +117,9 @@ bun = "latest"
 "npm:@getpaseo/cli" = { version = "latest", allow_builds = ["@getpaseo/cli"] }
 
 # Python
-"pipx:pgcli" = { version = "latest", depends = ["python", "uv"] }
-"pipx:ruff" = { version = "latest", depends = ["python", "uv"] }
-"pipx:yt-dlp" = { version = "latest", depends = ["python", "uv"] }
-"pipx:ty" = { version = "latest", depends = ["python", "uv"] }
+"pipx:pgcli" = { version = "latest", python = "3.15.2", depends = ["uv"] }
+"pipx:yt-dlp" = { version = "latest", python = "3.15.2", depends = ["uv"] }
+"pipx:ruff" = { version = "latest", python = "3.15.2", depends = ["uv"] }
 
 #
 # Go
