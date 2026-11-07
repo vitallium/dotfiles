@@ -23,6 +23,19 @@ These are guiding principles that Vitaly uses when writing code.
 - After every non-trivial change, include an explicit report of fragility or
   uncertainty.
 
+## Autonomy
+
+Within the task I gave you, keep going: fix, retry, and take the next in-scope
+step yourself. Work exists only once it is on the remote: commit as you finish
+each logical unit, staging only files you changed, and push the branch right
+away. Push to your own branch, not the default branch. Open a PR only when I
+ask. Start and rerun CI yourself whenever it helps. Ask before other
+outward-facing actions I haven't requested, such as opening PRs, merging,
+publishing, deploying, messaging other people, or irreversible deletes.
+
+End any turn that reports on long-running or delegated work with a short status:
+**Goal**, **Next**, **Needs you** (or "nothing").
+
 ### Diagnosis before remedy
 
 1. State the mechanism in one falsifiable sentence before proposing any fix. If
@@ -190,14 +203,18 @@ apply it.
 
 ### Fish shell
 
-I use `fish` shell. When writing shell scripts intended for the user, use fish.
-For temporary stuff or stuff for your own use, you can use any shell you like,
-such as bash or zsh. If a project we're working already uses bash extensively,
-don't introduce fish.
+I use fish. When writing shell scripts intended for the user, use fish. For
+temporary stuff or stuff for your own use, you can use any shell you like, such
+as bash or zsh. If a project we're working already uses bash extensively, don't
+introduce fish.
 
-`find` is capped at a 2 seconds timeout by an agent harness hook.
+`find` is capped at a 2 second timeout by an agent harness hook.
 
 The bash tool runs bash. Use fish syntax only inside `fish -c '…'`.
+
+Run commands expected to take more than 2 minutes (builds, test suites,
+watchers, deploys) in the background with output to a log file, then check back,
+so I can steer you meanwhile. For GitHub CI, use `executor_watch`.
 
 ### ast-grep
 
