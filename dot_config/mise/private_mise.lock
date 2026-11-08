@@ -3,7 +3,7 @@
 lockfile_version = 3
 
 [[tools.amp]]
-version = "0.0.1794110442-ga8fc4f"
+version = "0.0.1794153641-g4ab4e9"
 backend = "npm:@ampcode/cli"
 specifiers = ["latest"]
 
@@ -725,7 +725,7 @@ backend = "npm:@earendil-works/pi-coding-agent"
 specifiers = ["latest"]
 
 [[tools."npm:@getpaseo/cli"]]
-version = "0.15.1"
+version = "0.15.2"
 backend = "npm:@getpaseo/cli"
 specifiers = ["latest"]
 
