@@ -52,12 +52,5 @@
     "enabled": true,
     "reserveTokens": 64000,
     "keepRecentTokens": 40000
-  },
-  "extensionChangelogVersions": {
-    "{\"source\":\"npm:pi-mcp-adapter@7.0.1\",\"scope\":\"user\"}": "7.0.1",
-    "{\"source\":\"npm:pi-web-access@0.47.0\",\"scope\":\"user\"}": "0.47.0",
-    "{\"source\":\"npm:pi-lens@4.4.9\",\"scope\":\"user\"}": "4.4.9",
-    "{\"source\":\"npm:pi-context-view@0.8.3\",\"scope\":\"user\"}": "0.8.3",
-    "{\"source\":\"git:github.com/EveryInc/compound-engineering-plugin#173bd337fa639aac19ce7363d288836a074231a5\",\"scope\":\"user\"}": "3.35.4"
   }
 }
