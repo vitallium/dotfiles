@@ -10,7 +10,6 @@
   "packages": [
     "npm:pi-mcp-adapter@7.0.1",
     "npm:pi-web-access@0.47.0",
-    "npm:pi-lens@4.4.10",
     "npm:@plannotator/pi-extension@0.28.51",
     "npm:@dietrichgebert/ponytail@5.3.3",
     "npm:@ff-labs/pi-fff@0.11.0",
