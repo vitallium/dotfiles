@@ -725,7 +725,7 @@ backend = "npm:@earendil-works/pi-coding-agent"
 specifiers = ["latest"]
 
 [[tools."npm:@getpaseo/cli"]]
-version = "0.15.3"
+version = "0.15.4"
 backend = "npm:@getpaseo/cli"
 specifiers = ["latest"]
 
