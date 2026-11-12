@@ -3,7 +3,7 @@
 lockfile_version = 3
 
 [[tools.amp]]
-version = "0.0.1794412840-g1f3ec2"
+version = "0.0.1794484845-g2f1e0a"
 backend = "npm:@ampcode/cli"
 specifiers = ["latest"]
 
@@ -185,7 +185,7 @@ backend = "cargo:tokei"
 specifiers = ["latest"]
 
 [[tools."cargo:topgrade"]]
-version = "17.15.0"
+version = "17.16.0"
 backend = "cargo:topgrade"
 specifiers = ["latest"]
 
@@ -742,7 +742,7 @@ backend = "npm:@playwright/mcp"
 specifiers = ["latest"]
 
 [[tools."npm:@upstash/context7-mcp"]]
-version = "4.5.1"
+version = "4.6.0"
 backend = "npm:@upstash/context7-mcp"
 specifiers = ["latest"]
 
@@ -767,12 +767,12 @@ backend = "npm:markdownlint-cli2"
 specifiers = ["latest"]
 
 [[tools."npm:oxfmt"]]
-version = "0.77.0"
+version = "0.78.0"
 backend = "npm:oxfmt"
 specifiers = ["latest"]
 
 [[tools."npm:oxlint"]]
-version = "1.92.0"
+version = "1.93.0"
 backend = "npm:oxlint"
 specifiers = ["latest"]
 
