@@ -15,17 +15,15 @@ data:
     vault_path: {{ .chezmoi.homeDir }}/Documents/Obsidian/Personal
   ghostty:
     font:
-      name: MonoLisaCode
+      name: Berkeley Mono Variable
 {{- if (eq .chezmoi.os "darwin") }}
-      size: 14.0
+      size: 15.0
 {{- else }}
       size: 11.0
 {{- end }}
   zed:
     terminal_font:
-      name: MonoLisaCode
+      name: Berkeley Mono Variable
     buffer_font:
-      name: MonoLisaCode
-      size: 14
-    markdown_font:
-      name: MonoLisaText
+      name: Berkeley Mono Variable
+      size: 15
