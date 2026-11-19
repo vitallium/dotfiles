@@ -3,7 +3,7 @@
 lockfile_version = 3
 
 [[tools.amp]]
-version = "0.0.1794931244-ga961ae"
+version = "0.0.1795089646-g8be92a"
 backend = "npm:@ampcode/cli"
 specifiers = ["latest"]
 
@@ -11,26 +11,26 @@ specifiers = ["latest"]
 allow_builds = '["@ampcode/cli"]'
 
 [[tools.biome]]
-version = "2.6.7"
+version = "2.6.8"
 backend = "aqua:biomejs/biome"
 specifiers = ["latest"]
 
 [tools.biome."platforms.linux-arm64"]
-checksum = "sha256:9fb030ad316bbbf9a7379e52c0a1d2ad44d6b97cc7fec91745f4901961804732"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.6.7/biome-linux-arm64"
-url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/737014628"
+checksum = "sha256:3e5b3bf3ff21c4beecfef424fd429d6937c5e04fe5d332ad69d45806349ce20c"
+url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.6.8/biome-linux-arm64"
+url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/751278596"
 provenance = "github-attestations"
 
 [tools.biome."platforms.linux-x64"]
-checksum = "sha256:d924b8407471748465121f0a2dc1a0bc277038b0b89142e77583e3ce0dda3746"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.6.7/biome-linux-x64"
-url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/737014619"
+checksum = "sha256:fc1cb7c6664d6fa315144f58bd03096ee5d035e641538840a80262d59203d5dd"
+url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.6.8/biome-linux-x64"
+url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/751278589"
 provenance = "github-attestations"
 
 [tools.biome."platforms.macos-arm64"]
-checksum = "sha256:5ea2cd7d212b10132ee960ce480fc33aab761d0d6b658a1112c36c2657ed0957"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.6.7/biome-darwin-arm64"
-url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/737014629"
+checksum = "sha256:16c2a522889a679768bafe463523aded030c51f17004cf5c579750422443fcc4"
+url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.6.8/biome-darwin-arm64"
+url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/751278580"
 provenance = "github-attestations"
 
 [[tools.bun]]
@@ -90,7 +90,7 @@ url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/asset
 provenance = "github-attestations"
 
 [[tools."cargo:ast-grep"]]
-version = "0.51.2"
+version = "0.51.3"
 backend = "cargo:ast-grep"
 specifiers = ["latest"]
 
@@ -140,7 +140,7 @@ backend = "cargo:cargo-outdated"
 specifiers = ["latest"]
 
 [[tools."cargo:cargo-update"]]
-version = "22.1.1"
+version = "22.1.5"
 backend = "cargo:cargo-update"
 specifiers = ["latest"]
 
@@ -729,7 +729,7 @@ backend = "npm:@earendil-works/pi-coding-agent"
 specifiers = ["latest"]
 
 [[tools."npm:@getpaseo/cli"]]
-version = "0.16.1"
+version = "0.16.2"
 backend = "npm:@getpaseo/cli"
 specifiers = ["latest"]
 
@@ -742,7 +742,7 @@ backend = "npm:@playwright/mcp"
 specifiers = ["latest"]
 
 [[tools."npm:@upstash/context7-mcp"]]
-version = "4.7.0"
+version = "4.7.1"
 backend = "npm:@upstash/context7-mcp"
 specifiers = ["latest"]
 
@@ -767,12 +767,12 @@ backend = "npm:markdownlint-cli2"
 specifiers = ["latest"]
 
 [[tools."npm:oxfmt"]]
-version = "0.78.0"
+version = "0.79.0"
 backend = "npm:oxfmt"
 specifiers = ["latest"]
 
 [[tools."npm:oxlint"]]
-version = "1.93.0"
+version = "1.94.0"
 backend = "npm:oxlint"
 specifiers = ["latest"]
 
