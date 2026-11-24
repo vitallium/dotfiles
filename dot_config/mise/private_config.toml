@@ -24,6 +24,7 @@ minimum_release_age_excludes = [
   "npm:@earendil-works/pi-coding-agent",
   "npm:@getpaseo/cli",
   "pitchfork",
+  "pipx:mistral-vibe",
   "usage"
 ]
 
@@ -124,6 +125,7 @@ bun = "latest"
 "pipx:pgcli" = { version = "latest", python = "3.15.2", depends = ["uv"] }
 "pipx:yt-dlp" = { version = "latest", python = "3.15.2", depends = ["uv"] }
 "pipx:ruff" = { version = "latest", python = "3.15.2", depends = ["uv"] }
+"pipx:mistral-vibe" = { version = "latest", python = "3.15.2", depends = ["uv"] }
 
 #
 # Go

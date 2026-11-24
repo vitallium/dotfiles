@@ -776,6 +776,14 @@ version = "1.94.0"
 backend = "npm:oxlint"
 specifiers = ["latest"]
 
+[[tools."pipx:mistral-vibe"]]
+version = "3.1.5"
+backend = "pipx:mistral-vibe"
+specifiers = ["latest"]
+
+[tools."pipx:mistral-vibe".options]
+python = "3.15.2"
+
 [[tools."pipx:pgcli"]]
 version = "4.7.1"
 backend = "pipx:pgcli"
