@@ -1,0 +1,26 @@
+version = 1
+revision = 5
+requires-python = "==3.15.2"
+
+[options]
+exclude-newer = "2026-11-24T15:16:43.273716Z"
+
+[[package]]
+name = "mise-pypi-tool-environment"
+version = "0.0.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "yt-dlp" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "yt-dlp", specifier = "==2026.11.23" }]
+
+[[package]]
+name = "yt-dlp"
+version = "2026.11.23"
+source = { registry = "https://pypi.org/simple/" }
+sdist = { url = "https://files.pythonhosted.org/packages/c4/5a/1b6b13c8bf553841e7deaf204105dc63d4765aca9143def73a130da228c1/yt_dlp-2026.11.23.tar.gz", hash = "sha256:1db83772a8de7855a2dab551a94d7f617c88629dfdf506531c06b369b47f88a4", size = 3051332, upload-time = "2026-11-23T23:50:02.694Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/30/1e/f4bf64ca733135e609696c6df77a6c22c6d4909b6e293e4563ae51ea335c/yt_dlp-2026.11.23-py3-none-any.whl", hash = "sha256:e9188e0c559905f7ee05acc1ba0b6fb3f310e7565bf6dea5f62b5300e0775e35", size = 3186416, upload-time = "2026-11-23T23:50:00.052Z" },
+]

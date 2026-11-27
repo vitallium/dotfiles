@@ -3,7 +3,7 @@
 lockfile_version = 4
 
 [[tools.amp]]
-version = "0.0.1795536036-g7f1841"
+version = "0.0.1795780844-g2b802b"
 backend = "npm:@ampcode/cli"
 specifiers = ["latest"]
 
@@ -11,26 +11,26 @@ specifiers = ["latest"]
 allow_builds = '["@ampcode/cli"]'
 
 [[tools.biome]]
-version = "2.6.8"
+version = "2.6.9"
 backend = "aqua:biomejs/biome"
 specifiers = ["latest"]
 
 [tools.biome."platforms.linux-arm64"]
-checksum = "sha256:3e5b3bf3ff21c4beecfef424fd429d6937c5e04fe5d332ad69d45806349ce20c"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.6.8/biome-linux-arm64"
-url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/751278596"
+checksum = "sha256:df2dc6a7c8c0d094512e96e03318154d7412d7b405bc34dcf09a4508357cfdee"
+url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.6.9/biome-linux-arm64"
+url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/787684772"
 provenance = "github-attestations"
 
 [tools.biome."platforms.linux-x64"]
-checksum = "sha256:fc1cb7c6664d6fa315144f58bd03096ee5d035e641538840a80262d59203d5dd"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.6.8/biome-linux-x64"
-url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/751278589"
+checksum = "sha256:5409e32eb17b47e0d1d9bbf213b749eba1f9c35d8b18fbd2ee55971157918a57"
+url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.6.9/biome-linux-x64"
+url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/787684768"
 provenance = "github-attestations"
 
 [tools.biome."platforms.macos-arm64"]
-checksum = "sha256:16c2a522889a679768bafe463523aded030c51f17004cf5c579750422443fcc4"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.6.8/biome-darwin-arm64"
-url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/751278580"
+checksum = "sha256:7c046458c6505ebb043f2e3402f17fbe185bf311e288ed51ed80cc38b102c6f5"
+url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.6.9/biome-darwin-arm64"
+url_api = "https://api.github.com/repos/biomejs/biome/releases/assets/787684773"
 provenance = "github-attestations"
 
 [[tools.bun]]
@@ -135,7 +135,7 @@ backend = "cargo:cargo-nextest"
 specifiers = ["latest"]
 
 [[tools."cargo:cargo-outdated"]]
-version = "0.19.0"
+version = "0.20.0"
 backend = "cargo:cargo-outdated"
 specifiers = ["latest"]
 
@@ -195,26 +195,26 @@ backend = "cargo:tree-sitter-cli"
 specifiers = ["latest"]
 
 [[tools.chezmoi]]
-version = "2.74.1"
+version = "2.74.2"
 backend = "aqua:twpayne/chezmoi"
 specifiers = ["2"]
 
 [tools.chezmoi."platforms.linux-arm64"]
-checksum = "sha256:8c62619c4303770342e7c7e75d168b6cc6efee4ad5e4b994980de7cf794d68e2"
-url = "https://github.com/twpayne/chezmoi/releases/download/v2.74.1/chezmoi_2.74.1_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/733055363"
+checksum = "sha256:bb1521dd02aff3967d61937213110e79ddd6e181e0856cf51e80dba01fda245f"
+url = "https://github.com/twpayne/chezmoi/releases/download/v2.74.2/chezmoi_2.74.2_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/780829528"
 provenance = "cosign"
 
 [tools.chezmoi."platforms.linux-x64"]
-checksum = "sha256:ae01c66b1a6dbf563667c63fbbd9986b3cfa3c98dd266ddee732f63e8af2e9d1"
-url = "https://github.com/twpayne/chezmoi/releases/download/v2.74.1/chezmoi_2.74.1_linux-glibc_amd64.tar.gz"
-url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/733055497"
+checksum = "sha256:5f2024119a1860f18f2243b892dd43a79f0fefe2ebef9786ee143f4d5fd69ccb"
+url = "https://github.com/twpayne/chezmoi/releases/download/v2.74.2/chezmoi_2.74.2_linux-glibc_amd64.tar.gz"
+url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/780830137"
 provenance = "cosign"
 
 [tools.chezmoi."platforms.macos-arm64"]
-checksum = "sha256:fbc7b86c7b36eb0448e2a99a616b6d32f022d1f3895076ad44f4c5d65a77fe60"
-url = "https://github.com/twpayne/chezmoi/releases/download/v2.74.1/chezmoi_2.74.1_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/733055284"
+checksum = "sha256:fa14debabd557a9bb88a35c2950be6f5a8adf12e1c8cc26a9e0ee62fe0bdef2b"
+url = "https://github.com/twpayne/chezmoi/releases/download/v2.74.2/chezmoi_2.74.2_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/twpayne/chezmoi/releases/assets/780829970"
 provenance = "cosign"
 
 [[tools.cosign]]
@@ -724,12 +724,12 @@ backend = "npm:@devcontainers/cli"
 specifiers = ["latest"]
 
 [[tools."npm:@earendil-works/pi-coding-agent"]]
-version = "1.6.0"
+version = "1.6.1"
 backend = "npm:@earendil-works/pi-coding-agent"
 specifiers = ["latest"]
 
 [[tools."npm:@getpaseo/cli"]]
-version = "0.17.4"
+version = "0.18.0"
 backend = "npm:@getpaseo/cli"
 specifiers = ["latest"]
 
@@ -742,22 +742,22 @@ backend = "npm:@playwright/mcp"
 specifiers = ["latest"]
 
 [[tools."npm:@upstash/context7-mcp"]]
-version = "4.7.3"
+version = "4.8.0"
 backend = "npm:@upstash/context7-mcp"
 specifiers = ["latest"]
 
 [[tools."npm:agent-browser"]]
-version = "0.43.0"
+version = "0.44.0"
 backend = "npm:agent-browser"
 specifiers = ["latest"]
 
 [[tools."npm:chrome-devtools-mcp"]]
-version = "1.13.0"
+version = "1.14.0"
 backend = "npm:chrome-devtools-mcp"
 specifiers = ["latest"]
 
 [[tools."npm:knip"]]
-version = "6.47.0"
+version = "6.48.0"
 backend = "npm:knip"
 specifiers = ["latest"]
 
@@ -767,12 +767,12 @@ backend = "npm:markdownlint-cli2"
 specifiers = ["latest"]
 
 [[tools."npm:oxfmt"]]
-version = "0.79.0"
+version = "0.80.0"
 backend = "npm:oxfmt"
 specifiers = ["latest"]
 
 [[tools."npm:oxlint"]]
-version = "1.94.0"
+version = "1.95.0"
 backend = "npm:oxlint"
 specifiers = ["latest"]
 
@@ -803,10 +803,10 @@ uv = { path = "locks/pipx-ruff/0.17.6~d4028402", digest = "sha256:8fed1c857bd53c
 python = "3.15.2"
 
 [[tools."pipx:yt-dlp"]]
-version = "2026.10.26"
+version = "2026.11.23"
 backend = "pipx:yt-dlp"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-yt-dlp/2026.10.26~b562ff33", digest = "sha256:a1eac595ec8e5d9ec499d5ca923e77ee234657de03db15afd980390cb15736f3" }
+uv = { path = "locks/pipx-yt-dlp/2026.11.23~b562ff33", digest = "sha256:e6d6bb504ff664fb2c065bae5906fd5f99cb87cd1edccbd4195ebe85457ca670" }
 
 [tools."pipx:yt-dlp".options]
 python = "3.15.2"
@@ -835,26 +835,26 @@ signer = "sigstore-oidc:https://github.com/jdx/pitchfork/.github/workflows/relea
 repository_ids = { repository = "899500793" }
 
 [[tools.pnpm]]
-version = "12.22.0"
+version = "12.23.0"
 backend = "aqua:pnpm/pnpm"
 specifiers = ["latest"]
 
 [tools.pnpm."platforms.linux-arm64"]
-checksum = "sha256:22b23da8b00d12c2fdfc41b5533b65b467c7b178d93fdfe9128c491585dff1a4"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.22.0/pnpm-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/760376163"
+checksum = "sha256:dd03f7616625ff8f13d952f641f0864a2300d73d0a751a682737615bd9f9a7a2"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.23.0/pnpm-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/779077152"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.linux-x64"]
-checksum = "sha256:07ee196f91af1e21edb0c794401f4152932c74b0dba5d415dc4dbd5783f3c7af"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.22.0/pnpm-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/760376184"
+checksum = "sha256:b515e29f2ac1adc0fbe63173414a6682827baff24f17e7ad3476821bdef236ac"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.23.0/pnpm-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/779077165"
 provenance = "github-attestations"
 
 [tools.pnpm."platforms.macos-arm64"]
-checksum = "sha256:af43c44f22ef89191d83163c3ef9f5ee021a7368f401c95d92731be7d6b21cc5"
-url = "https://github.com/pnpm/pnpm/releases/download/v12.22.0/pnpm-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/760376177"
+checksum = "sha256:52bb314bf0d48928fc15126ccce42aa199275e29018bef112a04ae8acdcaaf14"
+url = "https://github.com/pnpm/pnpm/releases/download/v12.23.0/pnpm-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/779077158"
 provenance = "github-attestations"
 
 [[tools.prettier]]
